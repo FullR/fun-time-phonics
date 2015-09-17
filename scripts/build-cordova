@@ -1,3 +1,4 @@
 #!/bin/bash
 
+test -d "builds/cordova" || (echo "Cordova project not found. Creating one." && npm run setup-cordova)
 cd builds/cordova && cordova build ios

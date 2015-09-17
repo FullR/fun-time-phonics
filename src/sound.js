@@ -98,7 +98,7 @@ export default class Sound extends EventEmitter {
     const {id, playing} = this;
     this.log(`${id} Stopping`);
     if(!playing) {
-      this.log(`${id} Not playing. Skipping stop`);
+      //this.log(`${id} Not playing. Skipping stop`);
       return Promise.resolve();
     }
     return new Promise((resolve, reject) => {

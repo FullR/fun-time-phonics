@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",
-    "setup-cordova": "scripts/setup-cordova && npm run build-cordova",
+    "setup-cordova": "scripts/setup-cordova",
     "build-cordova": "scripts/compile && scripts/build-cordova",
     "convert-audio": "node scripts/convert-audio.js",
     "compile": "scripts/compile",

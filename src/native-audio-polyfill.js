@@ -5,26 +5,35 @@ const sounds = new Map();
 const playEventStream = new Subject();
 const loadEventStream = new Subject();
 
+function idNotFound(id, errorCb) {
+  errorCb(`No sound exists with the id ${id}`);
+}
+
+function sendError(errorCb, message) {
+  return (error) => errorCb(error && error.message ? error.message : `${message}: ${error}`);
+}
+
 export default {
   preloadComplex(id, url, volume, voices, delay, successCb, errorCb) {
     if(sounds.has(id)) {
-      successCb();
-    } else {
-      const sound = new Howl({
-        volume,
-        urls: [url],
-        onload() {
-          successCb();
-        },
-        onloaderror(error) {
-          errorCb(error && error.message ? error.message : `Error while loading sound: ${error}`);
-        },
-        onend() {
-          playEventStream.onNext(id);
-        }
-      });
-      sounds.set(id, sound);
+      log(`Sound with id ${id} already exists. Unloading and replacing`);
+      sounds.get(id).unload();
+      sounds.delete(id);
     }
+
+    sounds.set(id, new Howl({
+      volume,
+      urls: [url],
+      onload() {
+        successCb();
+      },
+      onloaderror(error) {
+        errorCb(error);
+      },
+      onend() {
+        playEventStream.onNext(id);
+      }
+    }));
   },
 
   preloadSimple(id, url, successCb, errorCb) {
@@ -37,11 +46,11 @@ export default {
       sound.stop();
       playEventStream.filter((playedId) => playedId === id).take(1).subscribe(
         () => finishCb(), 
-        (error) => errorCb(error && error.message ? error.message : `Unknown error while playing sound: ${error}`)
+        errorCb
       );
       sound.play();
     } else {
-      errorCb(`No sound exists with the id ${id}`);
+      idNotFound(id, errorCb);
     }
   },
 
@@ -70,6 +79,21 @@ export default {
         return;
       }
       sounds.delete(id);
+      successCb();
+    } else {
+      errorCb(`No sound exists with the id ${id}`);
+    }
+  },
+
+  setVolumeForComplexAsset(id, volume, successCb, errorCb) {
+    const sound = sounds.get(id);
+    if(sound) {
+      try {
+        sound.volume(volume);
+      } catch(error) {
+        errorCb(error);
+        return;
+      }
       successCb();
     } else {
       errorCb(`No sound exists with the id ${id}`);

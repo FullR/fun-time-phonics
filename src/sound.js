@@ -1,12 +1,14 @@
 import {Observable} from "rx";
-import {uniqueId} from "lodash";
+import {EventEmitter} from "events";
+import {noop, uniqueId, bindAll} from "lodash";
 import debuggable from "debuggable";
 
 const soundId = () => uniqueId("sound-");
 
 @debuggable
-export default class Sound {
+export default class Sound extends EventEmitter {
   constructor({paths, volume=1, voices=1, delay=0, debug}) {
+    super();
     this.id = soundId();
     this.debug = !!debug;
     this.volume = volume;
@@ -14,72 +16,75 @@ export default class Sound {
     this.delay = delay;
     this.paths = paths;
     this.path = this.paths[getAudioFormat()];
+    bindAll(this);
     this.log(`${this.id} Creating sound: ${this.path}`);
   }
 
   load() {
-    return Observable.create((observer) => {
-      const {path, id, volume, voices, delay} = this;
-      const nativeAudio = getNativeAudio();
-
-      this.log(`${id} Loading`);
-      nativeAudio.preloadComplex(this.id, path, volume, voices, delay,
-        (message) => {
-          this.log(`${id} Loaded`);
-          this.loaded = true;
-          observer.onNext();
-          observer.onCompleted();
-        }, 
-        (errorMessage) => {
-          this.loaded = false;
-          this.logError(`${id} Loading failed: ${errorMessage}`);
-          observer.onError(new Error(errorMessage));
-        }
-      );
+    const {id, path, volume, voices, delay} = this;
+    if(this.loadPromise) {
+      this.log(`${id} Already loaded. Skipping loading`);
+      return this.loadPromise;
+    }
+    this.loaded = false;
+    return this.loadPromise = new Promise((resolve, reject) => {
+      const onLoad = () => {
+        this.log(`${id} loaded`);
+        this.loaded = true;
+        this.emit("load");
+        resolve();
+      };
+      const onError = (error) => {
+        this.logError(`${id} Loading failed: ${error}`);
+        reject(new Error(error));
+      }
+      getNativeAudio().preloadComplex(id, path, volume, voices, delay, onLoad, onError);
     });
   }
 
   unload() {
     const {id, loaded} = this;
-    return Observable.create((observer) => {
-      if(loaded) {
-        this.log(`${id} Unloading`);
-        getNativeAudio().unload(this.id, 
-          () => {
-            this.log(`${id} Unloaded`);
-            this.loaded = false;
-            observer.onNext();
-            observer.onCompleted();
-          }, 
-          (errorMessage) => {
-            this.log(`${id} Failed to unload: ${errorMessage}`);
-            observer.onError(new Error(errorMessage));
-          }
-        );
-      } else {
-        this.log(`${id} Not loaded. Skipping unload`);
-        observer.onNext();
-        observer.onCompleted();
-      }
+    if(!this.loaded) {
+      this.log(`${id} Not loaded. Skipping unloading`);
+      return Promise.resolve();
+    }
+    return new Promise((resolve, reject) => {
+      const onUnload = () => {
+        this.log(`${id} Unloaded`);
+        this.loaded = false;
+        this.loadPromise = null;
+        this.emit("unload");
+        resolve();
+      };
+      const onError = (error) => {
+        this.logError(`${id} Unloading failed: ${error}`);
+        this.emit("error", error);
+        reject(error);
+      };
+      this.log(`${id} Unloading`);
+
+      getNativeAudio().unload(id, onUnload, onError);
     });
   }
 
   play() {
     const {id} = this;
+
     return Observable.create((observer) => {
       this.playing = true;
       this.log(`${id} Playing`);
       getNativeAudio().play(id, 
-        () => {
-          this.log(`${id} Play successful`);
-        },
+        noop,
         (errorMessage) => {
-          this.log(`${id} Failed to play: ${errorMessage}`);
+          const error = new Error(errorMessage);
+          this.log(`${id} Failed to play: ${error}`);
           this.playing = false;
-          observer.onError(new Error(errorMessage));
+          this.emit("error", error);
+          observer.onError(error);
         },
         () => {
           this.log(`${id} Finished playing`);
+          this.emit("end");
           this.playing = false;
           observer.onNext();
           observer.onCompleted();
@@ -91,23 +96,20 @@ export default class Sound {
 
   stop() {
     const {id, playing} = this;
-    return Observable.create((observer) => {
-      this.log("${id} Stopping");
-      this.playing = false;
-      if(playing) {
-        getNativeAudio().stop(id, () => {
-          this.log(`${id} Stopped`);
-          observer.onNext();
-          observer.onCompleted();
-        }, (errorMessage) => {
-          this.log(`${id} Failed to stop: ${errorMessage}`);
-          observer.onError(new Error(errorMessage));
-        });
-      } else {
-        this.log(`${id} Stopped`);
-        observer.onNext();
-        observer.onCompleted();
-      }
+    this.log(`${id} Stopping`);
+    if(!playing) {
+      this.log(`${id} Not playing. Skipping stop`);
+      return Promise.resolve();
+    }
+    return new Promise((resolve, reject) => {
+      getNativeAudio().stop(id, resolve, reject);
+    })
+    .then(() => {
+      this.log(`${id} Stopped`);
+      this.emit("end");
+    }, (error) => {
+      this.emit("error", error);
+      throw error;
     });
   }
 }
@@ -116,7 +118,7 @@ function getNativeAudio() {
   if(window.plugins && window.plugins.NativeAudio) {
     return window.plugins.NativeAudio;
   } else {
-    log("Native audio plugin not detected. Using polyfill.");
+    //log("Native audio plugin not detected. Using polyfill.");
     return require("native-audio-polyfill");
   }
 }

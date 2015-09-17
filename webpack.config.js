@@ -2,7 +2,7 @@ var _ = require("lodash");
 var path = require("path");
 
 function ext() {
-  return new RegExp("\\.(?:"+_.toArray(arguments).join("|")+")$");
+  return new RegExp("\\.(?:" + _.toArray(arguments).join("|") + ")$");
 }
 
 function local(localpath) {
@@ -16,9 +16,12 @@ module.exports = {
     filename: "app.js"
   },
   resolve: {
-    root: [local("src"), local("raw-audio"), local("audio")],
-    modulesDirectories: ["node_modules", "audio", "src"],
-    extentions: ["", ".js"]
+    root: [
+      local("src"),
+      local("raw-audio"),
+      local("audio")
+    ],
+    extentions: ["", ".js", ".wav"]
   },
   module: {
     loaders: [

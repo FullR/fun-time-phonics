@@ -2,7 +2,9 @@ import Sound from "sound";
 import {Observable} from "rx";
 import Animation from "util/animation";
 import delay from "util/delay";
+window.debug.enable("sound, app");
 
+const log = debug("app");
 const play = Observable.fromEvent(document.getElementById("play-btn"), "click");
 const stop = Observable.fromEvent(document.getElementById("stop-btn"), "click");
 const welcome = new Sound({paths: require("welcome.wav"), debug: true});

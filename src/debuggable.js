@@ -1,20 +1,22 @@
 import {defaults} from "lodash";
-import log from "log";
+import debug from "debug";
 
-const debuggableFns = {
-  log() {
-    if(this.debug) log(...arguments);
-  },
+export default function debuggable(namespace) {
+  const log = debug(namespace);
+  const error = debug(`${namespace}:error`);
+  return (ClassFn) => defaults(ClassFn.prototype, {
+    log() {
+      log(...arguments);
+    },
 
-  logError() {
-    if(this.debug) log.error(...arguments);
-  },
+    logError() {
+      error(...arguments);
+    },
 
-  assert(conditional, message) {
-    if(this.debug && !conditional) throw new Error(message);
-  }
-};
-
-export default function debuggable(ClassFn) {
-  defaults(ClassFn.prototype, debuggableFns);
+    assert(conditional, message) {
+      if(!conditional) {
+        throw new Error(message);
+      }
+    }
+  });
 }

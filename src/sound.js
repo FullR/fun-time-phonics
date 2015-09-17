@@ -1,11 +1,13 @@
 import {Observable} from "rx";
 import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll} from "lodash";
-import debuggable from "debuggable";
 
-const soundId = () => uniqueId("sound-");
+let id = 0;
+const debug = window.debug || () => () => {};
+const log = debug("sound");
+const logError = debug("sound:error");
+const soundId = () => uniqueId("");
 
-@debuggable
 export default class Sound extends EventEmitter {
   constructor({paths, volume=1, voices=1, delay=0, debug}) {
     super();
@@ -17,25 +19,25 @@ export default class Sound extends EventEmitter {
     this.paths = paths;
     this.path = this.paths[getAudioFormat()];
     bindAll(this);
-    this.log(`${this.id} Creating sound: ${this.path}`);
+    log(`${this.id} Creating sound: ${this.path}`);
   }
 
   load() {
     const {id, path, volume, voices, delay} = this;
     if(this.loadPromise) {
-      this.log(`${id} Already loaded. Skipping loading`);
+      log(`${id} Already loaded. Skipping loading`);
       return this.loadPromise;
     }
     this.loaded = false;
     return this.loadPromise = new Promise((resolve, reject) => {
       const onLoad = () => {
-        this.log(`${id} loaded`);
+        log(`${id} loaded`);
         this.loaded = true;
         this.emit("load");
         resolve();
       };
       const onError = (error) => {
-        this.logError(`${id} Loading failed: ${error}`);
+        logError(`${id} Loading failed: ${error}`);
         reject(new Error(error));
       }
       getNativeAudio().preloadComplex(id, path, volume, voices, delay, onLoad, onError);
@@ -45,23 +47,23 @@ export default class Sound extends EventEmitter {
   unload() {
     const {id, loaded} = this;
     if(!this.loaded) {
-      this.log(`${id} Not loaded. Skipping unloading`);
+      log(`${id} Not loaded. Skipping unloading`);
       return Promise.resolve();
     }
     return new Promise((resolve, reject) => {
       const onUnload = () => {
-        this.log(`${id} Unloaded`);
+        log(`${id} Unloaded`);
         this.loaded = false;
         this.loadPromise = null;
         this.emit("unload");
         resolve();
       };
       const onError = (error) => {
-        this.logError(`${id} Unloading failed: ${error}`);
+        logError(`${id} Unloading failed: ${error}`);
         this.emit("error", error);
         reject(error);
       };
-      this.log(`${id} Unloading`);
+      log(`${id} Unloading`);
 
       getNativeAudio().unload(id, onUnload, onError);
     });
@@ -72,18 +74,18 @@ export default class Sound extends EventEmitter {
 
     return Observable.create((observer) => {
       this.playing = true;
-      this.log(`${id} Playing`);
+      log(`${id} Playing`);
       getNativeAudio().play(id, 
         noop,
         (errorMessage) => {
           const error = new Error(errorMessage);
-          this.log(`${id} Failed to play: ${error}`);
+          log(`${id} Failed to play: ${error}`);
           this.playing = false;
           this.emit("error", error);
           observer.onError(error);
         },
         () => {
-          this.log(`${id} Finished playing`);
+          log(`${id} Finished playing`);
           this.emit("end");
           this.playing = false;
           observer.onNext();
@@ -96,16 +98,16 @@ export default class Sound extends EventEmitter {
 
   stop() {
     const {id, playing} = this;
-    this.log(`${id} Stopping`);
+    log(`${id} Stopping`);
     if(!playing) {
-      //this.log(`${id} Not playing. Skipping stop`);
+      //log(`${id} Not playing. Skipping stop`);
       return Promise.resolve();
     }
     return new Promise((resolve, reject) => {
       getNativeAudio().stop(id, resolve, reject);
     })
     .then(() => {
-      this.log(`${id} Stopped`);
+      log(`${id} Stopped`);
       this.emit("end");
     }, (error) => {
       this.emit("error", error);

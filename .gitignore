@@ -1,0 +1,9 @@
+node_modules
+dist/*
+builds/*
+.DS_Store
+raw-audio
+raw-audio.old
+audio
+audio/*
+

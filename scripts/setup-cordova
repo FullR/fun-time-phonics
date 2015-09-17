@@ -1,0 +1,39 @@
+#!/bin/bash
+# Run this file from the project's root directory using `npm run setup-cordova`
+
+PROJECT_DIR=$(pwd)
+SRC_DIR="$PROJECT_DIR/src"
+DIST_DIR="$PROJECT_DIR/dist"
+MERGE_DIR="$PROJECT_DIR/cordova-files"
+CORDOVA_DIR="$PROJECT_DIR/builds/cordova"
+
+# Clean old files
+echo "Cleaning..."
+rm -rf "$CORDOVA_DIR"
+
+# Create Project
+mkdir -p "$CORDOVA_DIR"
+cordova create "$CORDOVA_DIR" com.criticalthinking.funtimephonics ftph
+cd "$CORDOVA_DIR"
+
+# Add Platforms
+echo "Adding platforms..."
+cordova platform add ios
+
+# Add Plugins
+echo "Adding plugins..."
+# cordova plugin add cordova-plugin-media
+cordova plugin add cordova-plugin-nativeaudio
+cordova plugin add cordova-plugin-console
+cordova plugin add https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay
+cordova plugin add cordova-plugin-splashscreen
+cordova plugin add cordova-plugin-inappbrowser
+
+# Add Source files
+echo "Adding source files"
+rm -rf "$CORDOVA_DIR/www" & mkdir -p "$DIST_DIR"
+ln -s "$DIST_DIR" "$CORDOVA_DIR/www"
+
+# Add Merge files
+echo "Adding merge files"
+cp -R $MERGE_DIR/* $CORDOVA_DIR

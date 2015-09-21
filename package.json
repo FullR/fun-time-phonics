@@ -15,6 +15,7 @@
     "debug": "^2.2.0",
     "howler": "^1.1.26",
     "lodash": "^3.10.1",
+    "pixi.js": "^3.0.7",
     "rx": "^3.1.2"
   },
   "devDependencies": {

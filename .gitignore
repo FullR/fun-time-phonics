@@ -1,9 +1,8 @@
 node_modules
-dist/*
-builds/*
+dist
+builds
 .DS_Store
 raw-audio
-raw-audio.old
 audio
-audio/*
+images
 

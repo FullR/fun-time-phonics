@@ -3,9 +3,7 @@ import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll} from "lodash";
 
 let id = 0;
-const debug = window.debug || () => () => {};
-const log = debug("sound");
-const logError = debug("sound:error");
+const log = debug("tctc:sound");
 const soundId = () => uniqueId("");
 
 export default class Sound extends EventEmitter {

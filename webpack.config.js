@@ -19,7 +19,8 @@ module.exports = {
     root: [
       local("src"),
       local("raw-audio"),
-      local("audio")
+      local("audio"),
+      local("images")
     ],
     extentions: ["", ".js", ".wav"]
   },
@@ -27,8 +28,9 @@ module.exports = {
     loaders: [
       {test: ext("js"), exclude: /node_modules/, loader: "babel-loader?stage=1"},
       {test: ext("html"), loader: "file-loader?name=[name].[ext]"},
-      {test: ext("wav"), loader: "./audio-loader.js"},
-      {test: ext("mp3", "ogg"), loader: "file-loader?name=audio/[name].[hash].[ext]"}
+      {test: ext("wav"), loader: "audio-loader"},
+      {test: ext("mp3", "ogg"), loader: "file-loader?name=audio/[name].[hash].[ext]"},
+      {test: ext("png", "gif", "jpg"), loader: "file-loader?name=images/[name].[hash].[ext]"}
     ]
   }
 };

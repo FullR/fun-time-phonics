@@ -15,10 +15,8 @@ module.exports = function(content) {
     this.cacheable();
   }
 
-  return [
-    "module.exports = {",
-    "  mp3: require('" + mp3Url + "'),",
-    "  ogg: require('" + oggUrl + "')",
-    "}"
-  ].join("\n");
+  return "module.exports = {"
+   + "  mp3: require('" + mp3Url + "'),"
+   + "  ogg: require('" + oggUrl + "')"
+   + "}";
 };

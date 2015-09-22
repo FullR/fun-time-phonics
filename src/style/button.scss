@@ -1,0 +1,9 @@
+.Button {
+  display: inline-block;
+}
+
+.Button.Button--cleared {
+  border: 0;
+  padding: 0;
+  outline: 0;
+}

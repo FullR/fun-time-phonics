@@ -1,9 +1,7 @@
-import SceneManager from "scene-manager";
+import React from "react";
+import Application from "components/application";
+require("style/normalize.scss");
+require("style/base.scss");
+debug.enable("tctc:*");
 
-const sceneManager = new SceneManager(document.getElementById("game-container"), {
-  scenes: {
-    splash: require("scenes/splash")
-  }
-})
-.showScene("splash")
-.start();
+React.render(<Application/>, document.body);

@@ -1,27 +1,36 @@
 import {Observable} from "rx";
 import {EventEmitter} from "events";
-import {noop, uniqueId, bindAll} from "lodash";
+import {noop, uniqueId, bindAll, transform} from "lodash";
 
 let id = 0;
 const log = debug("tctc:sound");
 const soundId = () => uniqueId("");
 
 export default class Sound extends EventEmitter {
-  constructor({paths, volume=1, voices=1, delay=0, debug}) {
+  constructor({path, volume=1, voices=1, delay=0}) {
     super();
+    const filename = 
     this.id = soundId();
-    this.debug = !!debug;
     this.volume = volume;
     this.voices = voices;
     this.delay = delay;
-    this.paths = paths;
-    this.path = this.paths[getAudioFormat()];
+    this.path = path;
+    this.pathWithExt = `${path}.${getAudioExtention()}`;
+    this.fullpath = require("../audio/" + this.pathWithExt);
+
+    this.observable = Observable.create((observer) => {
+      this.play()
+        .then(observer.onNext.bind(observer), observer.onError.bind(observer));
+
+      return this.stop.bind(this);
+    }).take(1);
+
     bindAll(this);
     log(`${this.id} Creating sound: ${this.path}`);
   }
 
   load() {
-    const {id, path, volume, voices, delay} = this;
+    const {id, fullpath, volume, voices, delay} = this;
     if(this.loadPromise) {
       log(`${id} Already loaded. Skipping loading`);
       return this.loadPromise;
@@ -38,7 +47,7 @@ export default class Sound extends EventEmitter {
         logError(`${id} Loading failed: ${error}`);
         reject(new Error(error));
       }
-      getNativeAudio().preloadComplex(id, path, volume, voices, delay, onLoad, onError);
+      getNativeAudio().preloadComplex(id, fullpath, volume, voices, delay, onLoad, onError);
     });
   }
 
@@ -69,6 +78,27 @@ export default class Sound extends EventEmitter {
 
   play() {
     const {id} = this;
+
+    return new Promise((resolve, reject) => {
+      this.playing = true;
+      log(`${id} Playing`);
+      getNativeAudio().play(id, 
+        noop,
+        (errorMessage) => {
+          const error = new Error(errorMessage);
+          log(`${id} Failed to play: ${error}`);
+          this.playing = false;
+          this.emit("error", error);
+          reject(error);
+        },
+        () => {
+          log(`${id} Finished playing`);
+          this.emit("end");
+          this.playing = false;
+          resolve();
+        }
+      );
+    });
 
     return Observable.create((observer) => {
       this.playing = true;
@@ -114,6 +144,10 @@ export default class Sound extends EventEmitter {
   }
 }
 
+Sound.many = (soundMap={}) => transform(soundMap, (sounds, path, id) => {
+  sounds[id] = new Sound({path});
+});
+
 function getNativeAudio() {
   if(window.plugins && window.plugins.NativeAudio) {
     return window.plugins.NativeAudio;
@@ -123,6 +157,6 @@ function getNativeAudio() {
   }
 }
 
-function getAudioFormat() {
+function getAudioExtention() {
   return "mp3";
 }

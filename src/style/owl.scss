@@ -1,0 +1,76 @@
+$show-outlines: false;
+$speak-speed: 0.8s;
+$default-image: "../../images/owl/default.png";
+$default-width: 401px;
+$default-height: 500px;
+
+$speaking-image: "../../images/owl/speaking-sprite.png";
+$speaking-width: 473px;
+$speaking-height: 500px;
+
+$sprite-bg-width: 956px;
+$sprite-bg-height: 500px;
+$text-size: 36px;
+
+$sizes: (
+  large: 1,
+  medium: 0.7,
+  small: 0.4,
+  default: 0.6
+);
+
+.Owl {
+  display: inline-block;
+}
+
+@each $size, $ratio in $sizes {
+  .Owl--size-#{$size} {
+    @if $show-outlines == true {
+      outline: 1px solid #A0A;
+    }
+    width: $default-width * $ratio;
+    height: ($default-height * $ratio) + ($text-size * $ratio);
+    .Owl__content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .Owl__text {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+      font-size: ($text-size * $ratio);
+    }
+
+    .Owl__image {
+      background: url($default-image) no-repeat;
+      background-size: 100% 100%;
+      width: $default-width * $ratio;
+      height: $default-height * $ratio;
+    }
+  }
+
+  .Owl--size-#{$size}.Owl--speaking {
+    width: $speaking-width * $ratio;
+    height: $speaking-height * $ratio;
+    .Owl__image {
+      width: $speaking-width * $ratio;
+      height: $speaking-height * $ratio;
+      background: url($speaking-image);
+      background-position: 0 0;
+      background-size: ($sprite-bg-width * $ratio) ($sprite-bg-height * $ratio);
+      animation: speak-#{$size} $speak-speed steps(2) infinite;
+    }
+
+    .Owl__text {
+      visibility: hidden;
+    }
+  }
+  @keyframes speak-#{$size} {
+    100% {
+      background-position: (-1 * $sprite-bg-width * $ratio) 0;
+    }
+  }
+}

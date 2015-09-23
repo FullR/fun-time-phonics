@@ -4,6 +4,6 @@ require("style/splash-arrow.scss");
 
 export default class SplashArrow extends React.Component {
   render() {
-    return <Button cleared={true} className="SplashArrow"/>
+    return <Button {...this.props} cleared={true} className="SplashArrow"/>
   }
 }

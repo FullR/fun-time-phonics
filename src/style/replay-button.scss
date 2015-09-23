@@ -1,0 +1,20 @@
+$image: "../../images/replay-button-sprite.png";
+$width: 24px;
+$height: 28px;
+
+$sprite-width: 48px;
+$sprite-height: 28px;
+
+.Replay-button {
+  width: $width;
+  height: $height;
+  background: url($image);
+}
+
+.Replay-button--active {
+  background-position: (-1 * $width) 0;
+}
+
+.Replay-button--hidden {
+  visibility: hidden;
+}

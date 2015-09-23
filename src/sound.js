@@ -81,6 +81,7 @@ export default class Sound extends EventEmitter {
 
     return new Promise((resolve, reject) => {
       this.playing = true;
+      this.emit("play");
       log(`${id} Playing`);
       getNativeAudio().play(id, 
         noop,
@@ -93,34 +94,11 @@ export default class Sound extends EventEmitter {
         },
         () => {
           log(`${id} Finished playing`);
-          this.emit("end");
           this.playing = false;
+          this.emit("end");
           resolve();
         }
       );
-    });
-
-    return Observable.create((observer) => {
-      this.playing = true;
-      log(`${id} Playing`);
-      getNativeAudio().play(id, 
-        noop,
-        (errorMessage) => {
-          const error = new Error(errorMessage);
-          log(`${id} Failed to play: ${error}`);
-          this.playing = false;
-          this.emit("error", error);
-          observer.onError(error);
-        },
-        () => {
-          log(`${id} Finished playing`);
-          this.emit("end");
-          this.playing = false;
-          observer.onNext();
-          observer.onCompleted();
-        }
-      );
-      return () => this.stop();
     });
   }
 

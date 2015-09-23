@@ -1,0 +1,7 @@
+
+@mixin sibling-count($count) {
+  &:first-child:nth-last-child(#{$count}),
+  &:first-child:nth-last-child(#{$count}) ~ & {
+    @content;
+  }
+}

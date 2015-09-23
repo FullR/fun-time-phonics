@@ -11,8 +11,3 @@ export default class Corner extends React.Component {
     return (<div {...this.props} style={style}/>);
   }
 }
-
-Corner.defaultProps = {
-  top: 0,
-  left: 0
-};

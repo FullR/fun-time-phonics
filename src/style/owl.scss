@@ -1,5 +1,4 @@
 $show-outlines: false;
-$speak-speed: 0.8s;
 $default-image: "../../images/owl/default.png";
 $default-width: 401px;
 $default-height: 500px;
@@ -7,16 +6,19 @@ $default-height: 500px;
 $speaking-image: "../../images/owl/speaking-sprite.png";
 $speaking-width: 473px;
 $speaking-height: 500px;
-
-$sprite-bg-width: 956px;
-$sprite-bg-height: 500px;
+$speak-speed: 0.5s;
 $text-size: 36px;
 
+// Sprite sheet dimentions
+$speaking-sprite-width: 956px;
+$speaking-sprite-height: 500px;
+
+// 0.801 instead of 0.8 because 0.8 causes sub-pixel jitter during animation
 $sizes: (
-  large: 1,
-  medium: 0.7,
+  large: 0.801,
+  medium: 0.6,
   small: 0.4,
-  default: 0.6
+  default: 0.46
 );
 
 .Owl {
@@ -60,17 +62,17 @@ $sizes: (
       height: $speaking-height * $ratio;
       background: url($speaking-image);
       background-position: 0 0;
-      background-size: ($sprite-bg-width * $ratio) ($sprite-bg-height * $ratio);
-      animation: speak-#{$size} $speak-speed steps(2) infinite;
+      background-size: ($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio);
+      animation: owl-speak-#{$size} $speak-speed steps(2) infinite;
     }
 
     .Owl__text {
       visibility: hidden;
     }
   }
-  @keyframes speak-#{$size} {
+  @keyframes owl-speak-#{$size} {
     100% {
-      background-position: (-1 * $sprite-bg-width * $ratio) 0;
+      background-position: (-1 * $speaking-sprite-width * $ratio) 0;
     }
   }
 }

@@ -1,0 +1,77 @@
+$show-outlines: false;
+$sitting-image: "../../images/teacher/sitting.png";
+$sitting-width: 729px * 0.8;
+$sitting-height: 726px * 0.8;
+
+$speaking-image: "../../images/teacher/speaking-sprite.png";
+$speaking-width: 398px;
+$speaking-height: 752px;
+$speak-speed: 0.8s;
+$text-size: 32px;
+
+// full size of the spritesheet
+$speaking-sprite-width: 796px;
+$speaking-sprite-height: 752px;
+
+$sizes: (
+  large: 0.8,
+  medium: 0.6,
+  small: 0.4,
+  default: 0.5
+);
+
+.Teacher {
+  @if $show-outlines == true {
+    outline: 1px solid #A0A;
+  }
+}
+
+@each $size, $ratio in $sizes {
+  .Teacher--size-#{$size} {
+    width: $sitting-width * $ratio;
+    height: ($sitting-height * $ratio) + ($text-size * $ratio);
+    .Teacher__content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .Teacher__text {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+      font-size: ($text-size * $ratio);
+    }
+
+    .Teacher__image {
+      background: url($sitting-image) no-repeat;
+      background-size: 100% 100%;
+      width: $sitting-width * $ratio;
+      height: $sitting-height * $ratio;
+    }
+  }
+
+  .Teacher--size-#{$size}.Teacher--speaking {
+    width: $speaking-width * $ratio;
+    height: $speaking-height * $ratio;
+    .Teacher__image {
+      width: $speaking-width * $ratio;
+      height: $speaking-height * $ratio;
+      background: url($speaking-image);
+      background-position: 0 0;
+      background-size: ($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio); //($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio);
+      animation: teacher-speak-#{$size} $speak-speed steps(2) infinite;
+    }
+
+    .Teacher__text {
+      visibility: hidden;
+    }
+  }
+
+  @keyframes teacher-speak-#{$size} {
+    100% {
+      background-position: (-1 * $speaking-sprite-width * $ratio) 0;
+    }
+  }
+}

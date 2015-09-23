@@ -12,7 +12,7 @@ export default class Owl extends React.Component {
       <div className={className}>
         <div className="Owl__content">
           <div className="Owl__image"/>
-          <div className="Owl__text">{this.props.children}</div>
+          <div className="Owl__text">{this.props.text}</div>
         </div>
       </div>
     );
@@ -21,5 +21,5 @@ export default class Owl extends React.Component {
 
 Owl.defaultProps = {
   size: "default",
-  state: "default"
+  speaking: false
 };

@@ -23,9 +23,9 @@ module.exports = {
     loaders: [
       {test: ext("js"), exclude: /node_modules/, loader: "babel-loader?stage=1"},
       {test: ext("html"), loader: "file-loader?name=[name].[ext]"},
-      {test: ext("scss"), loader: "style!css!sass"},
-      {test: ext("ogg", "mp3"), loader: "file?name=assets/[name].[hash].[ext]"},
-      {test: ext("png", "jpg"), loader: "url"}
+      {test: ext("scss"), loader: "style!css!autoprefixer!sass"},
+      {test: ext("ogg", "mp3"), noParse: true, loader: "file?name=assets/[name].[hash].[ext]"},
+      {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[name].[hash].[ext]"}
     ]
   }
 };

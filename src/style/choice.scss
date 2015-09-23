@@ -1,0 +1,40 @@
+@import "./sibling-count";
+
+$width: 30em;
+$height: 30em;
+
+$sibling-count-scales: (
+  4: 0.8,
+  5: 0.7,
+  6: 0.6
+);
+
+.Choice {
+  display: inline-block;
+  width: $width;
+  height: $height;
+}
+
+.Choice + .Choice {
+  margin-left: 1em;
+}
+
+.Choice--hidden {
+  visibility: hidden;
+}
+
+.Choice--detached {
+  position: absolute;
+  visibility: hidden;
+  left: -9999px;
+  top: -9999px;
+}
+
+@each $count, $ratio in $sibling-count-scales {
+  .Choice {
+    @include sibling-count($count) {
+      width: $width * $ratio;
+      height: $height * $ratio;
+    }
+  }
+}

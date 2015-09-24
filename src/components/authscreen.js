@@ -4,8 +4,17 @@ import Countdown from "components/countdown";
 import Arrow from "components/arrow";
 require("style/authscreen.scss");
 const log = debug("tctc:authscreen");
+const noop = () => {};
 
 export default class Authscreen extends React.Component {
+  static defaultProps = {
+    correctPassword: "tea",
+    timeout: 15, // seconds
+    onSuccess: noop,
+    onFail: noop,
+    onTimeout: null // if not defined, onFail is used
+  };
+
   constructor(props) {
     super(props);
     this.updatePassword = this.updatePassword.bind(this);
@@ -58,10 +67,3 @@ export default class Authscreen extends React.Component {
   }
 }
 
-Authscreen.defaultProps = {
-  correctPassword: "tea",
-  onSuccess() { log("onSuccess is a no-op"); },
-  onFail() { log("onFail is a no-op"); },
-  onTimeout: null, // if not defined, onFail is used
-  timeout: 15
-};

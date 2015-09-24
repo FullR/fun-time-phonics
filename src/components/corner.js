@@ -5,7 +5,8 @@ export default class Corner extends React.Component {
     const {top, left, bottom, right} = this.props;
     const style = {
       top, left, bottom, right,
-      position: "absolute"
+      position: "absolute",
+      ...this.props.style // overwrites
     };
 
     return (<div {...this.props} style={style}/>);

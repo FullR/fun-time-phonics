@@ -4,6 +4,12 @@ import classNames from "util/class-names";
 require("style/choice.scss");
 
 export default class Choice extends React.Component {
+  static defaultProps = {
+    hidden: false,
+    detached: false,
+    padding: "5%"
+  };
+
   render() {
     const {hidden, detached, padding} = this.props;
     const className = classNames(this.props.className, "Choice", {
@@ -18,9 +24,3 @@ export default class Choice extends React.Component {
     );
   }
 }
-
-Choice.defaultProps = {
-  hidden: false,
-  detached: false,
-  padding: "5%"
-};

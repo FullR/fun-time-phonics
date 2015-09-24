@@ -23,9 +23,10 @@ export default class Splashscreen extends React.Component {
     const {welcome} = this.props.sounds;
     return (
       <Screen className="Splashscreen">
-        <Corner top={30} left={30}>
+        <Corner top={10} left={10}>
           <CriticalLogo size="large"/>
         </Corner>
+        <Corner top={10} right={10} style={{fontSize: 20}}>PreK - 2</Corner>
         <Corner bottom={100} right={100}>
           <Arrow onClick={() => this.showNextScreen()}/>
         </Corner>

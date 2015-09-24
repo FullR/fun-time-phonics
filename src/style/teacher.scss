@@ -61,11 +61,16 @@ $sizes: (
       background: url($speaking-image);
       background-position: 0 0;
       background-size: ($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio); //($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio);
-      animation: teacher-speak-#{$size} $speak-speed steps(2) infinite;
     }
 
     .Teacher__text {
       visibility: hidden;
+    }
+  }
+
+  .Teacher--size-#{$size}.Teacher--speaking-animating {
+    .Teacher__image {
+      animation: teacher-speak-#{$size} $speak-speed steps(2) infinite;
     }
   }
 

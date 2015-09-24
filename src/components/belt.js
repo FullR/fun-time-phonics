@@ -3,6 +3,10 @@ import classNames from "util/class-names";
 require("style/belt.scss");
 
 export default class Belt extends React.Component {
+  static defaultProps = {
+    bottom: "30%"
+  };
+
   render() {
     const {top, bottom, left, right} = this.props;
     const className = classNames(this.props.className, "Belt");
@@ -17,7 +21,3 @@ export default class Belt extends React.Component {
     );
   }
 }
-
-Belt.defaultProps = {
-  bottom: "30%"
-};

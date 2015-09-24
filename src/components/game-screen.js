@@ -21,7 +21,7 @@ export default class GameScreen extends React.Component {
 
     return (
       <Screen {...this.props}>
-        {owl.centered ?
+        {owl && owl.centered ?
           <Center>
             {owlComponent}
           </Center> :
@@ -30,7 +30,7 @@ export default class GameScreen extends React.Component {
           </Corner>
         }
 
-        {teacher.centered ?
+        {teacher && teacher.centered ?
           <Center>
             {teacherComponent}
           </Center> :

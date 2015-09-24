@@ -63,13 +63,19 @@ $sizes: (
       background: url($speaking-image);
       background-position: 0 0;
       background-size: ($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio);
-      animation: owl-speak-#{$size} $speak-speed steps(2) infinite;
     }
 
     .Owl__text {
       visibility: hidden;
     }
   }
+
+  .Owl--size-#{$size}.Owl--speaking-animating {
+    .Owl__image {
+      animation: owl-speak-#{$size} $speak-speed steps(2) infinite;
+    }
+  }
+
   @keyframes owl-speak-#{$size} {
     100% {
       background-position: (-1 * $speaking-sprite-width * $ratio) 0;

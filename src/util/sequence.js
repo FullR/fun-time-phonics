@@ -1,6 +1,7 @@
 import {Observable} from "rx";
 import isObservable from "util/is-observable";
 import isPromise from "util/is-promise";
+import delay from "util/delay";
 
 export default function sequence(...steps) {
   return steps.reduce((obs, step) => {
@@ -11,7 +12,7 @@ export default function sequence(...steps) {
       } else if(isPromise(result)) {
         return Observable.fromPromise(result);
       } else {
-        return Observable.just(result);
+        return delay(1); // This keeps synchronous ops from causing state-update issues in React
       }
     });
   }, Observable.just(null));

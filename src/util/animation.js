@@ -8,6 +8,10 @@ export default class Animation {
     this.disposable = null;
   }
 
+  isAnimating() {
+    return !!this.disposable;
+  }
+
   start() {
     return Observable.create((observer) => {
       this.stop();

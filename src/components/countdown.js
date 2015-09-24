@@ -1,6 +1,11 @@
 import React from "react";
 
 export default class Countdown extends React.Component {
+  static defaultProps = {
+    seconds: 10,
+    onComplete() {}
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,8 +35,3 @@ export default class Countdown extends React.Component {
     );
   }
 }
-
-Countdown.defaultProps = {
-  seconds: 10,
-  onComplete() {}
-};

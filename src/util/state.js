@@ -1,7 +1,7 @@
 import {extend, merge} from "lodash";
 
 function extendState(component, ...sources) {
-  component.setState(extend({}, component.state, ...sources));
+  component.setState(extend({}, ...sources));
 }
 
 function mergeState(component, ...sources) {

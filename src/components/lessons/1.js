@@ -11,6 +11,7 @@ export default class Lesson1 extends React.Component {
   render() {
     const {sounds} = this.props;
     const {tail, tip, tape} = sounds;
+
     return (
       <GameScreen owl={{text: "lesson", speaking: false, centered: false}} teacher={{speaking: false}}>
         <LessonTitle>Beginning Sounds</LessonTitle>

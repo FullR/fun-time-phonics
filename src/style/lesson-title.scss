@@ -1,0 +1,16 @@
+$size: 1.5em;
+$top-distance: 1em;
+
+.Lesson-title {
+  margin-top: $top-distance;
+  font-size: $size;
+  text-align: center;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.Lesson-sub-title {
+  font-size: $size;
+  width: 100%;
+  text-align: center;
+}

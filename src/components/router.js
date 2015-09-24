@@ -1,30 +1,59 @@
 import React from "react";
 import hasher from "hasher";
-import Splashscreen from "components/splashscreen";
-import Lesson1 from "components/lessons/1";
+const log = debug("tctc:router");
 
 export default class Router extends React.Component {
   constructor(props) {
     super(props);
     hasher.init();
     this.state = {
+      history: [],
       hash: hasher.getHash()
     };
   }
 
+  get hash() {
+    return this.state.hash;
+  }
+
   componentDidMount() {
     hasher.changed.add(() => {
-      console.log("Hash changed");
-      this.setState({hash: hasher.getHash()});
+      const hash = hasher.getHash();
+      log(`hash changed: ${hash}`);
+      this.setState({
+        history: [...this.state.history, this.state.hash],
+        hash: hash
+      });
     });
   }
 
-  render() {
-    const {hash} = this.state;
-    console.log(hash);
-    switch(hash) {
-      case "lesson-1": return <Lesson1/>;
-      default: return <Splashscreen {...this.props} hash={hash}/>
+  back() {
+    if(this.state.history.length) {
+      const prev = this.state.history.pop();
+      log(`Going back to: ${prev}`);
+      hasher.setHash(prev);
+    } else {
+      log("History is empty. Returning to default route");
+      hasher.setHash("");
     }
+  }
+
+  setHash(hash) {
+    hasher.setHash(hash);
+  }
+
+  getRoute() {
+    const {hash} = this.state;
+    switch(hash) {
+      case "lesson-1": return require("components/lessons/1");
+      case "admin": return require("components/admin");
+      case "splash": // fall through
+      default: return require("components/splashscreen");
+    }
+  }
+
+  render() {
+    const Route = this.getRoute();
+    return <Route router={this}/>
   }
 }

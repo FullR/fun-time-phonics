@@ -1,0 +1,24 @@
+$image: "../../images/tctc-logo.png";
+$width: 154px;
+$height: 100px;
+
+$sizes: (
+  small: 0.5,
+  medium: 1,
+  large: 1.5
+);
+
+.Critical-logo {
+  display: block;
+  background: url($image) no-repeat;
+  background-size: 100% 100%;
+  width: $width;
+  height: $height;
+}
+
+@each $size, $ratio in $sizes {
+  .Critical-logo--size-#{$size} {
+    width: $width * $ratio;
+    height: $height * $ratio;
+  }
+}

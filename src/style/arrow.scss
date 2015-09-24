@@ -1,10 +1,10 @@
-.SplashArrow {
+.Arrow {
   width: 192px;
   height: 120px;
   background: url("../../images/arrow.png") no-repeat;
   background-size: 100% 100%;
 }
 
-.SplashArrow:hover {
+.Arrow:hover {
   background-image: url("../../images/arrow_hover.png");
 }

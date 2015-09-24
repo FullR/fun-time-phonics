@@ -1,0 +1,38 @@
+$top-background: #C5AECE;
+$bottom-background: #CDE39F;
+
+.Authscreen {
+  background: $top-background;
+}
+
+.Authscreen__bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: $bottom-background;
+}
+
+.Authscreen form {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  top: 200px;
+    vertical-align: middle;
+}
+
+.Authscreen input {
+  display: inline-block;
+  text-align: center;
+  height: 40px;
+  width: 25%;
+  font-size: 35px;
+}
+
+.Authscreen .Arrow {
+  display: inline-block;
+  position: relative;
+  top: -8px;
+  left: 20px;
+}

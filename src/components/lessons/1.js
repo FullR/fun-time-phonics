@@ -1,6 +1,6 @@
 import React from "react";
 import {soundContext} from "decorators";
-import {GameScreen, Choice, Belt, WordFrame} from "components";
+import {GameScreen, Choice, Belt, WordFrame, LessonTitle} from "components";
 
 @soundContext({
   tail: "owl/words/tail",
@@ -13,6 +13,8 @@ export default class Lesson1 extends React.Component {
     const {tail, tip, tape} = sounds;
     return (
       <GameScreen owl={{text: "lesson", speaking: false, centered: false}} teacher={{speaking: false}}>
+        <LessonTitle>Beginning Sounds</LessonTitle>
+        <LessonTitle.SubTitle>Lesson 1</LessonTitle.SubTitle>
         <Belt bottom="30%">
           <Choice>
             <WordFrame word="tail" sound={tail}/>

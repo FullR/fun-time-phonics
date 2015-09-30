@@ -1,12 +1,12 @@
 $show-outlines: false;
 $default-image: "../../images/owl/default.png";
-$default-width: 401px;
-$default-height: 500px;
+$default-width: 401px * 0.95;
+$default-height: 500px;// * 0.9;
 
 $speaking-image: "../../images/owl/speaking-sprite.png";
 $speaking-width: 473px;
 $speaking-height: 500px;
-$speak-speed: 0.5s;
+$speak-speed: 0.4s;
 $text-size: 36px;
 
 // Sprite sheet dimentions

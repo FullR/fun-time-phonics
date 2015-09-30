@@ -1,5 +1,5 @@
 import React from "react";
-import onReady from "./onReady";
+import onReady from "./on-ready";
 import "babel-core/polyfill";
 
 const debug = require("debug")("app");
@@ -8,7 +8,7 @@ require("file?name=[name].[ext]!./platform.js"); // Include platform.js for web 
 
 /* Globals */
 window.debug = require("debug");
-window.logError = debug("tctc:error");
+window.logError = (...args) => console.error(...args);
 window.errorCatcher = (message) => (error) => window.logError(`${message}: ${error}`);
 /**/
 

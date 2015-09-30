@@ -3,8 +3,8 @@ import sequence from "util/sequence";
 const noop = () => {};
 
 export default class Animation {
-  constructor(...steps) {
-    this.seq = sequence(...steps);
+  constructor(steps) {
+    this.seq = sequence(steps);
     this.disposable = null;
   }
 

@@ -6,4 +6,4 @@ import {camelCase, capitalize} from "lodash";
 
   Exported keys are in capitalized camel case (ex. FooBar, Fizz, Buzz)
 */
-export default packWebpackContext(require.context("components", false, /.js$/), (filename) => capitalize(camelCase(filename)));
+export default packWebpackContext(require.context("components", false, /\.js$/), (filename) => capitalize(camelCase(filename)));

@@ -1,5 +1,5 @@
 import React from "react";
-import {invoke} from "lodash";
+import {extend, invoke} from "lodash";
 import Sound from "sound";
 
 export default function soundContext(manifest={}, LoadingComponent) {
@@ -20,18 +20,25 @@ export default function soundContext(manifest={}, LoadingComponent) {
       }, errorCatcher("Failed to load sounds"));
     }
 
+    stopAll() {
+      return Promise.all(invoke(this.sounds, "stop"));
+    }
+
+    unloadAll() {
+      return Promise.all(invoke(this.sounds, "unload"));
+    }
+
     componentWillUnmount() {
-      invoke(this.sounds, "stop");
-      Promise.all(invoke(this.sounds, "unload"))
-        .then(null, errorCatcher("Failed to unload sounds"));
+      this.stopAll().then(() => this.unloadAll());
     }
 
     render() {
       const {loaded} = this.state;
       const {props, sounds} = this;
+      const extendedSounds = props.sounds ? extend({}, props.sounds, sounds) : sounds;
 
       if(loaded) {
-        return <Component {...props} sounds={this.sounds}/>
+        return <Component {...props} sounds={extendedSounds} soundContext={this}/>
       } else if(LoadingComponent) {
         return <LoadingComponent {...props}/>
       } else {

@@ -35,8 +35,8 @@ export default class SoundFrame extends React.Component {
     const {sound} = this.props;
     const {_onPlay, _onEnd} = this;
     if(sound) {
-      sound.off("play", _onPlay);
-      sound.off("end", _onEnd);
+      sound.removeListener("play", _onPlay);
+      sound.removeListener("end", _onEnd);
     }
   }
 

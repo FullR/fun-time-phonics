@@ -16,7 +16,7 @@ export default class Splashscreen extends React.Component {
   }
 
   showNextScreen() {
-    this.props.router.setHash("lesson-1");
+    this.props.router.setHash("level/1");
   }
 
   render() {

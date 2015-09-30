@@ -1,5 +1,5 @@
 import React from "react";
-import {invoke, some, noop} from "lodash";
+import {invoke, some, noop, each} from "lodash";
 import Animation from "util/animation";
 import bindMethods from "util/bind-methods";
 const log = debug("tctc:animation-context");
@@ -25,18 +25,19 @@ export default function animationContext(Component) {
       if(this.animations[id]) {
         logError(`An animation is already registered with the id ${id}. Overwriting`);
       }
-      this.animations[id] = new Animation(...steps);
+      this.animations[id] = new Animation(steps);
       return this;
     }
 
     start(id, onCompleted) {
       const animation = this.get(id);
-      this.stop();
       if(!animation) {
         logError(`Could not find animation with id ${id}`);
       } else {
-        log(`Starting animation: ${id}`);
-        const disposable = animation.start().subscribe(noop, noop, onCompleted);
+        const observable = animation.start();
+        const disposable = observable.subscribe(noop, (error) => {
+          window.logError(`Error during animation ${id}: ${error}`);
+        }, onCompleted);
         return disposable.dispose.bind(disposable);
       }
     }

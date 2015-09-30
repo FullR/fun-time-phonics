@@ -1,10 +1,32 @@
+$width: 192px;
+$height: 120px;
+$font-size: 22px;
+
 .Arrow {
-  width: 192px;
-  height: 120px;
+  width: $width;
+  height: $height;
+  font-size: $font-size;
   background: url("../../images/arrow.png") no-repeat;
   background-size: 100% 100%;
+
+  &:hover {
+    background-image: url("../../images/arrow_hover.png");
+  }
 }
 
-.Arrow:hover {
-  background-image: url("../../images/arrow_hover.png");
+.Arrow--color-red {
+  background-image: url("../../images/arrow-red.png");
+
+  &:hover {
+    background-image: url("../../images/arrow-red_hover.png");
+  }
+}
+
+.Arrow--size-large {
+  width: $width * 1.5;
+  height: $height * 1.5;
+}
+
+.Arrow--reversed {
+  transform: scaleX(-1);
 }

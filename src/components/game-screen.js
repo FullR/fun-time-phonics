@@ -8,15 +8,25 @@ import Owl from "components/owl";
 
 export default class GameScreen extends React.Component {
   render() {
-    const {teacher, owl} = this.props;
+    const {teacher, owl, onTeacherClick, onOwlClick} = this.props;
     let owlComponent;
     let teacherComponent;
 
     if(owl) {
-      owlComponent = (<Owl {...owl} size={owl.centered ? "large" : "default"}/>);
+      owlComponent = (
+        <Owl {...owl} 
+          size={owl.centered ? "large" : "default"}
+          onClick={onOwlClick}
+        />
+      );
     }
     if(teacher) {
-      teacherComponent = (<Teacher {...teacher} size={teacher.centered ? "large" : "default"}/>);
+      teacherComponent = (
+        <Teacher {...teacher} 
+          size={teacher.centered ? "large" : "default"}
+          onClick={onTeacherClick}
+        />
+      );
     }
 
     return (

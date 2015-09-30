@@ -1,6 +1,10 @@
 
-export default function image(path) {
-  return require("../images/" + path);
+function image(path) {
+  try {
+    return require("../images/" + path);
+  } catch(error) {
+    return require("../images/words/undefined.png");
+  }
 }
 
 image.preload = function preloadImage(...paths) {
@@ -13,3 +17,5 @@ image.preload = function preloadImage(...paths) {
     });
   }));
 };
+
+export default image;

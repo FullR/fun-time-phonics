@@ -1,6 +1,7 @@
 import {Observable} from "rx";
 import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll, transform} from "lodash";
+//const requireSound = require.context("../audio/", true, /\.(?:mp3|jpg|gif)$/);
 
 let id = 0;
 const log = debug("tctc:sound");

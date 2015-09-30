@@ -1,52 +1,55 @@
 import {Observable} from "rx";
 import {isNumber, transform, extend, merge} from "lodash";
 import {mergeState, extendState} from "util/state";
+import wait from "util/delay";
 
-function wait(ms) {
-  return Observable.create((observer) => {
-    const timeout = setTimeout(() => {
-      observer.onNext();
-      observer.onCompleted();
-    }, ms);
-
-    return clearTimeout.bind(null, timeout);
-  });
-}
-
-function state(component, source) {
-  const stateQueue = component._stateQueue || (component._stateQueue = []);
-  stateQueue.push(source || {});
-}
-
-function resolveStateQueue(component) {
-  if(component._stateQueue) {
-    const stateQueue = component._stateQueue;
-    component._stateQueue = [];
-    requestAnimationFrame(() => component.setState(merge({}, component.state, ...stateQueue)));
-  }
-}
-
-function beginSpeaking(component, who) {
-  mergeState(component, {
+function beginSpeaking(who) {
+  mergeState(this, {
     [who]: {speaking: true, animating: false}
   });
 }
 
-function endSpeaking(component, who) {
-  mergeState(component, {
+function endSpeaking(who) {
+  mergeState(this, {
     [who]: {speaking: false, animating: false}
   });
 }
 
-function say(component, who, sound, delay) {
+function center(who) {
+  mergeState(this, {
+    [who]: {centered: true}
+  });
+}
+
+function uncenter(who) {
+  mergeState(this, {
+    [who]: {centered: false}
+  });
+}
+
+function play(soundId, delay) {
+  const sound = (typeof soundId === "string") ? this.props.sounds[soundId] : soundId;
+  return delay ?
+    wait(delay).flatMap(() => sound.observable) :
+    sound.observable;
+}
+
+function say(who, soundId, delay) {
   const soundObservable = Observable.create((observer) => {
-    const disposable = sound.observable.subscribe(observer);
-    mergeState(component, {
+    const sound = (typeof soundId === "string") ? this.props.sounds[soundId] : soundId;
+    let disposable;
+    if(!sound) {
+      Observer.onError(new Error(`Sound not found: ${soundId}`));
+      return;
+    } else {
+      disposable = sound.observable.subscribe(observer);
+    }
+    mergeState(this, {
       [who]: {speaking: true, animating: true}
     });
     return () => {
       disposable.dispose();
-      mergeState(component, {
+      mergeState(this, {
         [who]: {animating: false}
       });
     }
@@ -59,8 +62,8 @@ function say(component, who, sound, delay) {
   }
 }
 
-function mergeChoice(component, key, source) {
-  mergeState(component, {
+function mergeChoice(key, source) {
+  mergeState(this, {
     choices: {
       [key]: source
     }
@@ -72,27 +75,72 @@ function mergeChoice(component, key, source) {
   
   an optional predicate function can be passed to filter out only the
   choices that need to be modified
-
-  if an array is passed instead of a predicate function, the choices
-  will only be modified if their key is in the array
 */
-function mergeChoices(component, source, predicateFn) {
-  return mergeState(component, {
-    choices: transform(component.state.choices, (newChoices, choice, key) => {
-     if(!predicateFn || predicateFn(choice, key)) {
-        newChoices[key] = source;
+function mergeChoices(source, predicateFn) {
+  this.setState({
+    choices: transform(this.state.choices, (newChoices, choice, key) => {
+      if(!predicateFn || predicateFn(choice, key)) {
+        newChoices[key] = extend({}, choice, source);
+      } else {
+        newChoices[key] = choice;
       }
     })
   });
 }
 
-function hideChoice(component, key) {
-  mergeChoice(component, key, {hidden: true});
+function hideChoice(key) {
+  this::mergeChoice(key, {hidden: true});
 }
+
+function hideChoices(...keys) {
+  this::mergeChoices({hidden: true}, and(
+    whitelistPredicate(keys), 
+    falsyProp("hidden")
+  ));
+}
+
+function revealChoices(...keys) {
+  this::mergeChoices({hidden: false}, and(
+    whitelistPredicate(keys),
+    truthyProp("hidden")
+  ));
+}
+
+function detachChoices(...keys) {
+  this::mergeChoice({detached: true}, and(
+    whitelistPredicate(keys),
+    falsyProp("detached")
+  ));
+}
+
+function attachChoices(...keys) {
+  this::mergeChoices({detached: false}, and(
+    whitelistPredicate(keys),
+    truthyProp("detached")
+  ));
+}
+
+function hideChoice(key) {
+  this::mergeChoice(key, {hidden: true});
+}
+
+function revealChoice(key) {
+  this::mergeChoice(key, {hidden: false});
+}
+
+function detachChoice(key) {
+  this::mergeChoice(key, {detached: true});
+}
+
+function attachChoice(key) {
+  this::mergeChoice(key, {detached: false});
+}
+
+
+/* Utility functions */
 
 function whitelistPredicate(keys) {
   return (value, key) => {
-    console.log(typeof key, keys);
     return !keys || !keys.length || keys.indexOf(key) !== -1;
   };
 }
@@ -116,104 +164,21 @@ function and(fn1, fn2) {
     this::say("owl", welcome);
 */
 export default {
-  wait,
-
-  say(who, sound, delay) {
-    return say(this, who, sound, delay);
-  },
-
-  /*
-    Allows multiple sounds to be played in series
-    Numbers are interpretted as delays
-
-    Example:
-      this::sayEach("owl", 
-        sound1,
-        2000,
-        sound2,
-        1000,
-        sound3
-      )
-  */
-  sayEach(who, ...sounds) {
-    return sounds.reduce((observable, sound) => {
-      const next = isNumber(sound) ?
-        () => wait(sound) :
-        () => say(this, who, sound);
-
-      return observable.flatMap(next);
-    }, Rx.Observable.just(null));
-  },
-
-  beginSpeaking(who) {
-    beginSpeaking(this, who);
-  },
-
-  endSpeaking(who) {
-    endSpeaking(this, who);
-  },
-
-  owlSay(sound, delay) {
-    return say(this, "owl", sound, delay);
-  },
-
-  teacherSay(sound, delay) {
-    return say(this, "teacher", sound, delay);
-  },
-
-  hideChoices(...keys) {
-    mergeChoices(this, {hidden: true}, and(
-      whitelistPredicate(keys), 
-      falsyProp("hidden")
-    ));
-    //mergeChoices(this, {hidden: true});
-    // mergeState(this, {
-    //   choices: transform(this.state.choices, (result, choice, key) => {
-    //     result[key] = {hidden: true};
-    //   })
-    // });
-
-    // extendState(this, {
-    //   choices: transform(this.state.choices, (result, choice, key) => {
-    //     result[key] = {...choice, hidden: true};
-    //   })
-    // })
-  },
-
-  revealChoices(...keys) {
-    mergeChoices(this, {hidden: false}, and(
-      whitelistPredicate(keys),
-      truthyProp("hidden")
-    ));
-  },
-
-  detachChoices(...keys) {
-    mergeChoice(this, {detached: true}, and(
-      whitelistPredicate(keys),
-      falsyProp("detached")
-    ));
-  },
-
-  attachChoices(...keys) {
-    mergeChoices(this, {detached: false}, and(
-      whitelistPredicate(keys),
-      truthyProp("detached")
-    ));
-  },
-
-  hideChoice(key) {
-    mergeChoice(this, key, {hidden: true});
-  },
-
-  revealChoice(key) {
-    mergeChoice(this, key, {hidden: false});
-  },
-
-  detachChoice(key) {
-    mergeChoice(this, key, {detached: true});
-  },
-
-  attachChoice(key) {
-    mergeChoice(this, key, {detached: false});
-  }
+  beginSpeaking,
+  endSpeaking,
+  center,
+  uncenter,
+  play,
+  say,
+  mergeChoice,
+  mergeChoices,
+  hideChoice,
+  hideChoices,
+  revealChoices,
+  detachChoices,
+  attachChoices,
+  hideChoice,
+  revealChoice,
+  detachChoice,
+  attachChoice
 };

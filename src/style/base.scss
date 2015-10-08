@@ -1,8 +1,31 @@
+@import "./reset.scss";
+@import "./fonts/school-text.scss";
+@import "./susy.scss";
+
 html {
   font-size: 10px;
 }
 
 html, body {
-    min-height: 100% !important;
-    height: 100%;
+  min-height: 100% !important;
+  height: 100%;
+}
+
+body {
+  @include school-text;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    input, textarea {
+        -webkit-touch-callout: auto;
+        -webkit-user-select: auto;
+    }
+}
+
+*, *:before, *:after {
+  box-sizing: border-box; 
 }

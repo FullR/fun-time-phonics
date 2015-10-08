@@ -10,14 +10,18 @@ const soundId = () => uniqueId("");
 export default class Sound extends EventEmitter {
   constructor({path, volume=1, voices=1, delay=0}) {
     super();
-    const filename = 
     this.id = soundId();
     this.volume = volume;
     this.voices = voices;
     this.delay = delay;
     this.path = path;
     this.pathWithExt = `${path}.${getAudioExtention()}`;
-    this.fullpath = require("../audio/" + this.pathWithExt);
+    try {
+      this.fullpath = require("../audio/" + this.pathWithExt);
+    } catch(error) {
+      logError(`Failed to load sound "${path}": ${error}`);
+      this.fullpath = require("../audio/missing-sound." + getAudioExtention());
+    }
 
     this.observable = Observable.create((observer) => {
       this.play()

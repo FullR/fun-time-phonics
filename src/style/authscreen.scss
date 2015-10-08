@@ -19,7 +19,7 @@ $bottom-background: #CDE39F;
   width: 100%;
   text-align: center;
   top: 200px;
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .Authscreen input {
@@ -28,6 +28,7 @@ $bottom-background: #CDE39F;
   height: 40px;
   width: 25%;
   font-size: 35px;
+  line-height: 40px;
 }
 
 .Authscreen .Arrow {
@@ -35,4 +36,12 @@ $bottom-background: #CDE39F;
   position: relative;
   top: -8px;
   left: 20px;
+}
+
+.Authscreen__timer {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
 }

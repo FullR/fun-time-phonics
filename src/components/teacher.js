@@ -4,10 +4,11 @@ require("style/teacher.scss");
 
 export default class Teacher extends React.Component {
   render() {
-    const {size, speaking, animating} = this.props;
+    const {size, speaking, animating, centered} = this.props;
     const className = classNames("Teacher", `Teacher--size-${size}`, {
       "Teacher--speaking": speaking,
-      "Teacher--speaking-animating": animating
+      "Teacher--speaking-animating": animating,
+      "Teacher--centered": centered
     });
 
     return (

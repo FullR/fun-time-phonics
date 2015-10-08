@@ -13,6 +13,13 @@ export default class Arrow extends React.Component {
       color ? `Arrow--color-${color}` : null,
       {"Arrow--reversed": reversed}
     );
-    return <Button {...this.props} cleared={true} className={className}/>
+    return (
+      <Button {...this.props} cleared={true} className={className}>
+        <div className="Arrow__content">
+          <div className="Arrow__image"/>
+          <div className="Arrow__text">{this.props.children}</div>
+        </div>
+      </Button>
+    );
   }
 }

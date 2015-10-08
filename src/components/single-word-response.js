@@ -13,10 +13,10 @@ export default class SingleWordResponse extends React.Component {
   };
 
   render() {
-    const {correct, word, onComplete, teacher, owl, showArrow} = this.props;
+    const {correct, word, onComplete, teacher, owl, showArrow, onTeacherClick, onOwlClick} = this.props;
 
     return (
-      <GameScreen teacher={teacher} owl={owl}>
+      <GameScreen teacher={teacher} owl={owl} onTeacherClick={onTeacherClick} onOwlClick={onOwlClick}>
         <Center>
           {correct ?
             <StarBox>

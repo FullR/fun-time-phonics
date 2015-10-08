@@ -7,6 +7,7 @@ export default class AdminLink extends React.Component {
     bottom: 30,
     left: 30
   };
+
   render() {
     const {bottom, left} = this.props;
     return (

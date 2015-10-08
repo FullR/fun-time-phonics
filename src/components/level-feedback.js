@@ -10,10 +10,10 @@ require("style/level-feedback.scss");
 export default class LevelFeedback extends React.Component {
   static defaultProps = {
     requiredPercent: 85,
-    score: 11,
-    total: 15,
-    title: "Ending Sounds",
-    subtitle: "Lesson 2",
+    score: 0,
+    total: 1,
+    title: "",
+    subtitle: "",
     onNext() {},
     onBack() {}
   };

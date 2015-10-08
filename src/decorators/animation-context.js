@@ -31,6 +31,7 @@ export default function animationContext(Component) {
 
     start(id, onCompleted) {
       const animation = this.get(id);
+      if(this.isAnimating()) return () => {};
       if(!animation) {
         logError(`Could not find animation with id ${id}`);
       } else {

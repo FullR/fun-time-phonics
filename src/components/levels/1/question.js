@@ -8,12 +8,13 @@ import {GameScreen, Belt, WordFrame, Choice} from "components";
 export default class Lesson1Question extends React.Component {
   constructor(props) {
     super(props);
+    const {wordsOnly} = props;
     this.state = {
       owl: {text: "lesson"},
       teacher: {
         text: "Instructions",
         speaking: true,
-        centered: true,
+        centered: !wordsOnly,
         animating: false
       },
       choices: props.words.reduce((choices, word, i) => {
@@ -27,34 +28,62 @@ export default class Lesson1Question extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, words} = this.props;
-    animations.create("anim",
+    const {animations, words, wordsOnly} = this.props;
+    animations.create("instructions",
       this::hideChoices,
       center.bind(this, "teacher"),
-      1000,
+
+      this::say("teacher", "teacher/touch-the-word"),
+      400,
+      this::say("teacher", "teacher/phonic"),
+      600,
       uncenter.bind(this, "teacher"),
       revealChoice.bind(this, 0),
-      this::say("teacher", words[0]),
+      this::say("teacher", `teacher/${words[0]}`),
+      400,
       revealChoice.bind(this, 1),
-      this::say("teacher", words[1], 500),
+      this::say("teacher", `teacher/${words[1]}`),
+      400,
       revealChoice.bind(this, 2),
-      this::say("teacher", words[2], 500),
+      this::say("teacher", `teacher/${words[2]}`),
       endSpeaking.bind(this, "teacher")
     );
 
-    animations.start("anim");
+    animations.create("words-only",
+      this::hideChoices,
+      uncenter.bind(this, "teacher"),
+      revealChoice.bind(this, 0),
+      this::say("teacher", `teacher/${words[0]}`),
+      400,
+      revealChoice.bind(this, 1),
+      this::say("teacher", `teacher/${words[1]}`),
+      400,
+      revealChoice.bind(this, 2),
+      this::say("teacher", `teacher/${words[2]}`),
+      endSpeaking.bind(this, "teacher")
+    );
+
+    if(wordsOnly) {
+      animations.start("words-only");
+    } else {
+      this.animate();
+    }
+  }
+
+  animate() {
+    this.props.animations.start("instructions");
   }
 
   render() {
     const {owl, teacher, choices} = this.state;
     const {words, onAnswer, sounds, animations} = this.props;
-
+    console.log(this.props);
     return (
-      <GameScreen owl={owl} teacher={teacher} onTeacherClick={() => animations.start("anim")}>
+      <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>
           {map(choices, (choice, i) =>
-            <Choice {...choice} key={i} onClick={() => onAnswer(parseInt(i))}>
-              <WordFrame word={choice.word} sound={sounds[choice.word]}/>
+            <Choice {...choice} key={i}>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(parseInt(i))}/>
             </Choice>
           )}
         </Belt>

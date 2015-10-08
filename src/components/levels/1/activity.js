@@ -1,7 +1,6 @@
 import React from "react";
 import Question from "./question";
 import Response from "./response";
-import {say, endSpeaking} from "helpers/animation";
 import ActivityTitle from "components/activity-title";
 
 export default class extends React.Component {

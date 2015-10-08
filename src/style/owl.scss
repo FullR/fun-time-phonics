@@ -7,7 +7,7 @@ $speaking-image: "../../images/owl/speaking-sprite.png";
 $speaking-width: 473px;
 $speaking-height: 500px;
 $speak-speed: 0.4s;
-$text-size: 36px;
+$text-size: 60px;
 
 // Sprite sheet dimentions
 $speaking-sprite-width: 956px;
@@ -22,7 +22,16 @@ $sizes: (
 );
 
 .Owl {
+  z-index: 5;
+  cursor: pointer;
   display: inline-block;
+}
+
+.Owl--centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @each $size, $ratio in $sizes {

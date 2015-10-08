@@ -17,7 +17,7 @@ function endSpeaking(who) {
 
 function center(who) {
   mergeState(this, {
-    [who]: {centered: true}
+    [who]: {centered: true, speaking: true}
   });
 }
 
@@ -39,7 +39,9 @@ function say(who, soundId, delay) {
     const sound = (typeof soundId === "string") ? this.props.sounds[soundId] : soundId;
     let disposable;
     if(!sound) {
-      Observer.onError(new Error(`Sound not found: ${soundId}`));
+      logError(`Unable to find sound with id ${soundId} in this context`, this.props.sounds);
+      observer.onNext();
+      observer.onCompleted();
       return;
     } else {
       disposable = sound.observable.subscribe(observer);

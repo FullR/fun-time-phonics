@@ -17,9 +17,6 @@ export default class Authscreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.updatePassword = this.updatePassword.bind(this);
-    this.submit = this.submit.bind(this);
-    this.timeout = this.timeout.bind(this);
     this.state = {
       password: ""
     };
@@ -49,14 +46,18 @@ export default class Authscreen extends React.Component {
     else onFail();
   }
 
+  componentDidMount() {
+    this.refs.passwordInput.getDOMNode().focus();
+  }
+
   render() {
     const {password} = this.state;
     const {timeout, onTimeout, onFail} = this.props;
 
     return (
       <Screen className="Authscreen">
-        <form onSubmit={this.submit}>
-          <input type="text" value={password} onChange={this.updatePassword}/>
+        <form onSubmit={::this.submit}>
+          <input ref="passwordInput" type="text" value={password} onChange={::this.updatePassword}/>
           <Arrow>Go</Arrow>
         </form>
         <div className="Authscreen__bottom">
@@ -66,4 +67,3 @@ export default class Authscreen extends React.Component {
     );
   }
 }
-

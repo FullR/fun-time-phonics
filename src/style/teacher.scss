@@ -6,8 +6,8 @@ $sitting-height: 726px * 0.8;
 $speaking-image: "../../images/teacher/speaking-sprite.png";
 $speaking-width: 398px;
 $speaking-height: 752px;
-$speak-speed: 0.8s;
-$text-size: 32px;
+$speak-speed: 0.4s;
+$text-size: 60px;
 
 // full size of the spritesheet
 $speaking-sprite-width: 796px;
@@ -21,9 +21,18 @@ $sizes: (
 );
 
 .Teacher {
+  z-index: 5;
+  cursor: pointer;
   @if $show-outlines == true {
     outline: 1px solid #A0A;
   }
+}
+
+.Teacher--centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @each $size, $ratio in $sizes {

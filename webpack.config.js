@@ -16,7 +16,7 @@ module.exports = {
     filename: "app.js"
   },
   resolve: {
-    root: [local("src"), local("audio"), local("images")],
+    root: [local("src"), local("audio"), local("images"), local("fonts")],
     extentions: ["", ".js"]
   },
   module: {
@@ -25,8 +25,9 @@ module.exports = {
       {test: ext("json"), loader: "json"},
       {test: ext("html"), loader: "file-loader?name=[name].[ext]"},
       {test: ext("scss"), loader: "style!css!autoprefixer!sass"},
-      {test: ext("ogg", "mp3"), noParse: true, loader: "file?name=assets/[name].[hash].[ext]"},
-      {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[name].[hash].[ext]"}
+      {test: ext("ogg", "mp3"), noParse: true, loader: "file?name=audio/[name].[hash].[ext]"},
+      {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[name].[hash].[ext]"},
+      {test: ext("eot", "otf", "svg", "ttf", "woff"), noParse: true, loader: "file?name=fonts/[name].[ext]"}
     ]
   }
 };

@@ -5,6 +5,13 @@ import {GameScreen, Arrow, Choice, Belt, WordFrame, LessonTitle, Corner} from "c
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
 
 @animationContext
+@soundContext({
+  "listen-for": "owl/lesson-1/listen-for-the-new-beginning-sound-in",
+  "and": "owl/common/and",
+  "say": "owl/common/say",
+  "slowly": "owl/common/slowly",
+  "then-touch": "owl/common/then-touch"
+})
 export default class Lesson1Sub extends React.Component {
   constructor(props) {
     super(props);
@@ -19,18 +26,42 @@ export default class Lesson1Sub extends React.Component {
 
   componentDidMount() {
     const {animations, words, phonic} = this.props;
+    const word1 = `owl/${words[0]}`;
+    const word2 = `owl/${words[1]}`;
 
-    animations.create("animation",
-      this::uncenter("owl"),
+    animations.create("sublesson",
+      this::hideChoices,
+      center.bind(this, "owl"),
+      this::say("owl", "listen-for"),
+      300,
+      uncenter.bind(this, "owl"),
       revealChoice.bind(this, "0"),
-      this::say("owl", words[0]),
+      this::say("owl", word1),
+      300,
+      this::say("owl", "and"),
       revealChoice.bind(this, "1"),
-      this::say("owl", words[1], 500),
-      this::say("owl", phonic),
+      300,
+      this::say("owl", word2),
+      400,
+      this::say("owl", "say"),
+      100,
+      this::say("owl", word1),
+      300,
+      this::say("owl", "and"),
+      300,
+      this::say("owl", word2),
+      300,
+      this::say("owl", "slowly"),
+      600,
+      this::say("owl", "then-touch"),
       endSpeaking.bind(this, "owl")
     );
 
-    animations.start("animation");
+    this.animate();
+  }
+
+  animate() {
+    this.props.animations.start("sublesson");
   }
 
   render() {
@@ -38,17 +69,17 @@ export default class Lesson1Sub extends React.Component {
     const {sounds, arrowLabel, onComplete, phonic} = this.props;
 
     return (
-      <GameScreen owl={owl}>
+      <GameScreen owl={owl} onOwlClick={::this.animate}>
         <LessonTitle>Beginning Sounds</LessonTitle>
         <LessonTitle.SubTitle>Lesson 1 /{phonic}/</LessonTitle.SubTitle>
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key}>
-              <WordFrame {...choice} sound={sounds[choice.word]}/>
+              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}
         </Belt>
-        <Corner bottom={60} right={60}>
+        <Corner bottom={60} right={60} zIndex="6">
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>
       </GameScreen>

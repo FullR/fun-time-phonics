@@ -1,13 +1,9 @@
 import React from "react";
 import animationContext from "decorators/animation-context";
-import soundContext from "decorators/sound-context";
 import {GameScreen, Arrow, Word, Center, Corner, Choice, XOverlay, StarBox} from "components";
 import {say, play} from "helpers/animation";
 import SingleWordResponse from "components/single-word-response";
 
-@soundContext({
-  applause: "applause"
-})
 @animationContext
 export default class Level1Response extends React.Component {
   constructor(props) {
@@ -22,13 +18,26 @@ export default class Level1Response extends React.Component {
     const {animations, word, correct} = this.props;
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", word)
+      this::say("teacher", `teacher/${word}`),
+      200,
+      this::say("teacher", "teacher/begins-with"),
+      300,
+      this::say("teacher", "teacher/phonic")
     );
 
     animations.create("incorrect",
-      this::say("teacher", word)
+      this::say("teacher", `teacher/${word}`),
+      200,
+      this::say("teacher", "teacher/does-not-begin-with"),
+      400,
+      this::say("teacher", "teacher/phonic")
     );
 
+    this.animate();
+  }
+
+  animate() {
+    const {correct, animations} = this.props;
     if(correct) {
       animations.start("correct");
     } else {
@@ -38,7 +47,7 @@ export default class Level1Response extends React.Component {
 
   render() {
     return (
-      <SingleWordResponse {...this.props} {...this.state}/>
+      <SingleWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
     );
   }
 }

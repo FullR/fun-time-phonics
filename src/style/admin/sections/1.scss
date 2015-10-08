@@ -1,0 +1,99 @@
+@import "../../susy.scss";
+@import "../../util.scss";
+
+$button-color: #ecf2d3;
+$button-color-hover: #e4ecc0;
+$section-header-color: #e9efcb;
+$lesson-button-title-size: 38px;
+$lesson-button-title-offset: 25px;
+$row-count: 5;
+$row-height: (100%/$row-count) - 1%;
+
+.admin-section-1 {
+  > .Lesson-button {
+    background-color: $button-color;
+
+    @include active {
+      background-color: $button-color-hover;
+    }
+  }
+
+  .Lesson-button--selected {
+    border-color: red;
+  }
+
+  .Lesson-button__title {
+    text-decoration: underline;
+    font-size: $lesson-button-title-size;
+  }
+
+  .sub-lesson__title {
+    @include pos(40%, 0);
+    width: 100%;
+    font-size:  $lesson-button-title-size;
+    text-align: center;
+  }
+
+  .previous-section-button {
+    visibility: hidden;
+  }
+}
+
+// Long buttons
+.Lesson-button-1,
+.Lesson-button-2,
+.Lesson-button-3 {
+  @include span(12);
+  height: $row-height;
+  margin-bottom: 1%;
+
+  > .Lesson-button__title {
+    @include pos($lesson-button-title-offset, 2%);
+  }
+}
+
+// Bottom 4 small buttons
+.Lesson-button-4,
+.Lesson-button-5,
+.Lesson-button-6,
+.Lesson-button-7 {
+  @include span(3);
+  height: $row-height;
+
+  > .Lesson-button__title {
+    @include pos($lesson-button-title-offset, 0);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.Lesson-button-7 {
+  @include last;
+}
+
+.Lesson-button-1 .sub-lessons,
+.Lesson-button-2 .sub-lessons {
+  @include span(7);
+  position: relative;
+  margin-left: span(5);
+  height: 80%;
+  top: 10%;
+}
+
+.sub-lesson-button {
+  @include span(2 of 14);
+  background: WHITE;
+  border-radius: 8px;
+  border: 1px solid black;
+  height: 100%;
+
+  .Lesson-button__index {
+    display: none;
+  }
+}
+
+// last sub-lesson buttons
+.Lesson-button-1-s,
+.Lesson-button-2-b {
+  @include last;
+}

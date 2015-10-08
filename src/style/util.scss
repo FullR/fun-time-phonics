@@ -1,0 +1,75 @@
+// Hover/active wrapper. If the hover-enabled class isn't present, 
+// no hover effects will be used
+@mixin active() {
+    .hover-enabled &:hover, &:active {
+        @content;
+    }
+}
+
+@mixin fill {
+    width: 100%;
+    height: 100%;
+}
+
+// Utility mixin for creating buttons
+// with image backgrounds and hover image
+// backgrounds
+@mixin image-button($imgUrl, $hoverUrl) {
+    background: url($imgUrl) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+
+    @include active {
+        background-image: url($hoverUrl)
+    }
+}
+
+// Marks the last element as last for susy grids
+@mixin mark-last {
+    &:last-child { @include last; }
+}
+
+/*
+    Set all position properties:
+    y offset,
+    x offset,
+    top/bottom,
+    left/right,
+    position
+*/
+@mixin pos($y: auto, $x: auto, $topBottom: top, $leftRight: left, $posType: absolute) {
+    position: $posType;
+    @if $topBottom == top {
+        top: $y;
+    }
+    @else {
+        bottom: $y;
+    }
+
+    @if $leftRight == left {
+        left: $x;
+    }
+    @else {
+        right: $x;
+    }
+}
+
+// Utility mixin for setting width/height
+@mixin size($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}
+
+@mixin withCount($n) {
+    @if $n == 1 {
+        &:first-child:nth-last-child(1) {
+            @content;
+        }
+    }
+    @else {
+        &:first-child:nth-last-child(#{$n}),
+        &:first-child:nth-last-child(#{$n}) ~ & {
+            @content;
+        }
+    }
+}

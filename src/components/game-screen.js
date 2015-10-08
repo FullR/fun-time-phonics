@@ -31,27 +31,23 @@ export default class GameScreen extends React.Component {
 
     return (
       <Screen {...this.props}>
+        {this.props.children}
+
         {owl && owl.centered ?
-          <Center>
-            {owlComponent}
-          </Center> :
+          owlComponent :
           <Corner top="1em" left="1em">
             {owlComponent}
           </Corner>
         }
 
         {teacher && teacher.centered ?
-          <Center>
-            {teacherComponent}
-          </Center> :
+          {teacherComponent} :
           <Corner top="1em" right="1em">
             {teacherComponent}
           </Corner>
         }
 
         <AdminLink/>
-
-        {this.props.children}
       </Screen>
     );
   }

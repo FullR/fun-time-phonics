@@ -1,18 +1,9 @@
 import React from "react";
 import hasher from "hasher";
 import LevelFeedback from "components/level-feedback";
-import storage from "storage";
+import getLevelScore from "util/get-level-score";
 
-function getLevelScore(levelId) {
-  const data = storage.get(`level-${levelId}`);
-  if(!data) {
-    return 0;
-  } else {
-    return data.score || 0;
-  }
-}
-
-export default class Level1Score extends React.Component {
+export default class Feedback extends React.Component {
   getScore() {
     return ["1", "1-g", "1-l", "1-m", "1-n", "1-r", "1-s"]
       .map(getLevelScore)

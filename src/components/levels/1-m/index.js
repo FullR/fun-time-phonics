@@ -53,7 +53,7 @@ export default class Level1M extends React.Component {
     if(showingLesson) {
       return (<Lesson1Sub {...this.props} onComplete={::this.hideLesson} phonic={phonic} words={exampleWords}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} exampleWords={exampleWords} index={activityIndex + 4} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>)
+      return (<Activity {...this.props} index={activityIndex + 3} exampleWords={exampleWords} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>)
     } else {
       return null;
     }

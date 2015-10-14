@@ -5,7 +5,7 @@ import {GameScreen, Arrow, Choice, Belt, WordFrame, LessonTitle, Corner} from "c
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
 
 @animationContext
-export default class Lesson1 extends React.Component {
+export default class Lesson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,8 @@ export default class Lesson1 extends React.Component {
       this::hideChoices,
       center.bind(this, "owl"),
       this::say("owl", "the-first-sound"),
-      this::say("owl", "the-beginning-sound", 500),
+      500,
+      this::say("owl", "the-beginning-sound"),
       300,
       uncenter.bind(this, "owl"),
       revealChoice.bind(this, "0"),

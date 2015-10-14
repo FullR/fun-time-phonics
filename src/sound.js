@@ -1,7 +1,6 @@
 import {Observable} from "rx";
 import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll, transform} from "lodash";
-//const requireSound = require.context("../audio/", true, /\.(?:mp3|jpg|gif)$/);
 
 let id = 0;
 const log = debug("tctc:sound");
@@ -111,7 +110,6 @@ export default class Sound extends EventEmitter {
     const {id, playing} = this;
     log(`${id} Stopping`);
     if(!playing) {
-      //log(`${id} Not playing. Skipping stop`);
       return Promise.resolve();
     }
     return new Promise((resolve, reject) => {
@@ -122,7 +120,7 @@ export default class Sound extends EventEmitter {
       this.emit("end");
     }, (error) => {
       this.emit("error", error);
-      throw error;
+      logError("Failed to stop sound:", error);
     });
   }
 }
@@ -135,7 +133,6 @@ function getNativeAudio() {
   if(window.plugins && window.plugins.NativeAudio) {
     return window.plugins.NativeAudio;
   } else {
-    //log("Native audio plugin not detected. Using polyfill.");
     return require("native-audio-polyfill");
   }
 }

@@ -5,7 +5,6 @@ import persists from "decorators/persists";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
-const log = debug("tctc:level-1");
 
 const activities = [
   require("./activities/1"),

@@ -3,7 +3,7 @@ import Question from "./question";
 import Response from "./response";
 import ActivityTitle from "components/activity-title";
 
-export default class extends React.Component {
+export default class Activity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,6 @@ export default class extends React.Component {
   }
 
   setAnswer(index) {
-    console.log("Selected:", index, typeof index, "correct:", this.props.correctIndex, typeof this.props.correctIndex);
     this.setState({answer: index});
   }
 

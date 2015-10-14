@@ -46,13 +46,13 @@ export default class Level1L extends React.Component {
     const {activitiesComplete, showingLesson, activityIndex} = this.state;
     const Activity = this.getActivity();
     if(activitiesComplete) {
-      return (<LevelFeedback/>);
+      return (<LevelFeedback onComplete={() => hasher.setHash("level/2")}/>);
     }
 
     if(showingLesson) {
       return (<Lesson1Sub {...this.props} onComplete={::this.hideLesson} words={exampleWords} phonic={phonic}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex + 14} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
+      return (<Activity {...this.props} index={activityIndex + 13} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
     } else {
       return null;
     }

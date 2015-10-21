@@ -3,6 +3,12 @@ import classNames from "util/class-names";
 require("style/owl.scss");
 
 export default class Owl extends React.Component {
+  static defaultProps = {
+    size: "default",
+    speaking: false,
+    animating: false
+  };
+
   render() {
     const className = classNames("Owl", `Owl--size-${this.props.size}`, {
       "Owl--speaking": this.props.speaking,
@@ -20,9 +26,3 @@ export default class Owl extends React.Component {
     );
   }
 }
-
-Owl.defaultProps = {
-  size: "default",
-  speaking: false,
-  animating: false
-};

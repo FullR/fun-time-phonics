@@ -2,6 +2,13 @@ import React from "react";
 import image from "image";
 
 export default class Word extends React.Component {
+  static defaultProps = {
+    word: "undefined", // will use a placeholder undefined.png file
+    width: "100%",
+    height: "100%",
+    preload: true
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -45,10 +52,3 @@ export default class Word extends React.Component {
     return <div {...this.props} style={style}/>
   }
 }
-
-Word.defaultProps = {
-  word: "undefined", // will use a placeholder undefined.png file
-  width: "100%",
-  height: "100%",
-  preload: true
-};

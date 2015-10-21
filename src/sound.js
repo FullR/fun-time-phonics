@@ -7,7 +7,7 @@ const log = debug("tctc:sound");
 const soundId = () => uniqueId("");
 
 export default class Sound extends EventEmitter {
-  constructor({path, volume=1, voices=1, delay=0}) {
+  constructor({path, volume=1, voices=1, delay=0}={}) {
     super();
     this.id = soundId();
     this.volume = volume;
@@ -23,8 +23,7 @@ export default class Sound extends EventEmitter {
     }
 
     this.observable = Observable.create((observer) => {
-      this.play()
-        .then(observer.onNext.bind(observer), observer.onError.bind(observer));
+      this.play().then(observer.onNext.bind(observer), observer.onError.bind(observer));
 
       return this.stop.bind(this);
     }).take(1);

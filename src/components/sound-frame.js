@@ -5,6 +5,12 @@ import Button from "components/button";
 require("style/sound-frame.scss");
 
 export default class SoundFrame extends React.Component {
+  static defaultProps = {
+    playable: true,
+    sound: null,
+    hidden: false,
+    padding: "10%"
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -65,10 +71,3 @@ export default class SoundFrame extends React.Component {
     );
   }
 }
-
-SoundFrame.defaultProps = {
-  playable: true,
-  sound: null,
-  hidden: false,
-  padding: "10%"
-};

@@ -3,6 +3,11 @@ import classNames from "util/class-names";
 require("style/teacher.scss");
 
 export default class Teacher extends React.Component {
+  static defaultProps = {
+    size: "default",
+    speaking: false,
+    animating: false
+  };
   render() {
     const {size, speaking, animating, centered} = this.props;
     const className = classNames("Teacher", `Teacher--size-${size}`, {
@@ -19,9 +24,3 @@ export default class Teacher extends React.Component {
     );
   }
 }
-
-Teacher.defaultProps = {
-  size: "default",
-  speaking: false,
-  animating: false
-};

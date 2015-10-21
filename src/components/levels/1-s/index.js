@@ -36,9 +36,6 @@ export default class Level1L extends React.Component {
   }
 
   componentDidMount() {
-    if(this.state.activitiesComplete) {
-      this.resetActivities({showingLesson: true});
-    }
     this.saveGlobal({lastLevel: "1-s"});
   }
 

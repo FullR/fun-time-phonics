@@ -11,9 +11,9 @@ export default class Lesson extends React.Component {
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: true},
       choices: {
-        "0": {word: "tail"},
-        "1": {word: "tip"},
-        "2": {word: "tape"}
+        "0": {word: "hot"},
+        "1": {word: "bat"},
+        "2": {word: "sit"}
       }
     };
   }
@@ -24,26 +24,26 @@ export default class Lesson extends React.Component {
     animations.create("words",
       this::hideChoices,
       center.bind(this, "owl"),
-      this::say("owl", "the-last-sound"),
-      this::say("owl", "the-ending-sound", 500),
+      this::say("owl", "owl/the-last-sound"),
+      this::say("owl", "owl/the-ending-sound", 500),
       300,
       uncenter.bind(this, "owl"),
       revealChoice.bind(this, "0"),
-      this::say("owl", "tail"),
+      this::say("owl", "owl/hot"),
       400,
       revealChoice.bind(this, "1"),
-      this::say("owl", "tip"),
+      this::say("owl", "owl/bat"),
       400,
       revealChoice.bind(this, "2"),
-      this::say("owl", "tape"),
-      this::say("owl", "is", 300),
-      this::say("owl", "t", 300),
-      this::say("owl", "say-the-words", 600),
-      this::say("owl", "tail", 300),
-      this::say("owl", "tip", 400),
-      this::say("owl", "tape", 400),
-      this::say("owl", "slowly", 300),
-      this::say("owl", "then-touch", 600),
+      this::say("owl", "owl/sit"),
+      this::say("owl", "owl/is", 300),
+      this::say("owl", "owl/t", 300),
+      this::say("owl", "owl/say-the-words", 600),
+      this::say("owl", "owl/hot", 300),
+      this::say("owl", "owl/bat", 400),
+      this::say("owl", "owl/sit", 400),
+      this::say("owl", "owl/slowly", 300),
+      this::say("owl", "owl/then-touch", 600),
       endSpeaking.bind(this, "owl")
     );
 
@@ -68,7 +68,7 @@ export default class Lesson extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key}>
-              <WordFrame {...choice} sound={sounds[choice.word]}/>
+              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}
         </Belt>

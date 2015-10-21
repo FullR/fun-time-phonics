@@ -1,6 +1,6 @@
 import React from "react";
 import hasher from "hasher";
-import Lesson2Sub from "components/levels/1/sub/lesson";
+import Lesson2Sub from "components/levels/2/sub/lesson";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";

@@ -77,7 +77,6 @@ export default class Question extends React.Component {
   render() {
     const {owl, teacher, choices} = this.state;
     const {words, onAnswer, sounds, animations} = this.props;
-    console.log(this.props);
     return (
       <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>

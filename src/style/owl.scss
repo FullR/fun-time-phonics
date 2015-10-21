@@ -1,24 +1,24 @@
 $show-outlines: false;
 $default-image: "../../images/owl/default.png";
 $default-width: 401px * 0.95;
-$default-height: 500px;// * 0.9;
+$default-height: 496px;
 
 $speaking-image: "../../images/owl/speaking-sprite.png";
 $speaking-width: 473px;
-$speaking-height: 500px;
+$speaking-height: 496px;
 $speak-speed: 0.4s;
 $text-size: 60px;
 
 // Sprite sheet dimentions
-$speaking-sprite-width: 956px;
-$speaking-sprite-height: 500px;
+$speaking-sprite-width: 944px;
+$speaking-sprite-height: 496px;
 
 // 0.801 instead of 0.8 because 0.8 causes sub-pixel jitter during animation
 $sizes: (
-  large: 0.801,
-  medium: 0.6,
-  small: 0.4,
-  default: 0.46
+  large: 0.75,
+  medium: 0.5,
+  small: 0.3,
+  default: 0.5
 );
 
 .Owl {

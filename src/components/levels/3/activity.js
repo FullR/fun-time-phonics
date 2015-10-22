@@ -18,8 +18,13 @@ export default class Activity extends React.Component {
   render() {
     const {answer} = this.state;
     const {index, words, correctIndexes, onComplete} = this.props;
-    const correct = answer.every((id, i) => id === correctIndexes[i]);
-    const selectedWords = answer.map((i) => words[i]);
+    let correct;
+    let selectedWords;
+
+    if(answer) {
+      correct = answer.every((id, i) => id === correctIndexes[i]);
+      selectedWords = answer.map((i) => words[i]);
+    }
 
     return (
       <div>

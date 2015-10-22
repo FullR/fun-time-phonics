@@ -4,21 +4,21 @@ $default-width: 401px * 0.95;
 $default-height: 496px;
 
 $speaking-image: "../../images/owl/speaking-sprite.png";
-$speaking-width: 473px;
-$speaking-height: 496px;
+$speaking-width: 710px;
+$speaking-height: 750px;
 $speak-speed: 0.4s;
 $text-size: 60px;
 
 // Sprite sheet dimentions
-$speaking-sprite-width: 944px;
-$speaking-sprite-height: 496px;
+$speaking-sprite-width: 1420px;
+$speaking-sprite-height: 750px;
 
 // 0.801 instead of 0.8 because 0.8 causes sub-pixel jitter during animation
 $sizes: (
-  large: 0.75,
-  medium: 0.5,
-  small: 0.3,
-  default: 0.5
+  large: 0.5,
+  medium: 0.3,
+  small: 0.2,
+  default: 0.3
 );
 
 .Owl {
@@ -87,7 +87,7 @@ $sizes: (
 
   @keyframes owl-speak-#{$size} {
     100% {
-      background-position: (-1 * $speaking-sprite-width * $ratio) 0;
+      background-position: (-2 * $speaking-width * $ratio) 0;
     }
   }
 }

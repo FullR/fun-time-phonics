@@ -11,7 +11,7 @@ export default class Lesson extends React.Component {
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: true},
       choices: {
-        "0": {word: "cat"}
+        "0": {word: "cat", hidden: true}
       }
     };
   }
@@ -22,10 +22,11 @@ export default class Lesson extends React.Component {
     animations.create("words",
       this::hideChoices,
       center.bind(this, "owl"),
-
       this::say("owl", "owl/the-first-sound"),
+      uncenter.bind(this, "owl"),
+      revealChoice.bind(this, "0"),
+      this::say("owl", "owl/cat"),
       
-
       endSpeaking.bind(this, "owl")
     );
 
@@ -42,8 +43,8 @@ export default class Lesson extends React.Component {
 
     return (
       <GameScreen owl={owl} onOwlClick={::this.animate}>
-        <LessonTitle>Beginning Sounds</LessonTitle>
-        <LessonTitle.SubTitle>Lesson 1</LessonTitle.SubTitle>
+        <LessonTitle>Beginning and Ending Sounds</LessonTitle>
+        <LessonTitle.SubTitle>Lesson 3</LessonTitle.SubTitle>
         <Corner bottom={60} right={60}>
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>

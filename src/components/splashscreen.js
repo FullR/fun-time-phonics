@@ -24,7 +24,7 @@ export default class Splashscreen extends React.Component {
     return (
       <Screen className="Splashscreen">
         <Corner top={10} left={10}>
-          <CriticalLogo size="large"/>
+          <CriticalLogo size="medium"/>
         </Corner>
         <Corner top={10} right={10} style={{fontSize: 20}}>PreK - 2</Corner>
         <Corner bottom={100} right={100}>

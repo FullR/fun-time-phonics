@@ -44,7 +44,6 @@ export default class Response extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <TwoWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
     );

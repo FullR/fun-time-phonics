@@ -13,7 +13,7 @@ export default class extends React.Component {
       <Activity {...this.props}
         wordsOnly={true}
         words={["coffee", "bath", "cliff"]}
-        correctIndex={0}
+        correctIndex={2}
       />
     );
   }

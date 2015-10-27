@@ -17,7 +17,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {answer} = this.state;
-    const {index, words, correctIndexes, onComplete} = this.props;
+    const {index, words, correctIndexes, onComplete, ending} = this.props;
 
     return (
       <div>
@@ -32,10 +32,16 @@ export default class Activity extends React.Component {
             onComplete={onComplete}
           />
         }
-        <ActivityTitle>
-          Lesson 3: Beginning and Ending Sounds<br/>
-          Activity {index + 1} of 15
-        </ActivityTitle>
+        {ending ?
+          <ActivityTitle>
+            Lesson 3: Beginning and <span style={{color: "#F00"}}>Ending</span> Sounds<br/>
+            Activity {index + 1} of 24
+          </ActivityTitle> :
+          <ActivityTitle>
+            Lesson 3: <span style={{color: "#00F"}}>Beginning</span> and Ending Sounds<br/>
+            Activity {index + 1} of 24
+          </ActivityTitle>
+        }
       </div>
     );
   }

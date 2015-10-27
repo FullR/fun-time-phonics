@@ -76,12 +76,21 @@ export default class Level3 extends React.Component {
     });
   }
 
+  reset() {
+    this.setState({
+      activityIndex: 0,
+      showingLesson: true,
+      score: 0,
+      activitiesComplete: false
+    });
+  }
+
   render() {
     const {showingLesson, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback/>);
+      return (<Feedback onBack={::this.reset}/>);
     }
 
     if(showingLesson) {

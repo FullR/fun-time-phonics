@@ -11,13 +11,14 @@ export default class Activity extends React.Component {
     };
   }
 
-  setAnswer(index) {
-    this.setState({answer: index});
+  setAnswer(answer) {
+    this.setState({answer});
   }
 
   render() {
     const {answer} = this.state;
-    const {index, words, correctIndexes, onComplete} = this.props;
+    const {index, words, correct, onComplete} = this.props;
+    const isCorrect = answer && (answer.word === correct);
 
     return (
       <div>
@@ -27,14 +28,14 @@ export default class Activity extends React.Component {
             onAnswer={::this.setAnswer}
           /> :
           <Response {...this.props}
-            correct={answer.every(({id}, i) => (+id) === correctIndexes[i])}
-            words={answer.map((choice) => choice.word)}
+            correct={isCorrect}
+            word={answer.word}
             onComplete={onComplete}
           />
         }
         <ActivityTitle>
-          Lesson 3: Beginning and Ending Sounds<br/>
-          Activity {index + 1} of 15
+          Lesson 4: Rhyme Match<br/>
+          Activity {index + 1} of 20
         </ActivityTitle>
       </div>
     );

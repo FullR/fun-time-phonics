@@ -18,7 +18,9 @@ export default class Question extends React.Component {
         animating: false
       },
       choices: props.words.reduce((choices, word, i) => {
-        choices[i.toString()] = {
+        const id = i.toString();
+        choices[id] = {
+          id,
           word,
           hidden: true,
           selected: false
@@ -37,20 +39,23 @@ export default class Question extends React.Component {
     animations.create("instructions",
       this::hideChoices,
       center.bind(this, "teacher"),
-      (endingIntro ? 
+      (endingIntro ?
         this::say("teacher", "teacher/now-listen") :
         null
       ),
 
       this::say("teacher", ending ? "teacher/touch-the-ending" : "teacher/touch-the-beginning"),
 
-      ...words.map((word, i) => [
-        400,
-        revealChoice.bind(this, i),
-        this::say("teacher", `teacher/${word}`)
-      ]),
-
       uncenter.bind(this, "teacher"),
+      revealChoice.bind(this, "0"),
+      this::say("teacher", `teacher/${words[0]}`),
+      400,
+      revealChoice.bind(this, "1"),
+      this::say("teacher", `teacher/${words[1]}`),
+      400,
+      revealChoice.bind(this, "2"),
+      this::say("teacher", `teacher/${words[2]}`),
+
       endSpeaking.bind(this, "teacher")
     );
 
@@ -82,7 +87,7 @@ export default class Question extends React.Component {
     this.setState({
       choices: merge({}, this.state.choices, {
         [choiceId]: {
-          selected: true
+          selected: !this.state.choices[choiceId].selected
         }
       })
     });
@@ -105,7 +110,7 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, i) =>
             <Choice {...choice} key={i}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(i)}/>
+              <WordFrame word={choice.word} highlighted={choice.selected} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(i)}/>
             </Choice>
           )}
         </Belt>

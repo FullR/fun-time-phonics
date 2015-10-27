@@ -19,7 +19,8 @@ export default class Sound extends EventEmitter {
       this.fullpath = require("../audio/" + this.pathWithExt);
     } catch(error) {
       logError(`Failed to load sound "${path}": ${error}`);
-      this.fullpath = require("../audio/missing-sound." + getAudioExtention());
+      this.error = error || {};
+      this.fullpath = "";//require("../audio/missing-sound." + getAudioExtention());
     }
 
     this.observable = Observable.create((observer) => {
@@ -48,15 +49,16 @@ export default class Sound extends EventEmitter {
       };
       const onError = (error) => {
         logError(`${id} Loading failed: ${error}`);
-        reject(new Error(error));
+        this.error = error || {};
+        resolve();
       }
       getNativeAudio().preloadComplex(id, fullpath, volume, voices, delay, onLoad, onError);
     });
   }
 
   unload() {
-    const {id, loaded} = this;
-    if(!this.loaded) {
+    const {id, loaded, error} = this;
+    if(!loaded || error) {
       log(`${id} Not loaded. Skipping unloading`);
       return Promise.resolve();
     }
@@ -81,13 +83,17 @@ export default class Sound extends EventEmitter {
 
   play() {
     const {id} = this;
+    if(this.error) {
+      return Promise.resolve();
+    }
 
     return new Promise((resolve, reject) => {
-      this.playing = true;
       this.emit("play");
       log(`${id} Playing`);
       getNativeAudio().play(id, 
-        noop,
+        () => {
+          this.playing = true;
+        },
         (errorMessage) => {
           const error = new Error(errorMessage);
           log(`${id} Failed to play: ${error}`);
@@ -106,9 +112,10 @@ export default class Sound extends EventEmitter {
   }
 
   stop() {
-    const {id, playing} = this;
+    const {id, playing, error} = this;
+
     log(`${id} Stopping`);
-    if(!playing) {
+    if(!playing || error) {
       return Promise.resolve();
     }
     return new Promise((resolve, reject) => {
@@ -117,7 +124,7 @@ export default class Sound extends EventEmitter {
     .then(() => {
       log(`${id} Stopped`);
       this.emit("end");
-    }, (error) => {
+    }).catch((error) => {
       this.emit("error", error);
       logError("Failed to stop sound:", error);
     });

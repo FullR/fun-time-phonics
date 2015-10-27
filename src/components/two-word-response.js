@@ -7,6 +7,10 @@ import Corner from "components/corner";
 import XOverlay from "components/x-overlay";
 import StarBox from "components/star-box";
 
+const wordStyle = {
+  display: "inline-block"
+};
+
 export default class TwoWordResponse extends React.Component {
   static defaultProps = {
     onComplete() {}
@@ -22,15 +26,16 @@ export default class TwoWordResponse extends React.Component {
         <Center>
           {correct ?
             <StarBox>
-              <Word word={words[0]} width={width} height={height}/>
-              <Word word={words[1]} width={width} height={height}/>
+              <Word word={words[0]} width={width} height={height} display="inline-block"/>
+              <Word word={words[1]} width={width} height={height} display="inline-block"/>
             </StarBox> :
-
+            [
             <div>
-              <Word word={words[0]} width={width} height={height}/>
-              <Word word={words[1]} width={width} height={height}/>
+              <Word word={words[0]} width={width} height={height} style={wordStyle} display="inline-block"/>
+              <Word word={words[1]} width={width} height={height} style={wordStyle} display="inline-block"/>
               <XOverlay/>
             </div>
+            ]
           }
         </Center>
         <Corner bottom={100} right={100}>

@@ -1,5 +1,7 @@
 export default function hasActivities(activityComponents) {
-  const activityCount = activityComponents.length;
+  const activityCount = typeof activityComponents === "number" ?
+    activityComponents : 
+    activityComponents.length;
 
   return (ClassFn) => {
     Object.assign(ClassFn.prototype, {

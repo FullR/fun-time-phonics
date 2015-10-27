@@ -67,16 +67,19 @@ export default class Level1 extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     if(this.state.activitiesComplete) {
       hasher.setHash("level/1-m");
     }
   }
 
   render() {
-    const {showingLesson, activityIndex} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();
-    if(showingLesson) {
+
+    if(activitiesComplete) {
+      return (<Feedback {...this.props}/>);
+    } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
       return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);

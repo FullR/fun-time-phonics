@@ -50,7 +50,9 @@ export default function animationContext(Component) {
           animation.stop();
         }
       } else {
-        invoke(this.animations, "stop");
+        Promise.all(invoke(this.animations, "stop")).catch((error) => {
+          logError(`Failed to stop animations: ${error}`);
+        });
       }
     }
 

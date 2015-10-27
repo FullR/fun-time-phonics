@@ -47,12 +47,12 @@ export default class SoundFrame extends React.Component {
   }
 
   render() {
-    const {sound, playable, hidden, onClick, disabled, padding} = this.props;
+    const {sound, playable, hidden, onClick, disabled, padding, highlighted} = this.props;
     const {playing} = this.state;
     const className = classNames("Sound-frame", {
       "Sound-frame--playable": playable,
       "Sound-frame--hidden": hidden,
-      "Sound-frame--playing": playing
+      "Sound-frame--highlighted": playing || highlighted
     });
     const contentStyle = {padding};
 

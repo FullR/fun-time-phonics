@@ -39,11 +39,11 @@ export default class Word extends React.Component {
   }
 
   render() {
-    const {word, width, height} = this.props;
+    const {word, width, height, display} = this.props;
     const {loaded} = this.state;
     const imageUrl = image(this.imageUrl);
     const style = loaded ? {
-      width, height,
+      width, height, display,
       backgroundImage: `url("${imageUrl}")`,
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",

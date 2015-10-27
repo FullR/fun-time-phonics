@@ -31,7 +31,7 @@ $sibling-count-scales: (
 }
 
 @each $count, $ratio in $sibling-count-scales {
-  .Choice {
+  .Choice:not(.Choice--no-scale) {
     @include sibling-count($count) {
       width: $width * $ratio;
       height: $height * $ratio;

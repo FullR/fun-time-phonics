@@ -25,14 +25,14 @@ export default function persists(namespace, autoSave) {
     };
 
     if(autoSave) {
-      const _componentDidUpdate = Component.prototype.componentDidUpdate;
-      Component.prototype.componentDidUpdate = function componentDidUpdate(nextProps, nextState) {
+      const _componentWillUpdate = Component.prototype.componentWillUpdate;
+      Component.prototype.componentWillUpdate = function componentWillUpdate(nextProps, nextState) {
         if(this.state !== nextState) {
           log("Saving", this.state);
           this.save();
         }
-        if(_componentDidUpdate) {
-          _componentDidUpdate.call(this, nextProps, nextState);
+        if(_componentWillUpdate) {
+          _componentWillUpdate.call(this, nextProps, nextState);
         }
       };
     }

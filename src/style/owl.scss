@@ -1,7 +1,7 @@
 $show-outlines: false;
 $default-image: "../../images/owl/default.png";
-$default-width: 401px * 0.95;
-$default-height: 496px;
+$default-width: 401px * 1.5;
+$default-height: 496px * 1.5;
 
 $speaking-image: "../../images/owl/speaking-sprite.png";
 $speaking-width: 710px;
@@ -16,9 +16,9 @@ $speaking-sprite-height: 750px;
 // 0.801 instead of 0.8 because 0.8 causes sub-pixel jitter during animation
 $sizes: (
   large: 0.5,
-  medium: 0.3,
+  medium: 0.4,
   small: 0.2,
-  default: 0.3
+  default: 0.4
 );
 
 .Owl {

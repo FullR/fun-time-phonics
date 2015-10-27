@@ -29,13 +29,15 @@ export default function soundContext(manifest={}, LoadingComponent) {
     }
 
     componentWillUnmount() {
-      this.stopAll().then(() => this.unloadAll());
+      this.stopAll().then(::this.unloadAll);
     }
 
     render() {
       const {loaded} = this.state;
       const {props, sounds} = this;
-      const extendedSounds = props.sounds ? extend({}, props.sounds, sounds) : sounds;
+      const extendedSounds = props.sounds ?
+        extend({}, props.sounds, sounds) :
+        sounds;
 
       if(loaded) {
         return <Component {...props} sounds={extendedSounds} soundContext={this}/>

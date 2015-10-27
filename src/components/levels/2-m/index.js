@@ -53,7 +53,7 @@ export default class extends React.Component {
     if(showingLesson) {
       return (<Lesson2Sub {...this.props} onComplete={::this.hideLesson} words={exampleWords} phonic={phonic}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex + 4} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
+      return (<Activity {...this.props} index={activityIndex + 11} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
     } else {
       return null;
     }

@@ -109,7 +109,7 @@ function revealChoices(...keys) {
 }
 
 function detachChoices(...keys) {
-  this::mergeChoice({detached: true}, and(
+  this::mergeChoices({detached: true}, and(
     whitelistPredicate(keys),
     falsyProp("detached")
   ));
@@ -131,7 +131,7 @@ function revealChoice(key) {
 }
 
 function detachChoice(key) {
-  this::mergeChoice(key, {detached: true});
+  this::mergeChoice(key, {detached: true, hidden: true});
 }
 
 function attachChoice(key) {

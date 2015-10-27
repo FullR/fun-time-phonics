@@ -1,15 +1,14 @@
 export default function hasActivities(activityComponents) {
-  const activityCount = typeof activityComponents === "number" ?
-    activityComponents : 
-    activityComponents.length;
+  const activityCount = activityComponents.length;
 
   return (ClassFn) => {
     Object.assign(ClassFn.prototype, {
       completeActivity(correct) {
         const {score, activityIndex, highscore} = this.state;
         const activitiesComplete = (activityIndex + 1 === activityCount);
-        const newScore = (score || 0) + 1;
+        const newScore = correct ? ((score || 0) + 1) : (score || 0);
         const newHighscore = (activitiesComplete && newScore > highscore) ? newScore : highscore;
+        console.log(correct);
         this.setState({
           activitiesComplete,
           highscore: newHighscore,

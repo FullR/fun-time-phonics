@@ -25,12 +25,20 @@ export default class Level5 extends React.Component {
     });
   }
 
+  reset() {
+    this.setState({
+      activityIndex: 0,
+      score: 0,
+      activitiesComplete: false
+    });
+  }
+
   render() {
     const {showingLesson, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback {...this.props}/>);
+      return (<Feedback {...this.props} onBack={::this.reset}/>);
     } else if(Activity) {
       return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity}/>);
     } else {

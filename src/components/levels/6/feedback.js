@@ -9,13 +9,14 @@ export default class Feedback extends React.Component {
   }
 
   render() {
+    const {onBack} = this.props;
     return (
       <LevelFeedback 
         title="Rhyme Time"
         subtitle="Lesson 6"
         score={this.getScore()}
         total={15}
-        onBack={() => hasher.setHash("level/6")}
+        onBack={onBack}
         onNext={() => hasher.setHash("level/7")}
       />
     );

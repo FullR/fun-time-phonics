@@ -3,8 +3,8 @@ const log = debug("tctc:storage");
 
 export default function persists(namespace, autoSave) {
   return function PersistsWrapper(Component) {
-    Component.prototype.save = function save() {
-      storage.set(this._getNamespace(), this.state);
+    Component.prototype.save = function save(value) {
+      storage.set(this._getNamespace(), value || this.state);
       return this;
     };
 
@@ -29,7 +29,7 @@ export default function persists(namespace, autoSave) {
       Component.prototype.componentWillUpdate = function componentWillUpdate(nextProps, nextState) {
         if(this.state !== nextState) {
           log("Saving", this.state);
-          this.save();
+          this.save(nextState);
         }
         if(_componentWillUpdate) {
           _componentWillUpdate.call(this, nextProps, nextState);

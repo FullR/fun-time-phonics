@@ -9,12 +9,12 @@ import Feedback from "./feedback";
 
 @soundContext({
   applause: "applause",
-  "teacher/listen-to": "teacher/level-6/listen-to-these-sounds-then-touch-the-word-they-make",
+  "teacher/say-the": "teacher/level-7/say-the-word-the-same-way-i-say-it-then-touch-its-picture",
   "teacher/does-not-make": "teacher/level-6/does-not-make"
 })
-@persists("level-6", true)
+@persists("level-7", true)
 @hasActivities(Activities)
-export default class Level6 extends React.Component {
+export default class Level7 extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.load({

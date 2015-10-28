@@ -25,6 +25,12 @@ export default class Level6 extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.saveGlobal({
+      lastLevel: "6"
+    });
+  }
+
   reset() {
     this.setState({
       activityIndex: 0,

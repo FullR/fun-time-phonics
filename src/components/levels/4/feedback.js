@@ -15,7 +15,7 @@ export default class Feedback extends React.Component {
         subtitle="Lesson 4"
         score={this.getScore()}
         total={20}
-        onBack={() => hasher.setHash("level/4")}
+        onBack={this.props.onBack}
         onNext={() => hasher.setHash("level/5")}
       />
     );

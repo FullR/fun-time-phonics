@@ -1,7 +1,7 @@
 import React from "react";
 import animationContext from "decorators/animation-context";
 import {say, play} from "helpers/animation";
-import TwoWordResponse from "components/two-word-response";
+import SingleWordResponse from "components/single-word-response";
 
 @animationContext
 export default class Response extends React.Component {
@@ -14,18 +14,20 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, words, correct} = this.props;
+    const {animations, word, correct} = this.props;
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/rhymes-with"),
-      this::say("teacher", `teacher/${words[1]}`)
+      this::say("teacher", `teacher/${word}`),
+      this::say("teacher", "teacher/does-not-make-the"),
+      this::say("teacher", "teacher/phonic"),
+      this::say("teacher", "teacher/sound")
     );
 
     animations.create("incorrect",
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/does-not-rhyme-with"),
-      this::say("teacher", `teacher/${words[1]}`)
+      this::say("teacher", `teacher/${word}`),
+      this::say("teacher", "teacher/makes-the"),
+      this::say("teacher", "teacher/phonic"),
+      this::say("teacher", "teacher/sound")
     );
 
     this.animate();
@@ -42,7 +44,7 @@ export default class Response extends React.Component {
 
   render() {
     return (
-      <TwoWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
+      <SingleWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
     );
   }
 }

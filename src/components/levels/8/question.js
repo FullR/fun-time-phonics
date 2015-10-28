@@ -27,7 +27,10 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
-      this::say("teacher", "teacher/touch-the-two"),
+      this::say("teacher", "teacher/touch-the-word"),
+      this::say("teacher", "teacher/phonic"),
+      this::say("teacher", "teacher/say"),
+
       ...words.map((word) => [
         revealChoice.bind(this, word),
         this::say("teacher", `teacher/${word}`)
@@ -52,37 +55,16 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  select(choice) {
-    const {selected} = this.state;
-    if(selected.indexOf(choice) === -1) {
-      if(selected.length < 2) {
-        this.setState({
-          selected: selected.concat(choice)
-        });
-      }
-    } else {
-      this.setState({
-        selected: selected.filter((other) => other !== choice)
-      });
-    }
-  }
-
-  componentDidUpdate() {
-    if(this.state.selected.length >= 2) {
-      this.props.onAnswer(this.state.selected);
-    }
-  }
-
   render() {
-    const {onAnswer, sounds, rhymeWord} = this.props;
-    const {choices, selected, teacher, owl} = this.state;
+    const {onAnswer, sounds} = this.props;
+    const {choices, teacher, owl} = this.state;
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(choice)} highlighted={selected.indexOf(choice) !== -1}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>
             </Choice>
           )}
         </Belt>

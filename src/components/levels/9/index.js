@@ -8,30 +8,32 @@ import Lesson from "./lesson";
 import Activities from "./activities";
 import Feedback from "./feedback";
 
+const phonic = "eh";
+
 @soundContext({
   applause: "applause",
-
-  "owl/words-like": "owl/level-4/words-like",
-  "owl/because-they-all-make": "owl/level-4/because-they-all-make-the-same-sound",
-  "owl/the-words": "owl/level-4/the-words",
-  "owl/because-they-all-make-ate": "owl/level-4/because-they-all-make-ate",
+  "owl/words-like": "owl/level-8/words-like",
+  "owl/bat": "owl/words/bat",
+  "owl/dad": "owl/words/dad",
+  "owl/wag": "owl/words/wag",
+  "owl/make-the": "owl/level-8/make-the",
+  "owl/sound": "owl/common/sound",
+  "owl/say": "owl/common/say",
   "owl/then-touch": "owl/common/then-touch",
+  "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
-  "owl/red": "owl/words/red",
-  "owl/head": "owl/words/head",
-  "owl/bed": "owl/words/bed",
-  "owl/wait": "owl/words/wait",
-  "owl/gate": "owl/words/gate",
-  "owl/eight": "owl/words/eight",
+  "teacher/touch-the-word": "teacher/level-8/touch-the-word-that-makes-the",
+  "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
+  "teacher/say": "teacher/common/say",
 
-  "teacher/touch-the-two": "teacher/level-5/touch-the-two-words-that-rhyme",
-  "teacher/rhymes-with": "teacher/level-4/rhymes-with",
-  "teacher/does-not-rhyme-with": "teacher/level-4/does-not-rhyme-with"
+  "teacher/does-not-make-the": "teacher/level-8/does-not-make-the",
+  "teacher/makes-the": "teacher/level-8/makes-the",
+  "teacher/sound": "teacher/common/sound"
 })
-@persists("level-5", true)
+@persists("level-9", true)
 @hasActivities(Activities)
 @hasLesson
-export default class Level5 extends React.Component {
+export default class Level9 extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.load({
@@ -45,7 +47,16 @@ export default class Level5 extends React.Component {
 
   componentDidMount() {
     this.saveGlobal({
-      lastLevel: "5"
+      lastLevel: "9"
+    });
+  }
+
+  reset() {
+    this.setState({
+      activityIndex: 0,
+      showingLesson: true,
+      score: 0,
+      activitiesComplete: false
     });
   }
 
@@ -54,7 +65,7 @@ export default class Level5 extends React.Component {
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback {...this.props}/>);
+      return (<Feedback {...this.props} onBack={::this.reset}/>);
     } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {

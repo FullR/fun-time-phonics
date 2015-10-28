@@ -17,16 +17,16 @@ export default class Lesson extends React.Component {
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: true},
       choices: {
-        bat: {word: "bat", hidden: true},
-        dad: {word: "dad", hidden: true},
-        wag: {word: "wag", hidden: true}
+        wet: {word: "wet", hidden: true},
+        red: {word: "red", hidden: true},
+        leg: {word: "leg", hidden: true}
       }
     };
   }
 
   componentDidMount() {
     const {animations} = this.props;
-    const words = ["bat", "dad", "wag"];
+    const words = Object.keys(this.state.choices);
     animations.create("lesson",
       this::hideChoices,
       center.bind(this, "owl"),
@@ -63,8 +63,8 @@ export default class Lesson extends React.Component {
 
     return (
       <GameScreen owl={owl} onOwlClick={::this.animate}>
-        <LessonTitle>Find the Sound - Short a</LessonTitle>
-        <LessonTitle.SubTitle>Lesson 8</LessonTitle.SubTitle>
+        <LessonTitle>Find the Sound - Short e</LessonTitle>
+        <LessonTitle.SubTitle>Lesson 9</LessonTitle.SubTitle>
         <Corner bottom={60} right={60}>
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>

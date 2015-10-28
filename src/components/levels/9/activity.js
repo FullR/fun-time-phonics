@@ -1,6 +1,6 @@
 import React from "react";
-import Question from "./question";
-import Response from "./response";
+import Question from "components/levels/8/question";
+import Response from "components/levels/8/response";
 import ActivityTitle from "components/activity-title";
 
 export default class Activity extends React.Component {
@@ -34,8 +34,8 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson 8: Find the Sound - Short a<br/>
-          Activity {index + 1} of 19
+          Lesson 9: Find the Sound - Short e<br/>
+          Activity {index + 1} of 20
         </ActivityTitle>
       </div>
     );

@@ -21,6 +21,7 @@ export default [
   {words: ["badge", "bridge", "edge"], correct: "badge", wordsOnly: true},
   {words: ["enter", "wreck", "actor"], correct: "actor", wordsOnly: true},
   {words: ["string", "stretch", "strap"], correct: "strap", wordsOnly: true},
+  {words: ["screen", "scratch", "screw"], correct: "scratch", wordsOnly: true},
   {words: ["screen", "scratch", "screw"], correct: "scratch", wordsOnly: true}
 ].map((activityProps) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
@@ -29,11 +30,11 @@ export default [
   }, {});
 
   @soundContext(sounds)
-  class Level8Activity extends React.Component {
+  class Level9Activity extends React.Component {
     render() {
       return <Activity {...this.props} {...activityProps}/>
     }
   }
 
-  return Level8Activity;
+  return Level9Activity;
 });

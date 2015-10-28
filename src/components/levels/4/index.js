@@ -43,12 +43,27 @@ export default class Level4 extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.saveGlobal({
+      lastLevel: "4"
+    });
+  }
+
+  reset() {
+    this.setState({
+      activityIndex: 0,
+      showingLesson: true,
+      score: 0,
+      activitiesComplete: false
+    })
+  }
+
   render() {
     const {showingLesson, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback {...this.props}/>);
+      return (<Feedback {...this.props} onBack={::this.reset}/>);
     } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {

@@ -8,7 +8,7 @@ import Lesson from "./lesson";
 import Activities from "./activities";
 import Feedback from "./feedback";
 
-const phonic = "oh";
+const phonic = "uh";
 
 @soundContext({
   applause: "applause",
@@ -33,7 +33,7 @@ const phonic = "oh";
 @persists("level-11", true)
 @hasActivities(Activities)
 @hasLesson
-export default class Level11 extends React.Component {
+export default class Level12 extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.load({

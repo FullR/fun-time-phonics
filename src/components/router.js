@@ -48,7 +48,7 @@ export default class Router extends React.Component {
     switch(parts[0]) {
       case "level": return require("components/levels/" + parts[1] + "/index");
       case "admin": return require("components/admin/index");
-      case "fb": return require("components/level-feedback");
+      case "test": return require("components/test-page");
       case "splash": // intentional fall through
       default: return require("components/splashscreen");
     }

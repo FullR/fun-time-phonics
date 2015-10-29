@@ -2,6 +2,16 @@ import {Observable} from "rx";
 import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll, transform} from "lodash";
 
+const loaded = [];
+const loadEvents = new EventEmitter();
+
+function removeFromLoaded(v) {
+  const index = loaded.indexOf(v);
+  if(index !== -1) {
+    loaded.splice(index, 1);
+  }
+}
+
 let id = 0;
 const log = debug("tctc:sound");
 const soundId = () => uniqueId("");
@@ -43,6 +53,8 @@ export default class Sound extends EventEmitter {
     return this.loadPromise = new Promise((resolve, reject) => {
       const onLoad = () => {
         log(`${id} loaded`);
+        loaded.push(this);
+        loadEvents.emit("change");
         this.loaded = true;
         this.emit("load");
         resolve();
@@ -65,6 +77,8 @@ export default class Sound extends EventEmitter {
     return new Promise((resolve, reject) => {
       const onUnload = () => {
         log(`${id} Unloaded`);
+        removeFromLoaded(this);
+        loadEvents.emit("change");
         this.loaded = false;
         this.loadPromise = null;
         this.emit("unload");
@@ -130,6 +144,9 @@ export default class Sound extends EventEmitter {
     });
   }
 }
+
+Sound.loaded = loaded;
+Sound.loadEvents = loadEvents;
 
 Sound.many = (soundMap={}) => transform(soundMap, (sounds, path, id) => {
   sounds[id] = new Sound({path});

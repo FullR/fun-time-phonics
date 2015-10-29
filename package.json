@@ -19,7 +19,11 @@
     "phaser": "^2.4.3",
     "pixi.js": "^3.0.7",
     "putainde-localstorage": "^4.0.0",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
+    "react-dnd": "^2.0.2",
+    "react-dnd-html5-backend": "^2.0.0",
+    "react-dnd-touch-backend": "^0.2.0",
+    "react-dom": "^0.14.1",
     "rx": "^3.1.2"
   },
   "devDependencies": {
@@ -39,6 +43,7 @@
     "style-loader": "^0.12.4",
     "susy": "^2.2.6",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.12.1"
   }
 }

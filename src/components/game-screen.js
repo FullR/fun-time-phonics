@@ -14,19 +14,26 @@ export default class GameScreen extends React.Component {
 
     if(owl) {
       owlComponent = (
-        <Owl {...owl} 
+        <Owl {...owl}
+          key="owl"
           size={owl.centered ? "large" : "default"}
           onClick={onOwlClick}
         />
       );
+    } else {
+      owlComponent = null;
     }
+
     if(teacher) {
       teacherComponent = (
         <Teacher {...teacher} 
+          key="teacher"
           size={teacher.centered ? "large" : "default"}
           onClick={onTeacherClick}
         />
       );
+    } else {
+      teacherComponent = null;
     }
 
     return (
@@ -34,14 +41,14 @@ export default class GameScreen extends React.Component {
         {this.props.children}
 
         {owl && owl.centered ?
-          owlComponent :
-          <Corner top="1em" left="1em">
-            {owlComponent}
-          </Corner>
+            owlComponent :
+            <Corner top="1em" left="1em">
+              {owlComponent}
+            </Corner>
         }
 
         {teacher && teacher.centered ?
-          {teacherComponent} :
+          teacherComponent :
           <Corner top="1em" right="1em">
             {teacherComponent}
           </Corner>

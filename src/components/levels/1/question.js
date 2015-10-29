@@ -49,21 +49,20 @@ export default class Question extends React.Component {
       endSpeaking.bind(this, "teacher")
     );
 
-    animations.create("words-only",
-      this::hideChoices,
-      uncenter.bind(this, "teacher"),
-      revealChoice.bind(this, 0),
-      this::say("teacher", `teacher/${words[0]}`),
-      400,
-      revealChoice.bind(this, 1),
-      this::say("teacher", `teacher/${words[1]}`),
-      400,
-      revealChoice.bind(this, 2),
-      this::say("teacher", `teacher/${words[2]}`),
-      endSpeaking.bind(this, "teacher")
-    );
-
     if(wordsOnly) {
+      animations.create("words-only",
+        this::hideChoices,
+        uncenter.bind(this, "teacher"),
+        revealChoice.bind(this, 0),
+        this::say("teacher", `teacher/${words[0]}`),
+        400,
+        revealChoice.bind(this, 1),
+        this::say("teacher", `teacher/${words[1]}`),
+        400,
+        revealChoice.bind(this, 2),
+        this::say("teacher", `teacher/${words[2]}`),
+        endSpeaking.bind(this, "teacher")
+      );
       animations.start("words-only");
     } else {
       this.animate();
@@ -77,7 +76,7 @@ export default class Question extends React.Component {
   render() {
     const {owl, teacher, choices} = this.state;
     const {words, onAnswer, sounds, animations} = this.props;
-    console.log(this.props);
+
     return (
       <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>

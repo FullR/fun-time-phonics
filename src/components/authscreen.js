@@ -47,7 +47,7 @@ export default class Authscreen extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.passwordInput.getDOMNode().focus();
+    this.refs.passwordInput.focus();
   }
 
   render() {

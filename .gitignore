@@ -3,6 +3,5 @@ dist
 builds
 .DS_Store
 audio
-images
 npm-debug.log
 

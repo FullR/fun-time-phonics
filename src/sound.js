@@ -103,11 +103,11 @@ export default class Sound extends EventEmitter {
 
     return new Promise((resolve, reject) => {
       this.emit("play");
+      this.playing = true;
       log(`${id} Playing`);
-      getNativeAudio().play(id, 
-        () => {
-          this.playing = true;
-        },
+
+      getNativeAudio().play(id,
+        () => {},
         (errorMessage) => {
           const error = new Error(errorMessage);
           log(`${id} Failed to play: ${error}`);

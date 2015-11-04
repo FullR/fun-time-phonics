@@ -2,6 +2,7 @@ import React from "react";
 import Question from "./question";
 import Response from "./response";
 import ActivityTitle from "components/activity-title";
+import soundContext from "decorators/sound-context";
 
 export default class Activity extends React.Component {
   constructor(props) {

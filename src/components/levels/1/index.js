@@ -68,6 +68,7 @@ export default class Level1 extends React.Component {
   }
 
   componentDidUpdate() {
+    this.props.soundContext.stopAll();
     if(this.state.activitiesComplete) {
       hasher.setHash("level/1-m");
     }

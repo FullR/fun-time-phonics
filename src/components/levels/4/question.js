@@ -27,10 +27,10 @@ export default class Question extends React.Component {
     animations.create("instructions",
       this::hideChoices,
       this::say("teacher", "teacher/touch-the-word"),
-      this::say("teacher", "teacher/rhyme-word"),
+      this::say("teacher", "teacher/rhyme-word", 300),
       ...words.map((word) => [
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`, 300)
       ]),
       endSpeaking.bind(this, "teacher")
     );

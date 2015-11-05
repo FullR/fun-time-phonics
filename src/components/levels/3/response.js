@@ -19,16 +19,16 @@ export default class Response extends React.Component {
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/and"),
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", ending ? "teacher/end-with" : "teacher/begin-with")
+      this::say("teacher", "teacher/and", 300),
+      this::say("teacher", `teacher/${words[1]}`, 300),
+      this::say("teacher", ending ? "teacher/end-with" : "teacher/begin-with", 300)
     );
 
-    animations.create("incorrect", 
+    animations.create("incorrect",
       this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/and"),
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", ending ? "teacher/dont-end" : "teacher/dont-begin")
+      this::say("teacher", "teacher/and", 300),
+      this::say("teacher", `teacher/${words[1]}`, 300),
+      this::say("teacher", ending ? "teacher/dont-end" : "teacher/dont-begin", 300)
     );
 
     this.animate();

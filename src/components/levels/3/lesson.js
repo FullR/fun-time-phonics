@@ -11,7 +11,7 @@ export default class Lesson extends React.Component {
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: true},
       choices: {
-        "0": {word: "cat", hidden: true}
+        "cat": {word: "cat", hidden: true}
       }
     };
   }
@@ -23,10 +23,23 @@ export default class Lesson extends React.Component {
       this::hideChoices,
       center.bind(this, "owl"),
       this::say("owl", "owl/the-first-sound"),
+
+      this::say("owl", "owl/the-beginning-sound", 300),
       uncenter.bind(this, "owl"),
-      revealChoice.bind(this, "0"),
+      revealChoice.bind(this, "cat"),
       this::say("owl", "owl/cat"),
-      
+      this::say("owl", "owl/is", 300),
+      this::say("owl", "owl/k", 300),
+
+      this::say("owl", "owl/the-last-sound", 300),
+      this::say("owl", "owl/the-ending-sound", 300),
+      this::say("owl", "owl/cat", 300),
+      this::say("owl", "owl/is", 300),
+      this::say("owl", "owl/t", 300),
+      this::say("owl", "owl/say-the", 300),
+      this::say("owl", "owl/cat", 300),
+      this::say("owl", "owl/then-touch", 300),
+
       endSpeaking.bind(this, "owl")
     );
 

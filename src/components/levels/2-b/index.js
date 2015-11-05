@@ -39,12 +39,6 @@ export default class extends React.Component {
     this.saveGlobal({lastLevel: "2-b"});
   }
 
-  componentDidUpdate() {
-    if(this.state.activitiesComplete) {
-      hasher.setHash("level/3");
-    }
-  }
-
   render() {
     const {showingLesson, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();

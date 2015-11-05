@@ -8,7 +8,7 @@ export default function hasActivities(activityComponents) {
         const activitiesComplete = (activityIndex + 1 === activityCount);
         const newScore = correct ? ((score || 0) + 1) : (score || 0);
         const newHighscore = (activitiesComplete && newScore > highscore) ? newScore : highscore;
-        console.log(correct);
+
         this.setState({
           activitiesComplete,
           highscore: newHighscore,

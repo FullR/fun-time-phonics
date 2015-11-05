@@ -14,11 +14,12 @@ function removeFromLoaded(v) {
 
 let id = 0;
 const log = debug("tctc:sound");
-const soundId = () => uniqueId("");
+const soundId = () => `sound-${++id}`;
 
 export default class Sound extends EventEmitter {
   constructor({path, volume=1, voices=1, delay=0}={}) {
     super();
+    this._queue = Promise.resolve();
     this.id = soundId();
     this.volume = volume;
     this.voices = voices;
@@ -30,7 +31,7 @@ export default class Sound extends EventEmitter {
     } catch(error) {
       logError(`Failed to load sound "${path}": ${error}`);
       this.error = error || {};
-      this.fullpath = "";//require("../audio/missing-sound." + getAudioExtention());
+      this.fullpath = "";
     }
 
     this.observable = Observable.create((observer) => {
@@ -43,11 +44,16 @@ export default class Sound extends EventEmitter {
     log(`${this.id} Creating sound: ${this.path}`);
   }
 
+  _enqueue(fn) {
+    this._queue = this._queue.then(fn);
+    return this._queue;
+  }
+
   load() {
-    const {id, fullpath, volume, voices, delay} = this;
-    if(this.loadPromise) {
+    const {id, fullpath, volume, voices, delay, loadPromise} = this;
+    if(loadPromise) {
       log(`${id} Already loaded. Skipping loading`);
-      return this.loadPromise;
+      return loadPromise;
     }
     this.loaded = false;
     return this.loadPromise = new Promise((resolve, reject) => {
@@ -132,6 +138,8 @@ export default class Sound extends EventEmitter {
     if(!playing || error) {
       return Promise.resolve();
     }
+
+
     return new Promise((resolve, reject) => {
       getNativeAudio().stop(id, resolve, reject);
     })
@@ -148,7 +156,7 @@ export default class Sound extends EventEmitter {
 Sound.loaded = loaded;
 Sound.loadEvents = loadEvents;
 
-Sound.many = (soundMap={}) => transform(soundMap, (sounds, path, id) => {
+Sound.many = (soundMap={}, cache) => transform(soundMap, (sounds, path, id) => {
   sounds[id] = new Sound({path});
 });
 

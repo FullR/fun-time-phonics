@@ -40,11 +40,11 @@ export default class Question extends React.Component {
       this::hideChoices,
       center.bind(this, "teacher"),
       (endingIntro ?
-        this::say("teacher", "teacher/now-listen") :
+        this::say("teacher", "teacher/now-lets") :
         null
       ),
 
-      this::say("teacher", ending ? "teacher/touch-the-ending" : "teacher/touch-the-beginning"),
+      this::say("teacher", ending ? "teacher/touch-the-two-words-ending" : "teacher/touch-the-two-words-beginning", 300),
 
       uncenter.bind(this, "teacher"),
       revealChoice.bind(this, "0"),

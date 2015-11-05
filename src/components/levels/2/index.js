@@ -18,6 +18,7 @@ const activities = [
   "owl/hot": "owl/words/hot",
   "owl/bat": "owl/words/bat",
   "owl/sit": "owl/words/sit",
+
   "owl/the-last-sound": "owl/lesson-2/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
   "owl/the-ending-sound": "owl/lesson-2/the-ending-sound-in-the-words",
   "owl/say-the-words": "owl/lesson-1/say-the-words",

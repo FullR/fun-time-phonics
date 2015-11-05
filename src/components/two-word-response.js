@@ -26,16 +26,14 @@ export default class TwoWordResponse extends React.Component {
         <Center>
           {correct ?
             <StarBox>
-              <Word word={words[0]} width={width} height={height} display="inline-block"/>
-              <Word word={words[1]} width={width} height={height} display="inline-block"/>
+              <Word key={words[0]} word={words[0]} width={width} height={height} display="inline-block"/>
+              <Word key={words[1]} word={words[1]} width={width} height={height} display="inline-block"/>
             </StarBox> :
-            [
             <div>
-              <Word word={words[0]} width={width} height={height} style={wordStyle} display="inline-block"/>
-              <Word word={words[1]} width={width} height={height} style={wordStyle} display="inline-block"/>
+              <Word key={words[0]} word={words[0]} width={width} height={height} style={wordStyle} display="inline-block"/>
+              <Word key={words[1]} word={words[1]} width={width} height={height} style={wordStyle} display="inline-block"/>
               <XOverlay/>
             </div>
-            ]
           }
         </Center>
         <Corner bottom={100} right={100}>

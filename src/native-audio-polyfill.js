@@ -15,12 +15,6 @@ function sendError(errorCb, message) {
 
 export default {
   preloadComplex(id, url, volume, voices, delay, successCb, errorCb) {
-    if(sounds.has(id)) {
-      log(`Sound with id ${id} already exists. Unloading and replacing`);
-      sounds.get(id).unload();
-      sounds.delete(id);
-    }
-
     sounds.set(id, new Howl({
       volume,
       urls: [url],
@@ -45,7 +39,7 @@ export default {
     if(sound) {
       sound.stop();
       playEventStream.filter((playedId) => playedId === id).take(1).subscribe(
-        () => finishCb(), 
+        () => finishCb(),
         errorCb
       );
       sound.play();
@@ -59,11 +53,11 @@ export default {
     if(sound) {
       try {
         sound.stop();
+        successCb();
       } catch(error) {
         errorCb(error);
         return;
       }
-      successCb();
     } else {
       errorCb(`No sound exists with the id ${id}`);
     }

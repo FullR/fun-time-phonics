@@ -20,7 +20,7 @@ export default class Response extends React.Component {
       this::play("applause"),
       this::say("teacher", `teacher/${word}`),
       200,
-      this::say("teacher", "teacher/begins-with"),
+      this::say("teacher", "teacher/ends-with"),
       300,
       this::say("teacher", "teacher/phonic")
     );

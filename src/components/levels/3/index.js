@@ -6,33 +6,7 @@ import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
 import Feedback from "./feedback";
-
-const activities = [
-  require("./activities/1"),
-  require("./activities/2"),
-  require("./activities/3"),
-  require("./activities/4"),
-  require("./activities/5"),
-  require("./activities/6"),
-  require("./activities/7"),
-  require("./activities/8"),
-  require("./activities/9"),
-  require("./activities/10"),
-  require("./activities/11"),
-  require("./activities/12"),
-  require("./activities/13"),
-  require("./activities/14"),
-  require("./activities/15"),
-  require("./activities/16"),
-  require("./activities/17"),
-  require("./activities/18"),
-  require("./activities/19"),
-  require("./activities/20"),
-  require("./activities/21"),
-  require("./activities/22"),
-  require("./activities/23"),
-  require("./activities/24")
-];
+import activities from "./activities";
 
 @soundContext({
   applause: "applause",
@@ -52,6 +26,8 @@ const activities = [
   "teacher/touch-the-two-words-ending": "teacher/lesson-3/touch-the-two-words-that-make-the-same-ending-sound",
   "teacher/dont-begin": "teacher/lesson-3/dont-begin-with-the-same-sound",
   "teacher/begin-with": "teacher/lesson-3/begin-with-the-same-sound",
+  "teacher/dont-end": "teacher/lesson-3/dont-end-with-the-same-sound",
+  "teacher/end-with": "teacher/lesson-3/end-with-the-same-sound",
   "teacher/and": "teacher/common/and",
   "teacher/now-lets": "teacher/lesson-3/now-lets-listen-for-the-ending-sounds"
 })

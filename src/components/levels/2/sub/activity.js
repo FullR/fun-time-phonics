@@ -10,7 +10,7 @@ import ActivityTitle from "components/activity-title";
   "teacher/ends-with": "teacher/lesson-2/ends-with-the-same-sound-as",
   "teacher/does-not-end-with": "teacher/lesson-2/does-not-end-with-the-same-sound-as",
   "teacher/and": "teacher/common/and",
-  "touch-the-word": "teacher/lesson-2/touch-the-word-that-ends-with-the-same-sound-as",
+  "teacher/touch-the-word": "teacher/lesson-2/touch-the-word-that-ends-with-the-same-sound-as",
 })
 export default class extends React.Component {
   constructor(props) {

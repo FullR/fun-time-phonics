@@ -21,7 +21,6 @@ export default function soundContext(manifest={}, LoadingComponent) {
     }
 
     stopAll() {
-      console.log("Stopping all sounds");
       return Promise.all(invoke(this.sounds, "stop")).then(() => {
         if(this.props.soundContext) {
           this.props.soundContext.stopAll();

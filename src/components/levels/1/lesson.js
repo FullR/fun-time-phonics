@@ -24,27 +24,27 @@ export default class Lesson extends React.Component {
     animations.create("words",
       this::hideChoices,
       center.bind(this, "owl"),
-      this::say("owl", "the-first-sound"),
+      this::say("owl", "owl/the-first-sound"),
       500,
-      this::say("owl", "the-beginning-sound"),
+      this::say("owl", "owl/the-beginning-sound"),
       300,
       uncenter.bind(this, "owl"),
       revealChoice.bind(this, "0"),
-      this::say("owl", "tail"),
+      this::say("owl", "owl/tail"),
       400,
       revealChoice.bind(this, "1"),
-      this::say("owl", "tip"),
+      this::say("owl", "owl/tip"),
       400,
       revealChoice.bind(this, "2"),
-      this::say("owl", "tape"),
-      this::say("owl", "is", 300),
-      this::say("owl", "t", 300),
-      this::say("owl", "say-the-words", 600),
-      this::say("owl", "tail", 300),
-      this::say("owl", "tip", 400),
-      this::say("owl", "tape", 400),
-      this::say("owl", "slowly", 300),
-      this::say("owl", "then-touch", 600),
+      this::say("owl", "owl/tape"),
+      this::say("owl", "owl/is", 300),
+      this::say("owl", "owl/t", 300),
+      this::say("owl", "owl/say-the-words", 600),
+      this::say("owl", "owl/tail", 300),
+      this::say("owl", "owl/tip", 400),
+      this::say("owl", "owl/tape", 400),
+      this::say("owl", "owl/slowly", 300),
+      this::say("owl", "owl/then-touch", 600),
       endSpeaking.bind(this, "owl")
     );
 
@@ -69,7 +69,7 @@ export default class Lesson extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key}>
-              <WordFrame {...choice} sound={sounds[choice.word]}/>
+              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}
         </Belt>

@@ -28,7 +28,7 @@ export default class Response extends React.Component {
     animations.create("incorrect",
       this::say("teacher", `teacher/${word}`),
       200,
-      this::say("teacher", "teacher/does-not-begin-with"),
+      this::say("teacher", "teacher/does-not-end-with"),
       400,
       this::say("teacher", "teacher/phonic")
     );

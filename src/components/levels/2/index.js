@@ -20,7 +20,7 @@ const activities = [
   "owl/sit": "owl/words/sit",
   "owl/the-last-sound": "owl/lesson-2/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
   "owl/the-ending-sound": "owl/lesson-2/the-ending-sound-in-the-words",
-  "owl/say-the-words": "owl/lesson-2/say-the-words",
+  "owl/say-the-words": "owl/lesson-1/say-the-words",
   "owl/is": "owl/common/is",
   "owl/t": "owl/common/phonics/_t_",
   "owl/slowly": "owl/common/slowly",

@@ -34,7 +34,7 @@ export default class Lesson2SubQuestion extends React.Component {
       this::hideChoices,
       center.bind(this, "teacher"),
 
-      this::say("teacher", "touch-the-word"),
+      this::say("teacher", "teacher/touch-the-word"),
       200,
       this::say("teacher", `teacher/${exampleWords[0]}`),
       200,

@@ -15,16 +15,16 @@ const activities = [
 @soundContext({
   applause: "applause",
 
-  tail: "owl/words/tail",
-  tip: "owl/words/tip",
-  tape: "owl/words/tape",
-  "the-first-sound": "owl/lesson-1/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
-  "the-beginning-sound": "owl/lesson-1/the-beginning-sound-in-the-words",
-  "say-the-words": "owl/lesson-1/say-the-words",
-  "is": "owl/common/is",
-  "t": "owl/common/phonics/_t_",
-  "slowly": "owl/common/slowly",
-  "then-touch": "owl/common/then-touch",
+  "owl/tail": "owl/words/tail",
+  "owl/tip": "owl/words/tip",
+  "owl/tape": "owl/words/tape",
+  "owl/the-first-sound": "owl/lesson-1/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
+  "owl/the-beginning-sound": "owl/lesson-1/the-beginning-sound-in-the-words",
+  "owl/say-the-words": "owl/lesson-1/say-the-words",
+  "owl/is": "owl/common/is",
+  "owl/t": "owl/common/phonics/_t_",
+  "owl/slowly": "owl/common/slowly",
+  "owl/then-touch": "owl/common/then-touch",
 
   "teacher/touch-the-word": "teacher/lesson-1/touch-the-word-that-begins-with",
   "teacher/does-not-begin-with": "teacher/lesson-1/does-not-begin-with",
@@ -68,7 +68,6 @@ export default class Level1 extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.soundContext.stopAll();
     if(this.state.activitiesComplete) {
       hasher.setHash("level/1-m");
     }

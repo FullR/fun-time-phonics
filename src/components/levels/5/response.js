@@ -18,14 +18,14 @@ export default class Response extends React.Component {
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/rhymes-with"),
-      this::say("teacher", `teacher/${words[1]}`)
+      this::say("teacher", "teacher/rhymes-with", 300),
+      this::say("teacher", `teacher/${words[1]}`, 300)
     );
 
     animations.create("incorrect",
       this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/does-not-rhyme-with"),
-      this::say("teacher", `teacher/${words[1]}`)
+      this::say("teacher", "teacher/does-not-rhyme-with", 300),
+      this::say("teacher", `teacher/${words[1]}`, 300)
     );
 
     this.animate();

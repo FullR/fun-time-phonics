@@ -11,11 +11,12 @@ import Feedback from "./feedback";
 @soundContext({
   applause: "applause",
 
-  "owl/words-like": "owl/level-4/words-like",
-  "owl/because-they-all-make": "owl/level-4/because-they-all-make-the-same-sound",
-  "owl/the-words": "owl/level-4/the-words",
-  "owl/because-they-all-make-ate": "owl/level-4/because-they-all-make-ate",
+  "owl/words-like": "owl/lesson-4/words-like",
+  "owl/rhyme-because-they-all-make": "owl/lesson-4/rhyme-because-they-all-make-the-same-sound",
+  "owl/the-words": "owl/lesson-4/the-words",
+  "owl/rhyme-because-they-all-make-ate": "owl/lesson-4/rhyme-because-they-all-make-ate",
   "owl/then-touch": "owl/common/then-touch",
+  "owl/say": "owl/common/say",
 
   "owl/red": "owl/words/red",
   "owl/head": "owl/words/head",
@@ -24,9 +25,9 @@ import Feedback from "./feedback";
   "owl/gate": "owl/words/gate",
   "owl/eight": "owl/words/eight",
 
-  "teacher/touch-the-two": "teacher/level-5/touch-the-two-words-that-rhyme",
-  "teacher/rhymes-with": "teacher/level-4/rhymes-with",
-  "teacher/does-not-rhyme-with": "teacher/level-4/does-not-rhyme-with"
+  "teacher/touch-the-two": "teacher/lesson-5/touch-the-two-words-that-rhyme",
+  "teacher/rhymes-with": "teacher/lesson-4/rhymes-with",
+  "teacher/does-not-rhyme-with": "teacher/lesson-4/does-not-rhyme-with"
 })
 @persists("level-5", true)
 @hasActivities(Activities)

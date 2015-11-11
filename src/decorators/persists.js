@@ -1,7 +1,7 @@
 import storage from "storage";
 const log = debug("tctc:storage");
 
-export default function persists(namespace, autoSave) {
+export default function persists(namespace, autoSave=true) {
   return function PersistsWrapper(Component) {
     Component.prototype.save = function save(value) {
       storage.set(this._getNamespace(), value || this.state);
@@ -21,7 +21,7 @@ export default function persists(namespace, autoSave) {
     };
 
     Component.prototype._getNamespace = function _getNamespace() {
-      return namespace || this.namespace;
+      return namespace || this.namespace || this.props.namespace;
     };
 
     if(autoSave) {

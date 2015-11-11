@@ -9,12 +9,12 @@ $sprite-height: 28px;
   width: $width;
   height: $height;
   background: url($image);
-}
 
-.Replay-button--active {
-  background-position: (-1 * $width) 0;
-}
+  &--active {
+    background-position: (-1 * $width) 0;
+  }
 
-.Replay-button--hidden {
-  visibility: hidden;
+  &--hidden {
+    visibility: hidden;
+  }
 }

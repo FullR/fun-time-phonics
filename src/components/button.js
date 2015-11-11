@@ -7,6 +7,6 @@ export default class Button extends React.Component {
     const className = classNames(this.props.className, "Button", {
       "Button--cleared": this.props.cleared
     });
-    return <button {...this.props} className={className}/>
+    return (<button {...this.props} className={className}/>);
   }
 }

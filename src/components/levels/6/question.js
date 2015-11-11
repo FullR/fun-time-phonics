@@ -4,12 +4,18 @@ import animationContext from "decorators/animation-context";
 import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "helpers/animation";
 import {GameScreen, Belt, WordFrame, Choice} from "components";
 
-const phonicStyle = {
-  fontSize: 40,
-  margin: "0 10px 0 10px"
-};
+
 class Phonic extends React.Component {
+  static defaultProps = {
+    size: "large"
+  };
+
   render() {
+    const {size} = this.props;
+    const phonicStyle = {
+      fontSize: size === "large" ? 100 : 60,
+      margin: "0 10px 0 10px"
+    };
     return (<span style={phonicStyle}>/{this.props.children}/</span>);
   }
 }
@@ -19,9 +25,10 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: true, speaking: true},
+      phonicSize: "large",
+      teacher: {text: "instructions", centered: false, speaking: true},
       owl: {text: "lesson"},
-      choices: props.words.reduce((choices, word, i) => {
+      choices: props.words.reduce((choices, word) => {
         choices[word] = {
           word,
           hidden: true
@@ -31,23 +38,42 @@ export default class Question extends React.Component {
     };
   }
 
+  setPhonicSize(phonicSize) {
+    this.setState({phonicSize});
+  }
+
   componentDidMount() {
-    const {animations, words} = this.props;
+    const {animations, words, soundsOnly} = this.props;
 
     animations.create("instructions",
       this::hideChoices,
-      center.bind(this, "teacher"),
+      this.setPhonicSize.bind(this, "large"),
       this::say("teacher", "teacher/listen-to"),
-      this::say("teacher", "teacher/sounded-parts"),
-      uncenter.bind(this, "teacher"),
-      ...words.map((word) => [
+      this::say("teacher", "teacher/sounded-parts", 300),
+      this.setPhonicSize.bind(this, "small"),
+      ...words.map((word, i) => [
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`, 300)
       ]),
       endSpeaking.bind(this, "teacher")
     );
 
-    this.animate();
+    if(soundsOnly) {
+      animations.create("sounds-only",
+        this::hideChoices,
+        this::say("teacher", "teacher/sounded-parts"),
+        this.setPhonicSize.bind(this, "small"),
+        ...words.map((word) => [
+          revealChoice.bind(this, word),
+          this::say("teacher", `teacher/${word}`, 300)
+        ]),
+        endSpeaking.bind(this, "teacher")
+      );
+
+      animations.start("sounds-only");
+    } else {
+      this.animate();
+    }
   }
 
   animate() {
@@ -56,13 +82,13 @@ export default class Question extends React.Component {
 
   render() {
     const {onAnswer, sounds, phonics} = this.props;
-    const {choices, teacher, owl} = this.state;
+    const {choices, teacher, owl, phonicSize} = this.state;
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
-        <Belt top="15%">
-          {phonics.map((p) => 
-            <Phonic>{p}</Phonic>
+        <Belt top={phonicSize === "large" ? "40%" : "15%"}>
+          {phonics.map((p, i) =>
+            <Phonic key={`phonic-${i}`} size={phonicSize}>{p}</Phonic>
           )}
         </Belt>
         <Belt>

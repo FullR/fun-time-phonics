@@ -14,17 +14,17 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, word, correct} = this.props;
+    const {animations, word} = this.props;
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", "teacher/sounded-parts"),
-      this::say("teacher", `teacher/${word}`)
+      this::say("teacher", `teacher/${word}`, 300)
     );
 
     animations.create("incorrect",
       this::say("teacher", "teacher/sounded-parts"),
-      this::say("teacher", "teacher/does-not-make"),
-      this::say("teacher", `teacher/${word}`)
+      this::say("teacher", "teacher/does-not-make", 300),
+      this::say("teacher", `teacher/${word}`, 200)
     );
 
     this.animate();

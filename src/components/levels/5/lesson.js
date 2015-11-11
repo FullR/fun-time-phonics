@@ -8,7 +8,7 @@ import WordFrame from "components/word-frame";
 import LessonTitle from "components/lesson-title";
 import Corner from "components/corner";
 import animationContext from "decorators/animation-context";
-import {say, endSpeaking, hideChoices, revealChoice, center, uncenter, attachChoice, attachChoices, detachChoice, detachChoices} from "helpers/animation";
+import {say, endSpeaking, hideChoices, revealChoice, center, uncenter, attachChoice, attachChoices, detachChoice, detachChoices, mergeAllChoices} from "helpers/animation";
 
 @animationContext
 export default class Lesson extends React.Component {
@@ -30,19 +30,22 @@ export default class Lesson extends React.Component {
   componentDidMount() {
     const {animations} = this.props;
     animations.create("lesson",
-      detachChoices.bind(this, "wait", "gate", "eight"),
-      attachChoices.bind(this, "red", "head", "bed"),
+      mergeAllChoices.bind(this, {
+        red: {hidden: true, detached: false},
+        head: {hidden: true, detached: false},
+        bed: {hidden: true, detached: false},
+        wait: {hidden: true, detached: true},
+        gate: {hidden: true, detached: true},
+        eight: {hidden: true, detached: true}
+      }),
 
       this::say("owl", "owl/words-like", 300),
       uncenter.bind(this, "owl"),
 
-      attachChoice.bind(this, "red"),
       revealChoice.bind(this, "red"),
       this::say("owl", "owl/red", 300),
-      attachChoice.bind(this, "head"),
       revealChoice.bind(this, "head"),
       this::say("owl", "owl/head", 300),
-      attachChoice.bind(this, "bed"),
       revealChoice.bind(this, "bed"),
       this::say("owl", "owl/bed", 300),
       this::say("owl", "owl/rhyme-because-they-all-make", 300),
@@ -51,13 +54,10 @@ export default class Lesson extends React.Component {
       attachChoices.bind(this, "wait", "gate", "eight"),
 
       this::say("owl", "owl/the-words", 300),
-      attachChoice.bind(this, "wait"),
       revealChoice.bind(this, "wait"),
       this::say("owl", "owl/wait", 300),
-      attachChoice.bind(this, "gate"),
       revealChoice.bind(this, "gate"),
       this::say("owl", "owl/gate", 300),
-      attachChoice.bind(this, "eight"),
       revealChoice.bind(this, "eight"),
       this::say("owl", "owl/eight", 300),
 

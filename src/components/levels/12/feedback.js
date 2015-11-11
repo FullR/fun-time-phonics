@@ -5,18 +5,18 @@ import getLevelScore from "util/get-level-score";
 
 export default class Feedback extends React.Component {
   getScore() {
-    return getLevelScore("8");
+    return getLevelScore("12");
   }
 
   render() {
     return (
-      <LevelFeedback 
+      <LevelFeedback
         title="Find the Sound - Short u"
         subtitle="Lesson 12"
         score={this.getScore()}
         total={20}
         onBack={this.props.onBack}
-        onNext={() => hasher.setHash("level/12")}
+        onNext={() => hasher.setHash("level/13")}
       />
     );
   }

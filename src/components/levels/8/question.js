@@ -27,13 +27,15 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
+      center.bind(this, "teacher"),
       this::say("teacher", "teacher/touch-the-word"),
-      this::say("teacher", "teacher/phonic"),
-      this::say("teacher", "teacher/say"),
+      this::say("teacher", "teacher/phonic", 200),
+      this::say("teacher", "teacher/sound", 100),
 
+      uncenter.bind(this, "teacher"),
       ...words.map((word) => [
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`, 300)
       ]),
       endSpeaking.bind(this, "teacher")
     );
@@ -42,7 +44,7 @@ export default class Question extends React.Component {
       animations.create("words-only",
         ...words.map((word) => [
           revealChoice.bind(this, word),
-          this::say("teacher", `teacher/${word}`)
+          this::say("teacher", `teacher/${word}`, 300)
         ])
       );
       animations.start("words-only");
@@ -64,7 +66,7 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

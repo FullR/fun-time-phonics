@@ -4,36 +4,36 @@ import soundContext from "decorators/sound-context";
 
 export default [
   {words: ["cop", "cut", "cat"], correct: "cat", phonics: ["c", "aah", "t"]},
-  {words: ["mom", "map", "mop"], correct: "mom", phonics: ["m", "ooh", "m"]},
-  {words: ["hill", "ill", "fall"], correct: "ill", phonics: ["iil", "l"]},
-  {words: ["in", "on", "off"], correct: "on", phonics: ["ooh", "n"]},
-  {words: ["bat", "beg", "bug"], correct: "bug", phonics: ["b", "uuh", "g"]},
-  {words: ["lip", "lap", "loop"], correct: "lip", phonics: ["l", "iih", "p"]},
-  {words: ["fist", "fan", "fat"], correct: "fat", phonics: ["f", "aah", "t"]},
-  {words: ["moon", "men", "man"], correct: "men", phonics: ["m", "eeh", "n"]},
-  {words: ["road", "bread", "red"], correct: "red", phonics: ["r", "eeh", "d"]},
-  {words: ["shin", "ship", "chin"], correct: "shin", phonics: ["sh", "iih", "n"]},
-  {words: ["knot", "nut", "knight"], correct: "nut", phonics: ["n", "uuh", "t"]},
-  {words: ["cent", "sit", "sip"], correct: "sit", phonics: ["s", "iih", "t"]},
-  {words: ["rug", "rag", "wreck"], correct: "rug", phonics: ["r", "uuh", "g"]},
-  {words: ["fish", "fast", "fist"], correct: "fist", phonics: ["f", "iih", "s", "t"]},
-  {words: ["chop", "chip", "shop"], correct: "chop", phonics: ["ch", "ooh", "p"]},
-  {words: ["flag", "flip", "slip"], correct: "flip", phonics: ["f", "l", "iih", "p"]},
-  {words: ["stick", "stack", "shack"], correct: "stack", phonics: ["s", "t", "aah", "k"]},
-  {words: ["truck", "trick", "trunk"], correct: "truck", phonics: ["t", "r", "uuh", "k"]},
-  {words: ["spin", "spoon", "sing"], correct: "spin", phonics: ["s", "p", "iih", "n"]}
-].map((activityProps) => {
+  {words: ["mom", "map", "mop"], correct: "mom", phonics: ["m", "ooh", "m"], wordsOnly: true},
+  {words: ["hill", "ill", "fall"], correct: "ill", phonics: ["iih", "l"], wordsOnly: true},
+  {words: ["in", "on", "off"], correct: "on", phonics: ["ooh", "n"], wordsOnly: true},
+  {words: ["bat", "beg", "bug"], correct: "bug", phonics: ["b", "uuh", "g"], wordsOnly: true},
+  {words: ["lip", "lap", "loop"], correct: "lip", phonics: ["l", "iih", "p"], wordsOnly: true},
+  {words: ["fist", "fan", "fat"], correct: "fat", phonics: ["f", "aah", "t"], wordsOnly: true},
+  {words: ["moon", "men", "man"], correct: "men", phonics: ["m", "eeh", "n"], wordsOnly: true},
+  {words: ["road", "bread", "red"], correct: "red", phonics: ["r", "eeh", "d"], wordsOnly: true},
+  {words: ["shin", "ship", "chin"], correct: "shin", phonics: ["sh", "iih", "n"], wordsOnly: true},
+  {words: ["knot", "nut", "knight"], correct: "nut", phonics: ["n", "uuh", "t"], wordsOnly: true},
+  {words: ["cent", "sit", "sip"], correct: "sit", phonics: ["s", "iih", "t"], wordsOnly: true},
+  {words: ["rug", "rag", "wreck"], correct: "rug", phonics: ["r", "uuh", "g"], wordsOnly: true},
+  {words: ["fish", "fast", "fist"], correct: "fist", phonics: ["f", "iih", "s", "t"], wordsOnly: true},
+  {words: ["chop", "chip", "shop"], correct: "chop", phonics: ["ch", "ooh", "p"], wordsOnly: true},
+  {words: ["flag", "flip", "slip"], correct: "flip", phonics: ["f", "l", "iih", "p"], wordsOnly: true},
+  {words: ["stick", "stack", "shack"], correct: "stack", phonics: ["s", "t", "aah", "k"], wordsOnly: true},
+  {words: ["truck", "trick", "trunk"], correct: "truck", phonics: ["t", "r", "uuh", "k"], wordsOnly: true},
+  {words: ["spin", "spoon", "sing"], correct: "spin", phonics: ["s", "p", "iih", "n"], wordsOnly: true}
+].map((activityProps, i) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {
-    "teacher/sounded-parts": `teacher/level-6/sounded-parts/${activityProps.phonics.join("_")}`
+    "teacher/sounded-parts": `teacher/lesson-7/sounded-parts/${activityProps.phonics.join("_")}`
   });
 
   @soundContext(sounds)
   class Level7Activity extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return <Activity {...this.props} {...activityProps} namespace={`level-7-act-${i}`}/>
     }
   }
 

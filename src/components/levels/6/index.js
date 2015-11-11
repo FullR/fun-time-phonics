@@ -9,8 +9,8 @@ import Feedback from "./feedback";
 
 @soundContext({
   applause: "applause",
-  "teacher/listen-to": "teacher/level-6/listen-to-these-sounds-then-touch-the-word-they-make",
-  "teacher/does-not-make": "teacher/level-6/does-not-make"
+  "teacher/listen-to": "teacher/lesson-6/listen-to-these-sounds-then-touch-the-word-they-make",
+  "teacher/does-not-make": "teacher/lesson-6/does-not-make"
 })
 @persists("level-6", true)
 @hasActivities(Activities)

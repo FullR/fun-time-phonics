@@ -3,46 +3,58 @@ $bottom-background: #CDE39F;
 
 .Authscreen {
   background: $top-background;
-}
 
-.Authscreen__bottom {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 30%;
-  background: $bottom-background;
-}
+  &__bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: $bottom-background;
+  }
 
-.Authscreen form {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  top: 200px;
-  vertical-align: middle;
-}
+  &__timer {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 48px;
+  }
 
-.Authscreen input {
-  display: inline-block;
-  text-align: center;
-  height: 40px;
-  width: 25%;
-  font-size: 35px;
-  line-height: 40px;
-}
+  &__instructions {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+  }
 
-.Authscreen .Arrow {
-  display: inline-block;
-  position: relative;
-  top: -8px;
-  left: 20px;
-  top: 43px;
-}
+  &__password {
+    font-weight: bold;
+  }
 
-.Authscreen__timer {
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  font-size: 48px;
+  form {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 35%;
+    vertical-align: middle;
+  }
+
+  input {
+    display: inline-block;
+    text-align: center;
+    height: 40px;
+    width: 25%;
+    font-size: 35px;
+    line-height: 40px;
+  }
+
+  .Arrow {
+    display: inline-block;
+    position: relative;
+    top: -8px;
+    left: 20px;
+    top: 43px;
+  }
 }

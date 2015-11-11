@@ -36,16 +36,16 @@ export default class Lesson extends React.Component {
       uncenter.bind(this, "owl"),
       ...map(this.state.choices, ({word, phonic, last}) => [
         (last ?
-          this::say("owl", "owl/and") : 
+          this::say("owl", "owl/and", 200) :
           noop
         ),
         revealChoice.bind(this, word),
-        this::say("owl", `owl/${word}`),
-        this::say("owl", `owl/${makes-the}`),
-        this::say("owl", `owl/${phonic}`),
-        this::say("owl", "owl/sound")
+        this::say("owl", `owl/${word}`, 300),
+        this::say("owl", "owl/makes-the", 200),
+        this::say("owl", `owl/${phonic}`, 200),
+        this::say("owl", "owl/sound", 100)
       ]),
-      this::say("owl", "owl/touch-the"),
+      this::say("owl", "owl/touch-the", 300),
       endSpeaking.bind(this, "owl")
     );
 
@@ -69,7 +69,7 @@ export default class Lesson extends React.Component {
         </Corner>
         <Belt>
           {map(choices, (choice, key) =>
-            <Choice key={key} detached={choice.detached} noScale={true}>
+            <Choice key={key} detached={choice.detached} scalable>
               <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}

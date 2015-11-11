@@ -74,7 +74,7 @@ function mergeChoice(key, source) {
 
 /*
   mergeChoices modifies multiple choices at onces
-  
+
   an optional predicate function can be passed to filter out only the
   choices that need to be modified
 */
@@ -90,21 +90,27 @@ function mergeChoices(source, predicateFn) {
   });
 }
 
+function mergeAllChoices(source) {
+  this.setState({
+    choices: merge({}, this.state.choices, source)
+  });
+}
+
 function hideChoice(key) {
   this::mergeChoice(key, {hidden: true});
 }
 
 function hideChoices(...keys) {
   this::mergeChoices({hidden: true}, and(
-    whitelistPredicate(keys), 
+    whitelistPredicate(keys),
     falsyProp("hidden")
   ));
 }
 
 function revealChoices(...keys) {
-  this::mergeChoices({hidden: false}, and(
+  this::mergeChoices({hidden: false, detached: false}, and(
     whitelistPredicate(keys),
-    truthyProp("hidden")
+    or(truthyProp("hidden"), truthyProp("detached"))
   ));
 }
 
@@ -127,7 +133,7 @@ function hideChoice(key) {
 }
 
 function revealChoice(key) {
-  this::mergeChoice(key, {hidden: false});
+  this::mergeChoice(key, {hidden: false, detached: false});
 }
 
 function detachChoice(key) {
@@ -159,6 +165,10 @@ function and(fn1, fn2) {
   return (v, i) => (fn1(v, i) && fn2(v, i));
 }
 
+function or(fn1, fn2) {
+  return (v, i) => (fn1(v, i) || fn2(v, i));
+}
+
 /*
   These methods are meant to be used with the es7 function bind syntax.
   For example:
@@ -174,6 +184,7 @@ export default {
   say,
   mergeChoice,
   mergeChoices,
+  mergeAllChoices,
   hideChoice,
   hideChoices,
   revealChoices,

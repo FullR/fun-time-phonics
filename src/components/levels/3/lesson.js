@@ -64,7 +64,7 @@ export default class Lesson extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key}>
-              <WordFrame {...choice} sound={sounds[choice.word]}/>
+              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}
         </Belt>

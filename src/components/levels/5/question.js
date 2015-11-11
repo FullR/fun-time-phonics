@@ -27,10 +27,12 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
+      center.bind(this, "teacher"),
       this::say("teacher", "teacher/touch-the-two"),
+      uncenter.bind(this, "teacher"),
       ...words.map((word) => [
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`, 300)
       ]),
       endSpeaking.bind(this, "teacher")
     );
@@ -39,7 +41,7 @@ export default class Question extends React.Component {
       animations.create("words-only",
         ...words.map((word) => [
           revealChoice.bind(this, word),
-          this::say("teacher", `teacher/${word}`)
+          this::say("teacher", `teacher/${word}`, 300)
         ])
       );
       animations.start("words-only");

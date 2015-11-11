@@ -11,7 +11,7 @@ import Feedback from "./feedback";
 @soundContext({
   applause: "applause",
 
-  "owl/words-like": "owl/lesson-4/words-like",
+  "owl/words-like": "owl/common/words-like",
   "owl/rhyme-because-they-all-make": "owl/lesson-4/rhyme-because-they-all-make-the-same-sound",
   "owl/the-words": "owl/lesson-4/the-words",
   "owl/rhyme-because-they-all-make-ate": "owl/lesson-4/rhyme-because-they-all-make-ate",

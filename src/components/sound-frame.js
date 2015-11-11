@@ -24,7 +24,7 @@ export default class SoundFrame extends React.Component {
 
   playSound() {
     if(this.props.sound) {
-      this.props.sound.play().then(null, errorCatcher("Failed to play sound"));
+      this.props.sound.play().catch(errorCatcher("Failed to play sound"));
     }
   }
 
@@ -59,7 +59,7 @@ export default class SoundFrame extends React.Component {
     return (
       <div {...this.props} className={className} onClick={null} disabled={null}>
         <div>
-          <Button style={contentStyle} className="Sound-frame__content" onClick={this.props.onClick} disabled={disabled} cleared={true}>{this.props.children}</Button>
+          <Button style={contentStyle} className="Sound-frame__content" onClick={onClick} disabled={disabled} cleared={true}>{this.props.children}</Button>
           <div className="Sound-frame__button-container">
             {playable ?
               <ReplayButton className="Sound-frame__Replay-button" onClick={this.playSound} active={playing}/> :

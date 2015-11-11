@@ -22,7 +22,7 @@ export default [
   {words: ["enter", "wreck", "actor"], correct: "actor", wordsOnly: true},
   {words: ["string", "stretch", "strap"], correct: "strap", wordsOnly: true},
   {words: ["screen", "scratch", "screw"], correct: "scratch", wordsOnly: true}
-].map((activityProps) => {
+].map((activityProps, i) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
@@ -31,7 +31,7 @@ export default [
   @soundContext(sounds)
   class Level8Activity extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return <Activity {...this.props} {...activityProps} namespace={`level-8-act-${i}`}/>
     }
   }
 

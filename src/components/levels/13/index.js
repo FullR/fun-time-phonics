@@ -11,11 +11,11 @@ import Feedback from "./feedback";
 @soundContext({
   applause: "applause",
 
-  "owl/ah": "owl/phonics/_ah_",
-  "owl/eh": "owl/phonics/_eh_",
-  "owl/ih": "owl/phonics/_ih_",
-  "owl/oh": "owl/phonics/_oh_",
-  "owl/uh": "owl/phonics/_uh_",
+  "owl/ah": "owl/common/phonics/_ah_",
+  "owl/eh": "owl/common/phonics/_eh_",
+  "owl/ih": "owl/common/phonics/_ih_",
+  "owl/oh": "owl/common/phonics/_oh_",
+  "owl/uh": "owl/common/phonics/_uh_",
 
   "owl/rat": "owl/words/rat",
   "owl/wet": "owl/words/wet",
@@ -23,23 +23,24 @@ import Feedback from "./feedback";
   "owl/pot": "owl/words/pot",
   "owl/rug": "owl/words/rug",
 
-  "teacher/ah": "teacher/phonics/_ah_",
-  "teacher/eh": "teacher/phonics/_eh_",
-  "teacher/ih": "teacher/phonics/_ih_",
-  "teacher/oh": "teacher/phonics/_oh_",
-  "teacher/uh": "teacher/phonics/_uh_",
-
-  "owl/listen-to": "owl/level-13/listen-to-the-middle-sound-in-these-words",
-  "owl/makes-the": "owl/level-13/makes-the",
+  "owl/listen-to": "owl/lesson-13/listen-to-the-middle-sound-in-these-words",
+  "owl/makes-the": "owl/lesson-13/makes-the",
   "owl/sound": "owl/common/sound",
   "owl/and": "owl/common/and",
   "owl/touch-the": "owl/common/touch-the",
 
-  "teacher/touch-the": "teacher/level-13/touch-the-word-that-makes-a-different-middle-sound",
-  "teacher/make-the-same": "teacher/level-13/make-the-same",
-  "teacher/make-the": "teacher/level-13/make-the",
-  "teacher/makes-the": "teacher/level-13/makes-the",
-  "teacher/and": "teacher/common/and"
+  "teacher/ah": "teacher/common/phonics/_ah_",
+  "teacher/eh": "teacher/common/phonics/_eh_",
+  "teacher/ih": "teacher/common/phonics/_ih_",
+  "teacher/oh": "teacher/common/phonics/_oh_",
+  "teacher/uh": "teacher/common/phonics/_uh_",
+
+  "teacher/touch-the": "teacher/lesson-13/touch-the-word-that-makes-a-different-middle-sound",
+  "teacher/make-the-same": "teacher/lesson-13/make-the-same",
+  "teacher/make-the": "teacher/lesson-13/make-the",
+  "teacher/makes-the": "teacher/lesson-13/makes-the",
+  "teacher/and": "teacher/common/and",
+  "teacher/sound": "teacher/common/sound"
 })
 @persists("level-13", true)
 @hasActivities(Activities)

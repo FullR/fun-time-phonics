@@ -13,25 +13,26 @@ $sibling-count-scales: (
   display: inline-block;
   width: $width;
   height: $height;
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &--detached {
+    position: absolute;
+    visibility: hidden;
+    left: -9999px;
+    top: -9999px;
+    margin: 0;
+  }
 }
 
 .Choice + .Choice {
   margin-left: 1em;
 }
 
-.Choice--hidden {
-  visibility: hidden;
-}
-
-.Choice--detached {
-  position: absolute;
-  visibility: hidden;
-  left: -9999px;
-  top: -9999px;
-}
-
 @each $count, $ratio in $sibling-count-scales {
-  .Choice:not(.Choice--no-scale) {
+  .Choice--scalable {
     @include sibling-count($count) {
       width: $width * $ratio;
       height: $height * $ratio;

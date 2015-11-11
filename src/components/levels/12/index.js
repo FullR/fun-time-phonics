@@ -12,25 +12,25 @@ const phonic = "uh";
 
 @soundContext({
   applause: "applause",
-  "owl/words-like": "owl/level-8/words-like",
-  "owl/bat": "owl/words/bat",
-  "owl/dad": "owl/words/dad",
-  "owl/wag": "owl/words/wag",
-  "owl/make-the": "owl/level-8/make-the",
+  "owl/words-like": "owl/common/words-like",
+  "owl/up": "owl/words/up",
+  "owl/in": "owl/words/in",
+  "owl/on": "owl/words/on",
+  "owl/make-the": "owl/lesson-8/make-the",
   "owl/sound": "owl/common/sound",
   "owl/say": "owl/common/say",
   "owl/then-touch": "owl/common/then-touch",
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
-  "teacher/touch-the-word": "teacher/level-8/touch-the-word-that-makes-the",
+  "teacher/touch-the-word": "teacher/lesson-8/touch-the-word-that-makes-the",
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
   "teacher/say": "teacher/common/say",
 
-  "teacher/does-not-make-the": "teacher/level-8/does-not-make-the",
-  "teacher/makes-the": "teacher/level-8/makes-the",
+  "teacher/does-not-make-the": "teacher/lesson-8/does-not-make-the",
+  "teacher/makes-the": "teacher/lesson-8/makes-the",
   "teacher/sound": "teacher/common/sound"
 })
-@persists("level-11", true)
+@persists("level-12", true)
 @hasActivities(Activities)
 @hasLesson
 export default class Level12 extends React.Component {
@@ -47,7 +47,7 @@ export default class Level12 extends React.Component {
 
   componentDidMount() {
     this.saveGlobal({
-      lastLevel: "11"
+      lastLevel: "12"
     });
   }
 

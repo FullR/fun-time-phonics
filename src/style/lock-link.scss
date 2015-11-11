@@ -9,24 +9,25 @@ $color: #568ED4;
   cursor: pointer;
   color: $color;
   font-size: $font-size;
-}
 
-.Lock-link__text, .Lock-link__icon {
-  display: inline-block;
-  vertical-align: middle;
-}
+  &__text,
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-.Lock-link__text {
-  position: relative;
-  line-height: $icon-height;
-  height: $icon-height;
-  text-decoration: underline;
-}
+  &__text {
+    position: relative;
+    line-height: $icon-height;
+    height: $icon-height;
+    text-decoration: underline;
+  }
 
-.Lock-link__icon {
-  width: $icon-width;
-  height: $icon-height;
-  margin-right: $icon-spacing;
-  background: url($icon-image) no-repeat;
-  background-size: 100% 100%;
+  &__icon {
+    width: $icon-width;
+    height: $icon-height;
+    margin-right: $icon-spacing;
+    background: url($icon-image) no-repeat;
+    background-size: 100% 100%;
+  }
 }

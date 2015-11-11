@@ -35,18 +35,18 @@ export default class Lesson extends React.Component {
 
       ...words.map((word) => [
         revealChoice.bind(this, word),
-        this::say("owl", `owl/${word}`)
+        this::say("owl", `owl/${word}`, 300)
       ]),
 
-      this::say("owl", "owl/make-the"),
-      this::say("owl", "owl/phonic"),
-      this::say("owl", "owl/sound"),
-      this::say("owl", "owl/say"),
-      ...words.map((word) => 
-        this::say("owl", `owl/${word}`)
+      this::say("owl", "owl/make-the", 200),
+      this::say("owl", "owl/phonic", 200),
+      this::say("owl", "owl/sound", 200),
+      this::say("owl", "owl/say", 200),
+      ...words.map((word) =>
+        this::say("owl", `owl/${word}`, 300)
       ),
 
-      this::say("owl", "owl/then-touch"),
+      this::say("owl", "owl/then-touch", 200),
       endSpeaking.bind(this, "owl")
     );
 

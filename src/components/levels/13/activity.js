@@ -28,8 +28,10 @@ export default class Activity extends React.Component {
             onAnswer={::this.setAnswer}
           /> :
           <Response {...this.props}
-            correct={isCorrect}
             word={answer.word}
+            correct={isCorrect}
+            correctWord={correct}
+            incorrectWords={words.filter((word) => word !== correct)}
             onComplete={onComplete}
           />
         }

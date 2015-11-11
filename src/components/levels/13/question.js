@@ -9,7 +9,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
+      teacher: {text: "instructions", centered: !props.wordsOnly, speaking: true},
       owl: {text: "lesson"},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
@@ -26,9 +26,12 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
+      center.bind(this, "teacher"),
+      this::say("teacher", "teacher/touch-the"),
+      uncenter.bind(this, "teacher"),
       ...words.map((word) => [
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`, 300)
       ]),
       endSpeaking.bind(this, "teacher")
     );
@@ -38,7 +41,7 @@ export default class Question extends React.Component {
         uncenter.bind(this, "teacher"),
         ...words.map((word) => [
           revealChoice.bind(this, word),
-          this::say("teacher", `teacher/${word}`)
+          this::say("teacher", `teacher/${word}`, 300)
         ]),
         endSpeaking.bind(this, "teacher")
       );

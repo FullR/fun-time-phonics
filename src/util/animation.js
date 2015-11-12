@@ -1,11 +1,11 @@
 import {Observable} from "rx";
-import {flatten} from "lodash";
+import {flattenDeep} from "lodash";
 import sequence from "util/sequence";
 const noop = () => {};
 
 export default class Animation {
   constructor(steps) {
-    this.seq = sequence(flatten(steps));
+    this.seq = sequence(flattenDeep(steps));
     this.disposable = null;
   }
 

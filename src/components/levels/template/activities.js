@@ -32,11 +32,11 @@ export default [
   });
 
   @soundContext(sounds)
-  class Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
       return <Activity {...this.props} {...activityProps}/>
     }
   }
 
-  return Activity;
+  return ActivityInstance;
 });

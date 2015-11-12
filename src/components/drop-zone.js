@@ -5,7 +5,10 @@ import {CHOICE} from "dnd-types";
 const target = {
   drop(props, monitor) {
     if(typeof props.onDrop === "function") {
-      props.onDrop(monitor.getItem());
+      props.onDrop({
+        props,
+        item: monitor.getItem()
+      });
     }
   }
 };

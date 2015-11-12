@@ -66,7 +66,6 @@ export default class Sound extends EventEmitter {
         resolve();
       };
       const onError = (error) => {
-        logError(`${id} Loading failed: ${error}`);
         this.error = error || {};
         resolve();
       }

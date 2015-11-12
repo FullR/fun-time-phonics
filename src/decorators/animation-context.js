@@ -8,6 +8,7 @@ export default function animationContext(Component) {
   return class AnimationContext extends React.Component {
     constructor(props) {
       super(props);
+      this.state = {animating: false};
       this.animations = {};
       bindMethods(this, "create", "stop", "start", "isAnimating");
     }
@@ -32,13 +33,19 @@ export default function animationContext(Component) {
     start(id, onCompleted) {
       const animation = this.get(id);
       if(this.isAnimating()) return () => {};
+      this.setState({animating: true});
       if(!animation) {
         logError(`Could not find animation with id ${id}`);
       } else {
         const observable = animation.start();
         const disposable = observable.subscribe(noop, (error) => {
           window.logError(`Error during animation ${id}: ${error}`);
-        }, onCompleted);
+        }, () => {
+          this.setState({animating: false});
+          if(onCompleted) {
+            setTimeout(onCompleted, 1);
+          }
+        });
         return disposable.dispose.bind(disposable);
       }
     }
@@ -57,11 +64,10 @@ export default function animationContext(Component) {
     }
 
     isAnimating(id) {
-      if(id) {
-        const animation = this.get(id);
-        return animation && animation.isAnimating();
+      if(arguments.length) {
+        return this.animations.hasOwnProperty(id) && this.animations[id].isAnimating();
       } else {
-        return some(this.animations, (animation) => animation.isAnimating());
+        return this.state.animating;
       }
     }
 

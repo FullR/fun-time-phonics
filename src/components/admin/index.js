@@ -14,13 +14,26 @@ require("style/admin/sections/2.scss");
 require("style/admin/sections/3.scss");
 require("style/admin/sections/4.scss");
 
+function getSection(levelId) {
+  levelId = parseInt(levelId);
+  if(levelId <= 7) {
+    return 0;
+  } else if(levelId <= 14) {
+    return 1;
+  } else if(levelId <= 20) {
+    return 2;
+  } else if(levelId <= 43) {
+    return 3;
+  }
+}
+
 export default class Admin extends React.Component {
   constructor(props) {
     super(props);
     const globalStorage = storage.get("global") || {lastLevel: "1"};
     this.state = {
       authenticated: false,
-      sectionIndex: 0,
+      sectionIndex: getSection(globalStorage.lastLevel),
       selectedLevel: globalStorage.lastLevel
     };
   }

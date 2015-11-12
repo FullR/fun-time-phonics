@@ -11,11 +11,12 @@ export default class Choice extends React.Component {
   };
 
   render() {
-    const {hidden, detached, selected, padding, scalable} = this.props;
+    const {hidden, detached, selected, padding, scalable, disabled} = this.props;
     const className = classNames(this.props.className, "Choice", {
       "Choice--hidden": hidden,
       "Choice--detached": detached,
-      "Choice--scalable": scalable
+      "Choice--scalable": scalable,
+      "Choice--disabled": disabled
     });
 
     return (

@@ -11,6 +11,7 @@ export default class SoundFrame extends React.Component {
     hidden: false,
     padding: "10%"
   };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -47,12 +48,13 @@ export default class SoundFrame extends React.Component {
   }
 
   render() {
-    const {sound, playable, hidden, onClick, disabled, padding, highlighted} = this.props;
+    const {sound, playable, hidden, onClick, disabled, padding, highlighted, noBorder} = this.props;
     const {playing} = this.state;
     const className = classNames("Sound-frame", {
       "Sound-frame--playable": playable,
       "Sound-frame--hidden": hidden,
-      "Sound-frame--highlighted": playing || highlighted
+      "Sound-frame--highlighted": playing || highlighted,
+      "Sound-frame--no-border": noBorder
     });
     const contentStyle = {padding};
 

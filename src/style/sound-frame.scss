@@ -1,7 +1,8 @@
 $replay-button-distance: 5em;
+$border-width: 3px;
 
 .Sound-frame {
-  border: 3px solid #444;
+  border: $border-width solid #444;
   box-sizing: border-box;
   background: #FFF;
   width: 100%;
@@ -22,11 +23,6 @@ $replay-button-distance: 5em;
     height: 100%;
   }
 
-  &--highlighted {
-    box-shadow: 0px 0px 25px 0px #0A0;
-    border: 3px solid #0A0;
-  }
-
   &__button-container {
     position: absolute;
     bottom: (-1 * $replay-button-distance);
@@ -36,5 +32,14 @@ $replay-button-distance: 5em;
 
   &__Replay-button {
     display: inline-block;
+  }
+
+  &--highlighted {
+    box-shadow: 0px 0px 25px 0px #0A0;
+    border: 3px solid #0A0;
+  }
+
+  &--no-border {
+    border: $border-width solid rgba(0, 0, 0, 0);
   }
 }

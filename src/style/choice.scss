@@ -25,6 +25,10 @@ $sibling-count-scales: (
     top: -9999px;
     margin: 0;
   }
+
+  &--disabled {
+    cursor: default;
+  }
 }
 
 .Choice + .Choice {

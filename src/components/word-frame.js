@@ -7,7 +7,7 @@ export default class WordFrame extends React.Component {
   render() {
     return (
       <SoundFrame {...this.props} word={null}>
-        <Word word={this.props.word}>{this.props.children}</Word>
+        <Word word={this.props.word} disabled={this.props.disabled}>{this.props.children}</Word>
       </SoundFrame>
     );
   }

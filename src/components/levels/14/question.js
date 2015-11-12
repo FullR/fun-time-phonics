@@ -9,8 +9,9 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
+      teacher: {text: "instructions", centered: true, speaking: true},
       owl: {text: "lesson"},
+      replaceWordHidden: true,
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = { // add additional initial options to choices here
           word,
@@ -31,18 +32,22 @@ export default class Question extends React.Component {
       ])
     ];
 
+    console.log(`Replace the ${replacePhonic} in ${replaceWord} with ${phonic}.`);
+
     animations.create("instructions",
+      this.setState.bind(this, {replaceWordHidden: true}),
       this::hideChoices,
       center.bind(this, "teacher"),
       this::say("teacher", "teacher/replace-the"),
       this::say("teacher", `teacher/${replacePhonic}`, 100),
       this::say("teacher", "teacher/in", 100),
+      uncenter.bind(this, "teacher"),
+      this.setState.bind(this, {replaceWordHidden: false}),
       this::say("teacher", "teacher/replace-word", 100),
       this::say("teacher", "teacher/with", 100),
       this::say("teacher", `teacher/${phonic}`, 100),
       this::say("teacher", "teacher/what-is-the-new-word", 300),
 
-      uncenter.bind(this, "teacher"),
       revealAndSayWords,
       endSpeaking.bind(this, "teacher")
     );
@@ -55,12 +60,18 @@ export default class Question extends React.Component {
   }
 
   render() {
-    const {onAnswer, sounds} = this.props;
-    const {choices, teacher, owl} = this.state;
+    const {onAnswer, sounds, replaceWord} = this.props;
+    const {choices, teacher, owl, replaceWordHidden} = this.state;
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
-        <Belt>
+        <Belt top="10%">
+          <Choice disabled>
+            <WordFrame word={replaceWord} sound={sounds["teacher/replace-word"]} hidden={replaceWordHidden} noBorder/>
+          </Choice>
+        </Belt>
+
+        <Belt bottom="15%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
               <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>

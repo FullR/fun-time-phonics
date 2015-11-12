@@ -5,21 +5,21 @@ import soundContext from "decorators/sound-context";
 // "Replace the {phonic} in {replaceWord} with {replacePhonic}, what is the new word"
 
 export default [
-  {words: ["cot", "cut", "coat"], replaceWord: "cat", phonic: "ah", replacePhonic: "uh", correct: "cut"},
-  {words: ["bed", "bud", "bad"], replaceWord: "bid", phonic: "ih", replacePhonic: "ah", correct: "bad"},
-  {words: ["hit", "hat", "hut"], replaceWord: "hot", phonic: "oh", replacePhonic: "ih", correct: "hit"},
-  {words: ["cape", "cup", "cop"], replaceWord: "cap", phonic: "ah", replacePhonic: "oh", correct: "cop"},
-  {words: ["pat", "pot", "putt"], replaceWord: "pet", phonic: "eh", replacePhonic: "oh", correct: "pot"},
-  {words: ["top", "tip", "tape"], replaceWord: "tap", phonic: "ah", replacePhonic: "ih", correct: "tip"},
-  {words: ["big", "bag", "beg"], replaceWord: "bug", phonic: "uh", replacePhonic: "eh", correct: "beg"},
-  {words: ["chop", "shop", "shot"], replaceWord: "ship", phonic: "ih", replacePhonic: "oh", correct: "shop"},
-  {words: ["nest", "net", "knot"], replaceWord: "nut", phonic: "uh", replacePhonic: "eh", correct: "net"},
-  {words: ["bud", "bird", "bus"], replaceWord: "bed", phonic: "eh", replacePhonic: "uh", correct: "bud"},
-  {words: ["pot", "pitch", "pit"], replaceWord: "putt", phonic: "uh", replacePhonic: "ih", correct: "pit"},
-  {words: ["lip", "flap", "flip"], replaceWord: "flop", phonic: "oh", replacePhonic: "ih", correct: "flip"},
-  {words: ["truck", "trick", "trunk"], replaceWord: "track", phonic: "ah", replacePhonic: "uh", correct: "truck"},
-  {words: ["fish", "fast", "fat"], replaceWord: "fist", phonic: "ih", replacePhonic: "ah", correct: "fast"},
-  {words: ["batter", "boater", "battle"], replaceWord: "butter", phonic: "uh", replacePhonic: "ah", correct: "batter"}
+  {words: ["cot", "cut", "coat"], replaceWord: "cat", replacePhonic: "ah", phonic: "uh", correct: "cut"},
+  {words: ["bed", "bud", "bad"], replaceWord: "bid", replacePhonic: "ih", phonic: "ah", correct: "bad"},
+  {words: ["hit", "hat", "hut"], replaceWord: "hot", replacePhonic: "oh", phonic: "ih", correct: "hit"},
+  {words: ["cape", "cup", "cop"], replaceWord: "cap", replacePhonic: "ah", phonic: "oh", correct: "cop"},
+  {words: ["pat", "pot", "putt"], replaceWord: "pet", replacePhonic: "eh", phonic: "oh", correct: "pot"},
+  {words: ["top", "tip", "tape"], replaceWord: "tap", replacePhonic: "ah", phonic: "ih", correct: "tip"},
+  {words: ["big", "bag", "beg"], replaceWord: "bug", replacePhonic: "uh", phonic: "eh", correct: "beg"},
+  {words: ["chop", "shop", "shot"], replaceWord: "ship", replacePhonic: "ih", phonic: "oh", correct: "shop"},
+  {words: ["nest", "net", "knot"], replaceWord: "nut", replacePhonic: "uh", phonic: "eh", correct: "net"},
+  {words: ["bud", "bird", "bus"], replaceWord: "bed", replacePhonic: "eh", phonic: "uh", correct: "bud"},
+  {words: ["pot", "pitch", "pit"], replaceWord: "putt", replacePhonic: "uh", phonic: "ih", correct: "pit"},
+  {words: ["lip", "flap", "flip"], replaceWord: "flop", replacePhonic: "oh", phonic: "ih", correct: "flip"},
+  {words: ["truck", "trick", "trunk"], replaceWord: "track", replacePhonic: "ah", phonic: "uh", correct: "truck"},
+  {words: ["fish", "fast", "fat"], replaceWord: "fist", replacePhonic: "ih", phonic: "ah", correct: "fast"},
+  {words: ["batter", "boater", "battle"], replaceWord: "butter", replacePhonic: "uh", phonic: "ah", correct: "batter"}
 ].map((activityProps) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;

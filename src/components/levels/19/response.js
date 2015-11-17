@@ -23,7 +23,7 @@ export default class Response extends React.Component {
       this::say("teacher", "teacher/phonic", 100),
       this::say("teacher", "teacher/sound-so", 100),
       this::say("teacher", `teacher/${word}`, 100),
-      this::say("teacher", "teacher/has-an", 100),
+      this::say("teacher", "teacher/has-a", 100),
       this::say("teacher", "teacher/letter", 100),
       this::say("teacher", "teacher/in-it", 100)
     );

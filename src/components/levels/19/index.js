@@ -31,12 +31,12 @@ import {number, letter, phonic, lessonWords} from "./info";
 
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",
-  "teacher/has-an": "teacher/common/has-an",
+  "teacher/has-a": "teacher/common/has-a",
   "teacher/in-it": "teacher/common/in-it",
   "teacher/letter": `teacher/common/letters/${letter}`,
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
 
-  "teacher/sound-so-it-does-not": "teacher/lesson-15/sound-so-it-does-not-have-an",
+  "teacher/sound-so-it-does-not": "teacher/lesson-19/sound-so-it-does-not-have-a",
   "teacher/sound-so": "teacher/lesson-15/sound-so",
   "teacher/drag-the-letter": "teacher/lesson-15/drag-the-letter",
   "teacher/to-the-word": "teacher/lesson-15/to-the-word-that-makes-that-sound",

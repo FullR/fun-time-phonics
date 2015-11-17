@@ -44,11 +44,9 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
-      center.bind(this, "teacher"),
       this::say("teacher", "teacher/drag-the-letter"),
       this::say("teacher", "teacher/letter", 100),
       this::say("teacher", "teacher/to-the-word", 200),
-      uncenter.bind(this, "teacher"),
       revealAndSayWords,
       endSpeaking.bind(this, "teacher")
     );

@@ -20,7 +20,6 @@ export default class Question extends React.Component {
     this.state = {
       teacher: {text: "instructions", centered: false, speaking: true},
       owl: {text: "lesson"},
-
       letters: shuffle(sample(["a", "e", "i", "o", "u"].filter(l => l !== letter), 2).concat(letter)),
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
@@ -86,13 +85,12 @@ export default class Question extends React.Component {
   render() {
     const {onAnswer, sounds, animations} = this.props;
     const {choices, teacher, owl, letters} = this.state;
-    const isWrongLetterAnim = animations.isAnimating("wrong-letter");
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           {letters.map((letter) =>
-            <DraggableChoice key={`letter-${letter}`} letter={letter} disabled={isWrongLetterAnim} autohide>
+            <DraggableChoice key={`letter-${letter}`} letter={letter} autohide>
               <div style={letterStyle}>{letter}</div>
             </DraggableChoice>
           )}

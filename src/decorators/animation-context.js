@@ -41,9 +41,9 @@ export default function animationContext(Component) {
         const disposable = observable.subscribe(noop, (error) => {
           window.logError(`Error during animation ${id}: ${error}`);
         }, () => {
-          this.setState({animating: false});
+          setTimeout(() => this.setState({animating: false}), 0);
           if(onCompleted) {
-            setTimeout(onCompleted, 1);
+            setTimeout(onCompleted, 0);
           }
         });
         return disposable.dispose.bind(disposable);

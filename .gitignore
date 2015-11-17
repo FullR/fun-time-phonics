@@ -5,3 +5,5 @@ builds
 audio
 npm-debug.log
 documents
+.~*
+

@@ -3,25 +3,25 @@ import Activity from "./activity";
 import soundContext from "decorators/sound-context";
 
 export default [
-  {words: ["red", "pink", "bath"], correct: "red"},                  // 1
-  {words: ["ball", "bell", "bull"], correct: "bell", wordsOnly: true},
-  {words: ["knit", "knot", "net"], correct: "net", wordsOnly: true},
-  {words: ["pet", "pot", "putt"], correct: "pet", wordsOnly: true},
-  {words: ["wood", "wait", "wet"], correct: "wet", wordsOnly: true}, // 5
-  {words: ["pin", "pen", "pan"], correct: "pen", wordsOnly: true},
-  {words: ["egg", "igloo", "ugly"], correct: "egg", wordsOnly: true},
-  {words: ["duck", "dock", "deck"], correct: "deck", wordsOnly: true},
-  {words: ["bug", "beg", "bag"], correct: "beg", wordsOnly: true},
-  {words: ["bud", "bed", "bit"], correct: "bed", wordsOnly: true}, // 10
-  {words: ["ten", "tin", "tan"], correct: "ten", wordsOnly: true},
-  {words: ["men", "man", "mom"], correct: "men", wordsOnly: true},
-  {words: ["drip", "drop", "dress"], correct: "dress", wordsOnly: true},
-  {words: ["dust", "desk", "dish"], correct: "desk", wordsOnly: true},
-  {words: ["bench", "punch", "pitch"], correct: "bench", wordsOnly: true}, // 15
-  {words: ["chimp", "chest", "chain"], correct: "chest", wordsOnly: true},
-  {words: ["stitch", "scratch", "stretch"], correct: "stretch", wordsOnly: true},
-  {words: ["guests", "gifts", "gas"], correct: "guests", wordsOnly: true},
-  {words: ["stop", "step", "stool"], correct: "step", wordsOnly: true}
+  {words: ["in", "on", "end"], correct: "in"},                  // 1
+  {words: ["bug", "beg", "big"], correct: "big", wordsOnly: true},
+  {words: ["fin", "fan", "fun"], correct: "fin", wordsOnly: true},
+  {words: ["pin", "pen", "pan"], correct: "pin", wordsOnly: true},
+  {words: ["lap", "lip", "loop"], correct: "lip", wordsOnly: true}, // 5
+  {words: ["sip", "sap", "soup"], correct: "sip", wordsOnly: true},
+  {words: ["boot", "beet", "bit"], correct: "bit", wordsOnly: true},
+  {words: ["spin", "spoon", "spray"], correct: "spin", wordsOnly: true},
+  {words: ["peg", "pig", "pug"], correct: "pig", wordsOnly: true},
+  {words: ["punch", "pitch", "bench"], correct: "pitch", wordsOnly: true}, // 10
+  {words: ["Ben", "Bob", "Bill"], correct: "Bill", wordsOnly: true},
+  {words: ["bed", "bad", "bid"], correct: "bid", wordsOnly: true},
+  {words: ["sleep", "sled", "slip"], correct: "slip", wordsOnly: true},
+  {words: ["pit", "pet", "putt"], correct: "pit", wordsOnly: true},
+  {words: ["pal", "pill", "pool"], correct: "pill", wordsOnly: true}, // 15
+  {words: ["chess", "chips", "cheese"], correct: "chips", wordsOnly: true},
+  {words: ["ships", "shapes", "shops"], correct: "ships", wordsOnly: true},
+  {words: ["eagle", "igloo", "ugly"], correct: "igloo", wordsOnly: true},
+  {words: ["injured", "enter", "under"], correct: "injured", wordsOnly: true}
 ].map((activityProps) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;

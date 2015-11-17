@@ -16,7 +16,7 @@ export default class Lesson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      owl: {text: "Lesson", speaking: true, animating: true, centered: true},
+      owl: {text: "Lesson", speaking: true, animating: true, centered: false},
       choices: lessonWords.reduce((choices, word) => {
         choices[word] = {word, hidden: true};
         return choices;
@@ -30,7 +30,6 @@ export default class Lesson extends React.Component {
 
     animations.create("lesson",
       this::hideChoices,
-      center.bind(this, "owl"),
 
       this::say("owl", "owl/the-letter"),
       this::say("owl", "owl/letter", 200),
@@ -40,8 +39,6 @@ export default class Lesson extends React.Component {
       this::say("owl", "owl/makes-the", 200),
       this::say("owl", "owl/phonic", 100),
       this::say("owl", "owl/sound-in", 200),
-
-      uncenter.bind(this, "owl"),
 
       words.map((word) => [
         300,

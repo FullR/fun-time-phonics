@@ -1,0 +1,11 @@
+.Letter {
+  font-size: 120px;
+}
+
+.Letter--highlighted {
+  color: #0A0;
+}
+
+.Letter + .Letter {
+  margin-left: 5%;
+}

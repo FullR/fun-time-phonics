@@ -19,12 +19,9 @@ export default [
   {letters: ["e", "a", "o"], word: "lap", correct: "a", wordsOnly: true},
   {letters: ["u", "o", "a"], word: "hug", correct: "u", wordsOnly: true}  // 15
 ].map((activityProps) => {
-  const sounds = activityProps.words.reduce((sounds, word) => {
-    sounds[`teacher/${word}`] = `teacher/words/${word}`;
-    return sounds;
-  }, {});
-
-  @soundContext(sounds)
+  @soundContext({
+    "teacher/word": `teacher/words/${activityProps.word}`
+  })
   class ActivityInstance extends React.Component {
     render() {
       return <Activity {...this.props} {...activityProps}/>

@@ -10,10 +10,6 @@ function enqueue(fn) {
 }
 
 function sound(path) {
-  // if(!soundCache.hasOwnProperty(path)) {
-  //   soundCache[path] = new Sound({path});
-  // }
-  // return soundCache[path];
   return new Sound({path});
 }
 

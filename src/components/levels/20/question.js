@@ -24,27 +24,21 @@ export default class Question extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, words, wordsOnly} = this.props;
-
-    const revealAndSayWords = [
-      ...words.map((word) => [
-        300,
-        revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
-      ])
-    ];
+    const {animations, word, wordsOnly} = this.props;
 
     animations.create("instructions",
       this::hideChoices,
       this::say("teacher", "teacher/drag-the-letter"),
       this::say("teacher", "teacher/letter", 100),
       this::say("teacher", "teacher/to-the-word", 200),
-      revealAndSayWords,
+      this::say("teacher", "teacher/word"),
       endSpeaking.bind(this, "teacher")
     );
 
     if(wordsOnly) {
-      animations.create("words-only", revealAndSayWords);
+      animations.create("words-only",
+        this::say("teacher", "teacher/word")
+      );
       animations.start("words-only");
     } else {
       this.animate();
@@ -77,7 +71,7 @@ export default class Question extends React.Component {
           <Choice>
             <DropZone style={{width: "100%", height: "100%"}} onDrop={(event) => {
               if(event && event.item) {
-                this.onLetterDrop(choice.word, event.item.props.letter);
+                this.onLetterDrop(word, event.item.props.letter);
               }
             }}>
               <WordFrame word={word} sound={sounds[`teacher/${word}`]}/>

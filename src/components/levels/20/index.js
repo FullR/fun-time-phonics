@@ -12,13 +12,20 @@ import {number, letter, phonic, lessonWords} from "./info";
 @soundContext({
   applause: "applause",
 
+  "owl/ax": "owl/words/ax",
+  "owl/Ed": "owl/words/Ed",
+  "owl/itch": "owl/words/itch",
+  "owl/otter": "owl/words/otter",
+  "owl/up": "owl/words/up",
+
   "owl/lets-review": "owl/lesson-20/lets-review-the-letter-sounds-we-have-learned",
   "owl/say-each": "owl/lesson-20/say-each-letters-sound",
   "owl/the-letter": "owl/common/the-letter",
   "owl/makes-the": "owl/common/makes-the",
   "owl/then-touch": "owl/common/then-touch",
+  "owl/sound-in": "owl/common/sound-in",
 
-  "teacher/drag-the-letter": "teacher/lesson-20/touch-the-letter-to-the-picture-that-makes-the",
+  "teacher/drag-the-letter": "teacher/lesson-20/drag-the-letter-to-the-picture-that-makes-the",
   "teacher/sound-so": "teacher/lesson-20/sound-so-it-does-not-have-an",
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",

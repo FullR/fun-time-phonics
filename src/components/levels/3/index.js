@@ -1,10 +1,10 @@
 import React from "react";
 import hasher from "hasher";
-import Lesson from "./lesson";
 import persists from "decorators/persists";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
+import Lesson from "./lesson";
 import Feedback from "./feedback";
 import activities from "./activities";
 
@@ -24,9 +24,9 @@ import activities from "./activities";
 
   "teacher/touch-the-two-words-beginning": "teacher/lesson-3/touch-the-two-words-that-make-the-same-beginning-sound",
   "teacher/touch-the-two-words-ending": "teacher/lesson-3/touch-the-two-words-that-make-the-same-ending-sound",
-  "teacher/dont-begin": "teacher/lesson-3/dont-begin-with-the-same-sound",
+  "teacher/dont-begin": "teacher/lesson-3/do-not-begin-with-the-same-sound",
   "teacher/begin-with": "teacher/lesson-3/begin-with-the-same-sound",
-  "teacher/dont-end": "teacher/lesson-3/dont-end-with-the-same-sound",
+  "teacher/dont-end": "teacher/lesson-3/do-not-end-with-the-same-sound",
   "teacher/end-with": "teacher/lesson-3/end-with-the-same-sound",
   "teacher/and": "teacher/common/and",
   "teacher/now-lets": "teacher/lesson-3/now-lets-listen-for-the-ending-sounds"

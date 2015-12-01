@@ -22,13 +22,17 @@ function collect(connect, monitor) {
 
 @DragSource(CHOICE, dragSource, collect)
 export default class DraggableChoice extends React.Component {
+  static defaultProps = {
+    autohide: true
+  };
+
   render() {
     const {connectDragSource, disabled, autohide, isDragging} = this.props;
     const style = {
-      ...this.props.style,
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
-      visibility: autohide && isDragging ? "hidden" : "visible"
+      visibility: autohide && isDragging ? "hidden" : "visible",
+      ...this.props.style
     };
 
     return connectDragSource(

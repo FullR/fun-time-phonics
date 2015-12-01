@@ -26,12 +26,16 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/sound-in": "owl/common/sound-in",
 
   "teacher/drag-the-letter": "teacher/lesson-20/drag-the-letter-to-the-picture-that-makes-the",
-  "teacher/sound-so": "teacher/lesson-20/sound-so-it-does-not-have-an",
+  "teacher/sound-so-it-does-not-have-an": "teacher/lesson-20/sound-so-it-does-not-have-an",
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",
   "teacher/in-it": "teacher/common/in-it",
   "teacher/sound-in": "teacher/common/sound-in",
   "teacher/correct": "teacher/common/correct",
+
+  "teacher/say-the-letter": "teacher/lesson-20/say-the-letter-sound-and-touch-the-word-that-makes-that-sound",
+  "teacher/there-is-no": "teacher/common/there-is-no",
+  "teacher/has-an": "teacher/common/has-an",
 
   "owl/a": "owl/common/letters/a",
   "owl/e": "owl/common/letters/e",

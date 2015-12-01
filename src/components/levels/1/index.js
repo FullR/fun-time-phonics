@@ -20,7 +20,7 @@ const activities = [
   "owl/tape": "owl/words/tape",
   "owl/the-first-sound": "owl/lesson-1/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
   "owl/the-beginning-sound": "owl/lesson-1/the-beginning-sound-in-the-words",
-  "owl/say-the-words": "owl/lesson-1/say-the-words",
+  "owl/say-the-words": "owl/common/say-the-words",
   "owl/is": "owl/common/is",
   "owl/t": "owl/common/phonics/_t_",
   "owl/slowly": "owl/common/slowly",

@@ -1,11 +1,13 @@
 import React from "react";
-import Question from "./question";
-import Response from "./response";
 import ActivityTitle from "components/activity-title";
-import persists from "decorators/persists";
-import {title, number, activityCount} from "./info";
 
 export default class Activity extends React.Component {
+  static defaultProps = {
+    checkAnswer(answer, correct) {
+      return answer.word === correct;
+    }
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +21,8 @@ export default class Activity extends React.Component {
 
   render() {
     const {answer} = this.state;
-    const {index, words, correct, onComplete} = this.props;
-    const isCorrect = answer && answer.letter === correct;
+    const {Question, Response, checkAnswer, title, number, activityCount, index, words, correct, onComplete} = this.props;
+    const isCorrect = answer && checkAnswer(answer, correct);
 
     return (
       <div>

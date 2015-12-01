@@ -9,7 +9,8 @@
     "convert-audio": "node scripts/convert-audio.js",
     "compile": "scripts/compile",
     "dev-server": "scripts/dev-server",
-    "xcode": "open ./builds/cordova/platforms/ios/ftph.xcodeproj"
+    "xcode": "open ./builds/cordova/platforms/ios/ftph.xcodeproj",
+    "upload": "scripts/upload"
   },
   "dependencies": {
     "debug": "^2.2.0",

@@ -34,7 +34,7 @@ export default function soundContext(manifest={}, LoadingComponent) {
         this.setState({
           loaded: true
         });
-      }).catch(errorCatcher("Failed to load sounds"));
+      }).catch((error) => console.error("Failed to load sounds:", error));
       enqueue(load);
     }
 
@@ -43,12 +43,13 @@ export default function soundContext(manifest={}, LoadingComponent) {
         if(this.props.soundContext) {
           this.props.soundContext.stopAll();
         }
-      }).catch(errorCatcher("Failed to stop sounds"));
+      }).catch((error) => console.error("Failed to stop sounds:", error));
       return enqueue(stop);
     }
 
     unloadAll() {
-      const unload = Promise.all(invoke(this.sounds, "unload")).catch(errorCatcher("Failed to unload sounds"));
+      const unload = Promise.all(invoke(this.sounds, "unload"))
+        .catch((error) => console.error("Failed to unload sounds:", error));
       return enqueue(unload);
     }
 

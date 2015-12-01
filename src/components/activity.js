@@ -21,19 +21,18 @@ export default class Activity extends React.Component {
 
   render() {
     const {answer} = this.state;
-    const {Question, Response, checkAnswer, title, number, activityCount, index, words, correct, onComplete} = this.props;
+    const {Question, Response, checkAnswer, title, number, activityCount, index, correct, onComplete} = this.props;
     const isCorrect = answer && checkAnswer(answer, correct);
 
     return (
       <div>
         {answer === null ?
           <Question {...this.props}
-            words={words}
             onAnswer={::this.setAnswer}
           /> :
           <Response {...this.props}
             correct={isCorrect}
-            word={answer.word}
+            answer={answer}
             onComplete={onComplete}
           />
         }

@@ -9,11 +9,15 @@ export default class Letter extends React.Component {
   };
 
   render() {
-    const {letter, highlighted} = this.props;
+    const {width, height, letter, highlighted} = this.props;
     const className = classNames(this.props.className, "Letter", {
       "Letter--highlighted": highlighted
     });
+    const style = {
+      width, height, display: "inline-block",
+      ...this.props.style
+    };
 
-    return (<span {...this.props} className={className}/>);
+    return (<span {...this.props} style={style} className={className}/>);
   }
 }

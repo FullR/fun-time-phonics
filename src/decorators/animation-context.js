@@ -24,7 +24,7 @@ export default function animationContext(Component) {
 
     create(id, ...steps) {
       if(this.animations[id]) {
-        logError(`An animation is already registered with the id ${id}. Overwriting`);
+        console.error(`An animation is already registered with the id ${id}. Overwriting`);
       }
       this.animations[id] = new Animation(steps);
       return this;
@@ -35,11 +35,11 @@ export default function animationContext(Component) {
       if(this.isAnimating()) return () => {};
       this.setState({animating: true});
       if(!animation) {
-        logError(`Could not find animation with id ${id}`);
+        console.error(`Could not find animation with id ${id}`);
       } else {
         const observable = animation.start();
         const disposable = observable.subscribe(noop, (error) => {
-          window.logError(`Error during animation ${id}: ${error}`);
+          console.error(`Error during animation ${id}: ${error}`);
         }, () => {
           setTimeout(() => this.setState({animating: false}), 0);
           if(onCompleted) {
@@ -58,7 +58,7 @@ export default function animationContext(Component) {
         }
       } else {
         Promise.all(invoke(this.animations, "stop")).catch((error) => {
-          logError(`Failed to stop animations: ${error}`);
+          console.error(`Failed to stop animations: ${error}`);
         });
       }
     }

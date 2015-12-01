@@ -29,7 +29,7 @@ export default class Sound extends EventEmitter {
     try {
       this.fullpath = require("../audio/" + this.pathWithExt);
     } catch(error) {
-      logError(`Failed to load sound "${path}": ${error}`);
+      console.error(`Failed to load sound "${path}": ${error}`);
       this.error = error || {};
       this.fullpath = "";
     }
@@ -90,7 +90,7 @@ export default class Sound extends EventEmitter {
         resolve();
       };
       const onError = (error) => {
-        logError(`${id} Unloading failed: ${error}`);
+        console.error(`${id} Unloading failed: ${error}`);
         this.emit("error", error);
         reject(error);
       };
@@ -147,7 +147,7 @@ export default class Sound extends EventEmitter {
       this.emit("end");
     }).catch((error) => {
       this.emit("error", error);
-      logError("Failed to stop sound:", error);
+      console.error("Failed to stop sound:", error);
     });
   }
 }

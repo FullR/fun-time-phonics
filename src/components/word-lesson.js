@@ -44,6 +44,7 @@ export default class Lesson extends React.Component {
   render() {
     const {owl, choices} = this.state;
     const {
+      scaleChoices,
       number,
       title,
       activityCount,
@@ -65,7 +66,7 @@ export default class Lesson extends React.Component {
         {this.props.children}
         <Belt {...choicePosition}>
           {map(choices, (choice, key) =>
-            <Choice key={key} detached={choice.detached} noScale={true}>
+            <Choice key={key} detached={choice.detached} scalable={scaleChoices}>
               <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}

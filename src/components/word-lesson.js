@@ -18,7 +18,7 @@ export default class Lesson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      owl: {text: "Lesson", speaking: true, animating: true, centered: false},
+      owl: Object.assign({text: "Lesson", speaking: true, animating: true, centered: false}, props.owl),
       choices: props.words.reduce((choices, word) => {
         choices[word] = {word, hidden: true};
         return choices;

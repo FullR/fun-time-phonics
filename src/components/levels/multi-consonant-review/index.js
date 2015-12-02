@@ -7,14 +7,14 @@ import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
 import Lesson from "./lesson";
-import Question from "./question";
-import Response from "./response";
+import Question from "components/levels/consonant-vowel-review/question";
+import Response from "components/levels/consonant-vowel-review/response";
 
 import Feedback from "components/feedback";
 import Activity from "components/activity";
 
 export default (info) => {
-  const {number, activityData, lessonLetters, lessonWords} = defaults(info, {
+  const {number, activityData} = defaults(info, {
     activityCount: info.activityData.length
   });
 
@@ -40,17 +40,11 @@ export default (info) => {
 
   @soundContext({
     applause: "applause",
-    ...arrToObj(lessonWords, (word) => [`owl/${word}`, `owl/words/${word}`]),
-    ...arrToObj(lessonLetters, (letter) => [`owl/${letter}`, `owl/common/letters/${letter}`]),
-    ...arrToObj(lessonLetters, (letter) => [`owl/${letter}h`, `owl/common/phonics/_${letter}h_`]),
     ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/letters/${letter}`]),
     ...arrToObj(activityLetters, (letter) => [`teacher/${letter}h`, `teacher/common/phonics/_${letter}h_`]),
 
     // Lesson
-    "owl/lets-review-the-sounds-we-just-learned": "owl/common/lets-review-the-sounds-we-just-learned",
-    "owl/the-letters": "owl/common/the-letters",
-    "owl/make-the": "owl/common/make-the",
-    "owl/sound-in": "owl/common/sound-in",
+    "owl/lets-review-all-the-sounds-youve-learned": "owl/common/lets-review-all-the-sounds-youve-learned",
     "owl/touch-the": "owl/common/touch-the",
 
     // Question
@@ -106,7 +100,7 @@ export default (info) => {
       } else if(showingLesson) {
         return (
           <Lesson {...this.props} {...info}
-            words={lessonWords}
+            words={[]}
             arrowLabel={`Activity ${activityIndex + 1}`}
             onComplete={::this.hideLesson}
           />

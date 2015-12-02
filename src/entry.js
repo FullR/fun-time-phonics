@@ -3,6 +3,7 @@ import onReady from "./on-ready";
 import "babel-core/polyfill";
 
 const debug = require("debug")("app");
+window.DEBUG = true;
 require("./index.html"); // Forces webpack to include our html file
 require("file?name=[name].[ext]!./platform.js"); // Include platform.js for web (will be overwritten by Cordova merges)
 

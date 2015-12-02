@@ -4,12 +4,12 @@ export default consonantVowel({
   number: 40,
   letter: "f",
   vowel: "o",
-  lessonWords: ["", "", ""],
+  lessonWords: ["fox", "font", "fodder"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+      {words: ["fence", "fix", "fox"], correct: "fox"},
+      {words: ["fall", "follow", "felon"], correct: "follow", wordsOnly: true},
+      {words: ["fiddle", "fasten", "fossil"], correct: "fossil", wordsOnly: true},
+      {words: ["fond", "fit", "flop"], correct: "fond", wordsOnly: true},
+      {words: ["fumble", "foxhole", "factory"], correct: "foxhole", wordsOnly: true}
   ]
 });

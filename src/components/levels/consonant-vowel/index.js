@@ -1,5 +1,6 @@
 import React from "react";
-import {defaults} from "lodash";
+import {soundExists, imageExists} from "assets";
+import {defaults, uniq, flatten, pluck} from "lodash";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
@@ -32,6 +33,18 @@ export default (info) => {
     title: `Consonant '${info.letter}' Short Vowel Sound '${info.vowel}'`,
     activityCount: info.activityData.length
   });
+
+  // Check activity words. Warn about missing audio/images
+  if(window.DEBUG) {
+    uniq(flatten(pluck(activityData, "words"))).forEach((word) => {
+      if(!soundExists(`teacher/words/${word}`)) {
+        console.error(`Missing teacher sound for ${word}`);
+      }
+      if(!imageExists(`words/${word}`)) {
+        console.error(`Missing image for ${word}`);
+      }
+    });
+  }
 
   const Activities = activityData.map((activity) => {
     @soundContext(wordSounds(activity.words, "teacher"))
@@ -76,17 +89,17 @@ export default (info) => {
     "teacher/phonic": `teacher/common/phonics/_${letter}${vowel}h_`,
 
     // Question
-      "teacher/drag-the-letters": "teacher/common/drag-the-letters",
-      "teacher/to-the-word-that-begins-with-that-sound": "teacher/common/to-the-word-that-begins-with-that-sound",
+    "teacher/drag-the-letters": "teacher/common/drag-the-letters",
+    "teacher/to-the-word-that-begins-with-that-sound": "teacher/common/to-the-word-that-begins-with-that-sound",
 
     // Response
-      // Incorrect
-        "teacher/does-not-begin-with-the": "teacher/common/does-not-begin-with-the",
-        "teacher/sound-so-it-does-not-begin-with": "teacher/common/sound-so-it-does-not-begin-with",
-      // Correct
-        "teacher/correct": "teacher/common/correct",
-        "teacher/makes-the": "teacher/common/makes-the",
-        "teacher/sound-in": "teacher/common/sound-in"
+    // Incorrect
+      "teacher/does-not-begin-with-the": "teacher/common/does-not-begin-with-the",
+      "teacher/sound-so-it-does-not-begin-with": "teacher/common/sound-so-it-does-not-begin-with",
+    // Correct
+      "teacher/correct": "teacher/common/correct",
+      "teacher/makes-the": "teacher/common/makes-the",
+      "teacher/sound-in": "teacher/common/sound-in"
   })
   @persists(`level-${number}`, true)
   @hasActivities(Activities)

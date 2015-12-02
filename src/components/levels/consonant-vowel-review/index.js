@@ -1,5 +1,5 @@
 import React from "react";
-import {uniq, flatten} from "lodash";
+import {defaults, uniq, flatten} from "lodash";
 import arrToObj from "util/arr-to-obj";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
@@ -14,7 +14,9 @@ import Feedback from "components/feedback";
 import Activity from "components/activity";
 
 export default (info) => {
-  const {number, activityData, lessonLetters, lessonWords} = info;
+  const {number, activityData, lessonLetters, lessonWords} = defaults(info, {
+    activityCount: activityData.length
+  });
 
   const activities = activityData.map((activity) => {
     @soundContext({

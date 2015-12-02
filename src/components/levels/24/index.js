@@ -1,9 +1,7 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  title: "Consonant 'b' Short Vowel Sound 'o'",
   number: 24,
-  activityCount: 7,
   letter: "b",
   vowel: "o",
   lessonWords: ["box", "bottle", "bobcat"],

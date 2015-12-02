@@ -2,8 +2,6 @@ import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
   number: 30,
-  title: "Consonant 'c' With Short Vowels",
-  activityCount: 6,
   lessonLetters: ["ca", "co", "cu"],
   lessonWords: ["cat", "cob", "cub"],
   activityData: [

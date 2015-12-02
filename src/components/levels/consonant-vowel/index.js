@@ -1,4 +1,5 @@
 import React from "react";
+import {defaults} from "lodash";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
@@ -24,10 +25,13 @@ export default (info) => {
     letter,
     vowel,
     letterIntro,
-    exampleWords=[],
-    lessonWords=[],
+    exampleWords,
+    lessonWords,
     activityData
-  } = info;
+  } = defaults(info, {
+    title: `Consonant '${info.letter}' Short Vowel Sound '${info.vowel}'`,
+    activityCount: info.activityData.length
+  });
 
   const Activities = activityData.map((activity) => {
     @soundContext(wordSounds(activity.words, "teacher"))

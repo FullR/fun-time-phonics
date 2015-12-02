@@ -1,9 +1,7 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  title: "Consonant 'd' Short Vowel Sound 'i'",
   number: 33,
-  activityCount: 7,
   letter: "d",
   vowel: "i",
   lessonWords: ["dig", "ditch", "disco"],

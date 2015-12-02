@@ -1,9 +1,7 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  title: "Consonant 'c' Short Vowel Sound 'u'",
   number: 29,
-  activityCount: 7,
   letter: "c",
   vowel: "u",
   lessonWords: ["cut", "cuddle", "cupcake"],

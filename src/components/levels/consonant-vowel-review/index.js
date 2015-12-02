@@ -15,6 +15,7 @@ import Activity from "components/activity";
 
 export default (info) => {
   const {number, activityData, lessonLetters, lessonWords} = defaults(info, {
+    title: `Consonant '${info.letter}' With Short Vowels`,
     activityCount: info.activityData.length
   });
 

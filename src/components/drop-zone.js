@@ -32,6 +32,6 @@ export default class DropZone extends React.Component {
   render() {
     const {connectDropTarget, width, height} = this.props;
     const style = {width, height, ...this.props.style};
-    return connectDropTarget(<div {...this.props} style={style}>{this.props.children}</div>);
+    return connectDropTarget(<div {...this.props} style={style} onDrop={null}/>);
   }
 }

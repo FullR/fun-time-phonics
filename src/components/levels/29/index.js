@@ -1,25 +1,19 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  title: "Consonant 'b' Short Vowel Sound 'a'",
-  number: 21,
-  activityCount: 11,
-  letterIntro: true,
-  letter: "b",
-  vowel: "a",
-  exampleWords: ["bat", "bed", "big", "box", "bug"],
-  lessonWords: ["back", "bath", "baboon"],
+  title: "Consonant 'c' Short Vowel Sound 'u'",
+  number: 29,
+  activityCount: 7,
+  letter: "c",
+  vowel: "u",
+  lessonWords: ["cut", "cuddle", "cupcake"],
   activityData: [
-    {words: ["bat", "bun", "cat"], correct: "bat"},
-    {words: ["rag", "bag", "big"], correct: "bag", wordsOnly: true},
-    {words: ["dad", "bed", "bad"], correct: "bad", wordsOnly: true},
-    {words: ["badge", "bridge", "bend"], correct: "badge", wordsOnly: true},
-    {words: ["biscuit", "bucket", "basket"], correct: "basket", wordsOnly: true},
-    {words: ["butter", "batter", "boxer"], correct: "batter", wordsOnly: true},
-    {words: ["black", "battle", "bottle"], correct: "battle", wordsOnly: true},
-    {words: ["best", "bath", "Beth"], correct: "bath", wordsOnly: true},
-    {words: ["bench", "bush", "bandage"], correct: "bandage", wordsOnly: true},
-    {words: ["bikini", "buckle", "backpack"], correct: "backpack", wordsOnly: true},
-    {words: ["baboon", "bubble", "bedroom"], correct: "baboon", wordsOnly: true}
+    {words: ["cup", "cop", "cape"], correct: "cup"},
+    {words: ["calf", "cuff", "coffee"], correct: "cuff", wordsOnly: true},
+    {words: ["club", "cab", "cub"], correct: "cub", wordsOnly: true},
+    {words: ["castle", "costume", "customer"], correct: "customer", wordsOnly: true},
+    {words: ["cotton", "cutout", "kite"], correct: "cutout", wordsOnly: true},
+    {words: ["cuddle", "kettle", "candle"], correct: "cuddle", wordsOnly: true},
+    {words: ["camera", "copper", "cupboard"], correct: "cupboard", wordsOnly: true}
   ]
 });

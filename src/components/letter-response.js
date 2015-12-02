@@ -19,11 +19,12 @@ export default class LetterResponse extends React.Component {
       <GameScreen teacher={teacher} owl={owl} onTeacherClick={onTeacherClick} onOwlClick={onOwlClick}>
         <Center>
           {correct ?
-            <StarBox>
-              <Letter width={300} height={300}>{letter}</Letter>
+            <StarBox width={300} height={300}>
+              <Center>
+                <Letter>{letter}</Letter>
+              </Center>
             </StarBox> :
-
-            <Letter width={300} height={300}>
+            <Letter width={300} height={300} style={{lineHeight: "300px"}}>
               {letter}
               <XOverlay/>
             </Letter>

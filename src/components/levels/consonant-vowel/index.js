@@ -33,7 +33,7 @@ export default (info) => {
     @soundContext(wordSounds(activity.words, "teacher"))
     class ActivityInstance extends React.Component {
       render() {
-        return (<Activity {...this.props} {...activity} {...info} Question={Question} response={Response}/>);
+        return (<Activity {...this.props} {...activity} {...info} Question={Question} Response={Response}/>);
       }
     }
 
@@ -54,7 +54,7 @@ export default (info) => {
     ...letterIntroSounds,
     ...wordSounds(lessonWords),
 
-    "owl/vowel": `owl/common/letters/${vowel}`,
+    "owl/letters": `owl/common/letters/${letter}${vowel}`,
     "owl/phonic": `owl/common/phonics/_${letter}${vowel}h_`,
 
     // Lesson
@@ -68,8 +68,7 @@ export default (info) => {
     "owl/touch-the": "owl/common/touch-the",
 
     // Activity
-    "teacher/letter": `teacher/common/letters/${letter}`,
-    "teacher/vowel": `teacher/common/letters/${vowel}`,
+    "teacher/letters": `teacher/common/letters/${letter}${vowel}`,
     "teacher/phonic": `teacher/common/phonics/_${letter}${vowel}h_`,
 
     // Question

@@ -5,11 +5,9 @@ import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "hel
 import GameScreen from "components/game-screen";
 import Belt from "components/belt";
 import Choice from "components/choice";
-import Letter from "components/letter";
-import SoundFrame from "components/sound-frame";
 import WordFrame from "components/word-frame";
-import DraggableChoice from "components/draggable-choice";
-import DropZone from "components/drop-zone";
+import DragText from "components/drag-text";
+import Droppable from "components/droppable";
 import {DragDropContext} from "react-dnd";
 import dndBackend from "dnd-backend";
 
@@ -21,7 +19,7 @@ export default class Question extends React.Component {
     this.state = {
       teacher: {text: "instructions", centered: false, speaking: true},
       owl: {text: "lesson"},
-      choices: props.letters.reduce((choices, letter, i) => {
+      choices: props.letters.reduce((choices, letter) => {
         choices[letter] = {
           letter,
           hidden: true
@@ -51,7 +49,11 @@ export default class Question extends React.Component {
     );
 
     if(wordsOnly) {
-      animations.create("words-only", revealAndSayChoices);
+      animations.create("words-only",
+        this::say("teacher", "teacher/word"),
+        400,
+        revealAndSayChoices
+      );
       animations.start("words-only");
     } else {
       this.animate();
@@ -62,8 +64,8 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  onDrop(choice) {
-    this.props.onAnswer(choice);
+  onDrop({draggable}) {
+    this.props.onAnswer(draggable.value);
   }
 
   render() {
@@ -74,19 +76,17 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="12%">
           <Choice>
-            <DropZone onDrop={(e) => {if(e && e.item) this.onDrop(e.item.props.choice);}}>
+            <Droppable onDrop={::this.onDrop}>
               <WordFrame word={this.props.word} sound={sounds["teacher/word"]}/>
-            </DropZone>
+            </Droppable>
           </Choice>
         </Belt>
         <Belt bottom="12%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <DraggableChoice choice={choice} autohide>
-                <SoundFrame sound={sounds[`teacher/${choice.letter}`]}>
-                  <Letter>{choice.letter}</Letter>
-                </SoundFrame>
-              </DraggableChoice>
+              <DragText value={choice} sound={sounds[`teacher/${choice.letter}`]}>
+                {choice.letter}
+              </DragText>
             </Choice>
           )}
         </Belt>

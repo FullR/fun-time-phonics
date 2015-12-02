@@ -1,4 +1,5 @@
 import React from "react";
+import {uniq, flatten} from "lodash";
 import arrToObj from "util/arr-to-obj";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
@@ -33,13 +34,15 @@ export default (info) => {
     return ActivityInstance;
   });
 
+  const activityLetters = uniq(flatten(activityData.map((a) => a.letters)));
+
   @soundContext({
     applause: "applause",
     ...arrToObj(lessonWords, (word) => [`owl/${word}`, `owl/words/${word}`]),
     ...arrToObj(lessonLetters, (letter) => [`owl/${letter}`, `owl/common/letters/${letter}`]),
     ...arrToObj(lessonLetters, (letter) => [`owl/${letter}h`, `owl/common/phonics/_${letter}h_`]),
-    ...arrToObj(lessonLetters, (letter) => [`teacher/${letter}`, `teacher/common/letters/${letter}`]),
-    ...arrToObj(lessonLetters, (letter) => [`teacher/${letter}h`, `teacher/common/phonics/_${letter}h_`]),
+    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/letters/${letter}`]),
+    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}h`, `teacher/common/phonics/_${letter}h_`]),
 
     // Lesson
     "owl/lets-review-the-sounds-we-just-learned": "owl/common/lets-review-the-sounds-we-just-learned",

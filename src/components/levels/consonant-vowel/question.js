@@ -1,11 +1,13 @@
 import React from "react";
 import {map} from "lodash";
 import animationContext from "decorators/animation-context";
-import {say, hideChoices, revealChoice, endSpeaking} from "helpers/animation";
-import {GameScreen, Belt, WordFrame, Choice} from "components";
-import Letter from "components/letter";
-import DraggableChoice from "components/draggable-choice";
-import DropZone from "components/drop-zone";
+import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "helpers/animation";
+import GameScreen from "components/game-screen";
+import Belt from "components/belt";
+import WordFrame from "components/word-frame";
+import Choice from "components/choice";
+import DragText from "components/drag-text";
+import Droppable from "components/droppable";
 import {DragDropContext} from "react-dnd";
 import dndBackend from "dnd-backend";
 
@@ -15,8 +17,9 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
+      teacher: {text: "instructions", centered: !props.wordsOnly, speaking: true},
       owl: {text: "lesson"},
+      dragTextHidden: !props.wordsOnly,
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
           word,
@@ -40,9 +43,12 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
+      center.bind(this, "teacher"),
+      this.setState.bind(this, {dragTextHidden: true}),
       this::say("teacher", "teacher/drag-the-letters"),
-      this::say("teacher", "teacher/letter", 100),
-      this::say("teacher", "teacher/vowel"),
+      uncenter.bind(this, "teacher"),
+      this.setState.bind(this, {dragTextHidden: false}),
+      this::say("teacher", "teacher/letters", 100),
       this::say("teacher", "teacher/to-the-word-that-begins-with-that-sound", 100),
       revealAndSayWords,
 
@@ -61,23 +67,30 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
+  onDrop({droppable}) {
+    console.log(droppable);
+    this.props.onAnswer(droppable.choice);
+  }
+
   render() {
-    const {onAnswer, sounds} = this.props;
-    const {choices, teacher, owl} = this.state;
+    const {letter, vowel, onAnswer, sounds} = this.props;
+    const {choices, teacher, owl, dragTextHidden} = this.state;
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
-          <DraggableChoice autohide>
-            <Letter>ba</Letter>
-          </DraggableChoice>
+          <Choice hidden={dragTextHidden}>
+            <DragText sound={sounds["teacher/letters"]}>
+              {letter}{vowel}
+            </DragText>
+          </Choice>
         </Belt>
         <Belt bottom="15%">
           {map(choices, (choice, key) =>
-            <Choice {...choice} key={key}>
-              <DropZone onDrop={() => onAnswer(choice)}>
+            <Choice {...choice} key={key} scalable={false}>
+              <Droppable value="Droppable" onDrop={::this.onDrop} choice={choice}>
                 <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]}/>
-              </DropZone>
+              </Droppable>
             </Choice>
           )}
         </Belt>

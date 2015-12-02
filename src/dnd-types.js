@@ -1,3 +1,4 @@
 export default {
-  CHOICE: "choice"
+  CHOICE: "choice",
+  DRAGGABLE: "draggable"
 };

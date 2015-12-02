@@ -15,7 +15,8 @@ function letterIntroAnim({letter, words}) {
     ...words.map((word) => [
       300,
       this::say("owl", `owl/${word}`)
-    ])
+    ]),
+    500
   ];
 }
 
@@ -39,8 +40,7 @@ function lessonAnim() {
     this::say("owl", "owl/phonic", 200),
     this::say("owl", "owl/sound", 200),
     this::say("owl", "owl/when-we-read-the-letters", 200),
-    this::say("owl", "owl/letter", 200),
-    this::say("owl", "owl/vowel", 200),
+    this::say("owl", "owl/letters", 200),
     this::say("owl", "owl/they-tell-us-to-say", 200),
     this::say("owl", "owl/phonic", 200),
     this::say("owl", "owl/touch-the", 200),

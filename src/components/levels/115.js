@@ -1,19 +1,17 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  letterIntro: true,
-  exampleWords: [],
   number: 115,
   letter: "w",
   vowel: "e",
-  lessonWords: ["", "", ""],
+  lessonWords: ["weather", "website", "wealthy"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["web", "one", "red"], correct: "web"},
+    {words: ["white", "sweat", "wet"], correct: "wet", wordsOnly: true},
+    {words: ["wax", "west", "waist"], correct: "west", wordsOnly: true},
+    {words: ["wheel", "well", "wall"], correct: "well", wordsOnly: true},
+    {words: ["wedding", "woman", "window"], correct: "wedding", wordsOnly: true},
+    {words: ["switch", "witch", "wedge"], correct: "wedge", wordsOnly: true},
+    {words: ["weapon", "wagon", "wishbone"], correct: "weapon", wordsOnly: true}
   ]
 });

@@ -2,18 +2,14 @@ import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
   letterIntro: true,
-  exampleWords: [],
+  exampleWords: ["quack", "question", "quilt"],
   number: 89,
   letter: "q",
   vowel: "u",
-  lessonWords: ["", "", ""],
+  lessonWords: [],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["jump", "ball", "quilt"], correct: "quilt"},
+    {words: ["bull", "question", "run"], correct: "question", wordsOnly: true},
+    {words: ["gull", "run", "quack"], correct: "quack", wordsOnly: true}
   ]
 });

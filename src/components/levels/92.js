@@ -1,19 +1,17 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  letterIntro: true,
-  exampleWords: [],
   number: 92,
   letter: "r",
   vowel: "i",
-  lessonWords: ["", "", ""],
+  lessonWords: ["rib", "ridge", "river"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["rug", "rag", "rig"], correct: "rig"},
+    {words: ["rip", "rope", "raft"], correct: "rip", wordsOnly: true},
+    {words: ["ram", "rim", "room"], correct: "rim", wordsOnly: true},
+    {words: ["ribbon", "robin", "rabbit"], correct: "ribbon", wordsOnly: true},
+    {words: ["wrench", "rush", "rich"], correct: "rich", wordsOnly: true},
+    {words: ["robber", "river", "ruffle"], correct: "river", wordsOnly: true},
+    {words: ["reptile", "ripple", "wrapper"], correct: "ripple", wordsOnly: true}
   ]
 });

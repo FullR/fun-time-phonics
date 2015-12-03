@@ -1,19 +1,17 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  letterIntro: true,
-  exampleWords: [],
   number: 100,
   letter: "s",
   vowel: "u",
-  lessonWords: ["", "", ""],
+  lessonWords: ["sunk", "summer", "subway"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["send", "sun", "sign"], correct: "sun"},
+    {words: ["sand", "seeds", "suds"], correct: "suds", wordsOnly: true},
+    {words: ["supper", "saddle", "sister"], correct: "supper", wordsOnly: true},
+    {words: ["sucker", "soccer", "skunk"], correct: "sucker", wordsOnly: true},
+    {words: ["sandal", "sundae", "silver"], correct: "sundae", wordsOnly: true},
+    {words: ["salamander", "submarine", "stump"], correct: "submarine", wordsOnly: true},
+    {words: ["semicircle", "sapphire", "sunflower"], correct: "sunflower", wordsOnly: true}
   ]
 });

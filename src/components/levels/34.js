@@ -6,12 +6,12 @@ export default consonantVowel({
   vowel: "o",
   lessonWords: ["dot", "dock", "doll"],
   activityData: [
-    {words: ["dagger", "dinner", "doctor"], correct: ""},
-    {words: ["dollar", "deli", "dummy"], correct: "", wordsOnly: true},
-    {words: ["dot", "dig", "drop"], correct: "", wordsOnly: true},
-    {words: ["duck", "dock", "deck"], correct: "", wordsOnly: true},
-    {words: ["dumbbell", "denim", "domino"], correct: "", wordsOnly: true},
-    {words: ["digit", "dodge", "dungeon"], correct: "", wordsOnly: true},
-    {words: ["Debbie", "Diane", "Donna"], correct: "", wordsOnly: true}
+    {words: ["dagger", "dinner", "doctor"], correct: "doctor"},
+    {words: ["dollar", "deli", "dummy"], correct: "dollar", wordsOnly: true},
+    {words: ["dot", "dig", "drop"], correct: "dot", wordsOnly: true},
+    {words: ["duck", "dock", "deck"], correct: "dock", wordsOnly: true},
+    {words: ["dumbbell", "denim", "domino"], correct: "domino", wordsOnly: true},
+    {words: ["digit", "dodge", "dungeon"], correct: "dodge", wordsOnly: true},
+    {words: ["Debbie", "Diane", "Donna"], correct: "Donna", wordsOnly: true}
   ]
 });

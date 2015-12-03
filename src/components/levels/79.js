@@ -1,19 +1,15 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  letterIntro: true,
-  exampleWords: [],
   number: 79,
   letter: "n",
   vowel: "o",
-  lessonWords: ["", "", ""],
+  lessonWords: ["nod", "notch", "nozzle"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["knife", "notch", "nest"], correct: "notch"},
+    {words: ["nozzle", "nuzzle", "needle"], correct: "nozzle", wordsOnly: true},
+    {words: ["nostril", "nestling", "nectar"], correct: "nostril", wordsOnly: true},
+    {words: ["napkin", "nugget", "noggin"], correct: "noggin", wordsOnly: true},
+    {words: ["nectarine", "nocturnal", "necklace"], correct: "nocturnal", wordsOnly: true}
   ]
 });

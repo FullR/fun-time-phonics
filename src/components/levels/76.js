@@ -2,18 +2,14 @@ import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
   letterIntro: true,
-  exampleWords: [],
+  exampleWords: ["nap", "net", "nickel", "nozzle", "numbers"],
   number: 76,
   letter: "n",
   vowel: "a",
-  lessonWords: ["", "", ""],
+  lessonWords: ["nab", "nasty", "napkin"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["nap", "net", "knob"], correct: "nap"},
+    {words: ["nun", "nanny", "ninja"], correct: "nanny", wordsOnly: true},
+    {words: ["nipple", "napkin", "noggin"], correct: "napkin", wordsOnly: true}
   ]
 });

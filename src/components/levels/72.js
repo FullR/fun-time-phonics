@@ -1,19 +1,17 @@
 import consonantVowel from "components/levels/consonant-vowel";
 
 export default consonantVowel({
-  letterIntro: true,
-  exampleWords: [],
   number: 72,
   letter: "m",
   vowel: "i",
-  lessonWords: ["", "", ""],
+  lessonWords: ["mint", "mixer", "middle"],
   activityData: [
-    {words: ["", "", ""], correct: ""},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true},
-    {words: ["", "", ""], correct: "", wordsOnly: true}
+    {words: ["melt", "mug", "milk"], correct: "milk"},
+    {words: ["mix", "Max", "mesh"], correct: "mix", wordsOnly: true},
+    {words: ["mat", "mitt", "meat"], correct: "mitt", wordsOnly: true},
+    {words: ["mitten", "mantel", "muffin"], correct: "mitten", wordsOnly: true},
+    {words: ["model", "middle", "medal"], correct: "middle", wordsOnly: true},
+    {words: ["missile", "muscle", "meadow"], correct: "missile", wordsOnly: true},
+    {words: ["mustache", "mascot", "miniskirt"], correct: "miniskirt", wordsOnly: true}
   ]
 });

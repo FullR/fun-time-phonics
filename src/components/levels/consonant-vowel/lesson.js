@@ -2,33 +2,16 @@ import React from "react";
 import Belt from "components/belt";
 import Letter from "components/letter";
 import WordLesson from "components/word-lesson";
+import LetterIntro from "./letter-intro";
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
 
-function letterIntroAnim({letter, words}) {
-  return [
-    this::say("owl", "owl/the-letter"),
-    this::say("owl", "owl/letter", 100),
-    this::say("owl", "owl/looks-like-this", 200),
-    this::say("owl", "owl/the-letter", 400),
-    this::say("owl", "owl/letter", 100),
-    this::say("owl", "owl/makes-the-beginning-sound-of", 200),
-    ...words.map((word) => [
-      300,
-      this::say("owl", `owl/${word}`)
-    ]),
-    500
-  ];
-}
 
 function lessonAnim() {
-  const {animations, letterIntro, letter, exampleWords} = this.props;
+  const {animations, letter} = this.props;
   const words = Object.keys(this.state.choices);
 
   return [
     this::hideChoices,
-    letterIntro ?
-      this::letterIntroAnim({letter, words: exampleWords}) :
-      null,
 
     this::say("owl", "owl/words-like"),
     words.map((word) => [
@@ -50,8 +33,24 @@ function lessonAnim() {
 }
 
 export default class Lesson extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingLetterIntro: props.letterIntro
+    };
+  }
+
+  hideLetterIntro() {
+    this.setState({showingLetterIntro: false});
+  }
+
   render() {
-    const {number, title, activityCount, letter, lessonWords, sounds, arrowLabel, onComplete} = this.props;
+    const {letter, lessonWords, exampleWords} = this.props;
+    const {showingLetterIntro} = this.state;
+
+    if(showingLetterIntro) {
+      return (<LetterIntro {...this.props} words={exampleWords} onComplete={::this.hideLetterIntro}/>);
+    }
 
     return (
       <WordLesson {...this.props} animation={lessonAnim} words={lessonWords}>

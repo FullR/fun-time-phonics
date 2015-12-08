@@ -18,7 +18,7 @@ export default class Lesson extends React.Component {
     super(props);
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: false},
-      choices: ["ax", "Ed", "itch", "otter", "up"].reduce((choices, word) => {
+      choices: ["axe", "Ed", "itch", "otter", "up"].reduce((choices, word) => {
         choices[word] = {word, hidden: true};
         return choices;
       }, {}),
@@ -69,7 +69,7 @@ export default class Lesson extends React.Component {
       this::say("owl", "owl/ah", 100),
       this::say("owl", "owl/sound-in", 100),
       uncenter.bind(this, "owl"),
-      revealChoice.bind(this, "ax"),
+      revealChoice.bind(this, "axe"),
       this::say("owl", "owl/ax", 100),
 
       this::say("owl", "owl/the-letter"),

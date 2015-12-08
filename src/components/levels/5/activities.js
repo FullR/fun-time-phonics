@@ -10,7 +10,7 @@ export default [
   {words: ["mad", "mask", "bad"], correct: ["mad", "bad"], wordsOnly: true},
   {words: ["nine", "run", "sun"], correct: ["run", "sun"], wordsOnly: true},
   {words: ["mop", "cop", "cup"], correct: ["mop", "cop"], wordsOnly: true},
-  {words: ["cap", "ax", "tacks"], correct: ["ax", "tacks"], wordsOnly: true},
+  {words: ["cap", "axe", "tacks"], correct: ["axe", "tacks"], wordsOnly: true},
   {words: ["in", "on", "pin"], correct: ["in", "pin"], wordsOnly: true},
   {words: ["trip", "trap", "flip"], correct: ["trip", "flip"], wordsOnly: true},
   {words: ["shop", "shot", "knot"], correct: ["shot", "knot"], wordsOnly: true},

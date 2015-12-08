@@ -9,6 +9,7 @@ import persists from "decorators/persists";
 import Lesson from "./lesson";
 import Question from "./question";
 import Response from "./response";
+import LetterIntro from "./letter-intro";
 
 import Activity from "components/activity";
 import Feedback from "components/feedback";
@@ -132,7 +133,7 @@ export default (info) => {
     }
 
     render() {
-      const {showingLesson, activityIndex, activitiesComplete} = this.state;
+      const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete} = this.state;
       const Activity = this.getActivity();
 
       if(activitiesComplete) {

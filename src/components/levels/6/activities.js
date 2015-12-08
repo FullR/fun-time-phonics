@@ -6,7 +6,7 @@ export default [
   {words: ["box", "egg", "cat"], correct: "egg", phonics: ["eh", "g"]},
   {words: ["hot", "cut", "up"], correct: "up", phonics: ["uh", "p"], soundsOnly: true},
   {words: ["in", "on", "under"], correct: "in", phonics: ["ih", "n"], soundsOnly: true},
-  {words: ["ice", "ax", "ash"], correct: "ax", phonics: ["ah", "cks"], soundsOnly: true},
+  {words: ["ice", "axe", "ash"], correct: "axe", phonics: ["ah", "cks"], soundsOnly: true},
   {words: ["on", "off", "ox"], correct: "ox", phonics: ["oh", "cks"], soundsOnly: true},
   {words: ["add", "head", "hat"], correct: "add", phonics: ["ah", "d"], soundsOnly: true},
   {words: ["bug", "dog", "rug"], correct: "bug", phonics: ["b", "uh", "g"], soundsOnly: true},

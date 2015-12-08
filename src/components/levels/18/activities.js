@@ -4,7 +4,7 @@ import soundContext from "decorators/sound-context";
 
 export default [
   {words: ["hop", "sit", "hat"], correct: "hop"},                  // 1
-  {words: ["elk", "ox", "ax"], correct: "ox", wordsOnly: true},
+  {words: ["elk", "ox", "axe"], correct: "ox", wordsOnly: true},
   {words: ["rock", "rack", "wreck"], correct: "rock", wordsOnly: true},
   {words: ["duck", "dock", "deck"], correct: "dock", wordsOnly: true},
   {words: ["lock", "lick", "lake"], correct: "lock", wordsOnly: true}, // 5

@@ -6,12 +6,13 @@ require("style/choice.scss");
 export default class Choice extends React.Component {
   static defaultProps = {
     hidden: false,
-    detached: false
+    detached: false,
+    size: "large"
   };
 
   render() {
-    const {hidden, detached, selected, scalable, disabled} = this.props;
-    const className = classNames(this.props.className, "Choice", {
+    const {hidden, detached, selected, scalable, disabled, size} = this.props;
+    const className = classNames(this.props.className, "Choice", `Choice--${size}`, {
       "Choice--hidden": hidden,
       "Choice--detached": detached,
       "Choice--scalable": scalable,

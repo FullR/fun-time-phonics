@@ -3,7 +3,7 @@ import Activity from "./activity";
 import soundContext from "decorators/sound-context";
 
 export default [
-  {words: ["ox", "ax", "oaks"], correct: "ox"},
+  {words: ["ox", "axe", "oaks"], correct: "ox"},
   {words: ["in", "on", "out"], correct: "on", wordsOnly: true},
   {words: ["hop", "up", "hip"], correct: "hop", wordsOnly: true},
   {words: ["ash", "elk", "otter"], correct: "otter", wordsOnly: true},

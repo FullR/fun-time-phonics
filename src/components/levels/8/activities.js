@@ -5,7 +5,7 @@ import soundContext from "decorators/sound-context";
 export default [
   {words: ["egg", "apple", "ill"], correct: "apple"},
   {words: ["add", "ape", "pig"], correct: "add", wordsOnly: true},
-  {words: ["fix", "ox", "ax"], correct: "ax", wordsOnly: true},
+  {words: ["fix", "ox", "axe"], correct: "axe", wordsOnly: true},
   {words: ["mud", "mad", "mitt"], correct: "mad", wordsOnly: true},
   {words: ["hit", "hot", "hat"], correct: "hat", wordsOnly: true},
   {words: ["cap", "cup", "cape"], correct: "cap", wordsOnly: true},

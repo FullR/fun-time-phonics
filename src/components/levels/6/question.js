@@ -27,7 +27,7 @@ export default class Question extends React.Component {
     this.state = {
       phonicSize: "large",
       teacher: {text: "instructions", centered: false, speaking: true},
-      owl: {text: "lesson"},
+      owl: {text: "Lesson"},
       choices: props.words.reduce((choices, word) => {
         choices[word] = {
           word,

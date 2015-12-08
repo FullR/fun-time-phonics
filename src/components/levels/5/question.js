@@ -9,8 +9,8 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
-      owl: {text: "lesson"},
+      teacher: {text: "Instructions", centered: false, speaking: true},
+      owl: {text: "Lesson"},
       selected: [],
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
@@ -42,7 +42,8 @@ export default class Question extends React.Component {
         ...words.map((word) => [
           revealChoice.bind(this, word),
           this::say("teacher", `teacher/${word}`, 300)
-        ])
+        ]),
+        endSpeaking.bind(this, "teacher")
       );
       animations.start("words-only");
     } else {

@@ -10,7 +10,7 @@ export default class Question extends React.Component {
     super(props);
     this.state = {
       teacher: {text: "instructions", centered: false, speaking: true},
-      owl: {text: "lesson"},
+      owl: {text: "Lesson"},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
           word,

@@ -36,7 +36,7 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson {number}: {title}<br/>
+          Lesson {number}:&nbsp; {title}<br/>
           Activity {index + 1} of {activityCount}
         </ActivityTitle>
       </div>

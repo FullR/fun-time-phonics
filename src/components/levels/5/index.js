@@ -48,6 +48,10 @@ export default class Level5 extends React.Component {
     this.saveGlobal({
       lastLevel: "5"
     });
+
+    if(this.state.activitiesComplete) {
+      this.resetActivities({showingLesson: true});
+    }
   }
 
   render() {

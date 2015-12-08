@@ -34,11 +34,11 @@ export default class Activity extends React.Component {
         }
         {ending ?
           <ActivityTitle>
-            Lesson 3: Beginning and <span style={{color: "#F00"}}>Ending</span> Sounds<br/>
+            Lesson 3:&nbsp; Beginning and <span style={{color: "#F00"}}>Ending</span> Sounds<br/>
             Activity {index + 1} of 24
           </ActivityTitle> :
           <ActivityTitle>
-            Lesson 3: <span style={{color: "#00F"}}>Beginning</span> and Ending Sounds<br/>
+            Lesson 3:&nbsp; <span style={{color: "#00F"}}>Beginning</span> and Ending Sounds<br/>
             Activity {index + 1} of 24
           </ActivityTitle>
         }

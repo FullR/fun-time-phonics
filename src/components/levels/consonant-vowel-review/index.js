@@ -87,6 +87,10 @@ export default (info) => {
       this.saveGlobal({
         lastLevel: number.toString()
       });
+
+      if(this.state.activitiesComplete) {
+        this.resetActivities({showingLesson: true});
+      }
     }
 
     reset() {

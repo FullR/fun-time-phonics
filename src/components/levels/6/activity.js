@@ -34,7 +34,7 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson 6: Say the Word<br/>
+          Lesson 6:&nbsp; Say the Word<br/>
           Activity {index + 1} of 15
         </ActivityTitle>
       </div>

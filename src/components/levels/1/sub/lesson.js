@@ -71,7 +71,7 @@ export default class Lesson1Sub extends React.Component {
     return (
       <GameScreen owl={owl} onOwlClick={::this.animate}>
         <LessonTitle>Beginning Sounds</LessonTitle>
-        <LessonTitle.SubTitle>Lesson 1 /{phonic}/</LessonTitle.SubTitle>
+        <LessonTitle.SubTitle>Lesson 1 /{phonic} /</LessonTitle.SubTitle>
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key}>

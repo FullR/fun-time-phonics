@@ -35,7 +35,7 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson 1: Beginning Sounds<br/>
+          Lesson 1:&nbsp; Beginning Sounds<br/>
           Activity {index + 1} of 15
         </ActivityTitle>
       </div>

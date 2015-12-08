@@ -10,7 +10,7 @@ export default class Question extends React.Component {
     super(props);
     const {wordsOnly} = props;
     this.state = {
-      owl: {text: "lesson"},
+      owl: {text: "Lesson"},
       teacher: {
         text: "Instructions",
         speaking: true,

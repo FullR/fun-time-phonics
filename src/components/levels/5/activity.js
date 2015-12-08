@@ -34,7 +34,7 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson 5: Rhyme Time<br/>
+          Lesson 5:&nbsp; Rhyme Time<br/>
           Activity {index + 1} of 19
         </ActivityTitle>
       </div>

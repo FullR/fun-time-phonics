@@ -35,7 +35,7 @@ export default class Activity extends React.Component {
           />
         }
         <ActivityTitle>
-          Lesson 7: Echo the Word<br/>
+          Lesson 7:&nbsp; Echo the Word<br/>
           Activity {index + 1} of 19
         </ActivityTitle>
       </div>

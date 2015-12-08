@@ -1,6 +1,6 @@
 $image: "../../images/replay-button-sprite.png";
-$width: 24px;
-$height: 28px;
+$width: 24px * 1.5;
+$height: 28px * 1.5;
 
 $sprite-width: 48px;
 $sprite-height: 28px;
@@ -9,9 +9,10 @@ $sprite-height: 28px;
   width: $width;
   height: $height;
   background: url($image);
+  background-size: 200% 100%;
 
   &--active {
-    background-position: (-1 * $width) 0;
+    background-position: -100% 0;
   }
 
   &--hidden {

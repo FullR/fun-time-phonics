@@ -29,6 +29,10 @@ export default class Level6 extends React.Component {
     this.saveGlobal({
       lastLevel: "6"
     });
+
+    if(this.state.activitiesComplete) {
+      this.resetActivities();
+    }
   }
 
   reset() {

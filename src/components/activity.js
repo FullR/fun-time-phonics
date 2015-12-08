@@ -16,7 +16,6 @@ export default class Activity extends React.Component {
   }
 
   setAnswer(answer) {
-    console.log("answered", answer);
     this.setState({answer});
   }
 

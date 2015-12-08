@@ -7,10 +7,10 @@ import ActivityTitle from "components/activity-title";
 
 @soundContext({
   applause: "applause",
-  "teacher/ends-with": "teacher/lesson-2/ends-with-the-same-sound-as",
-  "teacher/does-not-end-with": "teacher/lesson-2/does-not-end-with-the-same-sound-as",
+  "teacher/ends-with": "teacher/common/ends-with-the-same-sound-as",
+  "teacher/does-not-end-with": "teacher/common/does-not-end-with-the-same-sound-as",
   "teacher/and": "teacher/common/and",
-  "teacher/touch-the-word": "teacher/lesson-2/touch-the-word-that-ends-with-the-same-sound-as",
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-ends-with-the-same-sound-as",
 })
 export default class extends React.Component {
   constructor(props) {

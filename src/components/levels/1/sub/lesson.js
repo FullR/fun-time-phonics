@@ -6,7 +6,7 @@ import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "hel
 
 @animationContext
 @soundContext({
-  "listen-for": "owl/lesson-1/listen-for-the-new-beginning-sound-in",
+  "listen-for": "owl/common/listen-for-the-new-beginning-sound-in",
   "and": "owl/common/and",
   "say": "owl/common/say",
   "slowly": "owl/common/slowly",

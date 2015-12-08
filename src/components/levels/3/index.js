@@ -10,26 +10,26 @@ import activities from "./activities";
 
 @soundContext({
   applause: "applause",
-  "owl/the-first-sound": "owl/lesson-1/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
-  "owl/the-beginning-sound": "owl/lesson-3/the-beginning-sound-in-the-word",
-  "owl/the-last-sound": "owl/lesson-2/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
-  "owl/the-ending-sound": "owl/lesson-3/the-ending-sound-in-the-word",
+  "owl/the-first-sound": "owl/common/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
+  "owl/the-beginning-sound": "owl/common/the-beginning-sound-in-the-word",
+  "owl/the-last-sound": "owl/common/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
+  "owl/the-ending-sound": "owl/common/the-ending-sound-in-the-word",
   "owl/is": "owl/common/is",
-  "owl/say-the": "owl/lesson-3/say-the-beginning-and-ending-sound-in",
+  "owl/say-the": "owl/common/say-the-beginning-and-ending-sound-in",
   "owl/then-touch": "owl/common/then-touch",
 
   "owl/cat": "owl/words/cat",
   "owl/k": "owl/common/phonics/_k_",
   "owl/t": "owl/common/phonics/_t_",
 
-  "teacher/touch-the-two-words-beginning": "teacher/lesson-3/touch-the-two-words-that-make-the-same-beginning-sound",
-  "teacher/touch-the-two-words-ending": "teacher/lesson-3/touch-the-two-words-that-make-the-same-ending-sound",
-  "teacher/dont-begin": "teacher/lesson-3/do-not-begin-with-the-same-sound",
-  "teacher/begin-with": "teacher/lesson-3/begin-with-the-same-sound",
-  "teacher/dont-end": "teacher/lesson-3/do-not-end-with-the-same-sound",
-  "teacher/end-with": "teacher/lesson-3/end-with-the-same-sound",
+  "teacher/touch-the-two-words-beginning": "teacher/common/touch-the-two-words-that-make-the-same-beginning-sound",
+  "teacher/touch-the-two-words-ending": "teacher/common/touch-the-two-words-that-make-the-same-ending-sound",
+  "teacher/dont-begin": "teacher/common/do-not-begin-with-the-same-sound",
+  "teacher/begin-with": "teacher/common/begin-with-the-same-sound",
+  "teacher/dont-end": "teacher/common/do-not-end-with-the-same-sound",
+  "teacher/end-with": "teacher/common/end-with-the-same-sound",
   "teacher/and": "teacher/common/and",
-  "teacher/now-lets": "teacher/lesson-3/now-lets-listen-for-the-ending-sounds"
+  "teacher/now-lets": "teacher/common/now-lets-listen-for-the-ending-sounds"
 })
 @persists("level-3", true)
 @hasActivities(activities)

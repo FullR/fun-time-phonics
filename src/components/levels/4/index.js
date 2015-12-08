@@ -12,9 +12,9 @@ import Feedback from "./feedback";
   applause: "applause",
 
   "owl/words-like": "owl/common/words-like",
-  "owl/rhyme-because-they-all-have": "owl/lesson-4/rhyme-because-they-all-have-the-same-ending-sound",
+  "owl/rhyme-because-they-all-have": "owl/common/rhyme-because-they-all-have-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
-  "owl/rhyme-because-they-all-end-in-ate": "owl/lesson-4/rhyme-because-they-all-end-in-ate",
+  "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",
   "owl/then-touch": "owl/common/then-touch",
   "owl/say": "owl/common/say",
 
@@ -25,9 +25,9 @@ import Feedback from "./feedback";
   "owl/gate": "owl/words/gate",
   "owl/eight": "owl/words/eight",
 
-  "teacher/touch-the-word": "teacher/lesson-4/touch-the-word-that-rhymes-with",
-  "teacher/rhymes-with": "teacher/lesson-4/rhymes-with",
-  "teacher/does-not-rhyme-with": "teacher/lesson-4/does-not-rhyme-with"
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-rhymes-with",
+  "teacher/rhymes-with": "teacher/common/rhymes-with",
+  "teacher/does-not-rhyme-with": "teacher/common/does-not-rhyme-with"
 })
 @persists("level-4", true)
 @hasActivities(Activities)

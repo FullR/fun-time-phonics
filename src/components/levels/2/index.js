@@ -19,17 +19,17 @@ const activities = [
   "owl/bat": "owl/words/bat",
   "owl/sit": "owl/words/sit",
 
-  "owl/the-last-sound": "owl/lesson-2/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
-  "owl/the-ending-sound": "owl/lesson-2/the-ending-sound-in-the-words",
-  "owl/say-the-words": "owl/lesson-1/say-the-words",
+  "owl/the-last-sound": "owl/common/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
+  "owl/the-ending-sound": "owl/common/the-ending-sound-in-the-words",
+  "owl/say-the-words": "owl/common/say-the-words",
   "owl/is": "owl/common/is",
   "owl/t": "owl/common/phonics/_t_",
   "owl/slowly": "owl/common/slowly",
   "owl/then-touch": "owl/common/then-touch",
 
-  "teacher/touch-the-word": "teacher/lesson-2/touch-the-word-that-ends-with",
-  "teacher/does-not-end-with": "teacher/lesson-2/does-not-end-with",
-  "teacher/ends-with": "teacher/lesson-2/ends-with",
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-ends-with",
+  "teacher/does-not-end-with": "teacher/common/does-not-end-with",
+  "teacher/ends-with": "teacher/common/ends-with",
   "teacher/phonic": "teacher/common/phonics/_t_",
 
   "teacher/cat": "teacher/words/cat",

@@ -62,9 +62,9 @@ export default class SoundFrame extends React.Component {
       <div {...this.props} className={className} onClick={null} disabled={null}>
         <div>
           <Button style={contentStyle} className="Sound-frame__content" onClick={onClick} disabled={disabled} cleared={true}>{this.props.children}</Button>
-          <div className="Sound-frame__button-container">
+          <div className="Sound-frame__button-container" onClick={this.playSound}>
             {playable ?
-              <ReplayButton className="Sound-frame__Replay-button" onClick={this.playSound} active={playing}/> :
+              <ReplayButton className="Sound-frame__Replay-button" active={playing}/> :
               null
             }
           </div>

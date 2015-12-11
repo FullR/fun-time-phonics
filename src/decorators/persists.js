@@ -40,3 +40,7 @@ export default function persists(namespace, autoSave=true) {
     return Component;
   };
 }
+
+persists.save = function save(namespace, source) {
+  storage.set(namespace, Object.assign({}, storage.get(namespace), source));
+};

@@ -1,4 +1,5 @@
-$replay-button-distance: 6.5em;
+$replay-button-distance: 22px;
+$replay-click-height: 80px;
 $border-width: 3px;
 
 .Sound-frame {
@@ -25,12 +26,15 @@ $border-width: 3px;
 
   &__button-container {
     position: absolute;
-    bottom: (-1 * $replay-button-distance);
+    height: $replay-click-height;
+    bottom: -1 * $replay-click-height;
     width: 100%;
     text-align: center;
   }
 
   &__Replay-button {
+    position: relative;
+    top: $replay-button-distance;
     display: inline-block;
   }
 

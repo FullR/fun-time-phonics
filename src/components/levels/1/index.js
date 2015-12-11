@@ -6,11 +6,7 @@ import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
 
-const activities = [
-  require("./activities/1"),
-  require("./activities/2"),
-  require("./activities/3")
-];
+import activities from "./activities";
 
 @soundContext({
   applause: "applause",
@@ -52,6 +48,7 @@ export default class Level1 extends React.Component {
     this.state = this.load({
       activityIndex: 0,
       showingLesson: true,
+      currentAnswer: null,
       score: 0,
       highscore: -1,
       activitiesComplete: false
@@ -59,9 +56,6 @@ export default class Level1 extends React.Component {
   }
 
   componentDidMount() {
-    if(this.state.activitiesComplete) {
-      this.resetActivities({showingLesson: true});
-    }
     this.saveGlobal({
       lastLevel: "1"
     });
@@ -74,13 +68,21 @@ export default class Level1 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, currentAnswer, activityIndex, activitiesComplete} = this.state;
     const Activity = this.getActivity();
 
     if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+      return (
+        <Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          onOwlClick={::this.showLesson}
+        />
+      );
     } else {
       return null;
     }

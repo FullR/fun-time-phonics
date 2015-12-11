@@ -25,6 +25,7 @@ export default class Lesson extends React.Component {
       this::hideChoices,
       center.bind(this, "owl"),
       this::say("owl", "owl/the-last-sound"),
+      500,
       this::say("owl", "owl/the-ending-sound", 500),
       300,
       uncenter.bind(this, "owl"),

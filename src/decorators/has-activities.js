@@ -13,14 +13,20 @@ export default function hasActivities(activityComponents) {
           activitiesComplete,
           highscore: newHighscore,
           score: newScore,
-          activityIndex: (activityIndex || 0) + 1
+          activityIndex: (activityIndex || 0) + 1,
+          currentAnswer: null
         });
+      },
+
+      setCurrentAnswer(currentAnswer) {
+        this.setState({currentAnswer});
       },
 
       resetActivities(stateObj) {
         this.setState({
           ...stateObj,
           activitiesComplete: false,
+          currentAnswer: null,
           score: 0,
           activityIndex: 0
         });

@@ -1,5 +1,5 @@
 @import "./reset.scss";
-@import "./fonts/school-text.scss";
+//@import "./fonts/school-text.scss";
 @import "./susy.scss";
 
 html {
@@ -12,7 +12,8 @@ html, body {
 }
 
 body {
-  @include school-text;
+  //@include school-text;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 * {
@@ -27,7 +28,7 @@ body {
 }
 
 *, *:before, *:after {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 #game-container {

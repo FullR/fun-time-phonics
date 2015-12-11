@@ -6,11 +6,8 @@ import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
+import activities from "./activities";
 
-const activities = [
-  require("./activities/1"),
-  require("./activities/2")
-];
 const exampleWords = ["sit", "sister"];
 const phonic = "s";
 
@@ -40,7 +37,7 @@ export default class Level1L extends React.Component {
   }
 
   render() {
-    const {activitiesComplete, showingLesson, activityIndex} = this.state;
+    const {activitiesComplete, showingLesson, activityIndex, currentAnswer} = this.state;
     const Activity = this.getActivity();
     if(activitiesComplete) {
       return (<LevelFeedback onComplete={() => hasher.setHash("level/2")}/>);
@@ -49,7 +46,16 @@ export default class Level1L extends React.Component {
     if(showingLesson) {
       return (<Lesson1Sub {...this.props} onComplete={::this.hideLesson} words={exampleWords} phonic={phonic}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex + 13} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
+      return (
+        <Activity {...this.props}
+          index={activityIndex + 13}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          exampleWords={exampleWords}
+          onOwlClick={::this.showLesson}
+        />
+      );
     } else {
       return null;
     }

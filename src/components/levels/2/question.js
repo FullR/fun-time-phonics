@@ -38,13 +38,13 @@ export default class Question extends React.Component {
       this::say("teacher", "teacher/phonic"),
       600,
       uncenter.bind(this, "teacher"),
-      revealChoice.bind(this, 0),
+      revealChoice.bind(this, words[0]),
       this::say("teacher", `teacher/${words[0]}`),
       400,
-      revealChoice.bind(this, 1),
+      revealChoice.bind(this, words[1]),
       this::say("teacher", `teacher/${words[1]}`),
       400,
-      revealChoice.bind(this, 2),
+      revealChoice.bind(this, words[2]),
       this::say("teacher", `teacher/${words[2]}`),
       endSpeaking.bind(this, "teacher")
     );
@@ -52,13 +52,13 @@ export default class Question extends React.Component {
     animations.create("words-only",
       this::hideChoices,
       uncenter.bind(this, "teacher"),
-      revealChoice.bind(this, 0),
+      revealChoice.bind(this, words[0]),
       this::say("teacher", `teacher/${words[0]}`),
       400,
-      revealChoice.bind(this, 1),
+      revealChoice.bind(this, words[1]),
       this::say("teacher", `teacher/${words[1]}`),
       400,
-      revealChoice.bind(this, 2),
+      revealChoice.bind(this, words[2]),
       this::say("teacher", `teacher/${words[2]}`),
       endSpeaking.bind(this, "teacher")
     );

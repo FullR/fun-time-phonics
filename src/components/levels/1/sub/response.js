@@ -15,7 +15,9 @@ export default class Level1SubResponse extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, word, correct, exampleWords} = this.props;
+    const {animations, answer, correct, exampleWords} = this.props;
+    const {word} = answer;
+
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${word}`),
@@ -54,8 +56,9 @@ export default class Level1SubResponse extends React.Component {
   }
 
   render() {
+    const {answer} = this.props;
     return (
-      <SingleWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
+      <SingleWordResponse {...this.props} {...this.state} word={answer.word} onTeacherClick={::this.animate}/>
     );
   }
 }

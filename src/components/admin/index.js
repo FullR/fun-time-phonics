@@ -27,6 +27,33 @@ function getSection(levelId) {
   }
 }
 
+function getLevel(levelId) {
+  try {
+    return require("components/levels/" + levelId + "/index");
+  } catch(error) {
+    try {
+      return require("components/levels/" + levelId);
+    } catch(error) {
+      return null;
+    }
+  }
+}
+
+function getLevelData(levelId) {
+  return storage.get(`level-${levelId}`) || {highscore: -1, showingLesson: true}
+}
+
+function resetLevel(levelId) {
+  const namespace = `level-${levelId}`;
+  const state = Object.assign({}, storage.get(namespace), {
+    activityIndex: 0,
+    showingLesson: true,
+    score: 0,
+    activitiesComplete: false
+  });
+  storage.set(namespace, state);
+}
+
 export default class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -64,18 +91,22 @@ export default class Admin extends React.Component {
   }
 
   selectLevel(lessonId) {
-    log(`Selected lesson: ${lessonId}`);
     this.setState({selectedLevel: lessonId});
   }
 
   showLevel() {
-    hasher.setHash(`level/${this.state.selectedLevel}`);
+    const {selectedLevel} = this.state;
+    const {activitiesComplete} = getLevelData(selectedLevel);
+    if(activitiesComplete) {
+      resetLevel(selectedLevel);
+    }
+    hasher.setHash(`level/${selectedLevel}`);
   }
 
   render() {
     const {authenticated, sectionIndex, selectedLevel} = this.state;
     const Section = sections[sectionIndex] || sections[0];
-    const lessonData = storage.get(`level-${selectedLevel}`) || {highscore: -1, showingLesson: true};
+    const lessonData = getLevelData(selectedLevel);
     let arrowText;
 
     if(!authenticated) {

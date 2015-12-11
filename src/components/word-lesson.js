@@ -18,27 +18,36 @@ export default class Lesson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      owl: Object.assign({text: "Lesson", speaking: true, animating: true, centered: false}, props.owl),
+      owl: Object.assign({
+        text: "Lesson",
+        speaking: true,
+        animating: true,
+        centered: false
+      }, props.owl),
       choices: props.words.reduce((choices, word) => {
-        choices[word] = {word, hidden: true};
+        choices[word] = {
+          word,
+          hidden: true
+        };
         return choices;
       }, {})
     };
   }
 
   componentDidMount() {
-    const {animation, animations, letterIntro, letter, exampleWords} = this.props;
+    const {animation, autoplayAnimation, animations, letterIntro, letter, exampleWords} = this.props;
     const words = Object.keys(this.state.choices);
 
-    animations.create("lesson", animation ? this::animation(this.props, this.state) : null);
+    animations.create("lesson", animation ?
+      this::animation(this.props, this.state) :
+      null
+    );
 
     this.animate();
   }
 
   animate() {
-    if(this.props.animation) {
-      this.props.animations.start("lesson");
-    }
+    this.props.animations.start("lesson");
   }
 
   render() {

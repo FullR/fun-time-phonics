@@ -5,12 +5,7 @@ import persists from "decorators/persists";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
-
-const activities = [
-  require("./activities/1"),
-  require("./activities/2"),
-  require("./activities/3")
-];
+import activities from "./activities";
 
 @soundContext({
   applause: "applause",
@@ -60,9 +55,6 @@ export default class Level2 extends React.Component {
   }
 
   componentDidMount() {
-    if(this.state.activitiesComplete) {
-      this.resetActivities({showingLesson: true});
-    }
     this.saveGlobal({
       lastLevel: "2"
     });

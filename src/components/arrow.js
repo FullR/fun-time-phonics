@@ -4,12 +4,16 @@ import classNames from "util/class-names";
 require("style/arrow.scss");
 
 export default class Arrow extends React.Component {
+  static defaultProps = {
+    children: "Next"
+  };
+
   render() {
     const {size, color, reversed} = this.props;
     const className = classNames(
-      this.props.className, 
-      "Arrow", 
-      size ? `Arrow--size-${size}` : null, 
+      this.props.className,
+      "Arrow",
+      size ? `Arrow--size-${size}` : null,
       color ? `Arrow--color-${color}` : null,
       reversed ? "Arrow--reversed" : null
     );

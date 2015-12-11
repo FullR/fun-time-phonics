@@ -5,11 +5,8 @@ import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
+import activities from "./activities";
 
-const activities = [
-  require("./activities/1"),
-  require("./activities/2")
-];
 const exampleWords = ["nap", "neck"];
 const phonic = "n";
 
@@ -35,9 +32,6 @@ export default class Level1L extends React.Component {
   }
 
   componentDidMount() {
-    if(this.state.activitiesComplete) {
-      this.resetActivities({showingLesson: true});
-    }
     this.saveGlobal({lastLevel: "1-n"});
   }
 
@@ -48,12 +42,21 @@ export default class Level1L extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex} = this.state;
+    const {showingLesson, activityIndex, currentAnswer} = this.state;
     const Activity = this.getActivity();
     if(showingLesson) {
       return (<Lesson1Sub {...this.props} onComplete={::this.hideLesson} words={exampleWords} phonic={phonic}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex + 7} onComplete={::this.completeActivity} exampleWords={exampleWords} onOwlClick={::this.showLesson}/>)
+      return (
+        <Activity {...this.props}
+          index={activityIndex + 7}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          exampleWords={exampleWords}
+          onOwlClick={::this.showLesson}
+        />
+      );
     } else {
       return null;
     }

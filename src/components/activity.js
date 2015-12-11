@@ -10,12 +10,17 @@ export default class Activity extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      answer: null
+      answer: props.answer || null
     };
   }
 
   setAnswer(answer) {
+    const {onAnswer} = this.props;
+    if(onAnswer) {
+      onAnswer(answer);
+    }
     this.setState({answer});
   }
 

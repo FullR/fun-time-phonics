@@ -18,7 +18,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
+      teacher: {text: "Instructions", centered: false, speaking: true},
       owl: {text: "Lesson"}
     };
   }

@@ -33,7 +33,7 @@ const firstHalf = [
         <Activity {...this.props} {...activityProps}
           number={20}
           title="Short Vowel Letter Sound Review"
-          activityCount={25}
+          activityCount={30}
           checkAnswer={checkAnswer}
           Question={Question1}
           Response={Response1}
@@ -73,7 +73,7 @@ const secondHalf = [
         <Activity {...this.props} {...activityProps}
           number={20}
           title="Short Vowel Letter Sound Review"
-          activityCount={25}
+          activityCount={30}
           Question={Question2}
           Response={Response2}
           checkAnswer={checkAnswer}

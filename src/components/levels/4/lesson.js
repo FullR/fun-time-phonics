@@ -17,9 +17,9 @@ export default class Lesson extends React.Component {
     this.state = {
       owl: {text: "Lesson", speaking: true, animating: true, centered: true},
       choices: {
-        "red": {word: "red", hidden: true, detached: false},
-        "head": {word: "head", hidden: true, detached: false},
-        "bed": {word: "bed", hidden: true, detached: false},
+        "red": {word: "red", hidden: true, detached: false, playable: false},
+        "head": {word: "head", hidden: true, detached: false, playable: false},
+        "bed": {word: "bed", hidden: true, detached: false, playable: false},
         "wait": {word: "wait", hidden: true, detached: true},
         "gate": {word: "gate", hidden: true, detached: true},
         "eight": {word: "eight", hidden: true, detached: true}

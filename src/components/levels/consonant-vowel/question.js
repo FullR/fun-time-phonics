@@ -17,7 +17,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: !props.wordsOnly, speaking: true},
+      teacher: {text: "Instructions", centered: !props.wordsOnly, speaking: true},
       owl: {text: "Lesson"},
       dragTextHidden: !props.wordsOnly,
       choices: props.words.reduce((choices, word, i) => {

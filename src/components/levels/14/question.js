@@ -9,7 +9,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: true, speaking: true},
+      teacher: {text: "Instructions", centered: true, speaking: true},
       owl: {text: "Lesson"},
       replaceWordHidden: true,
       choices: props.words.reduce((choices, word, i) => {

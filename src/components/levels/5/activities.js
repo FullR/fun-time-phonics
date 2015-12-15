@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -22,18 +24,29 @@ export default [
   {words: ["square", "jar", "bear"], correct: ["square", "bear"], wordsOnly: true},
   {words: ["string", "strong", "king"], correct: ["string", "king"], wordsOnly: true},
   {words: ["shark", "sharp", "park"], correct: ["shark", "park"], wordsOnly: true}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {});
 
+  const checkAnswer = (selected, correct) => correct.every((w) => selected.includes(w));
+
   @soundContext(sounds)
-  class Level5Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={5}
+          activityCount={activities.length}
+          title="Rhyme Time"
+          checkAnswer={checkAnswer}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 
-  return Level5Activity;
+  return ActivityInstance;
 });

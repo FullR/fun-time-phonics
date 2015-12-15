@@ -96,7 +96,7 @@ export default (info) => {
     }
 
     render() {
-      const {showingLesson, activityIndex, activitiesComplete} = this.state;
+      const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
       const Activity = this.getActivity();
 
       if(activitiesComplete) {
@@ -110,7 +110,15 @@ export default (info) => {
           />
       );
       } else if(Activity) {
-        return (<Activity {...this.props} {...info} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+        return (
+          <Activity {...this.props} {...info}
+            index={activityIndex}
+            answer={currentAnswer}
+            onAnswer={::this.setCurrentAnswer}
+            onComplete={::this.completeActivity}
+            onOwlClick={::this.showLesson}
+          />
+        );
       } else {
         return null;
       }

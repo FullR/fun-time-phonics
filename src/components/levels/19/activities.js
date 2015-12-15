@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -22,7 +24,7 @@ export default [
   {words: ["batter", "boater", "butter"], correct: "butter", wordsOnly: true},
   {words: ["bench", "punch", "pitch"], correct: "punch", wordsOnly: true},
   {words: ["puddle", "paddle", "poodle"], correct: "puddle", wordsOnly: true}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
@@ -31,7 +33,15 @@ export default [
   @soundContext(sounds)
   class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          title="Short Sounds - The Letter 'u'"
+          number={19}
+          activityCount={activities.length}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 

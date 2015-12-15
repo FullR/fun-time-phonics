@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "components/levels/8/question";
+import Response from "components/levels/8/response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -23,18 +25,26 @@ export default [
   {words: ["mud", "mad", "mitt"], correct: "mud", wordsOnly: true},
   {words: ["bench", "punch", "pitch"], correct: "punch", wordsOnly: true},
   {words: ["duck", "dock", "deck"], correct: "duck", wordsOnly: true}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {});
 
   @soundContext(sounds)
-  class Level12Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={12}
+          activityCount={activities.length}
+          title="Find the Sound - Short u"
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 
-  return Level12Activity;
+  return ActivityInstance;
 });

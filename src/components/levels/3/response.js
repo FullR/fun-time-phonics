@@ -15,19 +15,19 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, words, correct, ending} = this.props;
+    const {animations, answer, correct, ending} = this.props;
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", `teacher/${words[0]}`),
+      this::say("teacher", `teacher/${answer[0]}`),
       this::say("teacher", "teacher/and", 300),
-      this::say("teacher", `teacher/${words[1]}`, 300),
+      this::say("teacher", `teacher/${answer[1]}`, 300),
       this::say("teacher", ending ? "teacher/end-with" : "teacher/begin-with", 300)
     );
 
     animations.create("incorrect",
-      this::say("teacher", `teacher/${words[0]}`),
+      this::say("teacher", `teacher/${answer[0]}`),
       this::say("teacher", "teacher/and", 300),
-      this::say("teacher", `teacher/${words[1]}`, 300),
+      this::say("teacher", `teacher/${answer[1]}`, 300),
       this::say("teacher", ending ? "teacher/dont-end" : "teacher/dont-begin", 300)
     );
 

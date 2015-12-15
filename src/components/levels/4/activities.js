@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -23,18 +25,26 @@ export default [
   {words: ["pitch", "wrench", "punch"], rhymeWord: "bench", correct: "wrench"},
   {words: ["bucket", "duck", "trunk"], rhymeWord: "truck", correct: "duck"},
   {words: ["stump", "camp", "plant"], rhymeWord: "stamp", correct: "camp"}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {"teacher/rhyme-word": `teacher/words/${activityProps.rhymeWord}`});
 
   @soundContext(sounds)
-  class Level4Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={4}
+          activityCount={activities.length}
+          title="Rhyme Match"
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 
-  return Level4Activity;
+  return ActivityInstance;
 });

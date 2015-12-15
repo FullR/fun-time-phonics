@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "components/levels/8/question";
+import Response from "components/levels/8/response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -30,11 +32,19 @@ export default [
   }, {});
 
   @soundContext(sounds)
-  class Level9Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={9}
+          title="Find the Sound - Short e"
+          activityCount={20}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 
-  return Level9Activity;
+  return ActivityInstance;
 });

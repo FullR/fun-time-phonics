@@ -1,6 +1,9 @@
 import React from "react";
-import Activity1 from "./activity-1";
-import Activity2 from "./activity-2";
+import Activity from "components/activity";
+import Question1 from "./question-1";
+import Question2 from "./question-2";
+import Response1 from "./response-1";
+import Response2 from "./response-2";
 import soundContext from "decorators/sound-context";
 
 const firstHalf = [
@@ -25,7 +28,17 @@ const firstHalf = [
   })
   class ActivityInstance extends React.Component {
     render() {
-      return (<Activity1 {...this.props} {...activityProps}/>);
+      const checkAnswer = ({letter}, correct) => letter === correct;
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={20}
+          title="Short Vowel Letter Sound Review"
+          activityCount={25}
+          checkAnswer={checkAnswer}
+          Question={Question1}
+          Response={Response1}
+        />
+      );
     }
   }
 
@@ -55,7 +68,17 @@ const secondHalf = [
   }, {}))
   class ActivityInstance extends React.Component {
     render() {
-      return (<Activity2 {...this.props} {...activityProps}/>);
+      const checkAnswer = ({word}, correct) => word === correct;
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={20}
+          title="Short Vowel Letter Sound Review"
+          activityCount={25}
+          Question={Question2}
+          Response={Response2}
+          checkAnswer={checkAnswer}
+        />
+      );
     }
   }
 

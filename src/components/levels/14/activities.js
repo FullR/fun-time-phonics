@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 // "Replace the {phonic} in {replaceWord} with {replacePhonic}, what is the new word"
@@ -20,7 +22,7 @@ export default [
   {words: ["truck", "trick", "trunk"], replaceWord: "track", replacePhonic: "ah", phonic: "uh", correct: "truck"},
   {words: ["fish", "fast", "fat"], replaceWord: "fist", replacePhonic: "ih", phonic: "ah", correct: "fast"},
   {words: ["batter", "boater", "battle"], replaceWord: "butter", replacePhonic: "uh", phonic: "ah", correct: "batter"}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
@@ -31,7 +33,15 @@ export default [
   @soundContext(sounds)
   class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={14}
+          activityCount={activities.length}
+          title="Short Sounds - Forming New Words"
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 

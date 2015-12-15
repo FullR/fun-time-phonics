@@ -14,7 +14,9 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, word, correct} = this.props;
+    const {animations, answer, correct} = this.props;
+    const {word} = answer;
+
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", "teacher/sounded-parts"),

@@ -44,13 +44,20 @@ export default class Level6 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
       return (<Feedback {...this.props} onBack={::this.reset}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity}/>);
+      return (
+        <Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+        />
+      );
     } else {
       return null;
     }

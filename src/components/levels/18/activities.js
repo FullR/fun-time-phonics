@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -31,7 +33,15 @@ export default [
   @soundContext(sounds)
   class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          title="Short Sounds - The Letter 'o'"
+          number={18}
+          activityCount={activities.length}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 

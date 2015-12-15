@@ -57,15 +57,15 @@ export default class Question extends React.Component {
 
   select(choice) {
     const {selected} = this.state;
-    if(selected.indexOf(choice) === -1) {
-      if(selected.length < 2) {
-        this.setState({
-          selected: selected.concat(choice)
-        });
-      }
+    const {word} = choice;
+
+    if(selected.includes(word)) {
+      this.setState({
+        selected: selected.filter((other) => other !== word)
+      });
     } else {
       this.setState({
-        selected: selected.filter((other) => other !== choice)
+        selected: selected.concat(word)
       });
     }
   }
@@ -85,7 +85,12 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(choice)} highlighted={selected.indexOf(choice) !== -1}/>
+              <WordFrame
+                word={choice.word}
+                sound={sounds[`teacher/${choice.word}`]}
+                onClick={() => this.select(choice)}
+                highlighted={selected.includes(choice.word)}
+              />
             </Choice>
           )}
         </Belt>

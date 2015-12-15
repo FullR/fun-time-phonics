@@ -32,8 +32,6 @@ export default class Question extends React.Component {
       ])
     ];
 
-    console.log(`Replace the ${replacePhonic} in ${replaceWord} with ${phonic}.`);
-
     animations.create("instructions",
       this.setState.bind(this, {replaceWordHidden: true}),
       this::hideChoices,
@@ -74,7 +72,7 @@ export default class Question extends React.Component {
         <Belt bottom="15%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

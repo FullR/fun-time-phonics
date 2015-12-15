@@ -9,7 +9,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "instructions", centered: false, speaking: true},
+      teacher: {text: "Instructions", centered: false, speaking: true},
       owl: {text: "Lesson"},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
@@ -57,7 +57,7 @@ export default class Question extends React.Component {
         <Belt bottom="15%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

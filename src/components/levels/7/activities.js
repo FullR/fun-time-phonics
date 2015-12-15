@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Activity from "components/activity";
+import Question from "./question";
+import Response from "./response";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -22,7 +24,7 @@ export default [
   {words: ["stick", "stack", "shack"], correct: "stack", phonics: ["s", "t", "aah", "k"], wordsOnly: true},
   {words: ["truck", "trick", "trunk"], correct: "truck", phonics: ["t", "r", "uuh", "k"], wordsOnly: true},
   {words: ["spin", "spoon", "sing"], correct: "spin", phonics: ["s", "p", "iih", "n"], wordsOnly: true}
-].map((activityProps, i) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
@@ -33,7 +35,15 @@ export default [
   @soundContext(sounds)
   class Level7Activity extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps} namespace={`level-7-act-${i}`}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={7}
+          title="Echo the Word"
+          activityCount={activities.length}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 

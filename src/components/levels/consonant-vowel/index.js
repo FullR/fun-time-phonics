@@ -121,10 +121,6 @@ export default (info) => {
       this.saveGlobal({
         lastLevel: number.toString()
       });
-
-      if(this.state.activitiesComplete) {
-        this.resetActivities({showingLesson: true});
-      }
     }
 
     reset() {
@@ -137,7 +133,7 @@ export default (info) => {
     }
 
     render() {
-      const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete} = this.state;
+      const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
       const Activity = this.getActivity();
 
       if(activitiesComplete) {
@@ -145,7 +141,15 @@ export default (info) => {
       } else if(showingLesson) {
         return (<Lesson {...this.props} {...info} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
       } else if(Activity) {
-        return (<Activity {...this.props} {...info} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+        return (
+          <Activity {...this.props} {...info}
+            index={activityIndex}
+            answer={currentAnswer}
+            onAnswer={::this.setCurrentAnswer}
+            onComplete={::this.completeActivity}
+            onOwlClick={::this.showLesson}
+          />
+        );
       } else {
         return null;
       }

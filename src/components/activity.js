@@ -8,25 +8,15 @@ export default class Activity extends React.Component {
     }
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      answer: props.answer || null
-    };
-  }
-
-  setAnswer(answer) {
+  onAnswer(answer) {
     const {onAnswer} = this.props;
     if(onAnswer) {
       onAnswer(answer);
     }
-    this.setState({answer});
   }
 
   render() {
-    const {answer} = this.state;
-    const {Question, Response, checkAnswer, title, number, activityCount, index, correct, onComplete} = this.props;
+    const {answer, Question, Response, checkAnswer, title, number, activityCount, index, correct, onComplete} = this.props;
     const isCorrect = answer && checkAnswer(answer, correct);
 
     if(!Question) throw new Error("You must pass a Question component to Activity");
@@ -34,14 +24,14 @@ export default class Activity extends React.Component {
 
     return (
       <div>
-        {answer === null ?
-          <Question {...this.props}
-            onAnswer={::this.setAnswer}
-          /> :
+        {answer ?
           <Response {...this.props}
             correct={isCorrect}
             answer={answer}
             onComplete={onComplete}
+          /> :
+          <Question {...this.props}
+            onAnswer={::this.onAnswer}
           />
         }
         <ActivityTitle>

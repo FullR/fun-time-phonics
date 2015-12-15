@@ -60,7 +60,7 @@ export default class Level4 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -68,7 +68,15 @@ export default class Level4 extends React.Component {
     } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+      return (
+        <Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          onOwlClick={::this.showLesson}
+        />
+      );
     } else {
       return null;
     }

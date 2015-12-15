@@ -14,7 +14,9 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, word, letter, correct} = this.props;
+    const {animations, answer, letter, correct} = this.props;
+    const {word} = answer;
+
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${word}`),
@@ -31,7 +33,7 @@ export default class Response extends React.Component {
       this::say("teacher", "teacher/sound-in"),
       this::say("teacher", `teacher/${word}`)
     );
-  
+
     this.animate();
   }
 
@@ -45,8 +47,9 @@ export default class Response extends React.Component {
   }
 
   render() {
+    const {word} = this.props.answer;
     return (
-      <SingleWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
+      <SingleWordResponse {...this.props} {...this.state} word={word} onTeacherClick={::this.animate}/>
     );
   }
 }

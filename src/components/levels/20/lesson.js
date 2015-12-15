@@ -70,7 +70,7 @@ export default class Lesson extends React.Component {
       this::say("owl", "owl/sound-in", 100),
       uncenter.bind(this, "owl"),
       revealChoice.bind(this, "axe"),
-      this::say("owl", "owl/ax", 100),
+      this::say("owl", "owl/axe", 100),
 
       this::say("owl", "owl/the-letter"),
       100,

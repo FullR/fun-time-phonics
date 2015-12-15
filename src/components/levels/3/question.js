@@ -17,21 +17,17 @@ export default class Question extends React.Component {
         centered: !wordsOnly,
         animating: false
       },
+      selected: [],
       choices: props.words.reduce((choices, word, i) => {
         const id = i.toString();
         choices[id] = {
           id,
           word,
-          hidden: true,
-          selected: false
+          hidden: true
         };
         return choices;
       }, {})
     };
-  }
-
-  getSelectedChoices() {
-    return filter(this.state.choices, (choice) => choice.selected);
   }
 
   componentDidMount() {
@@ -83,18 +79,22 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  select(choiceId) {
-    this.setState({
-      choices: merge({}, this.state.choices, {
-        [choiceId]: {
-          selected: !this.state.choices[choiceId].selected
-        }
-      })
-    });
+  select(choice) {
+    const {selected} = this.state;
+    const {word} = choice;
+    let newSelected;
+
+    if(selected.includes(word)) {
+      newSelected = selected.filter((w) => w !== word);
+    } else {
+      newSelected = selected.concat(word);
+    }
+
+    this.setState({selected: newSelected});
   }
 
   componentDidUpdate() {
-    const selected = this.getSelectedChoices();
+    const {selected} = this.state;
     const {onAnswer} = this.props;
     if(onAnswer && selected.length > 1) {
       onAnswer(selected);
@@ -102,7 +102,7 @@ export default class Question extends React.Component {
   }
 
   render() {
-    const {owl, teacher, choices} = this.state;
+    const {owl, teacher, choices, selected} = this.state;
     const {words, onAnswer, sounds, animations} = this.props;
 
     return (
@@ -110,7 +110,7 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, i) =>
             <Choice {...choice} key={i}>
-              <WordFrame word={choice.word} highlighted={choice.selected} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(i)}/>
+              <WordFrame word={choice.word} highlighted={selected.includes(choice.word)} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(choice)}/>
             </Choice>
           )}
         </Belt>

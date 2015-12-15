@@ -51,6 +51,7 @@ export default class Level1L extends React.Component {
         <Activity {...this.props}
           index={activityIndex + 5}
           answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
           exampleWords={exampleWords}
           onOwlClick={::this.showLesson}

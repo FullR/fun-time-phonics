@@ -64,7 +64,7 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(choice)}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

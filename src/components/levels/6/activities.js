@@ -1,5 +1,7 @@
 import React from "react";
-import Activity from "./activity";
+import Question from "./question";
+import Response from "./response";
+import Activity from "components/activity";
 import soundContext from "decorators/sound-context";
 
 export default [
@@ -18,7 +20,7 @@ export default [
   {words: ["duck", "dock", "deck"], correct: "duck", phonics: ["d", "uh", "k"], soundsOnly: true},
   {words: ["chop", "ship", "shop"], correct: "shop", phonics: ["sh", "oh", "p"], soundsOnly: true},
   {words: ["itch", "inch", "bench"], correct: "inch", phonics: ["ih", "n", "ch"], soundsOnly: true}
-].map((activityProps) => {
+].map((activityProps, i, activities) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
@@ -27,11 +29,19 @@ export default [
   });
 
   @soundContext(sounds)
-  class Level6Activity extends React.Component {
+  class ActivityInstance extends React.Component {
     render() {
-      return <Activity {...this.props} {...activityProps}/>
+      return (
+        <Activity {...this.props} {...activityProps}
+          number={6}
+          title="Say the Word"
+          activityCount={activities.length}
+          Question={Question}
+          Response={Response}
+        />
+      );
     }
   }
 
-  return Level6Activity;
+  return ActivityInstance;
 });

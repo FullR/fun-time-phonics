@@ -5,7 +5,7 @@ import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
 import Lesson from "./lesson";
-import Activities from "./activities";
+import activities from "./activities";
 import Feedback from "./feedback";
 import {number, letter, phonic, lessonWords} from "./info";
 
@@ -43,7 +43,7 @@ import {number, letter, phonic, lessonWords} from "./info";
   "teacher/that-is-not-the-letter": "teacher/lesson-15/that-is-not-the-letter"
 })
 @persists(`level-${number}`, true)
-@hasActivities(Activities)
+@hasActivities(activities)
 @hasLesson
 export default class Level extends React.Component {
   constructor(props) {
@@ -53,7 +53,8 @@ export default class Level extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

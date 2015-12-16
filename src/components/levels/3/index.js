@@ -42,7 +42,8 @@ export default class Level3 extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

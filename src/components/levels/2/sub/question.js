@@ -90,7 +90,7 @@ export default class Lesson2SubQuestion extends React.Component {
         <Belt>
           {map(choices, (choice, i) =>
             <Choice {...choice} key={i}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(parseInt(i))}/>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

@@ -11,6 +11,7 @@ export default function hasActivities(activityComponents) {
 
         this.setState({
           activitiesComplete,
+          total: activityCount,
           highscore: newHighscore,
           score: newScore,
           activityIndex: (activityIndex || 0) + 1,

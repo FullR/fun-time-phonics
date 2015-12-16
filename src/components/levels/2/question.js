@@ -18,7 +18,7 @@ export default class Question extends React.Component {
         animating: false
       },
       choices: props.words.reduce((choices, word, i) => {
-        choices[i.toString()] = {
+        choices[word] = {
           word,
           hidden: true
         };
@@ -80,9 +80,9 @@ export default class Question extends React.Component {
     return (
       <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>
-          {map(choices, (choice, i) =>
-            <Choice {...choice} key={i}>
-              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer(parseInt(i))}/>
+          {map(choices, (choice, key) =>
+            <Choice {...choice} key={key}>
+              <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}
         </Belt>

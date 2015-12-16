@@ -103,7 +103,7 @@ export default (info) => {
       "teacher/sound-in": "teacher/common/sound-in"
   })
   @persists(`level-${number}`, true)
-  @hasActivities(Activities)
+  @hasActivities(activities)
   @hasLesson
   class Level extends React.Component {
     constructor(props) {
@@ -113,7 +113,8 @@ export default (info) => {
         showingLesson: true,
         score: 0,
         highscore: -1,
-        activitiesComplete: false
+        activitiesComplete: false,
+        total: activities.length
       });
     }
 

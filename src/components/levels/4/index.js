@@ -5,14 +5,14 @@ import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
 import Lesson from "./lesson";
-import Activities from "./activities";
+import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
   applause: "applause",
 
   "owl/words-like": "owl/common/words-like",
-  "owl/rhyme-because-they-all-have": "owl/common/rhyme-because-they-all-have-the-same-ending-sound",
+  "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
   "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",
   "owl/then-touch": "owl/common/then-touch",
@@ -30,7 +30,7 @@ import Feedback from "./feedback";
   "teacher/does-not-rhyme-with": "teacher/common/does-not-rhyme-with"
 })
 @persists("level-4", true)
-@hasActivities(Activities)
+@hasActivities(activities)
 @hasLesson
 export default class Level4 extends React.Component {
   constructor(props) {
@@ -40,7 +40,8 @@ export default class Level4 extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

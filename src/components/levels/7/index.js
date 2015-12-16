@@ -4,7 +4,7 @@ import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
-import Activities from "./activities";
+import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
@@ -13,7 +13,7 @@ import Feedback from "./feedback";
   "teacher/does-not-make": "teacher/common/does-not-make"
 })
 @persists("level-7", true)
-@hasActivities(Activities)
+@hasActivities(activities)
 export default class Level7 extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,8 @@ export default class Level7 extends React.Component {
       activityIndex: 0,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

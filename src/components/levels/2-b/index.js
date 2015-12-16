@@ -1,5 +1,4 @@
 import React from "react";
-import hasher from "hasher";
 import Lesson2Sub from "components/levels/2/sub/lesson";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
@@ -28,7 +27,8 @@ export default class extends React.Component {
       activityIndex: 0,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 
@@ -39,6 +39,7 @@ export default class extends React.Component {
   render() {
     const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
     const Activity = this.getActivity();
+
     if(activitiesComplete) {
       return (<Feedback {...this.props}/>);
     } else if(showingLesson) {

@@ -5,7 +5,7 @@ import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
 import Lesson from "./lesson";
-import Activities from "./activities";
+import activities from "./activities";
 import Feedback from "./feedback";
 
 const phonic = "ah";
@@ -31,7 +31,7 @@ const phonic = "ah";
   "teacher/sound": "teacher/common/sound"
 })
 @persists("level-8", true)
-@hasActivities(Activities)
+@hasActivities(activities)
 @hasLesson
 export default class Level8 extends React.Component {
   constructor(props) {
@@ -41,7 +41,8 @@ export default class Level8 extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

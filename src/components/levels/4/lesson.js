@@ -33,9 +33,9 @@ export default class Lesson extends React.Component {
       detachChoices.bind(this, "wait", "gate", "eight"),
       attachChoices.bind(this, "red", "head", "bed"),
 
-      this::say("owl", "owl/words-like", 300),
+      this::say("owl", "owl/words-like"),
+      200,
       uncenter.bind(this, "owl"),
-
       attachChoice.bind(this, "red"),
       revealChoice.bind(this, "red"),
       this::say("owl", "owl/red", 300),
@@ -45,15 +45,16 @@ export default class Lesson extends React.Component {
       attachChoice.bind(this, "bed"),
       revealChoice.bind(this, "bed"),
       this::say("owl", "owl/bed", 300),
-      this::say("owl", "owl/rhyme-because-they-all-have", 300),
+      this::say("owl", "owl/rhyme-because-they-all-make-the-same-ending-sound", 500),
 
+      600,
       detachChoices.bind(this, "red", "head", "bed"),
       attachChoices.bind(this, "wait", "gate", "eight"),
 
-      this::say("owl", "owl/the-words", 300),
+      this::say("owl", "owl/the-words"),
       attachChoice.bind(this, "wait"),
       revealChoice.bind(this, "wait"),
-      this::say("owl", "owl/wait", 300),
+      this::say("owl", "owl/wait", 200),
       attachChoice.bind(this, "gate"),
       revealChoice.bind(this, "gate"),
       this::say("owl", "owl/gate", 300),
@@ -61,15 +62,15 @@ export default class Lesson extends React.Component {
       revealChoice.bind(this, "eight"),
       this::say("owl", "owl/eight", 300),
 
-      this::say("owl", "owl/rhyme-because-they-all-end-in-ate", 300),
+      this::say("owl", "owl/rhyme-because-they-all-end-in-ate", 500),
 
-      this::say("owl", "owl/say", 300),
+      this::say("owl", "owl/say", 600),
 
       this::say("owl", "owl/wait", 300),
-      this::say("owl", "owl/gate", 300),
-      this::say("owl", "owl/eight", 300),
+      this::say("owl", "owl/gate", 400),
+      this::say("owl", "owl/eight", 400),
 
-      this::say("owl", "owl/then-touch", 300),
+      this::say("owl", "owl/then-touch", 500),
 
       endSpeaking.bind(this, "owl")
     );

@@ -51,7 +51,8 @@ export default class Level1 extends React.Component {
       currentAnswer: null,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: 15
     });
   }
 

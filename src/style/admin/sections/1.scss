@@ -28,10 +28,21 @@ $row-height: (100%/$row-count) - 1%;
   }
 
   .sub-lesson__title {
-    @include pos(40%, 0);
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     width: 100%;
     font-size:  $lesson-button-title-size;
     text-align: center;
+  }
+
+  .sub-lesson__score {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: -35px;
   }
 
   .previous-section-button {
@@ -76,7 +87,7 @@ $row-height: (100%/$row-count) - 1%;
   @include span(7);
   position: relative;
   margin-left: span(5);
-  height: 80%;
+  height: 50%;
   top: 10%;
 }
 

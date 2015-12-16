@@ -50,7 +50,8 @@ export default class Level2 extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: 15
     });
   }
 
@@ -67,12 +68,20 @@ export default class Level2 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex} = this.state;
+    const {showingLesson, activityIndex, currentAnswer} = this.state;
     const Activity = this.getActivity();
     if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+      return (
+        <Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          onOwlClick={::this.showLesson}
+        />
+      );
     } else {
       return null;
     }

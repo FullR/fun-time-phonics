@@ -14,6 +14,9 @@ require("style/admin/sections/2.scss");
 require("style/admin/sections/3.scss");
 require("style/admin/sections/4.scss");
 
+const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
+const level2SubLessons = ["d", "p", "k", "f", "m", "b"];
+
 function getSection(levelId) {
   levelId = parseInt(levelId);
   if(levelId <= 7) {
@@ -49,7 +52,8 @@ function resetLevel(levelId) {
     activityIndex: 0,
     showingLesson: true,
     score: 0,
-    activitiesComplete: false
+    activitiesComplete: false,
+    currentAnswer: null
   });
   storage.set(namespace, state);
 }
@@ -97,9 +101,20 @@ export default class Admin extends React.Component {
   showLevel() {
     const {selectedLevel} = this.state;
     const {activitiesComplete} = getLevelData(selectedLevel);
+    const [parentLevelId] = selectedLevel.split("-");
+
     if(activitiesComplete) {
-      resetLevel(selectedLevel);
+      if(parentLevelId === "1") {
+        resetLevel("1");
+        level1SubLessons.forEach((c) => resetLevel(`1-${c}`));
+      } else if(parentLevelId === "2") {
+        resetLevel("2");
+        level2SubLessons.forEach((c) => resetLevel(`2-${c}`));
+      } else {
+        resetLevel(selectedLevel);
+      }
     }
+
     hasher.setHash(`level/${selectedLevel}`);
   }
 

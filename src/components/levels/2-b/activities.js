@@ -4,7 +4,7 @@ import soundContext from "decorators/sound-context";
 
 export default [
   {words: ["bud", "grab", "map"], correct: "grab"},
-  {words: ["trap", "globe", "boxer"], correct: "", wordsOnly: true}
+  {words: ["trap", "globe", "boxer"], correct: "globe", wordsOnly: true}
 ].map((activityProps) => {
   const sounds = activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;

@@ -33,7 +33,7 @@ export default class Lesson1Sub extends React.Component {
       this::hideChoices,
       center.bind(this, "owl"),
       this::say("owl", "listen-for"),
-      300,
+      150,
       uncenter.bind(this, "owl"),
       revealChoice.bind(this, "0"),
       this::say("owl", word1),

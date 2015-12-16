@@ -5,7 +5,7 @@ import hasLesson from "decorators/has-lesson";
 import persists from "decorators/persists";
 
 import Lesson from "./lesson";
-import Activities from "./activities";
+import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
@@ -30,7 +30,7 @@ import Feedback from "./feedback";
   "teacher/does-not-rhyme-with": "teacher/common/does-not-rhyme-with"
 })
 @persists("level-5", true)
-@hasActivities(Activities)
+@hasActivities(activities)
 @hasLesson
 export default class Level5 extends React.Component {
   constructor(props) {
@@ -40,7 +40,8 @@ export default class Level5 extends React.Component {
       showingLesson: true,
       score: 0,
       highscore: -1,
-      activitiesComplete: false
+      activitiesComplete: false,
+      total: activities.length
     });
   }
 

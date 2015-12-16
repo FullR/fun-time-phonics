@@ -27,7 +27,8 @@ export default class Level1M extends React.Component {
       activityIndex: 0,
       score: 0,
       highscore: -1,
-      activitiesCompleted: false
+      activitiesCompleted: false,
+      total: activities.length
     });
   }
 

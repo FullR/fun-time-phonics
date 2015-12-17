@@ -14,19 +14,22 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, words, correct} = this.props;
-    animations.create("correct",
-      this::play("applause"),
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/rhymes-with", 300),
-      this::say("teacher", `teacher/${words[1]}`, 300)
-    );
-
-    animations.create("incorrect",
-      this::say("teacher", `teacher/${words[0]}`),
-      this::say("teacher", "teacher/does-not-rhyme-with", 300),
-      this::say("teacher", `teacher/${words[1]}`, 300)
-    );
+    const {animations, answer, correct} = this.props;
+    const {words} = answer;
+    if(correct) {
+      animations.create("animation",
+        this::play("applause"),
+        this::say("teacher", `teacher/${words[0]}`),
+        this::say("teacher", "teacher/rhymes-with", 300),
+        this::say("teacher", `teacher/${words[1]}`, 300)
+      );
+    } else {
+      animations.create("animation",
+        this::say("teacher", `teacher/${words[0]}`),
+        this::say("teacher", "teacher/does-not-rhyme-with", 300),
+        this::say("teacher", `teacher/${words[1]}`, 300)
+      );
+    }
 
     this.animate();
   }
@@ -34,15 +37,15 @@ export default class Response extends React.Component {
   animate() {
     const {correct, animations} = this.props;
     if(correct) {
-      animations.start("correct");
+      animations.start("animation");
     } else {
-      animations.start("incorrect", () => this.setState({showArrow: true}));
+      animations.start("animation", () => this.setState({showArrow: true}));
     }
   }
 
   render() {
     return (
-      <TwoWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
+      <TwoWordResponse {...this.props} {...this.state} words={this.props.answer.words} onTeacherClick={::this.animate}/>
     );
   }
 }

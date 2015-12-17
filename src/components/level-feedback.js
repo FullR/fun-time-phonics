@@ -52,6 +52,16 @@ export default class LevelFeedback extends React.Component {
           <div className="Level-feedback__title">{title} Complete!</div>
           <div className="Level-feedback__subtitle">{subtitle}</div>
         </div>
+
+
+        <div className="Level-feedback__text">
+          {passing ?
+            "" :
+            "Nice try! Let's practice this some more."
+          }
+        </div>
+
+
         <div className="Level-feedback__score-box">
           <div className="Level-feedback__score-percent">Score {percent}%</div>
           <div className="Level-feedback__score-fraction">{score}/{total}</div>

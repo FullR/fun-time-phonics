@@ -56,40 +56,37 @@ export default class Question extends React.Component {
   }
 
   select(choice) {
+    const {onAnswer} = this.props;
     const {selected} = this.state;
     const {word} = choice;
+    let newSelected;
 
     if(selected.includes(word)) {
-      this.setState({
-        selected: selected.filter((other) => other !== word)
-      });
+      newSelected = selected.filter((other) => other !== word);
     } else {
-      this.setState({
-        selected: selected.concat(word)
-      });
+      newSelected = selected.concat(word)
     }
-  }
+    this.setState({selected: newSelected});
 
-  componentDidUpdate() {
-    if(this.state.selected.length >= 2) {
-      this.props.onAnswer(this.state.selected);
+    if(onAnswer && newSelected.length >= 2) {
+      this.props.onAnswer({words: newSelected});
     }
   }
 
   render() {
-    const {onAnswer, sounds, rhymeWord} = this.props;
+    const {onAnswer, sounds} = this.props;
     const {choices, selected, teacher, owl} = this.state;
 
     return (
-      <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
+      <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
               <WordFrame
                 word={choice.word}
                 sound={sounds[`teacher/${choice.word}`]}
-                onClick={() => this.select(choice)}
                 highlighted={selected.includes(choice.word)}
+                onClick={() => this.select(choice)}
               />
             </Choice>
           )}

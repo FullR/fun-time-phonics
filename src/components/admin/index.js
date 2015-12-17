@@ -123,6 +123,7 @@ export default class Admin extends React.Component {
     const Section = sections[sectionIndex] || sections[0];
     const lessonData = getLevelData(selectedLevel);
     let arrowText;
+    let arrowStyle;
 
     if(!authenticated) {
       return (
@@ -132,10 +133,13 @@ export default class Admin extends React.Component {
 
     if(lessonData.activitiesComplete) {
       arrowText = `Replay Lesson ${selectedLevel}`;
+      arrowStyle = {fontSize: 24};
     } else if(lessonData.activityIndex) {
       arrowText = `Return to Lesson ${selectedLevel}`;
+      arrowStyle = {fontSize: 22};
     } else {
       arrowText = `Play Lesson ${selectedLevel}`;
+      arrowStyle = {fontSize: 26};
     }
 
     return (
@@ -154,7 +158,7 @@ export default class Admin extends React.Component {
           <div className="admin__current-section">
             <Section onNext={::this.nextSection} onBack={::this.previousSection} onSelectLevel={::this.selectLevel} selectedLevel={selectedLevel}/>
           </div>
-          <Arrow className="admin__back-button" onClick={::this.showLevel}>
+          <Arrow className="admin__back-button" onClick={::this.showLevel} style={arrowStyle}>
             {arrowText}
           </Arrow>
         </div>

@@ -3,10 +3,13 @@ import Activity from "components/activity";
 import soundContext from "decorators/sound-context";
 import Question from "./question";
 import Response from "./response";
+import image from "image";
+
+const checkAnswer = ({words}, correct) => correct.every((w) => words.includes(w));
 
 export default [
   {words: ["hop", "dog", "hot"], correct: ["hop", "hot"]},
-  {words: ["box", "socks", "boy"], correct: ["box", "boys"], wordsOnly: true},
+  {words: ["box", "socks", "boy"], correct: ["box", "boy"], wordsOnly: true},
   {words: ["ring", "mad", "monkey"], correct: ["mad", "monkey"], wordsOnly: true},
   {words: ["chop", "itch", "chin"], correct: ["chop", "chin"], wordsOnly: true},
   {words: ["read", "bear", "rose"], correct: ["read", "rose"], wordsOnly: true},
@@ -34,7 +37,6 @@ export default [
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {});
-  const checkAnswer = (selected, correct) => correct.length === selected.length && correct.every((w) => selected.indexOf(w) !== -1);
 
   @soundContext(sounds)
   class Level3Activity extends React.Component {

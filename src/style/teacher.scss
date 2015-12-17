@@ -7,7 +7,7 @@ $speaking-image: "../../images/teacher/speaking-sprite.png";
 $speaking-width: 398px;
 $speaking-height: 752px;
 $speak-speed: 0.4s;
-$text-size: 60px;
+$text-size: 22px;
 
 // full size of the spritesheet
 $speaking-sprite-width: 796px;
@@ -48,9 +48,9 @@ $sizes: (
     .Teacher__text {
       position: absolute;
       width: 100%;
-      bottom: 0;
+      bottom: -$text-size;
       text-align: center;
-      font-size: ($text-size * $ratio);
+      font-size: $text-size;
     }
 
     .Teacher__image {

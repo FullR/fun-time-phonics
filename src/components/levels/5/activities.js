@@ -4,6 +4,8 @@ import Question from "./question";
 import Response from "./response";
 import soundContext from "decorators/sound-context";
 
+const checkAnswer = ({words}, correct) => correct.every((w) => words.includes(w));
+
 export default [
   {words: ["bat", "rat", "cake"], correct: ["bat", "rat"]},
   {words: ["red", "hot", "sled"], correct: ["red", "sled"], wordsOnly: true},
@@ -29,8 +31,6 @@ export default [
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {});
-
-  const checkAnswer = (selected, correct) => correct.every((w) => selected.includes(w));
 
   @soundContext(sounds)
   class ActivityInstance extends React.Component {

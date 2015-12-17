@@ -7,7 +7,7 @@ export default class Screen extends React.Component {
     const className = classNames(this.props.className, "Screen");
     return (
       <div className={className}>
-        <div {...this.props} className={null}/>
+        <div {...this.props} className={null} title={null}/>
       </div>
     );
   }

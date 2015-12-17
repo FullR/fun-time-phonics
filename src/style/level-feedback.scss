@@ -13,19 +13,28 @@
   }
 
   &__subtitle {
+    margin-top: 10px;
     font-size: 22px;
   }
 
   &__score-box {
     font-size: 48px;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 70px;
     text-align: center;
   }
 
   &__arrow-box {
     margin-top: 140px;
     width: 100%;
+    text-align: center;
+  }
+
+  &__text {
+    width: 100%;
+    margin-top: 60px;
+    height: 40px;
+    font-size: 40px;
     text-align: center;
   }
 }

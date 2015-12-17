@@ -87,7 +87,7 @@ $back-button-offset: 40px;
 .admin__back-button {
   @include pos($back-button-offset, $back-button-offset, bottom, right);
   @include size($back-button-width, $back-button-height);
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .admin--changed .admin__back-button {

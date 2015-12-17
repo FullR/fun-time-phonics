@@ -20,7 +20,7 @@ export default class Question extends React.Component {
       selected: [],
       choices: props.words.reduce((choices, word, i) => {
         const id = i.toString();
-        choices[id] = {
+        choices[word] = {
           id,
           word,
           hidden: true
@@ -43,13 +43,13 @@ export default class Question extends React.Component {
       this::say("teacher", ending ? "teacher/touch-the-two-words-ending" : "teacher/touch-the-two-words-beginning", 300),
 
       uncenter.bind(this, "teacher"),
-      revealChoice.bind(this, "0"),
+      revealChoice.bind(this, words[0]),
       this::say("teacher", `teacher/${words[0]}`),
       400,
-      revealChoice.bind(this, "1"),
+      revealChoice.bind(this, words[1]),
       this::say("teacher", `teacher/${words[1]}`),
       400,
-      revealChoice.bind(this, "2"),
+      revealChoice.bind(this, words[2]),
       this::say("teacher", `teacher/${words[2]}`),
 
       endSpeaking.bind(this, "teacher")
@@ -59,13 +59,13 @@ export default class Question extends React.Component {
       animations.create("words-only",
         this::hideChoices,
         uncenter.bind(this, "teacher"),
-        revealChoice.bind(this, "0"),
+        revealChoice.bind(this, words[0]),
         this::say("teacher", `teacher/${words[0]}`),
         400,
-        revealChoice.bind(this, "1"),
+        revealChoice.bind(this, words[1]),
         this::say("teacher", `teacher/${words[1]}`),
         400,
-        revealChoice.bind(this, "2"),
+        revealChoice.bind(this, words[2]),
         this::say("teacher", `teacher/${words[2]}`),
         endSpeaking.bind(this, "teacher")
       );
@@ -80,24 +80,20 @@ export default class Question extends React.Component {
   }
 
   select(choice) {
+    const {onAnswer} = this.props;
     const {selected} = this.state;
     const {word} = choice;
     let newSelected;
 
     if(selected.includes(word)) {
-      newSelected = selected.filter((w) => w !== word);
+      newSelected = selected.filter((other) => other !== word);
     } else {
-      newSelected = selected.concat(word);
+      newSelected = selected.concat(word)
     }
-
     this.setState({selected: newSelected});
-  }
 
-  componentDidUpdate() {
-    const {selected} = this.state;
-    const {onAnswer} = this.props;
-    if(onAnswer && selected.length > 1) {
-      onAnswer(selected);
+    if(onAnswer && newSelected.length >= 2) {
+      this.props.onAnswer({words: newSelected});
     }
   }
 
@@ -110,7 +106,12 @@ export default class Question extends React.Component {
         <Belt>
           {map(choices, (choice, i) =>
             <Choice {...choice} key={i}>
-              <WordFrame word={choice.word} highlighted={selected.includes(choice.word)} sound={sounds[`teacher/${choice.word}`]} onClick={() => this.select(choice)}/>
+              <WordFrame
+                word={choice.word}
+                sound={sounds[`teacher/${choice.word}`]}
+                highlighted={selected.includes(choice.word)}
+                onClick={() => this.select(choice)}
+              />
             </Choice>
           )}
         </Belt>

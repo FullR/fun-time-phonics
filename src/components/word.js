@@ -48,7 +48,7 @@ export default class Word extends React.Component {
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "50% 50%"
-    } : {width, height, background: "#FFF"};
+    } : {width, height, display, background: "#FFF"};
     return <div {...this.props} style={style}/>
   }
 }

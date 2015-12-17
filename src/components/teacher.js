@@ -4,7 +4,7 @@ require("style/teacher.scss");
 
 export default class Teacher extends React.Component {
   static defaultProps = {
-    size: "default",
+    size: "small",
     speaking: false,
     animating: false
   };
@@ -12,7 +12,7 @@ export default class Teacher extends React.Component {
     const {size, speaking, animating, centered} = this.props;
     const className = classNames("Teacher", `Teacher--size-${size}`, {
       "Teacher--speaking": speaking,
-      "Teacher--speaking-animating": animating,
+      "Teacher--animating": animating,
       "Teacher--centered": centered
     });
 

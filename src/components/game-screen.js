@@ -16,7 +16,7 @@ export default class GameScreen extends React.Component {
       owlComponent = (
         <Owl {...owl}
           key="owl"
-          size={owl.centered ? "large" : "default"}
+          size={owl.centered ? "large" : "small"}
           onClick={onOwlClick}
         />
       );
@@ -26,9 +26,9 @@ export default class GameScreen extends React.Component {
 
     if(teacher) {
       teacherComponent = (
-        <Teacher {...teacher} 
+        <Teacher {...teacher}
           key="teacher"
-          size={teacher.centered ? "large" : "default"}
+          size={teacher.centered ? "large" : "small"}
           onClick={onTeacherClick}
         />
       );
@@ -39,20 +39,8 @@ export default class GameScreen extends React.Component {
     return (
       <Screen {...this.props}>
         {this.props.children}
-
-        {owl && owl.centered ?
-            owlComponent :
-            <Corner top="1em" left="1em">
-              {owlComponent}
-            </Corner>
-        }
-
-        {teacher && teacher.centered ?
-          teacherComponent :
-          <Corner top="1em" right="1em">
-            {teacherComponent}
-          </Corner>
-        }
+        {owlComponent}
+        {teacherComponent}
 
         <AdminLink/>
       </Screen>

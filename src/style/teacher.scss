@@ -1,91 +1,110 @@
-$show-outlines: false;
-$sitting-image: "../../images/teacher/sitting.png";
-$sitting-width: 729px * 0.8;
-$sitting-height: 726px * 0.8;
+$image: (
+  path: "../../images/teacher/sitting.png",
+  width: 502px,
+  height: 500px
+);
 
-$speaking-image: "../../images/teacher/speaking-sprite.png";
-$speaking-width: 398px;
-$speaking-height: 752px;
-$speak-speed: 0.4s;
+$speaking-sprite: (
+  path: "../../images/teacher/speaking-sprite.png",
+  width: 796px,
+  height: 752px,
+  animation-speed: 0.4s,
+  frames: 2
+);
+
+$text-distance: 40px;
 $text-size: 22px;
 
-// full size of the spritesheet
-$speaking-sprite-width: 796px;
-$speaking-sprite-height: 752px;
-
-$sizes: (
-  large: 0.8,
-  medium: 0.6,
-  small: 0.4,
-  default: 0.5
-);
+$small-scale: 0.55;
+$large-scale: 1;
 
 .Teacher {
   z-index: 5;
-  cursor: pointer;
-  @if $show-outlines == true {
-    outline: 1px solid #A0A;
-  }
-}
-
-.Teacher--centered {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $text-size;
+  transform-origin: top right;
+
+  &--centered {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    background: url(map-get($image, path)) no-repeat;
+    background-size: 100% 100%;
+
+    width: map-get($image, width);
+    height: map-get($image, height);
+  }
+
+  &__text {
+    position: absolute;
+    width: 100%;
+    bottom: -$text-distance;
+    text-align: center;
+    font-size: $text-size;
+  }
 }
 
-@each $size, $ratio in $sizes {
-  .Teacher--size-#{$size} {
-    width: $sitting-width * $ratio;
-    height: ($sitting-height * $ratio) + ($text-size * $ratio);
-    .Teacher__content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .Teacher__text {
-      position: absolute;
-      width: 100%;
-      bottom: -$text-size;
-      text-align: center;
-      font-size: $text-size;
-    }
-
-    .Teacher__image {
-      background: url($sitting-image) no-repeat;
-      background-size: 100% 100%;
-      width: $sitting-width * $ratio;
-      height: $sitting-height * $ratio;
-    }
+.Teacher--speaking {
+  .Teacher__image {
+    width: (map-get($speaking-sprite, width) / map-get($speaking-sprite, frames));
+    height: map-get($speaking-sprite, height);
+    background: url(map-get($speaking-sprite, path)) no-repeat;
+    background-size: map-get($speaking-sprite, width) map-get($speaking-sprite, height);
   }
 
-  .Teacher--size-#{$size}.Teacher--speaking {
-    width: $speaking-width * $ratio;
-    height: $speaking-height * $ratio;
-    .Teacher__image {
-      width: $speaking-width * $ratio;
-      height: $speaking-height * $ratio;
-      background: url($speaking-image);
-      background-position: 0 0;
-      background-size: ($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio); //($speaking-sprite-width * $ratio) ($speaking-sprite-height * $ratio);
-    }
-
-    .Teacher__text {
-      visibility: hidden;
-    }
+  .Teacher__text {
+    visibility: hidden;
   }
+}
 
-  .Teacher--size-#{$size}.Teacher--speaking-animating {
-    .Teacher__image {
-      animation: teacher-speak-#{$size} $speak-speed steps(2) infinite;
-    }
+.Teacher--speaking.Teacher--animating .Teacher__image {
+  animation: teacher-speak map-get($speaking-sprite, animation-speed) steps(map-get($speaking-sprite, frames)) infinite;
+}
+
+.Teacher--size-small {
+  transform: scale($small-scale, $small-scale);
+
+  .Teacher__text {
+    transform: scale((1 / $small-scale), (1 / $small-scale));
   }
+}
 
-  @keyframes teacher-speak-#{$size} {
-    100% {
-      background-position: (-1 * $speaking-sprite-width * $ratio) 0;
-    }
+// .Teacher--size-large {
+//   transform: scale($large-scale, $large-scale);
+//
+//   .Teacher__text {
+//     transform: scale((1 / $large-scale), (1 / $large-scale));
+//   }
+// }
+//
+// .Teacher--size-large.Teacher--centered {
+//   transform: scale($large-scale, $large-scale) translate(-50%, -50%);
+// }
+
+
+.Teacher--size-small.Teacher--centered {
+  transform: scale($small-scale, $small-scale) translate(-50%, -50%);
+}
+
+@keyframes teacher-speak {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: (-1 * map-get($speaking-sprite, width));
   }
 }

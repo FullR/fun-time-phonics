@@ -35,6 +35,7 @@ export default class Lesson extends React.Component {
   render() {
     return (
       <WordLesson {...this.props}
+        owl={{centered: true, speaking: true}}
         number={1}
         activityCount={15}
         title="Beginning Sounds"

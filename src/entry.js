@@ -1,6 +1,6 @@
 import React from "react";
 import onReady from "./on-ready";
-import "babel-core/polyfill";
+import "babel-polyfill";
 
 const debug = require("debug")("app");
 window.DEBUG = true;

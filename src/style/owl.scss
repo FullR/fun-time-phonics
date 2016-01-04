@@ -56,9 +56,14 @@ $large-scale: 0.75;
     text-align: center;
     font-size: $text-size;
   }
+
+  &--highlighted {
+    outline: 3px solid green;
+  }
 }
 
 .Owl--speaking {
+  outline: 0px;
   .Owl__image {
     width: (map-get($speaking-sprite, width) / map-get($speaking-sprite, frames));
     height: map-get($speaking-sprite, height);

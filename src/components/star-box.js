@@ -15,9 +15,9 @@ export default class StarBox extends React.Component {
       "Star-box--large": large
     });
 
-    const s = extend({}, style || {}, {
-      boxSizing, 
-      width: fill ? "100%" : width, 
+    const s = extend({}, style, {
+      boxSizing,
+      width: fill ? "100%" : width,
       height: fill ? "100%" : height
     });
 

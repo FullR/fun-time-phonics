@@ -25,7 +25,8 @@ export default [
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {
-    "teacher/sounded-parts": `teacher/lesson-6/sounded-parts/${activityProps.phonics.join("_")}`
+    "teacher/sounded-parts": `teacher/lesson-6/${activityProps.phonics.join("_")}`,
+    "teacher/sounded-word": `teacher/lesson-6/words/${activityProps.correct}`
   });
 
   @soundContext(sounds)

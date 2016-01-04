@@ -21,7 +21,9 @@ export default class LetterResponse extends React.Component {
           {correct ?
             <StarBox width={300} height={300}>
               <Center>
-                <Letter>{letter}</Letter>
+                <Letter>
+                  {letter}
+                </Letter>
               </Center>
             </StarBox> :
             <Letter width={300} height={300} style={{lineHeight: "300px"}}>

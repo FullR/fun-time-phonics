@@ -2,7 +2,20 @@ export default function hasActivities(activityComponents) {
   const activityCount = activityComponents.length;
 
   return (ClassFn) => {
+    const {componentWillMount} = ClassFn.prototype;
+
     Object.assign(ClassFn.prototype, {
+      componentWillMount() {
+        if(this.state.activitiesComplete) {
+          this.resetActivities({
+            showingLesson: true
+          });
+        }
+        if(componentWillMount) {
+          componentWillMount.call(this);
+        }
+      },
+
       completeActivity(correct) {
         const {score, activityIndex, highscore} = this.state;
         const activitiesComplete = (activityIndex + 1 === activityCount);

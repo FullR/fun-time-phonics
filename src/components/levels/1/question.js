@@ -15,10 +15,11 @@ export default class Question extends React.Component {
         text: "Instructions",
         speaking: true,
         centered: !wordsOnly,
-        animating: false
+        animating: false,
+        highlighted: true
       },
       choices: props.words.reduce((choices, word, i) => {
-        choices[i.toString()] = {
+        choices[word] = {
           word,
           hidden: true
         };
@@ -38,13 +39,13 @@ export default class Question extends React.Component {
       this::say("teacher", "teacher/phonic"),
       600,
       uncenter.bind(this, "teacher"),
-      revealChoice.bind(this, 0),
+      revealChoice.bind(this, words[0]),
       this::say("teacher", `teacher/${words[0]}`),
       400,
-      revealChoice.bind(this, 1),
+      revealChoice.bind(this, words[1]),
       this::say("teacher", `teacher/${words[1]}`),
       400,
-      revealChoice.bind(this, 2),
+      revealChoice.bind(this, words[2]),
       this::say("teacher", `teacher/${words[2]}`),
       endSpeaking.bind(this, "teacher")
     );
@@ -53,13 +54,13 @@ export default class Question extends React.Component {
       animations.create("words-only",
         this::hideChoices,
         uncenter.bind(this, "teacher"),
-        revealChoice.bind(this, 0),
+        revealChoice.bind(this, words[0]),
         this::say("teacher", `teacher/${words[0]}`),
         400,
-        revealChoice.bind(this, 1),
+        revealChoice.bind(this, words[1]),
         this::say("teacher", `teacher/${words[1]}`),
         400,
-        revealChoice.bind(this, 2),
+        revealChoice.bind(this, words[2]),
         this::say("teacher", `teacher/${words[2]}`),
         endSpeaking.bind(this, "teacher")
       );
@@ -80,8 +81,8 @@ export default class Question extends React.Component {
     return (
       <GameScreen {...this.props} owl={owl} teacher={teacher} onTeacherClick={::this.animate}>
         <Belt>
-          {map(choices, (choice, i) =>
-            <Choice {...choice} key={i}>
+          {map(choices, (choice, key) =>
+            <Choice {...choice} key={key}>
               <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]} onClick={() => onAnswer({word: choice.word})}/>
             </Choice>
           )}

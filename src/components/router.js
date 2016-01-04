@@ -50,7 +50,11 @@ export default class Router extends React.Component {
         try {
           return require("components/levels/" + parts[1] + "/index");
         } catch(error) {
-          return require("components/levels/" + parts[1]);
+          try {
+            return require("components/levels/" + parts[1]);
+          } catch(error2) {
+            console.error(error2);
+          }
         }
       case "admin": return require("components/admin/index");
       case "test": return require("components/test-page");

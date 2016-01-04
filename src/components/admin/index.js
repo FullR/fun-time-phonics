@@ -150,7 +150,7 @@ export default class Admin extends React.Component {
             <li className="admin__header-nav-item">Restart</li>
             <li className="admin__header-nav-item">About</li>
           </ul>
-          <span className="admin__header-title">Fun-Time Phonics{String.fromCharCode(8482)} Admin/Score</span>
+          <span className="admin__header-title">Fun-Time Phonics!{String.fromCharCode(8482)} Admin/Score</span>
           <span className="admin__header-grades">PreK - 2</span>
         </div>
 

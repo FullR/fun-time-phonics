@@ -20,7 +20,7 @@ export default class Sound extends EventEmitter {
   constructor({path, volume=1, voices=1, delay=0}={}) {
     super();
     this._queue = Promise.resolve();
-    this.id = soundId();
+    this.id = path; //soundId();
     this.volume = volume;
     this.voices = voices;
     this.delay = delay;
@@ -91,7 +91,6 @@ export default class Sound extends EventEmitter {
       };
       const onError = (error) => {
         console.error(`${id} Unloading failed: ${error}`);
-        this.emit("error", error);
         reject(error);
       };
       log(`${id} Unloading`);
@@ -117,7 +116,6 @@ export default class Sound extends EventEmitter {
           const error = new Error(errorMessage);
           log(`${id} Failed to play: ${error}`);
           this.playing = false;
-          this.emit("error", error);
           reject(error);
         },
         () => {
@@ -142,13 +140,17 @@ export default class Sound extends EventEmitter {
     return new Promise((resolve, reject) => {
       getNativeAudio().stop(id, resolve, reject);
     })
-    .then(() => {
-      log(`${id} Stopped`);
-      this.emit("end");
-    }).catch((error) => {
-      this.emit("error", error);
-      console.error("Failed to stop sound:", error);
-    });
+      .then(() => {
+        log(`${id} Stopped`);
+        this.emit("end");
+      })
+      .catch((error) => {
+        console.error("Failed to stop sound:", error, this.path);
+      });
+  }
+
+  toString() {
+    return this.path;
   }
 }
 

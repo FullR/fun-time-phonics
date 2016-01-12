@@ -12,7 +12,7 @@ import Feedback from "./feedback";
   applause: "applause",
 
   "owl/words-like": "owl/common/words-like",
-  "owl/rhyme-because-they-all-have-the-same-ending-sound": "owl/common/rhyme-because-they-all-have-the-same-ending-sound",
+  "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
   "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",
   "owl/then-touch": "owl/common/then-touch",

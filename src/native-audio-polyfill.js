@@ -69,6 +69,7 @@ export default {
       try {
         sound.unload();
       } catch(error) {
+        console.log("unload caught: " + error);
         errorCb(error);
         return;
       }

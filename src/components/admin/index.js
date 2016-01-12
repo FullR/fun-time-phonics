@@ -136,7 +136,7 @@ export default class Admin extends React.Component {
       arrowStyle = {fontSize: 24};
     } else if(lessonData.activityIndex) {
       arrowText = `Return to Lesson ${selectedLevel}`;
-      arrowStyle = {fontSize: 22};
+      arrowStyle = {fontSize: 20};
     } else {
       arrowText = `Play Lesson ${selectedLevel}`;
       arrowStyle = {fontSize: 26};

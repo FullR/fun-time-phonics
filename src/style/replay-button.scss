@@ -11,6 +11,8 @@ $sprite-height: 28px;
   background: url($image);
   background-size: 200% 100%;
 
+  &:hover,
+  &:active,
   &--active {
     background-position: -100% 0;
   }

@@ -48,7 +48,7 @@ export default class Lesson extends React.Component {
       this::say("owl", "owl/head", 300),
       revealChoice.bind(this, "bed"),
       this::say("owl", "owl/bed", 300),
-      this::say("owl", "owl/rhyme-because-they-all-have-the-same-ending-sound", 300),
+      this::say("owl", "owl/rhyme-because-they-all-make-the-same-ending-sound", 300),
 
       detachChoices.bind(this, "red", "head", "bed"),
       attachChoices.bind(this, "wait", "gate", "eight"),

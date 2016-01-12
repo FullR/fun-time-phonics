@@ -4,6 +4,7 @@ $icon-height: 29px;
 $icon-spacing: 4px;
 $font-size: 25px;
 $color: #568ED4;
+$hover-color: #223854;
 
 .Lock-link {
   cursor: pointer;
@@ -30,4 +31,8 @@ $color: #568ED4;
     background: url($icon-image) no-repeat;
     background-size: 100% 100%;
   }
+}
+
+.Lock-link:hover {
+  color: $hover-color;
 }

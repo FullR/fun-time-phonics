@@ -59,7 +59,7 @@ export default class Authscreen extends React.Component {
         <div className="Authscreen__instructions">
           <span>Enter the first three letters of the word</span><br/>
           <span>"<span className="Authscreen__password">tea</span>cher"</span><br/>
-          <span>in the box and click Go to enter the Admin/Score screen.</span>
+          <span>in the box and select Go to enter the Admin/Score screen.</span>
         </div>
 
         <form onSubmit={::this.submit}>

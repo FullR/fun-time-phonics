@@ -43,7 +43,7 @@ export default class Response extends React.Component {
 
   render() {
     return (
-      <SingleWordResponse {...this.props} {...this.state} onTeacherClick={::this.animate}/>
+      <SingleWordResponse {...this.props} {...this.state} word={this.props.answer.word} onTeacherClick={::this.animate}/>
     );
   }
 }

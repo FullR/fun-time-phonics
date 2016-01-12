@@ -4,6 +4,12 @@ $image: (
   height: 500px
 );
 
+$glowing-image: (
+  path: "../../images/teacher/sitting-glowing.png",
+  width: 502px,
+  height: 500px
+);
+
 $speaking-sprite: (
   path: "../../images/teacher/speaking-sprite.png",
   width: 796px,
@@ -56,6 +62,13 @@ $large-scale: 1;
     text-align: center;
     font-size: $text-size;
   }
+}
+
+.Teacher--glowing .Teacher__image {
+  background: url(map-get($glowing-image, path)) no-repeat;
+
+  width: map-get($glowing-image, width);
+  height: map-get($glowing-image, height);
 }
 
 .Teacher--speaking {

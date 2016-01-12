@@ -28,7 +28,7 @@ export default class Splashscreen extends React.Component {
         </Corner>
         <Corner top="1%" right="1%" style={{fontSize: 20}}>PreK - 2</Corner>
         <Corner bottom="5%" right="5%">
-          <Arrow onClick={() => this.showNextScreen()}>
+          <Arrow size="large" onClick={() => this.showNextScreen()}>
             <span style={{position: "relative", top: -3}}>
               Begin
             </span>

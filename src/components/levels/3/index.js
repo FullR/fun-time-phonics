@@ -15,7 +15,7 @@ import activities from "./activities";
   "owl/the-last-sound": "owl/common/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
   "owl/the-ending-sound": "owl/common/the-ending-sound-in-the-word",
   "owl/is": "owl/common/is",
-  "owl/say-the": "owl/common/say-the-beginning-and-ending-sound-in",
+  "owl/say-the": "owl/common/say-the-beginning-and-ending-sounds-in",
   "owl/then-touch": "owl/common/then-touch",
 
   "owl/cat": "owl/words/cat",

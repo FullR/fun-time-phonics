@@ -1,7 +1,7 @@
 import React from "react";
 import {map} from "lodash";
 import animationContext from "decorators/animation-context";
-import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "helpers/animation";
+import {say, hideChoices, revealChoice, endSpeaking, center, uncenter, enableGlow, disableGlow} from "helpers/animation";
 import {GameScreen, Belt, WordFrame, Choice} from "components";
 
 const phonicStyle = {
@@ -19,7 +19,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "Instructions", centered: props.wordsOnly, speaking: props.wordsOnly},
+      teacher: {text: "Instructions", centered: props.wordsOnly, speaking: props.wordsOnly, glowing: props.wordsOnly},
       owl: {text: "lesson", centered: !props.wordsOnly, speaking: !props.wordsOnly},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
@@ -36,6 +36,7 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
+      disableGlow.bind(this, "teacher"),
       center.bind(this, "owl"),
       this::say("owl", "owl/say-the"),
       uncenter.bind(this, "owl"),
@@ -47,6 +48,7 @@ export default class Question extends React.Component {
         revealChoice.bind(this, word),
         this::say("teacher", `teacher/${word}`, 300)
       ]),
+      enableGlow.bind(this, "teacher"),
       endSpeaking.bind(this, "teacher")
     );
 

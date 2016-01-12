@@ -27,6 +27,18 @@ function uncenter(who) {
   });
 }
 
+function enableGlow(who) {
+  mergeState(this, {
+    [who]: {glowing: true}
+  });
+}
+
+function disableGlow(who) {
+  mergeState(this, {
+    [who]: {glowing: false}
+  });
+}
+
 function play(soundId, delay) {
   const sound = (typeof soundId === "string") ? this.props.sounds[soundId] : soundId;
   return delay ?
@@ -182,6 +194,8 @@ export default {
   uncenter,
   play,
   say,
+  enableGlow,
+  disableGlow,
   mergeChoice,
   mergeChoices,
   mergeAllChoices,

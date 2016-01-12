@@ -4,6 +4,12 @@ $image: (
   height: 750px
 );
 
+$glowing-image: (
+  path: "../../images/owl/sitting-glowing.png",
+  width: 602px,
+  height: 750px
+);
+
 $speaking-sprite: (
   path: "../../images/owl/speaking-sprite.png",
   width: 1420px,
@@ -60,6 +66,13 @@ $large-scale: 0.75;
   &--highlighted {
     outline: 3px solid green;
   }
+}
+
+.Owl--glowing .Owl__image {
+  background: url(map-get($glowing-image, path)) no-repeat;
+
+  width: map-get($glowing-image, width);
+  height: map-get($glowing-image, height);
 }
 
 .Owl--speaking {

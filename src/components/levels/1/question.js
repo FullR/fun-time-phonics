@@ -16,7 +16,7 @@ export default class Question extends React.Component {
         speaking: true,
         centered: !wordsOnly,
         animating: false,
-        highlighted: true
+        glowing: true
       },
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {

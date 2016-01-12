@@ -58,6 +58,7 @@ export default class Router extends React.Component {
         }
       case "admin": return require("components/admin/index");
       case "test": return require("components/test-page");
+      case "sound-test": return require("components/sound-test-page");
       case "splash": // intentional fall through
       default: return require("components/splashscreen");
     }

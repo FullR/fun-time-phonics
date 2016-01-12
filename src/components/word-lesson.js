@@ -22,7 +22,8 @@ export default class Lesson extends React.Component {
         text: "Lesson",
         speaking: true,
         animating: true,
-        centered: false
+        centered: false,
+        glowing: false
       }, props.owl),
       choices: props.words.reduce((choices, word) => {
         choices[word] = {

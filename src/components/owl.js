@@ -10,12 +10,12 @@ export default class Owl extends React.Component {
   };
 
   render() {
-    const {speaking, animating, centered, highlighted, size, text} = this.props;
+    const {speaking, animating, centered, glowing, size, text} = this.props;
     const className = classNames("Owl", `Owl--size-${size}`, {
       "Owl--speaking": speaking,
       "Owl--animating": animating,
       "Owl--centered": centered,
-      "Owl--highlighted": highlighted
+      "Owl--glowing": glowing
     });
 
     return (

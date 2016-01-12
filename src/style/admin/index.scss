@@ -106,7 +106,13 @@ $back-button-offset: 40px;
 }
 
 .Lesson-button--selected {
-  border-color: red !important; // important to overwrite the hover effect
+  border-color: #FF0000 !important; // important to overwrite the hover effect
+
+  >.Lesson-button__index,
+  >.Lesson-button__title,
+  >.sub-lesson__title {
+    color: #FF0000;
+  }
 }
 
 // Section header and back/next arrows

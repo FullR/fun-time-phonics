@@ -29,7 +29,7 @@ export default [
     sounds[`teacher/${word}`] = `teacher/words/${word}`;
     return sounds;
   }, {
-    "teacher/sounded-parts": `teacher/lesson-7/sounded-parts/${activityProps.phonics.join("_")}`
+    "teacher/sounded-parts": `teacher/lesson-7/${activityProps.phonics.join("_")}`
   });
 
   @soundContext(sounds)

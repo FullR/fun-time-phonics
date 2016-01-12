@@ -1,4 +1,4 @@
-// Hover/active wrapper. If the hover-enabled class isn't present, 
+// Hover/active wrapper. If the hover-enabled class isn't present,
 // no hover effects will be used
 @mixin active() {
     .hover-enabled &:hover, &:active {
@@ -72,4 +72,10 @@
             @content;
         }
     }
+}
+
+@mixin vcenter {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }

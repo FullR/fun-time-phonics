@@ -10,7 +10,7 @@ import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "hel
   "and": "owl/common/and",
   "say": "owl/common/say",
   "slowly": "owl/common/slowly",
-  "then-touch": "owl/common/then-touch"
+  "then-touch": "owl/common/then-touch-the-green-arrow-to-begin"
 })
 export default class Lesson2Sub extends React.Component {
   constructor(props) {

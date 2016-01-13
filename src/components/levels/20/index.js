@@ -22,7 +22,7 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/say-each": "owl/lesson-20/say-each-letters-sound",
   "owl/the-letter": "owl/common/the-letter",
   "owl/makes-the": "owl/common/makes-the",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/sound-in": "owl/common/sound-in",
 
   "teacher/drag-the-letter": "teacher/lesson-20/drag-the-letter-to-the-picture-that-makes-the",

@@ -20,7 +20,7 @@ import activities from "./activities";
   "owl/is": "owl/common/is",
   "owl/t": "owl/common/phonics/_t_",
   "owl/slowly": "owl/common/slowly",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
 
   "teacher/touch-the-word": "teacher/common/touch-the-word-that-begins-with",
   "teacher/does-not-begin-with": "teacher/common/does-not-begin-with",

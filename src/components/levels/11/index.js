@@ -19,7 +19,7 @@ const phonic = "oh";
   "owl/make-the": "owl/lesson-8/make-the",
   "owl/sound": "owl/common/sound",
   "owl/say": "owl/common/say",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
   "teacher/touch-the-word": "teacher/lesson-8/touch-the-word-that-makes-the",

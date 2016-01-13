@@ -53,7 +53,7 @@ function lessonAnimation() {
   "owl/looks-like-this": "owl/common/looks-like-this",
   "owl/makes-the-ending-sound-of": "owl/common/makes-the-ending-sound-of",
   "owl/say-the-words": "owl/common/say-the-words",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
 
   // Question
   "teacher/touch-the-word-that-ends-with-the": "teacher/common/touch-the-word-that-ends-with-the",

@@ -15,7 +15,7 @@ import Feedback from "./feedback";
   "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
   "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/say": "owl/common/say",
 
   "owl/red": "owl/words/red",

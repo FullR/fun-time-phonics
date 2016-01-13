@@ -16,7 +16,7 @@ import activities from "./activities";
   "owl/the-ending-sound": "owl/common/the-ending-sound-in-the-word",
   "owl/is": "owl/common/is",
   "owl/say-the": "owl/common/say-the-beginning-and-ending-sounds-in",
-  "owl/then-touch": "owl/common/then-touch",
+  "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
 
   "owl/cat": "owl/words/cat",
   "owl/k": "owl/common/phonics/_k_",

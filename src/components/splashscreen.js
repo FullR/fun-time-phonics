@@ -5,6 +5,7 @@ import Arrow from "components/arrow";
 import Corner from "components/corner";
 import AdminLink from "components/admin-link";
 import CriticalLogo from "components/critical-logo";
+import Robot from "components/robot";
 require("style/splashscreen.scss");
 
 @soundContext({
@@ -23,6 +24,10 @@ export default class Splashscreen extends React.Component {
     const {welcome} = this.props.sounds;
     return (
       <Screen className="Splashscreen">
+        <div style={{position: "absolute", left: -9999}}>
+          <Robot type="boy"/>
+          <Robot type="girl"/>
+        </div>
         <Corner top="1%" left="1%">
           <CriticalLogo size="medium"/>
         </Corner>

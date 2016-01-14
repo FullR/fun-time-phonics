@@ -10,7 +10,7 @@ export default [
   {words: ["bug", "under", "cup"], rhymeWord: "up", correct: "cup"},
   {words: ["pal", "call", "pill"], rhymeWord: "ball", correct: "call"},
   {words: ["chin", "on", "up"], rhymeWord: "in", correct: "chin"},
-  {words: ["pug", "drop", "rug"], rhymeWord: "hop", correct: "drop"},
+  {words: ["pup", "drop", "rug"], rhymeWord: "hop", correct: "drop"},
   {words: ["deck", "pet", "wait"], rhymeWord: "wet", correct: "pet"},
   {words: ["fists", "kiss", "dish"], rhymeWord: "fish", correct: "dish"},
   {words: ["hut", "cot", "hat"], rhymeWord: "hot", correct: "cot"},

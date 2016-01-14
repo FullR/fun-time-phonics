@@ -32,7 +32,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: ext("js"), exclude: /node_modules/, loader: "babel-loader?stage=0"},
+      {test: ext("js"), exclude: /node_modules/, loader: "babel-loader?stage=0&cacheDirectory"},
       {test: ext("json"), loader: "json"},
       {test: ext("html"), loader: "file?name=[name].[ext]"},
       {test: ext("scss"), loader: "style!css!autoprefixer!sass"},

@@ -132,7 +132,7 @@ export default class Admin extends React.Component {
     }
 
     if(lessonData.activitiesComplete) {
-      arrowText = `Replay Lesson ${selectedLevel}`;
+      arrowText = <span>Replay Lesson<br/>{selectedLevel}</span>;
       arrowStyle = {fontSize: 24};
     } else if(lessonData.activityIndex) {
       arrowText = `Return to Lesson ${selectedLevel}`;

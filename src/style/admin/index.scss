@@ -105,6 +105,7 @@ $back-button-offset: 40px;
   position: relative;
 }
 
+.Lesson-button:hover,
 .Lesson-button--selected {
   border-color: #FF0000 !important; // important to overwrite the hover effect
 

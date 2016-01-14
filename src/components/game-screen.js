@@ -5,17 +5,23 @@ import Center from "components/center";
 import Teacher from "components/teacher";
 import AdminLink from "components/admin-link";
 import Owl from "components/owl";
+import RobotActor from "components/robot-actor";
+import classNames from "util/class-names";
+
+require("style/game-screen.scss");
 
 export default class GameScreen extends React.Component {
   render() {
     const {teacher, owl, onTeacherClick, onOwlClick} = this.props;
+    const className = classNames(this.props.className, "Game-screen");
     let owlComponent;
     let teacherComponent;
 
     if(owl) {
       owlComponent = (
-        <Owl {...owl}
+        <RobotActor {...owl}
           key="owl"
+          type="boy"
           size={owl.centered ? "large" : "small"}
           onClick={onOwlClick}
         />
@@ -26,8 +32,9 @@ export default class GameScreen extends React.Component {
 
     if(teacher) {
       teacherComponent = (
-        <Teacher {...teacher}
+        <RobotActor {...teacher}
           key="teacher"
+          type="girl"
           size={teacher.centered ? "large" : "small"}
           onClick={onTeacherClick}
         />
@@ -37,7 +44,7 @@ export default class GameScreen extends React.Component {
     }
 
     return (
-      <Screen {...this.props}>
+      <Screen {...this.props} className={className}>
         {this.props.children}
         {owlComponent}
         {teacherComponent}

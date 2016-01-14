@@ -1,0 +1,32 @@
+$text-size: 22px;
+$boy-text-distance: 25px;
+$girl-text-distance: 15px;
+
+.Robot-actor {
+  &--centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__children {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    font-size: $text-size;
+    text-align: center;
+  }
+}
+
+.Robot-actor--speaking .Robot-actor__children {
+  display: none;
+}
+
+.Robot-actor--boy .Robot-actor__children {
+  bottom: -$boy-text-distance;
+}
+
+.Robot-actor--girl .Robot-actor__children {
+  bottom: -$girl-text-distance;
+}

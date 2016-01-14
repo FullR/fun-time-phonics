@@ -1,0 +1,72 @@
+@import "./util.scss";
+
+$image: "../../images/robot-sprites/girl.png";
+$image-width: 4800px;
+$image-height: 1920px;
+$columns: 4;
+$rows: 1;
+$speed: 0.5s;
+
+$large: 450px;
+$small: 250px;
+
+$large-scale: ($large * $columns) / $image-width;
+$small-scale: ($small * $columns) / $image-width;
+
+$idle-frame: 3;
+
+.Robot-girl--small {
+  &.Robot-girl--animating {
+    @include animated-sprite(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      0,
+      0,
+      $small-scale
+    );
+  }
+
+  &.Robot-girl--idle {
+    @include sprite-frame(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      $idle-frame,
+      0,
+      $small-scale
+    );
+  }
+}
+
+.Robot-girl--large {
+  &.Robot-girl--animating {
+    @include animated-sprite(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      0,
+      0,
+      $large-scale
+    );
+  }
+
+  &.Robot-girl--idle {
+    @include sprite-frame(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      $idle-frame,
+      0,
+      $large-scale
+    );
+  }
+}

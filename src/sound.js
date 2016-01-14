@@ -19,8 +19,9 @@ const soundId = () => `sound-${++id}`;
 export default class Sound extends EventEmitter {
   constructor({path, volume=1, voices=1, delay=0}={}) {
     super();
+    path = path.toLowerCase();
     this._queue = Promise.resolve();
-    this.id = path; //soundId();
+    this.id = path;
     this.volume = volume;
     this.voices = voices;
     this.delay = delay;

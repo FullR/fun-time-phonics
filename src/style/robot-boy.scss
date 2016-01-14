@@ -1,0 +1,71 @@
+@import "./util.scss";
+
+$image: "../../images/robot-sprites/boy.png";
+$image-width: 4500px;
+$image-height: 2200px;
+$columns: 3;
+$rows: 1;
+$speed: 0.5s;
+
+$large: 450px;
+$small: 250px;
+$idle-frame: 2;
+
+$large-scale: ($large * $columns) / $image-width;
+$small-scale: ($small * $columns) / $image-width;
+
+.Robot-boy--small {
+  &.Robot-boy--animating {
+    @include animated-sprite(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      0,
+      0,
+      $small-scale
+    );
+  }
+
+  &.Robot-boy--idle {
+    @include sprite-frame(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      $idle-frame,
+      0,
+      $small-scale
+    );
+  }
+}
+
+.Robot-boy--large {
+  &.Robot-boy--animating {
+    @include animated-sprite(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      0,
+      0,
+      $large-scale
+    );
+  }
+
+  &.Robot-boy--idle {
+    @include sprite-frame(
+      $image,
+      $image-width,
+      $image-height,
+      $columns,
+      $rows,
+      $idle-frame,
+      0,
+      $large-scale
+    );
+  }
+}

@@ -52,7 +52,7 @@ export default (info) => {
     "owl/the-letters": "owl/common/the-letters",
     "owl/make-the": "owl/common/make-the",
     "owl/sound-in": "owl/common/sound-in",
-    "owl/touch-the": "owl/common/touch-the",
+    "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
     // Question
     "teacher/drag-the-letters-to-the-picture-that-begin-the-word": "teacher/common/drag-the-letters-to-the-picture-that-begin-the-word",
@@ -100,7 +100,7 @@ export default (info) => {
     }
 
     render() {
-      const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+      const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
       const Activity = this.getActivity();
 
       if(activitiesComplete) {
@@ -120,7 +120,8 @@ export default (info) => {
             answer={currentAnswer}
             onAnswer={::this.setCurrentAnswer}
             onComplete={::this.completeActivity}
-            onOwlClick={::this.showLesson}
+            onOwlClick={::this.reviewLesson}
+            fullInstructions={reviewingLesson}
           />
         );
       } else {

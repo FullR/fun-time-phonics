@@ -33,6 +33,7 @@ export default [
     "teacher/correct-phonic": `teacher/common/phonics/_${activityProps.correctPhonic}_`,
     "teacher/incorrect-phonic": `teacher/common/phonics/_${activityProps.incorrectPhonic}_`
   });
+  const incorrectWords = activityProps.words.filter((word) => word !== activityProps.correct);
 
   @soundContext(sounds)
   class ActivityInstance extends React.Component {
@@ -44,6 +45,7 @@ export default [
           activityCount={activities.length}
           Question={Question}
           Response={Response}
+          incorrectWords={incorrectWords}
         />
       );
     }

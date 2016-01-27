@@ -5,11 +5,12 @@ require("style/robot-actor.scss");
 
 export default class RobotActor extends React.Component {
   render() {
-    const {type, centered, animating, speaking, text} = this.props;
+    const {type, centered, animating, speaking, text, hidden} = this.props;
     const className = classNames("Robot-actor", `Robot-actor--${type}`, {
       "Robot-actor--centered": centered,
       "Robot-actor--animating": animating,
-      "Robot-actor--speaking": speaking
+      "Robot-actor--speaking": speaking,
+      "Robot-actor--hidden": hidden
     });
 
     return (

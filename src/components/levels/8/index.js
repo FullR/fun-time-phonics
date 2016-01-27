@@ -12,7 +12,7 @@ const phonic = "ah";
 
 @soundContext({
   applause: "applause",
-  "owl/words-like": "owl/common/words-like",
+  "owl/words-like": "owl/common/words-such-as",
   "owl/bat": "owl/words/bat",
   "owl/dad": "owl/words/dad",
   "owl/wag": "owl/words/wag",
@@ -62,7 +62,7 @@ export default class Level8 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -76,7 +76,8 @@ export default class Level8 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

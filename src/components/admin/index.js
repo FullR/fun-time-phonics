@@ -156,7 +156,12 @@ export default class Admin extends React.Component {
 
         <div className="admin__content">
           <div className="admin__current-section">
-            <Section onNext={::this.nextSection} onBack={::this.previousSection} onSelectLevel={::this.selectLevel} selectedLevel={selectedLevel}/>
+            <Section
+              onNext={::this.nextSection}
+              onBack={::this.previousSection}
+              onSelectLevel={::this.selectLevel}
+              selectedLevel={selectedLevel}
+            />
           </div>
           <Arrow className="admin__back-button" onClick={::this.showLevel} style={arrowStyle}>
             {arrowText}

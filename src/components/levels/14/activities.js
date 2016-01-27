@@ -4,7 +4,7 @@ import Question from "./question";
 import Response from "./response";
 import soundContext from "decorators/sound-context";
 
-// "Replace the {phonic} in {replaceWord} with {replacePhonic}, what is the new word"
+// "Replace the {replacePhonic} in {replaceWord} with {phonic}, what is the new word"
 
 export default [
   {words: ["cot", "cut", "coat"], replaceWord: "cat", replacePhonic: "ah", phonic: "uh", correct: "cut"},
@@ -40,6 +40,7 @@ export default [
           title="Short Sounds - Forming New Words"
           Question={Question}
           Response={Response}
+          correctWord={activityProps.correct}
         />
       );
     }

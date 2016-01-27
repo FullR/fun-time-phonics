@@ -12,22 +12,22 @@ const phonic = "oh";
 
 @soundContext({
   applause: "applause",
-  "owl/words-like": "owl/common/words-like",
+  "owl/words-like": "owl/common/words-such-as",
   "owl/hop": "owl/words/hop",
   "owl/box": "owl/words/box",
   "owl/rock": "owl/words/rock",
-  "owl/make-the": "owl/lesson-8/make-the",
+  "owl/make-the": "owl/common/make-the",
   "owl/sound": "owl/common/sound",
   "owl/say": "owl/common/say",
   "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
-  "teacher/touch-the-word": "teacher/lesson-8/touch-the-word-that-makes-the",
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-makes-the",
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
   "teacher/say": "teacher/common/say",
 
-  "teacher/does-not-make-the": "teacher/lesson-8/does-not-make-the",
-  "teacher/makes-the": "teacher/lesson-8/makes-the",
+  "teacher/does-not-make-the": "teacher/common/does-not-make-the",
+  "teacher/makes-the": "teacher/common/makes-the",
   "teacher/sound": "teacher/common/sound"
 })
 @persists("level-11", true)
@@ -62,7 +62,7 @@ export default class Level11 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, reviewingLesson, currentAnswer} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -70,7 +70,15 @@ export default class Level11 extends React.Component {
     } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+      return (<Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
+        />
+      );
     } else {
       return null;
     }

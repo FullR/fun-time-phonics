@@ -65,7 +65,7 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           <Choice disabled>
-            <WordFrame word={replaceWord} sound={sounds["teacher/replace-word"]} hidden={replaceWordHidden} noBorder/>
+            <WordFrame padding={0} word={replaceWord} sound={sounds["teacher/replace-word"]} hidden={replaceWordHidden} noBorder/>
           </Choice>
         </Belt>
 

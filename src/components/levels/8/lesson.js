@@ -33,6 +33,7 @@ export default class Lesson extends React.Component {
   render() {
     return (
       <WordLesson {...this.props}
+        teacher={{text: "Instructions"}}
         number={8}
         activityCount={19}
         title="Find the Sound - Short a"

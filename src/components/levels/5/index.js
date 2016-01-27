@@ -11,7 +11,7 @@ import Feedback from "./feedback";
 @soundContext({
   applause: "applause",
 
-  "owl/words-like": "owl/common/words-like",
+  "owl/words-like": "owl/common/words-such-as",
   "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
   "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",
@@ -25,7 +25,7 @@ import Feedback from "./feedback";
   "owl/gate": "owl/words/gate",
   "owl/eight": "owl/words/eight",
 
-  "teacher/touch-the-two": "teacher/lesson-5/touch-the-two-words-that-rhyme",
+  "teacher/touch-the-two": "teacher/common/touch-the-two-words-that-rhyme",
   "teacher/rhymes-with": "teacher/common/rhymes-with",
   "teacher/does-not-rhyme-with": "teacher/common/does-not-rhyme-with"
 })
@@ -56,7 +56,7 @@ export default class Level5 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -70,7 +70,8 @@ export default class Level5 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

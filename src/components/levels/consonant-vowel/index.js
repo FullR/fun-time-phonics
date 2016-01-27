@@ -76,14 +76,14 @@ export default (info) => {
     "owl/phonic": `owl/common/phonics/_${letter}${vowel}h_`,
 
     // Lesson
-    "owl/words-like": "owl/common/words-like",
+    "owl/words-like": "owl/common/words-such-as",
     "owl/all-begin-with-the": "owl/common/all-begin-with-the",
     "owl/sound": "owl/common/sound",
     "owl/we-use-the-letters": "owl/common/we-use-the-letters",
     "owl/to-write-the": "owl/common/to-write-the",
     "owl/when-we-read-the-letters": "owl/common/when-we-read-the-letters",
     "owl/they-tell-us-to-say": "owl/common/they-tell-us-to-say",
-    "owl/touch-the": "owl/common/touch-the",
+    "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
     // Activity
     "teacher/letters": `teacher/common/letters/${letter}${vowel}`,
@@ -134,7 +134,7 @@ export default (info) => {
     }
 
     render() {
-      const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+      const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
       const Activity = this.getActivity();
 
       if(activitiesComplete) {
@@ -148,7 +148,8 @@ export default (info) => {
             answer={currentAnswer}
             onAnswer={::this.setCurrentAnswer}
             onComplete={::this.completeActivity}
-            onOwlClick={::this.showLesson}
+            onOwlClick={::this.reviewLesson}
+            fullInstructions={reviewingLesson}
           />
         );
       } else {

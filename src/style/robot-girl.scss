@@ -1,14 +1,15 @@
 @import "./util.scss";
 
-$image: "../../images/robot-sprites/girl.png";
-$image-width: 4800px;
-$image-height: 1920px;
+$image: "../../images/robot-sprites/girl-arm.png";
+$image-no-arm: "../../images/robot-sprites/girl-no-arm.png";
+$image-width: 5684px;
+$image-height: 1812px;
 $columns: 4;
 $rows: 1;
 $speed: 0.5s;
 
 $large: 450px;
-$small: 250px;
+$small: 225px;
 
 $large-scale: ($large * $columns) / $image-width;
 $small-scale: ($small * $columns) / $image-width;
@@ -46,7 +47,7 @@ $idle-frame: 3;
 .Robot-girl--large {
   &.Robot-girl--animating {
     @include animated-sprite(
-      $image,
+      $image-no-arm,
       $image-width,
       $image-height,
       $columns,

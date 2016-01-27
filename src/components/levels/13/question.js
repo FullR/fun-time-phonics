@@ -21,8 +21,12 @@ export default class Question extends React.Component {
     };
   }
 
+  get shortInstructions() {
+    return this.props.wordsOnly && !this.props.fullInstructions;
+  }
+
   componentDidMount() {
-    const {animations, words, wordsOnly} = this.props;
+    const {animations, words} = this.props;
 
     animations.create("instructions",
       this::hideChoices,
@@ -36,7 +40,7 @@ export default class Question extends React.Component {
       endSpeaking.bind(this, "teacher")
     );
 
-    if(wordsOnly) {
+    if(this.shortInstructions) {
       animations.create("words-only",
         uncenter.bind(this, "teacher"),
         ...words.map((word) => [

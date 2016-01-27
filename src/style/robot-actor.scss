@@ -1,6 +1,6 @@
 $text-size: 22px;
 $boy-text-distance: 25px;
-$girl-text-distance: 15px;
+$girl-text-distance: 25px;
 
 .Robot-actor {
   &--centered {
@@ -16,6 +16,10 @@ $girl-text-distance: 15px;
     bottom: 0;
     font-size: $text-size;
     text-align: center;
+  }
+
+  &--hidden {
+    display: none;
   }
 }
 

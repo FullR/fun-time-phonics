@@ -68,7 +68,7 @@ export default class Level2 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
     if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
@@ -79,7 +79,8 @@ export default class Level2 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

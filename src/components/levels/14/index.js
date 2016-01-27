@@ -18,20 +18,20 @@ import {number} from "./info";
   "owl/hit": "owl/words/hit",
   "owl/hot": "owl/words/hot",
 
-  "owl/if-you-replace-the": "owl/lesson-14/if-you-replace-the",
-  "owl/the-new-word-is": "owl/lesson-14/the-new-word-is",
+  "owl/if-you-replace-the": "owl/common/if-you-replace-the",
+  "owl/the-new-word-is": "owl/common/the-new-word-is",
 
   "owl/in": "owl/common/in",
   "owl/with": "owl/common/with",
-  "owl/touch-the": "owl/common/touch-the",
+  "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
   "owl/ah": "owl/common/phonics/_ah_",
   "owl/eh": "owl/common/phonics/_eh_",
   "owl/ih": "owl/common/phonics/_ih_",
   "owl/oh": "owl/common/phonics/_oh_",
 
   // Question
-  "teacher/replace-the": "teacher/lesson-14/replace-the",
-  "teacher/what-is-the-new-word": "teacher/lesson-14/what-is-the-new-word",
+  "teacher/replace-the": "teacher/common/replace-the",
+  "teacher/what-is-the-new-word": "teacher/common/what-is-the-new-word",
 
   "teacher/in": "teacher/common/in",
   "teacher/with": "teacher/common/with",
@@ -44,8 +44,8 @@ import {number} from "./info";
 
   // Response
   "teacher/yes": "teacher/common/yes",
-  "teacher/if-you-replace-the": "teacher/lesson-14/if-you-replace-the",
-  "teacher/the-new-word-is": "teacher/lesson-14/the-new-word-is"
+  "teacher/if-you-replace-the": "teacher/common/if-you-replace-the",
+  "teacher/the-new-word-is": "teacher/common/the-new-word-is"
 })
 @persists(`level-${number}`, true)
 @hasActivities(activities)
@@ -93,7 +93,7 @@ export default class Level extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
         />
       );
     } else {

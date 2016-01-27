@@ -49,6 +49,7 @@ export default class Level1 extends React.Component {
       activityIndex: 0,
       showingLesson: true,
       currentAnswer: null,
+      reviewingLesson: false,
       score: 0,
       highscore: -1,
       activitiesComplete: false,
@@ -69,7 +70,7 @@ export default class Level1 extends React.Component {
   }
 
   render() {
-    const {showingLesson, currentAnswer, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, currentAnswer, activityIndex, activitiesComplete, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(showingLesson) {
@@ -81,7 +82,8 @@ export default class Level1 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

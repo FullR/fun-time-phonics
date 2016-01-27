@@ -20,7 +20,7 @@ export default class Question extends React.Component {
     super(props);
     this.state = {
       teacher: {text: "Instructions", centered: props.wordsOnly, speaking: props.wordsOnly, glowing: props.wordsOnly},
-      owl: {text: "lesson", centered: !props.wordsOnly, speaking: !props.wordsOnly},
+      owl: {text: "Lesson", centered: !props.wordsOnly, speaking: !props.wordsOnly},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
           word,
@@ -55,6 +55,7 @@ export default class Question extends React.Component {
     animations.create("words-only",
       this::hideChoices,
       center.bind(this, "teacher"),
+      250,
       this::say("teacher", "teacher/sounded-parts"),
       uncenter.bind(this, "teacher"),
       ...words.map((word) => [

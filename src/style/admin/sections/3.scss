@@ -31,4 +31,12 @@ $lesson-button-title-size: 32px;
     .Lesson-button-20 {
         width: 25%;
     }
+
+    .Lesson-button-15, // disable line-wrap
+    .Lesson-button-16,
+    .Lesson-button-17,
+    .Lesson-button-18,
+    .Lesson-button-19 {
+      white-space: nowrap;
+    }
 }

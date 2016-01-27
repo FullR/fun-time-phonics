@@ -10,7 +10,7 @@ export default class Section3 extends React.Component {
     const select = (lessonId) => () => onSelectLevel(lessonId);
 
     return (
-      <Section {...this.props} className="admin-section-3">
+      <Section {...this.props} className="admin-section-3" lessons="15-20" title="Short Vowels Letter">
         <LessonButton lessonId="15" selected={isSelected("15")} onClick={select("15")}>
           <Title>The Letter "a"</Title>
         </LessonButton>

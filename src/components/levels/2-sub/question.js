@@ -9,13 +9,12 @@ import {GameScreen, Belt, WordFrame, Choice} from "components";
 export default class Lesson2SubQuestion extends React.Component {
   constructor(props) {
     super(props);
-    const {wordsOnly} = props;
     this.state = {
       owl: {text: "Lesson"},
       teacher: {
         text: "Instructions",
         speaking: true,
-        centered: !wordsOnly,
+        centered: !this.shortInstructions,
         animating: false,
         glowing: true
       },
@@ -27,6 +26,10 @@ export default class Lesson2SubQuestion extends React.Component {
         return choices;
       }, {})
     };
+  }
+
+  get shortInstructions() {
+    return this.props.wordsOnly && !this.props.fullInstructions;
   }
 
   componentDidMount() {
@@ -71,7 +74,7 @@ export default class Lesson2SubQuestion extends React.Component {
       endSpeaking.bind(this, "teacher")
     );
 
-    if(this.props.wordsOnly) {
+    if(this.shortInstructions) {
       animations.start("words-only");
     } else {
       this.animate();

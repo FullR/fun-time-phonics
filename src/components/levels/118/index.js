@@ -107,7 +107,12 @@ export default class Level extends React.Component {
     } else if(activitiesComplete) {
       return (<Feedback {...this.props} {...info} onBack={::this.reset}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} {...info} index={activityIndex} onComplete={::this.completeActivity}/>);
+      return (
+        <Activity {...this.props} {...info}
+          index={activityIndex}
+          onComplete={::this.completeActivity}
+        />
+      );
     } else {
       return null;
     }

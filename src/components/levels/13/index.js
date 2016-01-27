@@ -23,11 +23,11 @@ import Feedback from "./feedback";
   "owl/pot": "owl/words/pot",
   "owl/rug": "owl/words/rug",
 
-  "owl/listen-to": "owl/lesson-13/listen-to-the-middle-sound-in-these-words",
-  "owl/makes-the": "owl/lesson-13/makes-the",
+  "owl/listen-to": "owl/common/listen-to-the-middle-sound-in-these-words",
+  "owl/makes-the": "owl/common/makes-the",
   "owl/sound": "owl/common/sound",
   "owl/and": "owl/common/and",
-  "owl/touch-the": "owl/common/touch-the",
+  "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
   "teacher/ah": "teacher/common/phonics/_ah_",
   "teacher/eh": "teacher/common/phonics/_eh_",
@@ -35,10 +35,10 @@ import Feedback from "./feedback";
   "teacher/oh": "teacher/common/phonics/_oh_",
   "teacher/uh": "teacher/common/phonics/_uh_",
 
-  "teacher/touch-the": "teacher/lesson-13/touch-the-word-that-makes-a-different-middle-sound",
-  "teacher/make-the-same": "teacher/lesson-13/make-the-same",
-  "teacher/make-the": "teacher/lesson-13/make-the",
-  "teacher/makes-the": "teacher/lesson-13/makes-the",
+  "teacher/touch-the": "teacher/common/touch-the-word-that-makes-the-different-middle-sound",
+  "teacher/make-the-same": "teacher/common/make-the-same",
+  "teacher/make-the": "teacher/common/make-the",
+  "teacher/makes-the": "teacher/common/makes-the",
   "teacher/and": "teacher/common/and",
   "teacher/sound": "teacher/common/sound"
 })
@@ -74,7 +74,7 @@ export default class Level13 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, reviewingLesson, currentAnswer} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -82,7 +82,16 @@ export default class Level13 extends React.Component {
     } else if(showingLesson) {
       return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
     } else if(Activity) {
-      return (<Activity {...this.props} index={activityIndex} onComplete={::this.completeActivity} onOwlClick={::this.showLesson}/>);
+      return (
+        <Activity {...this.props}
+          index={activityIndex}
+          answer={currentAnswer}
+          onAnswer={::this.setCurrentAnswer}
+          onComplete={::this.completeActivity}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
+        />
+      );
     } else {
       return null;
     }

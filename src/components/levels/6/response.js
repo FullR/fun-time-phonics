@@ -26,7 +26,7 @@ export default class Response extends React.Component {
     animations.create("incorrect",
       this::say("teacher", "teacher/sounded-parts"),
       this::say("teacher", "teacher/does-not-make", 300),
-      this::say("teacher", `teacher/sounded-word`, 200)
+      this::say("teacher", `teacher/${word}`, 200)
     );
 
     this.animate();

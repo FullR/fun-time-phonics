@@ -35,6 +35,7 @@ export default [
     render() {
       return (
         <Activity {...this.props} {...activityProps}
+          teacher={{centered: !this.props.wordsOnly}}
           number={8}
           title="Find the Sound - Short a"
           activityCount={activities.length}

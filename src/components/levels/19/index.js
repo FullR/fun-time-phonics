@@ -22,7 +22,7 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/makes-the": "owl/common/makes-the",
   "owl/sound-in": "owl/common/sound-in",
   "owl/sound-in-them": "owl/common/sound-in-them",
-  "owl/touch-the": "owl/common/touch-the",
+  "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
   "owl/letter": `owl/common/letters/${letter}`,
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
@@ -74,7 +74,7 @@ export default class Level extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -88,7 +88,8 @@ export default class Level extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

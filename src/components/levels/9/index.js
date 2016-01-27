@@ -12,22 +12,22 @@ const phonic = "eh";
 
 @soundContext({
   applause: "applause",
-  "owl/words-like": "owl/common/words-like",
+  "owl/words-like": "owl/common/words-such-as",
   "owl/wet": "owl/words/wet",
   "owl/red": "owl/words/red",
   "owl/leg": "owl/words/leg",
-  "owl/make-the": "owl/lesson-8/make-the",
+  "owl/make-the": "owl/common/make-the",
   "owl/sound": "owl/common/sound",
   "owl/say": "owl/common/say",
   "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
-  "teacher/touch-the-word": "teacher/lesson-8/touch-the-word-that-makes-the",
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-makes-the",
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
   "teacher/say": "teacher/common/say",
 
-  "teacher/does-not-make-the": "teacher/lesson-8/does-not-make-the",
-  "teacher/makes-the": "teacher/lesson-8/makes-the",
+  "teacher/does-not-make-the": "teacher/common/does-not-make-the",
+  "teacher/makes-the": "teacher/common/makes-the",
   "teacher/sound": "teacher/common/sound"
 })
 @persists("level-9", true)
@@ -62,7 +62,7 @@ export default class Level9 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -76,7 +76,8 @@ export default class Level9 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

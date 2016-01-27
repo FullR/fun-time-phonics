@@ -63,7 +63,7 @@ export default class Level3 extends React.Component {
   }
 
   render() {
-    const {showingLesson, activityIndex, activitiesComplete, currentAnswer} = this.state;
+    const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
@@ -79,7 +79,8 @@ export default class Level3 extends React.Component {
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}
           onComplete={::this.completeActivity}
-          onOwlClick={::this.showLesson}
+          onOwlClick={::this.reviewLesson}
+          fullInstructions={reviewingLesson}
         />
       );
     } else {

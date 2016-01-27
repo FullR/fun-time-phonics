@@ -14,7 +14,7 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, answer, correct, correctWord, incorrectWords} = this.props;
+    const {animations, answer, correct, incorrectWords} = this.props;
     const {word} = answer;
     const incorrectAnim = [
       this::say("teacher", `teacher/${incorrectWords[0]}`),
@@ -27,7 +27,7 @@ export default class Response extends React.Component {
 
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", `teacher/${correctWord}`),
+      this::say("teacher", `teacher/${word}`),
       this::say("teacher", "teacher/makes-the", 200),
       this::say("teacher", "teacher/correct-phonic", 100),
       this::say("teacher", "teacher/sound", 100),

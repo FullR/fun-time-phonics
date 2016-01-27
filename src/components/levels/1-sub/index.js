@@ -69,7 +69,7 @@ export default function({
     }
 
     render() {
-      const {activitiesComplete, showingLesson, activityIndex, currentAnswer} = this.state;
+      const {activitiesComplete, showingLesson, activityIndex, currentAnswer, reviewingLesson} = this.state;
       const Activity = this.getActivity();
       if(showScore && activitiesComplete) {
         return (<LevelFeedback onComplete={() => hasher.setHash("level/2")}/>);
@@ -84,7 +84,9 @@ export default function({
             answer={currentAnswer}
             onAnswer={::this.setCurrentAnswer}
             onComplete={::this.completeActivity}
-            exampleWords={exampleWords} onOwlClick={::this.showLesson}
+            exampleWords={exampleWords}
+            onOwlClick={::this.reviewLesson}
+            fullInstructions={reviewingLesson}
           />
         );
       } else {

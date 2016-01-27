@@ -8,13 +8,12 @@ import {GameScreen, Belt, WordFrame, Choice} from "components";
 export default class Question extends React.Component {
   constructor(props) {
     super(props);
-    const {wordsOnly} = props;
     this.state = {
       owl: {text: "Lesson"},
       teacher: {
         text: "Instructions",
         speaking: true,
-        centered: !wordsOnly,
+        centered: !this.shortInstructions,
         animating: false,
         glowing: true
       },
@@ -28,8 +27,12 @@ export default class Question extends React.Component {
     };
   }
 
+  get shortInstructions() {
+    return this.props.wordsOnly && !this.props.fullInstructions;
+  }
+
   componentDidMount() {
-    const {animations, words, wordsOnly} = this.props;
+    const {animations, words} = this.props;
     animations.create("instructions",
       this::hideChoices,
       center.bind(this, "teacher"),
@@ -64,7 +67,7 @@ export default class Question extends React.Component {
       endSpeaking.bind(this, "teacher")
     );
 
-    if(wordsOnly) {
+    if(this.shortInstructions) {
       animations.start("words-only");
     } else {
       this.animate();

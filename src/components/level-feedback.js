@@ -9,6 +9,7 @@ import soundContext from "decorators/sound-context";
 import Corner from "components/corner";
 import {VCenter} from "components/center";
 import Owl from "components/owl";
+import Robot from "components/robot";
 require("style/level-feedback.scss");
 
 @soundContext({
@@ -34,11 +35,6 @@ export default class LevelFeedback extends React.Component {
     return this.percent >= this.props.requiredPercent;
   }
 
-  get className() {
-    const {passing} = this;
-    return classNames(this.props.className, "Level-feedback", `Level-feedback--${passing ? "passing" : "failing"}`);
-  }
-
   componentDidMount() {
     if(!this.passing) {
       this.props.sounds.failSound.play();
@@ -52,9 +48,10 @@ export default class LevelFeedback extends React.Component {
   render() {
     const {title, subtitle, score, total, requiredPercent, onNext, onBack} = this.props;
     const {percent, passing} = this;
+    const className = classNames(this.props.className, "Level-feedback", `Level-feedback--${passing ? "passing" : "failing"}`);
 
     return (
-      <StarBox className={this.className} boxSizing="border-box" large>
+      <StarBox className={className} boxSizing="border-box" large>
         <div className="Level-feedback__title-box">
           <div className="Level-feedback__title">{title} Complete!</div>
           <div className="Level-feedback__subtitle">{subtitle}</div>
@@ -69,7 +66,8 @@ export default class LevelFeedback extends React.Component {
           <div className="Level-feedback__score-fraction">{score}/{total}</div>
         </div>
 
-        <Owl speaking={true} animating={false} size="small"/>
+        <Robot type="boy"/>
+        <Robot type="girl"/>
 
         <div className="Level-feedback__arrow-box">
           {passing ?

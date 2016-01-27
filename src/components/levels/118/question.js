@@ -21,6 +21,8 @@ export default class Question extends React.Component {
     };
   }
 
+  
+
   componentDidMount() {
     const {animations, words, soundsOnly} = this.props;
 

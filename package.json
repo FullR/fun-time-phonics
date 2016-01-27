@@ -12,7 +12,8 @@
     "create-sprites": "node scripts/create-sprites.js",
     "dev-server": "npm run create-asset-index && scripts/dev-server",
     "xcode": "open ./builds/cordova/platforms/ios/ftph.xcodeproj",
-    "upload": "scripts/upload"
+    "upload": "scripts/upload",
+    "release": "npm run compile && npm run upload"
   },
   "dependencies": {
     "babel-core": "^6.3.21",

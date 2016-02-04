@@ -69,7 +69,7 @@ export default class Question extends React.Component {
   }
 
   onDrop({draggable}) {
-    this.props.onAnswer(draggable.value);
+    setTimeout(() => this.props.onAnswer(draggable.value), 10);
   }
 
   render() {

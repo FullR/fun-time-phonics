@@ -75,7 +75,7 @@ export default class Lesson extends React.Component {
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>
         <Belt top="15%">
-          <span style={{fontSize: 100}}>{letter} {letter.toUpperCase()}</span>
+          <span style={{fontSize: 100}}><span style={{marginRight: 30}}>{letter}</span> {letter.toUpperCase()}</span>
         </Belt>
 
         <Belt>

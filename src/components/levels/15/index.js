@@ -26,8 +26,8 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/letter": `owl/common/letters/${letter}`,
   "owl/phonic": `owl/common/phonics/_${phonic}_`,
 
-  "owl/we-use-the-letter": "owl/lesson-15/we-use-the-letter",
-  "owl/to-write-words": "owl/lesson-15/to-write-words-that-have-the",
+  "owl/we-use-the-letter": "owl/common/we-use-the-letter",
+  "owl/to-write-words": "owl/common/to-write-words-that-have-the",
 
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",
@@ -36,11 +36,11 @@ import {number, letter, phonic, lessonWords} from "./info";
   "teacher/letter": `teacher/common/letters/${letter}`,
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
 
-  "teacher/sound-so-it-does-not": "teacher/lesson-15/sound-so-it-does-not-have-an",
-  "teacher/sound-so": "teacher/lesson-15/sound-so",
-  "teacher/drag-the-letter": "teacher/lesson-15/drag-the-letter",
-  "teacher/to-the-word": "teacher/lesson-15/to-the-word-that-makes-that-sound",
-  "teacher/that-is-not-the-letter": "teacher/lesson-15/that-is-not-the-letter"
+  "teacher/sound-so-it-does-not": "teacher/common/sound-so-it-does-not-have-an",
+  "teacher/sound-so": "teacher/common/sound-so",
+  "teacher/drag-the-letter": "teacher/common/drag-the-letter",
+  "teacher/to-the-word": "teacher/common/to-the-word-that-makes-that-sound",
+  "teacher/that-is-not-the-letter": "teacher/common/that-is-not-the-letter"
 })
 @persists(`level-${number}`, true)
 @hasActivities(activities)
@@ -84,6 +84,7 @@ export default class Level extends React.Component {
     } else if(Activity) {
       return (
         <Activity {...this.props}
+          key={`activity-${activityIndex}`}
           index={activityIndex}
           answer={currentAnswer}
           onAnswer={::this.setCurrentAnswer}

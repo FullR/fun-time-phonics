@@ -12,28 +12,28 @@ import {number, letter, phonic, lessonWords} from "./info";
 @soundContext({
   applause: "applause",
 
-  "owl/ax": "owl/words/ax",
+  "owl/axe": "owl/words/axe",
   "owl/Ed": "owl/words/Ed",
   "owl/itch": "owl/words/itch",
   "owl/otter": "owl/words/otter",
   "owl/up": "owl/words/up",
 
-  "owl/lets-review": "owl/lesson-20/lets-review-the-letter-sounds-we-have-learned",
-  "owl/say-each": "owl/lesson-20/say-each-letters-sound",
+  "owl/lets-review": "owl/common/lets-review-the-letter-sounds-we-have-learned",
+  "owl/say-each": "owl/common/say-each-letters-sound",
   "owl/the-letter": "owl/common/the-letter",
   "owl/makes-the": "owl/common/makes-the",
   "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
   "owl/sound-in": "owl/common/sound-in",
 
-  "teacher/drag-the-letter": "teacher/lesson-20/drag-the-letter-to-the-picture-that-makes-the",
-  "teacher/sound-so-it-does-not-have-an": "teacher/lesson-20/sound-so-it-does-not-have-an",
+  "teacher/drag-the-letter": "teacher/common/drag-the-letter-to-the-picture-that-makes-the",
+  "teacher/sound-so-it-does-not-have-an": "teacher/common/sound-so-it-does-not-have-an",
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",
   "teacher/in-it": "teacher/common/in-it",
   "teacher/sound-in": "teacher/common/sound-in",
   "teacher/correct": "teacher/common/correct",
 
-  "teacher/say-the-letter": "teacher/lesson-20/say-the-letter-sound-and-touch-the-word-that-makes-that-sound",
+  "teacher/say-the-letter": "teacher/common/say-the-letter-sound-and-touch-the-word-that-makes-that-sound",
   "teacher/there-is-no": "teacher/common/there-is-no",
   "teacher/has-an": "teacher/common/has-an",
 

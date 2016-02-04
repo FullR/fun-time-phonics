@@ -132,13 +132,18 @@ $back-button-offset: 40px;
 
 .admin .next-section-button,
 .admin .previous-section-button {
+  position: relative;
+  top: 90px;
   background-position: center;
   background-size: 75% 50%;
   color: WHITE;
   font-weight: bold;
   height: 100%;
-  width: span(2);
+  width: 100px;
+  height: 50px;
   text-align: center;
+  font-size: 13px;
+  vertical-align: top;
 
   @include active {
       color: #87BFFF;
@@ -146,6 +151,8 @@ $back-button-offset: 40px;
 }
 
 .previous-section-button {
+  position: relative;
+  left: 100px;
   border: 0;
   cursor: pointer;
   margin-right: span(1/2);
@@ -161,4 +168,5 @@ $back-button-offset: 40px;
   cursor: pointer;
   margin-left: span(1/2);
   outline: 0;
+  right: 100px;
 }

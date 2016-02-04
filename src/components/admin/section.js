@@ -1,11 +1,13 @@
 import React from "react";
-import Arrow from "components/arrow";
 import SectionHeader from "components/admin/section-header";
+import Arrow from "components/arrow";
 import classNames from "util/class-names";
 
 export default class AdminSection extends React.Component {
+  static defaultProps = {nextText: "", backText: ""};
+
   render() {
-    const {title, lessons, onBack, onNext} = this.props;
+    const {title, lessons, onBack, onNext, nextText, backText} = this.props;
     const className = classNames(
       this.props.className,
       "admin-section"
@@ -13,9 +15,14 @@ export default class AdminSection extends React.Component {
     return (
       <div className={className}>
         <div className="section-header-container">
-          <Arrow onClick={onBack} color="black" reversed={true} className="previous-section-button">Back</Arrow>
-          <SectionHeader title={title} lessons={lessons}/>
-          <Arrow onClick={onNext} color="black" className="next-section-button">Next</Arrow>
+          <Arrow onClick={onBack} color="blue" reversed={true} className="previous-section-button">{backText}</Arrow>
+          <SectionHeader title={title} lessons={lessons}
+            onBack={onBack}
+            onNext={onNext}
+            backText={backText}
+            nextText={nextText}
+          />
+          <Arrow onClick={onNext} color="blue" className="next-section-button">{nextText}</Arrow>
         </div>
         {this.props.children}
       </div>

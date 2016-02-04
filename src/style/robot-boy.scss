@@ -1,43 +1,77 @@
 @import "./util.scss";
 
-$image: "../../images/robot-sprites/boy.png";
-$image-width: 4500px;
-$image-height: 2200px;
-$columns: 3;
-$rows: 1;
-$speed: 0.5s;
+$no-arm-image: "../../images/robot-sprites/boy-no-arm.png";
+$no-arm-width: 1800px;
+$no-arm-height: 1073px;
+$no-arm-columns: 2;
+$no-arm-rows: 1;
 
+$arm-image: "../../images/robot-sprites/boy-arm.png";
+$arm-width: 1800px;
+$arm-height: 1073px;
+$arm-columns: 2;
+$arm-rows: 1;
+
+$idle-image: "../../images/robot-sprites/boy-idle.png";
+$idle-width: 2700px;
+$idle-height: 1073px;
+$idle-columns: 3;
+$idle-rows: 1;
+
+$speed: 0.5s;
 $large: 450px;
 $small: 200px;
-$idle-frame: 2;
-
-$large-scale: ($large * $columns) / $image-width;
-$small-scale: ($small * $columns) / $image-width;
 
 .Robot-boy--small {
   &.Robot-boy--animating {
     @include animated-sprite(
-      $image,
-      $image-width,
-      $image-height,
-      $columns,
-      $rows,
+      $no-arm-image,
+      $no-arm-width,
+      $no-arm-height,
+      $no-arm-columns,
+      $no-arm-rows,
       0,
       0,
-      $small-scale
+      ($small * $no-arm-columns) / $no-arm-width
     );
   }
 
   &.Robot-boy--idle {
     @include sprite-frame(
-      $image,
-      $image-width,
-      $image-height,
-      $columns,
-      $rows,
-      $idle-frame,
+      $idle-image,
+      $idle-width,
+      $idle-height,
+      $idle-columns,
+      $idle-rows,
       0,
-      $small-scale
+      0,
+      ($small * $idle-columns) / $idle-width
+    );
+  }
+
+  &.Robot-boy--not-speaking.Robot-boy--glowing { // small, not speaking, glowing
+    @include sprite-frame(
+      $idle-image,
+      $idle-width,
+      $idle-height,
+      $idle-columns,
+      $idle-rows,
+      2,
+      0,
+      ($small * $idle-columns) / $idle-width
+    );
+  }
+
+  &.Robot-boy--not-speaking:hover {
+    @include sprite-frame(
+      $idle-image,
+      $idle-width,
+      $idle-height,
+      $idle-columns,
+      $idle-rows,
+      1,
+      0,
+      ($small * $idle-columns) / $idle-width
     );
   }
 }
@@ -45,27 +79,27 @@ $small-scale: ($small * $columns) / $image-width;
 .Robot-boy--large {
   &.Robot-boy--animating {
     @include animated-sprite(
-      $image,
-      $image-width,
-      $image-height,
-      $columns,
-      $rows,
+      $arm-image,
+      $arm-width,
+      $arm-height,
+      $arm-columns,
+      $arm-rows,
       0,
       0,
-      $large-scale
+      ($large * $arm-columns) / $arm-width
     );
   }
 
   &.Robot-boy--idle {
     @include sprite-frame(
-      $image,
-      $image-width,
-      $image-height,
-      $columns,
-      $rows,
-      $idle-frame,
+      $idle-image,
+      $idle-width,
+      $idle-height,
+      $idle-columns,
+      $idle-rows,
       0,
-      $large-scale
+      0,
+      ($large * $idle-columns) / $idle-width
     );
   }
 }

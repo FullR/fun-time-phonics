@@ -78,21 +78,21 @@ export default class Question extends React.Component {
 
   onLetterDrop(word, droppedLetter) {
     if(droppedLetter === letter) {
-      this.props.onAnswer({word});
+      setTimeout(() => this.props.onAnswer({word}), 10);
     } else {
       this.wrongLetter();
     }
   }
 
   render() {
-    const {onAnswer, sounds, animations} = this.props;
+    const {onAnswer, sounds, animations, index} = this.props;
     const {choices, teacher, owl, letters} = this.state;
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           {letters.map((letter) =>
-            <DraggableChoice key={`letter-${letter}`} letter={letter} autohide>
+            <DraggableChoice key={`${index}-letter-${letter}`} letter={letter} autohide>
               <div style={letterStyle}>{letter}</div>
             </DraggableChoice>
           )}
@@ -101,10 +101,8 @@ export default class Question extends React.Component {
         <Belt bottom="20%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <DropZone style={{width: "100%", height: "100%"}} choice={choice} onDrop={(event) => {
-                if(event && event.item) {
-                  this.onLetterDrop(choice.word, event.item.props.letter);
-                }
+              <DropZone style={{width: "100%", height: "100%"}} choice={choice} value={choice} onDrop={(event) => {
+                this.onLetterDrop(choice.word, event.letter);
               }}>
                 <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]}/>
               </DropZone>

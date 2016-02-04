@@ -8,7 +8,7 @@ import WordFrame from "components/word-frame";
 import LessonTitle from "components/lesson-title";
 import Corner from "components/corner";
 import animationContext from "decorators/animation-context";
-import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
+import {say, endSpeaking, hideChoices, revealChoice, center, uncenter, detachChoices, attachChoices} from "helpers/animation";
 import {number, title, activityCount} from "./info";
 
 @animationContext
@@ -20,8 +20,8 @@ export default class Lesson extends React.Component {
       choices: {
         bad: {word: "bad", hidden: true},
         bed: {word: "bed", hidden: true},
-        hit: {word: "hit", hidden: true},
-        hot: {word: "hot", hidden: true}
+        hit: {word: "hit", hidden: true, detached: true},
+        hot: {word: "hot", hidden: true, detached: true}
       }
     };
   }
@@ -47,8 +47,12 @@ export default class Lesson extends React.Component {
     animations.create("lesson",
       this::hideChoices,
       center.bind(this, "owl"),
+      detachChoices.bind(this, "hit", "hot"),
+      attachChoices.bind(this, "bad", "bed"),
       replacePhonic("ah", "eh", "bad", "bed"),
       300,
+      detachChoices.bind(this, "bad", "bed"),
+      attachChoices.bind(this, "hit", "hot"),
       replacePhonic("ih", "oh", "hit", "hot"),
       this::say("owl", "owl/touch-the", 300),
       endSpeaking.bind(this, "owl")

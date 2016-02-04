@@ -1,11 +1,17 @@
 import React from "react";
+import {isFunction} from "lodash";
 import Choice from "components/choice";
 import {DragSource} from "react-dnd";
 import {CHOICE} from "dnd-types";
 
 const dragSource = {
   beginDrag(props) {
-    return {props};
+    return props;
+  },
+
+  endDrag(props, monitor, component) {
+    const item = monitor.getItem();
+    console.log({props, item, component});
   },
 
   canDrag(props) {

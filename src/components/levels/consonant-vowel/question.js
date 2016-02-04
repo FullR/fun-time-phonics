@@ -72,8 +72,7 @@ export default class Question extends React.Component {
   }
 
   onDrop({droppable}) {
-    console.log(droppable);
-    this.props.onAnswer(droppable.choice);
+    setTimeout(() => this.props.onAnswer(droppable.choice), 10);
   }
 
   render() {

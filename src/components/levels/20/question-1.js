@@ -55,16 +55,14 @@ export default class Question extends React.Component {
   }
 
   onLetterDrop(word, letter) {
-    this.props.onAnswer({word, letter});
+    setTimeout(() => this.props.onAnswer({word, letter}), 10);
   }
 
   render() {
     const {onAnswer, sounds, animations, letters, word} = this.props;
     const {teacher, owl} = this.state;
     const onDrop = (event) => {
-      if(event && event.item) {
-        this.onLetterDrop(word, event.item.props.letter);
-      }
+      this.onLetterDrop(word, event.letter);
     };
 
     return (

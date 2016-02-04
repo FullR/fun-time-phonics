@@ -47,7 +47,7 @@ export default (info) => {
     });
   }
 
-  const Activities = activityData.map((activity) => {
+  const activities = activityData.map((activity) => {
     @soundContext(wordSounds(activity.words, "teacher"))
     class ActivityInstance extends React.Component {
       render() {

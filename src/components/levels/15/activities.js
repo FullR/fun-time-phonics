@@ -36,6 +36,7 @@ export default [
       return (
         <Activity {...this.props} {...activityProps}
           number={15}
+          index={i}
           title="Short Sounds - The Letter 'a'"
           activityCount={activities.length}
           Question={Question}

@@ -12,7 +12,7 @@ export default class SectionHeader extends React.Component {
     return (
       <div className={className}>
         <div className="Section-header__title">{title}</div>
-        {letters ? 
+        {letters ?
           <div className="Section-header__letters">{letters}</div>
           : null
         }

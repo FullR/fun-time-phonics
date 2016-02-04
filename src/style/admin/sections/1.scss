@@ -46,7 +46,7 @@ $row-height: (100%/$row-count) - 1%;
   }
 
   .previous-section-button {
-    visibility: hidden;
+    opacity: 0;
   }
 }
 

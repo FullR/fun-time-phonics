@@ -6,7 +6,7 @@ export default consonantVowel({
   vowel: "u",
   lessonWords: ["duck", "dunk", "dust"],
   activityData: [
-    {words: ["disk", "desk", "dusk"], correct: "dusk"},
+    {words: ["disc", "desk", "dusk"], correct: "dusk"},
     {words: ["daisy", "dizzy", "dummy"], correct: "dummy", wordsOnly: true},
     {words: ["dump", "dome", "drum"], correct: "dump", wordsOnly: true},
     {words: ["dumpster", "dentist", "dimple"], correct: "dumpster", wordsOnly: true},

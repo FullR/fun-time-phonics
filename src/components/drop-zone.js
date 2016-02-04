@@ -4,21 +4,18 @@ import {CHOICE} from "dnd-types";
 
 const target = {
   drop(props, monitor) {
-    if(props.onDrop) {
-      if(!props.canDrop || props.canDrop()) {
-        props.onDrop({
-          props,
-          item: monitor.getItem()
-        });
-      }
+    const item = monitor.getItem();
+
+    if(typeof props.onDrop === "function") {
+      props.onDrop(item);
     }
   }
 };
 
 function connect(connect, monitor) {
   return {
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    connectDropTarget: connect.dropTarget()//,
+    //isOver: monitor.isOver()
   };
 }
 

@@ -1,7 +1,7 @@
 import multiConsonantReview from "components/levels/multi-consonant-review";
 
 export default multiConsonantReview({
-  title: "Review: Consonant 'b' - 'k' With Short Vowels",
+  title: "Review: Consonant \"b\" - \"k\" With Short Vowels",
   number: 63,
   activityData: [
     {word: "hug", letters: ["hu", "ju", "gu"], correct: "hu"},

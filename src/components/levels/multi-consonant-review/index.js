@@ -48,7 +48,8 @@ export default (info) => {
     "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
     // Question
-    "teacher/drag-the-letters-to-the-picture-that-begin-the-word": "teacher/common/drag-the-letters-to-the-picture-that-begin-the-word",
+    "teacher/drag-the-letters-that-begin-the-word": "teacher/common/drag-the-letters-that-begin-the-word",
+    "teacher/to-the-picture": "teacher/common/to-the-picture",
 
     // Incorrect
     "teacher/the-letters": "teacher/common/the-letters",

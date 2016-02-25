@@ -10,7 +10,7 @@ export default consonantVowel({
     {words: ["blocks", "bid", "Bob"], correct: "Bob", wordsOnly: true},
     {words: ["boxer", "buckle", "backpack"], correct: "boxer", wordsOnly: true},
     {words: ["button", "bottom", "bumper"], correct: "bottom", wordsOnly: true},
-    {words: ["ball", "battle", "bottle"], correct: "bottle", wordsOnly: true},
+    {words: ["bell", "battle", "bottle"], correct: "bottle", wordsOnly: true},
     {words: ["bonnet", "bunny", "bent"], correct: "bonnet", wordsOnly: true},
     {words: ["bun", "bomb", "Ben"], correct: "bomb", wordsOnly: true}
   ]

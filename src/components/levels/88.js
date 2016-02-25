@@ -1,7 +1,7 @@
 import multiConsonantReview from "components/levels/multi-consonant-review";
 
 export default multiConsonantReview({
-  title: "Review: Consonant 'b' - 'p' With Short Vowels",
+  title: "Review: Consonant \"b\" - \"p\" With Short Vowels",
   number: 88,
   activityData: [
     {word: "melon", letters: ["le", "me", "ne"], correct: "me"},

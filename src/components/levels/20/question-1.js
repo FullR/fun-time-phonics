@@ -7,6 +7,7 @@ import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "hel
 import {GameScreen, Belt, WordFrame, Choice} from "components";
 import {letter} from "./info";
 import Letter from "components/letter";
+import SoundFrame from "components/sound-frame";
 
 import DraggableChoice from "components/draggable-choice";
 import DropZone from "components/drop-zone";
@@ -54,33 +55,26 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  onLetterDrop(word, letter) {
-    setTimeout(() => this.props.onAnswer({word, letter}), 10);
-  }
-
   render() {
     const {onAnswer, sounds, animations, letters, word} = this.props;
     const {teacher, owl} = this.state;
-    const onDrop = (event) => {
-      this.onLetterDrop(word, event.letter);
-    };
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
-        <Belt top="10%">
-          {letters.map((letter) =>
-            <DraggableChoice key={`letter-${letter}`} letter={letter} autohide>
-              <Letter>{letter}</Letter>
-            </DraggableChoice>
-          )}
+        <Belt top="8%">
+          <Choice>
+            <WordFrame word={word} sound={sounds["teacher/word"]}/>
+          </Choice>
         </Belt>
 
-        <Belt bottom="20%">
-          <Choice>
-            <DropZone onDrop={onDrop}>
-              <WordFrame word={word} sound={sounds["teacher/word"]}/>
-            </DropZone>
-          </Choice>
+        <Belt bottom="15%">
+          {letters.map((letter) =>
+            <Choice key={`letter-${letter}`}>
+              <SoundFrame onClick={() => onAnswer({word, letter})}>
+                <Letter>{letter}</Letter>
+              </SoundFrame>
+            </Choice>
+          )}
         </Belt>
       </GameScreen>
     );

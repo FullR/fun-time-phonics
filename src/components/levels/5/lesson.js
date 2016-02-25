@@ -39,7 +39,7 @@ export default class Lesson extends React.Component {
         eight: {hidden: true, detached: true}
       }),
 
-      this::say("owl", "owl/words-like", 300),
+      this::say("owl", "owl/words-such-as", 300),
       uncenter.bind(this, "owl"),
 
       revealChoice.bind(this, "red"),

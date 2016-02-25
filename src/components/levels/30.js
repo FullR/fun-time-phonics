@@ -4,6 +4,7 @@ export default consonantVowelReview({
   number: 30,
   lessonLetters: ["ca", "co", "cu"],
   lessonWords: ["cat", "cob", "cub"],
+  letter: "c",
   activityData: [
     {word: "cap", letters: ["co", "ca", "cu"], correct: "ca"},
     {word: "cop", letters: ["co", "cu", "ca"], correct: "co", wordsOnly: true},

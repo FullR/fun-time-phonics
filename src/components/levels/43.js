@@ -1,7 +1,7 @@
 import multiConsonantReview from "components/levels/multi-consonant-review";
 
 export default multiConsonantReview({
-  title: "Review: Consonant 'b' - 'f' With Short Vowels",
+  title: "Review: Consonant \"b\" - \"f\" With Short Vowels",
   number: 43,
   activityData: [
     {word: "devil", letters: ["fe", "de", "be"], correct: "de"},

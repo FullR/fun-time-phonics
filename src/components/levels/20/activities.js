@@ -7,21 +7,21 @@ import Response2 from "./response-2";
 import soundContext from "decorators/sound-context";
 
 const firstHalf = [
-  {letters: ["a", "o", "u"], word: "bug", correct: "u"},                  // 1
-  {letters: ["e", "a", "i"], word: "mad", correct: "a", wordsOnly: true},
-  {letters: ["o", "u", "a"], word: "cop", correct: "o", wordsOnly: true},
-  {letters: ["a", "e", "u"], word: "red", correct: "e", wordsOnly: true},
-  {letters: ["i", "o", "u"], word: "pin", correct: "i", wordsOnly: true}, // 5
-  {letters: ["e", "a", "i"], word: "bat", correct: "a", wordsOnly: true},
-  {letters: ["u", "o", "a"], word: "box", correct: "o", wordsOnly: true},
-  {letters: ["e", "o", "u"], word: "sun", correct: "u", wordsOnly: true},
-  {letters: ["e", "i", "o"], word: "jet", correct: "e", wordsOnly: true},
-  {letters: ["i", "u", "a"], word: "fish", correct: "i", wordsOnly: true}, // 10
-  {letters: ["u", "a", "o"], word: "hop", correct: "o", wordsOnly: true},
-  {letters: ["i", "a", "e"], word: "ten", correct: "e", wordsOnly: true},
-  {letters: ["o", "u", "i"], word: "pill", correct: "i", wordsOnly: true},
-  {letters: ["e", "a", "o"], word: "lap", correct: "a", wordsOnly: true},
-  {letters: ["u", "o", "a"], word: "hug", correct: "u", wordsOnly: true}  // 15
+  {letters: ["a", "o", "u"], word: "bug", correct: "u"}, // 1
+  {letters: ["e", "a", "i"], word: "mad", correct: "a"},
+  {letters: ["o", "u", "a"], word: "cop", correct: "o"},
+  {letters: ["a", "e", "u"], word: "red", correct: "e"},
+  {letters: ["i", "o", "u"], word: "pin", correct: "i"}, // 5
+  {letters: ["e", "a", "i"], word: "bat", correct: "a"},
+  {letters: ["u", "o", "a"], word: "box", correct: "o"},
+  {letters: ["e", "o", "u"], word: "sun", correct: "u"},
+  {letters: ["e", "i", "o"], word: "jet", correct: "e"},
+  {letters: ["i", "u", "a"], word: "fish", correct: "i"}, // 10
+  {letters: ["u", "a", "o"], word: "hop", correct: "o"},
+  {letters: ["i", "a", "e"], word: "ten", correct: "e"},
+  {letters: ["o", "u", "i"], word: "pill", correct: "i"},
+  {letters: ["e", "a", "o"], word: "lap", correct: "a"},
+  {letters: ["u", "o", "a"], word: "hug", correct: "u"}  // 15
 ].map((activityProps) => {
   @soundContext({
     "teacher/word": `teacher/words/${activityProps.word}`
@@ -46,7 +46,7 @@ const firstHalf = [
 });
 
 const secondHalf = [
-  {words: ["cat", "cut", "coat"], letter: "a", correct: "cat"},
+  {words: ["cat", "cut", "coat"], letter: "a", correct: "cat", fullInstructions: true},
   {words: ["bud", "bed", "bad"], letter: "e", correct: "bed", wordsOnly: true},
   {words: ["tip", "tap", "top"], letter: "i", correct: "tip", wordsOnly: true},
   {words: ["sack", "sock", "sick"], letter: "o", correct: "sock", wordsOnly: true},

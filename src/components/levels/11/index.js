@@ -12,7 +12,7 @@ const phonic = "oh";
 
 @soundContext({
   applause: "applause",
-  "owl/words-like": "owl/common/words-such-as",
+  "owl/words-such-as": "owl/common/words-such-as",
   "owl/hop": "owl/words/hop",
   "owl/box": "owl/words/box",
   "owl/rock": "owl/words/rock",

@@ -26,10 +26,15 @@ function animation({letter, words}) {
 
 export default class LetterIntro extends React.Component {
   render() {
-    const {letter, vowel, sounds} = this.props;
+    const {letter, vowel, sounds, words} = this.props;
 
     return (
-      <WordLesson {...this.props} animation={animation} title={`Consonant ${letter}`} arrowLabel={`Lesson ${letter}${vowel}`} scaleChoices={true}>
+      <WordLesson {...this.props}
+        animation={animation}
+        title={`Consonant ${letter}`}
+        scaleChoices={true}
+        choicePosition={words.length <= 3 ? {bottom: "15%"} : null}
+      >
         <Belt top="10%">
           <Choice size="medium">
             <TextFrame sound={sounds["owl/letter"]}>{letter.toUpperCase()}{letter}</TextFrame>

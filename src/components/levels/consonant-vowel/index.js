@@ -76,7 +76,7 @@ export default (info) => {
     "owl/phonic": `owl/common/phonics/_${letter}${vowel}h_`,
 
     // Lesson
-    "owl/words-like": "owl/common/words-such-as",
+    "owl/words-such-as": "owl/common/words-such-as",
     "owl/all-begin-with-the": "owl/common/all-begin-with-the",
     "owl/sound": "owl/common/sound",
     "owl/we-use-the-letters": "owl/common/we-use-the-letters",

@@ -7,7 +7,7 @@ export default class Feedback extends React.Component {
   render() {
     return (
       <LevelFeedback
-        title="Find the Sound - Short o"
+        title={"Find the Sound - Short \"o\""}
         subtitle="Lesson 11"
         score={getLevelScore("11")}
         total={20}

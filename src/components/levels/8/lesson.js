@@ -8,7 +8,7 @@ function animation() {
   return [
     this::hideChoices,
     center.bind(this, "owl"),
-    this::say("owl", "owl/words-like"),
+    this::say("owl", "owl/words-such-as"),
     uncenter.bind(this, "owl"),
 
     ...words.map((word) => [

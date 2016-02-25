@@ -3,18 +3,35 @@ import Belt from "components/belt";
 import Letter from "components/letter";
 import WordLesson from "components/word-lesson";
 import LetterIntro from "./letter-intro";
-import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
-
+import {say, endSpeaking, hideChoices, revealChoice, center, uncenter, detachChoices, attachChoices} from "helpers/animation";
 
 function lessonAnim() {
-  const {animations, letter} = this.props;
+  const {animations, letter, letterIntro, lessonWords, exampleWords} = this.props;
   const words = Object.keys(this.state.choices);
 
   return [
     this::hideChoices,
-
-    this::say("owl", "owl/words-like"),
-    words.map((word) => [
+    letterIntro ? [
+      () => attachChoices.apply(this, exampleWords),
+      () => detachChoices.apply(this, lessonWords),
+      this::say("owl", "owl/the-letter"),
+      this::say("owl", "owl/letter", 100),
+      this::say("owl", "owl/looks-like-this", 200),
+      this::say("owl", "owl/the-letter", 400),
+      this::say("owl", "owl/letter", 100),
+      this::say("owl", "owl/makes-the-beginning-sound-of", 200),
+      ...exampleWords.map((word) => [
+        300,
+        revealChoice.bind(this, word),
+        this::say("owl", `owl/${word}`)
+      ]),
+      500,
+    ] : null,
+    () => detachChoices.apply(this, exampleWords),
+    () => attachChoices.apply(this, lessonWords),
+    () => hideChoices.apply(this, exampleWords),
+    this::say("owl", "owl/words-such-as"),
+    lessonWords.map((word) => [
       300,
       revealChoice.bind(this, word),
       this::say("owl", `owl/${word}`)
@@ -33,29 +50,13 @@ function lessonAnim() {
 }
 
 export default class Lesson extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingLetterIntro: props.letterIntro
-    };
-  }
-
-  hideLetterIntro() {
-    this.setState({showingLetterIntro: false});
-  }
-
   render() {
-    const {letter, lessonWords, exampleWords} = this.props;
-    const {showingLetterIntro} = this.state;
-
-    if(showingLetterIntro) {
-      return (<LetterIntro {...this.props} words={exampleWords} onComplete={::this.hideLetterIntro}/>);
-    }
+    const {letter, lessonWords, exampleWords, onComplete, arrowLabel} = this.props;
 
     return (
-      <WordLesson {...this.props} animation={lessonAnim} words={lessonWords}>
+      <WordLesson {...this.props} animation={lessonAnim} words={lessonWords.concat(exampleWords)}>
         <Belt top="10%">
-          <Letter>{letter.toUpperCase()}{letter}</Letter>
+          <Letter>{letter.toUpperCase()}<span style={{fontSize: "80%"}}>{letter}</span></Letter>
         </Belt>
       </WordLesson>
     );

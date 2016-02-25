@@ -11,7 +11,7 @@ import Feedback from "./feedback";
 @soundContext({
   applause: "applause",
 
-  "owl/words-like": "owl/common/words-such-as",
+  "owl/words-such-as": "owl/common/words-such-as",
   "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
   "owl/the-words": "owl/common/the-words",
   "owl/rhyme-because-they-all-end-in-ate": "owl/common/rhyme-because-they-all-end-in-ate",

@@ -1,7 +1,7 @@
 import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
-  title: "Consonant 'g' With Short Vowels",
+  title: "Consonant \"g\" With Short Vowels",
   number: 47,
   lessonLetters: ["ga", "ge", "gi", "go", "gu"],
   lessonWords: ["gas", "gecko", "gift", "god", "gush"],

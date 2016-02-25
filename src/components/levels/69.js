@@ -1,7 +1,7 @@
 import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
-  title: "Consonant 'l' With Short Vowels",
+  title: "Consonant \"l\" With Short Vowels",
   number: 69,
   lessonLetters: ["la", "le", "li", "lo", "lu"],
   lessonWords: ["lap", "left", "lift", "lock", "lump"],

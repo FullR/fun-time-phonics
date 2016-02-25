@@ -2,7 +2,7 @@ import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
   number: 36,
-  title: "Consonant 'd' With Short Vowels",
+  title: "Consonant \"d\" With Short Vowels",
   lessonLetters: ["da", "de", "di", "do", "du"],
   lessonWords: ["dagger", "deck", "dig", "dock", "duck"],
   activityData: [

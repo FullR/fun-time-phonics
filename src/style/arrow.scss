@@ -6,7 +6,7 @@ $font-size: 34px;
   width: $width;
   height: $height;
   font-size: $font-size;
-  z-index: 6;
+  z-index: 10;
   background-color: transparent;
 
   &:hover .Arrow__image {

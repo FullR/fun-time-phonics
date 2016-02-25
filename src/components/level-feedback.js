@@ -13,6 +13,7 @@ import Robot from "components/robot";
 require("style/level-feedback.scss");
 
 @soundContext({
+  successSound: "applause",
   failSound: "nice-try"
 })
 export default class LevelFeedback extends React.Component {
@@ -36,13 +37,19 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentDidMount() {
-    if(!this.passing) {
+    if(this.passing) {
+      this.props.sounds.successSound.play();
+    } else {
       this.props.sounds.failSound.play();
     }
   }
 
   componentWillUnmount() {
-    this.props.sounds.failSound.stop();
+    if(this.passing) {
+      this.props.sounds.successSound.stop();
+    } else {
+      this.props.sounds.failSound.stop();
+    }
   }
 
   render() {

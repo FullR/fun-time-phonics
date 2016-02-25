@@ -7,8 +7,8 @@ function animation({words, lessonLetters}) {
     this::hideChoices,
     center.bind(this, "owl"),
     this::say("owl", "owl/lets-review-the-sounds-we-just-learned"),
-    uncenter.bind(this, "owl"),
     200,
+    uncenter.bind(this, "owl"),
     words.map((word, i) => [
       this::say("owl", "owl/the-letters", 200),
       this::say("owl", `owl/${lessonLetters[i]}`, 200),

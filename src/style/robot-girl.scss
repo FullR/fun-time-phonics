@@ -25,14 +25,14 @@ $small: 200px;
 .Robot-girl--small {
   &.Robot-girl--animating {
     @include animated-sprite(
-      $no-arm-image,
-      $no-arm-width,
-      $no-arm-height,
-      $no-arm-columns,
-      $no-arm-rows,
+      $arm-image,
+      $arm-width,
+      $arm-height,
+      $arm-columns,
+      $arm-rows,
       0,
       0,
-      ($small * $no-arm-columns) / $no-arm-width
+      ($small * $arm-columns) / $arm-width
     );
   }
 
@@ -79,14 +79,14 @@ $small: 200px;
 .Robot-girl--large {
   &.Robot-girl--animating {
     @include animated-sprite(
-      $arm-image,
-      $arm-width,
-      $arm-height,
-      $arm-columns,
-      $arm-rows,
+      $no-arm-image,
+      $no-arm-width,
+      $no-arm-height,
+      $no-arm-columns,
+      $no-arm-rows,
       0,
       0,
-      ($large * $arm-columns) / $arm-width
+      ($large * $no-arm-columns) / $no-arm-width
     );
   }
 

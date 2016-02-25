@@ -2,7 +2,7 @@ import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
   number: 42,
-  title: "Consonant 'f' With Short Vowels",
+  title: "Consonant \"f\" With Short Vowels",
   lessonLetters: ["fa", "fe", "fi", "fo", "fu"],
   lessonWords: ["fat", "fetch", "fix", "fox", "fudge"],
   activityData: [

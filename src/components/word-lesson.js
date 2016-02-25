@@ -1,5 +1,5 @@
 import React from "react";
-import {map} from "lodash";
+import {map, filter} from "lodash";
 import GameScreen from "components/game-screen";
 import Arrow from "components/arrow";
 import Choice from "components/choice";
@@ -48,7 +48,8 @@ export default class Lesson extends React.Component {
   }
 
   animate() {
-    this.props.animations.start("lesson");
+    const {onAnimationEnd} = this.props;
+    this.props.animations.start("lesson", onAnimationEnd);
   }
 
   render() {
@@ -63,24 +64,29 @@ export default class Lesson extends React.Component {
       sounds,
       arrowLabel,
       onComplete,
-      choicePosition
+      choicePosition,
+      hideArrow
     } = this.props;
+
+    const attachedChoiceCount = filter(choices, (choice) => !choice.detached).length;
 
     return (
       <GameScreen owl={owl} onOwlClick={::this.animate}>
         <LessonTitle>{title}</LessonTitle>
         <LessonTitle.SubTitle>Lesson {number}</LessonTitle.SubTitle>
-        <Corner bottom={60} right={60}>
-          <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
-        </Corner>
         {this.props.children}
         <Belt {...choicePosition}>
           {map(choices, (choice, key) =>
-            <Choice key={key} detached={choice.detached} scalable={scaleChoices}>
+            <Choice key={key} detached={choice.detached} scalable={scaleChoices} size={attachedChoiceCount >= 5 ? "medium" : null}>
               <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
             </Choice>
           )}
         </Belt>
+        {hideArrow ? null :
+          <Corner bottom={60} right={60}>
+            <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
+          </Corner>
+        }
       </GameScreen>
     );
   }

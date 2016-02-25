@@ -1,7 +1,7 @@
 import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
-  title: "Consonant 'h' With Short Vowels",
+  title: "Consonant \"h\" With Short Vowels",
   number: 53,
   lessonLetters: ["ha", "he", "hi", "ho", "hu"],
   lessonWords: ["hat", "head", "hiss", "hop", "hug"],

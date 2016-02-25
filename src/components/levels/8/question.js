@@ -48,8 +48,9 @@ export default class Question extends React.Component {
       animations.create("words-only",
         ...words.map((word) => [
           revealChoice.bind(this, word),
-          this::say("teacher", `teacher/${word}`, 300)
-        ])
+          this::say("teacher", `teacher/${word}`, 300),
+        ]),
+        endSpeaking.bind(this, "teacher")
       );
       animations.start("words-only");
     } else {

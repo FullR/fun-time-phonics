@@ -1,7 +1,7 @@
 import multiConsonantReview from "components/levels/multi-consonant-review";
 
 export default multiConsonantReview({
-  title: "Review: Consonant 'b' - 't' With Short Vowels",
+  title: "Review: Consonant \"b\" - \"t\" With Short Vowels",
   number: 108,
   activityData: [
     {word: "tuck", letters: ["su", "tu", "qu"], correct: "tu"},

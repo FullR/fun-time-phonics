@@ -1,6 +1,6 @@
 {
   "name": "ftph-new",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",
@@ -10,7 +10,7 @@
     "compile": "npm run create-asset-index && scripts/compile",
     "create-asset-index": "node scripts/create-asset-index.js",
     "create-sprites": "node scripts/create-sprites.js",
-    "dev-server": "npm run create-asset-index && scripts/dev-server",
+    "start": "npm run create-asset-index && scripts/dev-server",
     "xcode": "open ./builds/cordova/platforms/ios/ftph.xcodeproj",
     "upload": "scripts/upload",
     "release": "npm run compile && npm run upload"

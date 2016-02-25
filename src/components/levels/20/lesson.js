@@ -56,7 +56,6 @@ export default class Lesson extends React.Component {
 
     animations.create("lesson",
       this::hideChoices,
-      center.bind(this, "owl"),
 
       this::say("owl", "owl/lets-review"),
 
@@ -68,7 +67,6 @@ export default class Lesson extends React.Component {
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/ah", 100),
       this::say("owl", "owl/sound-in", 100),
-      uncenter.bind(this, "owl"),
       revealChoice.bind(this, "axe"),
       this::say("owl", "owl/axe", 100),
 

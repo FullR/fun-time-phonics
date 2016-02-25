@@ -45,8 +45,9 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
-      this::say("teacher", "teacher/drag-the-letters-to-the-picture-that-begin-the-word"),
+      this::say("teacher", "teacher/drag-the-letters-that-begin-the-word"),
       this::say("teacher", "teacher/word", 200),
+      this::say("teacher", "teacher/to-the-picture", 200),
       revealAndSayChoices,
 
       endSpeaking.bind(this, "teacher")
@@ -78,16 +79,16 @@ export default class Question extends React.Component {
 
     return (
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
-        <Belt top="12%">
+        <Belt top="10%">
           <Choice>
             <Droppable onDrop={::this.onDrop}>
               <WordFrame word={this.props.word} sound={sounds["teacher/word"]}/>
             </Droppable>
           </Choice>
         </Belt>
-        <Belt bottom="12%">
+        <Belt bottom="14%">
           {map(choices, (choice, key) =>
-            <Choice {...choice} key={key}>
+            <Choice {...choice} key={key} style={{padding: 20}}>
               <DragText value={choice} sound={sounds[`teacher/${choice.letter}`]}>
                 {choice.letter}
               </DragText>

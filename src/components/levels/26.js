@@ -1,7 +1,7 @@
 import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
-  title: "Consonant 'b' With Short Vowels",
+  title: "Consonant \"b\" With Short Vowels",
   number: 26,
   lessonLetters: ["ba", "be", "bi", "bo", "bu"],
   lessonWords: ["bat", "beg", "bib", "box", "bug"],

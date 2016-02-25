@@ -33,7 +33,7 @@ export default class Lesson extends React.Component {
       detachChoices.bind(this, "wait", "gate", "eight"),
       attachChoices.bind(this, "red", "head", "bed"),
 
-      this::say("owl", "owl/words-like"),
+      this::say("owl", "owl/words-such-as"),
       200,
       uncenter.bind(this, "owl"),
       attachChoice.bind(this, "red"),

@@ -11,7 +11,7 @@ import Feedback from "components/feedback";
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
 
 const info = {
-  title: "Consonant 'x' Ending Sound",
+  title: "Consonant \"x\" Ending Sound",
   number: 118,
   letter: "x",
   lessonWords: ["axe", "Rex", "mix", "ox", "tux"],

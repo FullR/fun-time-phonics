@@ -7,7 +7,7 @@ export default consonantVowel({
   lessonWords: ["fox", "font", "fodder"],
   activityData: [
     {words: ["fence", "fix", "fox"], correct: "fox"},
-    {words: ["fall", "follow", "felon"], correct: "follow", wordsOnly: true},
+    {words: ["factory", "follow", "felon"], correct: "follow", wordsOnly: true},
     {words: ["fiddle", "fasten", "fossil"], correct: "fossil", wordsOnly: true},
     {words: ["fond", "fit", "flop"], correct: "fond", wordsOnly: true},
     {words: ["fumble", "foxhole", "factory"], correct: "foxhole", wordsOnly: true}

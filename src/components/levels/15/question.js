@@ -57,11 +57,12 @@ export default class Question extends React.Component {
 
     animations.create("wrong-letter",
       this::say("teacher", "teacher/that-is-not-the-letter"),
-      this::say("teacher", "teacher/letter", 100)
+      this::say("teacher", "teacher/letter", 100),
+      endSpeaking.bind(this, "teacher")
     );
 
     if(this.shortInstructions) {
-      animations.create("words-only", revealAndSayWords);
+      animations.create("words-only", revealAndSayWords, endSpeaking.bind(this, "teacher"));
       animations.start("words-only");
     } else {
       this.animate();

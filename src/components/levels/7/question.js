@@ -20,7 +20,7 @@ export default class Question extends React.Component {
     super(props);
     this.state = {
       teacher: {text: "Instructions", centered: props.wordsOnly, speaking: props.wordsOnly, glowing: props.wordsOnly},
-      owl: {text: "Lesson", centered: !props.wordsOnly, speaking: !props.wordsOnly},
+      owl: {text: "Lesson", hidden: true},
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
           word,
@@ -36,12 +36,8 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
-      disableGlow.bind(this, "teacher"),
-      center.bind(this, "owl"),
-      this::say("owl", "owl/say-the"),
-      uncenter.bind(this, "owl"),
-      endSpeaking.bind(this, "owl"),
       center.bind(this, "teacher"),
+      this::say("teacher", "teacher/listen-to"),
       this::say("teacher", "teacher/sounded-parts", 300),
       uncenter.bind(this, "teacher"),
       ...words.map((word) => [
@@ -76,16 +72,12 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  sayWord() {
-    this.props.animations.start("words-only");
-  }
-
   render() {
     const {onAnswer, sounds, phonics} = this.props;
     const {choices, teacher, owl} = this.state;
 
     return (
-      <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.sayWord} onOwlClick={::this.animate}>
+      <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt>
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>

@@ -61,7 +61,7 @@ export default class Question extends React.Component {
     );
 
     if(this.shortInstructions) {
-      animations.create("words-only", revealAndSayWords);
+      animations.create("words-only", revealAndSayWords, endSpeaking.bind(this, "teacher"));
       animations.start("words-only");
     } else {
       this.animate();

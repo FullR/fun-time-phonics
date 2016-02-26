@@ -9,7 +9,7 @@ import Feedback from "./feedback";
 
 @soundContext({
   applause: "applause",
-  "owl/say-the": "owl/common/say-the-word-the-same-way-the-teacher-says-it-then-touch-its-picture",
+  "teacher/listen-to": "teacher/common/listen-to-these-sounds-then-touch-the-word-they-make",
   "teacher/does-not-make": "teacher/common/does-not-make"
 })
 @persists("level-7", true)

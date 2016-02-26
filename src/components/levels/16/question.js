@@ -42,7 +42,8 @@ export default class Question extends React.Component {
       ...words.map((word) => [
         300,
         revealChoice.bind(this, word),
-        this::say("teacher", `teacher/${word}`)
+        this::say("teacher", `teacher/${word}`),
+        endSpeaking.bind(this, "teacher")
       ])
     ];
 
@@ -57,11 +58,12 @@ export default class Question extends React.Component {
 
     animations.create("wrong-letter",
       this::say("teacher", "teacher/that-is-not-the-letter"),
-      this::say("teacher", "teacher/letter", 100)
+      this::say("teacher", "teacher/letter", 100),
+      endSpeaking.bind(this, "teacher")
     );
 
     if(this.shortInstructions) {
-      animations.create("words-only", revealAndSayWords);
+      animations.create("words-only", revealAndSayWords, endSpeaking.bind(this, "teacher"));
       animations.start("words-only");
     } else {
       this.animate();

@@ -18,7 +18,7 @@ export default class Response extends React.Component {
     const {word} = answer;
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", "teacher/correct"),
+      this::say("teacher", "teacher/yes"),
       this::say("teacher", "teacher/letters", 200),
       this::say("teacher", "teacher/makes-the", 300),
       this::say("teacher", "teacher/phonic", 100),

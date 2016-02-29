@@ -17,13 +17,7 @@ export default class Letter extends React.Component {
       width, height, display: "inline-block",
       ...this.props.style
     };
-    <div flim={flam.bam["boogy"]}>
-      <Flam>
-        <Bam>
-          boogy!
-        </Bam>
-      </Flam>
-    </div>
+
     return (<span {...this.props} style={style} className={className}/>);
   }
 }

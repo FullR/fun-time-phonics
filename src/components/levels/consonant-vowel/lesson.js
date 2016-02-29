@@ -12,6 +12,7 @@ function lessonAnim() {
   return [
     this::hideChoices,
     letterIntro ? [
+      () => this.props.hideVowel(),
       () => attachChoices.apply(this, exampleWords),
       () => detachChoices.apply(this, lessonWords),
       this::say("owl", "owl/the-letter"),
@@ -27,9 +28,11 @@ function lessonAnim() {
       ]),
       500,
     ] : null,
+
     () => detachChoices.apply(this, exampleWords),
     () => attachChoices.apply(this, lessonWords),
     () => hideChoices.apply(this, exampleWords),
+    () => this.props.showVowel(),
     this::say("owl", "owl/words-such-as"),
     lessonWords.map((word) => [
       300,
@@ -50,13 +53,32 @@ function lessonAnim() {
 }
 
 export default class Lesson extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showingVowel: !props.letterIntro};
+  }
+
+  showVowel() {
+    this.setState({showingVowel: true});
+  }
+
+  hideVowel() {
+    this.setState({showingVowel: false});
+  }
+
   render() {
-    const {letter, lessonWords, exampleWords, onComplete, arrowLabel} = this.props;
+    const {letter, vowel, lessonWords, exampleWords, onComplete, arrowLabel} = this.props;
+    const {showingVowel} = this.state;
 
     return (
-      <WordLesson {...this.props} animation={lessonAnim} words={lessonWords.concat(exampleWords)}>
+      <WordLesson {...this.props}
+        animation={lessonAnim}
+        words={lessonWords.concat(exampleWords)}
+        showVowel={this.showVowel.bind(this)}
+        hideVowel={this.hideVowel.bind(this)}
+      >
         <Belt top="10%">
-          <Letter>{letter.toUpperCase()}<span style={{fontSize: "80%"}}>{letter}</span></Letter>
+          <Letter>{letter.toUpperCase()}<span style={{fontSize: "80%"}}>{showingVowel ? vowel : letter}</span></Letter>
         </Belt>
       </WordLesson>
     );

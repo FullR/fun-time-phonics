@@ -58,7 +58,7 @@ export default (info) => {
     "teacher/does-not-begin-with": "teacher/common/does-not-begin-with",
 
     // correct
-    "teacher/correct": "teacher/common/correct",
+    "teacher/yes": "teacher/common/yes",
     "teacher/makes-the": "teacher/common/makes-the",
     "teacher/sound-in": "teacher/common/sound-in"
   })

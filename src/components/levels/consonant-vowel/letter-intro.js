@@ -33,7 +33,11 @@ export default class LetterIntro extends React.Component {
         animation={animation}
         title={`Consonant ${letter}`}
         scaleChoices={true}
-        choicePosition={words.length <= 3 ? {bottom: "15%"} : null}
+        choicePosition={
+          words.length <= 3 ?
+            {bottom: "15%"} :
+            null
+        }
       >
         <Belt top="10%">
           <Choice size="medium">

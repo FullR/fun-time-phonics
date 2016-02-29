@@ -19,7 +19,7 @@ export default class Response extends React.Component {
 
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", "teacher/correct"),
+      this::say("teacher", "teacher/yes"),
       this::say("teacher", `teacher/${letter}`),
       this::say("teacher", "teacher/makes-the", 100),
       this::say("teacher", `teacher/${letter}h`, 100),

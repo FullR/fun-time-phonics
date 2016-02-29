@@ -1,6 +1,6 @@
 {
   "name": "ftph-new",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",

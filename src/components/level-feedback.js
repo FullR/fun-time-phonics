@@ -13,8 +13,9 @@ import Robot from "components/robot";
 require("style/level-feedback.scss");
 
 @soundContext({
-  successSound: "applause",
-  failSound: "nice-try"
+  applause: "applause",
+  success: "owl/common/nice-work-touch-the-green-arrow-to-begin-the-next-lesson-touch-the-orange-arrow-to-play-this-lesson-again",
+  fail: "owl/common/good-job-but-we-need-to-practice-this-some-more-touch-the-orange-arrow-to-play-this-lesson-again"
 })
 export default class LevelFeedback extends React.Component {
   static defaultProps = {
@@ -37,18 +38,21 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentDidMount() {
+    const {fail, success, applause} = this.props.sound;
     if(this.passing) {
-      this.props.sounds.successSound.play();
+      applause.play().then(
+        () => success.play()
+      );
     } else {
-      this.props.sounds.failSound.play();
+      fail.play();
     }
   }
 
   componentWillUnmount() {
     if(this.passing) {
-      this.props.sounds.successSound.stop();
+      this.props.sounds.success.stop();
     } else {
-      this.props.sounds.failSound.stop();
+      this.props.sounds.fail.stop();
     }
   }
 
@@ -77,10 +81,8 @@ export default class LevelFeedback extends React.Component {
         <Robot type="girl"/>
 
         <div className="Level-feedback__arrow-box">
-          {passing ?
-            <Arrow onClick={onNext} size="large"/> :
-            <Arrow onClick={onBack} color="red" size="large" reversed={true}>Retry</Arrow>
-          }
+          <Arrow onClick={onBack} color="red" size="large" reversed={true}>{passing ? "Play again" : "Retry"}</Arrow>
+          {passing ? <Arrow onClick={onNext} size="large"/> : null}
         </div>
         <AdminLink bottom={55} left={55}/>
       </StarBox>

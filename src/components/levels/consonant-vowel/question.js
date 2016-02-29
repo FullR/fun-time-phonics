@@ -20,6 +20,7 @@ export default class Question extends React.Component {
       teacher: {text: "Instructions", centered: !props.wordsOnly, speaking: true},
       owl: {text: "Lesson"},
       dragTextHidden: !props.wordsOnly,
+      
       choices: props.words.reduce((choices, word, i) => {
         choices[word] = {
           word,

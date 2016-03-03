@@ -9,7 +9,7 @@ import {letter} from "./info";
 import Letter from "components/letter";
 import SoundFrame from "components/sound-frame";
 
-import DraggableChoice from "components/draggable-choice";
+import DragLetter from "components/drag-letter";
 import DropZone from "components/drop-zone";
 const choosableLetters = ["a", "e", "i", "o", "u"].filter(l => l !== letter);
 
@@ -55,6 +55,11 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
+  onLetterDrop(letter) {
+    const {word} = this.props;
+    setTimeout(() => this.props.onAnswer({letter, word}), 10);
+  }
+
   render() {
     const {onAnswer, sounds, animations, letters, word} = this.props;
     const {teacher, owl} = this.state;
@@ -63,17 +68,17 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="8%">
           <Choice>
-            <WordFrame word={word} sound={sounds["teacher/word"]}/>
+            <DropZone style={{width: "100%", height: "100%"}} onDrop={(event) => {
+              this.onLetterDrop(event.letter);
+            }}>
+              <WordFrame word={word} sound={sounds["teacher/word"]}/>
+            </DropZone>
           </Choice>
         </Belt>
 
         <Belt bottom="15%">
           {letters.map((letter) =>
-            <Choice key={`letter-${letter}`}>
-              <SoundFrame onClick={() => onAnswer({word, letter})}>
-                <Letter>{letter}</Letter>
-              </SoundFrame>
-            </Choice>
+            <DragLetter key={letter} letter={letter}/>
           )}
         </Belt>
       </GameScreen>

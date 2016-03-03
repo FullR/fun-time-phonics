@@ -17,21 +17,21 @@ export default class Response extends React.Component {
     const {animations, answer, correct} = this.props;
     animations.create("correct",
       this::say("teacher", "teacher/correct"),
-      this::say("teacher", `teacher/${answer.letter}`, 200),
-      this::say("teacher", "teacher/makes-the", 200),
-      this::say("teacher", `teacher/${answer.letter}h`, 200),
-      this::say("teacher", "teacher/sound-in", 200),
-      this::say("teacher", "teacher/word", 200)
+      this::say("teacher", `teacher/${answer.letter}`, 50),
+      this::say("teacher", "teacher/makes-the", 50),
+      this::say("teacher", `teacher/${answer.letter}h`, 50),
+      this::say("teacher", "teacher/sound-in", 50),
+      this::say("teacher", "teacher/word", 50)
     );
     animations.create("incorrect",
       this::say("teacher", "teacher/the-letters"),
-      this::say("teacher", `teacher/${answer.letter}`, 200),
-      this::say("teacher", "teacher/make-the", 200),
-      this::say("teacher", `teacher/${answer.letter}h`, 200),
-      this::say("teacher", "teacher/sound-so", 200),
-      this::say("teacher", "teacher/word", 200),
-      this::say("teacher", "teacher/does-not-begin-with", 200),
-      this::say("teacher", `teacher/${answer.letter}`, 200)
+      this::say("teacher", `teacher/${answer.letter}`, 50),
+      this::say("teacher", "teacher/make-the", 50),
+      this::say("teacher", `teacher/${answer.letter}h`, 50),
+      this::say("teacher", "teacher/sound-so", 50),
+      this::say("teacher", "teacher/word", 50),
+      this::say("teacher", "teacher/does-not-begin-with", 50),
+      this::say("teacher", `teacher/${answer.letter}`, 50)
     );
     this.animate();
   }

@@ -2,6 +2,7 @@ import React from "react";
 import {map} from "lodash";
 import GameScreen from "components/game-screen";
 import Arrow from "components/arrow";
+import Letter from "components/letter";
 import Choice from "components/choice";
 import Belt from "components/belt";
 import WordFrame from "components/word-frame";
@@ -75,7 +76,7 @@ export default class Lesson extends React.Component {
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>
         <Belt top="15%">
-          <span style={{fontSize: 100}}><span style={{fontSize: "80%"}}>{letter}</span> {letter.toUpperCase()}</span>
+          <Letter style={{fontSize: 100}}>{letter.toUpperCase()} {letter}</Letter>
         </Belt>
 
         <Belt>

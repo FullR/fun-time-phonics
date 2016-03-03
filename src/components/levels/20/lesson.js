@@ -138,7 +138,7 @@ export default class Lesson extends React.Component {
         <Belt top="15%">
           {map(letters, ({letter, highlighted}) =>
             <Letter key={`letter-${letter}`} highlighted={highlighted} onClick={this.playLetter.bind(this, letter)}>
-              {letter}{letter.toUpperCase()}
+              {letter.toUpperCase()}{letter}
             </Letter>
           )}
         </Belt>

@@ -2,6 +2,7 @@ import React from "react";
 import {map, sample, shuffle} from "lodash";
 import {DragDropContext} from "react-dnd";
 import dndBackend from "dnd-backend";
+import Letter from "components/letter";
 import animationContext from "decorators/animation-context";
 import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "helpers/animation";
 import {GameScreen, Belt, WordFrame, Choice} from "components";
@@ -10,7 +11,7 @@ import {letter} from "./info";
 import DraggableChoice from "components/draggable-choice";
 import DropZone from "components/drop-zone";
 const choosableLetters = ["a", "e", "i", "o", "u"].filter(l => l !== letter);
-const letterStyle = {fontSize: 150, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
+const letterStyle = {fontSize: 200, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
 
 @animationContext
 @DragDropContext(dndBackend)
@@ -95,7 +96,7 @@ export default class Question extends React.Component {
         <Belt top="10%">
           {letters.map((letter) =>
             <DraggableChoice key={`${index}-letter-${letter}`} letter={letter} autohide>
-              <div style={letterStyle}>{letter}</div>
+              <Letter style={letterStyle}>{letter}</Letter>
             </DraggableChoice>
           )}
         </Belt>

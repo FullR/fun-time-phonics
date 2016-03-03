@@ -20,18 +20,18 @@ export default class Response extends React.Component {
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${word}`),
-      this::say("teacher", "teacher/makes-the"),
-      this::say("teacher", `teacher/${letter}h`), // phonic
-      this::say("teacher", "teacher/sound-so"),
-      this::say("teacher", `teacher/${word}`),
-      this::say("teacher", `teacher/${letter}`)
+      this::say("teacher", "teacher/makes-the", 50),
+      this::say("teacher", `teacher/${letter}h`, 50), // phonic
+      this::say("teacher", "teacher/sound-so", 50),
+      this::say("teacher", `teacher/${word}`, 50),
+      this::say("teacher", `teacher/${letter}`, 50)
     );
 
     animations.create("incorrect",
       this::say("teacher", "teacher/there-is-no"),
-      this::say("teacher", `teacher/${letter}h`),
-      this::say("teacher", "teacher/sound-in"),
-      this::say("teacher", `teacher/${word}`)
+      this::say("teacher", `teacher/${letter}h`, 50),
+      this::say("teacher", "teacher/sound-in", 50),
+      this::say("teacher", `teacher/${word}`, 50)
     );
 
     this.animate();

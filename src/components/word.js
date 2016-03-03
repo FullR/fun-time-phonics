@@ -1,5 +1,15 @@
 import React from "react";
-import image from "image";
+import loadImage from "util/load-image";
+
+const requireWordImage = require.context("../../images/words/", false, /\.png$/);
+
+function getWordImagePath(word) {
+  try {
+    return requireWordImage(`./${word}.png`);
+  } catch(error) {
+    return requireWordImage("undefined.png");
+  }
+}
 
 export default class Word extends React.Component {
   static defaultProps = {
@@ -16,20 +26,12 @@ export default class Word extends React.Component {
     };
   }
 
-  get imageUrl() {
-    return `words/${this.props.word}.png`;
-  }
-
   preloadImage() {
-    if(this.state.loaded) {
-      this.setState({loaded: false});
-    }
-    image.preload(this.imageUrl).then(() => {
-      this.setState({loaded: true});
-    }, (error) => {
-      logError(`Failed to preload word image:`, error);
-      this.setState({loaded: true})
-    });
+    if(this.state.loaded) return;
+    loadImage(getWordImagePath(this.props.word)).then(
+      () => this.setState({loaded: true}),
+      (error) => console.log(`Failed to load word image "${this.props.word}": `, error)
+    );
   }
 
   componentDidMount() {
@@ -41,7 +43,7 @@ export default class Word extends React.Component {
   render() {
     const {word, width, height, display} = this.props;
     const {loaded} = this.state;
-    const imageUrl = image(this.imageUrl);
+    const imageUrl = getWordImagePath(word);
     const style = loaded ? {
       width, height, display,
       backgroundImage: `url("${imageUrl}")`,
@@ -49,6 +51,7 @@ export default class Word extends React.Component {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "50% 50%"
     } : {width, height, display, background: "#FFF"};
+
     return <div {...this.props} style={style}/>
   }
 }

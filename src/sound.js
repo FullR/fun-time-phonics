@@ -2,6 +2,8 @@ import {Observable} from "rx";
 import {EventEmitter} from "events";
 import {noop, uniqueId, bindAll, transform} from "lodash";
 
+const requireSound = require.context("../audio/", true, /\.(?:mp3|ogg)$/);
+
 const loaded = [];
 const loadEvents = new EventEmitter();
 
@@ -28,7 +30,7 @@ export default class Sound extends EventEmitter {
     this.path = path;
     this.pathWithExt = `${path}.${getAudioExtention()}`;
     try {
-      this.fullpath = require("../audio/" + this.pathWithExt);
+      this.fullpath = requireSound("./"+this.pathWithExt);
     } catch(error) {
       console.error(`Failed to load sound "${path}": ${error}`);
       this.error = error || {};

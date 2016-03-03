@@ -6,6 +6,7 @@ import Choice from "components/choice";
 import Belt from "components/belt";
 import WordFrame from "components/word-frame";
 import LessonTitle from "components/lesson-title";
+import Letter from "components/letter";
 import Corner from "components/corner";
 import animationContext from "decorators/animation-context";
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
@@ -75,7 +76,7 @@ export default class Lesson extends React.Component {
           <Arrow size="large" onClick={onComplete}>{arrowLabel}</Arrow>
         </Corner>
         <Belt top="15%">
-          <span style={{fontSize: 100}}>{letter} {letter.toUpperCase()}</span>
+          <Letter style={{fontSize: 100}}>{letter.toUpperCase()} {letter}</Letter>
         </Belt>
 
         <Belt>

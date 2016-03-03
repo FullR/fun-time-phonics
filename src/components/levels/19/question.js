@@ -7,10 +7,9 @@ import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "hel
 import {GameScreen, Belt, WordFrame, Choice} from "components";
 import {letter} from "./info";
 
-import DraggableChoice from "components/draggable-choice";
+import DragLetter from "components/drag-letter";
 import DropZone from "components/drop-zone";
 const choosableLetters = ["a", "e", "i", "o", "u"].filter(l => l !== letter);
-const letterStyle = {fontSize: 150, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
 
 @animationContext
 @DragDropContext(dndBackend)
@@ -92,9 +91,7 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           {letters.map((letter) =>
-            <DraggableChoice key={`${index}-letter-${letter}`} letter={letter} autohide>
-              <div style={letterStyle}>{letter}</div>
-            </DraggableChoice>
+            <DragLetter key={`${index}-letter-${letter}`} letter={letter}/>
           )}
         </Belt>
 

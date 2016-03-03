@@ -30,11 +30,10 @@ export default function soundContext(manifest={}, LoadingComponent) {
     }
 
     componentDidMount() {
-      const load = () => Promise.all(invoke(this.sounds, "load")).then(() => {
-        this.setState({
-          loaded: true
-        });
-      }).catch((error) => console.error("Failed to load sounds:", error));
+      const load = () => Promise.all(invoke(this.sounds, "load")).then(
+        () => this.setState({loaded: true}),
+        (error) => console.error("Failed to load sounds:", error)
+      );
       enqueue(load);
     }
 

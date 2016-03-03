@@ -27,6 +27,8 @@ function getSection(levelId) {
     return 2;
   } else if(levelId <= 43) {
     return 3;
+  } else {
+    return 4;
   }
 }
 
@@ -43,18 +45,20 @@ function getLevel(levelId) {
 }
 
 function getLevelData(levelId) {
-  return storage.get(`level-${levelId}`) || {highscore: -1, showingLesson: true}
+  return storage.get(`level-${levelId}`) || {highscore: -1, showingLesson: true};
 }
 
 function resetLevel(levelId) {
   const namespace = `level-${levelId}`;
-  const state = Object.assign({}, storage.get(namespace), {
+  const state = {
+    ...storage.get(namespace),
     activityIndex: 0,
     showingLesson: true,
     score: 0,
     activitiesComplete: false,
     currentAnswer: null
-  });
+  };
+
   storage.set(namespace, state);
 }
 

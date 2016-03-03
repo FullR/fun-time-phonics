@@ -14,7 +14,7 @@ window.errorCatcher = (message) => (error) => window.logError(`${message}: ${err
 /**/
 
 function fatalError(error) {
-  log.error("Uncaught error: " + error);
+  console.error("Uncaught error: " + error);
 }
 
 try {

@@ -18,14 +18,14 @@ export default class Response extends React.Component {
     const {word} = answer;
 
     const response = [
-      this::say("teacher", "teacher/if-you-replace-the", 300),
-      this::say("teacher", `teacher/${replacePhonic}`, 100),
-      this::say("teacher", "teacher/in", 100),
-      this::say("teacher", `teacher/replace-word`, 100),
-      this::say("teacher", "teacher/with", 100),
-      this::say("teacher", `teacher/${phonic}`, 100),
-      this::say("teacher", "teacher/the-new-word-is", 200),
-      this::say("teacher", `teacher/${correctWord}`, 100)
+      this::say("teacher", "teacher/if-you-replace-the", 100),
+      this::say("teacher", `teacher/${replacePhonic}`, 50),
+      this::say("teacher", "teacher/in", 50),
+      this::say("teacher", `teacher/replace-word`, 50),
+      this::say("teacher", "teacher/with", 50),
+      this::say("teacher", `teacher/${phonic}`, 50),
+      this::say("teacher", "teacher/the-new-word-is", 100),
+      this::say("teacher", `teacher/${correctWord}`, 50)
     ];
 
     animations.create("correct",

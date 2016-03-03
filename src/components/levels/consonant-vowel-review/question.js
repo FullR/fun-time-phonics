@@ -57,7 +57,8 @@ export default class Question extends React.Component {
       animations.create("words-only",
         this::say("teacher", "teacher/word"),
         400,
-        revealAndSayChoices
+        revealAndSayChoices,
+        endSpeaking.bind(this, "teacher")
       );
       animations.start("words-only");
     } else {

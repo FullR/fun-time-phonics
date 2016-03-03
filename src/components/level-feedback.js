@@ -38,10 +38,11 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentDidMount() {
-    const {fail, success, applause} = this.props.sound;
+    const {fail, success, applause} = this.props.sounds;
     if(this.passing) {
       applause.play().then(
-        () => success.play()
+        () => success.play(),
+        (error) => console.log(error)
       );
     } else {
       fail.play();
@@ -49,11 +50,10 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentWillUnmount() {
-    if(this.passing) {
-      this.props.sounds.success.stop();
-    } else {
-      this.props.sounds.fail.stop();
-    }
+    const {success, fail, applause} = this.props.sounds;
+    success.stop();
+    fail.stop();
+    applause.stop();
   }
 
   render() {

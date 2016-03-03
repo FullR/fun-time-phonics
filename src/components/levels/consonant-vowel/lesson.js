@@ -78,7 +78,10 @@ export default class Lesson extends React.Component {
         hideVowel={this.hideVowel.bind(this)}
       >
         <Belt top="10%">
-          <Letter>{letter.toUpperCase()}<span style={{fontSize: "80%"}}>{showingVowel ? vowel : letter}</span></Letter>
+          {showingVowel ?
+            <Letter>{letter}<span style={{fontSize: "80%"}}>{vowel}</span></Letter> :
+            <Letter>{letter.toUpperCase()}{letter}</Letter>
+          }
         </Belt>
       </WordLesson>
     );

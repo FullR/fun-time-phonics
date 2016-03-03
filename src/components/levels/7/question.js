@@ -37,7 +37,7 @@ export default class Question extends React.Component {
     animations.create("instructions",
       this::hideChoices,
       center.bind(this, "teacher"),
-      this::say("teacher", "teacher/listen-to"),
+      this::say("teacher", "teacher/say-the-word-the-same-way-i-say-it-then-touch-its-picture"),
       this::say("teacher", "teacher/sounded-parts", 300),
       uncenter.bind(this, "teacher"),
       ...words.map((word) => [

@@ -18,21 +18,21 @@ export default class Response extends React.Component {
     const {word} = answer;
     const incorrectAnim = [
       this::say("teacher", `teacher/${incorrectWords[0]}`),
-      this::say("teacher", "teacher/and", 100),
-      this::say("teacher", `teacher/${incorrectWords[1]}`, 100),
-      this::say("teacher", "teacher/make-the-same", 200),
-      this::say("teacher", "teacher/incorrect-phonic", 100),
-      this::say("teacher", "teacher/sound", 100)
+      this::say("teacher", "teacher/and", 50),
+      this::say("teacher", `teacher/${incorrectWords[1]}`, 50),
+      this::say("teacher", "teacher/make-the-same", 100),
+      this::say("teacher", "teacher/incorrect-phonic", 50),
+      this::say("teacher", "teacher/sound", 50)
     ];
 
     animations.create("correct",
       this::play("applause"),
       this::say("teacher", `teacher/${word}`),
-      this::say("teacher", "teacher/makes-the", 200),
-      this::say("teacher", "teacher/correct-phonic", 100),
-      this::say("teacher", "teacher/sound", 100),
-      this::say("teacher", "teacher/and", 200),
-      100,
+      this::say("teacher", "teacher/makes-the", 50),
+      this::say("teacher", "teacher/correct-phonic", 50),
+      this::say("teacher", "teacher/sound", 50),
+      this::say("teacher", "teacher/and", 50),
+      50,
       incorrectAnim
     );
 

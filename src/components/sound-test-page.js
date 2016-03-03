@@ -3,7 +3,6 @@ import Sound from "sound";
 import hasher from "hasher";
 import {sounds} from "asset-index";
 
-
 class Player extends React.Component {
   constructor(props) {
     super(props);

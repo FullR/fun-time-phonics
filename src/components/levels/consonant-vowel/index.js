@@ -31,7 +31,7 @@ export default (info) => {
     lessonWords,
     activityData
   } = defaults(info, {
-    title: `Consonant '${info.letter}' Short Vowel Sound '${info.vowel}'`,
+    title: `Consonant "${info.letter}" Short Vowel Sound "${info.vowel}"`,
     activityCount: info.activityData.length
   });
 
@@ -61,7 +61,7 @@ export default (info) => {
   const letterIntroSounds = letterIntro ? {
     ...wordSounds(exampleWords),
     "owl/the-letter": "owl/common/the-letter",
-    "owl/letter": `owl/common/letters/${letter}`,
+    "owl/letter": `owl/common/${letter}`,
     "owl/looks-like-this": "owl/common/looks-like-this",
     "owl/makes-the-beginning-sound-of": "owl/common/makes-the-beginning-sound-of"
   } : null;
@@ -72,7 +72,7 @@ export default (info) => {
     ...letterIntroSounds,
     ...wordSounds(lessonWords),
 
-    "owl/letters": `owl/common/letters/${letter}${vowel}`,
+    "owl/letters": `owl/common/${letter}-${vowel}`,
     "owl/phonic": `owl/common/phonics/_${letter}${vowel}h_`,
 
     // Lesson
@@ -86,7 +86,7 @@ export default (info) => {
     "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
     // Activity
-    "teacher/letters": `teacher/common/letters/${letter}${vowel}`,
+    "teacher/letters": `teacher/common/${letter}-${vowel}`,
     "teacher/phonic": `teacher/common/phonics/_${letter}${vowel}h_`,
 
     // Question
@@ -98,7 +98,7 @@ export default (info) => {
       "teacher/does-not-begin-with-the": "teacher/common/does-not-begin-with-the",
       "teacher/sound-so-it-does-not-begin-with": "teacher/common/sound-so-it-does-not-begin-with",
     // Correct
-      "teacher/yes": "teacher/common/yes",
+      "teacher/correct": "teacher/common/correct",
       "teacher/makes-the": "teacher/common/makes-the",
       "teacher/sound-in": "teacher/common/sound-in"
   })

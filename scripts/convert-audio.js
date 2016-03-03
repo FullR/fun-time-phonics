@@ -6,12 +6,8 @@ const convertedDir = local("../audio");
 audioConverter(wavDir, convertedDir, {
   progressBar: true
 })
-  .then(function() {
-    console.log("Finished converting audio");
-  })
-  .catch(function(error) {
-    console.log("Failed to convert audio: " + error);
-  });
+.then(() => console.log("Finished converting audio"))
+.catch((error) => console.log("Failed to convert audio: " + error));
 
 function local(p) {
   return path.resolve(path.join(__dirname, p));

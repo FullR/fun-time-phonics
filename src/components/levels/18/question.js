@@ -10,7 +10,7 @@ import {letter} from "./info";
 import DraggableChoice from "components/draggable-choice";
 import DropZone from "components/drop-zone";
 const choosableLetters = ["a", "e", "i", "o", "u"].filter(l => l !== letter);
-const letterStyle = {fontSize: 150, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
+const letterStyle = {fontSize: 200, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
 
 @animationContext
 @DragDropContext(dndBackend)

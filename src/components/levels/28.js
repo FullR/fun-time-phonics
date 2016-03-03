@@ -7,7 +7,7 @@ export default consonantVowel({
   lessonWords: ["cop", "cob", "costume"],
   activityData: [
     {words: ["cot", "cut", "cat"], correct: "cot"},
-    {words: ["clock", "comet", "camera"], correct: "cornet", wordsOnly: true},
+    {words: ["clock", "comet", "camera"], correct: "comet", wordsOnly: true},
     {words: ["comic", "cuff", "kick"], correct: "comic", wordsOnly: true},
     {words: ["cotton", "candle", "cuddle"], correct: "cotton", wordsOnly: true},
     {words: ["cupcake", "copper", "cupboard"], correct: "copper", wordsOnly: true},

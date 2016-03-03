@@ -9,7 +9,7 @@ import Robot from "components/robot";
 require("style/splashscreen.scss");
 
 @soundContext({
-  welcome: "welcome"
+  welcome: "intro"
 })
 export default class Splashscreen extends React.Component {
   componentDidMount() {

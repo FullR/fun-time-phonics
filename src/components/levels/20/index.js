@@ -33,7 +33,7 @@ import {number, letter, phonic, lessonWords} from "./info";
   "teacher/sound-in": "teacher/common/sound-in",
   "teacher/yes": "teacher/common/yes",
 
-  "teacher/say-the-letter": "teacher/common/say-the-letter-sound-and-touch-the-word-that-makes-that-sound",
+  "teacher/say-the-letter": "teacher/common/say-the-letter-sound-and-then-touch-the-word-that-makes-that-sound",
   "teacher/there-is-no": "teacher/common/there-is-no",
   "teacher/has-an": "teacher/common/has-an",
 

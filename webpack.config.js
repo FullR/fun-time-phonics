@@ -20,7 +20,7 @@ function loader(name, options) {
 }
 
 module.exports = {
-  devtool: "source-map",
+  //devtool: "eval-cheap-module-source-map",
   entry: local("src/entry.js"),
   output: {
     path: local("dist"),

@@ -3,7 +3,6 @@ import Activity from "components/activity";
 import soundContext from "decorators/sound-context";
 import Question from "./question";
 import Response from "./response";
-import image from "image";
 
 const checkAnswer = ({words}, correct) => correct.every((w) => words.includes(w));
 

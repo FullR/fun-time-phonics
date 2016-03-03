@@ -15,7 +15,7 @@ import Activity from "components/activity";
 
 export default (info) => {
   const {number, activityData, lessonLetters, lessonWords} = defaults(info, {
-    title: `Consonant '${info.letter}' With Short Vowels`,
+    title: `Consonant "${info.letter}" With Short Vowels`,
     activityCount: info.activityData.length
   });
 
@@ -42,9 +42,9 @@ export default (info) => {
   @soundContext({
     applause: "applause",
     ...arrToObj(lessonWords, (word) => [`owl/${word}`, `owl/words/${word}`]),
-    ...arrToObj(lessonLetters, (letter) => [`owl/${letter}`, `owl/common/letters/${letter}`]),
+    ...arrToObj(lessonLetters, (letter) => [`owl/${letter}`, `owl/common/${letter[0]}-${letter[1]}`]),
     ...arrToObj(lessonLetters, (letter) => [`owl/${letter}h`, `owl/common/phonics/_${letter}h_`]),
-    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/letters/${letter}`]),
+    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/${letter[0]}-${letter[1]}`]),
     ...arrToObj(activityLetters, (letter) => [`teacher/${letter}h`, `teacher/common/phonics/_${letter}h_`]),
 
     // Lesson

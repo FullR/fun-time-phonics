@@ -20,9 +20,7 @@ export default class Choice extends React.Component {
     });
 
     return (
-      <div {...this.props} className={className}>
-        {this.props.children}
-      </div>
+      <div {...this.props} className={className}/>
     );
   }
 }

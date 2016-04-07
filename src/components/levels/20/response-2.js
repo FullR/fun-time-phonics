@@ -24,14 +24,21 @@ export default class Response extends React.Component {
       this::say("teacher", `teacher/${letter}h`, 50), // phonic
       this::say("teacher", "teacher/sound-so", 50),
       this::say("teacher", `teacher/${word}`, 50),
-      this::say("teacher", `teacher/${letter}`, 50)
+      this::say("teacher", "teacher/has-an", 50),
+      this::say("teacher", `teacher/${letter}`, 50),
+      this::say("teacher", "teacher/in-it", 50),
     );
 
     animations.create("incorrect",
       this::say("teacher", "teacher/there-is-no"),
       this::say("teacher", `teacher/${letter}h`, 50),
       this::say("teacher", "teacher/sound-in", 50),
-      this::say("teacher", `teacher/${word}`, 50)
+      this::say("teacher", `teacher/${word}`, 50),
+      this::say("teacher", "teacher/so", 50),
+      this::say("teacher", `teacher/${word}`, 50),
+      this::say("teacher", "teacher/does-not-have-an", 50),
+      this::say("teacher", `teacher/${letter}`, 50),
+      this::say("teacher", "teacher/in-it", 50),
     );
 
     this.animate();

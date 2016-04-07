@@ -7,11 +7,10 @@ import ActivityTitle from "components/activity-title";
 import Activity from "components/activity";
 
 @soundContext({
-  applause: "applause",
   "teacher/begins-with": "teacher/common/begins-with-the-same-sound-as",
   "teacher/does-not-begin-with": "teacher/common/does-not-begin-with-the-same-sound-as",
   "teacher/and": "teacher/common/and",
-  "teacher/touch-the-word": "teacher/common/touch-the-word-that-begins-with-the-same-sound-as",
+  "teacher/touch-the-word": "teacher/common/touch-the-word-that-begins-with-the-same-sound-as"
 })
 export default class extends React.Component {
   render() {

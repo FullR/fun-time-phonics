@@ -7,7 +7,7 @@ function getWordImagePath(word) {
   try {
     return requireWordImage(`./${word}.png`);
   } catch(error) {
-    return requireWordImage("undefined.png");
+    return requireWordImage("./undefined.png");
   }
 }
 

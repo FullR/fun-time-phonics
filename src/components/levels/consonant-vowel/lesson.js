@@ -39,9 +39,14 @@ function lessonAnim() {
       revealChoice.bind(this, word),
       this::say("owl", `owl/${word}`)
     ]),
-    this::say("owl", "owl/all-begin-with-the"),
+    this::say("owl", "owl/all-begin-with"),
     this::say("owl", "owl/phonic", 200),
-    this::say("owl", "owl/sound", 200),
+
+    this::say("owl", "owl/we-use-the-letters", 50),
+    this::say("owl", "owl/letters", 50),
+    this::say("owl", "owl/to-write", 50),
+    this::say("owl", "owl/phonic", 50),
+
     this::say("owl", "owl/when-we-read-the-letters", 200),
     this::say("owl", "owl/letters", 200),
     this::say("owl", "owl/they-tell-us-to-say", 200),
@@ -79,7 +84,7 @@ export default class Lesson extends React.Component {
       >
         <Belt top="10%">
           {showingVowel ?
-            <Letter>{letter}<span style={{fontSize: "80%"}}>{vowel}</span></Letter> :
+            <Letter>{letter}{vowel}</Letter> :
             <Letter>{letter.toUpperCase()}{letter}</Letter>
           }
         </Belt>

@@ -16,6 +16,9 @@ export default function animationContext(Component) {
     componentWillUnmount() {
       this.stop();
       this.animations = null;
+      if(this.props.soundContext) {
+        this.props.soundContext.stopAll();
+      }
     }
 
     get(id) {
@@ -32,7 +35,7 @@ export default function animationContext(Component) {
 
     start(id, onCompleted) {
       const animation = this.get(id);
-      if(this.isAnimating()) return () => {};
+      if(this.isAnimating()) return noop;
       this.setState({animating: true});
       if(!animation) {
         console.error(`Could not find animation with id ${id}`);

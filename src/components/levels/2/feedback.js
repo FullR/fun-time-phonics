@@ -12,7 +12,7 @@ export default class Feedback extends React.Component {
 
   render() {
     return (
-      <LevelFeedback 
+      <LevelFeedback {...this.props}
         title="Ending Sounds"
         subtitle="Lesson 2"
         score={this.getScore()}

@@ -7,7 +7,7 @@ import Activity from "components/activity";
 import ActivityTitle from "components/activity-title";
 
 @soundContext({
-  applause: "applause",
+ 
   "teacher/ends-with": "teacher/common/ends-with-the-same-sound-as",
   "teacher/does-not-end-with": "teacher/common/does-not-end-with-the-same-sound-as",
   "teacher/and": "teacher/common/and",

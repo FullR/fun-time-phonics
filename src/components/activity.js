@@ -1,5 +1,6 @@
 import React from "react";
 import ActivityTitle from "components/activity-title";
+import Screen from "components/screen";
 
 export default class Activity extends React.Component {
   static defaultProps = {
@@ -23,7 +24,7 @@ export default class Activity extends React.Component {
     if(!Response) throw new Error("You must pass a Response component to Activity");
 
     return (
-      <div>
+      <Screen>
         {answer ?
           <Response {...this.props}
             correct={isCorrect}
@@ -38,7 +39,7 @@ export default class Activity extends React.Component {
           Lesson {number}:&nbsp; {title}<br/>
           Activity {index + 1} of {activityCount}
         </ActivityTitle>
-      </div>
+      </Screen>
     );
   }
 }

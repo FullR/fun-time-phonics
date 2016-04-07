@@ -1,0 +1,15 @@
+.Admin-short-button {
+  display: inline-flex;
+
+  & + & {
+    margin-left: 20px;
+  }
+
+  > .Admin-button-title {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}

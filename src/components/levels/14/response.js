@@ -18,7 +18,7 @@ export default class Response extends React.Component {
     const {word} = answer;
 
     const response = [
-      this::say("teacher", "teacher/if-you-replace-the", 100),
+      this::say("teacher", "teacher/if-you-replace", 100),
       this::say("teacher", `teacher/${replacePhonic}`, 50),
       this::say("teacher", "teacher/in", 50),
       this::say("teacher", `teacher/replace-word`, 50),

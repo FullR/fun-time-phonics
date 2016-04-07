@@ -19,11 +19,12 @@ export default class Response extends React.Component {
 
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", "teacher/yes"),
+      this::say("teacher", "teacher/correct"),
+
       this::say("teacher", `teacher/${letter}`),
       this::say("teacher", "teacher/makes-the", 50),
       this::say("teacher", `teacher/${letter}h`, 50),
-      this::say("teacher", "teacher/sound-in", 50),
+      this::say("teacher", "teacher/in", 50),
       this::say("teacher", "teacher/word", 50)
     );
 
@@ -31,9 +32,10 @@ export default class Response extends React.Component {
       this::say("teacher", "teacher/word"),
       this::say("teacher", "teacher/does-not-make-the", 50),
       this::say("teacher", `teacher/${letter}h`, 50),
-      this::say("teacher", "teacher/sound-so-it-does-not-have-an", 50),
+      this::say("teacher", "teacher/sound-so-there-is-no", 50),
       this::say("teacher", `teacher/${letter}`, 50),
-      this::say("teacher", "teacher/in-it", 50)
+      this::say("teacher", "teacher/in", 50),
+      this::say("teacher", "teacher/word"),
     );
 
     this.animate();

@@ -8,6 +8,7 @@ $font-size: 34px;
   font-size: $font-size;
   z-index: 10;
   background-color: transparent;
+  transition: opacity 3s;
 
   &:hover .Arrow__image {
     background-image: url("../../images/arrow_hover.png");
@@ -66,14 +67,41 @@ $font-size: 34px;
       background-image: url("../../images/arrow-blue.png");
     }
   }
+
   &--size-large {
     width: $width * 1.5;
     height: $height * 1.5;
+  }
+
+  &--size-small {
+    width: $width / 2;
+    height: $height / 2;
   }
 
   &--reversed {
     .Arrow__image {
       transform: scaleX(-1);
     }
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &--pulsing {
+    animation-duration: 0.5s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
   }
 }

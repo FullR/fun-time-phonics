@@ -21,7 +21,7 @@ export default class Feedback extends React.Component {
     const onNext = this.props.onNext || () => hasher.setHash(`level/${number + 1}`);
     const {score, total} = this.getScore();
     return (
-      <LevelFeedback
+      <LevelFeedback {...this.props}
         title={title}
         subtitle={`Lesson ${number}`}
         score={score}

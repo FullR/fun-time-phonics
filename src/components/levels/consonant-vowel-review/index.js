@@ -15,7 +15,7 @@ import Activity from "components/activity";
 
 export default (info) => {
   const {number, activityData, lessonLetters, lessonWords} = defaults(info, {
-    title: `Consonant "${info.letter}" With Short Vowels`,
+    title: `Consonant "${info.letter}" With Short Vowels Review`,
     activityCount: info.activityData.length
   });
 
@@ -40,7 +40,7 @@ export default (info) => {
   const activityLetters = uniq(flatten(activityData.map((a) => a.letters)));
 
   @soundContext({
-    applause: "applause",
+
     ...arrToObj(lessonWords, (word) => [`owl/${word}`, `owl/words/${word}`]),
     ...arrToObj(lessonLetters, (letter) => [`owl/${letter}`, `owl/common/${letter[0]}-${letter[1]}`]),
     ...arrToObj(lessonLetters, (letter) => [`owl/${letter}h`, `owl/common/phonics/_${letter}h_`]),
@@ -51,7 +51,7 @@ export default (info) => {
     "owl/lets-review-the-sounds-we-just-learned": "owl/common/lets-review-the-sounds-we-just-learned",
     "owl/the-letters": "owl/common/the-letters",
     "owl/make-the": "owl/common/make-the",
-    "owl/sound-in": "owl/common/sound-in",
+    "owl/in": "owl/common/in",
     "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
 
     // Question

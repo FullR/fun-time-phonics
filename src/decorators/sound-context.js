@@ -1,5 +1,5 @@
 import React from "react";
-import {transform, extend, invoke} from "lodash";
+import {transform, extend, each, map} from "lodash";
 import Sound from "sound";
 
 const soundCache = {};
@@ -20,17 +20,18 @@ function fromSoundManifest(manifest) {
 }
 
 export default function soundContext(manifest={}, LoadingComponent) {
+  const sounds = fromSoundManifest(manifest);
   return (Component) => class SoundContext extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         loaded: false
       };
-      this.sounds = fromSoundManifest(manifest);
+      this.sounds = sounds;
     }
 
     componentDidMount() {
-      const load = () => Promise.all(invoke(this.sounds, "load")).then(
+      const load = () => Promise.all(map(this.sounds, (sound) => sound.load())).then(
         () => this.setState({loaded: true}),
         (error) => console.error("Failed to load sounds:", error)
       );
@@ -38,22 +39,33 @@ export default function soundContext(manifest={}, LoadingComponent) {
     }
 
     stopAll() {
-      const stop = () => Promise.all(invoke(this.sounds, "stop")).then(() => {
-        if(this.props.soundContext) {
-          this.props.soundContext.stopAll();
-        }
-      }).catch((error) => console.error("Failed to stop sounds:", error));
-      return enqueue(stop);
+      each(this.sounds, (sound) => sound.stop());
+      if(this.props.soundContext) {
+        this.props.soundContext.stopAll();
+      }
     }
 
     unloadAll() {
-      const unload = Promise.all(invoke(this.sounds, "unload"))
-        .catch((error) => console.error("Failed to unload sounds:", error));
-      return enqueue(unload);
+      each(this.sounds, (sound) => sound.unload());
     }
 
     componentWillUnmount() {
-      this.stopAll().then(::this.unloadAll);
+      this.stopAll();
+      this.unloadAll();
+    }
+
+    getSound(id) {
+      if(this.sounds.hasOwnProperty(id)) {
+        return this.sounds[id];
+      } else if(this.props.soundContext) {
+        return this.props.soundContext.getSound(id);
+      } else {
+        return null;
+      }
+    }
+
+    getSounds(...ids) {
+      return ids.map(this.getSound.bind(this));
     }
 
     render() {

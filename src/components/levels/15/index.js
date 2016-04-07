@@ -10,7 +10,6 @@ import Feedback from "./feedback";
 import {number, letter, phonic, lessonWords} from "./info";
 
 @soundContext({
-  applause: "applause",
 
   ...lessonWords.reduce((sounds, word) => {
     sounds[`owl/${word}`] = `owl/words/${word}`;
@@ -29,18 +28,18 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/we-use-the-letter": "owl/common/we-use-the-letter",
   "owl/to-write-words": "owl/common/to-write-words-that-have-the",
 
-  "teacher/does-not-make-the": "teacher/common/does-not-make-the",
-  "teacher/makes-the": "teacher/common/makes-the",
+  "teacher/does-not-have": "teacher/common/does-not-have",
+  "teacher/has": "teacher/common/has",
   "teacher/has-an": "teacher/common/has-an",
   "teacher/in-it": "teacher/common/in-it",
   "teacher/letter": `teacher/common/letters/${letter}`,
   "teacher/phonic": `teacher/common/phonics/_${phonic}_`,
 
-  "teacher/sound-so-it-does-not": "teacher/common/sound-so-it-does-not-have-an",
-  "teacher/sound-so": "teacher/common/sound-so",
+  "teacher/so-it-does-not": "teacher/common/so-it-does-not-have-an",
+  "teacher/so": "teacher/common/so",
   "teacher/drag-the-letter": "teacher/common/drag-the-letter",
   "teacher/to-the-word": "teacher/common/to-the-word-that-makes-that-sound",
-  "teacher/that-is-not-the-letter": "teacher/common/that-is-not-the-letter"
+  "teacher/this-is-not-the-letter": "teacher/common/this-is-not-the-letter"
 })
 @persists(`level-${number}`, true)
 @hasActivities(activities)

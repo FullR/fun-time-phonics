@@ -8,7 +8,7 @@ import hasLesson from "decorators/has-lesson";
 import activities from "./activities";
 
 @soundContext({
-  applause: "applause",
+ 
 
   "owl/hot": "owl/words/hot",
   "owl/bat": "owl/words/bat",

@@ -9,7 +9,8 @@ export default class SoundFrame extends React.Component {
     playable: true,
     sound: null,
     hidden: false,
-    padding: "10%"
+    padding: "0",
+    noBorder: true
   };
 
   constructor(props) {
@@ -33,7 +34,7 @@ export default class SoundFrame extends React.Component {
     const {sound} = this.props;
     const {_onPlay, _onEnd} = this;
     if(sound) {
-      sound.on("play", _onPlay);
+      sound.on("start", _onPlay);
       sound.on("end", _onEnd);
     }
   }
@@ -42,7 +43,7 @@ export default class SoundFrame extends React.Component {
     const {sound} = this.props;
     const {_onPlay, _onEnd} = this;
     if(sound) {
-      sound.removeListener("play", _onPlay);
+      sound.removeListener("start", _onPlay);
       sound.removeListener("end", _onEnd);
     }
   }

@@ -1,0 +1,3 @@
+.{{upperDashCase name}} {
+
+}

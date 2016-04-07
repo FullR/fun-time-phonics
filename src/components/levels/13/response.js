@@ -1,7 +1,7 @@
 import React from "react";
 import animationContext from "decorators/animation-context";
 import {say, play} from "helpers/animation";
-import SingleWordResponse from "components/single-word-response";
+import TwoWordResponse from "components/two-word-response";
 
 @animationContext
 export default class Response extends React.Component {
@@ -14,29 +14,31 @@ export default class Response extends React.Component {
   }
 
   componentDidMount() {
-    const {animations, answer, correct, incorrectWords} = this.props;
-    const {word} = answer;
-    const incorrectAnim = [
-      this::say("teacher", `teacher/${incorrectWords[0]}`),
-      this::say("teacher", "teacher/and", 50),
-      this::say("teacher", `teacher/${incorrectWords[1]}`, 50),
-      this::say("teacher", "teacher/make-the-same", 100),
-      this::say("teacher", "teacher/incorrect-phonic", 50),
-      this::say("teacher", "teacher/sound", 50)
-    ];
+    const {animations, answer, correct, correctWords, incorrectWord} = this.props;
 
     animations.create("correct",
       this::play("applause"),
-      this::say("teacher", `teacher/${word}`),
-      this::say("teacher", "teacher/makes-the", 50),
-      this::say("teacher", "teacher/correct-phonic", 50),
-      this::say("teacher", "teacher/sound", 50),
-      this::say("teacher", "teacher/and", 50),
-      50,
-      incorrectAnim
+      this::say("teacher", `teacher/${correctWords[0]}`),
+      this::say("teacher", "teacher/and"),
+      this::say("teacher", `teacher/${correctWords[1]}`),
+      this::say("teacher", "teacher/make-the", 50),
+      this::say("teacher", "teacher/correct-phonic", 25),
+      this::say("teacher", "teacher/sound", 50)
     );
 
-    animations.create("incorrect", incorrectAnim);
+    animations.create("incorrect",
+      this::say("teacher", `teacher/${incorrectWord}`),
+      this::say("teacher", "teacher/makes-the", 50),
+      this::say("teacher", "teacher/incorrect-phonic", 50),
+      this::say("teacher", "teacher/sound", 50),
+      this::say("teacher", "teacher/and", 50),
+      this::say("teacher", `teacher/${correctWords[0]}`),
+      this::say("teacher", "teacher/and"),
+      this::say("teacher", `teacher/${correctWords[1]}`),
+      this::say("teacher", "teacher/make-the", 50),
+      this::say("teacher", "teacher/correct-phonic", 25),
+      this::say("teacher", "teacher/sound", 50)
+    );
 
     this.animate();
   }
@@ -51,9 +53,9 @@ export default class Response extends React.Component {
   }
 
   render() {
-    const {word} = this.props.answer;
+    const {words} = this.props.answer;
     return (
-      <SingleWordResponse {...this.props} {...this.state} word={word} onTeacherClick={::this.animate}/>
+      <TwoWordResponse {...this.props} {...this.state} words={words} onTeacherClick={::this.animate}/>
     );
   }
 }

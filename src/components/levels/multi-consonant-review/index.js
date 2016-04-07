@@ -8,7 +8,7 @@ import persists from "decorators/persists";
 
 import Lesson from "./lesson";
 import Question from "components/levels/consonant-vowel-review/question";
-import Response from "components/levels/consonant-vowel-review/response";
+import Response from "./response";
 
 import Feedback from "components/feedback";
 import Activity from "components/activity";
@@ -39,8 +39,8 @@ export default (info) => {
   const activityLetters = uniq(flatten(activityData.map((a) => a.letters)));
 
   @soundContext({
-    applause: "applause",
-    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/letters/${letter}`]),
+
+    ...arrToObj(activityLetters, (letter) => [`teacher/${letter}`, `teacher/common/${letter.split("").join("-")}`]),
     ...arrToObj(activityLetters, (letter) => [`teacher/${letter}h`, `teacher/common/phonics/_${letter}h_`]),
 
     // Lesson
@@ -58,7 +58,7 @@ export default (info) => {
     "teacher/does-not-begin-with": "teacher/common/does-not-begin-with",
 
     // correct
-    "teacher/yes": "teacher/common/yes",
+    "teacher/correct": "teacher/common/correct",
     "teacher/makes-the": "teacher/common/makes-the",
     "teacher/sound-in": "teacher/common/sound-in"
   })

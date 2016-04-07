@@ -1,18 +1,13 @@
 import React from "react";
 import hasher from "hasher";
-import {Authscreen, Screen} from "components";
-import {extendState} from "util/state";
-import sections from "./sections";
-import Arrow from "components/arrow";
+import {version} from "../../../package";
 import storage from "storage";
-
-const log = debug("tctc:admin");
-
-require("style/admin/index.scss");
-require("style/admin/sections/1.scss");
-require("style/admin/sections/2.scss");
-require("style/admin/sections/3.scss");
-require("style/admin/sections/4.scss");
+import Screen from "components/screen";
+import AdminHeader from "components/admin-header";
+import Arrow from "components/arrow";
+import sections from "components/admin-sections";
+import Authscreen from "components/authscreen";
+require("./style.scss");
 
 const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
 const level2SubLessons = ["d", "p", "k", "f", "m", "b"];
@@ -27,8 +22,18 @@ function getSection(levelId) {
     return 2;
   } else if(levelId <= 43) {
     return 3;
-  } else {
+  } else if(levelId <= 63) {
     return 4;
+  } else if(levelId <= 88) {
+    return 5;
+  } else if(levelId <= 108) {
+    return 6;
+  } else if(levelId <= 122) {
+    return 7;
+  } else if(levelId <= 127) {
+    return 8;
+  } else {
+    return 9;
   }
 }
 
@@ -56,7 +61,8 @@ function resetLevel(levelId) {
     showingLesson: true,
     score: 0,
     activitiesComplete: false,
-    currentAnswer: null
+    currentAnswer: null,
+    arrowPulse: false
   };
 
   storage.set(namespace, state);
@@ -67,45 +73,34 @@ export default class Admin extends React.Component {
     super(props);
     const globalStorage = storage.get("global") || {lastLevel: "1"};
     this.state = {
-      authenticated: false,
+      currentLevel: globalStorage.lastLevel,
       sectionIndex: getSection(globalStorage.lastLevel),
-      selectedLevel: globalStorage.lastLevel
+      authenticated: false
     };
   }
 
-  onLoginFail() {
-    this.props.router.back();
-  }
-
-  login() {
-    this.setState({
-      authenticated: true
-    });
-  }
-
-  setSection(sectionIndex) {
-    if(sectionIndex >= 0 && sectionIndex < sections.length) {
-      log(`Showing section ${sectionIndex}`);
-      this.setState({sectionIndex});
-    }
-  }
-
   nextSection() {
-    this.setSection(this.state.sectionIndex + 1);
+    this.setState({sectionIndex: this.state.sectionIndex + 1});
   }
 
-  previousSection() {
-    this.setSection(this.state.sectionIndex - 1);
+  prevSection() {
+    this.setState({sectionIndex: this.state.sectionIndex - 1});
   }
 
-  selectLevel(lessonId) {
-    this.setState({selectedLevel: lessonId});
+  selectLevel(levelId) {
+    clearInterval(this.pulseTimeout);
+    this.setState({arrowPulse: true, currentLevel: levelId});
+    this.pulseTimeout = setTimeout(() => this.setState({arrowPulse: false}), 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.pulseTimeout);
   }
 
   showLevel() {
-    const {selectedLevel} = this.state;
-    const {activitiesComplete} = getLevelData(selectedLevel);
-    const [parentLevelId] = selectedLevel.split("-");
+    const {currentLevel} = this.state;
+    const {activitiesComplete} = getLevelData(currentLevel);
+    const [parentLevelId] = currentLevel.split("-");
 
     if(activitiesComplete) {
       if(parentLevelId === "1") {
@@ -115,63 +110,89 @@ export default class Admin extends React.Component {
         resetLevel("2");
         level2SubLessons.forEach((c) => resetLevel(`2-${c}`));
       } else {
-        resetLevel(selectedLevel);
+        resetLevel(currentLevel);
       }
     }
 
-    hasher.setHash(`level/${selectedLevel}`);
+    hasher.setHash(`level/${currentLevel}`);
+  }
+
+  clearStorage() {
+    storage.clear();
+    storage.set("version", version);
+    this.setState({
+      currentLevel: "1",
+      sectionIndex: 0
+    });
   }
 
   render() {
-    const {authenticated, sectionIndex, selectedLevel} = this.state;
-    const Section = sections[sectionIndex] || sections[0];
-    const lessonData = getLevelData(selectedLevel);
+    const {sectionIndex, currentLevel, authenticated, arrowPulse} = this.state;
+    const Section = sections[sectionIndex];
+    const NextSection = sections[sectionIndex + 1];
+    const PrevSection = sections[sectionIndex - 1];
+
+    if(!authenticated) return (
+      <Authscreen
+        onSuccess={() => this.setState({authenticated: true})}
+        onFail={() => this.props.router.back()}
+      />
+    );
+
+    const lessonData = getLevelData(currentLevel);
+    const {title, lessons} = Section;
     let arrowText;
     let arrowStyle;
 
-    if(!authenticated) {
-      return (
-        <Authscreen onSuccess={::this.login} onFail={::this.onLoginFail}/>
-      );
-    }
-
     if(lessonData.activitiesComplete) {
-      arrowText = <span>Replay Lesson<br/>{selectedLevel}</span>;
+      arrowText = (<span>Replay Lesson<br/>{currentLevel}</span>);
       arrowStyle = {fontSize: 24};
     } else if(lessonData.activityIndex) {
-      arrowText = `Return to Lesson ${selectedLevel}`;
+      arrowText = `Return to Lesson ${currentLevel}`;
       arrowStyle = {fontSize: 20};
     } else {
-      arrowText = `Play Lesson ${selectedLevel}`;
+      arrowText = `Play Lesson ${currentLevel}`;
       arrowStyle = {fontSize: 26};
     }
 
-    return (
-      <div className="admin">
-        <div className="admin__header">
-          <ul className="admin__header-nav">
-            <li className="admin__header-nav-item">User</li>
-            <li className="admin__header-nav-item">Restart</li>
-            <li className="admin__header-nav-item">About</li>
-          </ul>
-          <span className="admin__header-title">Fun-Time Phonics!{String.fromCharCode(8482)} Admin/Score</span>
-          <span className="admin__header-grades">PreK - 2</span>
-        </div>
+    const level = (levelId) => ({
+      selected: levelId === currentLevel,
+      onClick: this.selectLevel.bind(this, levelId)
+    });
 
-        <div className="admin__content">
-          <div className="admin__current-section">
-            <Section
-              onNext={::this.nextSection}
-              onBack={::this.previousSection}
-              onSelectLevel={::this.selectLevel}
-              selectedLevel={selectedLevel}
-            />
+    return (
+      <Screen className="Admin">
+        <AdminHeader>
+          <div onClick={this.clearStorage.bind(this)} className="Admin__clear-button">Clear Data</div>
+        </AdminHeader>
+        <div className="Admin__content">
+          <div className="Admin__section-box">
+            <div className="Admin__nav">
+              <div className="Admin__section-title">{title}</div>
+
+              <div className="Admin__arrows">
+                {PrevSection ?
+                  <Arrow onClick={this.prevSection.bind(this)} size="small" color="blue" reversed>{PrevSection.lessons}</Arrow> :
+                  <Arrow size="small" color="blue" hidden reversed/>
+                }
+                <div className="Admin__lesson-numbers">Lessons {lessons}</div>
+                {NextSection ?
+                  <Arrow onClick={this.nextSection.bind(this)} size="small" color="blue">{NextSection.lessons}</Arrow> :
+                  <Arrow size="small" color="blue" hidden/>
+                }
+              </div>
+            </div>
+            <div className="Admin__section">
+              <Section level={level} currentLevel={currentLevel} onSelectLevel={this.selectLevel.bind(this)}/>
+            </div>
           </div>
-          <Arrow className="admin__back-button" onClick={::this.showLevel} style={arrowStyle}>
-            {arrowText}
-          </Arrow>
+          <div className="Admin__arrow-box">
+            <Arrow className="Admin__continue-arrow" style={arrowStyle} size="large" onClick={this.showLevel.bind(this)} pulsing={arrowPulse}>
+              {arrowText}
+            </Arrow>
+          </div>
         </div>
-      </div>
+      </Screen>
     );
   }
 }

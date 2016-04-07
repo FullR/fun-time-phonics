@@ -66,7 +66,7 @@ export default class Lesson extends React.Component {
       this.setLetterHL.bind(this, "a", false),
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/ah", 100),
-      this::say("owl", "owl/sound-in", 100),
+      this::say("owl", "owl/in", 100),
       revealChoice.bind(this, "axe"),
       this::say("owl", "owl/axe", 100),
 
@@ -77,7 +77,7 @@ export default class Lesson extends React.Component {
       this.setLetterHL.bind(this, "e", false),
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/eh", 100),
-      this::say("owl", "owl/sound-in", 100),
+      this::say("owl", "owl/in", 100),
       revealChoice.bind(this, "Ed"),
       this::say("owl", "owl/Ed", 100),
 
@@ -88,7 +88,7 @@ export default class Lesson extends React.Component {
       this.setLetterHL.bind(this, "i", false),
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/ih", 100),
-      this::say("owl", "owl/sound-in", 100),
+      this::say("owl", "owl/in", 100),
       revealChoice.bind(this, "itch"),
       this::say("owl", "owl/itch", 100),
 
@@ -99,7 +99,7 @@ export default class Lesson extends React.Component {
       this.setLetterHL.bind(this, "o", false),
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/oh", 100),
-      this::say("owl", "owl/sound-in", 100),
+      this::say("owl", "owl/in", 100),
       revealChoice.bind(this, "otter"),
       this::say("owl", "owl/otter", 100),
 
@@ -110,9 +110,12 @@ export default class Lesson extends React.Component {
       this.setLetterHL.bind(this, "u", false),
       this::say("owl", "owl/makes-the", 100),
       this::say("owl", "owl/uh", 100),
-      this::say("owl", "owl/sound-in", 100),
+      this::say("owl", "owl/in", 100),
       revealChoice.bind(this, "up"),
       this::say("owl", "owl/up", 100),
+
+      this::say("owl", "owl/say-each-letters-sound"),
+      this::say("owl", "owl/then-touch"),
 
       endSpeaking.bind(this, "owl")
     );

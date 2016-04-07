@@ -10,15 +10,13 @@ import Feedback from "./feedback";
 import {number} from "./info";
 
 @soundContext({
-  applause: "applause",
-
   // lesson
   "owl/bad": "owl/words/bad",
   "owl/bed": "owl/words/bed",
   "owl/hit": "owl/words/hit",
   "owl/hot": "owl/words/hot",
 
-  "owl/if-you-replace-the": "owl/common/if-you-replace-the",
+  "owl/if-you-replace": "owl/common/if-you-replace",
   "owl/the-new-word-is": "owl/common/the-new-word-is",
 
   "owl/in": "owl/common/in",
@@ -30,7 +28,7 @@ import {number} from "./info";
   "owl/oh": "owl/common/phonics/_oh_",
 
   // Question
-  "teacher/replace-the": "teacher/common/replace-the",
+  "teacher/if-you-replace": "teacher/common/if-you-replace",
   "teacher/what-is-the-new-word": "teacher/common/what-is-the-new-word",
 
   "teacher/in": "teacher/common/in",
@@ -44,7 +42,7 @@ import {number} from "./info";
 
   // Response
   "teacher/yes": "teacher/common/yes",
-  "teacher/if-you-replace-the": "teacher/common/if-you-replace-the",
+  "teacher/if-you-replace": "teacher/common/if-you-replace",
   "teacher/the-new-word-is": "teacher/common/the-new-word-is"
 })
 @persists(`level-${number}`, true)

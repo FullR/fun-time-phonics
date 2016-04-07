@@ -9,7 +9,7 @@ import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
-  applause: "applause",
+ 
 
   "owl/words-such-as": "owl/common/words-such-as",
   "owl/rhyme-because-they-all-make-the-same-ending-sound": "owl/common/rhyme-because-they-all-make-the-same-ending-sound",
@@ -55,14 +55,32 @@ export default class Level5 extends React.Component {
     }
   }
 
+  reset() {
+    this.setState({
+      activityIndex: 0,
+      showingLesson: true,
+      activitiesComplete: false,
+      score: 0
+    });
+  }
+
   render() {
     const {showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback {...this.props}/>);
+      return (
+        <Feedback {...this.props}
+          onBack={::this.reset}
+        />
+      );
     } else if(showingLesson) {
-      return (<Lesson {...this.props} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
+      return (
+        <Lesson {...this.props}
+          arrowLabel={`Activity ${activityIndex + 1}`}
+          onComplete={::this.hideLesson}
+        />
+      );
     } else if(Activity) {
       return (
         <Activity {...this.props}

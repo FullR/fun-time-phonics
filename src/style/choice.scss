@@ -47,7 +47,11 @@ $sibling-count-scales: (
 }
 
 .Choice + .Choice {
-  margin-left: 1em;
+  margin-left: 100px;
+}
+
+.Choice--medium + .Choice--medium {
+  margin-left: 50px;
 }
 
 @each $count, $ratio in $sibling-count-scales {

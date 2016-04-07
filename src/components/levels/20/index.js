@@ -10,8 +10,6 @@ import Feedback from "./feedback";
 import {number, letter, phonic, lessonWords} from "./info";
 
 @soundContext({
-  applause: "applause",
-
   "owl/axe": "owl/words/axe",
   "owl/Ed": "owl/words/Ed",
   "owl/itch": "owl/words/itch",
@@ -23,19 +21,26 @@ import {number, letter, phonic, lessonWords} from "./info";
   "owl/the-letter": "owl/common/the-letter",
   "owl/makes-the": "owl/common/makes-the",
   "owl/then-touch": "owl/common/then-touch-the-green-arrow-to-begin",
-  "owl/sound-in": "owl/common/sound-in",
+  "owl/in": "owl/common/in",
+  "owl/say-each-letters-sound": "owl/common/say-each-letters-sound",
 
-  "teacher/drag-the-letter": "teacher/common/drag-the-letter-to-the-picture-that-makes-the",
-  "teacher/sound-so-it-does-not-have-an": "teacher/common/sound-so-it-does-not-have-an",
+  "teacher/correct": "teacher/common/correct",
+  "teacher/drag-the-letter-to-the-picture-that-makes-the-middle-sound-in": "teacher/common/drag-the-letter-to-the-picture-that-makes-the-middle-sound-in",
+  "teacher/drag-the-letter-to-the-picture-that-makes-this-middle-sound": "teacher/common/drag-the-letter-to-the-picture-that-makes-this-middle-sound",
+  "teacher/sound-so-there-is-no": "teacher/common/sound-so-there-is-no",
   "teacher/does-not-make-the": "teacher/common/does-not-make-the",
   "teacher/makes-the": "teacher/common/makes-the",
   "teacher/in-it": "teacher/common/in-it",
-  "teacher/sound-in": "teacher/common/sound-in",
+  "teacher/in": "teacher/common/in",
+  "teacher/sound-so": "teacher/common/sound-so",
   "teacher/yes": "teacher/common/yes",
+  "teacher/sound-in": "teacher/common/sound-in",
+  "teacher/so": "teacher/common/so",
 
   "teacher/say-the-letter": "teacher/common/say-the-letter-sound-and-then-touch-the-word-that-makes-that-sound",
   "teacher/there-is-no": "teacher/common/there-is-no",
   "teacher/has-an": "teacher/common/has-an",
+  "teacher/does-not-have-an": "teacher/common/does-not-have-an",
 
   "owl/a": "owl/common/letters/a",
   "owl/e": "owl/common/letters/e",

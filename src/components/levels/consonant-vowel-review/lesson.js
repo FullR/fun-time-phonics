@@ -20,11 +20,13 @@ function animation({words, lessonLetters}) {
       unhlLetter.bind(null, lessonLetters[i]),
       this::say("owl", "owl/make-the", 200),
       this::say("owl", `owl/${lessonLetters[i]}h`, 200),
-      this::say("owl", "owl/sound-in", 200),
+      this::say("owl", "owl/in", 200),
       200,
       revealChoice.bind(this, word),
       this::say("owl", `owl/${word}`)
     ]),
+    100,
+    this::say("owl", "owl/touch-the"),
     endSpeaking.bind(this, "owl")
   ];
 }

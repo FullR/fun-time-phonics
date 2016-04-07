@@ -1,0 +1,38 @@
+$icon-image: "../../../images/lock-icon.png";
+$icon-width: 22px;
+$icon-height: 29px;
+$icon-spacing: 4px;
+$font-size: 25px;
+$color: #568ED4;
+$hover-color: #223854;
+
+.Lock-link {
+  cursor: pointer;
+  color: $color;
+  font-size: $font-size;
+
+  &__text,
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__text {
+    position: relative;
+    line-height: $icon-height;
+    height: $icon-height;
+    text-decoration: underline;
+  }
+
+  &__icon {
+    width: $icon-width;
+    height: $icon-height;
+    margin-right: $icon-spacing;
+    background: url($icon-image) no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.Lock-link:hover {
+  color: $hover-color;
+}

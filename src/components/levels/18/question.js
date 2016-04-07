@@ -7,10 +7,9 @@ import {say, hideChoices, revealChoice, endSpeaking, center, uncenter} from "hel
 import {GameScreen, Belt, WordFrame, Choice} from "components";
 import {letter} from "./info";
 
-import DraggableChoice from "components/draggable-choice";
-import DropZone from "components/drop-zone";
+import DragLetter from "components/drag-letter";
+import DropContainer from "components/drop-container";
 const choosableLetters = ["a", "e", "i", "o", "u"].filter(l => l !== letter);
-const letterStyle = {fontSize: 200, height: "100%", width: "100%", lineHeight: "300px", textAlign: "center"};
 
 @animationContext
 @DragDropContext(dndBackend)
@@ -49,14 +48,14 @@ export default class Question extends React.Component {
     animations.create("instructions",
       this::hideChoices,
       this::say("teacher", "teacher/drag-the-letter"),
-      this::say("teacher", "teacher/letter", 100),
-      this::say("teacher", "teacher/to-the-word", 200),
+      this::say("teacher", "teacher/letter", 20),
+      this::say("teacher", "teacher/to-the-word", 100),
       revealAndSayWords,
       endSpeaking.bind(this, "teacher")
     );
 
     animations.create("wrong-letter",
-      this::say("teacher", "teacher/that-is-not-the-letter"),
+      this::say("teacher", "teacher/this-is-not-the-letter"),
       this::say("teacher", "teacher/letter", 100)
     );
 
@@ -77,11 +76,11 @@ export default class Question extends React.Component {
   }
 
   onLetterDrop(word, droppedLetter) {
-    if(droppedLetter === letter) {
-      setTimeout(() => this.props.onAnswer({word}), 10);
-    } else {
-      this.wrongLetter();
-    }
+    setTimeout(() =>
+      droppedLetter === letter ?
+        this.props.onAnswer({word}) :
+        this.wrongLetter(),
+      100);
   }
 
   render() {
@@ -92,20 +91,18 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           {letters.map((letter) =>
-            <DraggableChoice key={`${index}-letter-${letter}`} letter={letter} autohide>
-              <div style={letterStyle}>{letter}</div>
-            </DraggableChoice>
+            <DragLetter key={`${index}-letter-${letter}`} letter={letter}/>
           )}
         </Belt>
 
         <Belt bottom="20%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key}>
-              <DropZone style={{width: "100%", height: "100%"}} choice={choice} value={choice} onDrop={(event) => {
-                this.onLetterDrop(choice.word, event.letter);
+              <DropContainer style={{width: "100%", height: "100%"}} onDrop={(letter) => {
+                this.onLetterDrop(choice.word, letter);
               }}>
                 <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]}/>
-              </DropZone>
+              </DropContainer>
             </Choice>
           )}
         </Belt>

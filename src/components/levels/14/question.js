@@ -36,7 +36,7 @@ export default class Question extends React.Component {
       this.setState.bind(this, {replaceWordHidden: true}),
       this::hideChoices,
       center.bind(this, "teacher"),
-      this::say("teacher", "teacher/replace-the"),
+      this::say("teacher", "teacher/if-you-replace"),
       this::say("teacher", `teacher/${replacePhonic}`, 100),
       this::say("teacher", "teacher/in", 100),
       uncenter.bind(this, "teacher"),

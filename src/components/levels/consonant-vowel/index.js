@@ -1,6 +1,6 @@
 import React from "react";
 import {soundExists, imageExists} from "assets";
-import {defaults, uniq, flatten, pluck} from "lodash";
+import _ from "lodash";
 import soundContext from "decorators/sound-context";
 import hasActivities from "decorators/has-activities";
 import hasLesson from "decorators/has-lesson";
@@ -13,13 +13,14 @@ import LetterIntro from "./letter-intro";
 
 import Activity from "components/activity";
 import Feedback from "components/feedback";
+const {defaults, uniq, flatten, pluck} = _;
 
 const wordSounds = (words, actor="owl") => words.reduce((sounds, word) => {
   sounds[`${actor}/${word}`] = `${actor}/words/${word}`;
   return sounds;
 }, {});
 
-export default (info) => {
+export default function consonantVowel(info) {
   const {
     title,
     number,
@@ -37,7 +38,7 @@ export default (info) => {
 
   // Check activity words. Warn about missing audio/images
   if(window.DEBUG) {
-    uniq(flatten(pluck(activityData, "words"))).forEach((word) => {
+    _(activityData).pluck("words").flatten().uniq().each((word) => {
       if(!soundExists(`teacher/words/${word}`)) {
         console.error(`Missing teacher sound for ${word}`);
       }
@@ -67,8 +68,6 @@ export default (info) => {
   } : null;
 
   @soundContext({
-    applause: "applause",
-
     ...letterIntroSounds,
     ...wordSounds(lessonWords),
 
@@ -77,10 +76,9 @@ export default (info) => {
 
     // Lesson
     "owl/words-such-as": "owl/common/words-such-as",
-    "owl/all-begin-with-the": "owl/common/all-begin-with-the",
-    "owl/sound": "owl/common/sound",
+    "owl/all-begin-with": "owl/common/all-begin-with",
     "owl/we-use-the-letters": "owl/common/we-use-the-letters",
-    "owl/to-write-the": "owl/common/to-write-the",
+    "owl/to-write": "owl/common/to-write",
     "owl/when-we-read-the-letters": "owl/common/when-we-read-the-letters",
     "owl/they-tell-us-to-say": "owl/common/they-tell-us-to-say",
     "owl/touch-the": "owl/common/touch-the-green-arrow-to-begin",
@@ -95,12 +93,12 @@ export default (info) => {
 
     // Response
     // Incorrect
-      "teacher/does-not-begin-with-the": "teacher/common/does-not-begin-with-the",
-      "teacher/sound-so-it-does-not-begin-with": "teacher/common/sound-so-it-does-not-begin-with",
+      "teacher/does-not-begin-with": "teacher/common/does-not-begin-with",
+      "teacher/so-it-does-not-begin-with": "teacher/common/so-it-does-not-begin-with",
     // Correct
       "teacher/correct": "teacher/common/correct",
-      "teacher/makes-the": "teacher/common/makes-the",
-      "teacher/sound-in": "teacher/common/sound-in"
+      "teacher/begins-with": "teacher/common/begins-with",
+      "teacher/so-it-begins-with": "teacher/common/so-it-begins-with"
   })
   @persists(`level-${number}`, true)
   @hasActivities(activities)
@@ -136,11 +134,16 @@ export default (info) => {
     render() {
       const {showingLetterIntro, showingLesson, activityIndex, activitiesComplete, currentAnswer, reviewingLesson} = this.state;
       const Activity = this.getActivity();
-
+      console.log(this.props.soundContext);
       if(activitiesComplete) {
         return (<Feedback {...this.props} {...info} onBack={::this.reset}/>);
       } else if(showingLesson) {
-        return (<Lesson {...this.props} {...info} arrowLabel={`Activity ${activityIndex + 1}`} onComplete={::this.hideLesson}/>);
+        return (
+          <Lesson {...this.props} {...info}
+            arrowLabel={`Activity ${activityIndex + 1}`}
+            onComplete={::this.hideLesson}
+          />
+        );
       } else if(Activity) {
         return (
           <Activity {...this.props} {...info}

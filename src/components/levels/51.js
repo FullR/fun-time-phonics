@@ -4,7 +4,7 @@ export default consonantVowel({
   number: 51,
   letter: "h",
   vowel: "o",
-  lessonWords: ["hop", "hocket", "hollow"],
+  lessonWords: ["hop", "hockey", "hollow"],
   activityData: [
     {words: ["hit", "hot", "heart"], correct: "hot"},
     {words: ["handcuffs", "hubcap", "hopscotch"], correct: "hopscotch", wordsOnly: true},

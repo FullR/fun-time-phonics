@@ -1,0 +1,9 @@
+.Admin-section-column {
+  display: inline-flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+}

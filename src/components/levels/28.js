@@ -12,6 +12,6 @@ export default consonantVowel({
     {words: ["cotton", "candle", "cuddle"], correct: "cotton", wordsOnly: true},
     {words: ["cupcake", "copper", "cupboard"], correct: "copper", wordsOnly: true},
     {words: ["castle", "concert", "customer"], correct: "concert", wordsOnly: true},
-    {words: ["camel", "cut", "collar"], correct: "collar", wordsOnly: true}
+    {words: ["camel", "call", "collar"], correct: "collar", wordsOnly: true}
   ]
 });

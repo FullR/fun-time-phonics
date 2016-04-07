@@ -7,7 +7,7 @@ import {number, title, activityCount} from "./info";
 export default class Feedback extends React.Component {
   render() {
     return (
-      <LevelFeedback
+      <LevelFeedback {...this.props}
         title={title}
         subtitle={`Lesson ${number}`}
         score={getLevelScore(number.toString())}

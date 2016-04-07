@@ -9,8 +9,6 @@ import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
-  applause: "applause",
-
   "owl/ah": "owl/common/phonics/_ah_",
   "owl/eh": "owl/common/phonics/_eh_",
   "owl/ih": "owl/common/phonics/_ih_",
@@ -35,7 +33,7 @@ import Feedback from "./feedback";
   "teacher/oh": "teacher/common/phonics/_oh_",
   "teacher/uh": "teacher/common/phonics/_uh_",
 
-  "teacher/touch-the": "teacher/common/touch-the-word-that-makes-the-different-middle-sound",
+  "teacher/touch-the-two-words-that-make-the-same-middle-sound": "teacher/common/touch-the-two-words-that-make-the-same-middle-sound",
   "teacher/make-the-same": "teacher/common/make-the-same",
   "teacher/make-the": "teacher/common/make-the",
   "teacher/makes-the": "teacher/common/makes-the",

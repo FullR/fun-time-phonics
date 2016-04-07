@@ -5,8 +5,8 @@ export default consonantVowel({
   letterIntro: true,
   letter: "j",
   vowel: "a",
-  exampleWords: ["jacket", "jet", "jim", "joeckey", "juggle"],
-  lessonWords: ["jack", "jazz", "jagged"],
+  exampleWords: ["jacket", "jet", "Jim", "jockey", "juggle"],
+  lessonWords: ["Jack", "jazz", "jagged"],
   activityData: [
     {words: ["jacks", "Josh", "judge"], correct: "jacks"},
     {words: ["jogger", "jaguar", "junkyard"], correct: "jaguar", wordsOnly: true},

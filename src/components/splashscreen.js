@@ -6,10 +6,13 @@ import Corner from "components/corner";
 import AdminLink from "components/admin-link";
 import CriticalLogo from "components/critical-logo";
 import Robot from "components/robot";
+import RobotActor from "components/robot-actor";
 require("style/splashscreen.scss");
 
+const introSound = Math.random() > 0.95 ? "intro-owl" : "intro-teacher";
+
 @soundContext({
-  welcome: "intro"
+  welcome: introSound
 })
 export default class Splashscreen extends React.Component {
   componentDidMount() {
@@ -28,6 +31,7 @@ export default class Splashscreen extends React.Component {
           <Robot type="boy"/>
           <Robot type="girl"/>
         </div>
+
         <Corner top="1%" left="1%">
           <CriticalLogo size="medium"/>
         </Corner>

@@ -1,14 +1,13 @@
 import React from "react";
 import classNames from "util/class-names";
+import bembam from "bembam";
 require("style/screen.scss");
 
 export default class Screen extends React.Component {
   render() {
-    const className = classNames(this.props.className, "Screen");
+    const className = bembam("Screen", this.props.className);
     return (
-      <div className={className}>
-        <div {...this.props} className={null} title={null}/>
-      </div>
+      <div {...this.props} className={className.toString()} title={null}/>
     );
   }
 }

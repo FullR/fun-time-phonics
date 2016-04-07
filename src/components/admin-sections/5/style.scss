@@ -1,0 +1,20 @@
+.Admin-section-5 {
+  flex-direction: row;
+  align-items: stretch;
+
+  .Admin-section-column:not(:first-child) {
+    max-width: 250px;
+    .Admin-button-title {
+      text-decoration: none;
+    }
+  }
+
+  .Admin-section-column:last-child {
+    justify-content: center;
+    align-items: stretch;
+
+    .Admin-short-button {
+      max-height: 250px;
+    }
+  }
+}

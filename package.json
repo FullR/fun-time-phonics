@@ -18,6 +18,7 @@
   "dependencies": {
     "babel-core": "^6.3.21",
     "babel-polyfill": "^6.3.14",
+    "bembam": "0.0.22",
     "debug": "^2.2.0",
     "express": "^4.13.3",
     "hasher": "^1.2.0",

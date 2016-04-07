@@ -1,7 +1,13 @@
 import React from "react";
 import {map} from "lodash";
 import {soundContext, animationContext} from "decorators";
-import {GameScreen, Arrow, Choice, Belt, WordFrame, LessonTitle, Corner} from "components";
+import GameScreen from "components/game-screen";
+import Arrow from "components/arrow";
+import Choice from "components/choice";
+import Belt from "components/belt";
+import WordFrame from "components/word-frame";
+import LessonTitle from "components/lesson-title";
+import Corner from "components/corner";
 import {say, endSpeaking, hideChoices, revealChoice, center, uncenter} from "helpers/animation";
 
 @animationContext

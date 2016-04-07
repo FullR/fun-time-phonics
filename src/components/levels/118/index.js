@@ -43,7 +43,6 @@ function lessonAnimation() {
 }
 
 @soundContext({
-  applause: "applause",
   ...info.lessonWords.reduce((sounds, word) => {
     sounds[`owl/${word}`] = `owl/words/${word}`;
     return sounds;

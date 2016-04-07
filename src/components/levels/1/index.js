@@ -9,8 +9,6 @@ import hasLesson from "decorators/has-lesson";
 import activities from "./activities";
 
 @soundContext({
-  applause: "applause",
-
   "owl/tail": "owl/words/tail",
   "owl/tip": "owl/words/tip",
   "owl/tape": "owl/words/tape",

@@ -47,20 +47,20 @@ const firstHalf = [
 
 const secondHalf = [
   {words: ["cat", "cut", "coat"], letter: "a", correct: "cat", fullInstructions: true},
-  {words: ["bud", "bed", "bad"], letter: "e", correct: "bed", wordsOnly: true},
-  {words: ["tip", "tap", "top"], letter: "i", correct: "tip", wordsOnly: true},
-  {words: ["sack", "sock", "sick"], letter: "o", correct: "sock", wordsOnly: true},
-  {words: ["fin", "fan", "fun"], letter: "u", correct: "fun", wordsOnly: true},
-  {words: ["bell", "ball", "bull"], letter: "e", correct: "bell", wordsOnly: true},
-  {words: ["hat", "hut", "hot"], letter: "o", correct: "hot", wordsOnly: true},
-  {words: ["bug", "bag", "big"], letter: "u", correct: "bug", wordsOnly: true},
-  {words: ["lap", "lip", "leap"], letter: "i", correct: "lip", wordsOnly: true},
-  {words: ["baby", "bed", "bad"], letter: "a", correct: "bad", wordsOnly: true},
-  {words: ["pin", "pen", "pan"], letter: "e", correct: "pen", wordsOnly: true},
-  {words: ["lock", "lick", "lake"], letter: "i", correct: "lick", wordsOnly: true},
-  {words: ["cap", "cup", "cape"], letter: "u", correct: "cup", wordsOnly: true},
-  {words: ["knit", "knot", "net"], letter: "i", correct: "knit", wordsOnly: true},
-  {words: ["bug", "beg", "big"], letter: "e", correct: "beg", wordsOnly: true}
+  {words: ["bud", "bed", "bad"], letter: "e", correct: "bed"},
+  {words: ["tip", "tap", "top"], letter: "i", correct: "tip"},
+  {words: ["sack", "sock", "sick"], letter: "o", correct: "sock"},
+  {words: ["fin", "fan", "fun"], letter: "u", correct: "fun"},
+  {words: ["bell", "ball", "bull"], letter: "e", correct: "bell"},
+  {words: ["hat", "hut", "hot"], letter: "o", correct: "hot"},
+  {words: ["bug", "bag", "big"], letter: "u", correct: "bug"},
+  {words: ["lap", "lip", "leap"], letter: "i", correct: "lip"},
+  {words: ["baby", "bed", "bad"], letter: "a", correct: "bad"},
+  {words: ["pin", "pen", "pan"], letter: "e", correct: "pen"},
+  {words: ["lock", "lick", "lake"], letter: "i", correct: "lick"},
+  {words: ["cap", "cup", "cape"], letter: "u", correct: "cup"},
+  {words: ["knit", "knot", "net"], letter: "i", correct: "knit"},
+  {words: ["bug", "beg", "big"], letter: "e", correct: "beg"}
 ].map((activityProps) => {
   @soundContext(activityProps.words.reduce((sounds, word) => {
     sounds[`teacher/${word}`] = `teacher/words/${word}`;

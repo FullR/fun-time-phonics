@@ -8,7 +8,6 @@ import activities from "./activities";
 import Feedback from "./feedback";
 
 @soundContext({
-  applause: "applause",
   "teacher/say-the-word-the-same-way-i-say-it-then-touch-its-picture": "teacher/common/say-the-word-the-same-way-i-say-it-then-touch-its-picture",
   "teacher/does-not-make": "teacher/common/does-not-make"
 })

@@ -11,7 +11,7 @@ export default consonantVowel({
     {words: ["gap", "goat", "gift"], correct: "gap"},
     {words: ["goose", "gush", "gas"], correct: "gas", wordsOnly: true},
     {words: ["gum", "grab", "gab"], correct: "gab", wordsOnly: true},
-    {words: ["giggles", "goggles", "gag"], correct: "gag", wordsOnly: true},
+    {words: ["giggle", "goggles", "gag"], correct: "gag", wordsOnly: true},
     {words: ["glasses", "gallop", "gossip"], correct: "gallop", wordsOnly: true},
     {words: ["gavel", "guzzle", "gosling"], correct: "gavel", wordsOnly: true},
     {words: ["gutter", "gallery", "gondola"], correct: "gallery", wordsOnly: true}

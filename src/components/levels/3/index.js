@@ -9,7 +9,7 @@ import Feedback from "./feedback";
 import activities from "./activities";
 
 @soundContext({
-  applause: "applause",
+
   "owl/the-first-sound": "owl/common/the-first-sound-you-hear-in-a-word-is-called-the-beginning-sound",
   "owl/the-beginning-sound": "owl/common/the-beginning-sound-in-the-word",
   "owl/the-last-sound": "owl/common/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
@@ -67,7 +67,7 @@ export default class Level3 extends React.Component {
     const Activity = this.getActivity();
 
     if(activitiesComplete) {
-      return (<Feedback onBack={::this.reset}/>);
+      return (<Feedback {...this.props} onBack={::this.reset}/>);
     }
 
     if(showingLesson) {

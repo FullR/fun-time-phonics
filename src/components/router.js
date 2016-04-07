@@ -1,5 +1,6 @@
 import React from "react";
 import hasher from "hasher";
+import levels from "components/levels";
 const log = debug("tctc:router");
 
 export default class Router extends React.Component {
@@ -47,16 +48,12 @@ export default class Router extends React.Component {
     const parts = hash.split("/");
     switch(parts[0]) {
       case "level":
-        try {
-          return require("components/levels/" + parts[1] + "/index");
-        } catch(error) {
-          try {
-            return require("components/levels/" + parts[1]);
-          } catch(error2) {
-            console.error(error2);
-          }
+        if(levels.hasOwnProperty(parts[1])) {
+          return levels[parts[1]];
+        } else {
+          throw new Error("Level not found: " + parts[1]);
         }
-      case "admin": return require("components/admin/index");
+      case "admin": return require("components/admin");
       case "test": return require("components/test-page");
       case "sound-test": return require("components/sound-test-page");
       case "splash": // intentional fall through
@@ -66,6 +63,6 @@ export default class Router extends React.Component {
 
   render() {
     const Route = this.getRoute();
-    return (<Route router={this}/>);
+    return (<Route {...this.props} router={this}/>);
   }
 }

@@ -11,7 +11,6 @@ import Feedback from "./feedback";
 const phonic = "oh";
 
 @soundContext({
-  applause: "applause",
   "owl/words-such-as": "owl/common/words-such-as",
   "owl/hop": "owl/words/hop",
   "owl/box": "owl/words/box",

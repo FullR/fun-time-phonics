@@ -6,7 +6,7 @@ import getLevelScore from "util/get-level-score";
 export default class Feedback extends React.Component {
   render() {
     return (
-      <LevelFeedback
+      <LevelFeedback {...this.props}
         title={"Find the Sound - Short \"i\""}
         subtitle="Lesson 10"
         score={getLevelScore("10")}

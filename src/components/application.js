@@ -1,37 +1,14 @@
 import React from "react";
 import Router from "components/router";
-import AudioInspector from "components/audio-inspector";
+import soundContext from "decorators/sound-context";
 
-const style = {
-  position: "relative",
-  width: "100%",
-  height: "100%"
-};
-
+@soundContext({
+  applause: "applause",
+  success: "owl/common/nice-work-touch-the-green-arrow-to-begin-the-next-lesson-touch-the-orange-arrow-to-play-this-lesson-again",
+  fail: "owl/common/nice-try-lets-practice-this-some-more"
+})
 export default class Application extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingAudioInspector: false
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("keydown", (e) => {
-      if(e.keyCode === 192) {
-        e.preventDefault();
-        this.toggleAudioInspector();
-      }
-    });
-  }
-
-  toggleAudioInspector() {
-    this.setState({
-      showingAudioInspector: !this.state.showingAudioInspector
-    });
-  }
-
   render() {
-    return (<div style={style}><Router/>{this.state.showingAudioInspector ? <AudioInspector/> : null}</div>);
+    return (<Router soundContext={this.props.soundContext}/>);
   }
 }

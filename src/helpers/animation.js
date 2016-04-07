@@ -40,7 +40,7 @@ function disableGlow(who) {
 }
 
 function play(soundId, delay) {
-  const sound = (typeof soundId === "string") ? this.props.sounds[soundId] : soundId;
+  const sound = (typeof soundId === "string") ? this.props.soundContext.getSound(soundId) : soundId;
   return delay ?
     wait(delay).flatMap(() => sound.observable) :
     sound.observable;

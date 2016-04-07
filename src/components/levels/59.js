@@ -1,7 +1,7 @@
 import consonantVowelReview from "components/levels/consonant-vowel-review";
 
 export default consonantVowelReview({
-  title: "Consonant \"j\" With Short Vowels",
+  title: "Consonant \"j\" With Short Vowels Review",
   number: 59,
   lessonLetters: ["ja", "je", "ji", "jo", "ju"],
   lessonWords: ["jacket", "Jesse", "Jim", "Josh", "jug"],

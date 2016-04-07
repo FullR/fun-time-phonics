@@ -20,7 +20,7 @@ export default class Choice extends React.Component {
     });
 
     return (
-      <div {...this.props} className={className}/>
+      <div {...this.props} className={className} hidden={null}/>
     );
   }
 }

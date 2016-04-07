@@ -31,7 +31,7 @@ export default class Lesson extends React.Component {
     const words = Object.keys(this.state.choices);
 
     const replacePhonic = (phonic, replacePhonic, word, resultWord) => ([
-      this::say("owl", "owl/if-you-replace-the"),
+      this::say("owl", "owl/if-you-replace"),
       this::say("owl", `owl/${phonic}`, 100),
       this::say("owl", "owl/in", 100),
       uncenter.bind(this, "owl"),
@@ -79,7 +79,7 @@ export default class Lesson extends React.Component {
         <Belt>
           {map(choices, (choice, key) =>
             <Choice key={key} detached={choice.detached} noScale={true}>
-              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]}/>
+              <WordFrame {...choice} sound={sounds[`owl/${choice.word}`]} noBorder/>
             </Choice>
           )}
         </Belt>

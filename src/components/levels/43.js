@@ -1,11 +1,11 @@
 import multiConsonantReview from "components/levels/multi-consonant-review";
 
 export default multiConsonantReview({
-  title: "Review: Consonant \"b\" - \"f\" With Short Vowels",
+  title: "Consonant \"b\" - \"f\" With Short Vowels Review",
   number: 43,
   activityData: [
     {word: "devil", letters: ["fe", "de", "be"], correct: "de"},
-    {word: "bud", letters: ["du", "be", "bu"], correct: "bu", wordsOnly: true},
+    {word: "bud", letters: ["cu", "be", "bu"], correct: "bu", wordsOnly: true},
     {word: "cab", letters: ["ca", "ba", "fa"], correct: "ca", wordsOnly: true},
     {word: "fox", letters: ["bo", "do", "fo"], correct: "fo", wordsOnly: true},
     {word: "bath", letters: ["ba", "da", "fa"], correct: "ba", wordsOnly: true},

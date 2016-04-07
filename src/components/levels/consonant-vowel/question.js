@@ -10,6 +10,8 @@ import DragText from "components/drag-text";
 import Droppable from "components/droppable";
 import {DragDropContext} from "react-dnd";
 import dndBackend from "dnd-backend";
+import DragLetter from "components/drag-letter";
+import DropContainer from "components/drop-container";
 
 @animationContext
 @DragDropContext(dndBackend)
@@ -17,7 +19,7 @@ export default class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacher: {text: "Instructions", centered: !props.wordsOnly, speaking: true},
+      teacher: {text: "Instructions", centered: false, speaking: true},
       owl: {text: "Lesson"},
       dragTextHidden: !props.wordsOnly,
 
@@ -48,10 +50,8 @@ export default class Question extends React.Component {
 
     animations.create("instructions",
       this::hideChoices,
-      center.bind(this, "teacher"),
       this.setState.bind(this, {dragTextHidden: true}),
       this::say("teacher", "teacher/drag-the-letters"),
-      uncenter.bind(this, "teacher"),
       this.setState.bind(this, {dragTextHidden: false}),
       this::say("teacher", "teacher/letters", 100),
       this::say("teacher", "teacher/to-the-word-that-begins-with-that-sound", 100),
@@ -72,8 +72,8 @@ export default class Question extends React.Component {
     this.props.animations.start("instructions");
   }
 
-  onDrop({droppable}) {
-    setTimeout(() => this.props.onAnswer(droppable.choice), 10);
+  onDrop(word) {
+    setTimeout(() => this.props.onAnswer({word}), 100);
   }
 
   render() {
@@ -84,17 +84,17 @@ export default class Question extends React.Component {
       <GameScreen {...this.props} teacher={teacher} owl={owl} onTeacherClick={::this.animate}>
         <Belt top="10%">
           <Choice hidden={dragTextHidden}>
-            <DragText sound={sounds["teacher/letters"]}>
-              {letter}{vowel}
-            </DragText>
+            <DragLetter letter={letter+vowel}/>
           </Choice>
         </Belt>
         <Belt bottom="15%">
           {map(choices, (choice, key) =>
             <Choice {...choice} key={key} scalable={false}>
-              <Droppable value="Droppable" onDrop={::this.onDrop} choice={choice}>
+              <DropContainer onDrop={() => {
+                this.onDrop(choice.word)
+              }} choice={choice} style={{width: "100%", height: "100%"}}>
                 <WordFrame word={choice.word} sound={sounds[`teacher/${choice.word}`]}/>
-              </Droppable>
+              </DropContainer>
             </Choice>
           )}
         </Belt>

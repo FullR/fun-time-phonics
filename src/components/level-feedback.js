@@ -12,11 +12,6 @@ import Owl from "components/owl";
 import Robot from "components/robot";
 require("style/level-feedback.scss");
 
-@soundContext({
-  applause: "applause",
-  success: "owl/common/nice-work-touch-the-green-arrow-to-begin-the-next-lesson-touch-the-orange-arrow-to-play-this-lesson-again",
-  fail: "owl/common/good-job-but-we-need-to-practice-this-some-more-touch-the-orange-arrow-to-play-this-lesson-again"
-})
 export default class LevelFeedback extends React.Component {
   static defaultProps = {
     requiredPercent: 85,
@@ -24,6 +19,7 @@ export default class LevelFeedback extends React.Component {
     total: 1,
     title: "",
     subtitle: "",
+    completeWord: "Is",
     onNext() {},
     onBack() {}
   };
@@ -38,7 +34,9 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentDidMount() {
-    const {fail, success, applause} = this.props.sounds;
+    const {soundContext} = this.props;
+    const [fail, success, applause] = soundContext.getSounds("fail", "success", "applause");
+
     if(this.passing) {
       applause.play().then(
         () => success.play(),
@@ -50,21 +48,21 @@ export default class LevelFeedback extends React.Component {
   }
 
   componentWillUnmount() {
-    const {success, fail, applause} = this.props.sounds;
-    success.stop();
+    const [fail, success, applause] = this.props.soundContext.getSounds("fail", "success", "applause");
     fail.stop();
+    success.stop();
     applause.stop();
   }
 
   render() {
-    const {title, subtitle, score, total, requiredPercent, onNext, onBack} = this.props;
+    const {title, subtitle, score, total, requiredPercent, onNext, onBack, completeWord} = this.props;
     const {percent, passing} = this;
     const className = classNames(this.props.className, "Level-feedback", `Level-feedback--${passing ? "passing" : "failing"}`);
 
     return (
       <StarBox className={className} boxSizing="border-box" large>
         <div className="Level-feedback__title-box">
-          <div className="Level-feedback__title">{title} Complete!</div>
+          <div className="Level-feedback__title">{title} {completeWord} Complete!</div>
           <div className="Level-feedback__subtitle">{subtitle}</div>
         </div>
 
@@ -81,7 +79,7 @@ export default class LevelFeedback extends React.Component {
         <Robot type="girl"/>
 
         <div className="Level-feedback__arrow-box">
-          <Arrow onClick={onBack} color="red" size="large" reversed={true}>{passing ? "Play again" : "Retry"}</Arrow>
+          <Arrow onClick={onBack} color="red" size="large" reversed={true}>{passing ? "Play Again" : "Retry"}</Arrow>
           {passing ? <Arrow onClick={onNext} size="large"/> : null}
         </div>
         <AdminLink bottom={55} left={55}/>

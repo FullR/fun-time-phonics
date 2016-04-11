@@ -5,7 +5,7 @@ require("./style.scss");
 
 const TYPE = "DRAG-CONTAINER";
 
-const target = {
+const target = {  
   drop(props, monitor) {
     const {onDrop} = props;
     const {value} = (monitor.getItem() || {value: null});

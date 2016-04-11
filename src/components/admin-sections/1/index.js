@@ -48,7 +48,7 @@ export default class AdminSection1 extends React.Component {
           <Index>2</Index>
           <Title>Ending Sounds</Title>
           <AdminSubGroup>
-            <AdminSubButton {...level("2-t")}>
+            <AdminSubButton {...level("2")}>
               <Title>/t/</Title>
             </AdminSubButton>
             <AdminSubButton {...level("2-d")}>

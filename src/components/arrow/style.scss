@@ -3,12 +3,10 @@ $height: 120px;
 $font-size: 34px;
 
 .Arrow {
-  width: $width;
-  height: $height;
   font-size: $font-size;
-  z-index: 10;
+  z-index: 6;
   background-color: transparent;
-  transition: opacity 3s;
+  text-align: center;
   cursor: pointer;
 
   &:hover .Arrow__image {
@@ -26,8 +24,7 @@ $font-size: 34px;
     top: 50%;
     transform: translate(0, -50%);
     width: 100%;
-    white-space: nowrap;
-    text-align: center;
+    white-space: nowrap
   }
 
   &__image {
@@ -70,24 +67,30 @@ $font-size: 34px;
     }
   }
 
+  &--size-very-small {
+    width: $width * 0.5;
+    height: $height * 0.5;
+  }
+
+  &--size-small {
+    width: $width;
+    height: $height;
+  }
+
   &--size-large {
     width: $width * 1.5;
     height: $height * 1.5;
   }
 
-  &--size-small {
-    width: $width / 2;
-    height: $height / 2;
+  &--hidden {
+    visibility: hidden;
+    cursor: default;
   }
 
-  &--reversed {
+  &--flipped {
     .Arrow__image {
       transform: scaleX(-1);
     }
-  }
-
-  &--hidden {
-    visibility: hidden;
   }
 
   &--pulsing {

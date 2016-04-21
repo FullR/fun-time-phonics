@@ -1,0 +1,9 @@
+$color: #FFA500;
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0 #fff, 0 0 0 $color, 0 0 0 $color, 0 0 0 $color, 0 0 0 $color, 0 0 0 $color;
+  } to {
+    box-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px $color, 0 0 17px $color, 0 0 20px $color, 0 0 25px $color, 0 0 37px $color;
+  }
+}

@@ -1,0 +1,16 @@
+$image: "../../../images/star-border.png";
+$width: 25px;
+
+$large-image: "../../../images/star-border-large.png";
+$large-width: 50px;
+
+.Star-container {
+  display: inline-block;
+  border-width: $width;
+  border-image: url($image) 25 25 round;
+
+  &--large {
+    border-width: $large-width;
+    border-image: url($large-image) 50 50 round;
+  }
+}

@@ -1,0 +1,29 @@
+.Play-box {
+  display: flex;
+  flex-direction: column;
+
+  &--detached {
+    position: absolute;
+    left: -9999px;
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &--detached {
+    display: none;
+  }
+
+  &__display-box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+
+  &__sound-wave-container {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+}

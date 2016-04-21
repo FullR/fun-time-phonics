@@ -1,0 +1,27 @@
+.Game-screen {
+  .Robot-boy {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .Robot-girl {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .Robot-boy--large,
+  .Robot-girl--large {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .Lock-link {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+}

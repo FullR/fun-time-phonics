@@ -1,0 +1,21 @@
+export default [
+  {words: ["bat", "rat", "cake"], correctWords: ["bat", "rat"]},
+  {words: ["red", "hot", "sled"], correctWords: ["red", "sled"]},
+  {words: ["leg", "egg", "box"], correctWords: ["leg", "egg"]},
+  {words: ["sit", "hot", "hit"], correctWords: ["sit", "hit"]},
+  {words: ["mad", "mask", "bad"], correctWords: ["mad", "bad"]},
+  {words: ["nine", "run", "sun"], correctWords: ["run", "sun"]},
+  {words: ["mop", "cop", "cup"], correctWords: ["mop", "cop"]},
+  {words: ["cap", "axe", "tacks"], correctWords: ["axe", "tacks"]},
+  {words: ["in", "on", "pin"], correctWords: ["in", "pin"]},
+  {words: ["trip", "trap", "flip"], correctWords: ["trip", "flip"]},
+  {words: ["shop", "shot", "knot"], correctWords: ["shot", "knot"]},
+  {words: ["stop", "step", "drop"], correctWords: ["stop", "drop"]},
+  {words: ["ant", "tent", "plant"], correctWords: ["ant", "plant"]},
+  {words: ["chin", "shin", "inch"], correctWords: ["chin", "shin"]},
+  {words: ["thread", "three", "head"], correctWords: ["thread", "head"]},
+  {words: ["sneeze", "cheese", "tree"], correctWords: ["sneeze", "cheese"]},
+  {words: ["square", "jar", "bear"], correctWords: ["square", "bear"]},
+  {words: ["string", "strong", "king"], correctWords: ["string", "king"]},
+  {words: ["shark", "sharp", "park"], correctWords: ["shark", "park"]}
+];

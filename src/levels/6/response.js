@@ -1,0 +1,71 @@
+import React from "react";
+import ActivityTitle from "components/activity-title";
+import Actor from "components/actor";
+import Response from "components/response";
+import Word from "components/word";
+import scene from "decorators/scene";
+
+const {Answer} = Response;
+
+@scene
+export default class LevelResponse extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      girl: {},
+      arrowHidden: !props.answer.correct
+    };
+  }
+
+  getSounds() {
+    const {answer, spellWord} = this.props;
+    const sounds = {
+      "spell-word": `girl/common/phonics/_${spellWord}_`,
+      word: `girl/words/${answer.word}`
+    };
+    if(answer.correct) {
+      sounds.applause = "applause";
+    } else {
+      sounds["does not make"] = `girl/common/does-not-make`;
+    }
+    return sounds;
+  }
+
+  autoplay() {
+    const {correct} = this.props.answer;
+    const {girl} = this;
+
+    this.startCo(function*() {
+      if(correct) {
+        yield this.play("applause");
+        yield this.say(girl, "spell-word");
+        yield this.wait(100);
+        yield this.say(girl, "word");
+      } else {
+        yield this.say(girl, "spell-word");
+        yield this.say(girl, "does not make");
+        yield this.say(girl, "word");
+        this.setState({arrowHidden: false});
+      }
+      girl.set({speaking: false, animating: false});
+    });
+  }
+
+  render() {
+    const {girl, arrowHidden} = this.state;
+    const {answer, onNext, activityIndex} = this.props;
+
+    return (
+      <Response onNext={onNext} arrowHidden={arrowHidden}>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Answer isCorrect={answer.correct}>
+          <Word word={answer.word}/>
+        </Answer>
+        <ActivityTitle>
+          Lesson 6: Say the Word<br/>
+          Activity {activityIndex + 1} of 15
+        </ActivityTitle>
+      </Response>
+    );
+  }
+}

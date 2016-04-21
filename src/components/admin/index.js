@@ -1,18 +1,24 @@
 import React from "react";
-import hasher from "hasher";
 import {version} from "../../../package";
-import storage from "storage";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
 import Arrow from "components/arrow";
 import sections from "components/admin-sections";
-import Authscreen from "components/authscreen";
+import store from "store";
+import actions from "store/actions";
+import getLevelData from "store/helpers/get-level-data";
+import LicenseScreen from "components/license-screen";
+import OtherProductsScreen from "components/other-products-screen";
+//import Authscreen from "components/authscreen";
 require("./style.scss");
 
 const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
 const level2SubLessons = ["d", "p", "k", "f", "m", "b"];
 
 function getSection(levelId) {
+  if(levelId.indexOf("-") !== -1) {
+    levelId = levelId.split("-")[0];
+  }
   levelId = parseInt(levelId);
   if(levelId <= 7) {
     return 0;
@@ -49,33 +55,22 @@ function getLevel(levelId) {
   }
 }
 
-function getLevelData(levelId) {
-  return storage.get(`level-${levelId}`) || {highscore: -1, showingLesson: true};
-}
-
 function resetLevel(levelId) {
-  const namespace = `level-${levelId}`;
-  const state = {
-    ...storage.get(namespace),
-    activityIndex: 0,
-    showingLesson: true,
-    score: 0,
-    activitiesComplete: false,
-    currentAnswer: null,
-    arrowPulse: false
-  };
-
-  storage.set(namespace, state);
+  store.dispatch({
+    type: actions.RESET_LEVEL,
+    levelId
+  });
 }
 
 export default class Admin extends React.Component {
   constructor(props) {
     super(props);
-    const globalStorage = storage.get("global") || {lastLevel: "1"};
+
     this.state = {
-      currentLevel: globalStorage.lastLevel,
-      sectionIndex: getSection(globalStorage.lastLevel),
-      authenticated: false
+      currentLevel: props.currentLevelId,
+      sectionIndex: getSection(props.currentLevelId),
+      authenticated: false,
+      infoScreen: null
     };
   }
 
@@ -93,16 +88,28 @@ export default class Admin extends React.Component {
     this.pulseTimeout = setTimeout(() => this.setState({arrowPulse: false}), 3000);
   }
 
+  showLicenseScreen() {
+    this.setState({infoScreen: "license"});
+  }
+
+  showOtherProductsScreen() {
+    this.setState({infoScreen: "other-products"});
+  }
+
+  closeInfoScreen() {
+    this.setState({infoScreen: null});
+  }
+
   componentWillUnmount() {
     clearInterval(this.pulseTimeout);
   }
 
   showLevel() {
     const {currentLevel} = this.state;
-    const {activitiesComplete} = getLevelData(currentLevel);
+    const {complete} = getLevelData(this.props, currentLevel);
     const [parentLevelId] = currentLevel.split("-");
 
-    if(activitiesComplete) {
+    if(complete) {
       if(parentLevelId === "1") {
         resetLevel("1");
         level1SubLessons.forEach((c) => resetLevel(`1-${c}`));
@@ -114,12 +121,11 @@ export default class Admin extends React.Component {
       }
     }
 
-    hasher.setHash(`level/${currentLevel}`);
+    this.props.onShowLevel(currentLevel);
   }
 
   clearStorage() {
-    storage.clear();
-    storage.set("version", version);
+    store.dispatch({type: actions.RESET_PROGRESS});
     this.setState({
       currentLevel: "1",
       sectionIndex: 0
@@ -127,27 +133,32 @@ export default class Admin extends React.Component {
   }
 
   render() {
-    const {sectionIndex, currentLevel, authenticated, arrowPulse} = this.state;
+    const {sectionIndex, infoScreen, currentLevel, authenticated, arrowPulse} = this.state;
     const Section = sections[sectionIndex];
     const NextSection = sections[sectionIndex + 1];
     const PrevSection = sections[sectionIndex - 1];
 
-    if(!authenticated) return (
-      <Authscreen
-        onSuccess={() => this.setState({authenticated: true})}
-        onFail={() => this.props.router.back()}
-      />
-    );
+    // if(!authenticated) return (
+    //   <Authscreen
+    //     onSuccess={() => this.setState({authenticated: true})}
+    //     onFail={() => this.props.router.back()}
+    //   />
+    // );
 
-    const lessonData = getLevelData(currentLevel);
+    switch(infoScreen) {
+      case "license": return (<LicenseScreen onBack={this.closeInfoScreen.bind(this)}/>);
+      case "other-products": return (<OtherProductsScreen onBack={this.closeInfoScreen.bind(this)}/>);
+    }
+
+    const levelData = getLevelData(this.props, currentLevel);
     const {title, lessons} = Section;
     let arrowText;
     let arrowStyle;
 
-    if(lessonData.activitiesComplete) {
+    if(levelData.complete) {
       arrowText = (<span>Replay Lesson<br/>{currentLevel}</span>);
       arrowStyle = {fontSize: 24};
-    } else if(lessonData.activityIndex) {
+    } else if(levelData.started) {
       arrowText = `Return to Lesson ${currentLevel}`;
       arrowStyle = {fontSize: 20};
     } else {
@@ -155,7 +166,7 @@ export default class Admin extends React.Component {
       arrowStyle = {fontSize: 26};
     }
 
-    const level = (levelId) => ({
+    const level = (levelId) => (console.log(levelId, currentLevel), {
       selected: levelId === currentLevel,
       onClick: this.selectLevel.bind(this, levelId)
     });
@@ -163,7 +174,9 @@ export default class Admin extends React.Component {
     return (
       <Screen className="Admin">
         <AdminHeader>
-          <div onClick={this.clearStorage.bind(this)} className="Admin__clear-button">Clear Data</div>
+          <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
+          <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
+          <div className="Admin__header-button" onClick={this.clearStorage.bind(this)}>Clear Data</div>
         </AdminHeader>
         <div className="Admin__content">
           <div className="Admin__section-box">
@@ -172,13 +185,13 @@ export default class Admin extends React.Component {
 
               <div className="Admin__arrows">
                 {PrevSection ?
-                  <Arrow onClick={this.prevSection.bind(this)} size="small" color="blue" reversed>{PrevSection.lessons}</Arrow> :
-                  <Arrow size="small" color="blue" hidden reversed/>
+                  <Arrow onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped>{PrevSection.lessons}</Arrow> :
+                  <Arrow size="very-small" color="blue" hidden reversed/>
                 }
                 <div className="Admin__lesson-numbers">Lessons {lessons}</div>
                 {NextSection ?
-                  <Arrow onClick={this.nextSection.bind(this)} size="small" color="blue">{NextSection.lessons}</Arrow> :
-                  <Arrow size="small" color="blue" hidden/>
+                  <Arrow onClick={this.nextSection.bind(this)} size="very-small" color="blue">{NextSection.lessons}</Arrow> :
+                  <Arrow size="very-small" color="blue" hidden/>
                 }
               </div>
             </div>

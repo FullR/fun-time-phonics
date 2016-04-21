@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sshpass -p "ctADl0g1n" scp -r dist/* james@12.0.0.70:/home/james/server/apps/fun-time-phonics
+sshpass -p "ctADl0g1n" scp -r dist/* james@12.0.0.70:/home/james/server/apps/word-scramble

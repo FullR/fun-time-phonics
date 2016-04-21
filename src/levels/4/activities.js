@@ -1,0 +1,22 @@
+export default [
+  {words: ["hat", "run", "bed"], rhymeWord: "red", correctWord: "bed"},
+  {words: ["mud", "rat", "sun"], rhymeWord: "fat", correctWord: "rat"},
+  {words: ["bug", "under", "cup"], rhymeWord: "up", correctWord: "cup"},
+  {words: ["pal", "call", "pill"], rhymeWord: "ball", correctWord: "call"},
+  {words: ["chin", "on", "up"], rhymeWord: "in", correctWord: "chin"},
+  {words: ["pup", "drop", "rug"], rhymeWord: "hop", correctWord: "drop"},
+  {words: ["deck", "pet", "wait"], rhymeWord: "wet", correctWord: "pet"},
+  {words: ["fists", "kiss", "dish"], rhymeWord: "fish", correctWord: "dish"},
+  {words: ["hut", "cot", "hat"], rhymeWord: "hot", correctWord: "cot"},
+  {words: ["hip", "crib", "mop"], rhymeWord: "lip", correctWord: "hip"},
+  {words: ["bag", "edge", "beg"], rhymeWord: "egg", correctWord: "beg"},
+  {words: ["bag", "wax", "black"], rhymeWord: "ax", correctWord: "wax"},
+  {words: ["Beth", "fast", "path"], rhymeWord: "bath", correctWord: "path"},
+  {words: ["hot", "hogs", "rocks"], rhymeWord: "ox", correctWord: "rocks"},
+  {words: ["hand", "bread", "heavy"], rhymeWord: "head", correctWord: "bread"},
+  {words: ["stick", "swing", "sink"], rhymeWord: "string", correctWord: "swing"},
+  {words: ["drill", "bell", "doll"], rhymeWord: "ill", correctWord: "drill"},
+  {words: ["pitch", "wrench", "punch"], rhymeWord: "bench", correctWord: "wrench"},
+  {words: ["bucket", "duck", "trunk"], rhymeWord: "truck", correctWord: "duck"},
+  {words: ["stump", "camp", "plant"], rhymeWord: "stamp", correctWord: "camp"}
+];

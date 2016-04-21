@@ -1,0 +1,25 @@
+.Score-screen {
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    bottom: 100px;
+    width: 100%;
+  }
+
+  &__boy {
+    margin-right: 100px;
+  }
+
+  &__girl {
+    margin-left: 100px;
+  }
+
+  .Arrow {
+    position: relative;
+    top: 100px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,28 @@
+
+.Other-product {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+  width: 100%;
+  min-height: 152px;
+
+  &:hover {
+    background: #f3f3ff;
+  }
+
+  &__thumbnail {
+    border: 1px solid #444;
+    min-width: 202px;
+    min-height: 152px;
+    max-width: 202px;
+    max-height: 152px;
+    box-sizing: border-box;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    padding: 10px 15px 10px 15px;
+  }
+}

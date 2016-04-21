@@ -1,0 +1,22 @@
+.License-screen {
+  font-size: 18px;
+
+  .Info-screen-content {
+    padding: 20px 20px 20px 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p:first-of-type,
+  p + p,
+  h1 + h1 {
+    margin-top: 10px;
+  }
+
+  h1,
+  strong {
+    font-weight: bold;
+  }
+}

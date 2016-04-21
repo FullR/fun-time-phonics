@@ -13,6 +13,47 @@ module.exports = (plop) => {
   plop.addHelper("kebabCase", kebabCase);
   plop.addHelper("upperDashCase", upperDashCase);
 
+  plop.setGenerator("level", {
+    description: "Lesson, activities, response, feedback, etc.",
+    prompts: [
+      {name: "id", message: "id?", type: "input"},
+      {name: "title", message: "title?", type: "input"},
+      {name: "activity count", message: "activity count?", type: "input"}
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/index.js",
+        templateFile: "plop-templates/level.hb"
+      },
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/activities.js",
+        templateFile: "plop-templates/level-activities.hb"
+      },
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/activity.js",
+        templateFile: "plop-templates/level-activity.hb"
+      },
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/feedback.js",
+        templateFile: "plop-templates/level-feedback.hb"
+      },
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/lesson.js",
+        templateFile: "plop-templates/level-lesson.hb"
+      },
+      {
+        type: "add",
+        path: "src/levels/{{dashCase id}}/response.js",
+        templateFile: "plop-templates/level-response.hb"
+      }
+    ]
+  });
+
   plop.setGenerator("component", {
     description: "Simple SCSS styled React component",
     prompts: [
@@ -21,13 +62,18 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "src/components/{{dashCase name}}/index.js",
+        path: "src/components/{{dashCase name}}/component.js",
         templateFile: "plop-templates/component.hb"
       },
       {
         type: "add",
         path: "src/components/{{dashCase name}}/style.scss",
         templateFile: "plop-templates/component-style.hb"
+      },
+      {
+        type: "add",
+        path: "src/components/{{dashCase name}}/index.js",
+        templateFile: "plop-templates/component-loader.hb"
       }
     ]
   });

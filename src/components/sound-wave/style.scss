@@ -1,0 +1,25 @@
+$image: "../../../images/sound-wave-sprite.png";
+$width: 24px * 1.5;
+$height: 28px * 1.5;
+
+$sprite-width: 48px;
+$sprite-height: 28px;
+
+.Sound-wave {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background: url($image);
+  background-size: 200% 100%;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &--active {
+    background-position: -100% 0;
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+}

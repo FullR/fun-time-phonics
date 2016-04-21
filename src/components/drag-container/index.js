@@ -1,5 +1,5 @@
 import React from "react";
-import bembam from "bembam";
+import cn from "util/cn";
 import {DragSource} from "react-dnd";
 require("./style.scss");
 
@@ -26,10 +26,10 @@ export default class DragContainer extends React.Component {
 
   render() {
     const {className, connectDragSource} = this.props;
-    const cn = bembam("Drag-container", className);
+    const classNames = cn("Drag-container", className);
 
     return connectDragSource(
-      <div {...this.props} className={cn.toString()} value={null}/>
+      <div {...this.props} className={classNames} value={null}/>
     );
   }
 }

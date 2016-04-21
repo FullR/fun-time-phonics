@@ -1,0 +1,66 @@
+@mixin sprite-frame (
+  $sprite-path, // image url
+  $width, // entire spritesheet width
+  $height, // entire spritesheet height
+  $columns,
+  $rows,
+  $x:0, // start column
+  $y:0, // start row
+  $scale:1 // does not use transform scale
+) {
+  $frame-width: $width / $columns;
+  $frame-height: $height/ $rows;
+  $bg-x: -1 * $x * $frame-width * $scale;
+  $bg-y: -1 * $y * $frame-height * $scale;
+
+  width: $frame-width * $scale;
+  height: $frame-height * $scale;
+  background: url($sprite-path) no-repeat;
+  background-position: $bg-x $bg-y;
+  background-size: ($width * $scale) ($height * $scale);
+}
+
+
+// This mixin assumes your spritesheet's frames are all of equal dimensions and there is no padding
+@mixin animated-sprite(
+  $sprite-path, // image url
+  $width, // entire spritesheet width
+  $height, // entire spritesheet height
+  $columns,
+  $rows,
+  $x:0, // start column
+  $y:0, // start row
+  $scale:1, // does not use transform scale
+  $speed:1s,
+  $steps:$columns // how many frames in the animation (defaults to columns)
+) {
+  $animimation-name: "animated-sprite-keyframes-#{unique_id()}";
+  $frame-width: $width / $columns;
+  $frame-height: $height/ $rows;
+  $bg-x: -1 * $x * $frame-width * $scale;
+  $bg-y: -1 * $y * $frame-height * $scale;
+
+  @include sprite-frame(
+    $sprite-path,
+    $width,
+    $height,
+    $columns,
+    $rows,
+    $x,
+    $y,
+    $scale
+  );
+
+  animation: #{$animimation-name} $speed steps($steps) infinite;
+
+  @at-root {
+    @keyframes #{$animimation-name} {
+      from {
+        background-position: $bg-x $bg-y;
+      }
+      to {
+        background-position: -($width * $scale * ($steps / $columns)) $bg-y;
+      }
+    }
+  }
+}

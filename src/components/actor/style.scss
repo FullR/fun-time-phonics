@@ -1,0 +1,20 @@
+.Actor {
+  position: absolute;
+
+  &--size-small.Actor--boy {
+    left: 10px;
+    top: 10px;
+  }
+
+  &--size-small.Actor--girl {
+    right: 10px;
+    top: 10px;
+  }
+
+  &--size-large {
+    left: 50%;
+    top: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
+}

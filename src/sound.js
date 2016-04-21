@@ -1,5 +1,4 @@
 import {EventEmitter} from "events";
-import {Observable} from "rx";
 import {Howler, Howl} from "howler";
 import defer from "util/defer";
 
@@ -11,7 +10,6 @@ export default class Sound extends EventEmitter {
     if(!path) {
       throw new Error("Sound must have path parameter");
     }
-    path = path.toLowerCase();
     this.path = path;
     try {
       this.mp3Path = requireSound("./" + path + ".mp3");
@@ -21,15 +19,6 @@ export default class Sound extends EventEmitter {
       this.oggPath = requireSound("./missing-sound.ogg");
     }
     this.debug = debug;
-
-    this.observable = Observable.create((observer) => {
-      this.play().then(() => {
-        observer.onNext();
-        observer.onCompleted();
-
-        return this.stop.bind(this);
-      });
-    });
   }
 
   log(...args) {

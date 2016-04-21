@@ -1,16 +1,16 @@
 import React from "react";
-import bembam from "bembam";
+import cn from "util/cn";
 require("./style.scss");
 
 export default class LockLink extends React.Component {
   render() {
     const {className} = this.props;
-    const cn = bembam("Lock-link", className);
+    const classNames = cn("Lock-link", className);
 
     return (
-      <a {...this.props} className={cn}>
-        <div className={cn.el("icon")}/>
-        <div className={cn.el("text")}>
+      <a {...this.props} className={classNames}>
+        <div className="Lock-link__icon"/>
+        <div className="Lock-link__text">
           {this.props.children}
         </div>
       </a>

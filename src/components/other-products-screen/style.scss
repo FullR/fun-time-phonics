@@ -1,0 +1,36 @@
+.Other-products-screen {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px 50px 100px;
+  }
+
+  &__banner {
+    width: 526px;
+    height: 77px;
+    align-self: center;
+    margin-bottom: 50px;
+  }
+
+  &__main-text {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 50px 50px 50px;
+  }
+
+  &__op-title {
+    font-size: 26px;
+  }
+
+  .Other-product + .Other-product {
+    margin-top: 10px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+}

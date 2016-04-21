@@ -9,15 +9,22 @@
     padding: 20px 0 20px 0;
   }
 
-  &__clear-button {
-    position: relative;
+  &__header-button {
+    display: inline-block;
     font-size: 25px;
     cursor: pointer;
-    top: 10px;
-    left: 50px;
+    margin-top: 10px;
 
     &:hover {
       text-decoration: underline;
+    }
+
+    &:first-child {
+      margin-left: 50px;
+    }
+
+    & + & {
+      margin-left: 50px;
     }
   }
 

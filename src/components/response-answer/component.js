@@ -14,7 +14,7 @@ export default class ResponseAnswer extends React.Component {
     const classNames = cn("Response-answer", className);
 
     return (
-      <DisplayBar>
+      <DisplayBar className={classNames}>
         {isCorrect ?
           <StarContainer className="Response-answer__content">
             {children}

@@ -11,7 +11,7 @@ const target = {
     const {value} = (monitor.getItem() || {value: null});
 
     if(typeof onDrop === "function") {
-      onDrop(value);
+      setTimeout(() => onDrop(value), 100);
     }
   }
 };
@@ -24,6 +24,10 @@ function collect(connect, monitor) {
 
 @DropTarget(TYPE, target, collect)
 export default class DropContainer extends React.Component {
+  static propTypes = {
+    onDrop: React.PropTypes.func
+  };
+
   render() {
     const {connectDropTarget, className} = this.props;
     const classNames = cn("Drop-container", className);

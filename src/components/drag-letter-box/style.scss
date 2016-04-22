@@ -1,0 +1,12 @@
+.Drag-letter-box {
+  &__drag-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__letters {
+    width: 100%;
+    height: 100%;
+  }
+}

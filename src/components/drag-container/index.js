@@ -21,7 +21,7 @@ function collect(connect, monitor) {
 @DragSource(TYPE, source, collect)
 export default class DragContainer extends React.Component {
   static propTypes = {
-    value: React.PropTypes.any.isRequired
+    value: React.PropTypes.any
   };
 
   render() {

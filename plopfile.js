@@ -17,8 +17,7 @@ module.exports = (plop) => {
     description: "Lesson, activities, response, feedback, etc.",
     prompts: [
       {name: "id", message: "id?", type: "input"},
-      {name: "title", message: "title?", type: "input"},
-      {name: "activity count", message: "activity count?", type: "input"}
+      {name: "title", message: "title?", type: "input"}
     ],
     actions: [
       {

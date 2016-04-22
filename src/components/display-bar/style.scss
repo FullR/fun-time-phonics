@@ -12,18 +12,22 @@
 
   .Display-bar--child-count-4 {
     > * {
-      margin: 0 35px 0 35px;
+      margin: 0 25px 0 25px;
     }
   }
 
   .Display-bar--child-count-5 {
     > * {
-      margin: 0 25px 0 25px;
+      margin: 0 10px 0 10px;
     }
   }
 
+  &--position-high-top {
+    top: 20%;
+  }
+
   &--position-top {
-    top: 25%;
+    top: 30%;
   }
 
   &--position-middle {
@@ -31,6 +35,10 @@
   }
 
   &--position-bottom {
-    top: 75%;
+    top: 70%;
+  }
+
+  &--position-low-bottom {
+    top: 80%;
   }
 }

@@ -1,5 +1,6 @@
 .Actor {
   position: absolute;
+  z-index: 10;
 
   &--size-small.Actor--boy {
     left: 10px;

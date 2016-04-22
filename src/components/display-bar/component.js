@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "util/cn";
 
-const positions = ["top", "middle", "bottom"];
+const positions = ["high-top", "top", "middle", "bottom", "low-bottom"];
 
 export default class DisplayBar extends React.Component {
   static propTypes = {

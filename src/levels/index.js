@@ -22,6 +22,14 @@ import Level9 from "./9";
 import Level10 from "./10";
 import Level11 from "./11";
 import Level12 from "./12";
+import Level13 from "./13";
+import Level14 from "./14";
+import Level15 from "./15";
+import Level16 from "./16";
+import Level17 from "./17";
+import Level18 from "./18";
+import Level19 from "./19";
+import Level20 from "./20";
 
 const levels = {
   "1": Level1,
@@ -47,7 +55,15 @@ const levels = {
   "9": Level9,
   "10": Level10,
   "11": Level11,
-  "12": Level12
+  "12": Level12,
+  "13": Level13,
+  "14": Level14,
+  "15": Level15,
+  "16": Level16,
+  "17": Level17,
+  "18": Level18,
+  "19": Level19,
+  "20": Level20
 };
 
 levels.get = function getLevelFromId(levelId) {

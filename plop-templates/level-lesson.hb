@@ -40,7 +40,7 @@ export default class Lesson extends React.Component {
   }
 
   render() {
-    const {activityIndex, onNext} = this.props;
+    const {levelId, activityIndex, onNext} = this.props;
     const {choices, boy} = this.state;
 
     return (
@@ -48,7 +48,7 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
         <LessonTitle>{{title}}</LessonTitle>
-        <LessonTitle.SubTitle>Lesson {{id}}</LessonTitle.SubTitle>
+        <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
         <DisplayBar>
           {choices.map((choice) =>

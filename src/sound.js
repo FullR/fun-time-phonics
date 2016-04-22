@@ -10,6 +10,7 @@ export default class Sound extends EventEmitter {
     if(!path) {
       throw new Error("Sound must have path parameter");
     }
+    path = path.toLowerCase();
     this.path = path;
     try {
       this.mp3Path = requireSound("./" + path + ".mp3");

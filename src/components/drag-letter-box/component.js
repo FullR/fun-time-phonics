@@ -10,7 +10,7 @@ export default class DragLetter extends React.Component {
     const classNames = cn("Drag-letter-box", className);
 
     return (
-      <SoundPlayBox {...this.props} className={cn} value={null}>
+      <SoundPlayBox {...this.props} className={classNames} value={null}>
         <DragContainer value={value} className="Drag-letter-box__drag-container">
           <Letters className="Drag-letter-box__letters">
             {children}

@@ -59,23 +59,23 @@ export default class AdminSection1 extends React.Component {
           <AdminSectionRow>
             <AdminShortButton {...level("118")}>
               <Index>118</Index>
-              <Title className="Admin-section-8__underlined">Lesson X</Title>
+              <Title className="Admin-section-8__underlined">Consonant "x" Ending Sound</Title>
             </AdminShortButton>
             <AdminRowButton className="Admin-section-8__odd-button" {...level("119")}>
               <Index>119</Index>
-              <Title>Lesson Y</Title>
+              <Title>Consonant "y" With Short Vowels</Title>
             </AdminRowButton>
           </AdminSectionRow>
           <AdminSectionRow>
             <AdminRowButton {...level("120")}>
               <Index>120</Index>
-              <Title>Lesson Z</Title>
+              <Title>Consonant "z" With Short Vowels</Title>
             </AdminRowButton>
             <AdminShortButton {...level("121")}>
               <Index>121</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                y<Dash/>z
+                Consonants "y" and "z" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>

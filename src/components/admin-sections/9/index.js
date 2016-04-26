@@ -16,13 +16,13 @@ export default class AdminSection1 extends React.Component {
         <AdminSectionRow>
           <AdminShortButton {...level("123")}>
             <Index>123</Index>
-            <Title>Identifying Ending Letters</Title>
+            <Title>Identifying Ending Sounds</Title>
           </AdminShortButton>
         </AdminSectionRow>
         <AdminSectionRow>
           <AdminShortButton {...level("124")}>
             <Index>124</Index>
-            <Title>Identifying Vowel Letters</Title>
+            <Title>Identifying Vowel Sounds</Title>
           </AdminShortButton>
         </AdminSectionRow>
         <AdminSectionRow>

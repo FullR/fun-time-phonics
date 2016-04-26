@@ -9,7 +9,9 @@ import actions from "store/actions";
 import getLevelData from "store/helpers/get-level-data";
 import LicenseScreen from "components/license-screen";
 import OtherProductsScreen from "components/other-products-screen";
-//import Authscreen from "components/authscreen";
+import AboutScreen from "components/about-screen";
+import CreditsScreen from "components/credit-screen";
+import Authscreen from "components/authscreen";
 require("./style.scss");
 
 const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
@@ -67,6 +69,7 @@ export default class Admin extends React.Component {
     super(props);
 
     this.state = {
+      authenticated: false,
       currentLevel: props.currentLevelId,
       sectionIndex: getSection(props.currentLevelId),
       authenticated: false,
@@ -89,15 +92,27 @@ export default class Admin extends React.Component {
   }
 
   showLicenseScreen() {
-    this.setState({infoScreen: "license"});
+    this.showInfoScreen("license");
   }
 
   showOtherProductsScreen() {
-    this.setState({infoScreen: "other-products"});
+    this.showInfoScreen("other-products");
+  }
+
+  showAboutScreen() {
+    this.showInfoScreen("about");
+  }
+
+  showCreditsScreen() {
+    this.showInfoScreen("credits");
+  }
+
+  showInfoScreen(infoScreen) {
+    this.setState({infoScreen});
   }
 
   closeInfoScreen() {
-    this.setState({infoScreen: null});
+    this.showInfoScreen(null);
   }
 
   componentWillUnmount() {
@@ -133,22 +148,26 @@ export default class Admin extends React.Component {
   }
 
   render() {
-    const {sectionIndex, infoScreen, currentLevel, authenticated, arrowPulse} = this.state;
+    const {authenticated, sectionIndex, infoScreen, currentLevel, arrowPulse} = this.state;
     const Section = sections[sectionIndex];
     const NextSection = sections[sectionIndex + 1];
     const PrevSection = sections[sectionIndex - 1];
+    let InfoScreen;
 
-    // if(!authenticated) return (
-    //   <Authscreen
-    //     onSuccess={() => this.setState({authenticated: true})}
-    //     onFail={() => this.props.router.back()}
-    //   />
-    // );
+    if(!authenticated) return (
+      <Authscreen
+        onSuccess={() => this.setState({authenticated: true})}
+        onFail={() => store.dispatch({type: actions.BACK_ROUTE})}
+      />
+    );
 
     switch(infoScreen) {
-      case "license": return (<LicenseScreen onBack={this.closeInfoScreen.bind(this)}/>);
-      case "other-products": return (<OtherProductsScreen onBack={this.closeInfoScreen.bind(this)}/>);
+      case "license": InfoScreen = LicenseScreen; break;
+      case "other-products": InfoScreen = OtherProductsScreen; break;
+      case "credits": InfoScreen = CreditsScreen; break;
+      case "about": InfoScreen = AboutScreen; break;
     }
+    if(InfoScreen) return (<InfoScreen onBack={this.closeInfoScreen.bind(this)}/>);
 
     const levelData = getLevelData(this.props, currentLevel);
     const {title, lessons} = Section;
@@ -166,7 +185,7 @@ export default class Admin extends React.Component {
       arrowStyle = {fontSize: 26};
     }
 
-    const level = (levelId) => (console.log(levelId, currentLevel), {
+    const level = (levelId) => ({
       selected: levelId === currentLevel,
       onClick: this.selectLevel.bind(this, levelId)
     });
@@ -176,6 +195,8 @@ export default class Admin extends React.Component {
         <AdminHeader>
           <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
           <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
+          <div className="Admin__header-button" onClick={this.showAboutScreen.bind(this)}>About</div>
+          <div className="Admin__header-button" onClick={this.showCreditsScreen.bind(this)}>Credits</div>
           <div className="Admin__header-button" onClick={this.clearStorage.bind(this)}>Clear Data</div>
         </AdminHeader>
         <div className="Admin__content">

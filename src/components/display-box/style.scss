@@ -1,8 +1,9 @@
 .Display-box {
   display: inline-block;
-  box-sizing: border-box;
+  box-sizing: content-box;
   background: #FFF;
   border: 3px solid #FFF;
+  overflow: hidden;
 
   &--clickable {
     cursor: pointer;

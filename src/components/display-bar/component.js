@@ -17,7 +17,7 @@ export default class DisplayBar extends React.Component {
     const classNames = cn(
       "Display-bar",
       `Display-bar--position-${position}`,
-      `Display-bar--child-count-${children.length}`,
+      children ? `Display-bar--child-count-${children.length}` : null,
       className
     );
 

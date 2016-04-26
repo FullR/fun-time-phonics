@@ -64,7 +64,7 @@ export default class AdminSection5 extends React.Component {
               <Index>47</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ga<Dash/>gu
+                Consonant "g" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -73,7 +73,7 @@ export default class AdminSection5 extends React.Component {
               <Index>53</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ha<Dash/>hu
+                Consonant "h" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -82,7 +82,7 @@ export default class AdminSection5 extends React.Component {
               <Index>59</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ja<Dash/>ju
+                Consonant "j" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -91,7 +91,7 @@ export default class AdminSection5 extends React.Component {
               <Index>62</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ke<Dash/>ki
+                Consonant "k" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -101,8 +101,8 @@ export default class AdminSection5 extends React.Component {
           <AdminShortButton {...level("63")}>
             <Index>63</Index>
             <Title>
-              Consonant With Vowel Review<br/>
-              g-k
+              <Underlined>Review</Underlined><br/>
+              Consonants "b"<Dash/>"k" With Short Vowels<br/>
             </Title>
           </AdminShortButton>
         </AdminSectionColumn>

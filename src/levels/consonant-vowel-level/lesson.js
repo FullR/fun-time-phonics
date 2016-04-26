@@ -8,6 +8,9 @@ import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
 import wordSounds from "util/word-sounds";
+import LetterSoundPlayBox from "components/letter-sound-play-box";
+
+const Letters = ({children}) => (<span style={{display: "inline-block"}}>{children}</span>);
 
 @scene
 export default class Lesson extends React.Component {
@@ -15,9 +18,10 @@ export default class Lesson extends React.Component {
     super(props);
     this.state = {
       boy: {
-        size: "large",
+        size: "small",
         speaking: true
       },
+      showingLetterIntro: props.letterIntro,
       choices: [
         ...(props.letterIntroWords || []).map((word) => ({ // letter into choices
           word,
@@ -45,7 +49,9 @@ export default class Lesson extends React.Component {
       "to write the": "boy/common/to-write-the",
       "when we read the letters": "boy/common/when-we-read-the-letters",
       "they tell us to say": "boy/common/they-tell-us-to-say",
-      "letters": `boy/common/letters/${consonant}-${vowel}`
+      "touch the green...": "boy/common/touch-the-green-arrow-to-begin",
+      "letters": `boy/common/letters/${consonant}-${vowel}`,
+      "phonic": `boy/common/phonics/_${consonant}${vowel}h_`
     };
 
     if(letterIntroWords) {
@@ -62,31 +68,99 @@ export default class Lesson extends React.Component {
   }
 
   autoplay() {
-    const {boy, sounds, choices, letterIntro, letterIntroWords} = this;
+    const {lessonWords, letterIntro, letterIntroWords, consonant, vowel} = this.props;
+    const {boy, sounds, choices} = this;
 
     this.startCo(function*() {
+      this.setState({showingLetterIntro: letterIntro});
       choices.all.set("hidden", true);
 
-      // TODO: Write animation code (remember you will need to display the letter during the letter intro)
+      if(letterIntro) {
+        choices.all.set("detached", true);
+        for(let word of letterIntroWords) {
+          choices[word].set("detached", false);
+        }
+
+        yield this.say(boy, "the letter");
+        yield this.say(boy, "consonant");
+        yield this.say(boy, "looks like this");
+        yield this.wait(300);
+        yield this.say(boy, "the letter");
+        yield this.say(boy, "consonant");
+        yield this.say(boy, "makes the beginning sound of");
+
+        for(let word of letterIntroWords) {
+          choices[word].set("hidden", false);
+          yield this.say(boy, word);
+          yield this.wait(100);
+        }
+
+        yield this.wait(400);
+        choices.all.set({hidden: true, detached: false});
+        for(let word of letterIntroWords) {
+          choices[word].set("detached", true);
+        }
+        this.setState({showingLetterIntro: false});
+      }
+
+      yield this.say(boy, "words such as");
+
+      for(let word of lessonWords) {
+        choices[word].set("hidden", false);
+        yield this.say(boy, word);
+        yield this.wait(100);
+      }
+
+      yield this.say(boy, "all begin with the");
+      yield this.say(boy, "phonic");
+      yield this.say(boy, "sound");
+
+      yield this.wait(300);
+
+      yield this.say(boy, "we use the letters");
+      yield this.say(boy, "letters");
+      yield this.say(boy, "to write the");
+      yield this.say(boy, "phonic");
+      yield this.say(boy, "sound");
+
+      yield this.wait(200);
+
+      yield this.say(boy, "when we read the letters");
+      yield this.say(boy, "letters");
+      yield this.say(boy, "they tell us to say");
+      yield this.say(boy, "phonic");
+
+      yield this.say(boy, "touch the green...");
 
       boy.set({speaking: false, animating: false});
     });
   }
 
   render() {
-    const {levelId, activityIndex, onNext} = this.props;
-    const {choices, boy} = this.state;
+    const {levelId, activityIndex, onNext, consonant, vowel} = this.props;
+    const {choices, boy, letters, showingLetterIntro} = this.state;
 
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
-        <LessonTitle>Consonant &quot;b&quot; With Short Vowel &quot;a&quot;</LessonTitle>
+        <LessonTitle>Consonant "{consonant}" With Short Vowel "{vowel}"</LessonTitle>
         <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
-        <DisplayBar>
+        <DisplayBar position="top">
+          <LetterSoundPlayBox waveHidden>
+            {showingLetterIntro ?
+              [<span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>,<span>{consonant}</span>] :
+              <span>{consonant}{vowel}</span>
+            }
+          </LetterSoundPlayBox>
+        </DisplayBar>
+
+        <DisplayBar position="bottom">
           {choices.map((choice) =>
             <WordSoundPlayBox {...choice}
+              waveHidden={showingLetterIntro}
+              size={showingLetterIntro ? "medium" : "large"}
               key={choice.word}
               sound={this.getSound(choice.word)}
             />

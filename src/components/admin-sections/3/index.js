@@ -16,30 +16,30 @@ export default class AdminSection3 extends React.Component {
         <AdminSectionRow>
           <AdminShortButton {...level("15")}>
             <Index>15</Index>
-            <Title>The Letter "a"</Title>
+            <Title>Short Vowel "a"</Title>
           </AdminShortButton>
           <AdminShortButton {...level("16")}>
             <Index>16</Index>
-            <Title>The Letter "e"</Title>
+            <Title>Short Vowel "e"</Title>
           </AdminShortButton>
           <AdminShortButton {...level("17")}>
             <Index>17</Index>
-            <Title>The Letter "i"</Title>
+            <Title>Short Vowel "i"</Title>
           </AdminShortButton>
           <AdminShortButton {...level("18")}>
             <Index>18</Index>
-            <Title>The Letter "o"</Title>
+            <Title>Short Vowel "o"</Title>
           </AdminShortButton>
           <AdminShortButton {...level("19")}>
             <Index>19</Index>
-            <Title>The Letter "u"</Title>
+            <Title>Short Vowel "u"</Title>
           </AdminShortButton>
         </AdminSectionRow>
 
         <AdminSectionRow>
           <AdminShortButton {...level("20")}>
             <Index>20</Index>
-            <Title>Short Vowel Review</Title>
+            <Title>Review: Short Vowel Sounds</Title>
           </AdminShortButton>
         </AdminSectionRow>
       </AdminSection>

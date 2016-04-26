@@ -1,6 +1,8 @@
 .Play-box {
+  position: relative;
   display: flex;
   flex-direction: column;
+  font-size: 0;
 
   &--detached {
     position: absolute;
@@ -22,7 +24,8 @@
   &--size-large &__display-box {
     width: 300px;
     height: 300px;
-    font-size: 250px;
+    font-size: 275px;
+    //line-height: 300px;
   }
 
   &--size-medium &__display-box {
@@ -38,6 +41,7 @@
   }
 
   &__sound-wave-container {
+    z-index: 10;
     margin-top: 20px;
     width: 100%;
     text-align: center;

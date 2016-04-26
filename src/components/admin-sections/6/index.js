@@ -68,7 +68,7 @@ export default class AdminSection6 extends React.Component {
               <Index>69</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                la<Dash/>lu
+                Consonant "l" With Short Vowels
               </Title>
             </ShortButton>
           </Row>
@@ -77,7 +77,7 @@ export default class AdminSection6 extends React.Component {
               <Index>75</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ma<Dash/>mu
+                Consonant "m" With Short Vowels
               </Title>
             </ShortButton>
           </Row>
@@ -86,7 +86,7 @@ export default class AdminSection6 extends React.Component {
               <Index>81</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                na<Dash/>nu
+                Consonant "n" With Short Vowels
               </Title>
             </ShortButton>
           </Row>
@@ -95,7 +95,7 @@ export default class AdminSection6 extends React.Component {
               <Index>87</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                pa<Dash/>pu
+                Consonant "p" With Short Vowels
               </Title>
             </ShortButton>
           </Row>
@@ -104,7 +104,10 @@ export default class AdminSection6 extends React.Component {
         <Column>
           <ShortButton {...level("88")}>
             <Index>88</Index>
-            <Title>Consonant With Vowel Review l-p</Title>
+            <Title>
+              <Underlined>Review</Underlined><br/>
+              Consonants "b"<Dash/>"p" With Short Vowels<br/>
+            </Title>
           </ShortButton>
         </Column>
       </AdminSection>

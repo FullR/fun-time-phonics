@@ -52,11 +52,11 @@ export default class AdminSection4 extends React.Component {
           <AdminRowButton {...level("37")}>
             <Title>Lesson f</Title>
             <AdminSubGroup small>
-              <AdminSubButton {...level("37")}><Index>37</Index><Title>da</Title></AdminSubButton>
-              <AdminSubButton {...level("38")}><Index>38</Index><Title>de</Title></AdminSubButton>
-              <AdminSubButton {...level("39")}><Index>39</Index><Title>di</Title></AdminSubButton>
-              <AdminSubButton {...level("40")}><Index>40</Index><Title>do</Title></AdminSubButton>
-              <AdminSubButton {...level("41")}><Index>41</Index><Title>du</Title></AdminSubButton>
+              <AdminSubButton {...level("37")}><Index>37</Index><Title>fa</Title></AdminSubButton>
+              <AdminSubButton {...level("38")}><Index>38</Index><Title>fe</Title></AdminSubButton>
+              <AdminSubButton {...level("39")}><Index>39</Index><Title>fi</Title></AdminSubButton>
+              <AdminSubButton {...level("40")}><Index>40</Index><Title>fo</Title></AdminSubButton>
+              <AdminSubButton {...level("41")}><Index>41</Index><Title>fu</Title></AdminSubButton>
             </AdminSubGroup>
           </AdminRowButton>
         </AdminSectionColumn>
@@ -67,7 +67,7 @@ export default class AdminSection4 extends React.Component {
               <Index>26</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ba<Dash/>bu
+                Consonant "b" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -76,7 +76,7 @@ export default class AdminSection4 extends React.Component {
               <Index>30</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                ca<Dash/>cu
+                Consonant "c" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -85,7 +85,7 @@ export default class AdminSection4 extends React.Component {
               <Index>36</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                da<Dash/>du
+                Consonant "d" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -94,7 +94,7 @@ export default class AdminSection4 extends React.Component {
               <Index>42</Index>
               <Title>
                 <Underlined>Review</Underlined><br/>
-                fa<Dash/>fu
+                Consonant "f" With Short Vowels
               </Title>
             </AdminShortButton>
           </AdminSectionRow>
@@ -104,8 +104,8 @@ export default class AdminSection4 extends React.Component {
           <AdminShortButton {...level("43")}>
             <Index>43</Index>
             <Title>
-              Consonant With Vowel Review<br/>
-              b<Dash/>f
+              <Underlined>Review</Underlined><br/>
+              Consonants "b"<Dash/>"f" With Short Vowels<br/>
             </Title>
           </AdminShortButton>
         </AdminSectionColumn>

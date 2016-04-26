@@ -4,7 +4,7 @@ import Activity from "./activity";
 import Response from "./response";
 import Feedback from "./feedback";
 
-/* Used for levels 8, 9, 10, 11, 12 */
+/* Used in levels 8-12 */
 
 export default ({id, activities, vowel, lessonWords}) => level({
   id,

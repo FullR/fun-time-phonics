@@ -4,6 +4,8 @@ import Activity from "./activity";
 import Response from "./response";
 import Feedback from "./feedback";
 
+/* Used in levels 15-19 */
+
 export default ({id, activities, letter, lessonWords}) => level({
   id,
   Lesson,

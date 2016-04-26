@@ -1,0 +1,17 @@
+.Credit-screen {
+  .Info-screen-content {
+    padding: 30px;
+  }
+
+  &__job-desc {
+    font-weight: bold;
+  }
+
+  &__names {
+    margin-bottom: 20px;
+  }
+
+  &__isbn {
+    font-weight: bold;
+  }
+}

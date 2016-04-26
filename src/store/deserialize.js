@@ -2,6 +2,7 @@
 export default function deserialize(storedState) {
   return {
     ...storedState,
-    route: "splash"
+    route: "splash",
+    lastRoute: null
   };
 }

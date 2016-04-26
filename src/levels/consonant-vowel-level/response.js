@@ -18,10 +18,25 @@ export default class LevelResponse extends React.Component {
   }
 
   getSounds() {
-    const {answer} = this.props;
-    return {
-      applause: "applause"
+    const {answer, consonant, vowel} = this.props;
+    const sounds = {
+      "letters": `girl/common/letters/${consonant}-${vowel}`,
+      "phonic": `girl/common/phonics/_${consonant}${vowel}h_`,
+      "answer-word": `girl/words/${answer.word}`,
     };
+
+    if(answer.correct) {
+      sounds["applause"] = "applause";
+      sounds["correct"] = "girl/common/correct";
+      sounds["begins with the"] = "girl/common/begins-with-the";
+      sounds["sound so it begins with"] = "girl/common/sound-so-it-begins-with";
+
+    } else {
+      sounds["does not begin with the"] = "girl/common/does-not-begin-with-the";
+      sounds["sound so it does not begin with"] = "girl/common/sound-so-it-does-not-begin-with";
+    }
+
+    return sounds;
   }
 
   autoplay() {
@@ -30,8 +45,19 @@ export default class LevelResponse extends React.Component {
 
     this.startCo(function*() {
       if(correct) {
-
+        yield this.play("applause");
+        yield this.say(girl, "correct");
+        yield this.say(girl, "answer-word");
+        yield this.say(girl, "begins with the");
+        yield this.say(girl, "phonic");
+        yield this.say(girl, "sound so it begins with");
+        yield this.say(girl, "letters");
       } else {
+        yield this.say(girl, "answer-word");
+        yield this.say(girl, "does not begin with the");
+        yield this.say(girl, "phonic");
+        yield this.say(girl, "sound so it does not begin with");
+        yield this.say(girl, "letters");
         this.setState({arrowHidden: false});
       }
       girl.set({speaking: false, animating: false});
@@ -40,7 +66,7 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {answer, onNext, activityIndex, levelId, activityCount} = this.props;
+    const {answer, onNext, activityIndex, levelId, activityCount, consonant, vowel} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
@@ -49,7 +75,7 @@ export default class LevelResponse extends React.Component {
           <Word word={answer.word}/>
         </Answer>
         <ActivityTitle>
-          Lesson {levelId}: Consonant &quot;b&quot; With Short Vowel &quot;a&quot;<br/>
+          Lesson {levelId}: Consonant "{consonant}" With Short Vowel "{vowel}"<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>

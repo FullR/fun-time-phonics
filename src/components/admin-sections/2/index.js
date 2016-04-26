@@ -16,29 +16,29 @@ export default class AdminSection2 extends React.Component {
         <AdminSectionRow>
           <AdminShortButton {...level("8")}>
             <Index>8</Index>
-            <Title>Short a</Title>
+            <Title>Short Vowel "a" Sound</Title>
           </AdminShortButton>
           <AdminShortButton {...level("9")}>
             <Index>9</Index>
-            <Title>Short e</Title>
+            <Title>Short Vowel "e" Sound</Title>
           </AdminShortButton>
           <AdminShortButton {...level("10")}>
             <Index>10</Index>
-            <Title>Short i</Title>
+            <Title>Short Vowel "i" Sound</Title>
           </AdminShortButton>
           <AdminShortButton {...level("11")}>
             <Index>11</Index>
-            <Title>Short o</Title>
+            <Title>Short Vowel "o" Sound</Title>
           </AdminShortButton>
           <AdminShortButton {...level("12")}>
             <Index>12</Index>
-            <Title>Short u</Title>
+            <Title>Short Vowel "u" Sound</Title>
           </AdminShortButton>
         </AdminSectionRow>
         <AdminSectionRow>
           <AdminShortButton {...level("13")}>
             <Index>13</Index>
-            <Title>Middle Sounds</Title>
+            <Title>Short Vowel Sounds</Title>
           </AdminShortButton>
           <AdminShortButton {...level("14")}>
             <Index>14</Index>

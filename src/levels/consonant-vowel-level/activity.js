@@ -6,15 +6,18 @@ import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
-import WordSoundPlayBox from "components/word-sound-play-box";
+import dndContext from "dnd-context";
+import DragLetterBox from "components/drag-letter-box";
+import DropWordBox from "components/drop-word-box";
 
+@dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       girl: {
-        size: "large",
+        size: "small",
         speaking: true,
         animating: false
       },
@@ -27,44 +30,63 @@ export default class Activity extends React.Component {
   }
 
   getSounds() {
-    const {words} = this.props;
+    const {words, consonant, vowel} = this.props;
     return {
-      ...wordSounds("girl", words)
+      ...wordSounds("girl", words),
+      "drag the letters": "girl/common/drag-the-letters",
+      "letters": `girl/common/letters/${consonant}-${vowel}`,
+      "to the word...": "girl/common/to-the-word-that-begins-with-that-sound"
     };
   }
 
   autoplay() {
-    this.animate();
+    this.animate(this.props.wordsOnly);
   }
 
-  animate() {
+  animate(wordsOnly) {
     const {girl, choices} = this;
     this.startCo(function*() {
+      if(!wordsOnly) {
+        yield this.say(girl, "drag the letters");
+        yield this.say(girl, "letters");
+        yield this.say(girl, "to the word...");
+      }
 
+      for(let choice of choices) {
+        choice.set("hidden", false);
+        yield this.say(girl, choice.get("word"));
+        yield this.wait(100);
+      }
     });
   }
 
   render() {
     const {girl, choices} = this.state;
-    const {onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
+    const {onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId, consonant, vowel} = this.props;
 
     return (
       <Screen>
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar>
+        <DisplayBar position="top">
           {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
+            <DropWordBox {...choice}
               key={choice.id}
               sound={this.getSound(choice.word)}
-              onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+              onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
             />
           )}
         </DisplayBar>
 
+        <DisplayBar position="bottom">
+          <DragLetterBox>
+            {consonant + vowel}
+          </DragLetterBox>
+        </DisplayBar>
+
         <ActivityTitle>
-          Lesson {levelId}: Consonant &quot;b&quot; With Short Vowel &quot;a&quot;<br/>
+          Lesson {levelId}: Consonant "{consonant}" With Short Vowel "{vowel}"<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

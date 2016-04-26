@@ -9,6 +9,7 @@ import COMPLETE_LEVEL from "./complete-level";
 import RESET_PROGRESS from "./reset-progress";
 import SHOW_LEVEL from "./show-level";
 import CHANGE_ROUTE from "./change-route";
+import BACK_ROUTE from "./back-route";
 
 export default {
   LOAD_STATE,
@@ -21,5 +22,6 @@ export default {
   RESET_LEVEL,
   RESET_PROGRESS,
   SHOW_LEVEL,
-  CHANGE_ROUTE
+  CHANGE_ROUTE,
+  BACK_ROUTE
 };

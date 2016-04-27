@@ -79,7 +79,7 @@ export default class LevelResponse extends React.Component {
           <Word word={answer.word}/>
         </Answer>
         <ActivityTitle>
-          Lesson {levelId}: Forming New Words<br/>
+          {levelId}. Forming New Words<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>

@@ -40,7 +40,7 @@ export default class Lesson extends React.Component {
       "phonic": `boy/common/phonics/_${letter}h_`,
       "sound in": "boy/common/sound-in",
       "we use the letter": "boy/common/we-use-the-letter",
-      "to write words that have the": "boy/common/to-write-words-that-have-the",
+      "to write the words that make the": "boy/common/to-write-the-words-that-make-the",
       "sound": "boy/common/sound",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin"
     };
@@ -74,7 +74,7 @@ export default class Lesson extends React.Component {
 
       yield this.say(boy, "we use the letter");
       yield this.say(boy, "letter");
-      yield this.say(boy, "to write words that have the");
+      yield this.say(boy, "to write the words that make the");
       yield this.say(boy, "phonic");
       yield this.say(boy, "sound");
 
@@ -95,11 +95,11 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
         <LessonTitle>{title}</LessonTitle>
-        <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
+        <LessonTitle.SubTitle>{levelId}</LessonTitle.SubTitle>
         {showingLetter ?
           <DisplayBar position="top" style={{top: "23%"}}>
             <PlayableDisplayText size="medium" sound={this.getSound("letter")}>
-              {letter.toUpperCase()}{letter}
+              <span style={{marginRight: 50}}>{letter.toUpperCase()}</span><span>{letter}</span>
             </PlayableDisplayText>
           </DisplayBar> :
           null

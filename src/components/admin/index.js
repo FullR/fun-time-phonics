@@ -69,7 +69,7 @@ export default class Admin extends React.Component {
 
     this.state = {
       authenticated: false,
-      currentLevel: props.currentLevelId,
+      currentLevel: props.currentLevelId.split("-")[0],
       sectionIndex: getSection(props.currentLevelId),
       authenticated: false,
       infoScreen: null

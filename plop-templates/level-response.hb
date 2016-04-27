@@ -49,7 +49,7 @@ export default class LevelResponse extends React.Component {
           <Word word={answer.word}/>
         </Answer>
         <ActivityTitle>
-          Lesson {levelId}: {{title}}<br/>
+          {levelId}. {{title}}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>

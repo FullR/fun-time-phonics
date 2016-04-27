@@ -145,15 +145,15 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
         <LessonTitle>{title}</LessonTitle>
-        <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
+        <LessonTitle.SubTitle>{levelId}</LessonTitle.SubTitle>
 
-        <DisplayBar position="top" style={{top: "23%"}}>
+        <DisplayBar position="top" style={{top: "26%"}}>
           {letters.map((letter) =>
             <PlayableDisplayText
               key={letter}
               sound={this.getSound(letter)}
               hidden={!this.isLetterRevealed(letter)}
-              size="small"
+              size="medium"
             >
               <span style={{marginRight: 30}}>{letter.toUpperCase()}</span>
               <span>{letter}</span>

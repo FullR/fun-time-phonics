@@ -70,7 +70,7 @@ export default class LevelResponse extends React.Component {
           <DisplayText>{answer.letter}</DisplayText>
         </Answer>
         <ActivityTitle>
-          Lesson {levelId}: {title}<br/>
+          {levelId}.&nbsp; {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>

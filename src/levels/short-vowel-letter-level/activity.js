@@ -103,6 +103,14 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}/>
 
         <DisplayBar position="top">
+          {dragLetters.map((letter) =>
+            <DragContainer key={letter} value={letter}>
+              <DisplayText>{letter}</DisplayText>
+            </DragContainer>
+          )}
+        </DisplayBar>
+
+        <DisplayBar position="bottom">
           {choices.map((choice) =>
             <DropWordBox {...choice}
               key={choice.id}
@@ -112,16 +120,8 @@ export default class Activity extends React.Component {
           )}
         </DisplayBar>
 
-        <DisplayBar position="bottom">
-          {dragLetters.map((letter) =>
-            <DragContainer key={letter} value={letter}>
-              <DisplayText>{letter}</DisplayText>
-            </DragContainer>
-          )}
-        </DisplayBar>
-
         <ActivityTitle>
-          Lesson {levelId}: {title}<br/>
+          {levelId}.&nbsp; {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

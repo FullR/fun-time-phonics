@@ -41,18 +41,21 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate();
+    this.animate(this.props.wordsOnly);
   }
 
-  animate() {
+  animate(wordsOnly) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      this.setState({showingWord: false});
-      yield this.say(girl, "drag the letter...");
+      if(!wordsOnly) {
+        this.setState({showingWord: false});
+        yield this.say(girl, "drag the letter...");
+      }
       this.setState({showingWord: true});
       yield this.say(girl, "word");
-      yield this.say(girl, "to the picture");
-
+      if(!wordsOnly) {
+        yield this.say(girl, "to the picture");
+      }
     });
   }
 
@@ -78,7 +81,7 @@ export default class Activity extends React.Component {
           null
         }
 
-        <DisplayBar position="bottom">
+        <DisplayBar position="bottom" style={{bottom: "10%"}}>
           {choices.map((choice) =>
             <DragContainer key={choice.id} value={choice.letter}>
               <DisplayText hidden={choice.hidden}>
@@ -89,7 +92,7 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson {levelId}: {title}<br/>
+          {levelId}.&nbsp; {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

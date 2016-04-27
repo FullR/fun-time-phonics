@@ -64,7 +64,7 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson {levelId}: {{title}}<br/>
+          {levelId}. {{title}}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

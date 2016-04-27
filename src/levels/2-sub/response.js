@@ -71,7 +71,7 @@ export default class LevelResponse extends React.Component {
           <Word word={answer.word}/>
         </Answer>
         <ActivityTitle>
-          Lesson 2: Ending Sounds<br/>
+          2.&nbsp; Ending Sounds<br/>
           Activity {activityIndex + indexOffset + 1} of 15
         </ActivityTitle>
       </Response>

@@ -81,7 +81,7 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson 1: Beginning Sounds<br/>
+          1.&nbsp; Beginning Sounds<br/>
           Activity {activityIndex + indexOffset + 1} of 15
         </ActivityTitle>
         <AdminButton/>

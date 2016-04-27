@@ -171,7 +171,7 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
         <LessonTitle>{title}</LessonTitle>
-        <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
+        <LessonTitle.SubTitle>{levelId}</LessonTitle.SubTitle>
 
         <DisplayBar position="top">
           {showingLetterIntro ?

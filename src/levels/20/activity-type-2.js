@@ -6,9 +6,10 @@ import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
-import DragLetterBox from "components/drag-letter-box";
 import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
+import DisplayText from "components/display-text";
+import DragContainer from "components/drag-container";
 
 @dndContext
 @scene
@@ -81,9 +82,9 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <DisplayBar position="bottom">
-          <DragLetterBox value={letter}>
-            {letter}
-          </DragLetterBox>
+          <DragContainer value={letter}>
+            <DisplayText>{letter}</DisplayText>
+          </DragContainer>
         </DisplayBar>
 
         <ActivityTitle>

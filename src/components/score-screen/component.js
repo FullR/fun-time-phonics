@@ -6,6 +6,7 @@ import StarScreen from "components/star-screen";
 import toPercent from "util/to-percent";
 import cn from "util/cn";
 import soundContainer from "decorators/sound-container";
+import AdminButton from "components/admin-button";
 
 import ScoreScreenTitle from "components/score-screen-title";
 import ScoreScreenScore from "components/score-screen-score";
@@ -62,6 +63,8 @@ export default class ScoreScreen extends React.Component {
 
           <Robot type="girl" className="Score-screen__girl"/>
         </div>
+
+        <AdminButton/>
       </StarScreen>
     );
   }

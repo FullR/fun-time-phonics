@@ -7,7 +7,7 @@ import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
-import LetterSoundPlayBox from "components/letter-sound-play-box";
+import PlayableDisplayText from "components/playable-display-text";
 
 const letters = ["a", "e", "i", "o", "u"];
 
@@ -147,26 +147,26 @@ export default class Lesson extends React.Component {
         <LessonTitle>Review: Short Vowel Sounds</LessonTitle>
         <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
-        <DisplayBar position="top">
+        <DisplayBar position="top" style={{top: "23%"}}>
           {letters.map((letter) =>
-            <LetterSoundPlayBox
+            <PlayableDisplayText
               key={letter}
               sound={this.getSound(letter)}
               hidden={!this.isLetterRevealed(letter)}
               size="small"
             >
-              {letter.toUpperCase()}
-              {letter}
-            </LetterSoundPlayBox>
+              <span style={{marginRight: 30}}>{letter.toUpperCase()}</span>
+              <span>{letter}</span>
+            </PlayableDisplayText>
           )}
         </DisplayBar>
 
-        <DisplayBar position="bottom">
+        <DisplayBar position="bottom" style={{bottom: "23%"}}>
           {choices.map((choice) =>
             <WordSoundPlayBox {...choice}
               key={choice.word}
               sound={this.getSound(choice.word)}
-              size="small"
+              size="medium"
             />
           )}
         </DisplayBar>

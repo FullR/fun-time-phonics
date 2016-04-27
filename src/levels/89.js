@@ -1,7 +1,6 @@
 import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
-  
   letterIntroWords: ["quack", "question", "quilt"],
   id: "89",
   consonant: "q",

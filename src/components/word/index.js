@@ -2,7 +2,16 @@ import React from "react";
 import cn from "util/cn";
 require("./style.scss");
 
-const requireWord = require.context("../../../images/words", false, /\.png$/);
+const requireWordContext = require.context("../../../images/words", false, /\.png$/);
+
+const requireWord = (path) => {
+  try {
+    return requireWordContext(path);
+  } catch(error) {
+    console.error(`Failed to load word image: ${path}`);
+    return require("../../../images/incorrect-x.png");
+  }
+};
 
 export default class Word extends React.Component {
   static propTypes = {

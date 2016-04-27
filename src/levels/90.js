@@ -1,12 +1,11 @@
 import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
-  
   letterIntroWords: ["rat", "register", "ribbon", "rocket", "rug"],
   id: "90",
   consonant: "r",
   vowel: "a",
-  lessonWords: ["rag", "rat", "racoon"],
+  lessonWords: ["rag", "rat", "raccoon"],
   activities: [
     {words: ["rack", "wreck", "rock"], correctWord: "rack"},
     {words: ["rush", "rich", "rash"], correctWord: "rash", wordsOnly: true},

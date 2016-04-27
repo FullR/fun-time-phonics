@@ -4,7 +4,7 @@ import Actor from "components/actor";
 import Response from "components/response";
 import Word from "components/word";
 import scene from "decorators/scene";
-import Letters from "components/letters";
+import DisplayText from "components/display-text";
 
 const {Answer} = Response;
 
@@ -80,9 +80,9 @@ export default class LevelResponse extends React.Component {
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
         <Answer isCorrect={answer.correct}>
-          <Letters>
+          <DisplayText>
             {answer.letters}
-          </Letters>
+          </DisplayText>
         </Answer>
         <ActivityTitle>
           Lesson {levelId}: Review: Consonant "{consonant}" With Short Vowels"<br/>

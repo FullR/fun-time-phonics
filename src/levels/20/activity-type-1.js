@@ -6,7 +6,8 @@ import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
-import DragLetterBox from "components/drag-letter-box";
+import DragContainer from "components/drag-container";
+import DisplayText from "components/display-text";
 import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
 
@@ -79,9 +80,11 @@ export default class Activity extends React.Component {
 
         <DisplayBar position="bottom">
           {choices.map((choice) =>
-            <DragLetterBox {...choice} key={choice.id} value={choice.letter} waveHidden>
-              {choice.letter}
-            </DragLetterBox>
+            <DragContainer key={choice.id} value={choice.letter}>
+              <DisplayText hidden={choice.hidden}>
+                {choice.letter}
+              </DisplayText>
+            </DragContainer>
           )}
         </DisplayBar>
 

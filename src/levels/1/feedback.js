@@ -28,6 +28,6 @@ export default class Feedback extends React.Component {
         <SubTitle>Lesson 1</SubTitle>
         <Score score={score} max={max}/>
       </ScoreScreen>
-    )
+    );
   }
 }

@@ -7,8 +7,9 @@ import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
 import dndContext from "dnd-context";
-import DragLetterBox from "components/drag-letter-box";
 import DropWordBox from "components/drop-word-box";
+import PlayableDisplayText from "components/playable-display-text";
+import DragContainer from "components/drag-container";
 
 @dndContext
 @scene
@@ -80,9 +81,9 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <DisplayBar position="bottom">
-          <DragLetterBox>
-            {consonant + vowel}
-          </DragLetterBox>
+          <DragContainer>
+            <PlayableDisplayText sound={this.getSound("letters")}>{consonant + vowel}</PlayableDisplayText>
+          </DragContainer>
         </DisplayBar>
 
         <ActivityTitle>

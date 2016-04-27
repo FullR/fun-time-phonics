@@ -10,6 +10,8 @@ import scene from "decorators/scene";
 import wordSounds from "util/word-sounds";
 import LetterSoundPlayBox from "components/letter-sound-play-box";
 import toPairs from "util/to-pairs";
+import PlayableDisplayText from "components/playable-display-text";
+
 
 @scene
 export default class Lesson extends React.Component {
@@ -88,17 +90,18 @@ export default class Lesson extends React.Component {
         <LessonTitle>Review: Consonant "{consonant}" With Short Vowels</LessonTitle>
         <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
-        <DisplayBar position="top" style={{top: "20%"}}>
-          {lessonLetters.map((letters) =>
-            <LetterSoundPlayBox size="medium" hidden={!revealedLetters.includes(letters)} waveHidden>
+        <DisplayBar position="top" style={{top: "26%"}}>
+          {lessonLetters.map((letters, i) =>
+            <PlayableDisplayText size="medium" sound={this.getSound(`letter-${i}`)} hidden={!revealedLetters.includes(letters)}>
               {letters}
-            </LetterSoundPlayBox>
+            </PlayableDisplayText>
           )}
         </DisplayBar>
 
-        <DisplayBar position="bottom" style={{bottom: "16%"}}>
+        <DisplayBar position="bottom" style={{bottom: "23%"}}>
           {choices.map((choice, i) =>
             <WordSoundPlayBox {...choice}
+              key={choice.id}
               size="medium"
               key={choice.word}
               sound={this.getSound(`word-${i}`)}

@@ -44,6 +44,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.19.0",
     "css2json": "0.0.4",
+    "enzyme": "^2.2.0",
     "file-loader": "^0.8.4",
     "fs-promise": "^0.3.1",
     "glob": "^5.0.14",

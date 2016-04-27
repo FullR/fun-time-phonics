@@ -2,7 +2,7 @@ import React from "react";
 import ActivityTitle from "components/activity-title";
 import Actor from "components/actor";
 import Response from "components/response";
-import Letters from "components/letters";
+import DisplayText from "components/display-text";
 import scene from "decorators/scene";
 
 const {Answer} = Response;
@@ -67,7 +67,7 @@ export default class LevelResponse extends React.Component {
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
         <Answer isCorrect={answer.correct}>
-          <Letters>{answer.letter}</Letters>
+          <DisplayText>{answer.letter}</DisplayText>
         </Answer>
         <ActivityTitle>
           Lesson {levelId}: Review: Short Vowel Sounds<br/>

@@ -10,7 +10,6 @@ import getLevelData from "store/helpers/get-level-data";
 import LicenseScreen from "components/license-screen";
 import OtherProductsScreen from "components/other-products-screen";
 import AboutScreen from "components/about-screen";
-import CreditsScreen from "components/credit-screen";
 import Authscreen from "components/authscreen";
 require("./style.scss");
 
@@ -103,10 +102,6 @@ export default class Admin extends React.Component {
     this.showInfoScreen("about");
   }
 
-  showCreditsScreen() {
-    this.showInfoScreen("credits");
-  }
-
   showInfoScreen(infoScreen) {
     this.setState({infoScreen});
   }
@@ -164,7 +159,6 @@ export default class Admin extends React.Component {
     switch(infoScreen) {
       case "license": InfoScreen = LicenseScreen; break;
       case "other-products": InfoScreen = OtherProductsScreen; break;
-      case "credits": InfoScreen = CreditsScreen; break;
       case "about": InfoScreen = AboutScreen; break;
     }
     if(InfoScreen) return (<InfoScreen onBack={this.closeInfoScreen.bind(this)}/>);
@@ -196,7 +190,6 @@ export default class Admin extends React.Component {
           <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
           <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
           <div className="Admin__header-button" onClick={this.showAboutScreen.bind(this)}>About</div>
-          <div className="Admin__header-button" onClick={this.showCreditsScreen.bind(this)}>Credits</div>
           <div className="Admin__header-button" onClick={this.clearStorage.bind(this)}>Clear Data</div>
         </AdminHeader>
         <div className="Admin__content">

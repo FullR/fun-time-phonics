@@ -10,8 +10,9 @@ import Screen from "components/screen";
 import Letters from "components/letters";
 import Word from "components/word";
 import dndContext from "dnd-context";
-import DragLetterBox from "components/drag-letter-box";
 import DropWordBox from "components/drop-word-box";
+import DragContainer from "components/drag-container";
+import DisplayText from "components/display-text";
 
 const letters = ["a", "e", "i", "o", "u"];
 
@@ -57,6 +58,7 @@ export default class Activity extends React.Component {
     this.startCo(function*() {
       choices.all.set("hidden", true);
       yield this.say(girl, "drag the letter");
+      yield this.wait(100);
       yield this.say(girl, "letter");
       yield this.say(girl, "to the word...");
       yield this.wait(300);
@@ -112,9 +114,9 @@ export default class Activity extends React.Component {
 
         <DisplayBar position="bottom">
           {dragLetters.map((letter) =>
-            <DragLetterBox key={letter} value={letter} waveHidden>
-              {letter}
-            </DragLetterBox>
+            <DragContainer key={letter} value={letter}>
+              <DisplayText>{letter}</DisplayText>
+            </DragContainer>
           )}
         </DisplayBar>
 

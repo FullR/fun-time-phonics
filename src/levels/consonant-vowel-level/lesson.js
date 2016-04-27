@@ -8,7 +8,7 @@ import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
 import wordSounds from "util/word-sounds";
-import LetterSoundPlayBox from "components/letter-sound-play-box";
+import PlayableDisplayText from "components/playable-display-text";
 
 const Letters = ({children}) => (<span style={{display: "inline-block"}}>{children}</span>);
 
@@ -64,6 +64,13 @@ export default class Lesson extends React.Component {
       });
     }
 
+    if(consonant === "q") {
+      Object.assign(sounds, {
+        "is always followed by the letter": "boy/common/is-always-followed-by-the-letter",
+        "vowel": `boy/common/letters/${vowel}`
+      });
+    }
+
     return sounds;
   }
 
@@ -84,15 +91,30 @@ export default class Lesson extends React.Component {
         yield this.say(boy, "the letter");
         yield this.say(boy, "consonant");
         yield this.say(boy, "looks like this");
-        yield this.wait(300);
-        yield this.say(boy, "the letter");
-        yield this.say(boy, "consonant");
-        yield this.say(boy, "makes the beginning sound of");
+
+        if(consonant === "q") {
+          yield this.say(boy, "the letter");
+          yield this.say(boy, "consonant");
+          yield this.say(boy, "is always followed by the letter");
+          yield this.say(boy, "vowel");
+          yield this.say(boy, "words such as");
+        } else {
+          yield this.wait(300);
+          yield this.say(boy, "the letter");
+          yield this.say(boy, "consonant");
+          yield this.say(boy, "makes the beginning sound of");
+        }
 
         for(let word of letterIntroWords) {
           choices[word].set("hidden", false);
           yield this.say(boy, word);
           yield this.wait(100);
+        }
+
+        if(consonant === "q") {
+          yield this.say(boy, "all begin with the");
+          yield this.say(boy, "phonic");
+          yield this.say(boy, "sound");
         }
 
         yield this.wait(400);
@@ -103,19 +125,21 @@ export default class Lesson extends React.Component {
         this.setState({showingLetterIntro: false});
       }
 
-      yield this.say(boy, "words such as");
+      if(consonant !== "q") {
+        yield this.say(boy, "words such as");
 
-      for(let word of lessonWords) {
-        choices[word].set("hidden", false);
-        yield this.say(boy, word);
-        yield this.wait(100);
+        for(let word of lessonWords) {
+          choices[word].set("hidden", false);
+          yield this.say(boy, word);
+          yield this.wait(100);
+        }
+
+        yield this.say(boy, "all begin with the");
+        yield this.say(boy, "phonic");
+        yield this.say(boy, "sound");
+
+        yield this.wait(300);
       }
-
-      yield this.say(boy, "all begin with the");
-      yield this.say(boy, "phonic");
-      yield this.say(boy, "sound");
-
-      yield this.wait(300);
 
       yield this.say(boy, "we use the letters");
       yield this.say(boy, "letters");
@@ -129,6 +153,8 @@ export default class Lesson extends React.Component {
       yield this.say(boy, "letters");
       yield this.say(boy, "they tell us to say");
       yield this.say(boy, "phonic");
+
+      yield this.wait(300);
 
       yield this.say(boy, "touch the green...");
 
@@ -148,20 +174,21 @@ export default class Lesson extends React.Component {
         <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
         <DisplayBar position="top">
-          <LetterSoundPlayBox waveHidden>
-            {showingLetterIntro ?
-              [<span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>,<span>{consonant}</span>] :
-              <span>{consonant}{vowel}</span>
-            }
-          </LetterSoundPlayBox>
+          {showingLetterIntro ?
+            <PlayableDisplayText sound={this.getSound("consonant")}>
+              <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
+              <span>{consonant}</span>
+            </PlayableDisplayText> :
+            <PlayableDisplayText sound={this.getSound("letters")}>{consonant}{vowel}</PlayableDisplayText>
+          }
         </DisplayBar>
 
-        <DisplayBar position="bottom">
-          {choices.map((choice) =>
+        <DisplayBar position="bottom" style={showingLetterIntro ? {bottom: "23%"} : null}>
+          {choices.map((choice, i) =>
             <WordSoundPlayBox {...choice}
               waveHidden={showingLetterIntro}
               size={showingLetterIntro ? "medium" : "large"}
-              key={choice.word}
+              key={choice.word + "-" + i}
               sound={this.getSound(choice.word)}
             />
           )}

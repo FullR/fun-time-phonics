@@ -7,7 +7,8 @@ import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
 import dndContext from "dnd-context";
-import DragLetterBox from "components/drag-letter-box";
+import DragContainer from "components/drag-container";
+import DisplayText from "components/display-text";
 import DropWordBox from "components/drop-word-box";
 import toPairs from "util/to-pairs";
 
@@ -68,7 +69,7 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top" style={{top: "4%"}}>
+        <DisplayBar position="top">
           <DropWordBox
             word={word}
             sound={this.getSound("word")}
@@ -78,13 +79,9 @@ export default class Activity extends React.Component {
 
         <DisplayBar position="bottom" style={{bottom: "10%"}}>
           {choices.map((choice) =>
-            <DragLetterBox {...choice}
-              key={choice.id}
-              value={choice.letters}
-              sound={this.getSound(choice.letters)}
-            >
-              {choice.letters}
-            </DragLetterBox>
+            <DragContainer key={choice.id} value={choice.letters}>
+              <DisplayText>{choice.letters}</DisplayText>
+            </DragContainer>
           )}
         </DisplayBar>
 

@@ -9,5 +9,8 @@ export default level({
   Lesson,
   Activity,
   Response,
-  activities
+  activities,
+  levelProps: {
+    title: "Ending Sounds"
+  }
 });

@@ -13,7 +13,7 @@
     "upload": "scripts/upload",
     "release": "npm run compile && npm run upload",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/src mocha --recursive --require babel-polyfill --compilers scss:./null-compiler.js,js:babel-core/register 'src/**/*.test.js'",
-    "foo": "echo src/**/*.test.js"
+    "convert-word-images": "scripts/convert-word-images"
   },
   "dependencies": {
     "bembam": "^1.0.3",
@@ -44,6 +44,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.19.0",
     "css2json": "0.0.4",
+    "easyimage": "^2.1.0",
     "enzyme": "^2.2.0",
     "file-loader": "^0.8.4",
     "fs-promise": "^0.3.1",

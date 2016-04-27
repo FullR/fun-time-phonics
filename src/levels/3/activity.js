@@ -98,7 +98,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {onAnswer, activityIndex, showLesson} = this.props;
+    const {title, levelId, activityCount, onAnswer, activityIndex, showLesson} = this.props;
 
     return (
       <Screen>
@@ -117,8 +117,8 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Activity 3: Beginning and Ending Sounds<br/>
-          Activity {activityIndex + 1} of 24
+          Activity {levelId}: {title}<br/>
+          Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
 
         <AdminButton/>

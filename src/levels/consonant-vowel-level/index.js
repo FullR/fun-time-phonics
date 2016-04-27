@@ -16,6 +16,7 @@ export default ({id, activities, consonant, vowel, lessonWords, letterIntroWords
     vowel,
     lessonWords,
     letterIntroWords,
+    title: `Consonant "${consonant}" With Short Vowel "${vowel}"`,
     letterIntro: !!letterIntroWords
   }
 });

@@ -59,7 +59,7 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {answer, onNext, activityIndex, levelId, vowel, activityCount} = this.props;
+    const {title, answer, onNext, activityIndex, levelId, vowel, activityCount} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
@@ -68,7 +68,7 @@ export default class LevelResponse extends React.Component {
           <Word word={answer.word}/>
         </Answer>
         <ActivityTitle>
-          Lesson {levelId}: Short Vowel "{vowel}" Sound<br/>
+          Lesson {levelId}: {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>

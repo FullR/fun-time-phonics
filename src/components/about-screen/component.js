@@ -1,5 +1,6 @@
 import React from "react";
 import InfoScreen from "components/info-screen";
+import Punc from "components/punc";
 import cn from "util/cn";
 
 const {Header, Content, Footer} = InfoScreen;
@@ -13,8 +14,8 @@ export default class CreditScreen extends React.Component {
       <InfoScreen {...this.props} className={classNames}>
         <Header>About Fun-Time Phonics!™</Header>
         <Content>
-          <p>Finally, a fun, systematic phonics program that is comprehension centered! <em>Fun-Time Phonics!</em>™ is a fun, easy-to-use program based on the scientific findings of the National Reading Commission. This program emphasizes sound/spelling patterns, vocabulary, and comprehension, not memorization. The colorful, game-like activities engage students through listening, thinking, speaking, and reading.</p>
-          <p><em>Fun-Time Phonics!</em>™ teaches students that spoken words are composed of individual sounds (phonemes), and those sounds are written with letters.  Armed with this understanding of how print works as a code, reading becomes much easier than other more complicated approaches.  This program ensures complete phonemic awareness mastery by focusing on vowel isolation, which is often the most challenging and important part of learning to read.  Once students grasp how vowels influence the sound of the consonants and control the meaning of the words, they are only a step away from fluency.</p>
+          <p>Finally, a fun, systematic phonics program that is comprehension centered<Punc>!</Punc> <em>Fun-Time Phonics!</em>™ is a fun, easy-to-use program based on the scientific findings of the National Reading Commission<Punc>.</Punc> This program emphasizes sound/spelling patterns, vocabulary, and comprehension, not memorization<Punc>.</Punc> The colorful, game-like activities engage students through listening, thinking, speaking, and reading.</p>
+          <p><em>Fun-Time Phonics!</em>™ teaches students that spoken words are composed of individual sounds (phonemes), and those sounds are written with letters<Punc>.</Punc>  Armed with this understanding of how print works as a code, reading becomes much easier than other more complicated approaches<Punc>.</Punc>  This program ensures complete phonemic awareness mastery by focusing on vowel isolation, which is often the most challenging and important part of learning to read<Punc>.</Punc>  Once students grasp how vowels influence the sound of the consonants and control the meaning of the words, they are only a step away from fluency.</p>
           <p><em>Fun-Time Phonics!</em>™ is a classroom-proven program that:</p>
 
           <ul>

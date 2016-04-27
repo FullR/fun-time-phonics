@@ -163,14 +163,14 @@ export default class Lesson extends React.Component {
   }
 
   render() {
-    const {levelId, activityIndex, onNext, consonant, vowel} = this.props;
+    const {title, levelId, activityIndex, onNext, consonant, vowel} = this.props;
     const {choices, boy, letters, showingLetterIntro} = this.state;
 
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
-        <LessonTitle>Consonant "{consonant}" With Short Vowel "{vowel}"</LessonTitle>
+        <LessonTitle>{title}</LessonTitle>
         <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
         <DisplayBar position="top">

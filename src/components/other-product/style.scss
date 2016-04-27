@@ -9,7 +9,9 @@
   min-height: 152px;
 
   &:hover {
-    background: #f3f3ff;
+    .Other-product__content {
+      background: #f3f3ff;
+    }
   }
 
   &__thumbnail {
@@ -24,5 +26,7 @@
   &__content {
     flex: 1 1 auto;
     padding: 10px 15px 10px 15px;
+    margin-left: 10px;
+    border: 1px solid #444;
   }
 }

@@ -11,5 +11,8 @@ export default level({
   Activity,
   Response,
   Feedback,
-  activities
+  activities,
+  levelProps: {
+    title: "Review: Short Vowel Sounds"
+  }
 });

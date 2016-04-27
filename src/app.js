@@ -19,10 +19,6 @@ if(!!loadedState) {
   });
 }
 
-store.subscribe(() => {
-  //console.time("Saving");
-  storage.set("state", serialize(store.getState()));
-  //console.timeEnd("Saving");
-});
+store.subscribe(() => storage.set("state", serialize(store.getState())));
 
 ReactDOM.render(<Application/>, document.getElementById("game-container"));

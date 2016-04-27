@@ -12,6 +12,7 @@ export default ({id, activities, letter}) => level({
   Feedback,
   activities,
   levelProps: {
-    letter
+    letter,
+    title: `Review Consonants "b"-"${letter}" With Short Vowels`
   }
 });

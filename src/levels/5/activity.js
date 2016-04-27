@@ -77,7 +77,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices, selected} = this.state;
-    const {onAnswer, activityIndex, correctWord, showLesson} = this.props;
+    const {levelId, title, activityCount, onAnswer, activityIndex, correctWord, showLesson} = this.props;
 
     return (
       <Screen>
@@ -96,8 +96,8 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson 5: Rhyme Time<br/>
-          Activity {activityIndex + 1} of 19
+          Lesson {levelId}: {title}<br/>
+          Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

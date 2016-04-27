@@ -9,5 +9,8 @@ export default level({
   Activity,
   Response,
   Feedback,
-  activities
+  activities,
+  levelProps: {
+    title: "Say the Word"
+  }
 });

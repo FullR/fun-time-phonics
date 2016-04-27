@@ -3,6 +3,7 @@ import scene from "decorators/scene";
 import Response from "components/response";
 import Actor from "components/actor";
 import Word from "components/word";
+import ActivityTitle from "components/activity-title";
 const {Answer} = Response;
 
 @scene
@@ -58,7 +59,7 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {answer, correct, onNext} = this.props;
+    const {levelId, title, activityIndex, answer, correct, onNext} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
@@ -66,6 +67,10 @@ export default class LevelResponse extends React.Component {
         <Answer isCorrect={this.isCorrect()}>
           <Word word={answer.word}/>
         </Answer>
+        <ActivityTitle>
+          Lesson {levelId}: {title}<br/>
+          Activity {activityIndex + 1} of 15
+        </ActivityTitle>
       </Response>
     );
   }

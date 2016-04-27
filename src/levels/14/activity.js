@@ -75,7 +75,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices, showingReplaceWord} = this.state;
-    const {replaceWord, onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
+    const {title, replaceWord, onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
 
     return (
       <Screen>
@@ -100,7 +100,7 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson {levelId}: Forming New Words<br/>
+          Lesson {levelId}: {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

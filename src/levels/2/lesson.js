@@ -70,15 +70,15 @@ export default class Lesson1 extends React.Component {
   }
 
   render() {
-    const {activityIndex, onNext} = this.props;
+    const {title, levelId, activityIndex, onNext} = this.props;
     const {choices, boy} = this.state;
 
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
 
-        <LessonTitle>Ending Sounds</LessonTitle>
-        <LessonTitle.SubTitle>Lesson 2</LessonTitle.SubTitle>
+        <LessonTitle>{title}</LessonTitle>
+        <LessonTitle.SubTitle>Lesson {levelId}</LessonTitle.SubTitle>
 
         <DisplayBar>
           {choices.map((choice) =>

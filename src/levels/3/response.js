@@ -3,6 +3,7 @@ import scene from "decorators/scene";
 import Response from "components/response";
 import Actor from "components/actor";
 import Word from "components/word";
+import ActivityTitle from "components/activity-title";
 import wordSounds from "util/word-sounds";
 const {Answer} = Response;
 
@@ -51,7 +52,7 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {answer, onNext} = this.props;
+    const {levelId, title, activityIndex, activityCount, answer, onNext} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
@@ -62,8 +63,8 @@ export default class LevelResponse extends React.Component {
           )}
         </Answer>
         <ActivityTitle>
-          Lesson 3: Beginning and Ending Sounds<br/>
-          Activity {activityIndex + 1} of
+          Lesson {levelId}: {title}<br/>
+          Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
       </Response>
     );

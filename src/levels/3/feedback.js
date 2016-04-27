@@ -7,12 +7,12 @@ const {Score, Title, SubTitle} = ScoreScreen;
 export default class Feedback extends React.Component {
   render() {
     const state = store.getState();
-    const {score, max} = this.props;
+    const {title, levelId, score, max} = this.props;
 
     return (
       <ScoreScreen {...this.props}>
-        <Title>Beginning and Ending Sounds Are Complete!</Title>
-        <SubTitle>Lesson 1</SubTitle>
+        <Title>{title} Are Complete!</Title>
+        <SubTitle>Lesson {levelId}</SubTitle>
         <Score score={score} max={max}/>
       </ScoreScreen>
     )

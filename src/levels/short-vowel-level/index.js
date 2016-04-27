@@ -15,6 +15,7 @@ export default ({id, activities, vowel, lessonWords}) => level({
   activities,
   levelProps: {
     vowel,
-    lessonWords
+    lessonWords,
+    title: `Short Vowel "${vowel}" Sound`
   }
 });

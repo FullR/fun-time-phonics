@@ -56,7 +56,7 @@ export default class Activity extends React.Component {
   render() {
     const {rhymeWord} = this.props;
     const {girl, choices} = this.state;
-    const {onAnswer, activityIndex, correctWord, showLesson} = this.props;
+    const {levelId, title, activityIndex, activityCount, onAnswer, correctWord, showLesson} = this.props;
 
     return (
       <Screen>
@@ -78,8 +78,8 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson 4: Rhyme Match<br/>
-          Activity {activityIndex + 1} of 20
+          Lesson {levelId}: {title}<br/>
+          Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

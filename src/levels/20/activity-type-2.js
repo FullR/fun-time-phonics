@@ -64,7 +64,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices, showingWord} = this.state;
-    const {letter, onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
+    const {title, letter, onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
 
     return (
       <Screen>
@@ -88,7 +88,7 @@ export default class Activity extends React.Component {
         </DisplayBar>
 
         <ActivityTitle>
-          Lesson {levelId}: Review: Short Vowel Sounds<br/>
+          Lesson {levelId}: {title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

@@ -15,6 +15,7 @@ export default ({id, activities, consonant, vowel, lessonWords, lessonLetters}) 
     consonant,
     vowel,
     lessonWords,
-    lessonLetters
+    lessonLetters,
+    title: `Review: Consonant "${consonant}" With Short Vowels`
   }
 });

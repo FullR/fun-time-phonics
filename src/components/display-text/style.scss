@@ -1,0 +1,33 @@
+.Display-text {
+  display: inline-block;
+  text-align: center;
+
+  &--active {
+    color: green;
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &--size-large {
+    font-size: 250px;
+    width: 300px;
+    height: 300px;
+    line-height: 250px;
+  }
+
+  &--size-medium {
+    font-size: 175px;
+    width: 200px;
+    height: 200px;
+    line-height: 175px;
+  }
+
+  &--size-small {
+    font-size: 100px;
+    width: 125px;
+    height: 125px;
+    line-height: 100px;
+  }
+}

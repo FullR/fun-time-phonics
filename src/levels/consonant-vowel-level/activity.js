@@ -35,7 +35,7 @@ export default class Activity extends React.Component {
     return {
       ...wordSounds("girl", words),
       "drag the letters": "girl/common/drag-the-letters",
-      "letters": `girl/common/letters/${consonant}-${vowel}`,
+      "-letters": `girl/common/letters/${consonant}-${vowel}`,
       "to the word...": "girl/common/to-the-word-that-begins-with-that-sound"
     };
   }
@@ -49,7 +49,7 @@ export default class Activity extends React.Component {
     this.startCo(function*() {
       if(!wordsOnly) {
         yield this.say(girl, "drag the letters");
-        yield this.say(girl, "letters");
+        yield this.say(girl, "-letters"); // dash to avoid conflicting with the word "letters"
         yield this.say(girl, "to the word...");
       }
 
@@ -82,7 +82,7 @@ export default class Activity extends React.Component {
 
         <DisplayBar position="bottom">
           <DragContainer>
-            <PlayableDisplayText sound={this.getSound("letters")}>{consonant + vowel}</PlayableDisplayText>
+            <PlayableDisplayText sound={this.getSound("-letters")}>{consonant + vowel}</PlayableDisplayText>
           </DragContainer>
         </DisplayBar>
 

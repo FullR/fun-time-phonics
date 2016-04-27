@@ -25,7 +25,7 @@ export default class Lesson extends React.Component {
       choices: [
         ...(props.letterIntroWords || []).map((word) => ({ // letter into choices
           word,
-          id: word,
+          id: "intro-" + word,
           hidden: true,
           detached: true
         })),
@@ -85,7 +85,7 @@ export default class Lesson extends React.Component {
       if(letterIntro) {
         choices.all.set("detached", true);
         for(let word of letterIntroWords) {
-          choices[word].set("detached", false);
+          choices["intro-" + word].set("detached", false);
         }
 
         yield this.say(boy, "the letter");
@@ -106,7 +106,7 @@ export default class Lesson extends React.Component {
         }
 
         for(let word of letterIntroWords) {
-          choices[word].set("hidden", false);
+          choices["intro-" + word].set("hidden", false);
           yield this.say(boy, word);
           yield this.wait(100);
         }
@@ -120,7 +120,7 @@ export default class Lesson extends React.Component {
         yield this.wait(400);
         choices.all.set({hidden: true, detached: false});
         for(let word of letterIntroWords) {
-          choices[word].set("detached", true);
+          choices["intro-" + word].set("detached", true);
         }
         this.setState({showingLetterIntro: false});
       }

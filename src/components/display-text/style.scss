@@ -1,6 +1,7 @@
 .Display-text {
   display: inline-block;
   text-align: center;
+  cursor: default;
 
   &--active {
     color: green;

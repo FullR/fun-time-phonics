@@ -1,0 +1,22 @@
+export default [
+  {word: "gum", letters: ["u", "i", "a"], correctLetter: "u"},
+  {word: "pin", letters: ["o", "i", "u"], correctLetter: "i"},
+  {word: "cop", letters: ["u", "e", "o"], correctLetter: "o"},
+  {word: "men", letters: ["o", "u", "e"], correctLetter: "e"},
+  {word: "hat", letters: ["e", "i", "a"], correctLetter: "a"},
+  {word: "jet", letters: ["e", "o", "i"], correctLetter: "e"},
+  {word: "mud", letters: ["u", "o", "a"], correctLetter: "u"},
+  {word: "rob", letters: ["o", "u", "e"], correctLetter: "o"},
+  {word: "win", letters: ["u", "i", "e"], correctLetter: "i"},
+  {word: "tag", letters: ["o", "u", "a"], correctLetter: "a"},
+  {word: "cut", letters: ["o", "u", "a"], correctLetter: "u"},
+  {word: "wax", letters: ["a", "o", "u"], correctLetter: "a"},
+  {word: "lip", letters: ["e", "u", "i"], correctLetter: "i"},
+  {word: "top", letters: ["u", "i", "o"], correctLetter: "o"},
+  {word: "hen", letters: ["i", "o", "e"], correctLetter: "e"},
+  {word: "fix", letters: ["a", "i", "o"], correctLetter: "i"},
+  {word: "leg", letters: ["e", "i", "a"], correctLetter: "e"},
+  {word: "cab", letters: ["o", "a", "u"], correctLetter: "a"},
+  {word: "sun", letters: ["i", "u", "o"], correctLetter: "u"},
+  {word: "hill", letters: ["i", "a", "u"], correctLetter: "i"}
+];

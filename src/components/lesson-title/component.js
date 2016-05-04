@@ -11,7 +11,9 @@ export function LessonSubTitle(props) {
 export default function LessonTitle(props) {
   const classNames = cn("Lesson-title", props.className);
   return (
-    <div {...props} className={classNames}/>
+    <div {...props} className={classNames}>
+      {props.levelId}.&nbsp;&nbsp;{props.children}
+    </div>
   );
 };
 

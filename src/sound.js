@@ -16,6 +16,7 @@ export default class Sound extends EventEmitter {
       this.mp3Path = requireSound("./" + path + ".mp3");
       this.oggPath = requireSound("./" + path + ".ogg");
     } catch(error) {
+      console.log(`Failed to load sound: ${path}`);
       this.mp3Path = requireSound("./missing-sound.mp3");
       this.oggPath = requireSound("./missing-sound.ogg");
     }

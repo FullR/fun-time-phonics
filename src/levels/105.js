@@ -7,7 +7,7 @@ export default consonantVowelLevel({
   lessonWords: ["top", "tot", "tonic"],
   activities: [
     {words: ["tub", "top", "tap"], correctWord: "top"},
-    {words: ["Tim", "team", "Tom"], correctWord: "Top", wordsOnly: true},
+    {words: ["Tim", "team", "Tom"], correctWord: "Tom", wordsOnly: true},
     {words: ["toxic", "taxi", "tuxedo"], correctWord: "toxic", wordsOnly: true},
     {words: ["tickle", "tackle", "toddler"], correctWord: "toddler", wordsOnly: true},
     {words: ["tennis", "tonsil", "tunnel"], correctWord: "tonsil", wordsOnly: true},

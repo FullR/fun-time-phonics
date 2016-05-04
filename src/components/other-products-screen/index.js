@@ -90,7 +90,7 @@ export default class OtherProductsScreen extends React.Component {
           </OtherProduct>
 
           <OtherProduct {...otherProducts.wordRoots}>
-            <strong className={cn.el("op-title")}>Word Roots™</strong> (3 levels:  Grades 4–12+)<br/>
+            <strong className={cn.el("op-title")}>Word Roots™</strong> (3 levels:  Grades 5–12+)<br/>
             Students learn Greek and/or Latin word parts (prefixes, roots, suffixes), assemble words from parts, and apply words in context<Punc>.</Punc> These activities will add words to their vocabulary and greater depth to their thinking and writing.
           </OtherProduct>
         </Content>

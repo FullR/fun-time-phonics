@@ -1,8 +1,7 @@
 import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
-  
-  letterIntroWords: ["valley", "vest", "video", "volleyball", "vulture"],
+  letterIntroWords: ["valley", "vest", "video", "volleyball"],
   id: "109",
   consonant: "v",
   vowel: "a",

@@ -8,7 +8,6 @@ export default class Feedback extends React.Component {
     return (
       <ScoreScreen {...this.props}>
         <Title>{title} Is Complete!</Title>
-        <SubTitle>Lesson 13</SubTitle>
         <Score score={score} max={max}/>
       </ScoreScreen>
     );

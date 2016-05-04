@@ -62,18 +62,14 @@ export default class Activity extends React.Component {
     });
   }
 
-  showLesson() {
-    store.dispatch({type: actions.SHOW_LESSON, levelId: "1"});
-  }
-
   render() {
     const {girl, choices} = this.state;
-    const {title, levelId, onAnswer, activityIndex, correct} = this.props;
+    const {title, levelId, onAnswer, activityIndex, correct, showLesson} = this.props;
 
     return (
       <Screen>
         <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={this.showLesson.bind(this)}/>
+        <Actor type="boy" onClick={showLesson}/>
 
         <DisplayBar>
           {choices.map((choice) =>

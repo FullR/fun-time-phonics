@@ -25,7 +25,6 @@ export default class Feedback extends React.Component {
     return (
       <ScoreScreen {...this.props} score={score} max={max} onBack={onBack}>
         <Title>{this.props.title} Is Complete!</Title>
-        <SubTitle>Lesson {this.props.levelId}</SubTitle>
         <Score score={score} max={max}/>
       </ScoreScreen>
     );

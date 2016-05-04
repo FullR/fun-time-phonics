@@ -68,9 +68,7 @@ export default class Lesson extends React.Component {
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
-
-        <LessonTitle>Beginning Sounds</LessonTitle>
-        <LessonTitle.SubTitle>Lesson 1 /{letter}/</LessonTitle.SubTitle>
+        <LessonTitle levelId="1">Beginning Sounds</LessonTitle>
 
         <DisplayBar>
           {choices.map((choice) =>

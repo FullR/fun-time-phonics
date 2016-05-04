@@ -3,16 +3,23 @@
     padding: 30px;
   }
 
+  h3,
+  &__job-desc,
+  &__names,
+  &__isbn {
+    text-align: center;
+  }
+
+  h3 {
+    margin-top: 50px;
+  }
+
   &__job-desc {
     font-weight: bold;
   }
 
   &__names {
     margin-bottom: 20px;
-  }
-
-  &__isbn {
-    font-weight: bold;
   }
 
   em {

@@ -196,7 +196,6 @@ export default class Admin extends React.Component {
           <div className="Admin__section-box">
             <div className="Admin__nav">
               <div className="Admin__section-title">{title}</div>
-
               <div className="Admin__arrows">
                 {PrevSection ?
                   <Arrow onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped>{PrevSection.lessons}</Arrow> :

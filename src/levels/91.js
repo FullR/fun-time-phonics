@@ -12,6 +12,6 @@ export default consonantVowelLevel({
     {words: ["reptile", "ripple", "rattle"], correctWord: "reptile", wordsOnly: true},
     {words: ["rescue", "Rocco", "raccoon"], correctWord: "rescue", wordsOnly: true},
     {words: ["rocket", "racket", "rectangle"], correctWord: "rectangle", wordsOnly: true},
-    {words: ["runway", "raspberry", "resevoir"], correctWord: "resevoir", wordsOnly: true}
+    {words: ["runway", "raspberry", "reservoir"], correctWord: "reservoir", wordsOnly: true}
   ]
 });

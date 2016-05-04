@@ -127,7 +127,12 @@ import Level114 from "./114";
 import Level115 from "./115";
 import Level116 from "./116";
 import Level117 from "./117";
-
+import Level118 from "./118";
+import Level119 from "./119";
+import Level120 from "./120";
+import Level121 from "./121";
+import Level122 from "./122";
+import Level123 from "./123";
 
 const levels = {
   "1": Level1,
@@ -259,6 +264,12 @@ const levels = {
   "115": Level115,
   "116": Level116,
   "117": Level117,
+  "118": Level118,
+  "119": Level119,
+  "120": Level120,
+  "121": Level121,
+  "122": Level122,
+  "123": Level123,
 };
 
 levels.get = function getLevelFromId(levelId) {

@@ -1,10 +1,16 @@
 import level from "level";
-import Lesson from "./lesson";
+import LessonComponent from "./lesson";
 import Activity from "./activity";
 import Response from "./response";
 import Feedback from "./feedback";
 
-export default ({id, activities, letter}) => level({
+export default ({
+  id,
+  activities,
+  letter,
+  Lesson=LessonComponent,
+  title=`Review Consonants "b"-"${letter}" With Short Vowels`
+}) => level({
   id,
   Lesson,
   Activity,
@@ -13,6 +19,6 @@ export default ({id, activities, letter}) => level({
   activities,
   levelProps: {
     letter,
-    title: `Review Consonants "b"-"${letter}" With Short Vowels`
+    title
   }
 });

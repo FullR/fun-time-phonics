@@ -4,10 +4,9 @@ export default multiConsonantReview({
   id: "108",
   letter: "t",
   activities: [
-    {word: "tuck", letters: ["su", "tu", "qu"], correctLetters: "tu"},
+    {word: "tusk", letters: ["su", "tu", "qu"], correctLetters: "tu"},
     {word: "rest", letters: ["re", "se", "te"], correctLetters: "re", wordsOnly: true},
     {word: "sister", letters: ["ri", "si", "ti"], correctLetters: "si", wordsOnly: true},
-    {word: "jit", letters: ["gi", "ji", "qu"], correctLetters: "ji", wordsOnly: true},
     {word: "bat", letters: ["ba", "pa", "da"], correctLetters: "ba", wordsOnly: true},
     {word: "lift", letters: ["fi", "li", "ti"], correctLetters: "li", wordsOnly: true},
     {word: "run", letters: ["nu", "mu", "ru"], correctLetters: "ru", wordsOnly: true},
@@ -15,7 +14,7 @@ export default multiConsonantReview({
     {word: "soccer", letters: ["co", "ro", "so"], correctLetters: "so", wordsOnly: true},
     {word: "necklace", letters: ["ne", "ke", "he"], correctLetters: "ne", wordsOnly: true},
     {word: "tickle", letters: ["ki", "li", "ti"], correctLetters: "ti", wordsOnly: true},
-    {word: "goggles", letters: ["go", "jo", "qo"], correctLetters: "go", wordsOnly: true},
+    {word: "goggles", letters: ["go", "jo", "to"], correctLetters: "go", wordsOnly: true},
     {word: "duck", letters: ["bu", "pu", "du"], correctLetters: "du", wordsOnly: true},
     {word: "fit", letters: ["fi", "li", "ti"], correctLetters: "fi", wordsOnly: true},
     {word: "lobster", letters: ["ro", "lo", "to"], correctLetters: "lo", wordsOnly: true},
@@ -26,7 +25,6 @@ export default multiConsonantReview({
     {word: "toddler", letters: ["to", "lo", "do"], correctLetters: "to", wordsOnly: true},
     {word: "second", letters: ["ke", "se", "co"], correctLetters: "se", wordsOnly: true},
     {word: "kitten", letters: ["ki", "hi", "ti"], correctLetters: "ki", wordsOnly: true},
-    {word: "pigeon", letters: ["gi", "pi", "qi"], correctLetters: "pi", wordsOnly: true},
     {word: "numbers", letters: ["nu", "mu", "ru"], correctLetters: "nu", wordsOnly: true},
     {word: "measure", letters: ["re", "he", "me"], correctLetters: "me", wordsOnly: true}
   ]

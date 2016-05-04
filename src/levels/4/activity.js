@@ -63,7 +63,7 @@ export default class Activity extends React.Component {
         <Actor type="girl" {...girl}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
+        <DisplayBar position="top" style={{top: "8%"}}>
           <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")}/>
         </DisplayBar>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Splash from "components/splash";
 import Admin from "components/admin";
-import Level1 from "levels/1";
+import EndGameScreen from "components/end-game-screen";
 import store from "store";
 import actions from "store/actions";
 import storeListener from "decorators/store-listener";
@@ -51,17 +51,21 @@ export default class Application extends React.Component {
       case "admin": return (<Admin {...storeState} onShowLevel={this.showLevel.bind(this)}/>);
       case "current-level": {
         const levelData = levels.find((level) => level.id === currentLevelId);
-        const LevelComponent = levelComponents.get(currentLevelId);
+        const LevelComponent = levelComponents[currentLevelId];
 
-        return (
-          <LevelComponent {...levelData}
-            key={currentLevelId}
-            onNext={() => store.dispatch({
-              type: actions.COMPLETE_LEVEL,
-              levelId: currentLevelId
-            })}
-          />
-        );
+        if(LevelComponent) {
+          return (
+            <LevelComponent {...levelData}
+              key={currentLevelId}
+              onNext={() => store.dispatch({
+                type: actions.COMPLETE_LEVEL,
+                levelId: currentLevelId
+              })}
+            />
+          );
+        } else {
+          return (<EndGameScreen/>);
+        }
       }
     }
 

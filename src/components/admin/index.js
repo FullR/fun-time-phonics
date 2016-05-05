@@ -64,13 +64,16 @@ function resetLevel(levelId) {
 }
 
 export default class Admin extends React.Component {
+  static defaultProps = {currentLevelId: "126"};
+
   constructor(props) {
     super(props);
+    const currentLevelId = props.currentLevelId || "126";
 
     this.state = {
       authenticated: false,
-      currentLevel: props.currentLevelId.split("-")[0],
-      sectionIndex: getSection(props.currentLevelId),
+      currentLevel: currentLevelId.split("-")[0],
+      sectionIndex: getSection(currentLevelId),
       authenticated: false,
       infoScreen: null
     };
@@ -116,6 +119,7 @@ export default class Admin extends React.Component {
 
   showLevel() {
     const {currentLevel} = this.state;
+    if(!currentLevel) return;
     const {complete} = getLevelData(this.props, currentLevel);
     const [parentLevelId] = currentLevel.split("-");
 
@@ -161,7 +165,10 @@ export default class Admin extends React.Component {
       case "other-products": InfoScreen = OtherProductsScreen; break;
       case "about": InfoScreen = AboutScreen; break;
     }
-    if(InfoScreen) return (<InfoScreen onBack={this.closeInfoScreen.bind(this)}/>);
+
+    if(InfoScreen) {
+      return (<InfoScreen onBack={this.closeInfoScreen.bind(this)}/>);
+    }
 
     const levelData = getLevelData(this.props, currentLevel);
     const {title, lessons} = Section;

@@ -71,7 +71,7 @@ export default class Lesson extends React.Component {
 
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      this.setState({consonantDetached: false, consonantVisible: false});
+      this.setState({consonantDetached: false, consonantVisible: false, visibleLetters: []});
 
       yield this.say(boy, "the letter");
       this.setState({consonantVisible: true});

@@ -34,7 +34,7 @@ export default class Lesson extends React.Component {
     return {
       ...wordSounds("boy", lessonWords),
       "the letter": "boy/common/the-letter",
-      "letter": `boy/common/letters/${letter}`,
+      "letter": `boy/common/${letter}`,
       "looks like this": "boy/common/looks-like-this",
       "makes the": "boy/common/makes-the",
       "phonic": `boy/common/phonics/_${letter}h_`,

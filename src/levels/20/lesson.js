@@ -40,11 +40,11 @@ export default class Lesson extends React.Component {
       "say each letters sound": "boy/common/say-each-letters-sound",
       "then touch...": "boy/common/then-touch-the-green-arrow-to-begin",
 
-      "a": "boy/common/letters/a",
-      "e": "boy/common/letters/e",
-      "i": "boy/common/letters/i",
-      "o": "boy/common/letters/o",
-      "u": "boy/common/letters/u",
+      "a": "boy/common/a",
+      "e": "boy/common/e",
+      "i": "boy/common/i",
+      "o": "boy/common/o",
+      "u": "boy/common/u",
 
       "ah": "boy/common/phonics/_ah_",
       "eh": "boy/common/phonics/_eh_",

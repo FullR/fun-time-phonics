@@ -34,7 +34,7 @@ export default class Activity extends React.Component {
   getSounds() {
     const {word, letters, consonant} = this.props;
     return {
-      ...toPairs(letters, (letters) => [letters, `girl/common/letters/${letters.split("").join("-")}`]),
+      ...toPairs(letters, (letters) => [letters, `girl/common/${letters.split("").join("-")}`]),
       "drag the letters that begin the word": "girl/common/drag-the-letters-that-begin-the-word",
       "word": `girl/words/${word}`,
       "to the picture": "girl/common/to-the-picture"

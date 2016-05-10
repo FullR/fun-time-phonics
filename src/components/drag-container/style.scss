@@ -1,3 +1,5 @@
 .Drag-container {
   display: inline-block;
+  overflow: hidden;
+  cursor: grab;
 }

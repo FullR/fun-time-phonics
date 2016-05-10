@@ -20,13 +20,14 @@ export default class LevelResponse extends React.Component {
   getSounds() {
     const {answer, consonant, vowel} = this.props;
     const sounds = {
-      "letters": `girl/common/letters/${consonant}-${vowel}`,
+      "letters": `girl/common/${consonant}-${vowel}`,
       "phonic": `girl/common/phonics/_${consonant}${vowel}h_`,
       "answer-word": `girl/words/${answer.word}`,
     };
 
     if(answer.correct) {
       sounds["applause"] = "applause";
+      sounds["correct"] = "girl/common/correct";
       sounds["begins with the"] = "girl/common/begins-with-the";
       sounds["sound so it begins with"] = "girl/common/sound-so-it-begins-with";
 
@@ -45,6 +46,7 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "answer-word");
         yield this.say(girl, "begins with the");
         yield this.say(girl, "phonic");

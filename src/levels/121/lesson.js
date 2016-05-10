@@ -47,7 +47,7 @@ export default class Lesson extends React.Component {
         return sounds;
       }, {}),
       ...letters.reduce((sounds, letters) => {
-        sounds[letters] = `boy/common/letters/${letters.split("").join("-")}`;
+        sounds[letters] = `boy/common/${letters.split("").join("-")}`;
         sounds[letters + "-phonic"] = `boy/common/phonics/_${letters}h_`;
         return sounds;
       }, {}),
@@ -131,7 +131,7 @@ export default class Lesson extends React.Component {
           )}
         </DisplayBar>
 
-        <DisplayBar position="bottom" style={{bottom: "24%"}}>
+        <DisplayBar position="bottom" style={{bottom: "20%"}}>
           {attachedChoices.map((choice) =>
             <WordSoundPlayBox {...choice}
               size="medium"

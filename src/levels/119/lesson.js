@@ -44,12 +44,12 @@ export default class Lesson extends React.Component {
       "yonder": "boy/words/yonder",
       "yuck": "boy/words/yuck",
 
-      "y": "boy/common/letters/y",
-      "ya": "boy/common/letters/y-a",
-      "ye": "boy/common/letters/y-e",
-      "yi": "boy/common/letters/y-i",
-      "yo": "boy/common/letters/y-o",
-      "yu": "boy/common/letters/y-u",
+      "y": "boy/common/y",
+      "ya": "boy/common/y-a",
+      "ye": "boy/common/y-e",
+      "yi": "boy/common/y-i",
+      "yo": "boy/common/y-o",
+      "yu": "boy/common/y-u",
 
       "ya-phonic": "boy/common/phonics/_yah_",
       "ye-phonic": "boy/common/phonics/_yeh_",

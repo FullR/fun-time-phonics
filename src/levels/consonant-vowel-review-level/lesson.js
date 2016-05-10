@@ -35,7 +35,7 @@ export default class Lesson extends React.Component {
     const {lessonLetters, lessonWords} = this.props;
     return {
       ...toPairs(lessonWords, (word, i) => [`word-${i}`, `boy/words/${word}`]),
-      ...toPairs(lessonLetters, (letters, i) => [`letter-${i}`, `boy/common/letters/${letters.split("").join("-")}`]),
+      ...toPairs(lessonLetters, (letters, i) => [`letter-${i}`, `boy/common/${letters.split("").join("-")}`]),
       ...toPairs(lessonLetters, (letters, i) => [`phonic-${i}`, `boy/common/phonics/_${letters}h_`]),
       "lets review...": "boy/common/lets-review-the-sounds-we-just-learned",
       "the letters": "boy/common/the-letters",

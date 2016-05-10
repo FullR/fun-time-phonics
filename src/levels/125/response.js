@@ -7,6 +7,10 @@ import scene from "decorators/scene";
 
 const {Answer} = Response;
 
+const vowels = "aeiou".split("");
+
+const letterPhonic = (letter) => `girl/common/phonics/_${letter}${vowels.includes(letter) ? "h" : ""}_`;
+
 @scene
 export default class LevelResponse extends React.Component {
   constructor(props) {
@@ -26,23 +30,24 @@ export default class LevelResponse extends React.Component {
     if(answer.correct) {
       Object.assign(sounds, {
         "applause": "applause",
-        "spelled-word": `girl/common/spelled-words/${answer.word}`,
+        "correct": "girl/common/correct",
+        "spelled-word": `girl/common/${answer.word.split("").join("-")}`,
         "spells": "girl/common/spells"
       });
     } else {
       const incorrectType = incorrectTypes[answer.word];
       const {type, letter} = incorrectType;
       Object.assign(sounds, {
-        "correct-phonic": `girl/common/phonics/_${letter}h_`,
-        "correct-letter": `girl/common/letters/${letter}`,
+        "correct-phonic": letterPhonic(letter),
+        "correct-letter": `girl/common/${letter}`,
       });
 
       switch(type) {
         case "beginning":
           Object.assign(sounds, {
             "begins with": "girl/common/begins-with",
-            "answer-phonic": `girl/common/phonics/_${incorrectType.correctLetter}h_`,
-            "answer-letter": `girl/common/letters/${incorrectType.correctLetter}`,
+            "answer-phonic": letterPhonic(incorrectType.correctLetter),
+            "answer-letter": `girl/common/${incorrectType.correctLetter}`,
             "not": "girl/common/not",
             "so it is not spelled with a": "girl/common/so-it-is-not-spelled-with-a"
           });
@@ -73,6 +78,7 @@ export default class LevelResponse extends React.Component {
     if(correct) {
       this.startCo(function*() {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "spelled-word");
         yield this.say(girl, "spells");
         yield this.say(girl, "answer-word");

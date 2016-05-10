@@ -21,13 +21,14 @@ export default class LevelResponse extends React.Component {
     const {letter, answer} = this.props;
     const sounds = {
       "phonic": `girl/common/phonics/_${letter}h_`,
-      "letter": `girl/common/letters/${letter}`,
+      "letter": `girl/common/${letter}`,
       "in it": "girl/common/in-it",
       "answer-word": `girl/words/${answer.word}`
     };
 
     if(answer.correct) {
       sounds["applause"] = "applause";
+      sounds["correct"] = "girl/common/correct";
       sounds["makes the"] = "girl/common/makes-the",
       sounds["sound so"] = "girl/common/sound-so",
       sounds["has an"] = "girl/common/has-an";

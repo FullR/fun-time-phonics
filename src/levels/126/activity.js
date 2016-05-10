@@ -6,14 +6,19 @@ import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
 import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
-import WordSoundPlayBox from "components/word-sound-play-box";
 import DisplayText from "components/display-text";
+import DragContainer from "components/drag-container";
+import DropContainer from "components/drop-container";
+import Word from "components/word";
+import DisplayBox from "components/display-box";
+import dndContext from "dnd-context";
 
 const wordStyle = {
   fontSize: 120,
   cursor: "default"
 };
 
+@dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -26,8 +31,7 @@ export default class Activity extends React.Component {
       },
       choices: props.words.map((word) => ({
         word,
-        id: word,
-        hidden: true
+        id: word
       }))
     };
   }
@@ -36,7 +40,7 @@ export default class Activity extends React.Component {
     const {words, wordsOnly} = this.props;
     return {
       ...wordSounds("girl", words),
-      "read both words...": "girl/common/read-both-words-then-touch-the-correct-picture"
+      "read both words...": "girl/common/read-both-words-then-drag-the-words-to-the-correct-picture"
     };
   }
 
@@ -47,18 +51,17 @@ export default class Activity extends React.Component {
   animate(wordsOnly) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      choices.all.set("hidden", true);
       if(!wordsOnly) {
         yield this.say(girl, "read both words...");
         yield this.wait(200);
       }
-      for(let choice of choices) {
-        choice.set("hidden", false);
-        yield this.say(girl, choice.get("word"));
-        yield this.wait(100);
-      }
       girl.set({speaking: false, animating: false});
     });
+  }
+
+  onDrop(word) {
+    const {onAnswer, correctWord} = this.props;
+    onAnswer({word, correct: word === correctWord});
   }
 
   render() {
@@ -71,16 +74,18 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}/>
 
         <DisplayBar position="top">
-          <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
+          <DropContainer onDrop={this.onDrop.bind(this)}>
+            <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
+          </DropContainer>
         </DisplayBar>
 
         <DisplayBar position="bottom">
           {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            />
+            <DisplayBox {...choice} key={choice.id} noSoundWave>
+              <DragContainer value={choice.word}>
+                <Word word={choice.word}/>
+              </DragContainer>
+            </DisplayBox>
           )}
         </DisplayBar>
 

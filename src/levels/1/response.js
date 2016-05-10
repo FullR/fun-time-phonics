@@ -29,6 +29,7 @@ export default class LevelResponse extends React.Component {
     const {word} = this.props.answer;
     return {
       applause: "applause",
+      correct: "girl/common/correct",
       word: `girl/words/${word}`,
       "begins-with": "girl/common/begins-with",
       "does-not-begin-with": "girl/common/does-not-begin-with",
@@ -43,6 +44,7 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "word");
         yield this.say(girl, "begins-with");
         yield this.say(girl, "t");

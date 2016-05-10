@@ -36,7 +36,7 @@ export default class Activity extends React.Component {
     return {
       ...wordSounds("girl", words),
       "drag the letter": "girl/common/drag-the-letter",
-      "x": "girl/common/letters/x",
+      "x": "girl/common/x",
       "to the word...": "girl/common/to-the-word-that-ends-with-that-sound"
     };
   }

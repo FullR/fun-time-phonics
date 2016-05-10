@@ -5,6 +5,8 @@ import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
 import scene from "decorators/scene";
+import DisplayBar from "components/display-bar";
+import WordSoundPlayBox from "components/word-sound-play-box";
 
 @scene
 export default class Lesson extends React.Component {
@@ -15,14 +17,18 @@ export default class Lesson extends React.Component {
         size: "large",
         speaking: true
       },
-      choices: []
+      choices: [{id: "fan", word: "fan", hidden: true}]
     };
   }
 
   getSounds() {
     return {
-      "when reading a word...": "boy/common/lesson125-instructions",
-      "touch the...": "boy/common/touch-the-green-arrow-to-begin"
+      "when reading a word...": "boy/common/when-reading-a-word-look-at-the-middle-letter-first",
+      "then say...": "boy/common/then-say-the-beginning-and-middle-sounds-together",
+      "finally...": "boy/common/finally-add-the-ending-sound",
+      "touch the...": "boy/common/touch-the-green-arrow-to-begin",
+      "fa": "boy/common/phonics/_f_ah_",
+      "fan": "boy/common/phonics/_f_a_n_"
     };
   }
 
@@ -31,7 +37,14 @@ export default class Lesson extends React.Component {
 
     this.startCo(function*() {
       choices.all.set("hidden", true);
+      boy.set("size", "large");
       yield this.say(boy, "when reading a word...");
+      yield this.say(boy, "then say...");
+      yield this.say(boy, "fa");
+      yield this.say(boy, "finally...");
+      boy.set("size", "small");
+      choices.fan.set("hidden", false);
+      yield this.say(boy, "fan");
       yield this.wait(300);
       yield this.say(boy, "touch the...");
       boy.set({speaking: false, animating: false});
@@ -41,11 +54,16 @@ export default class Lesson extends React.Component {
   render() {
     const {levelId, title, activityIndex, onNext} = this.props;
     const {choices, boy} = this.state;
+    const fan = choices[0];
 
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
+
+        <DisplayBar>
+          <WordSoundPlayBox {...fan} sound={this.getSound("fan")}/>
+        </DisplayBar>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

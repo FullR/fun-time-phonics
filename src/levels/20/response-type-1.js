@@ -20,13 +20,14 @@ export default class LevelResponse extends React.Component {
   getSounds() {
     const {answer, word} = this.props;
     const sounds = {
-      "letter": `girl/common/letters/${answer.letter}`,
+      "letter": `girl/common/${answer.letter}`,
       "phonic": `girl/common/phonics/_${answer.letter}h_`,
       "word": `girl/words/${word}`
     };
 
     if(answer.correct) {
       sounds["applause"] = "applause";
+      sounds["correct"] = "girl/common/correct";
       sounds["makes the"] = "girl/common/makes-the";
       sounds["sound in"] = "girl/common/sound-in";
     } else {
@@ -45,12 +46,21 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "letter");
         yield this.say(girl, "makes the");
         yield this.say(girl, "phonic");
         yield this.say(girl, "sound in");
         yield this.say(girl, "word");
       } else {
+        yield this.say(girl, "word");
+        yield this.say(girl, "does not make the");
+        yield this.wait(100);
+        yield this.say(girl, "phonic");
+        yield this.say(girl, "sound so there is no");
+        yield this.say(girl, "letter");
+        yield this.say(girl, "in");
+        yield this.say(girl, "word");
         this.setState({arrowHidden: false});
       }
       girl.set({speaking: false, animating: false});

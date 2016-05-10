@@ -50,7 +50,7 @@ export default class Lesson extends React.Component {
       "when we read the letters": "boy/common/when-we-read-the-letters",
       "they tell us to say": "boy/common/they-tell-us-to-say",
       "touch the green...": "boy/common/touch-the-green-arrow-to-begin",
-      "letters": `boy/common/letters/${consonant}-${vowel}`,
+      "letters": `boy/common/${consonant}-${vowel}`,
       "phonic": `boy/common/phonics/_${consonant}${vowel}h_`
     };
 
@@ -58,7 +58,7 @@ export default class Lesson extends React.Component {
       Object.assign(sounds, {
         ...wordSounds("boy", letterIntroWords),
         "the letter": "boy/common/the-letter",
-        "consonant": `boy/common/letters/${consonant}`,
+        "consonant": `boy/common/${consonant}`,
         "looks like this": "boy/common/looks-like-this",
         "makes the beginning sound of": "boy/common/makes-the-beginning-sound-of"
       });
@@ -67,7 +67,7 @@ export default class Lesson extends React.Component {
     if(consonant === "q") {
       Object.assign(sounds, {
         "is always followed by the letter": "boy/common/is-always-followed-by-the-letter",
-        "vowel": `boy/common/letters/${vowel}`
+        "vowel": `boy/common/${vowel}`
       });
     }
 

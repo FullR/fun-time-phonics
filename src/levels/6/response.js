@@ -24,7 +24,8 @@ export default class LevelResponse extends React.Component {
       word: `girl/words/${answer.word}`
     };
     if(answer.correct) {
-      sounds.applause = "applause";
+      sounds["applause"] = "applause";
+      sounds["correct"] = "girl/common/correct";
       sounds["makes"] = "girl/common/makes";
     } else {
       sounds["does not make"] = `girl/common/does-not-make`;
@@ -39,8 +40,10 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "spell-word");
         yield this.say(girl, "makes");
+        yield this.wait(250);
         yield this.say(girl, "word");
       } else {
         yield this.say(girl, "spell-word");

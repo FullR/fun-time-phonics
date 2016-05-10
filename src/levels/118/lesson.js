@@ -36,7 +36,7 @@ export default class Lesson extends React.Component {
       "ox": "boy/words/ox",
       "tux": "boy/words/tux",
       "the letter": "boy/common/the-letter",
-      "x": "boy/common/letters/x",
+      "x": "boy/common/x",
       "looks like this": "boy/common/looks-like-this",
       "makes the ending sound of": "boy/common/makes-the-ending-sound-of",
       "words such as": "boy/common/words-such-as",

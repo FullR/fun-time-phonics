@@ -8,7 +8,13 @@ import DisplayBar from "components/display-bar";
 import DisplayText from "components/display-text";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
+import SoundPlayBox from "components/sound-play-box";
+import Word from "components/word";
+import DragContainer from "components/drag-container";
+import DropContainer from "components/drop-container";
+import dndContext from "dnd-context";
 
+@dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -31,7 +37,7 @@ export default class Activity extends React.Component {
     const {words} = this.props;
     return {
       ...wordSounds("girl", words),
-      "read the words...": "girl/common/read-the-word-and-touch-the-correct-picture"
+      "read the words...": "girl/common/read-the-word-then-drag-the-word-to-the-correct-picture"
     };
   }
 
@@ -53,6 +59,14 @@ export default class Activity extends React.Component {
     });
   }
 
+  onDrop(word) {
+    const {onAnswer, correctWord} = this.props;
+    onAnswer({
+      word,
+      correct: word === correctWord
+    });
+  }
+
   render() {
     const {girl, choices} = this.state;
     const {levelId, title, onAnswer, activityIndex, correctWord, showLesson, activityCount} = this.props;
@@ -62,17 +76,19 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
-          <DisplayText>{correctWord}</DisplayText>
+        <DisplayBar position="top" style={{top: "10%"}}>
+          <DropContainer onDrop={this.onDrop.bind(this)}>
+            <DisplayText>{correctWord}</DisplayText>
+          </DropContainer>
         </DisplayBar>
 
         <DisplayBar position="bottom">
           {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            />
+            <SoundPlayBox {...choice} key={choice.id} sound={this.getSound(choice.word)}>
+              <DragContainer value={choice.word}>
+                <Word word={choice.word}/>
+              </DragContainer>
+            </SoundPlayBox>
           )}
         </DisplayBar>
 

@@ -63,11 +63,11 @@ export default class Activity extends React.Component {
         <Actor type="girl" {...girl}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top" style={{top: "8%"}}>
+        <DisplayBar position="top" style={{top: "6%"}}>
           <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")}/>
         </DisplayBar>
 
-        <DisplayBar position="bottom">
+        <DisplayBar position="bottom" style={{bottom: "10%"}}>
           {choices.map((choice) =>
             <WordSoundPlayBox {...choice}
               key={choice.id}

@@ -9,16 +9,6 @@ function local(localpath) {
   return path.resolve(path.join(__dirname, localpath ? ("/" + localpath) : ""));
 }
 
-function loader(name, options) {
-  if(options) {
-    return name + "?" + _.pairs(options).map(function(value, key) {
-      return key + "=" + value;
-    }).join("&")
-  } else {
-    return name;
-  }
-}
-
 module.exports = {
   //devtool: "source-map",
   entry: local("src/entry.js"),

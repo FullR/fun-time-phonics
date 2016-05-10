@@ -42,11 +42,11 @@ export default class Lesson extends React.Component {
       "zipper": "boy/words/zipper",
       "zombie": "boy/words/zombie",
 
-      "z": "boy/common/letters/z",
-      "za": "boy/common/letters/z-a",
-      "ze": "boy/common/letters/z-e",
-      "zi": "boy/common/letters/z-i",
-      "zo": "boy/common/letters/z-o",
+      "z": "boy/common/z",
+      "za": "boy/common/z-a",
+      "ze": "boy/common/z-e",
+      "zi": "boy/common/z-i",
+      "zo": "boy/common/z-o",
 
       "za-phonic": "boy/common/phonics/_zah_",
       "ze-phonic": "boy/common/phonics/_zeh_",

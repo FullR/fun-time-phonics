@@ -34,7 +34,8 @@ export default class Activity extends React.Component {
   getSounds() {
     const {word} = this.props;
     return {
-      "drag the correct vowel...": "girl/common/drag-the-correct-vowel-to-the-word",
+      "drag the vowel in": "girl/common/drag-the-vowel-in",
+      "to the picture": "girl/common/to-the-picture",
       "word": `girl/words/${word}`
     };
   }
@@ -46,8 +47,9 @@ export default class Activity extends React.Component {
   animate() {
     const {girl, choices} = this;
     this.startCo(function*() {
-      yield this.say(girl, "drag the correct vowel...");
+      yield this.say(girl, "drag the vowel in");
       yield this.say(girl, "word");
+      yield this.say(girl, "to the picture");
     });
   }
 

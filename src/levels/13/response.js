@@ -30,6 +30,7 @@ export default class LevelResponse extends React.Component {
 
     if(answer.correct) {
       sounds.applause = "applause";
+      sounds.correct = "girl/common/correct";
       sounds["make the same"] = "girl/common/make-the-same";
     } else {
       sounds["make the"] = "girl/common/make-the";
@@ -48,6 +49,8 @@ export default class LevelResponse extends React.Component {
 
     this.startCo(function*() {
       if(correct) {
+        yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "correct-word-1");
         yield this.say(girl, "and");
         yield this.say(girl, "correct-word-2");

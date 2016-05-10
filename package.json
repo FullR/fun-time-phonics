@@ -1,6 +1,6 @@
 {
   "name": "fun-time-refactored",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",
@@ -55,6 +55,7 @@
     "loader-utils": "^0.2.14",
     "mocha": "^2.4.5",
     "mocha-jsdom": "^1.0.0",
+    "multi-loader": "^0.1.0",
     "node-sass": "^3.3.3",
     "pace": "0.0.4",
     "progress": "^1.1.8",

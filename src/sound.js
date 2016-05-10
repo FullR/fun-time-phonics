@@ -4,6 +4,8 @@ import defer from "util/defer";
 
 const requireSound = require.context("../audio", true, /\.(ogg|mp3)$/);
 
+window._requireSound = requireSound;
+
 export default class Sound extends EventEmitter {
   constructor({path, debug=false}={}) {
     super();

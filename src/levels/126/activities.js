@@ -84,7 +84,7 @@ export default [
     "fun-park": "this-is-fun-at-an-amusement-park",
     "sleeping": "sleeping-is-not-fun"
   }},
-  {words: ["lit-torch", "unlit-candle", "lit-flashlight"], correctWord: "unlit-candle", wordsOnly: true, responsePhrases: {
+  {words: ["lit-torch", "unlit-candle", "lit-flashlight"], correctWord: "unlit-candle", wordText: "not lit", wordsOnly: true, responsePhrases: {
     "lit-torch": "this-torch-is-lit",
     "lit-flashlight": "this-flashlight-is-lit",
     "unlit-candle": "this-candle-is-not-lit"

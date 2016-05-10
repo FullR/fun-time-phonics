@@ -28,6 +28,7 @@ export default class LevelResponse extends React.Component {
     return {
       ...wordSounds("girl", exampleWords),
       applause: "applause",
+      correct: "girl/common/correct",
       word: `girl/words/${answer.word}`,
       "does not end with...": "girl/common/does-not-end-with-the-same-sound-as",
       "ends with the...": "girl/common/ends-with-the-same-sound-as",
@@ -43,6 +44,7 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct"); yield this.wait(200);
         yield this.say(girl, "word");
         yield this.say(girl, "ends with the...");
         yield this.say(girl, exampleWords[0]);

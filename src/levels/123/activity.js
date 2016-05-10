@@ -34,19 +34,22 @@ export default class Activity extends React.Component {
   getSounds() {
     const {word} = this.props;
     return {
-      "drag the ending letter...": "girl/common/drag-the-ending-letter-to-the-word",
+      "drag the letter...": "girl/common/drag-the-letter-that-ends-the-word",
       "word": `girl/words/${word}`
     };
   }
 
   autoplay() {
-    this.animate();
+    this.animate(this.props.wordsOnly);
   }
 
-  animate() {
+  animate(wordOnly) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      yield this.say(girl, "drag the ending letter...");
+      if(!wordOnly) {
+        yield this.say(girl, "drag the letter...");
+        yield this.wait(150);
+      }
       yield this.say(girl, "word");
     });
   }

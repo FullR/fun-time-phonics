@@ -15,13 +15,13 @@ export default [
     "wet-cat": "this-is-a-wet-cat"
   }},
   {words: ["sad-kid", "mad-kid", "happy-kid"], correctWord: "sad-kid", wordsOnly: true, responsePhrases: {
-    "mad-kid": "this-kid-is-mad-not-sad",
-    "happy-kid": "this-kid-is-happy-not-sad",
+    "mad-kid": "this-is-a-mad-kid-not-a-sad-kid",
+    "happy-kid": "this-is-a-happy-kid-not-a-sad-kid",
     "sad-kid": "this-is-a-sad-kid"
   }},
-  {words: ["sick-man", "six-men", "four-men"], correctWord: "six-men", wordsOnly: true, responsePhrases: {
-    "sick-man": "this-is-a-sick-man-not-six-men",
-    "four-men": "this-is-four-men-not-six",
+  {words: ["sick-men", "three-mitts", "six-men"], correctWord: "six-men", wordsOnly: true, responsePhrases: {
+    "sick-men": "this-is-two-sick-men-not-six-men",
+    "three-mitts": "this-is-three-mitts-not-six-men",
     "six-men": "this-is-six-men"
   }},
   {words: ["hot-pot", "hot-pet", "hat-pot"], correctWord: "hot-pot", wordsOnly: true, responsePhrases: {
@@ -29,9 +29,9 @@ export default [
     "hat-pot": "this-is-a-pot-hat-not-a-hot-pot",
     "hot-pot": "this-is-a-hot-pot"
   }},
-  {words: ["boxer-top", "box-top", "box-tape"], correctWord: "box-top", wordsOnly: true, responsePhrases: {
-    "boxer-top": "this-is-the-top-of-a-boxer-not-a-box-top",
-    "box-tape": "this-is-box-tape-not-a-box-top",
+  {words: ["boxer", "bus-top", "box-top"], correctWord: "box-top", wordsOnly: true, responsePhrases: {
+    "boxer": "this-is-a-boxer-not-a-box-top",
+    "bus-top": "this-is-a-bus-top-not-a-box-top",
     "box-top": "this-is-a-box-top"
   }},
   {words: ["peg-leg", "pigs-logs", "pig-leg"], correctWord: "pig-leg", wordsOnly: true, responsePhrases: {
@@ -60,7 +60,7 @@ export default [
     "red-gum": "this-is-a-red-gum"
   }},
   {words: ["tiny-cup", "ten-cups", "tin-cup"], correctWord: "tin-cup", wordsOnly: true, responsePhrases: {
-    "tiny-cup": "this-is-a-tiny-cup-not-a-tin-cup",
+    "tiny-cup": "this-is-a-paper-cup-not-a-tin-cup",
     "ten-cups": "this-is-ten-cups-not-a-tin-cup",
     "tin-cup": "this-is-a-tin-cup"
   }},
@@ -84,19 +84,19 @@ export default [
     "fun-park": "this-is-fun-at-an-amusement-park",
     "sleeping": "sleeping-is-not-fun"
   }},
-  {words: ["lit-torch", "unlit-candle", "lit-flashlight"], correctWord: "unlit-candle", wordText: "not lit", wordsOnly: true, responsePhrases: {
+  {words: ["lit-torch", "unlit-candle", "fire"], correctWord: "unlit-candle", wordText: "not lit", wordsOnly: true, responsePhrases: {
     "lit-torch": "this-torch-is-lit",
-    "lit-flashlight": "this-flashlight-is-lit",
+    "fire": "this-fire-is-lit",
     "unlit-candle": "this-candle-is-not-lit"
   }},
-  {words: ["wet-stream", "wet-dolphin", "not-wet"], correctWord: "not-wet", wordsOnly: true, responsePhrases: {
+  {words: ["wet-stream", "wet-kid", "not-wet"], correctWord: "not-wet", wordsOnly: true, responsePhrases: {
     "wet-stream": "this-river-or-stream-is-wet",
-    "wet-dolphin": "this-swimming-dolphin-is-wet",
+    "wet-kid": "this-kid-is-wet",
     "not-wet": "the-people-under-the-umbrella-are-not-wet"
   }},
-  {words: ["fishing", "hot-tanning", "hot-pepper"], correctWord: "fishing", wordText: "not hot", wordsOnly: true, responsePhrases: {
-    "hot-tanning": "tanning-in-the-sun-is-hot",
-    "hot-pepper": "a-hot-pepper-tastes-hot",
-    "fishing": "this-fisherman-is-not-hot"
+  {words: ["fishing", "hot-tanning", "fire"], correctWord: "fishing", wordText: "not hot", wordsOnly: true, responsePhrases: {
+    "hot-tanning": "this-man-lying-in-the-sun-is-hot",
+    "fishing": "this-fisherman-is-not-hot",
+    "fire": "this-fire-is-hot"
   }}
 ];

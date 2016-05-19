@@ -4,7 +4,7 @@ import Lesson from "./lesson";
 export default multiConsonantReviewLevel({
   Lesson,
   id: "121",
-  title: "Review: Consonants \"y\" and \"z\" With Short Vowels",
+  title: "Consonants \"y\" and \"z\" With Short Vowels",
   letter: "z",
   activities: [
     {word: "yuck", letters: ["yi", "ye", "yu"], correctLetters: "yu"},

@@ -4,7 +4,7 @@ export default consonantVowelLevel({
   id: "78",
   consonant: "n",
   vowel: "i",
-  lessonWords: ["nit", "nickel", "ninja"],
+  lessonWords: ["nibble", "nickel", "ninja"],
   activities: [
     {words: ["Nick", "knock", "neck"], correctWord: "Nick"},
     {words: ["nickel", "nugget", "necklace"], correctWord: "nickel", wordsOnly: true},

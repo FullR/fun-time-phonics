@@ -1,4 +1,5 @@
 import React from "react";
+import bembam from "bembam";
 import {version} from "../../../package";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
@@ -21,27 +22,7 @@ function getSection(levelId) {
     levelId = levelId.split("-")[0];
   }
   levelId = parseInt(levelId);
-  if(levelId <= 7) {
-    return 0;
-  } else if(levelId <= 14) {
-    return 1;
-  } else if(levelId <= 20) {
-    return 2;
-  } else if(levelId <= 43) {
-    return 3;
-  } else if(levelId <= 63) {
-    return 4;
-  } else if(levelId <= 88) {
-    return 5;
-  } else if(levelId <= 108) {
-    return 6;
-  } else if(levelId <= 122) {
-    return 7;
-  } else if(levelId <= 127) {
-    return 8;
-  } else {
-    return 9;
-  }
+  return sections.findIndex(({levelRange}) => levelId >= levelRange[0] && levelId <= levelRange[1])
 }
 
 function getLevel(levelId) {
@@ -64,16 +45,13 @@ function resetLevel(levelId) {
 }
 
 export default class Admin extends React.Component {
-  static defaultProps = {currentLevelId: "126"};
-
   constructor(props) {
     super(props);
-    const currentLevelId = props.currentLevelId || "126";
 
     this.state = {
       authenticated: false,
-      currentLevel: currentLevelId.split("-")[0],
-      sectionIndex: getSection(currentLevelId),
+      currentLevel: props.currentLevelId.split("-")[0],
+      sectionIndex: getSection(props.currentLevelId),
       authenticated: false,
       infoScreen: null
     };
@@ -171,7 +149,7 @@ export default class Admin extends React.Component {
     }
 
     const levelData = getLevelData(this.props, currentLevel);
-    const {title, lessons} = Section;
+    const {title, levelRange, Description} = Section;
     let arrowText;
     let arrowStyle;
 
@@ -191,8 +169,12 @@ export default class Admin extends React.Component {
       onClick: this.selectLevel.bind(this, levelId)
     });
 
+    const className = bembam("Admin")
+      .mod("next-arrow-hidden", !NextSection)
+      .mod("prev-arrow-hidden", !PrevSection);
+
     return (
-      <Screen className="Admin">
+      <Screen className={className.toString()}>
         <AdminHeader>
           <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
           <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
@@ -203,16 +185,18 @@ export default class Admin extends React.Component {
           <div className="Admin__section-box">
             <div className="Admin__nav">
               <div className="Admin__section-title">{title}</div>
+              <div className="Admin__section-description">
+                {Description ?
+                  <Description/> :
+                  null
+                }
+              </div>
               <div className="Admin__arrows">
-                {PrevSection ?
-                  <Arrow onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped>{PrevSection.lessons}</Arrow> :
-                  <Arrow size="very-small" color="blue" hidden reversed/>
-                }
-                <div className="Admin__lesson-numbers">Lessons {lessons}</div>
-                {NextSection ?
-                  <Arrow onClick={this.nextSection.bind(this)} size="very-small" color="blue">{NextSection.lessons}</Arrow> :
-                  <Arrow size="very-small" color="blue" hidden/>
-                }
+                <div key="prev-arrow-label" className="Admin__prev-section-arrow-text">Previous</div>
+                <Arrow key="prev-arrow" onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped hidden={!PrevSection}/>
+                <div className="Admin__lesson-numbers">Lessons {levelRange[0]}-{levelRange[1]}</div>
+                <Arrow key="next-arrow" onClick={this.nextSection.bind(this)} size="very-small" color="blue" hidden={!NextSection}/>
+                <div key="next-arrow-label" className="Admin__next-section-arrow-text">Next</div>
               </div>
             </div>
             <div className="Admin__section">

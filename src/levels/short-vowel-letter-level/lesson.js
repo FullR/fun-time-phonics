@@ -1,7 +1,8 @@
 import React from "react";
 import Actor from "components/actor";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
@@ -95,24 +96,23 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
-        {showingLetter ?
-          <DisplayBar position="top" style={{top: "23%"}}>
-            <PlayableDisplayText size="medium" sound={this.getSound("letter")}>
+        <SceneContent>
+          <SceneBar>
+            <PlayableDisplayText size="medium" sound={this.getSound("letter")} hidden={!showingLetter}>
               <span style={{marginRight: 50}}>{letter.toUpperCase()}</span><span>{letter}</span>
             </PlayableDisplayText>
-          </DisplayBar> :
-          null
-        }
+          </SceneBar>
 
-        <DisplayBar position="bottom" style={{bottom: "23%"}}>
-          {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              size="medium"
-              key={choice.word}
-              sound={this.getSound(choice.word)}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice) =>
+              <WordSoundPlayBox {...choice}
+                size="medium"
+                key={choice.word}
+                sound={this.getSound(choice.word)}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

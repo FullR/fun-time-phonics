@@ -1,7 +1,8 @@
 import React from "react";
 import Actor from "components/actor";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
@@ -86,26 +87,28 @@ export default class Lesson extends React.Component {
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
-        <LessonTitle levelId={levelId}>{title}</LessonTitle>
+        <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
 
-        <DisplayBar position="top" style={{top: "26%"}}>
-          {lessonLetters.map((letters, i) =>
-            <PlayableDisplayText size="medium" sound={this.getSound(`letter-${i}`)} hidden={!revealedLetters.includes(letters)}>
-              {letters}
-            </PlayableDisplayText>
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {lessonLetters.map((letters, i) =>
+              <PlayableDisplayText size="medium" sound={this.getSound(`letter-${i}`)} hidden={!revealedLetters.includes(letters)}>
+                {letters}
+              </PlayableDisplayText>
+            )}
+          </SceneBar>
 
-        <DisplayBar position="bottom" style={{bottom: "23%"}}>
-          {choices.map((choice, i) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.id}
-              size="medium"
-              key={choice.word}
-              sound={this.getSound(`word-${i}`)}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice, i) =>
+              <WordSoundPlayBox {...choice}
+                key={choice.id}
+                size="medium"
+                key={choice.word}
+                sound={this.getSound(`word-${i}`)}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

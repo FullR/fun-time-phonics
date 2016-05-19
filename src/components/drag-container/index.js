@@ -25,8 +25,12 @@ export default class DragContainer extends React.Component {
   };
 
   render() {
-    const {className, connectDragSource} = this.props;
-    const classNames = cn("Drag-container", className);
+    const {className, isDragging, connectDragSource} = this.props;
+    const classNames = cn(
+      "Drag-container",
+      isDragging ? "Drag-container--dragging" : null,
+      className
+    );
 
     return connectDragSource(
       <div {...this.props} className={classNames} value={null}/>

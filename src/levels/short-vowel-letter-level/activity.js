@@ -5,7 +5,8 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import Screen from "components/screen";
 import Letters from "components/letters";
 import Word from "components/word";
@@ -102,23 +103,25 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
-          {dragLetters.map((letter) =>
-            <DragContainer key={letter} value={letter}>
-              <DisplayText>{letter}</DisplayText>
-            </DragContainer>
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {choices.map((choice) =>
+              <DropWordBox {...choice}
+                key={choice.id}
+                sound={this.getSound(choice.word)}
+                onDrop={this.onDrop.bind(this, choice.word)}
+              />
+            )}
+          </SceneBar>
 
-        <DisplayBar position="bottom">
-          {choices.map((choice) =>
-            <DropWordBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onDrop={this.onDrop.bind(this, choice.word)}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {dragLetters.map((letter) =>
+              <DragContainer key={letter} value={letter}>
+                <DisplayText>{letter}</DisplayText>
+              </DragContainer>
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>

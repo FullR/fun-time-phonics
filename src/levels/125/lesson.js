@@ -5,7 +5,8 @@ import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
 import scene from "decorators/scene";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import WordSoundPlayBox from "components/word-sound-play-box";
 
 @scene
@@ -61,9 +62,11 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
-        <DisplayBar>
-          <WordSoundPlayBox {...fan} sound={this.getSound("fan")}/>
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            <WordSoundPlayBox {...fan} sound={this.getSound("fan")}/>
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

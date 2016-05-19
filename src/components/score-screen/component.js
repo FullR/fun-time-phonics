@@ -18,13 +18,15 @@ export default class ScoreScreen extends React.Component {
     max: React.PropTypes.number.isRequired,
     requiredScore: React.PropTypes.number,
     onNext: React.PropTypes.func,
-    onBack: React.PropTypes.func
+    onBack: React.PropTypes.func,
+    hideNext: React.PropTypes.bool
   };
 
   static defaultProps = {
     onNext: noop,
     onBack: noop,
-    requiredScore: 85
+    requiredScore: 85,
+    hideNext: false
   };
 
   isPassing() {
@@ -45,7 +47,7 @@ export default class ScoreScreen extends React.Component {
   }
 
   render() {
-    const {onBack, onNext, score, max, requiredScore, children, className} = this.props;
+    const {onBack, onNext, score, max, requiredScore, hideNext, children, className} = this.props;
     const classNames = cn("Score-screen", className);
     const passing = this.isPassing();
 
@@ -55,8 +57,8 @@ export default class ScoreScreen extends React.Component {
         <div className="Score-screen__footer">
           <Robot type="boy" className="Score-screen__boy"/>
 
-          <Arrow onClick={onBack} color="red" size="large" flipped>Play Again</Arrow>
-          {passing ?
+          <Arrow onClick={onBack} color="orange" size="large" flipped>Play Again</Arrow>
+          {passing && !hideNext ?
             <Arrow onClick={onNext} size="large">Next</Arrow> :
             null
           }

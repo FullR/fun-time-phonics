@@ -1,4 +1,5 @@
 import React from "react";
+import {version} from "../../../package";
 import InfoScreen from "components/info-screen";
 import Punc from "components/punc";
 import cn from "util/cn";
@@ -46,6 +47,8 @@ export default class CreditScreen extends React.Component {
           <div className="Credit-screen__names">Dave DeAndrea, Jacqueline Examilotis, Terry McDonald</div>
 
           <div className="Credit-screen__isbn">ISBN 978-1-60144-660-2</div>
+
+          <div className="Credit-screen__version">{version}</div>
         </Content>
         <Footer onBack={onBack}/>
       </InfoScreen>

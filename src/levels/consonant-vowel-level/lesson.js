@@ -1,7 +1,6 @@
 import React from "react";
 import Actor from "components/actor";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
 import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
@@ -9,6 +8,8 @@ import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
 import wordSounds from "util/word-sounds";
 import PlayableDisplayText from "components/playable-display-text";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 
 const Letters = ({children}) => (<span style={{display: "inline-block"}}>{children}</span>);
 
@@ -171,26 +172,28 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
-        <DisplayBar position="top">
-          {showingLetterIntro ?
-            <PlayableDisplayText sound={this.getSound("consonant")}>
-              <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
-              <span>{consonant}</span>
-            </PlayableDisplayText> :
-            <PlayableDisplayText sound={this.getSound("letters")}>{consonant}{vowel}</PlayableDisplayText>
-          }
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {showingLetterIntro ?
+              <PlayableDisplayText sound={this.getSound("consonant")}>
+                <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
+                <span>{consonant}</span>
+              </PlayableDisplayText> :
+              <PlayableDisplayText sound={this.getSound("letters")}>{consonant}{vowel}</PlayableDisplayText>
+            }
+          </SceneBar>
 
-        <DisplayBar position="bottom" style={showingLetterIntro ? {bottom: "23%"} : null}>
-          {choices.map((choice, i) =>
-            <WordSoundPlayBox {...choice}
-              waveHidden={showingLetterIntro}
-              size={showingLetterIntro ? "medium" : "large"}
-              key={choice.word + "-" + i}
-              sound={this.getSound(choice.word)}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice, i) =>
+              <WordSoundPlayBox {...choice}
+                waveHidden={showingLetterIntro}
+                size={showingLetterIntro ? "medium" : "large"}
+                key={choice.word + "-" + i}
+                sound={this.getSound(choice.word)}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

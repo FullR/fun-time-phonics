@@ -4,12 +4,13 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
 import dndContext from "dnd-context";
 import DropWordBox from "components/drop-word-box";
 import PlayableDisplayText from "components/playable-display-text";
 import DragContainer from "components/drag-container";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 
 @dndContext
 @scene
@@ -70,21 +71,23 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
-          {choices.map((choice) =>
-            <DropWordBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            />
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {choices.map((choice) =>
+              <DropWordBox {...choice}
+                key={choice.id}
+                sound={this.getSound(choice.word)}
+                onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+              />
+            )}
+          </SceneBar>
 
-        <DisplayBar position="bottom">
-          <DragContainer>
-            <PlayableDisplayText sound={this.getSound("-letters")}>{consonant + vowel}</PlayableDisplayText>
-          </DragContainer>
-        </DisplayBar>
+          <SceneBar>
+            <DragContainer>
+              <PlayableDisplayText sound={this.getSound("-letters")}>{consonant + vowel}</PlayableDisplayText>
+            </DragContainer>
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>

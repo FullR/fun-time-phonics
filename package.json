@@ -1,6 +1,6 @@
 {
   "name": "fun-time-refactored",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",

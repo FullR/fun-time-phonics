@@ -3,6 +3,7 @@ import scene from "decorators/scene";
 import Response from "components/response";
 import Actor from "components/actor";
 import Word from "components/word";
+import ActivityTitle from "components/activity-title";
 const {Answer} = Response;
 
 @scene

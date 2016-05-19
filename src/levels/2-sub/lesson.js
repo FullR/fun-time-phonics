@@ -1,13 +1,14 @@
 import React from "react";
 import Actor from "components/actor";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
 import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
 import wordSounds from "util/word-sounds";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 
 @scene
 export default class Lesson extends React.Component {
@@ -70,14 +71,16 @@ export default class Lesson extends React.Component {
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
         <LessonTitle levelId="2">Ending Sounds</LessonTitle>
 
-        <DisplayBar>
-          {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.word}
-              sound={this.getSound(choice.word)}
-            />
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {choices.map((choice) =>
+              <WordSoundPlayBox {...choice}
+                key={choice.word}
+                sound={this.getSound(choice.word)}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}/>
         <AdminButton/>

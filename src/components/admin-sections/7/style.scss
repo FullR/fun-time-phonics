@@ -1,24 +1,29 @@
+$button-width: 150px;
+
 .Admin-section-7 {
   flex-direction: row;
   align-items: stretch;
 
+  .Admin-row-title {
+    max-width: $button-width;
+  }
+
   .Admin-section-column:not(:first-child) {
-    max-width: 250px;
+    max-width: $button-width;
     .Admin-button-title {
       text-decoration: none;
     }
   }
 
+  .Admin-short-button {
+    max-width: $button-width;
+  }
+
   .Admin-section-column:last-child {
     justify-content: center;
     align-items: stretch;
-
     .Admin-short-button {
       max-height: 250px;
     }
-  }
-
-  .Admin-section-row:first-child .Admin-short-button { // blank space at top of second column
-    visibility: hidden;
   }
 }

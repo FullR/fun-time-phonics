@@ -1,111 +1,72 @@
 import React from "react";
-import Underlined from "components/underlined";
 import Dash from "components/dash";
+import Underlined from "components/underlined";
 import AdminSection from "components/admin-section";
-import AdminSectionColumn from "components/admin-section-column";
-import AdminSectionRow from "components/admin-section-row";
-import AdminRowButton from "components/admin-row-button";
-import AdminShortButton from "components/admin-short-button";
-import AdminSubGroup from "components/admin-sub-group";
-import AdminSubButton from "components/admin-sub-button";
+import Column from "components/admin-section-column";
+import Row from "components/admin-section-row";
+import RowButton from "components/admin-row-button";
+import ShortButton from "components/admin-short-button";
+import SubGroup from "components/admin-sub-group";
+import SubButton from "components/admin-sub-button";
 import Title from "components/admin-button-title";
 import Index from "components/admin-button-index";
+
+import RowTitle from "components/admin-row-title";
 
 require("./style.scss");
 
 export default class AdminSection5 extends React.Component {
-  static title = "Co-Articulation";
-  static lessons = "44-63";
+  static title = "Consonant-Vowel Coarticulation";
+  static levelRange = [64, 88];
+  static Description = () => (
+    <div>These lessons teach children the influence the consonants l-p have on the short vowel sounds.&nbsp; Children also learn that these consonant-vowel combinations are used to form words.</div>
+  );
   render() {
     const {level} = this.props;
     return (
       <AdminSection className="Admin-section-5">
-        <AdminSectionColumn>
-          <AdminRowButton {...level("44")}>
-            <Title>Lesson g</Title>
-            <AdminSubGroup small>
-              <AdminSubButton {...level("44")}><Index>44</Index><Title>ga</Title></AdminSubButton>
-              <AdminSubButton {...level("45")}><Index>45</Index><Title>go</Title></AdminSubButton>
-              <AdminSubButton {...level("46")}><Index>46</Index><Title>gu</Title></AdminSubButton>
-            </AdminSubGroup>
-          </AdminRowButton>
-          <AdminRowButton {...level("48")}>
-            <Title>Lesson h</Title>
-            <AdminSubGroup small>
-              <AdminSubButton {...level("48")}><Index>48</Index><Title>ha</Title></AdminSubButton>
-              <AdminSubButton {...level("49")}><Index>49</Index><Title>he</Title></AdminSubButton>
-              <AdminSubButton {...level("50")}><Index>50</Index><Title>hi</Title></AdminSubButton>
-              <AdminSubButton {...level("51")}><Index>51</Index><Title>ho</Title></AdminSubButton>
-              <AdminSubButton {...level("52")}><Index>52</Index><Title>hu</Title></AdminSubButton>
-            </AdminSubGroup>
-          </AdminRowButton>
-          <AdminRowButton {...level("54")}>
-            <Title>Lesson j</Title>
-            <AdminSubGroup small>
-              <AdminSubButton {...level("54")}><Index>54</Index><Title>ja</Title></AdminSubButton>
-              <AdminSubButton {...level("55")}><Index>55</Index><Title>je</Title></AdminSubButton>
-              <AdminSubButton {...level("56")}><Index>56</Index><Title>ji</Title></AdminSubButton>
-              <AdminSubButton {...level("57")}><Index>57</Index><Title>jo</Title></AdminSubButton>
-              <AdminSubButton {...level("58")}><Index>58</Index><Title>ju</Title></AdminSubButton>
-            </AdminSubGroup>
-          </AdminRowButton>
-          <AdminRowButton {...level("60")}>
-            <Title>Lesson k</Title>
-            <AdminSubGroup small>
-              <AdminSubButton {...level("60")}><Index>60</Index><Title>ke</Title></AdminSubButton>
-              <AdminSubButton {...level("61")}><Index>61</Index><Title>ki</Title></AdminSubButton>
-            </AdminSubGroup>
-          </AdminRowButton>
-        </AdminSectionColumn>
+        <Column>
+          <Row>
+            <RowTitle>Consonant "l" With Short Vowels</RowTitle>
+            <ShortButton {...level("64")}><Index>64</Index><Title>la</Title></ShortButton>
+            <ShortButton {...level("65")}><Index>65</Index><Title>le</Title></ShortButton>
+            <ShortButton {...level("66")}><Index>66</Index><Title>li</Title></ShortButton>
+            <ShortButton {...level("67")}><Index>67</Index><Title>lo</Title></ShortButton>
+            <ShortButton {...level("68")}><Index>68</Index><Title>lu</Title></ShortButton>
+            <ShortButton {...level("69")}><Index>69</Index><Title><Underlined>Review</Underlined><br/>Consonant "l" With Short Vowels</Title></ShortButton>
+          </Row>
+          <Row>
+            <RowTitle>Consonant "m" With Short Vowels</RowTitle>
+            <ShortButton {...level("70")}><Index>70</Index><Title>ma</Title></ShortButton>
+            <ShortButton {...level("71")}><Index>71</Index><Title>me</Title></ShortButton>
+            <ShortButton {...level("72")}><Index>72</Index><Title>mi</Title></ShortButton>
+            <ShortButton {...level("73")}><Index>73</Index><Title>mo</Title></ShortButton>
+            <ShortButton {...level("74")}><Index>74</Index><Title>mu</Title></ShortButton>
+            <ShortButton {...level("75")}><Index>75</Index><Title><Underlined>Review</Underlined><br/>Consonant "m" With Short Vowels</Title></ShortButton>
+          </Row>
+          <Row>
+            <RowTitle>Consonant "n" With Short Vowels</RowTitle>
+            <ShortButton {...level("76")}><Index>76</Index><Title>na</Title></ShortButton>
+            <ShortButton {...level("77")}><Index>77</Index><Title>ne</Title></ShortButton>
+            <ShortButton {...level("78")}><Index>78</Index><Title>ni</Title></ShortButton>
+            <ShortButton {...level("79")}><Index>79</Index><Title>no</Title></ShortButton>
+            <ShortButton {...level("80")}><Index>80</Index><Title>nu</Title></ShortButton>
+            <ShortButton {...level("81")}><Index>81</Index><Title><Underlined>Review</Underlined><br/>Consonant "n" With Short Vowels</Title></ShortButton>
+          </Row>
+          <Row>
+            <RowTitle>Consonant "p" With Short Vowels</RowTitle>
+            <ShortButton {...level("82")}><Index>82</Index><Title>pa</Title></ShortButton>
+            <ShortButton {...level("83")}><Index>83</Index><Title>pe</Title></ShortButton>
+            <ShortButton {...level("84")}><Index>84</Index><Title>pi</Title></ShortButton>
+            <ShortButton {...level("85")}><Index>85</Index><Title>po</Title></ShortButton>
+            <ShortButton {...level("86")}><Index>86</Index><Title>pu</Title></ShortButton>
+            <ShortButton {...level("87")}><Index>87</Index><Title><Underlined>Review</Underlined><br/>Consonant "p" With Short Vowels</Title></ShortButton>
+          </Row>
+        </Column>
 
-        <AdminSectionColumn>
-          <AdminSectionRow>
-            <AdminShortButton {...level("47")}>
-              <Index>47</Index>
-              <Title>
-                <Underlined>Review</Underlined><br/>
-                Consonant "g" With Short Vowels
-              </Title>
-            </AdminShortButton>
-          </AdminSectionRow>
-          <AdminSectionRow>
-            <AdminShortButton {...level("53")}>
-              <Index>53</Index>
-              <Title>
-                <Underlined>Review</Underlined><br/>
-                Consonant "h" With Short Vowels
-              </Title>
-            </AdminShortButton>
-          </AdminSectionRow>
-          <AdminSectionRow>
-            <AdminShortButton {...level("59")}>
-              <Index>59</Index>
-              <Title>
-                <Underlined>Review</Underlined><br/>
-                Consonant "j" With Short Vowels
-              </Title>
-            </AdminShortButton>
-          </AdminSectionRow>
-          <AdminSectionRow>
-            <AdminShortButton {...level("62")}>
-              <Index>62</Index>
-              <Title>
-                <Underlined>Review</Underlined><br/>
-                Consonant "k" With Short Vowels
-              </Title>
-            </AdminShortButton>
-          </AdminSectionRow>
-        </AdminSectionColumn>
-
-        <AdminSectionColumn>
-          <AdminShortButton {...level("63")}>
-            <Index>63</Index>
-            <Title>
-              <Underlined>Review</Underlined><br/>
-              Consonants "b"<Dash/>"k" With Short Vowels<br/>
-            </Title>
-          </AdminShortButton>
-        </AdminSectionColumn>
+        <Column>
+          <ShortButton {...level("88")}><Index>88</Index><Title><Underlined>Review</Underlined><br/>Consonants "b"<Dash/>"p" With Short Vowels<br/></Title></ShortButton>
+        </Column>
       </AdminSection>
     );
   }

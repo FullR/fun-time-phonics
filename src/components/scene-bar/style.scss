@@ -1,0 +1,20 @@
+.Scene-bar {
+  flex-direction: row;
+  justify-content: center;
+
+  > * {
+    margin: 0 50px 0 50px;
+  }
+
+  &--count-4 > * {
+    margin: 0 35px 0 35px;
+  }
+
+  &--count-5 > * {
+    margin: 0 20px 0 20px;
+  }
+
+  &--count-6 > * {
+    margin: 0 15px 0 15px;
+  }
+}

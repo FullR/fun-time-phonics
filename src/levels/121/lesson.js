@@ -1,7 +1,8 @@
 import React from "react";
 import Actor from "components/actor";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import LessonArrow from "components/lesson-arrow";
 import LessonTitle, {LessonSubTitle} from "components/lesson-title";
 import Screen from "components/screen";
@@ -116,30 +117,32 @@ export default class Lesson extends React.Component {
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
-        <LessonTitle levelId={levelId}>{title}</LessonTitle>
+        <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
 
-        <DisplayBar position="top" style={{top: "24%"}}>
-          {attachedLetters.map((letter) =>
-            <PlayableDisplayText
-              key={letter}
-              size="medium"
-              sound={this.getSound(letter)}
-              hidden={!visibleLetters.includes(letter)}
-            >
-              {letter}
-            </PlayableDisplayText>
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {attachedLetters.map((letter) =>
+              <PlayableDisplayText
+                key={letter}
+                size="medium"
+                sound={this.getSound(letter)}
+                hidden={!visibleLetters.includes(letter)}
+              >
+                {letter}
+              </PlayableDisplayText>
+            )}
+          </SceneBar>
 
-        <DisplayBar position="bottom" style={{bottom: "20%"}}>
-          {attachedChoices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              size="medium"
-              key={choice.word}
-              sound={this.getSound(choice.word)}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {attachedChoices.map((choice) =>
+              <WordSoundPlayBox {...choice}
+                size="medium"
+                key={choice.word}
+                sound={this.getSound(choice.word)}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
         <AdminButton/>

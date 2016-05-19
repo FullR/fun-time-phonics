@@ -4,9 +4,10 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 
 @scene
 export default class Activity extends React.Component {
@@ -60,22 +61,24 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor type="girl" {...girl}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top" style={{top: "6%"}}>
-          <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")}/>
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")}/>
+          </SceneBar>
 
-        <DisplayBar position="bottom" style={{bottom: "10%"}}>
-          {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            />
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice) =>
+              <WordSoundPlayBox {...choice}
+                key={choice.id}
+                sound={this.getSound(choice.word)}
+                onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>

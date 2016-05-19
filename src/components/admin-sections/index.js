@@ -6,7 +6,6 @@ import Section5 from "./5/index.js";
 import Section6 from "./6/index.js";
 import Section7 from "./7/index.js";
 import Section8 from "./8/index.js";
-import Section9 from "./9/index.js";
 
 export default [
   Section1,
@@ -16,6 +15,5 @@ export default [
   Section5,
   Section6,
   Section7,
-  Section8,
-  Section9
+  Section8
 ];

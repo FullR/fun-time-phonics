@@ -1,0 +1,22 @@
+$width: 174px;
+$height: 431px;
+$scale: 0.5;
+
+.Balloon {
+  position: absolute;
+  bottom: 110%;
+  width: $width * $scale;
+  height: $height * $scale;
+  animation-name: float;
+  animation-iteration-count: 1;
+  z-index: 10;
+}
+
+@keyframes float {
+  from {
+    bottom: 0%;
+  }
+  to {
+    bottom: 110%;
+  }
+}

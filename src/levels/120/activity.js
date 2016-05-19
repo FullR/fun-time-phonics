@@ -4,7 +4,8 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import dndContext from "dnd-context";
@@ -70,22 +71,24 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
-          {choices.map((choice) =>
-            <DropContainer
-              key={choice.id}
-              onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            >
-              <WordSoundPlayBox {...choice} sound={this.getSound(choice.word)}/>
-            </DropContainer>
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {choices.map((choice) =>
+              <DropContainer
+                key={choice.id}
+                onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+              >
+                <WordSoundPlayBox {...choice} sound={this.getSound(choice.word)}/>
+              </DropContainer>
+            )}
+          </SceneBar>
 
-        <DisplayBar position="bottom">
-          <DragContainer>
-            <PlayableDisplayText sound={this.getSound("letters")}>{letters}</PlayableDisplayText>
-          </DragContainer>
-        </DisplayBar>
+          <SceneBar>
+            <DragContainer>
+              <PlayableDisplayText sound={this.getSound("letters")}>{letters}</PlayableDisplayText>
+            </DragContainer>
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>

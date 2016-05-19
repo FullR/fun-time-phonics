@@ -4,8 +4,9 @@ import Actor from "components/actor";
 import Response from "components/response";
 import Word from "components/word";
 import scene from "decorators/scene";
-
-const {Answer} = Response;
+import XOverlay from "components/x-overlay";
+import StarContainer from "components/star-container";
+import DisplayBar from "components/display-bar";
 
 @scene
 export default class LevelResponse extends React.Component {
@@ -74,6 +75,28 @@ export default class LevelResponse extends React.Component {
     });
   }
 
+  renderAnswerWords() {
+    const {words, correctWords, answer} = this.props;
+    const {correct} = answer;
+    if(correct) {
+      return (
+        <StarContainer>
+          {answer.words.map((word) => <Word key={word} word={word}/>)}
+        </StarContainer>
+      );
+    } else {
+      return (
+        <div>
+          {words.map((word) =>
+            correctWords.includes(word) ?
+              <Word key={word} word={word}/> :
+              <div style={{position: "relative", display: "inline-block"}}><Word key={word} word={word}/><XOverlay/></div>
+          )}
+        </div>
+      );
+    }
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
     const {title, answer, onNext, activityIndex, levelId, activityCount} = this.props;
@@ -81,11 +104,9 @@ export default class LevelResponse extends React.Component {
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
-        <Answer isCorrect={answer.correct}>
-          {answer.words.map((word) =>
-            <Word key={word} word={word}/>
-          )}
-        </Answer>
+        <DisplayBar>
+          {this.renderAnswerWords()}
+        </DisplayBar>
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>
           Activity {activityIndex + 1} of {activityCount}

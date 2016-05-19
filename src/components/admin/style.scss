@@ -35,11 +35,18 @@
     text-align: center;
   }
 
+  &__section-description {
+    text-align: center;
+    width: 70%;
+    font-size: 18px;
+    margin-left: 15%;
+  }
+
   &__arrows {
     margin: 0 auto;
     width: 500px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
 
@@ -49,8 +56,30 @@
     }
   }
 
+  &--prev-arrow-hidden &__prev-section-arrow-text,
+  &--next-arrow-hidden &__next-section-arrow-text {
+    visibility: hidden;
+  }
+
+  &__prev-section-arrow-text,
+  &__next-section-arrow-text {
+    color: #000;
+    font-size: 20px;
+    //margin: 0 20px 0 20px;
+  }
+
+  &__prev-section-arrow-text {
+    margin-right: 20px;
+  }
+
+  &__next-section-arrow-text {
+    margin-left: 20px;
+  }
+
   &__lesson-numbers {
     font-size: 30px;
+    width: 260px;
+    text-align: center;
   }
 
   &__content {
@@ -72,7 +101,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end; // place at bottom
-    padding-right: 20px;
+    padding-right: 10px;
   }
 
   &__section {

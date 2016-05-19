@@ -9,7 +9,7 @@ export default ({
   activities,
   letter,
   Lesson=LessonComponent,
-  title=`Review Consonants "b"-"${letter}" With Short Vowels`
+  title=`Consonants "b"-"${letter}" With Short Vowels`
 }) => level({
   id,
   Lesson,

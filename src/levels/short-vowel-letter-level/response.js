@@ -47,6 +47,7 @@ export default class LevelResponse extends React.Component {
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
+        yield this.say(girl, "correct");
         yield this.say(girl, "answer-word");
         yield this.say(girl, "makes the");
         yield this.say(girl, "phonic");

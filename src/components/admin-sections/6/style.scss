@@ -1,18 +1,27 @@
+$button-width: 150px;
+
 .Admin-section-6 {
   flex-direction: row;
   align-items: stretch;
 
+  .Admin-row-title {
+    max-width: $button-width;
+  }
+
   .Admin-section-column:not(:first-child) {
-    max-width: 250px;
+    max-width: $button-width;
     .Admin-button-title {
       text-decoration: none;
     }
   }
 
+  .Admin-short-button {
+    max-width: $button-width;
+  }
+
   .Admin-section-column:last-child {
     justify-content: center;
     align-items: stretch;
-
     .Admin-short-button {
       max-height: 250px;
     }

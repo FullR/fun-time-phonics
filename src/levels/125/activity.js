@@ -4,7 +4,8 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import DisplayText from "components/display-text";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
@@ -37,7 +38,7 @@ export default class Activity extends React.Component {
     const {words} = this.props;
     return {
       ...wordSounds("girl", words),
-      "read the words...": "girl/common/read-the-word-then-drag-the-word-to-the-correct-picture"
+      "read the words...": "girl/common/read-the-word-then-drag-the-correct-picture-to-the-word"
     };
   }
 
@@ -76,21 +77,23 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top" style={{top: "10%"}}>
-          <DropContainer onDrop={this.onDrop.bind(this)}>
-            <DisplayText>{correctWord}</DisplayText>
-          </DropContainer>
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            <DropContainer onDrop={this.onDrop.bind(this)}>
+              <DisplayText>{correctWord}</DisplayText>
+            </DropContainer>
+          </SceneBar>
 
-        <DisplayBar position="bottom">
-          {choices.map((choice) =>
-            <SoundPlayBox {...choice} key={choice.id} sound={this.getSound(choice.word)}>
-              <DragContainer value={choice.word}>
-                <Word word={choice.word}/>
-              </DragContainer>
-            </SoundPlayBox>
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice) =>
+              <SoundPlayBox {...choice} key={choice.id} sound={this.getSound(choice.word)}>
+                <DragContainer value={choice.word}>
+                  <Word word={choice.word}/>
+                </DragContainer>
+              </SoundPlayBox>
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>

@@ -4,7 +4,8 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 
@@ -53,15 +54,17 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
         <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar>
-          {choices.map((choice) =>
-            <WordSoundPlayBox {...choice}
-              key={choice.id}
-              sound={this.getSound(choice.word)}
-              onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-            />
-          )}
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            {choices.map((choice) =>
+              <WordSoundPlayBox {...choice}
+                key={choice.id}
+                sound={this.getSound(choice.word)}
+                onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+              />
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
           {levelId}. {title}<br/>

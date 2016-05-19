@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "util/cn";
 
-const colors = ["green", "red", "blue", "black"];
+const colors = ["green", "red", "blue", "black", "orange"];
 const sizes = ["very-small", "small", "large"];
 
 export default class Arrow extends React.Component {

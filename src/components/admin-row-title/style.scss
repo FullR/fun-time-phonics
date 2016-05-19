@@ -1,0 +1,15 @@
+.Admin-row-title {
+  position: relative;
+  display: flex;
+  flex: 1.5 1 auto;
+  font-size: 30px;
+  min-width: 60px;
+  margin-right: 20px;
+  > div {
+    position: absolute;
+  }
+
+  &__hidden {
+    visibility: hidden;
+  }
+}

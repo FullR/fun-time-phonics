@@ -4,7 +4,8 @@ import scene from "decorators/scene";
 import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
-import DisplayBar from "components/display-bar";
+import SceneContent from "components/scene-content";
+import SceneBar from "components/scene-bar";
 import Screen from "components/screen";
 import DisplayText from "components/display-text";
 import DragContainer from "components/drag-container";
@@ -66,31 +67,32 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {levelId, title, onAnswer, activityIndex, correctWord, showLesson, activityCount, wordText} = this.props;
+    const {levelId, title, onAnswer, activityIndex, correctWord, activityCount, wordText} = this.props;
 
     return (
       <Screen>
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
 
-        <DisplayBar position="top">
-          <DropContainer onDrop={this.onDrop.bind(this)}>
-            <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
-          </DropContainer>
-        </DisplayBar>
+        <SceneContent>
+          <SceneBar>
+            <DropContainer onDrop={this.onDrop.bind(this)}>
+              <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
+            </DropContainer>
+          </SceneBar>
 
-        <DisplayBar position="bottom">
-          {choices.map((choice) =>
-            <DisplayBox {...choice} key={choice.id} noSoundWave>
-              <DragContainer value={choice.word}>
-                <Word word={choice.word}/>
-              </DragContainer>
-            </DisplayBox>
-          )}
-        </DisplayBar>
+          <SceneBar>
+            {choices.map((choice) =>
+              <DisplayBox {...choice} key={choice.id} noSoundWave>
+                <DragContainer value={choice.word}>
+                  <Word word={choice.word}/>
+                </DragContainer>
+              </DisplayBox>
+            )}
+          </SceneBar>
+        </SceneContent>
 
         <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
+          {levelId}.&nbsp;&nbsp;{title}<br/>
           Activity {activityIndex + 1} of {activityCount}
         </ActivityTitle>
         <AdminButton/>

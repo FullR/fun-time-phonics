@@ -55,7 +55,6 @@ export default class LevelResponse extends React.Component {
       } else {
         yield this.say(girl, "word");
         yield this.say(girl, "does not make the");
-        yield this.wait(100);
         yield this.say(girl, "phonic");
         yield this.say(girl, "sound so there is no");
         yield this.say(girl, "letter");
@@ -73,13 +72,12 @@ export default class LevelResponse extends React.Component {
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={answer.correct}>
           <DisplayText>{answer.letter}</DisplayText>
         </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
       </Response>
     );

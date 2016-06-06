@@ -40,14 +40,15 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         yield this.say(girl, "drag the letter...");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -71,10 +72,16 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
+          <SceneBar>
+            <DragContainer value={letter}>
+              <DisplayText>{letter}</DisplayText>
+            </DragContainer>
+          </SceneBar>
+
           <SceneBar>
             {choices.map((choice) =>
               <DropWordBox {...choice}
@@ -82,20 +89,14 @@ export default class Activity extends React.Component {
                 word={choice.word}
                 sound={this.getSound(choice.word)}
                 onDrop={this.onDrop.bind(this, choice.word)}
+                waveHidden={this.state.coPlaying}
               />
             )}
           </SceneBar>
-
-          <SceneBar>
-            <DragContainer value={letter}>
-              <DisplayText>{letter}</DisplayText>
-            </DragContainer>
-          </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

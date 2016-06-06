@@ -51,8 +51,8 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>

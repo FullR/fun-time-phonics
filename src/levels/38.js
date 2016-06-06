@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["fez", "fellow", "feather"],
   activities: [
     {words: ["fix", "face", "fence"], correctWord: "fence"},
-    {words: ["fudge", "fish", "fetch"], correctWord: "fetch", wordsOnly: true},
-    {words: ["father", "feather", "farmer"], correctWord: "feather", wordsOnly: true},
-    {words: ["fishing", "fencing", "factory"], correctWord: "fencing", wordsOnly: true},
-    {words: ["fist", "fast", "festival"], correctWord: "festival", wordsOnly: true},
-    {words: ["fall", "felon", "fill"], correctWord: "felon", wordsOnly: true},
-    {words: ["fender", "finger", "fundraiser"], correctWord: "fender", wordsOnly: true}
+    {words: ["fudge", "fish", "fetch"], correctWord: "fetch", shortInstructions: true},
+    {words: ["father", "feather", "farmer"], correctWord: "feather", shortInstructions: true},
+    {words: ["fishing", "fencing", "factory"], correctWord: "fencing", shortInstructions: true},
+    {words: ["fist", "fast", "festival"], correctWord: "festival", shortInstructions: true},
+    {words: ["fall", "felon", "fill"], correctWord: "felon", shortInstructions: true},
+    {words: ["fender", "finger", "fundraiser"], correctWord: "fender", shortInstructions: true}
   ]
 });

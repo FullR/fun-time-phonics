@@ -4,6 +4,10 @@ import Actor from "components/actor";
 import Response from "components/response";
 import Word from "components/word";
 import scene from "decorators/scene";
+import DisplayText from "components/display-text";
+import DisplayBar from "components/display-bar";
+import XOverlay from "components/x-overlay";
+import StarContainer from "components/star-container";
 
 const {Answer} = Response;
 
@@ -63,19 +67,44 @@ export default class LevelResponse extends React.Component {
     });
   }
 
+  renderCorrect() {
+    const {correctWord, letters} = this.props;
+    return (
+      <StarContainer style={{padding: "50px 150px 50px 150px"}}>
+        <div><DisplayText>{letters}</DisplayText></div>
+        <Word word={correctWord}/>
+      </StarContainer>
+    );
+  }
+
+  renderIncorrect() {
+    const {correctWord, answer, letters} = this.props;
+    return (
+      <div>
+        <DisplayText>{letters}</DisplayText>
+        <div style={{position: "relative"}}>
+          <Word word={answer.word}/>
+          <XOverlay/>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
     const {levelId, title, answer, onNext, activityIndex, activityCount} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
-        <Answer isCorrect={answer.correct}>
-          <Word word={answer.word}/>
-        </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
+        <DisplayBar>
+          {answer.correct ?
+            this.renderCorrect() :
+            this.renderIncorrect()
+          }
+        </DisplayBar>
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
       </Response>
     );

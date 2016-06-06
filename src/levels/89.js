@@ -8,7 +8,7 @@ export default consonantVowelLevel({
   lessonWords: [],
   activities: [
     {words: ["jump", "ball", "quilt"], correctWord: "quilt"},
-    {words: ["bull", "question", "run"], correctWord: "question", wordsOnly: true},
-    {words: ["gull", "run", "quack"], correctWord: "quack", wordsOnly: true}
+    {words: ["bull", "question", "run"], correctWord: "question", shortInstructions: true},
+    {words: ["gull", "run", "quack"], correctWord: "quack", shortInstructions: true}
   ]
 });

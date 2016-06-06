@@ -4,6 +4,7 @@ import AdminSectionRow from "components/admin-section-row";
 import AdminShortButton from "components/admin-short-button";
 import Title from "components/admin-button-title";
 import Index from "components/admin-button-index";
+import Score from "components/admin-button-score";
 require("./style.scss");
 
 export default class AdminSection8 extends React.Component {
@@ -19,19 +20,23 @@ export default class AdminSection8 extends React.Component {
         <AdminSectionRow>
           <AdminShortButton {...level("123")}>
             <Index>123</Index>
-            <Title>Identifying Ending Sounds</Title>
+            <Title size="medium">Identify<br/>Ending Sounds</Title>
+            <Score levelId="123"/>
           </AdminShortButton>
           <AdminShortButton {...level("124")}>
             <Index>124</Index>
-            <Title>Identifying Vowel Sounds</Title>
+            <Title size="medium">Identify<br/>Vowel Sounds</Title>
+            <Score levelId="124"/>
           </AdminShortButton>
           <AdminShortButton {...level("125")}>
             <Index>125</Index>
-            <Title>Reading First Words</Title>
+            <Title size="medium">Read<br/>First Words</Title>
+            <Score levelId="125"/>
           </AdminShortButton>
           <AdminShortButton {...level("126")}>
             <Index>126</Index>
-            <Title>Reading for Meaning</Title>
+            <Title size="medium">Reading<br/>for Meaning</Title>
+            <Score levelId="126"/>
           </AdminShortButton>
         </AdminSectionRow>
       </AdminSection>

@@ -1,3 +1,7 @@
 .Drop-container {
   display: inline-block;
 }
+
+.Display-box:not(.Display-box--active) .Drop-container--over {
+  box-shadow: 0px 0px 25px 0px #00A;
+}

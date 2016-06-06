@@ -7,9 +7,9 @@ export default consonantVowelLevel({
   lessonWords: ["fox", "font", "fodder"],
   activities: [
     {words: ["fence", "fix", "fox"], correctWord: "fox"},
-    {words: ["factory", "follow", "felon"], correctWord: "follow", wordsOnly: true},
-    {words: ["fiddle", "fasten", "fossil"], correctWord: "fossil", wordsOnly: true},
-    {words: ["fond", "fit", "flop"], correctWord: "fond", wordsOnly: true},
-    {words: ["fumble", "foxhole", "factory"], correctWord: "foxhole", wordsOnly: true}
+    {words: ["factory", "follow", "felon"], correctWord: "follow", shortInstructions: true},
+    {words: ["fiddle", "fasten", "fossil"], correctWord: "fossil", shortInstructions: true},
+    {words: ["fond", "fit", "flop"], correctWord: "fond", shortInstructions: true},
+    {words: ["fumble", "foxhole", "factory"], correctWord: "foxhole", shortInstructions: true}
   ]
 });

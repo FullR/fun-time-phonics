@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["mom", "mock", "monitor"],
   activities: [
     {words: ["map", "mop", "mud"], correctWord: "mop"},
-    {words: ["model", "medal", "maple"], correctWord: "model", wordsOnly: true},
-    {words: ["maid", "mad", "mob"], correctWord: "mob", wordsOnly: true},
-    {words: ["mantel", "muscle", "monocle"], correctWord: "monocle", wordsOnly: true},
-    {words: ["mixer", "monster", "mustard"], correctWord: "monster", wordsOnly: true},
-    {words: ["mummy", "mongoose", "magazine"], correctWord: "mongoose", wordsOnly: true},
-    {words: ["monitor", "mannequin", "minivan"], correctWord: "monitor", wordsOnly: true}
+    {words: ["model", "medal", "maple"], correctWord: "model", shortInstructions: true},
+    {words: ["maid", "mad", "mob"], correctWord: "mob", shortInstructions: true},
+    {words: ["mantel", "muscle", "monocle"], correctWord: "monocle", shortInstructions: true},
+    {words: ["mixer", "monster", "mustard"], correctWord: "monster", shortInstructions: true},
+    {words: ["mummy", "mongoose", "magazine"], correctWord: "mongoose", shortInstructions: true},
+    {words: ["monitor", "mannequin", "minivan"], correctWord: "monitor", shortInstructions: true}
   ]
 });

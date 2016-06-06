@@ -1,6 +1,14 @@
+@import "sizes.scss";
+
 .Admin-button-index {
   position: absolute;
-  left: 10px;
-  top: 10px;
+  left: 5px;
+  top: 5px;
   font-size: 20px;
+
+  @include breakpoint($tablet) {
+    left: 2px;
+    top: 2px;
+    font-size: 15px;
+  }
 }

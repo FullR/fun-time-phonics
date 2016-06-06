@@ -1,3 +1,4 @@
+@import "sizes.scss";
 $image: "../../../images/splash.png";
 
 .Splash {
@@ -11,17 +12,37 @@ $image: "../../../images/splash.png";
     right: 100px;
     bottom: 100px;
     cursor: pointer;
+    font-size: 5rem;
+
+    @include breakpoint($tablet) {
+      right: 10px;
+      bottom: 10px;
+    }
+
+    @include breakpoint($large-tablet) {
+      bottom: 50px;
+      right: 50px;
+    }
   }
 
   .Tctc-logo {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 1rem;
+    left: 1rem;
   }
 
   .Robot {
     position: absolute;
-    left: 18%;
+    right: 53%;
     bottom: 3%;
+  }
+
+  &__demo-label {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #F00;
+    font-size: 20px;
+    font-family: verdana;
   }
 }

@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["duck", "dunk", "dust"],
   activities: [
     {words: ["disc", "desk", "dusk"], correctWord: "dusk"},
-    {words: ["daisy", "dizzy", "dummy"], correctWord: "dummy", wordsOnly: true},
-    {words: ["dump", "dome", "drum"], correctWord: "dump", wordsOnly: true},
-    {words: ["dumpster", "dentist", "dimple"], correctWord: "dumpster", wordsOnly: true},
-    {words: ["digit", "dodge", "dungeon"], correctWord: "dungeon", wordsOnly: true},
-    {words: ["dumbbell", "doll", "deli"], correctWord: "dumbbell", wordsOnly: true},
-    {words: ["daffodil", "duffel", "dollar"], correctWord: "duffel", wordsOnly: true}
+    {words: ["daisy", "dizzy", "dummy"], correctWord: "dummy", shortInstructions: true},
+    {words: ["dump", "dome", "drum"], correctWord: "dump", shortInstructions: true},
+    {words: ["dumpster", "dentist", "dimple"], correctWord: "dumpster", shortInstructions: true},
+    {words: ["digit", "dodge", "dungeon"], correctWord: "dungeon", shortInstructions: true},
+    {words: ["dumbbell", "doll", "deli"], correctWord: "dumbbell", shortInstructions: true},
+    {words: ["daffodil", "duffel", "dollar"], correctWord: "duffel", shortInstructions: true}
   ]
 });

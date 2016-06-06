@@ -132,7 +132,7 @@ export default class Lesson extends React.Component {
 
     return (
       <Screen>
-        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
+        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
@@ -141,12 +141,14 @@ export default class Lesson extends React.Component {
               <PlayableDisplayText
                 sound={this.getSound("z")}
                 hidden={!consonantVisible}
+                waveHidden={this.state.coPlaying}
               >
                 <span style={{marginRight: 50}}>Z</span><span>z</span>
               </PlayableDisplayText> :
               letters.map((letter) =>
               <PlayableDisplayText
                 size="medium"
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(letter)}
                 hidden={!visibleLetters.includes(letter)}
               >
@@ -158,6 +160,7 @@ export default class Lesson extends React.Component {
           <SceneBar>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
+              waveHidden={this.state.coPlaying}
                 size="medium"
                 key={choice.word}
                 sound={this.getSound(choice.word)}

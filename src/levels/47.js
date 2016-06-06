@@ -7,10 +7,10 @@ export default consonantVowelReview({
   lessonWords: ["gas", "god", "gush"],
   activities: [
     {word: "gum", letters: ["go", "gu", "ga"], correctLetters: "gu"},
-    {word: "gag", letters: ["ga", "go", "gu"], correctLetters: "ga", wordsOnly: true},
-    {word: "goggles", letters: ["ga", "gu", "go"], correctLetters: "go", wordsOnly: true},
-    {word: "gutter", letters: ["gu", "go", "ga"], correctLetters: "gu", wordsOnly: true},
-    {word: "gavel", letters: ["ga", "go", "gu"], correctLetters: "ga", wordsOnly: true},
-    {word: "gobble", letters: ["gu", "ga", "go"], correctLetters: "go", wordsOnly: true}
+    {word: "gag", letters: ["ga", "go", "gu"], correctLetters: "ga", shortInstructions: true},
+    {word: "goggles", letters: ["ga", "gu", "go"], correctLetters: "go", shortInstructions: true},
+    {word: "gutter", letters: ["gu", "go", "ga"], correctLetters: "gu", shortInstructions: true},
+    {word: "gavel", letters: ["ga", "go", "gu"], correctLetters: "ga", shortInstructions: true},
+    {word: "gobble", letters: ["gu", "ga", "go"], correctLetters: "go", shortInstructions: true}
   ]
 });

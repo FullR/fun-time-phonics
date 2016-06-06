@@ -64,17 +64,16 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {answer, onNext, activityIndex, indexOffset} = this.props;
+    const {title, answer, onNext, activityIndex, indexOffset} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={answer.correct}>
           <Word word={answer.word}/>
         </Answer>
-        <ActivityTitle>
-          1.&nbsp; Beginning Sounds<br/>
-          Activity {activityIndex + indexOffset + 1} of 15
+        <ActivityTitle activityIndex={activityIndex + indexOffset} activityCount={15}>
+          {title}
         </ActivityTitle>
       </Response>
     );

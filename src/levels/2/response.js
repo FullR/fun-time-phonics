@@ -47,14 +47,13 @@ export default class LevelResponse extends React.Component {
         yield this.say(girl, "word");
         yield this.say(girl, "ends with");
         yield this.say(girl, "t");
-        girl.set("speaking", false);
       } else {
         yield this.say(girl, "word");
         yield this.say(girl, "does not end with");
         yield this.say(girl, "t");
-        girl.set("speaking", false);
         this.revealArrow();
       }
+      girl.set({speaking: false, animating: false});
     }, this);
   }
 
@@ -64,13 +63,12 @@ export default class LevelResponse extends React.Component {
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={this.isCorrect()}>
           <Word word={answer.word}/>
         </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of 15
+        <ActivityTitle activityIndex={activityIndex} activityCount={15}>
+          {title}
         </ActivityTitle>
       </Response>
     );

@@ -6,17 +6,45 @@
   min-height: 0;
   flex: 1 1 auto;
   cursor: pointer;
-  border: 3px solid black;
+  border: 1px solid #888;
   color: #00F;
   background: #ecf2d3;
 
-  &:hover,
+  &--review {
+    background: #C1E7DA;
+  }
+
+  &--assessment {
+    background: #FFE3D5;
+  }
+
+  &:hover {
+    background: #B1FFAD;
+  }
+
   &--selected {
     color: #F00;
-    border: 3px solid #F00;
+    border: 0.1rem solid #A00;
+    outline: 0.3rem solid #F00;
   }
 
   &--selected {
     cursor: default;
+  }
+
+  &--disabled {
+    cursor: default;
+    background: #AAA;
+    color: #222;
+
+    &:hover {
+      background: #AAA;
+    }
+  }
+
+  .Admin-button-score {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
   }
 }

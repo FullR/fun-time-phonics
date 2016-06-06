@@ -8,11 +8,11 @@ export default consonantVowelLevel({
   lessonWords: ["half", "halibut", "hatchback"],
   activities: [
     {words: ["hit", "hot", "hat"], correctWord: "hat"},
-    {words: ["hatch", "hitch", "hut"], correctWord: "hatch", wordsOnly: true},
-    {words: ["hippo", "happy", "hump"], correctWord: "happy", wordsOnly: true},
-    {words: ["hive", "half", "hoof"], correctWord: "half", wordsOnly: true},
-    {words: ["hatchet", "hotdog", "hexagon"], correctWord: "hatchet", wordsOnly: true},
-    {words: ["holly", "helmet", "hammer"], correctWord: "hammer", wordsOnly: true},
-    {words: ["handle", "huddle", "hidden"], correctWord: "handle", wordsOnly: true}
+    {words: ["hatch", "hitch", "hut"], correctWord: "hatch", shortInstructions: true},
+    {words: ["hippo", "happy", "hump"], correctWord: "happy", shortInstructions: true},
+    {words: ["hive", "half", "hoof"], correctWord: "half", shortInstructions: true},
+    {words: ["hatchet", "hotdog", "hexagon"], correctWord: "hatchet", shortInstructions: true},
+    {words: ["holly", "helmet", "hammer"], correctWord: "hammer", shortInstructions: true},
+    {words: ["handle", "huddle", "hidden"], correctWord: "handle", shortInstructions: true}
   ]
 });

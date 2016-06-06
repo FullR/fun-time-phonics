@@ -18,7 +18,8 @@ const target = {
 
 function collect(connect, monitor) {
   return {
-    connectDropTarget: connect.dropTarget()
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
   };
 }
 
@@ -29,11 +30,11 @@ export default class DropContainer extends React.Component {
   };
 
   render() {
-    const {connectDropTarget, className} = this.props;
-    const classNames = cn("Drop-container", className);
+    const {connectDropTarget, isOver, className} = this.props;
+    const classNames = cn("Drop-container", isOver ? "Drop-container--over" : null, className);
 
     return connectDropTarget(
-      <div {...this.props} className={classNames} onDrop={null}/>
+      <div {...this.props} className={classNames} onDrop={null} onDragEnter={null} onDragExit={null}/>
     );
   }
 }

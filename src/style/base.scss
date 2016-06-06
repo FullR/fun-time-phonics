@@ -1,7 +1,15 @@
+@import "sizes.scss";
 @import "./school-text.scss";
 
 html {
   font-size: 10px;
+
+  @include breakpoint($tablet) {
+    font-size: 6.5px;
+  }
+  @include breakpoint($large-tablet) {
+    font-size: 8px;
+  }
 }
 
 html, body {

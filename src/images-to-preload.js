@@ -10,7 +10,6 @@ export default [
   require("../images/incorrect-x.png"),
   require("../images/lock-icon.png"),
   require("../images/other-products-banner.png"),
-  require("../images/replay-button-sprite.png"),
   require("../images/sound-wave-sprite.png"),
   require("../images/star-border.png"),
   require("../images/star-border-large.png"),
@@ -34,5 +33,15 @@ export default [
   require("../images/other-products/reading-detective.png"),
   require("../images/other-products/math-detective.png"),
   require("../images/other-products/word-roots-flashcards.png"),
-  require("../images/other-products/word-roots.png")
+  require("../images/other-products/word-roots.png"),
+
+  require("../images/robot-gifs/boy-arm.gif"),
+  require("../images/robot-gifs/boy-no-arm.gif"),
+  require("../images/robot-gifs/girl-arm.gif"),
+  require("../images/robot-gifs/girl-no-arm.gif"),
+  require("../images/robot-parts/boy-idle-1.png"),
+  require("../images/robot-parts/boy-idle-2.png"),
+  require("../images/robot-parts/girl-idle-1.png"),
+  require("../images/robot-parts/girl-idle-2.png"),
+  require("../images/robot-parts/girl-idle-3.png")
 ];

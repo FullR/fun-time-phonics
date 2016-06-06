@@ -7,7 +7,10 @@ export default function resetLevel(state, {levelId}) {
     ...state,
     levels: replaceWhere(state.levels,
       (level) => level.id.split("-")[0] === levelId,
-      (toReplace) => initialState.levels.find((level) => level.id === toReplace.id)
+      (toReplace) => ({
+        ...initialState.levels.find((level) => level.id === toReplace.id),
+        started: true
+      })
     )
   };
 }

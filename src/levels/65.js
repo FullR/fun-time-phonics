@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["left", "lens", "lettuce"],
   activities: [
     {words: ["log", "lung", "leg"], correctWord: "leg"},
-    {words: ["lemon", "limo", "lime"], correctWord: "lemon", wordsOnly: true},
-    {words: ["little", "letters", "ladder"], correctWord: "letters", wordsOnly: true},
-    {words: ["lunch", "ledge", "lodge"], correctWord: "ledge", wordsOnly: true},
-    {words: ["lettuce", "licorice", "luxury"], correctWord: "lettuce", wordsOnly: true},
-    {words: ["lizard", "leopard", "lumber"], correctWord: "leopard", wordsOnly: true},
-    {words: ["luggage", "locker", "leprechaun"], correctWord: "leprechaun", wordsOnly: true}
+    {words: ["lemon", "limo", "lime"], correctWord: "lemon", shortInstructions: true},
+    {words: ["little", "letters", "ladder"], correctWord: "letters", shortInstructions: true},
+    {words: ["lunch", "ledge", "lodge"], correctWord: "ledge", shortInstructions: true},
+    {words: ["lettuce", "licorice", "luxury"], correctWord: "lettuce", shortInstructions: true},
+    {words: ["lizard", "leopard", "lumber"], correctWord: "leopard", shortInstructions: true},
+    {words: ["luggage", "locker", "leprechaun"], correctWord: "leprechaun", shortInstructions: true}
   ]
 });

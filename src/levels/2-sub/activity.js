@@ -15,7 +15,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: false
       },
@@ -38,14 +38,14 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {exampleWords} = this.props;
     const {girl, choices} = this;
     this.startCo(function*() {
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word...");
         yield this.say(girl, exampleWords[0]);
@@ -53,6 +53,7 @@ export default class Activity extends React.Component {
         yield this.say(girl, exampleWords[1]);
         yield this.wait(200);
         girl.set("size", "small");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -69,7 +70,7 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
         <Actor type="boy"/>
 
         <SceneContent>
@@ -77,6 +78,7 @@ export default class Activity extends React.Component {
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(choice.word)}
                 onClick={() => onAnswer({word: choice.word, correct: correct === choice.word})}
               />
@@ -84,9 +86,8 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          2.&nbsp; Ending Sounds<br/>
-          Activity {activityIndex + indexOffset + 1} of 15
+        <ActivityTitle activityIndex={activityIndex + indexOffset} activityCount={15}>
+          Ending Sounds
         </ActivityTitle>
         <AdminButton/>
       </Screen>

@@ -41,7 +41,7 @@ export default class CreditScreen extends React.Component {
           <div className="Credit-screen__names">Chip Dombrowski, Terry McDonald, Scott Slyter, Mary O’Dell</div>
 
           <div className="Credit-screen__job-desc">Edited by</div>
-          <div className="Credit-screen__names">Patricia Gray, Michael Baker, Chip Dombrowski, Terry McDonald, Sarah Rigney, James Meyers, Robert Femiano, J. Abbey Hunt</div>
+          <div className="Credit-screen__names">Patricia Gray, Michael Baker, Chip Dombrowski, Terry McDonald, Sarah Rigney, James Meyers, Robert Femiano, Abbey J. Hunt</div>
 
           <div className="Credit-screen__job-desc">Audio by</div>
           <div className="Credit-screen__names">Dave DeAndrea, Jacqueline Examilotis, Terry McDonald</div>

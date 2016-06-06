@@ -37,20 +37,21 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "listen to these sounds...");
         yield this.wait(300);
       }
       yield this.say(girl, "spell-word");
       girl.set("size", "small");
+      yield this.wait(300);
       for(let choice of choices) {
         choice.set("hidden", false);
         yield this.say(girl, choice.get("word"));
@@ -66,13 +67,14 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
 
         <SceneContent>
           <SceneBar>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(choice.word)}
                 onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
               />
@@ -80,9 +82,8 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

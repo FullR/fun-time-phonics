@@ -17,7 +17,9 @@ export default class OtherProductsScreen extends React.Component {
       <InfoScreen {...this.props} className={cn}>
         <Header>Other Products</Header>
         <Content className={cn.el("content")}>
-          <img className={cn.el("banner")} src={require("../../../images/other-products-banner.png")}/>
+          <div className={cn.el("banner-box")}>
+            <img className={cn.el("banner")} src={require("../../../images/other-products-banner.png")}/>
+          </div>
           <p className={cn.el("main-text")}>
           The Critical Thinking Co.™ is recommended by <em>Learning® Magazine</em>, <em>The Well-Trained Mind</em>, <em>College Prep Genius</em>, <em>Creative Child Magazine</em>, Dr. Toy, and used by Sylvan Learning® Centers, Club Z In-Home Tutoring, leading U.S. public schools, and gifted and talented programs in 57 countries throughout the world.
           </p>
@@ -45,7 +47,7 @@ export default class OtherProductsScreen extends React.Component {
           </OtherProduct>
 
           <OtherProduct {...otherProducts.smartAbacus}>
-            <strong className={cn.el("op-title")}>Smart Abacus™</strong> (PreK–K)<br/>
+            <strong className={cn.el("op-title")}>Smart Abacus™</strong> (PreK–Grade 1)<br/>
             Teaches addition, subtraction, and how to write numerals<Punc>.</Punc> This app is revolutionary in its simplicity<Punc>!</Punc> It teaches addition and subtraction with colorful, fun, step-by-step, hands-on lessons<Punc>.</Punc> It is available for most large phones, tablets, and computers<Punc>.</Punc> For even more mathematical learning and practice, use <em>Smart Abacus</em>™ with our award-winning Preschool&nbsp;–&nbsp;Grade 1 <em>Mathematical Reasoning</em>™ books.
           </OtherProduct>
 

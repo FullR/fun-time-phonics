@@ -23,7 +23,7 @@ export default class SoundWave extends React.Component {
     );
 
     return (
-      <div {...this.props} className={classNames}/>
+      <div {...this.props} className={classNames} hidden={null}/>
     );
   }
 }

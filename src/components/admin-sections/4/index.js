@@ -1,5 +1,4 @@
 import React from "react";
-import Underlined from "components/underlined";
 import Dash from "components/dash";
 import AdminSection from "components/admin-section";
 import AdminSectionColumn from "components/admin-section-column";
@@ -11,6 +10,8 @@ import AdminSubButton from "components/admin-sub-button";
 import RowTitle from "components/admin-row-title";
 import Title from "components/admin-button-title";
 import Index from "components/admin-button-index";
+import Score from "components/admin-button-score";
+import Letter from "components/admin-button-letter";
 
 require("./style.scss");
 
@@ -26,50 +27,127 @@ export default class AdminSection4 extends React.Component {
       <AdminSection className="Admin-section-4">
         <AdminSectionColumn>
           <Row>
-            <RowTitle>Consonant "g" With Short Vowels</RowTitle>
-            <ShortButton {...level("44")}><Index>44</Index><Title>ga</Title></ShortButton>
+            <RowTitle>Consonant <Letter>g</Letter> With Short Vowels</RowTitle>
+            <ShortButton {...level("44")}>
+              <Index>44</Index>
+              <Title size="large">ga</Title>
+              <Score levelId="44"/>
+            </ShortButton>
             <ShortButton hidden/>
             <ShortButton hidden/>
-            <ShortButton {...level("45")}><Index>45</Index><Title>go</Title></ShortButton>
-            <ShortButton {...level("46")}><Index>46</Index><Title>gu</Title></ShortButton>
-            <ShortButton {...level("47")}><Index>47</Index><Title><Underlined>Review</Underlined><br/>Consonant "g" With Short Vowels</Title></ShortButton>
+            <ShortButton {...level("45")}>
+              <Index>45</Index>
+              <Title size="large">go</Title>
+              <Score levelId="45"/>
+            </ShortButton>
+            <ShortButton {...level("46")}>
+              <Index>46</Index>
+              <Title size="large">gu</Title>
+              <Score levelId="46"/>
+            </ShortButton>
+            <ShortButton {...level("47")} review>
+              <Index>47</Index>
+              <Title size="medium">Review<br/><Letter size="large">g</Letter></Title>
+              <Score levelId="47"/>
+            </ShortButton>
           </Row>
           <Row>
-            <RowTitle>Consonant "h" With Short Vowels</RowTitle>
-            <ShortButton {...level("48")}><Index>48</Index><Title>ha</Title></ShortButton>
-            <ShortButton {...level("49")}><Index>49</Index><Title>he</Title></ShortButton>
-            <ShortButton {...level("50")}><Index>50</Index><Title>hi</Title></ShortButton>
-            <ShortButton {...level("51")}><Index>51</Index><Title>ho</Title></ShortButton>
-            <ShortButton {...level("52")}><Index>52</Index><Title>hu</Title></ShortButton>
-            <ShortButton {...level("53")}><Index>53</Index><Title><Underlined>Review</Underlined><br/>Consonant "h" With Short Vowels</Title></ShortButton>
+            <RowTitle>Consonant <Letter>h</Letter> With Short Vowels</RowTitle>
+            <ShortButton {...level("48")}>
+              <Index>48</Index>
+              <Title size="large">ha</Title>
+              <Score levelId="48"/>
+            </ShortButton>
+            <ShortButton {...level("49")}>
+              <Index>49</Index>
+              <Title size="large">he</Title>
+              <Score levelId="49"/>
+            </ShortButton>
+            <ShortButton {...level("50")}>
+              <Index>50</Index>
+              <Title size="large">hi</Title>
+              <Score levelId="50"/>
+            </ShortButton>
+            <ShortButton {...level("51")}>
+              <Index>51</Index>
+              <Title size="large">ho</Title>
+              <Score levelId="51"/>
+            </ShortButton>
+            <ShortButton {...level("52")}>
+              <Index>52</Index>
+              <Title size="large">hu</Title>
+              <Score levelId="52"/>
+            </ShortButton>
+            <ShortButton {...level("53")} review>
+              <Index>53</Index>
+              <Title size="medium">Review<br/><Letter size="large">h</Letter></Title>
+              <Score levelId="53"/>
+            </ShortButton>
           </Row>
           <Row>
-            <RowTitle>Consonant "j" With Short Vowels</RowTitle>
-            <ShortButton {...level("54")}><Index>54</Index><Title>ja</Title></ShortButton>
-            <ShortButton {...level("55")}><Index>55</Index><Title>je</Title></ShortButton>
-            <ShortButton {...level("56")}><Index>56</Index><Title>ji</Title></ShortButton>
-            <ShortButton {...level("57")}><Index>57</Index><Title>jo</Title></ShortButton>
-            <ShortButton {...level("58")}><Index>58</Index><Title>ju</Title></ShortButton>
-            <ShortButton {...level("59")}><Index>59</Index><Title><Underlined>Review</Underlined><br/>Consonant "j" With Short Vowels</Title></ShortButton>
+            <RowTitle>Consonant <Letter>j</Letter> With Short Vowels</RowTitle>
+            <ShortButton {...level("54")}>
+              <Index>54</Index>
+              <Title size="large">ja</Title>
+              <Score levelId="54"/>
+            </ShortButton>
+            <ShortButton {...level("55")}>
+              <Index>55</Index>
+              <Title size="large">je</Title>
+              <Score levelId="55"/>
+            </ShortButton>
+            <ShortButton {...level("56")}>
+              <Index>56</Index>
+              <Title size="large">ji</Title>
+              <Score levelId="56"/>
+            </ShortButton>
+            <ShortButton {...level("57")}>
+              <Index>57</Index>
+              <Title size="large">jo</Title>
+              <Score levelId="57"/>
+            </ShortButton>
+            <ShortButton {...level("58")}>
+              <Index>58</Index>
+              <Title size="large">ju</Title>
+              <Score levelId="58"/>
+            </ShortButton>
+            <ShortButton {...level("59")} review>
+              <Index>59</Index>
+              <Title size="medium">Review<br/><Letter size="large">j</Letter></Title>
+              <Score levelId="59"/>
+            </ShortButton>
           </Row>
           <Row>
-            <RowTitle>Consonant "k" With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>k</Letter> With Short Vowels</RowTitle>
             <ShortButton hidden/>
-            <ShortButton {...level("60")}><Index>60</Index><Title>ke</Title></ShortButton>
-            <ShortButton {...level("61")}><Index>61</Index><Title>ki</Title></ShortButton>
+            <ShortButton {...level("60")}>
+              <Index>60</Index>
+              <Title size="large">ke</Title>
+              <Score levelId="60"/>
+            </ShortButton>
+            <ShortButton {...level("61")}>
+              <Index>61</Index>
+              <Title size="large">ki</Title>
+              <Score levelId="61"/>
+            </ShortButton>
             <ShortButton hidden/>
             <ShortButton hidden/>
-            <ShortButton {...level("62")}><Index>62</Index><Title><Underlined>Review</Underlined><br/>Consonant "k" With Short Vowels</Title></ShortButton>
+            <ShortButton {...level("62")} review>
+              <Index>62</Index>
+              <Title size="medium">Review<br/><Letter size="large">k</Letter></Title>
+              <Score levelId="62"/>
+            </ShortButton>
           </Row>
         </AdminSectionColumn>
 
         <AdminSectionColumn>
-          <ShortButton {...level("63")}>
+          <ShortButton {...level("63")} assessment>
             <Index>63</Index>
-            <Title>
-              <Underlined>Review</Underlined><br/>
-              Consonants "b"<Dash/>"k" With Short Vowels<br/>
+            <Title size="medium">
+              Review<br/>
+              <Letter size="large">b<Dash/>k</Letter>
             </Title>
+            <Score levelId="63"/>
           </ShortButton>
         </AdminSectionColumn>
       </AdminSection>

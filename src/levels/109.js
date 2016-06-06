@@ -8,11 +8,11 @@ export default consonantVowelLevel({
   lessonWords: ["vat", "valet", "vaccinate"],
   activities: [
     {words: ["vat", "vet", "vote"], correctWord: "vat"},
-    {words: ["volume", "villain", "valley"], correctWord: "valley", wordsOnly: true},
-    {words: ["victim", "vacuum", "viking"], correctWord: "vacuum", wordsOnly: true},
-    {words: ["veil", "valve", "violin"], correctWord: "valve", wordsOnly: true},
-    {words: ["volcano", "video", "vanity"], correctWord: "vanity", wordsOnly: true},
-    {words: ["volleyball", "valuables", "vegetables"], correctWord: "valuables", wordsOnly: true},
-    {words: ["vampire", "visitor", "volunteer"], correctWord: "vampire", wordsOnly: true}
+    {words: ["volume", "villain", "valley"], correctWord: "valley", shortInstructions: true},
+    {words: ["victim", "vacuum", "viking"], correctWord: "vacuum", shortInstructions: true},
+    {words: ["veil", "valve", "violin"], correctWord: "valve", shortInstructions: true},
+    {words: ["volcano", "video", "vanity"], correctWord: "vanity", shortInstructions: true},
+    {words: ["volleyball", "valuables", "vegetables"], correctWord: "valuables", shortInstructions: true},
+    {words: ["vampire", "visitor", "volunteer"], correctWord: "vampire", shortInstructions: true}
   ]
 });

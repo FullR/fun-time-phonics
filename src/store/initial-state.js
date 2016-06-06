@@ -15,6 +15,7 @@ function level(id) {
 export default {
   route: "splash",
   currentLevelId: "1",
+  requiredScore: 85,
   levels: [
     level("1"),
     level("1-m"),

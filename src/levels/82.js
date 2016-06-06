@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["pat", "pack", "pacifier"],
   activities: [
     {words: ["peach", "path", "pitch"], correctWord: "path"},
-    {words: ["pedal", "puddle", "paddle"], correctWord: "paddle", wordsOnly: true},
-    {words: ["pillow", "palace", "plaza"], correctWord: "palace", wordsOnly: true},
-    {words: ["package", "pocket", "picnic"], correctWord: "package", wordsOnly: true},
-    {words: ["poncho", "penny", "panda"], correctWord: "panda", wordsOnly: true},
-    {words: ["pottery", "patio", "pentagon"], correctWord: "patio", wordsOnly: true},
-    {words: ["passenger", "popsicle", "pedestal"], correctWord: "passenger", wordsOnly: true}
+    {words: ["pedal", "puddle", "paddle"], correctWord: "paddle", shortInstructions: true},
+    {words: ["pillow", "palace", "plaza"], correctWord: "palace", shortInstructions: true},
+    {words: ["package", "pocket", "picnic"], correctWord: "package", shortInstructions: true},
+    {words: ["poncho", "penny", "panda"], correctWord: "panda", shortInstructions: true},
+    {words: ["pottery", "patio", "pentagon"], correctWord: "patio", shortInstructions: true},
+    {words: ["passenger", "popsicle", "pedestal"], correctWord: "passenger", shortInstructions: true}
   ]
 });

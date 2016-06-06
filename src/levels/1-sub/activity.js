@@ -15,7 +15,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: false
       },
@@ -38,20 +38,21 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {exampleWords} = this.props;
     const {girl, choices} = this;
     this.startCo(function*() {
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word...");
         yield this.say(girl, exampleWords[0]);
         yield this.say(girl, "and");
         yield this.say(girl, exampleWords[1]);
         girl.set("size", "small");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -64,12 +65,12 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {onAnswer, activityIndex, correct, indexOffset, showLesson} = this.props;
+    const {onAnswer, activityIndex, correct, indexOffset, showLesson, title} = this.props;
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
@@ -77,15 +78,15 @@ export default class Activity extends React.Component {
               <WordSoundPlayBox {...choice}
                 key={choice.id}
                 sound={this.getSound(choice.word)}
+                waveHidden={this.state.coPlaying}
                 onClick={() => onAnswer({word: choice.word, correct: correct === choice.word})}
               />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          1.&nbsp; Beginning Sounds<br/>
-          Activity {activityIndex + indexOffset + 1} of 15
+        <ActivityTitle activityIndex={activityIndex + indexOffset} activityCount={15}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

@@ -41,7 +41,7 @@ export default class Lesson extends React.Component {
       "phonic": `boy/common/phonics/_${letter}h_`,
       "sound in": "boy/common/sound-in",
       "we use the letter": "boy/common/we-use-the-letter",
-      "to write the words that make the": "boy/common/to-write-the-words-that-make-the",
+      "to write words that make the": "boy/common/to-write-words-that-make-the",
       "sound": "boy/common/sound",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin"
     };
@@ -75,7 +75,7 @@ export default class Lesson extends React.Component {
 
       yield this.say(boy, "we use the letter");
       yield this.say(boy, "letter");
-      yield this.say(boy, "to write the words that make the");
+      yield this.say(boy, "to write words that make the");
       yield this.say(boy, "phonic");
       yield this.say(boy, "sound");
 
@@ -93,12 +93,17 @@ export default class Lesson extends React.Component {
 
     return (
       <Screen>
-        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
+        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
           <SceneBar>
-            <PlayableDisplayText size="medium" sound={this.getSound("letter")} hidden={!showingLetter}>
+            <PlayableDisplayText
+              size="medium"
+              sound={this.getSound("letter")}
+              hidden={!showingLetter}
+              waveHidden={this.state.coPlaying}
+            >
               <span style={{marginRight: 50}}>{letter.toUpperCase()}</span><span>{letter}</span>
             </PlayableDisplayText>
           </SceneBar>

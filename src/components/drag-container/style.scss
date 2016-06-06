@@ -1,7 +1,10 @@
 .Drag-container {
   display: inline-block;
-  overflow: hidden;
   cursor: grab;
+
+  > * {
+    cursor: grab !important;
+  }
 
   &--dragging {
     visibility: hidden;

@@ -7,9 +7,9 @@ export default consonantVowelLevel({
   lessonWords: ["nibble", "nickel", "ninja"],
   activities: [
     {words: ["Nick", "knock", "neck"], correctWord: "Nick"},
-    {words: ["nickel", "nugget", "necklace"], correctWord: "nickel", wordsOnly: true},
-    {words: ["nutshell", "nipple", "napkin"], correctWord: "nipple", wordsOnly: true},
-    {words: ["nun", "nanny", "ninja"], correctWord: "ninja", wordsOnly: true},
-    {words: ["needle", "nibble", "numbers"], correctWord: "nibble", wordsOnly: true}
+    {words: ["nickel", "nugget", "necklace"], correctWord: "nickel", shortInstructions: true},
+    {words: ["nutshell", "nipple", "napkin"], correctWord: "nipple", shortInstructions: true},
+    {words: ["nun", "nanny", "ninja"], correctWord: "ninja", shortInstructions: true},
+    {words: ["needle", "nibble", "numbers"], correctWord: "nibble", shortInstructions: true}
   ]
 });

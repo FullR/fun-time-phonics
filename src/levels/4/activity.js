@@ -43,6 +43,7 @@ export default class Activity extends React.Component {
 
       yield this.say(girl, "touch the word that rhymes with");
       yield this.say(girl, "rhyme-word");
+      yield this.wait(300);
 
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -62,17 +63,18 @@ export default class Activity extends React.Component {
     return (
       <Screen>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
-            <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")}/>
+            <WordSoundPlayBox word={rhymeWord} sound={this.getSound("rhyme-word")} waveHidden={this.state.coPlaying}/>
           </SceneBar>
 
           <SceneBar>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(choice.word)}
                 onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
               />
@@ -80,9 +82,8 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

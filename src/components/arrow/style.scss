@@ -1,6 +1,6 @@
-$width: 192px;
-$height: 120px;
-$font-size: 34px;
+$width: 19.2rem;
+$height: 12rem;
+$font-size: 3.4rem;
 
 @mixin arrow-color($color, $hover:true, $size: $font-size) {
   &--color-#{$color} {

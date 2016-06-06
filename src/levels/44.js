@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["gag", "gallon", "galaxy"],
   activities: [
     {words: ["gap", "goat", "gift"], correctWord: "gap"},
-    {words: ["goose", "gush", "gas"], correctWord: "gas", wordsOnly: true},
-    {words: ["gum", "grab", "gab"], correctWord: "gab", wordsOnly: true},
-    {words: ["giggle", "goggles", "gag"], correctWord: "gag", wordsOnly: true},
-    {words: ["glasses", "gallop", "gossip"], correctWord: "gallop", wordsOnly: true},
-    {words: ["gavel", "guzzle", "gosling"], correctWord: "gavel", wordsOnly: true},
-    {words: ["gutter", "gallery", "gondola"], correctWord: "gallery", wordsOnly: true}
+    {words: ["goose", "gush", "gas"], correctWord: "gas", shortInstructions: true},
+    {words: ["gum", "grab", "gab"], correctWord: "gab", shortInstructions: true},
+    {words: ["giggle", "goggles", "gag"], correctWord: "gag", shortInstructions: true},
+    {words: ["glasses", "gallop", "gossip"], correctWord: "gallop", shortInstructions: true},
+    {words: ["gavel", "guzzle", "gosling"], correctWord: "gavel", shortInstructions: true},
+    {words: ["gutter", "gallery", "gondola"], correctWord: "gallery", shortInstructions: true}
   ]
 });

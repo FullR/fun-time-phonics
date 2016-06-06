@@ -1,6 +1,6 @@
 {
   "name": "fun-time-refactored",
-  "version": "1.0.3",
+  "version": "1.0.10",
   "scripts": {
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup-cordova && npm run convert-audio",
@@ -8,10 +8,12 @@
     "build-cordova": "scripts/compile && scripts/build-cordova",
     "convert-audio": "node scripts/convert-audio.js",
     "create-sprites": "node scripts/create-sprites",
-    "compile": "scripts/compile",
+    "compile": "rm -rf dist && scripts/compile",
     "start": "scripts/dev-server",
     "upload": "scripts/upload",
+    "upload:demo": "scripts/upload-demo",
     "release": "npm run compile && npm run upload",
+    "release:demo": "npm run compile && npm run upload:demo",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/src mocha --recursive --require babel-polyfill --compilers scss:./null-compiler.js,js:babel-core/register 'src/**/*.test.js'",
     "convert-word-images": "scripts/convert-word-images"
   },
@@ -41,6 +43,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.5.1",
+    "breakpoint-sass": "^2.7.0",
     "chai": "^3.5.0",
     "css-loader": "^0.19.0",
     "css2json": "0.0.4",

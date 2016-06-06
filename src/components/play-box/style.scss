@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Play-box {
   position: relative;
   display: flex;
@@ -24,21 +26,51 @@
   &--size-large &__display-box {
     width: 300px;
     height: 300px;
+
+    @include breakpoint($tablet) {
+      width: 200px;
+      height: 200px;
+    }
+
+    // @include breakpoint($large-tablet) {
+    //   width: 250px;
+    //   height: 250px;
+    // }
   }
 
   &--size-medium &__display-box {
     width: 175px;
     height: 175px;
+
+    @include breakpoint($tablet) {
+      width: 10px;
+      height: 10px;
+    }
+
+    // @include breakpoint($large-tablet) {
+    //   width: 140px;
+    //   height: 140px;
+    // }
   }
 
   &--size-small &__display-box {
     width: 125px;
     height: 125px;
+
+    @include breakpoint($tablet) {
+      width: 80px;
+      height: 80px;
+    }
+
+    // @include breakpoint($large-tablet) {
+    //   width: 100px;
+    //   height: 100px;
+    // }
   }
 
   &__sound-wave-container {
     z-index: 10;
-    margin-top: 20px;
+    margin-top: 2rem;
     width: 100%;
     text-align: center;
   }

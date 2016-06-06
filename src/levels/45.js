@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["god", "gobble", "goggles"],
   activities: [
     {words: ["geese", "gallop", "gossip"], correctWord: "gossip"},
-    {words: ["giggle", "goggles", "gag"], correctWord: "goggles", wordsOnly: true},
-    {words: ["goblet", "guest", "ghost"], correctWord: "goblet", wordsOnly: true},
-    {words: ["gate", "god", "gift"], correctWord: "god", wordsOnly: true},
-    {words: ["guzzle", "gosling", "glasses"], correctWord: "gosling", wordsOnly: true},
-    {words: ["goblin", "globe", "guppy"], correctWord: "goblin", wordsOnly: true},
-    {words: ["gutter", "gallery", "gondola"], correctWord: "gondola", wordsOnly: true},
+    {words: ["giggle", "goggles", "gag"], correctWord: "goggles", shortInstructions: true},
+    {words: ["goblet", "guest", "ghost"], correctWord: "goblet", shortInstructions: true},
+    {words: ["gate", "god", "gift"], correctWord: "god", shortInstructions: true},
+    {words: ["guzzle", "gosling", "glasses"], correctWord: "gosling", shortInstructions: true},
+    {words: ["goblin", "globe", "guppy"], correctWord: "goblin", shortInstructions: true},
+    {words: ["gutter", "gallery", "gondola"], correctWord: "gondola", shortInstructions: true},
   ]
 });

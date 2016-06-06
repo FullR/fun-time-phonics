@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["Rex", "rebel", "register"],
   activities: [
     {words: ["rod", "road", "red"], correctWord: "red"},
-    {words: ["wrist", "rest", "rose"], correctWord: "rest", wordsOnly: true},
-    {words: ["bread", "ref", "raft"], correctWord: "ref", wordsOnly: true},
-    {words: ["reptile", "ripple", "rattle"], correctWord: "reptile", wordsOnly: true},
-    {words: ["rescue", "Rocco", "raccoon"], correctWord: "rescue", wordsOnly: true},
-    {words: ["rocket", "racket", "rectangle"], correctWord: "rectangle", wordsOnly: true},
-    {words: ["runway", "raspberry", "reservoir"], correctWord: "reservoir", wordsOnly: true}
+    {words: ["wrist", "rest", "rose"], correctWord: "rest", shortInstructions: true},
+    {words: ["bread", "ref", "raft"], correctWord: "ref", shortInstructions: true},
+    {words: ["reptile", "ripple", "rattle"], correctWord: "reptile", shortInstructions: true},
+    {words: ["rescue", "Rocco", "raccoon"], correctWord: "rescue", shortInstructions: true},
+    {words: ["rocket", "racket", "rectangle"], correctWord: "rectangle", shortInstructions: true},
+    {words: ["runway", "raspberry", "reservoir"], correctWord: "reservoir", shortInstructions: true}
   ]
 });

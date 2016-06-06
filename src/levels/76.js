@@ -9,7 +9,7 @@ export default consonantVowelLevel({
   lessonWords: ["nab", "nasty", "napkin"],
   activities: [
     {words: ["nap", "net", "knob"], correctWord: "nap"},
-    {words: ["nun", "nanny", "ninja"], correctWord: "nanny", wordsOnly: true},
-    {words: ["nipple", "napkin", "noggin"], correctWord: "napkin", wordsOnly: true}
+    {words: ["nun", "nanny", "ninja"], correctWord: "nanny", shortInstructions: true},
+    {words: ["nipple", "napkin", "noggin"], correctWord: "napkin", shortInstructions: true}
   ]
 });

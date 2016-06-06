@@ -4,6 +4,6 @@ for f in word-tiffs/*.tif
 do
   word=$(basename $f .tif)
   echo "Converting and resizing $word"
-  # converts from tiff to png and resizes to 300 by 300 pixels (while maintaining aspect ratio)
+  # converts from tif to png and resizes to 300x300px (while maintaining aspect ratio)
   convert $f -resize 300x300 images/words/$word.png 2> /dev/null &
 done

@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["sod", "somber", "solitude"],
   activities: [
     {words: ["sack", "sick", "sock"], correctWord: "sock"},
-    {words: ["sod", "sad", "suds"], correctWord: "sod", wordsOnly: true},
-    {words: ["shop", "sip", "sob"], correctWord: "sob", wordsOnly: true},
-    {words: ["sieve", "second", "socket"], correctWord: "socket", wordsOnly: true},
-    {words: ["socks", "six", "sax"], correctWord: "socks", wordsOnly: true},
-    {words: ["sucker", "soccer", "secretary"], correctWord: "soccer", wordsOnly: true},
-    {words: ["solids", "salad", "silo"], correctWord: "solids", wordsOnly: true}
+    {words: ["sod", "sad", "suds"], correctWord: "sod", shortInstructions: true},
+    {words: ["shop", "sip", "sob"], correctWord: "sob", shortInstructions: true},
+    {words: ["sieve", "second", "socket"], correctWord: "socket", shortInstructions: true},
+    {words: ["socks", "six", "sax"], correctWord: "socks", shortInstructions: true},
+    {words: ["sucker", "soccer", "secretary"], correctWord: "soccer", shortInstructions: true},
+    {words: ["solids", "salad", "silo"], correctWord: "solids", shortInstructions: true}
   ]
 });

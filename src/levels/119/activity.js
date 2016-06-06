@@ -12,6 +12,7 @@ import dndContext from "dnd-context";
 import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
 import PlayableDisplayText from "components/playable-display-text";
+import DropWordBox from "components/drop-word-box";
 
 @dndContext
 @scene
@@ -53,6 +54,7 @@ export default class Activity extends React.Component {
       yield this.say(girl, "drag the letters");
       yield this.say(girl, "letters");
       yield this.say(girl, "to the word...");
+      yield this.wait(300);
 
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -68,31 +70,31 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
-            {choices.map((choice) =>
-              <DropContainer
-                key={choice.id}
-                onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
-              >
-                <WordSoundPlayBox {...choice} sound={this.getSound(choice.word)}/>
-              </DropContainer>
-            )}
+            <DragContainer>
+              <PlayableDisplayText sound={this.getSound("letters")} waveHidden={this.state.coPlaying}>{letters}</PlayableDisplayText>
+            </DragContainer>
           </SceneBar>
 
           <SceneBar>
-            <DragContainer>
-              <PlayableDisplayText sound={this.getSound("letters")}>{letters}</PlayableDisplayText>
-            </DragContainer>
+            {choices.map((choice) =>
+              <DropWordBox {...choice}
+                key={choice.id}
+                word={choice.word}
+                sound={this.getSound(choice.word)}
+                onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+                waveHidden={this.state.coPlaying}
+              />
+            )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

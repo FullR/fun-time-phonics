@@ -13,6 +13,7 @@ import SoundPlayBox from "components/sound-play-box";
 import Word from "components/word";
 import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
+import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
 
 @dndContext
@@ -38,19 +39,21 @@ export default class Activity extends React.Component {
     const {words} = this.props;
     return {
       ...wordSounds("girl", words),
-      "read the words...": "girl/common/read-the-word-then-drag-the-correct-picture-to-the-word"
+      "read the words...": "girl/common/read-the-word-then-drag-the-word-to-the-correct-picture"
     };
   }
 
   autoplay() {
-    this.animate();
+    this.animate(this.props.shortInstructions);
   }
 
-  animate() {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      yield this.say(girl, "read the words...");
-      yield this.wait(300);
+      if(!shortInstructions) {
+        yield this.say(girl, "read the words...");
+        yield this.wait(300);
+      }
       for(let choice of choices) {
         choice.set("hidden", false);
         yield this.say(girl, choice.get("word"));
@@ -74,30 +77,31 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
-            <DropContainer onDrop={this.onDrop.bind(this)}>
+            <DragContainer>
               <DisplayText>{correctWord}</DisplayText>
-            </DropContainer>
+            </DragContainer>
           </SceneBar>
 
           <SceneBar>
             {choices.map((choice) =>
-              <SoundPlayBox {...choice} key={choice.id} sound={this.getSound(choice.word)}>
-                <DragContainer value={choice.word}>
-                  <Word word={choice.word}/>
-                </DragContainer>
-              </SoundPlayBox>
+              <DropWordBox {...choice}
+                key={choice.id}
+                word={choice.word}
+                sound={this.getSound(choice.word)}
+                onDrop={this.onDrop.bind(this, choice.word)}
+                waveHidden={this.state.coPlaying}
+              />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

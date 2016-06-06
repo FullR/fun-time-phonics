@@ -14,6 +14,9 @@ export default level({
   Response: bindProps({exampleWords, indexOffset: 7})(Response),
   activities: [
     {words: ["run", "ant", "nut"], correct: "nut"},
-    {words: ["hand", "net", "bun"], correct: "net", wordsOnly: true}
-  ]
+    {words: ["hand", "net", "bun"], correct: "net", shortInstructions: true}
+  ],
+  levelProps: {
+    title: "Beginning Sounds"
+  }
 });

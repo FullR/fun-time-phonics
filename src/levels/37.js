@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["fat", "fashion", "falcon"],
   activities: [
     {words: ["fist", "fast", "feast"], correctWord: "fast"},
-    {words: ["feet", "fit", "fat"], correctWord: "fat", wordsOnly: true},
-    {words: ["fix", "fax", "phone"], correctWord: "fax", wordsOnly: true},
-    {words: ["flag", "fumble", "fabric"], correctWord: "fabric", wordsOnly: true},
-    {words: ["fiddle", "family", "funnel"], correctWord: "family", wordsOnly: true},
-    {words: ["fasten", "fossil", "festival"], correctWord: "fasten", wordsOnly: true},
-    {words: ["factory", "fetch", "foxhole"], correctWord: "factory", wordsOnly: true}
+    {words: ["feet", "fit", "fat"], correctWord: "fat", shortInstructions: true},
+    {words: ["fix", "fax", "phone"], correctWord: "fax", shortInstructions: true},
+    {words: ["flag", "fumble", "fabric"], correctWord: "fabric", shortInstructions: true},
+    {words: ["fiddle", "family", "funnel"], correctWord: "family", shortInstructions: true},
+    {words: ["fasten", "fossil", "festival"], correctWord: "fasten", shortInstructions: true},
+    {words: ["factory", "fetch", "foxhole"], correctWord: "factory", shortInstructions: true}
   ]
 });

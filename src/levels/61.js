@@ -7,13 +7,13 @@ export default consonantVowelLevel({
   lessonWords: ["kick", "kilt", "kitchen"],
   activities: [
     {words: ["comet", "kid", "cut"], correctWord: "kid"},
-    {words: ["cat", "coat", "kitten"], correctWord: "kitten", wordsOnly: true},
-    {words: ["keg", "kick", "cake"], correctWord: "kick", wordsOnly: true},
-    {words: ["camel", "kennel", "kibble"], correctWord: "kibble", wordsOnly: true},
-    {words: ["kiss", "keys", "castle"], correctWord: "kiss", wordsOnly: true},
-    {words: ["Kim", "camera", "Ken"], correctWord: "Kim", wordsOnly: true},
-    {words: ["kitchen", "ketchup", "customer"], correctWord: "kitchen", wordsOnly: true},
-    {words: ["candy", "kidney", "kangaroo"], correctWord: "kidney", wordsOnly: true},
-    {words: ["cold", "call", "kilt"], correctWord: "kilt", wordsOnly: true}
+    {words: ["cat", "coat", "kitten"], correctWord: "kitten", shortInstructions: true},
+    {words: ["keg", "kick", "cake"], correctWord: "kick", shortInstructions: true},
+    {words: ["camel", "kennel", "kibble"], correctWord: "kibble", shortInstructions: true},
+    {words: ["kiss", "keys", "castle"], correctWord: "kiss", shortInstructions: true},
+    {words: ["Kim", "camera", "Ken"], correctWord: "Kim", shortInstructions: true},
+    {words: ["kitchen", "ketchup", "customer"], correctWord: "kitchen", shortInstructions: true},
+    {words: ["candy", "kidney", "kangaroo"], correctWord: "kidney", shortInstructions: true},
+    {words: ["cold", "call", "kilt"], correctWord: "kilt", shortInstructions: true}
   ]
 });

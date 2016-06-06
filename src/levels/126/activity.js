@@ -12,6 +12,7 @@ import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
 import Word from "components/word";
 import DisplayBox from "components/display-box";
+import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
 
 const wordStyle = {
@@ -38,7 +39,7 @@ export default class Activity extends React.Component {
   }
 
   getSounds() {
-    const {words, wordsOnly} = this.props;
+    const {words, shortInstructions} = this.props;
     return {
       ...wordSounds("girl", words),
       "read both words...": "girl/common/read-both-words-then-drag-the-words-to-the-correct-picture"
@@ -46,15 +47,14 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         yield this.say(girl, "read both words...");
-        yield this.wait(200);
       }
       girl.set({speaking: false, animating: false});
     });
@@ -71,29 +71,29 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
 
         <SceneContent>
           <SceneBar>
-            <DropContainer onDrop={this.onDrop.bind(this)}>
+            <DragContainer>
               <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
-            </DropContainer>
+            </DragContainer>
           </SceneBar>
 
           <SceneBar>
             {choices.map((choice) =>
-              <DisplayBox {...choice} key={choice.id} noSoundWave>
-                <DragContainer value={choice.word}>
-                  <Word word={choice.word}/>
-                </DragContainer>
-              </DisplayBox>
+              <DropWordBox {...choice}
+                key={choice.id}
+                word={choice.word}
+                onDrop={this.onDrop.bind(this, choice.word)}
+                waveHidden
+              />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp;&nbsp;{title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

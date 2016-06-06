@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["tip", "Tim", "tinsel"],
   activities: [
     {words: ["tan", "tin", "ten"], correctWord: "tin"},
-    {words: ["tip", "trip", "tape"], correctWord: "tip", wordsOnly: true},
-    {words: ["trick", "toxic", "ticket"], correctWord: "ticket", wordsOnly: true},
-    {words: ["tummy", "timber", "tambourine"], correctWord: "timber", wordsOnly: true},
-    {words: ["tickle", "tackle", "toddler"], correctWord: "tickle", wordsOnly: true},
-    {words: ["topping", "tiptoe", "tadpole"], correctWord: "tiptoe", wordsOnly: true},
-    {words: ["teacher", "treasure", "tissue"], correctWord: "tissue", wordsOnly: true}
+    {words: ["tip", "trip", "tape"], correctWord: "tip", shortInstructions: true},
+    {words: ["trick", "toxic", "ticket"], correctWord: "ticket", shortInstructions: true},
+    {words: ["tummy", "timber", "tambourine"], correctWord: "timber", shortInstructions: true},
+    {words: ["tickle", "tackle", "toddler"], correctWord: "tickle", shortInstructions: true},
+    {words: ["topping", "tiptoe", "tadpole"], correctWord: "tiptoe", shortInstructions: true},
+    {words: ["teacher", "treasure", "tissue"], correctWord: "tissue", shortInstructions: true}
   ]
 });

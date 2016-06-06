@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["Ted", "text", "telephone"],
   activities: [
     {words: ["tan", "tin", "ten"], correctWord: "ten"},
-    {words: ["tied", "Ted", "toad"], correctWord: "Ted", wordsOnly: true},
-    {words: ["tent", "tongue", "tank"], correctWord: "tent", wordsOnly: true},
-    {words: ["tennis", "tonsils", "tissues"], correctWord: "tennis", wordsOnly: true},
-    {words: ["topping", "temple", "tunnel"], correctWord: "temple", wordsOnly: true},
-    {words: ["tightrope", "telescope", "tapestry"], correctWord: "telescope", wordsOnly: true},
-    {words: ["toadstool", "tomahawk", "tentacle"], correctWord: "tentacle", wordsOnly: true}
+    {words: ["tied", "Ted", "toad"], correctWord: "Ted", shortInstructions: true},
+    {words: ["tent", "tongue", "tank"], correctWord: "tent", shortInstructions: true},
+    {words: ["tennis", "tonsils", "tissues"], correctWord: "tennis", shortInstructions: true},
+    {words: ["topping", "temple", "tunnel"], correctWord: "temple", shortInstructions: true},
+    {words: ["tightrope", "telescope", "tapestry"], correctWord: "telescope", shortInstructions: true},
+    {words: ["toadstool", "tomahawk", "tentacle"], correctWord: "tentacle", shortInstructions: true}
   ]
 });

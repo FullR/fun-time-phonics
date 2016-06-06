@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["cat", "cash", "cabin"],
   activities: [
     {words: ["cap", "cop", "cub"], correctWord: "cap"},
-    {words: ["coffee", "calf", "cuff"], correctWord: "calf", wordsOnly: true},
-    {words: ["cob", "cab", "crab"], correctWord: "cab", wordsOnly: true},
-    {words: ["cotton", "king", "cabin"], correctWord: "cabin", wordsOnly: true},
-    {words: ["castle", "collar", "kid"], correctWord: "castle", wordsOnly: true},
-    {words: ["comet", "camera", "cupboard"], correctWord: "camera", wordsOnly: true},
-    {words: ["cactus", "kick", "costume"], correctWord: "cactus", wordsOnly: true}
+    {words: ["coffee", "calf", "cuff"], correctWord: "calf", shortInstructions: true},
+    {words: ["cob", "cab", "crab"], correctWord: "cab", shortInstructions: true},
+    {words: ["cotton", "king", "cabin"], correctWord: "cabin", shortInstructions: true},
+    {words: ["castle", "collar", "kid"], correctWord: "castle", shortInstructions: true},
+    {words: ["comet", "camera", "cupboard"], correctWord: "camera", shortInstructions: true},
+    {words: ["cactus", "kick", "costume"], correctWord: "cactus", shortInstructions: true}
   ]
 });

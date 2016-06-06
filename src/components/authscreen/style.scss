@@ -6,6 +6,9 @@ $bottom-background: #CDE39F;
 
   &__bottom {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -14,11 +17,10 @@ $bottom-background: #CDE39F;
   }
 
   &__timer {
-    position: absolute;
-    top: 40%;
-    width: 100%;
     text-align: center;
-    font-size: 48px;
+    font-size: 140px;
+    cursor: default;
+    align-self: center;
   }
 
   &__instructions {
@@ -27,6 +29,7 @@ $bottom-background: #CDE39F;
     width: 100%;
     text-align: center;
     font-size: 40px;
+    cursor: default;
   }
 
   &__password {
@@ -46,7 +49,7 @@ $bottom-background: #CDE39F;
     text-align: center;
     height: 50px;
     width: 25%;
-    font-size: 35px;
+    font-size: 45px;
     line-height: 40px;
     vertical-align: middle;
   }
@@ -56,5 +59,6 @@ $bottom-background: #CDE39F;
     position: relative;
     left: 20px;
     top: 55px;
+    font-size: 40px;
   }
 }

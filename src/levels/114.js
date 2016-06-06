@@ -9,7 +9,7 @@ export default consonantVowelLevel({
   lessonWords: ["wacky", "waxer", "waft"],
   activities: [
     {words: ["rag", "wag", "wok"], correctWord: "wag"},
-    {words: ["wax", "wick", "west"], correctWord: "wax", wordsOnly: true},
-    {words: ["weapon", "woman", "wagon"], correctWord: "wagon", wordsOnly: true}
+    {words: ["wax", "wick", "west"], correctWord: "wax", shortInstructions: true},
+    {words: ["weapon", "woman", "wagon"], correctWord: "wagon", shortInstructions: true}
   ]
 });

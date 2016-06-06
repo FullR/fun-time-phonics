@@ -8,12 +8,15 @@ export default class AdminRowButton extends React.Component {
   static Index = AdminButtonIndex;
   static Title = AdminButtonTitle;
   render() {
-    const {selected, className} = this.props;
+    const {selected, review, assessment, disabled, className} = this.props;
     const cn = bembam("Admin-section-button", className)
-      .mod("selected", selected);
+      .mod("selected", selected)
+      .mod("review", review)
+      .mod("assessment", assessment)
+      .mod("disabled", disabled);
 
     return (
-      <div {...this.props} className={cn.toString()}/>
+      <div {...this.props} className={cn.toString()} disabled={null}/>
     );
   }
 }

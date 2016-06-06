@@ -7,13 +7,13 @@ export default consonantVowelLevel({
   lessonWords: ["pod", "pocket", "posse"],
   activities: [
     {words: ["pop", "pipe", "pup"], correctWord: "pop"},
-    {words: ["pat", "pot", "pet"], correctWord: "pot", wordsOnly: true},
-    {words: ["pigeon", "panda", "poncho"], correctWord: "poncho", wordsOnly: true},
-    {words: ["pancake", "popcorn", "pumpkin"], correctWord: "popcorn", wordsOnly: true},
-    {words: ["pottery", "patio", "pedestal"], correctWord: "pottery", wordsOnly: true},
-    {words: ["pepper", "pimple", "pompom"], correctWord: "pompom", wordsOnly: true},
-    {words: ["passenger", "popsicle", "pentagon"], correctWord: "popsicle", wordsOnly: true},
-    {words: ["package", "pocket", "puppet"], correctWord: "pocket", wordsOnly: true},
-    {words: ["puzzle", "pencil", "possum"], correctWord: "possum", wordsOnly: true}
+    {words: ["pat", "pot", "pet"], correctWord: "pot", shortInstructions: true},
+    {words: ["pigeon", "panda", "poncho"], correctWord: "poncho", shortInstructions: true},
+    {words: ["pancake", "popcorn", "pumpkin"], correctWord: "popcorn", shortInstructions: true},
+    {words: ["pottery", "patio", "pedestal"], correctWord: "pottery", shortInstructions: true},
+    {words: ["pepper", "pimple", "pompom"], correctWord: "pompom", shortInstructions: true},
+    {words: ["passenger", "popsicle", "pentagon"], correctWord: "popsicle", shortInstructions: true},
+    {words: ["package", "pocket", "puppet"], correctWord: "pocket", shortInstructions: true},
+    {words: ["puzzle", "pencil", "possum"], correctWord: "possum", shortInstructions: true}
   ]
 });

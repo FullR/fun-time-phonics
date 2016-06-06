@@ -7,9 +7,9 @@ export default consonantVowelReview({
   lessonWords: ["wag", "west", "win"],
   activities: [
     {word: "wig", letters: ["we", "wi", "wa"], correctLetters: "wi"},
-    {word: "wet", letters: ["we", "wi", "wa"], correctLetters: "we", wordsOnly: true},
-    {word: "wagon", letters: ["wi", "wa", "wu"], correctLetters: "wa", wordsOnly: true},
-    {word: "wind", letters: ["we", "wa", "wi"], correctLetters: "wi", wordsOnly: true},
-    {word: "well", letters: ["we", "wi", "wa"], correctLetters: "we", wordsOnly: true}
+    {word: "wet", letters: ["we", "wi", "wa"], correctLetters: "we", shortInstructions: true},
+    {word: "wagon", letters: ["wi", "wa", "wu"], correctLetters: "wa", shortInstructions: true},
+    {word: "wind", letters: ["we", "wa", "wi"], correctLetters: "wi", shortInstructions: true},
+    {word: "well", letters: ["we", "wi", "wa"], correctLetters: "we", shortInstructions: true}
   ]
 });

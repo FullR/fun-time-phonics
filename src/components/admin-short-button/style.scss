@@ -12,11 +12,13 @@
 
   > .Admin-button-title {
     position: absolute;
-    top: 30px;
+    top: 28px;
     left: 0;
     width: 100%;
-    font-size: 24px;
-    line-height: 25px;
     text-align: center;
+  }
+
+  > .Admin-button-title.Admin-button-title--size-large { // large titles are closer to the top
+    top: 5px;
   }
 }

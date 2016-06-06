@@ -7,8 +7,8 @@ $large-width: 50px;
 .Star-container {
   display: inline-block;
   border-width: $width;
+  border-style: solid;
   border-image: url($image) 25 25 round;
-  border-style: none;
 
   &--large {
     border-width: $large-width;

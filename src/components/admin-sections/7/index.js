@@ -1,5 +1,4 @@
 import React from "react";
-import Underlined from "components/underlined";
 import Dash from "components/dash";
 import AdminSection from "components/admin-section";
 import AdminSectionColumn from "components/admin-section-column";
@@ -10,6 +9,8 @@ import SubGroup from "components/admin-sub-group";
 import RowTitle from "components/admin-row-title";
 import Index from "components/admin-button-index";
 import Title from "components/admin-button-title";
+import Score from "components/admin-button-score";
+import Letter from "components/admin-button-letter";
 
 require("./style.scss");
 
@@ -25,47 +26,87 @@ export default class AdminSection7 extends React.Component {
       <AdminSection className="Admin-section-7">
         <AdminSectionColumn>
           <AdminSectionRow>
-            <RowTitle>Consonant "v" With Short Vowels</RowTitle>
-            <ShortButton {...level("109")}><Index>109</Index><Title>va</Title></ShortButton>
-            <ShortButton {...level("110")}><Index>110</Index><Title>ve</Title></ShortButton>
-            <ShortButton {...level("111")}><Index>111</Index><Title>vi</Title></ShortButton>
-            <ShortButton {...level("112")}><Index>112</Index><Title>vo</Title></ShortButton>
-            <ShortButton hidden/>
-            <ShortButton {...level("113")}><Index>113</Index><Title><Underlined>Review</Underlined><br/>va<Dash/>vo</Title></ShortButton>
+            <RowTitle>Consonant <Letter>v</Letter> With Short Vowels</RowTitle>
+            <ShortButton {...level("109")}>
+              <Index>109</Index>
+              <Title size="large">va</Title>
+              <Score levelId="109"/>
+            </ShortButton>
+            <ShortButton {...level("110")}>
+              <Index>110</Index>
+              <Title size="large">ve</Title>
+              <Score levelId="110"/>
+            </ShortButton>
+            <ShortButton {...level("111")}>
+              <Index>111</Index>
+              <Title size="large">vi</Title>
+              <Score levelId="111"/>
+            </ShortButton>
+            <ShortButton {...level("112")}>
+              <Index>112</Index>
+              <Title size="large">vo</Title>
+              <Score levelId="112"/>
+            </ShortButton>
+            <ShortButton {...level("113")} review>
+              <Index>113</Index>
+              <Title size="medium">Review<br/><Letter size="large">va<Dash/>vo</Letter></Title>
+              <Score levelId="113"/>
+            </ShortButton>
           </AdminSectionRow>
           <AdminSectionRow>
-            <RowTitle>Consonant "w" With Short Vowels</RowTitle>
-            <ShortButton {...level("114")}><Index>114</Index><Title>wa</Title></ShortButton>
-            <ShortButton {...level("115")}><Index>115</Index><Title>we</Title></ShortButton>
-            <ShortButton {...level("116")}><Index>116</Index><Title>wi</Title></ShortButton>
+            <RowTitle>Consonant <Letter>w</Letter> With Short Vowels</RowTitle>
+            <ShortButton {...level("114")}>
+              <Index>114</Index>
+              <Title size="large">wa</Title>
+              <Score levelId="114"/>
+            </ShortButton>
+            <ShortButton {...level("115")}>
+              <Index>115</Index>
+              <Title size="large">we</Title>
+              <Score levelId="115"/>
+            </ShortButton>
+            <ShortButton {...level("116")}>
+              <Index>116</Index>
+              <Title size="large">wi</Title>
+              <Score levelId="116"/>
+            </ShortButton>
             <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton {...level("117")}><Index>117</Index><Title><Underlined>Review</Underlined><br/>wa<Dash/>wi</Title></ShortButton>
+            <ShortButton {...level("117")} review>
+              <Index>117</Index>
+              <Title size="medium">Review<br/><Letter size="large">wa<Dash/>wi</Letter></Title>
+              <Score levelId="117"/>
+            </ShortButton>
           </AdminSectionRow>
           <AdminSectionRow>
             <RowTitle/>
-            <ShortButton {...level("118")}><Index>118</Index><Title>Consonant "x" Ending Sound</Title></ShortButton>
-            <ShortButton {...level("119")}><Index>119</Index><Title>Consonant "y" With Short Vowels</Title></ShortButton>
+            <ShortButton {...level("118")}>
+              <Index>118</Index>
+              <Title size="medium">Consonant <Letter>x</Letter><br/>Ending Sound</Title>
+              <Score levelId="118"/>
+            </ShortButton>
+            <ShortButton {...level("119")}>
+              <Index>119</Index>
+              <Title size="medium">Consonant <Letter>y</Letter><br/>With<br/>Short Vowels</Title>
+              <Score levelId="119"/>
+            </ShortButton>
+            <ShortButton {...level("120")}>
+              <Index>120</Index>
+              <Title size="medium">Consonant <Letter>z</Letter><br/>With<br/>Short Vowels</Title>
+              <Score levelId="120"/>
+            </ShortButton>
             <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton hidden/>
-          </AdminSectionRow>
-          <AdminSectionRow>
-            <RowTitle/>
-            <ShortButton {...level("120")}><Index>120</Index><Title>Consonant "z" With Short Vowels</Title></ShortButton>
-            <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton hidden/>
-            <ShortButton {...level("121")}><Index>121</Index><Title><Underlined>Review</Underlined><br/>Consonants "y" and "z" With Short Vowels</Title></ShortButton>
+            <ShortButton {...level("121")} review>
+              <Index>121</Index>
+              <Title size="medium">Review<br/><Letter size="large">y<Dash/>z</Letter></Title>
+              <Score levelId="121"/>
+            </ShortButton>
           </AdminSectionRow>
         </AdminSectionColumn>
 
         <AdminSectionColumn>
-          <ShortButton {...level("122")}>
+          <ShortButton {...level("122")} assessment>
             <Index>122</Index>
-            <Title>Co<Dash/>Articulation Assessment</Title>
+            <Title size="medium">Co<Dash/>Articulation Assessment</Title>
           </ShortButton>
         </AdminSectionColumn>
       </AdminSection>

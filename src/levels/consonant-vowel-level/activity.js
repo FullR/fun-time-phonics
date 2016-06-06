@@ -42,16 +42,17 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         yield this.say(girl, "drag the letters");
         yield this.say(girl, "-letters"); // dash to avoid conflicting with the word "letters"
         yield this.say(girl, "to the word...");
+        yield this.wait(300);
       }
 
       for(let choice of choices) {
@@ -68,30 +69,30 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
+          <SceneBar>
+            <DragContainer>
+              <PlayableDisplayText sound={this.getSound("-letters")} waveHidden={this.state.coPlaying}>{consonant + vowel}</PlayableDisplayText>
+            </DragContainer>
+          </SceneBar>
+
           <SceneBar>
             {choices.map((choice) =>
               <DropWordBox {...choice}
                 key={choice.id}
                 sound={this.getSound(choice.word)}
                 onDrop={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
+                waveHidden={this.state.coPlaying}
               />
             )}
           </SceneBar>
-
-          <SceneBar>
-            <DragContainer>
-              <PlayableDisplayText sound={this.getSound("-letters")}>{consonant + vowel}</PlayableDisplayText>
-            </DragContainer>
-          </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

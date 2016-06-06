@@ -7,9 +7,9 @@ export default consonantVowelLevel({
   lessonWords: ["nod", "notch", "nozzle"],
   activities: [
     {words: ["knife", "notch", "nest"], correctWord: "notch"},
-    {words: ["nozzle", "nuzzle", "needle"], correctWord: "nozzle", wordsOnly: true},
-    {words: ["nostril", "nestling", "nectar"], correctWord: "nostril", wordsOnly: true},
-    {words: ["napkin", "nugget", "noggin"], correctWord: "noggin", wordsOnly: true},
-    {words: ["nectarine", "nocturnal", "necklace"], correctWord: "nocturnal", wordsOnly: true}
+    {words: ["nozzle", "nuzzle", "needle"], correctWord: "nozzle", shortInstructions: true},
+    {words: ["nostril", "nestling", "nectar"], correctWord: "nostril", shortInstructions: true},
+    {words: ["napkin", "nugget", "noggin"], correctWord: "noggin", shortInstructions: true},
+    {words: ["nectarine", "nocturnal", "necklace"], correctWord: "nocturnal", shortInstructions: true}
   ]
 });

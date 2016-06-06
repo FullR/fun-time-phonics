@@ -12,6 +12,7 @@ import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
 import PlayableDisplayText from "components/playable-display-text";
 import dndContext from "dnd-context";
+import DropWordBox from "components/drop-word-box";
 
 @dndContext
 @scene
@@ -53,6 +54,7 @@ export default class Activity extends React.Component {
       yield this.say(girl, "drag the letter");
       yield this.say(girl, "x");
       yield this.say(girl, "to the word...");
+      yield this.wait(300);
 
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -74,28 +76,31 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
-            {choices.map((choice) =>
-              <DropContainer onDrop={this.onDrop.bind(this, choice.word)}>
-                <WordSoundPlayBox {...choice} key={choice.id} sound={this.getSound(choice.word)}/>
-              </DropContainer>
-            )}
+            <DragContainer>
+              <PlayableDisplayText sound={this.getSound("x")} waveHidden={this.state.coPlaying}>X</PlayableDisplayText>
+            </DragContainer>
           </SceneBar>
 
           <SceneBar>
-            <DragContainer>
-              <PlayableDisplayText sound={this.getSound("x")}>X</PlayableDisplayText>
-            </DragContainer>
+            {choices.map((choice) =>
+              <DropWordBox {...choice}
+                key={choice.id}
+                word={choice.word}
+                sound={this.getSound(choice.word)}
+                onDrop={this.onDrop.bind(this, choice.word)}
+                waveHidden={this.state.coPlaying}
+              />
+            )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

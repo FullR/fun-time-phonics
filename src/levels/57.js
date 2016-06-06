@@ -7,9 +7,9 @@ export default consonantVowelLevel({
   lessonWords: ["John", "jockey", "jolly"],
   activities: [
     {words: ["jagged", "jug", "jog"], correctWord: "jog"},
-    {words: ["Josh", "judge", "juice"], correctWord: "Josh", wordsOnly: true},
-    {words: ["Jesse", "jockey", "jacket"], correctWord: "jockey", wordsOnly: true},
-    {words: ["jaguar", "jogger", "junkyard"], correctWord: "jogger", wordsOnly: true},
-    {words: ["Jonathan", "javelin", "jellyfish"], correctWord: "Jonathan", wordsOnly: true}
+    {words: ["Josh", "judge", "juice"], correctWord: "Josh", shortInstructions: true},
+    {words: ["Jesse", "jockey", "jacket"], correctWord: "jockey", shortInstructions: true},
+    {words: ["jaguar", "jogger", "junkyard"], correctWord: "jogger", shortInstructions: true},
+    {words: ["Jonathan", "javelin", "jellyfish"], correctWord: "Jonathan", shortInstructions: true}
   ]
 });

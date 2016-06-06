@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["top", "tot", "tonic"],
   activities: [
     {words: ["tub", "top", "tap"], correctWord: "top"},
-    {words: ["Tim", "team", "Tom"], correctWord: "Tom", wordsOnly: true},
-    {words: ["toxic", "taxi", "tuxedo"], correctWord: "toxic", wordsOnly: true},
-    {words: ["tickle", "tackle", "toddler"], correctWord: "toddler", wordsOnly: true},
-    {words: ["tennis", "tonsil", "tunnel"], correctWord: "tonsil", wordsOnly: true},
-    {words: ["topping", "temple", "tummy"], correctWord: "topping", wordsOnly: true},
-    {words: ["telescope", "tomahawk", "tentacle"], correctWord: "tomahawk", wordsOnly: true}
+    {words: ["Tim", "team", "Tom"], correctWord: "Tom", shortInstructions: true},
+    {words: ["toxic", "taxi", "tuxedo"], correctWord: "toxic", shortInstructions: true},
+    {words: ["tickle", "tackle", "toddler"], correctWord: "toddler", shortInstructions: true},
+    {words: ["tennis", "tonsil", "tunnel"], correctWord: "tonsil", shortInstructions: true},
+    {words: ["topping", "temple", "tummy"], correctWord: "topping", shortInstructions: true},
+    {words: ["telescope", "tomahawk", "tentacle"], correctWord: "tomahawk", shortInstructions: true}
   ]
 });

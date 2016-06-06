@@ -15,7 +15,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: false
       },
@@ -38,19 +38,19 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word that makes the");
         yield this.say(girl, "phonic");
         yield this.say(girl, "sound");
-        yield this.wait(100);
+        yield this.wait(300);
       }
       girl.set("size", "small");
       for(let choice of choices) {
@@ -68,8 +68,8 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
@@ -77,15 +77,15 @@ export default class Activity extends React.Component {
               <WordSoundPlayBox {...choice}
                 key={choice.id}
                 sound={this.getSound(choice.word)}
+                waveHidden={this.state.coPlaying}
                 onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
               />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

@@ -8,13 +8,13 @@ $scale: 0.5;
   width: $width * $scale;
   height: $height * $scale;
   animation-name: float;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;//1;
   z-index: 10;
 }
 
 @keyframes float {
   from {
-    bottom: 0%;
+    bottom: -10%;
   }
   to {
     bottom: 110%;

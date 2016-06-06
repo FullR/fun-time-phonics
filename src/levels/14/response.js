@@ -25,10 +25,12 @@ export default class LevelResponse extends React.Component {
       "in": "girl/common/in",
       "with": "girl/common/with",
       "the new word is": "girl/common/the-new-word-is",
+      "not": "girl/common/not",
       "replace-phonic": `girl/common/phonics/_${replacePhonic}_`,
       "phonic": `girl/common/phonics/_${phonic}_`,
       "replace-word": `girl/words/${replaceWord}`,
-      "correct-word": `girl/words/${correctWord}`
+      "correct-word": `girl/words/${correctWord}`,
+      "selected-word": `girl/words/${answer.word}`
     };
 
     if(answer.correct) {
@@ -62,6 +64,8 @@ export default class LevelResponse extends React.Component {
       yield this.say(girl, "correct-word");
 
       if(!correct) {
+        yield this.say(girl, "not");
+        yield this.say(girl, "selected-word");
         this.setState({arrowHidden: false});
       }
       girl.set({speaking: false, animating: false});
@@ -74,13 +78,12 @@ export default class LevelResponse extends React.Component {
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={answer.correct}>
           <Word word={answer.word}/>
         </Answer>
-        <ActivityTitle>
-          {levelId}. {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
       </Response>
     );

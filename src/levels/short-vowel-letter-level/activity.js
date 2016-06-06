@@ -100,20 +100,10 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
-          <SceneBar>
-            {choices.map((choice) =>
-              <DropWordBox {...choice}
-                key={choice.id}
-                sound={this.getSound(choice.word)}
-                onDrop={this.onDrop.bind(this, choice.word)}
-              />
-            )}
-          </SceneBar>
-
           <SceneBar>
             {dragLetters.map((letter) =>
               <DragContainer key={letter} value={letter}>
@@ -121,11 +111,21 @@ export default class Activity extends React.Component {
               </DragContainer>
             )}
           </SceneBar>
+
+          <SceneBar>
+            {choices.map((choice) =>
+              <DropWordBox {...choice}
+                key={choice.id}
+                sound={this.getSound(choice.word)}
+                onDrop={this.onDrop.bind(this, choice.word)}
+                waveHidden={this.state.coPlaying}
+              />
+            )}
+          </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

@@ -19,11 +19,12 @@ export default class Robot extends React.Component {
   };
 
   render() {
-    const {type, size, animating, speaking, glowing, className, children} = this.props;
+    const {type, size, animating, speaking, glowing, noArm, className, children} = this.props;
     const blockName = `Robot-${type}`;
     const classNames = cn(
       "Robot",
       `Robot--${size}`,
+      noArm ? "Robot--no-arm" : null,
       blockName,
       `${blockName}--${size}`,
       `${blockName}--${animating ? "animating" : "idle"}`,

@@ -7,14 +7,14 @@ export default consonantVowelReview({
   lessonWords: ["sad", "set", "sip", "sock", "sun"],
   activities: [
     {word: "sit", letters: ["sa", "se", "si"], correctLetters: "si"},
-    {word: "sack", letters: ["sa", "se", "si"], correctLetters: "sa", wordsOnly: true},
-    {word: "sob", letters: ["sa", "su", "so"], correctLetters: "so", wordsOnly: true},
-    {word: "seven", letters: ["se", "si", "so"], correctLetters: "se", wordsOnly: true},
-    {word: "suds", letters: ["se", "si", "su"], correctLetters: "su", wordsOnly: true},
-    {word: "soccer", letters: ["su", "so", "sa"], correctLetters: "so", wordsOnly: true},
-    {word: "sick", letters: ["sa", "se", "si"], correctLetters: "si", wordsOnly: true},
-    {word: "sax", letters: ["sa", "si", "so"], correctLetters: "sa", wordsOnly: true},
-    {word: "send", letters: ["se", "si", "sa"], correctLetters: "se", wordsOnly: true},
-    {word: "sundae", letters: ["so", "su", "si"], correctLetters: "su", wordsOnly: true}
+    {word: "sack", letters: ["sa", "se", "si"], correctLetters: "sa", shortInstructions: true},
+    {word: "sob", letters: ["sa", "su", "so"], correctLetters: "so", shortInstructions: true},
+    {word: "seven", letters: ["se", "si", "so"], correctLetters: "se", shortInstructions: true},
+    {word: "suds", letters: ["se", "si", "su"], correctLetters: "su", shortInstructions: true},
+    {word: "soccer", letters: ["su", "so", "sa"], correctLetters: "so", shortInstructions: true},
+    {word: "sick", letters: ["sa", "se", "si"], correctLetters: "si", shortInstructions: true},
+    {word: "sax", letters: ["sa", "si", "so"], correctLetters: "sa", shortInstructions: true},
+    {word: "send", letters: ["se", "si", "sa"], correctLetters: "se", shortInstructions: true},
+    {word: "sundae", letters: ["so", "su", "si"], correctLetters: "su", shortInstructions: true}
   ]
 });

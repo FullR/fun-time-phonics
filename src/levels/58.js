@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["junk", "jumper", "jungle"],
   activities: [
     {words: ["jug", "jig", "jog"], correctWord: "jug"},
-    {words: ["jump", "gym", "jam"], correctWord: "jump", wordsOnly: true},
-    {words: ["jacks", "Josh", "judge"], correctWord: "judge", wordsOnly: true},
-    {words: ["jackal", "juggle", "jiggle"], correctWord: "juggle", wordsOnly: true},
-    {words: ["Jennifer", "janitor", "jumper"], correctWord: "jumper", wordsOnly: true},
-    {words: ["jagged", "jungle", "jewel"], correctWord: "jungle", wordsOnly: true},
-    {words: ["jogger", "jaguar", "junkyard"], correctWord: "junkyard", wordsOnly: true}
+    {words: ["jump", "gym", "jam"], correctWord: "jump", shortInstructions: true},
+    {words: ["jacks", "Josh", "judge"], correctWord: "judge", shortInstructions: true},
+    {words: ["jackal", "juggle", "jiggle"], correctWord: "juggle", shortInstructions: true},
+    {words: ["Jennifer", "janitor", "jumper"], correctWord: "jumper", shortInstructions: true},
+    {words: ["jagged", "jungle", "jewel"], correctWord: "jungle", shortInstructions: true},
+    {words: ["jogger", "jaguar", "junkyard"], correctWord: "junkyard", shortInstructions: true}
   ]
 });

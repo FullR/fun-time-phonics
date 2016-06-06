@@ -7,9 +7,9 @@ export default consonantVowelReview({
   lessonWords: ["keg", "kick"],
   activities: [
     {word: "kitten", letters: ["ke", "ki", "co"], correctLetters: "ki"},
-    {word: "ketchup", letters: ["ke", "ki", "cu"], correctLetters: "ke", wordsOnly: true},
-    {word: "kid", letters: ["ke", "ca", "ki"], correctLetters: "ki", wordsOnly: true},
-    {word: "kettle", letters: ["ke", "ki", "cu"], correctLetters: "ke", wordsOnly: true},
-    {word: "kidney", letters: ["ke", "ki", "co"], correctLetters: "ki", wordsOnly: true}
+    {word: "ketchup", letters: ["ke", "ki", "cu"], correctLetters: "ke", shortInstructions: true},
+    {word: "kid", letters: ["ke", "ca", "ki"], correctLetters: "ki", shortInstructions: true},
+    {word: "kettle", letters: ["ke", "ki", "cu"], correctLetters: "ke", shortInstructions: true},
+    {word: "kidney", letters: ["ke", "ki", "co"], correctLetters: "ki", shortInstructions: true}
   ]
 });

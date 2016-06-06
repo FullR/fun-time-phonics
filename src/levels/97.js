@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["semi", "separate", "sesame"],
   activities: [
     {words: ["sit", "set", "suit"], correctWord: "set"},
-    {words: ["send", "sand", "sled"], correctWord: "send", wordsOnly: true},
-    {words: ["sieve", "seven", "safe"], correctWord: "seven", wordsOnly: true},
-    {words: ["sickle", "second", "socket"], correctWord: "second", wordsOnly: true},
-    {words: ["sucker", "soccer", "secretary"], correctWord: "secretary", wordsOnly: true},
-    {words: ["sixteen", "submarine", "seventeen"], correctWord: "seventeen", wordsOnly: true},
-    {words: ["semicircle", "salamander", "sunflower"], correctWord: "semicircle", wordsOnly: true}
+    {words: ["send", "sand", "sled"], correctWord: "send", shortInstructions: true},
+    {words: ["sieve", "seven", "safe"], correctWord: "seven", shortInstructions: true},
+    {words: ["sickle", "second", "socket"], correctWord: "second", shortInstructions: true},
+    {words: ["sucker", "soccer", "secretary"], correctWord: "secretary", shortInstructions: true},
+    {words: ["sixteen", "submarine", "seventeen"], correctWord: "seventeen", shortInstructions: true},
+    {words: ["semicircle", "salamander", "sunflower"], correctWord: "semicircle", shortInstructions: true}
   ]
 });

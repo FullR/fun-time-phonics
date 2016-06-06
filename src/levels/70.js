@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["map", "match", "Max"],
   activities: [
     {words: ["mud", "mad", "mob"], correctWord: "mad"},
-    {words: ["mat", "mitt", "meat"], correctWord: "mat", wordsOnly: true},
-    {words: ["mug", "milk", "mask"], correctWord: "mask", wordsOnly: true},
-    {words: ["magnet", "mongoose", "monkey"], correctWord: "magnet", wordsOnly: true},
-    {words: ["mushroom", "meadow", "magic"], correctWord: "magic", wordsOnly: true},
-    {words: ["mustache", "mascot", "miniskirt"], correctWord: "mascot", wordsOnly: true},
-    {words: ["megaphone", "magazine", "medicine"], correctWord: "magazine", wordsOnly: true}
+    {words: ["mat", "mitt", "meat"], correctWord: "mat", shortInstructions: true},
+    {words: ["mug", "milk", "mask"], correctWord: "mask", shortInstructions: true},
+    {words: ["magnet", "mongoose", "monkey"], correctWord: "magnet", shortInstructions: true},
+    {words: ["mushroom", "meadow", "magic"], correctWord: "magic", shortInstructions: true},
+    {words: ["mustache", "mascot", "miniskirt"], correctWord: "mascot", shortInstructions: true},
+    {words: ["megaphone", "magazine", "medicine"], correctWord: "magazine", shortInstructions: true}
   ]
 });

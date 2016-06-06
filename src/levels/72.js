@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["mint", "mixer", "middle"],
   activities: [
     {words: ["melt", "mug", "milk"], correctWord: "milk"},
-    {words: ["mix", "Max", "mesh"], correctWord: "mix", wordsOnly: true},
-    {words: ["mat", "mitt", "meat"], correctWord: "mitt", wordsOnly: true},
-    {words: ["mitten", "mantel", "muffin"], correctWord: "mitten", wordsOnly: true},
-    {words: ["model", "middle", "medal"], correctWord: "middle", wordsOnly: true},
-    {words: ["missile", "muscle", "meadow"], correctWord: "missile", wordsOnly: true},
-    {words: ["mustache", "mascot", "miniskirt"], correctWord: "miniskirt", wordsOnly: true}
+    {words: ["mix", "Max", "mesh"], correctWord: "mix", shortInstructions: true},
+    {words: ["mat", "mitt", "meat"], correctWord: "mitt", shortInstructions: true},
+    {words: ["mitten", "mantel", "muffin"], correctWord: "mitten", shortInstructions: true},
+    {words: ["model", "middle", "medal"], correctWord: "middle", shortInstructions: true},
+    {words: ["missile", "muscle", "meadow"], correctWord: "missile", shortInstructions: true},
+    {words: ["mustache", "mascot", "miniskirt"], correctWord: "miniskirt", shortInstructions: true}
   ]
 });

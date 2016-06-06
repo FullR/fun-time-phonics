@@ -63,7 +63,7 @@ export default class Activity extends React.Component {
       yield this.say(girl, "phonic");
       yield this.say(girl, "what is the new word");
 
-      yield this.wait(500);
+      yield this.wait(300);
       for(let choice of choices) {
         choice.set("hidden", false);
         yield this.say(girl, choice.get("word"));
@@ -80,13 +80,13 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           {showingReplaceWord ?
             <SceneBar>
-              <WordSoundPlayBox word={replaceWord} sound={this.getSound("replace-word")}/>
+              <WordSoundPlayBox word={replaceWord} sound={this.getSound("replace-word")} waveHidden={this.state.coPlaying}/>
             </SceneBar> :
             null
           }
@@ -95,6 +95,7 @@ export default class Activity extends React.Component {
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(choice.word)}
                 onClick={() => onAnswer({word: choice.word, correct: correctWord === choice.word})}
               />
@@ -102,9 +103,8 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

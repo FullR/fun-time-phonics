@@ -6,6 +6,7 @@ export default class Actor extends React.Component {
   static propTypes = {
     type: React.PropTypes.oneOf(["boy", "girl"]).isRequired
   };
+
   static defaultProps = {
     size: "small"
   };
@@ -20,11 +21,7 @@ export default class Actor extends React.Component {
     );
 
     return (
-      <Robot {...this.props} className={classNames}>
-        {children ||
-          type === "boy" ? "Lesson" : "Instructions"
-        }
-      </Robot>
+      <Robot {...this.props} className={classNames}/>
     );
   }
 }

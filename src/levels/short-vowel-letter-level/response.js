@@ -19,6 +19,7 @@ export default class LevelResponse extends React.Component {
 
   getSounds() {
     const {letter, answer} = this.props;
+    const aOrAn = letter === "u" ? "a" : "an";
     const sounds = {
       "phonic": `girl/common/phonics/_${letter}h_`,
       "letter": `girl/common/${letter}`,
@@ -29,12 +30,9 @@ export default class LevelResponse extends React.Component {
     if(answer.correct) {
       sounds["applause"] = "applause";
       sounds["correct"] = "girl/common/correct";
-      sounds["makes the"] = "girl/common/makes-the",
-      sounds["sound so"] = "girl/common/sound-so",
-      sounds["has an"] = "girl/common/has-an";
+      sounds["makes the..."] = `girl/common/makes-the-${letter}h-sound-so-it-has-${aOrAn}-${letter}-in-it`
     } else {
-      sounds["does not make the"] = "girl/common/does-not-make-the";
-      sounds["sound so it..."] = "girl/common/sound-so-it-does-not-have-an";
+      sounds["does not make the..."] = `girl/common/does-not-make-the-${letter}h-sound-so-it-does-not-have-${aOrAn}-${letter}-in-it`;
     }
 
     return sounds;
@@ -48,21 +46,12 @@ export default class LevelResponse extends React.Component {
       if(correct) {
         yield this.play("applause");
         yield this.say(girl, "correct");
+        yield this.wait(200);
         yield this.say(girl, "answer-word");
-        yield this.say(girl, "makes the");
-        yield this.say(girl, "phonic");
-        yield this.say(girl, "sound so");
-        yield this.say(girl, "answer-word");
-        yield this.say(girl, "has an");
-        yield this.say(girl, "letter");
-        yield this.say(girl, "in it");
+        yield this.say(girl, "makes the...");
       } else {
         yield this.say(girl, "answer-word");
-        yield this.say(girl, "does not make the");
-        yield this.say(girl, "phonic");
-        yield this.say(girl, "sound so it...");
-        yield this.say(girl, "letter");
-        yield this.say(girl, "in it");
+        yield this.say(girl, "does not make the...");
         this.setState({arrowHidden: false});
       }
       girl.set({speaking: false, animating: false});
@@ -75,13 +64,12 @@ export default class LevelResponse extends React.Component {
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={answer.correct}>
           <Word word={answer.word}/>
         </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
       </Response>
     );

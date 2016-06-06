@@ -19,6 +19,9 @@ export default function soundContainer(Wrapped) {
       assign(this.state || (this.state = {}), {
         soundsLoaded: false
       });
+      this.sounds = transform(this.getSounds(), (sounds, path, soundId) => {
+        sounds[soundId] = new Sound({path});
+      });
     }
 
     getSounds() {
@@ -47,10 +50,7 @@ export default function soundContainer(Wrapped) {
     }
 
     componentDidMount() {
-      const soundMap = this.getSounds();
-      const sounds = this.sounds = transform(soundMap, (sounds, path, soundId) => {
-        sounds[soundId] = new Sound({path});
-      });
+      const {sounds} = this;
 
       const load = () => Promise.all(
         values(sounds).map((sound) =>
@@ -84,11 +84,11 @@ export default function soundContainer(Wrapped) {
     }
 
     render() {
-      if(this.state.soundsLoaded) {
+      //if(this.state.soundsLoaded) {
         return super.render();
-      } else {
-        return null;
-      }
+      //} else {
+      //  return null;
+      //}
     }
   };
 }

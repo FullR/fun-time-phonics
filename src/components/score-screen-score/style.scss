@@ -1,6 +1,13 @@
 .Score-screen-score {
-  margin-top: 100px;
-  font-size: 48px;
+  font-size: 65px;
   text-align: center;
-  width: 100%;
+  cursor: default;
+
+  &--passing &__percent {
+    color: #0B0;
+  }
+
+  &--failing &__percent {
+    color: #B00;
+  }
 }

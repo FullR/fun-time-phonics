@@ -10,7 +10,7 @@ export default [
   {words: ["hut", "cot", "hat"], rhymeWord: "hot", correctWord: "cot"},
   {words: ["hip", "crib", "mop"], rhymeWord: "lip", correctWord: "hip"},
   {words: ["bag", "edge", "beg"], rhymeWord: "egg", correctWord: "beg"},
-  {words: ["bag", "wax", "black"], rhymeWord: "ax", correctWord: "wax"},
+  {words: ["bag", "wax", "black"], rhymeWord: "axe", correctWord: "wax"},
   {words: ["Beth", "fast", "path"], rhymeWord: "bath", correctWord: "path"},
   {words: ["hot", "hogs", "rocks"], rhymeWord: "ox", correctWord: "rocks"},
   {words: ["hand", "bread", "heavy"], rhymeWord: "head", correctWord: "bread"},

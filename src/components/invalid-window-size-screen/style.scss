@@ -1,0 +1,23 @@
+.Invalid-window-size-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background: #cde5b7;
+  font-family: verdana;
+  h1 {
+    font-size: 50px;
+    width: 100%;
+  }
+
+  span {
+    font-size: 30px;
+    cursor: pointer;
+    color: #00A;
+
+    &:hover {
+      color: #00F;
+      text-decoration: underline;
+    }
+  }
+}

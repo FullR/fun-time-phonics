@@ -17,7 +17,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: true
       },
@@ -39,19 +39,20 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         yield this.say(girl, "touch the word that begins with");
         yield this.wait(50);
         yield this.say(girl, "t");
         yield this.wait(100);
         girl.set("size", "small");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -64,12 +65,12 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {levelId, title, onAnswer, activityIndex, correct, showLesson} = this.props;
+    const {levelId, title, onAnswer, activityIndex, correct, showLesson, activityCount} = this.props;
 
     return (
       <Screen>
-        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
@@ -77,17 +78,16 @@ export default class Activity extends React.Component {
               <WordSoundPlayBox {...choice}
                 key={choice.id}
                 sound={this.getSound(choice.word)}
+                waveHidden={this.state.coPlaying}
                 onClick={() => onAnswer({word: choice.word, correct: correct === choice.word})}
               />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of 15
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
-
         <AdminButton/>
       </Screen>
     );

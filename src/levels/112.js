@@ -7,8 +7,8 @@ export default consonantVowelLevel({
   lessonWords: ["volley", "vomit", "volume"],
   activities: [
     {words: ["wok", "fox", "Vonda"], correctWord: "Vonda"},
-    {words: ["venom", "volume", "villain"], correctWord: "volume", wordsOnly: true},
-    {words: ["volleyball", "valuables", "vegetables"], correctWord: "volleyball", wordsOnly: true},
-    {words: ["visitor", "vulture", "volunteer"], correctWord: "volunteer", wordsOnly: true}
+    {words: ["venom", "volume", "villain"], correctWord: "volume", shortInstructions: true},
+    {words: ["volleyball", "valuables", "vegetables"], correctWord: "volleyball", shortInstructions: true},
+    {words: ["visitor", "vulture", "volunteer"], correctWord: "volunteer", shortInstructions: true}
   ]
 });

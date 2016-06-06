@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["peg", "pet", "peasant"],
   activities: [
     {words: ["pan", "pin", "pen"], correctWord: "pen"},
-    {words: ["pedal", "paddle", "poodle"], correctWord: "pedal", wordsOnly: true},
-    {words: ["pickle", "petal", "puddle"], correctWord: "petal", wordsOnly: true},
-    {words: ["penny", "pony", "panda"], correctWord: "penny", wordsOnly: true},
-    {words: ["paper", "pepper", "puppet"], correctWord: "pepper", wordsOnly: true},
-    {words: ["puzzle", "pencil", "possum"], correctWord: "pencil", wordsOnly: true},
-    {words: ["pigeon", "present", "pelican"], correctWord: "pelican", wordsOnly: true}
+    {words: ["pedal", "paddle", "poodle"], correctWord: "pedal", shortInstructions: true},
+    {words: ["pickle", "petal", "puddle"], correctWord: "petal", shortInstructions: true},
+    {words: ["penny", "pony", "panda"], correctWord: "penny", shortInstructions: true},
+    {words: ["paper", "pepper", "puppet"], correctWord: "pepper", shortInstructions: true},
+    {words: ["puzzle", "pencil", "possum"], correctWord: "pencil", shortInstructions: true},
+    {words: ["pigeon", "present", "pelican"], correctWord: "pelican", shortInstructions: true}
   ]
 });

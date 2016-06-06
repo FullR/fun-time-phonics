@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["mesh", "melt", "megaphone"],
   activities: [
     {words: ["men", "man", "moon"], correctWord: "men"},
-    {words: ["moth", "mix", "mesh"], correctWord: "mesh", wordsOnly: true},
-    {words: ["mitten", "melon", "muffin"], correctWord: "melon", wordsOnly: true},
-    {words: ["model", "middle", "medal"], correctWord: "medal", wordsOnly: true},
-    {words: ["mixer", "measure", "monster"], correctWord: "measure", wordsOnly: true},
-    {words: ["mushroom", "mansion", "meadow"], correctWord: "meadow", wordsOnly: true},
-    {words: ["medicine", "mannequin", "minivan"], correctWord: "medicine", wordsOnly: true}
+    {words: ["moth", "mix", "mesh"], correctWord: "mesh", shortInstructions: true},
+    {words: ["mitten", "melon", "muffin"], correctWord: "melon", shortInstructions: true},
+    {words: ["model", "middle", "medal"], correctWord: "medal", shortInstructions: true},
+    {words: ["mixer", "measure", "monster"], correctWord: "measure", shortInstructions: true},
+    {words: ["mushroom", "mansion", "meadow"], correctWord: "meadow", shortInstructions: true},
+    {words: ["medicine", "mannequin", "minivan"], correctWord: "medicine", shortInstructions: true}
   ]
 });

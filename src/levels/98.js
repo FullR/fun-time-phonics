@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["sick", "silk", "sizzle"],
   activities: [
     {words: ["sit", "set", "seat"], correctWord: "sit"},
-    {words: ["sip", "sap", "soup"], correctWord: "sip", wordsOnly: true},
-    {words: ["sticks", "six", "sax"], correctWord: "six", wordsOnly: true},
-    {words: ["sickle", "second", "socket"], correctWord: "sickle", wordsOnly: true},
-    {words: ["slipper", "saddle", "sister"], correctWord: "sister", wordsOnly: true},
-    {words: ["sandal", "sundae", "sixteen"], correctWord: "sixteen", wordsOnly: true},
-    {words: ["silver", "sapphire", "sunflower"], correctWord: "silver", wordsOnly: true}
+    {words: ["sip", "sap", "soup"], correctWord: "sip", shortInstructions: true},
+    {words: ["sticks", "six", "sax"], correctWord: "six", shortInstructions: true},
+    {words: ["sickle", "second", "socket"], correctWord: "sickle", shortInstructions: true},
+    {words: ["slipper", "saddle", "sister"], correctWord: "sister", shortInstructions: true},
+    {words: ["sandal", "sundae", "sixteen"], correctWord: "sixteen", shortInstructions: true},
+    {words: ["silver", "sapphire", "sunflower"], correctWord: "silver", shortInstructions: true}
   ]
 });

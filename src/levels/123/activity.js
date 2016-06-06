@@ -12,7 +12,7 @@ import dndContext from "dnd-context";
 import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
 import DisplayText from "components/display-text";
-
+import DropWordBox from "components/drop-word-box";
 
 @dndContext
 @scene
@@ -41,7 +41,7 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
   animate(wordOnly) {
@@ -49,7 +49,6 @@ export default class Activity extends React.Component {
     this.startCo(function*() {
       if(!wordOnly) {
         yield this.say(girl, "drag the letter...");
-        yield this.wait(150);
       }
       yield this.say(girl, "word");
     });
@@ -66,14 +65,17 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
-            <DropContainer onDrop={this.onDrop.bind(this)}>
-              <WordSoundPlayBox word={word} sound={this.getSound("word")}/>
-            </DropContainer>
+            <DropWordBox
+              word={word}
+              sound={this.getSound("word")}
+              onDrop={this.onDrop.bind(this)}
+              waveHidden={this.state.coPlaying}
+            />
           </SceneBar>
 
           <SceneBar>
@@ -85,9 +87,8 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}. {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

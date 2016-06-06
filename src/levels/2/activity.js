@@ -17,7 +17,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: true
       },
@@ -39,20 +39,21 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word that ends with"),
         yield this.wait(250);
         yield this.say(girl, "t");
         yield this.wait(200);
         girl.set("size", "small");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -69,14 +70,15 @@ export default class Activity extends React.Component {
 
     return (
       <Screen>
-        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
+                waveHidden={this.state.coPlaying}
                 sound={this.getSound(choice.word)}
                 onClick={() => onAnswer({word: choice.word, correct: correct === choice.word})}
               />
@@ -84,11 +86,9 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of 15
+        <ActivityTitle activityIndex={activityIndex} activityCount={15}>
+          {title}
         </ActivityTitle>
-
         <AdminButton/>
       </Screen>
     )

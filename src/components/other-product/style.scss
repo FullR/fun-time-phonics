@@ -16,11 +16,13 @@
 
   &__thumbnail {
     border: 1px solid #444;
+    align-self: center;
     min-width: 202px;
     min-height: 152px;
     max-width: 202px;
     max-height: 152px;
     box-sizing: border-box;
+    flex: 0 1 auto;
   }
 
   &__content {

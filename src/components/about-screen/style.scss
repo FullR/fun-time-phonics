@@ -1,6 +1,8 @@
 .Credit-screen {
   .Info-screen-content {
-    padding: 30px;
+    padding: 3rem;
+    position: relative;
+    cursor: default;
   }
 
   h3,
@@ -11,7 +13,7 @@
   }
 
   h3 {
-    margin-top: 50px;
+    margin-top: 5rem;
   }
 
   &__job-desc {
@@ -19,7 +21,15 @@
   }
 
   &__names {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+  }
+
+  &__version {
+    position: absolute;
+    font-size: 1rem;
+    top: 0.3rem;
+    right: 0.3rem;
+    color: rgba(0, 0, 0, 0.3);
   }
 
   em {

@@ -169,24 +169,24 @@ export default class Lesson extends React.Component {
 
     return (
       <Screen>
-        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
+        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
           <SceneBar>
             {showingLetterIntro ?
-              <PlayableDisplayText sound={this.getSound("consonant")}>
+              <PlayableDisplayText sound={this.getSound("consonant")} waveHidden={this.state.coPlaying}>
                 <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
                 <span>{consonant}</span>
               </PlayableDisplayText> :
-              <PlayableDisplayText sound={this.getSound("letters")}>{consonant}{vowel}</PlayableDisplayText>
+              <PlayableDisplayText sound={this.getSound("letters")} waveHidden={this.state.coPlaying}>{consonant}{vowel}</PlayableDisplayText>
             }
           </SceneBar>
 
           <SceneBar>
             {choices.map((choice, i) =>
               <WordSoundPlayBox {...choice}
-                waveHidden={showingLetterIntro}
+                waveHidden={this.state.coPlaying}
                 size={showingLetterIntro ? "medium" : "large"}
                 key={choice.word + "-" + i}
                 sound={this.getSound(choice.word)}

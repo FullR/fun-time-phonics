@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["weather", "website", "wealthy"],
   activities: [
     {words: ["web", "one", "red"], correctWord: "web"},
-    {words: ["white", "sweat", "wet"], correctWord: "wet", wordsOnly: true},
-    {words: ["wax", "west", "waist"], correctWord: "west", wordsOnly: true},
-    {words: ["wheel", "well", "wall"], correctWord: "well", wordsOnly: true},
-    {words: ["wedding", "woman", "window"], correctWord: "wedding", wordsOnly: true},
-    {words: ["switch", "witch", "wedge"], correctWord: "wedge", wordsOnly: true},
-    {words: ["weapon", "wagon", "wishbone"], correctWord: "weapon", wordsOnly: true}
+    {words: ["white", "sweat", "wet"], correctWord: "wet", shortInstructions: true},
+    {words: ["wax", "west", "waist"], correctWord: "west", shortInstructions: true},
+    {words: ["wheel", "well", "wall"], correctWord: "well", shortInstructions: true},
+    {words: ["wedding", "woman", "window"], correctWord: "wedding", shortInstructions: true},
+    {words: ["switch", "witch", "wedge"], correctWord: "wedge", shortInstructions: true},
+    {words: ["weapon", "wagon", "wishbone"], correctWord: "weapon", shortInstructions: true}
   ]
 });

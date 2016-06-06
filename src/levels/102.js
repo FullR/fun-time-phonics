@@ -9,11 +9,11 @@ export default consonantVowelLevel({
   lessonWords: ["talon", "tablet", "tattoo"],
   activities: [
     {words: ["tip", "top", "tap"], correctWord: "tap"},
-    {words: ["tug", "tag", "tiger"], correctWord: "tag", wordsOnly: true},
-    {words: ["tack", "tusk", "stack"], correctWord: "tack", wordsOnly: true},
-    {words: ["toxic", "taxi", "tuxedo"], correctWord: "taxi", wordsOnly: true},
-    {words: ["tickle", "tackle", "toddler"], correctWord: "tackle", wordsOnly: true},
-    {words: ["tadpole", "tiptoe", "toadstool"], correctWord: "tadpole", wordsOnly: true},
-    {words: ["tightrope", "telescope", "tapestry"], correctWord: "tapestry", wordsOnly: true}
+    {words: ["tug", "tag", "tiger"], correctWord: "tag", shortInstructions: true},
+    {words: ["tack", "tusk", "stack"], correctWord: "tack", shortInstructions: true},
+    {words: ["toxic", "taxi", "tuxedo"], correctWord: "taxi", shortInstructions: true},
+    {words: ["tickle", "tackle", "toddler"], correctWord: "tackle", shortInstructions: true},
+    {words: ["tadpole", "tiptoe", "toadstool"], correctWord: "tadpole", shortInstructions: true},
+    {words: ["tightrope", "telescope", "tapestry"], correctWord: "tapestry", shortInstructions: true}
   ]
 });

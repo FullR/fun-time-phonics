@@ -17,7 +17,6 @@ export default function level({
   Feedback,
   Response,
   Activity,
-  passingPercent=85,
   activities=[],
   levelProps={} // passed to all parts of the level (Lesson, Activity, Response, Feedback)
 }) {
@@ -31,12 +30,18 @@ export default function level({
   }, levelProps);
 
   class Level extends React.Component {
+    static activityCount = activities.length; // used to find out max score when calculating percentages
+
     static propTypes = {
       onNext: React.PropTypes.func
     };
 
     static defaultProps = {
       onNext: noop
+    };
+
+    state = {
+      activityInstructionsPlayed: false // used to insure the activity instructions are played at least once
     };
 
     componentWillReceiveProps(nextProps) {
@@ -53,8 +58,16 @@ export default function level({
       store.dispatch({type: actions.RESET_LEVEL, levelId: id});
     }
 
+    onCompleteActivity() {
+      if(!this.state.activityInstructionsPlayed) {
+        this.setState({activityInstructionsPlayed: true});
+      }
+      store.dispatch({type: actions.COMPLETE_ACTIVITY, levelId: id});
+    }
+
     render() {
-      const {complete, activityIndex, showingLesson, currentAnswer, score, onNext} = this.props;
+      const {complete, activityIndex, showingLesson, currentAnswer, score, onNext, requiredScore} = this.props;
+      const {activityInstructionsPlayed} = this.state;
       const maxScore = activities.length;
       const activityData = activities[activityIndex];
       const showLesson = this.showLesson.bind(this);
@@ -71,16 +84,17 @@ export default function level({
             showLesson={showLesson}
             answer={currentAnswer}
             activityIndex={activityIndex}
-            onNext={act({type: actions.COMPLETE_ACTIVITY, levelId: id})}
+            onNext={this.onCompleteActivity.bind(this)}
           />
         );
         case Feedback && activityIndex >= activities.length: return (
           <Feedback {...levelProps}
             showLesson={showLesson}
-            passing={toPercent(score, maxScore) >= passingPercent}
+            passing={toPercent(score, maxScore) >= requiredScore}
             onNext={onNext}
             onBack={this.resetLevel.bind(this)}
             score={score}
+            requiredScore={requiredScore}
             max={activities.length}
           />
         );
@@ -90,6 +104,7 @@ export default function level({
             activityIndex={activityIndex}
             onShowLesson={act({type: actions.SHOW_LESSON, levelId: id})}
             onAnswer={(answer) => store.dispatch({answer, type: actions.ANSWER_ACTIVITY, levelId: id})}
+            shortInstructions={activityData.shortInstructions && activityInstructionsPlayed}
           />
         );
       }

@@ -29,6 +29,10 @@ export default class ScoreScreen extends React.Component {
     hideNext: false
   };
 
+  state = {
+    speaking: false
+  };
+
   isPassing() {
     const {score, max, requiredScore} = this.props;
     return toPercent(score, max) >= requiredScore;
@@ -43,27 +47,37 @@ export default class ScoreScreen extends React.Component {
   }
 
   onLoad() {
-    this.play("feedback");
+    this.animate();
+  }
+
+  animate() {
+    if(!this.state.speaking) {
+      this.setState({speaking: true});
+      this.play("feedback").then(() => {
+        this.setState({speaking: false});
+      });
+    }
   }
 
   render() {
     const {onBack, onNext, score, max, requiredScore, hideNext, children, className} = this.props;
+    const {speaking} = this.state;
     const classNames = cn("Score-screen", className);
     const passing = this.isPassing();
 
     return (
       <StarScreen {...this.props} className={classNames}>
         {children}
+        <div className="Score-screen__robot-container">
+          <ScoreScreenScore className="Score-screen__score" score={score} max={max} passing={passing}/>
+          <Robot type="boy" className="Score-screen__boy" onClick={this.animate.bind(this)} speaking={speaking} animating={speaking} noArm/>
+        </div>
         <div className="Score-screen__footer">
-          <Robot type="boy" className="Score-screen__boy"/>
-
-          <Arrow onClick={onBack} color="orange" size="large" flipped>Play Again</Arrow>
+          <Arrow className="Score-screen__back-arrow" onClick={onBack} color="orange" size="large" flipped>Play Again</Arrow>
           {passing && !hideNext ?
-            <Arrow onClick={onNext} size="large">Next</Arrow> :
+            <Arrow className="Score-screen__next-arrow" onClick={onNext} size="large">Next</Arrow> :
             null
           }
-
-          <Robot type="girl" className="Score-screen__girl"/>
         </div>
 
         <AdminButton/>

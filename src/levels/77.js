@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["net", "next", "necklace"],
   activities: [
     {words: ["Nick", "knock", "neck"], correctWord: "neck"},
-    {words: ["knit", "net", "knot"], correctWord: "net", wordsOnly: true},
-    {words: ["nest", "nose", "notch"], correctWord: "nest", wordsOnly: true},
-    {words: ["nickel", "nugget", "necklace"], correctWord: "necklace", wordsOnly: true},
-    {words: ["nostril", "nectar", "knight"], correctWord: "nectar", wordsOnly: true},
-    {words: ["nozzle", "nuzzle", "nestling"], correctWord: "nestling", wordsOnly: true},
-    {words: ["nectarine", "nocturnal", "nutcracker"], correctWord: "nectarine", wordsOnly: true}
+    {words: ["knit", "net", "knot"], correctWord: "net", shortInstructions: true},
+    {words: ["nest", "nose", "notch"], correctWord: "nest", shortInstructions: true},
+    {words: ["nickel", "nugget", "necklace"], correctWord: "necklace", shortInstructions: true},
+    {words: ["nostril", "nectar", "knight"], correctWord: "nectar", shortInstructions: true},
+    {words: ["nozzle", "nuzzle", "nestling"], correctWord: "nestling", shortInstructions: true},
+    {words: ["nectarine", "nocturnal", "nutcracker"], correctWord: "nectarine", shortInstructions: true}
   ]
 });

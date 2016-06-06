@@ -1,21 +1,25 @@
 .Other-products-screen {
   &__content {
-    display: flex;
-    flex-direction: column;
     padding: 50px 100px 50px 100px;
   }
 
+  &__banner-box {
+    width: 100%;
+    text-align: center;
+  }
+
   &__banner {
-    width: 526px;
-    height: 77px;
-    align-self: center;
+    width: 526px * 1.25;
+    height: 77px * 1.25;
     margin-bottom: 50px;
+    display: inline-block;
   }
 
   &__main-text {
     font-size: 24px;
     line-height: 32px;
     margin: 0 50px 50px 50px;
+    cursor: default;
   }
 
   &__op-title {

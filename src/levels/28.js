@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["cop", "cob", "costume"],
   activities: [
     {words: ["cot", "cut", "cat"], correctWord: "cot"},
-    {words: ["clock", "comet", "camera"], correctWord: "comet", wordsOnly: true},
-    {words: ["comic", "cuff", "kick"], correctWord: "comic", wordsOnly: true},
-    {words: ["cotton", "candle", "cuddle"], correctWord: "cotton", wordsOnly: true},
-    {words: ["cupcake", "copper", "cupboard"], correctWord: "copper", wordsOnly: true},
-    {words: ["castle", "concert", "customer"], correctWord: "concert", wordsOnly: true},
-    {words: ["camel", "call", "collar"], correctWord: "collar", wordsOnly: true}
+    {words: ["clock", "comet", "camera"], correctWord: "comet", shortInstructions: true},
+    {words: ["comic", "cuff", "kick"], correctWord: "comic", shortInstructions: true},
+    {words: ["cotton", "candle", "cuddle"], correctWord: "cotton", shortInstructions: true},
+    {words: ["cupcake", "copper", "cupboard"], correctWord: "copper", shortInstructions: true},
+    {words: ["castle", "concert", "customer"], correctWord: "concert", shortInstructions: true},
+    {words: ["camel", "call", "collar"], correctWord: "collar", shortInstructions: true}
   ]
 });

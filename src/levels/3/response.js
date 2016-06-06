@@ -5,7 +5,9 @@ import Actor from "components/actor";
 import Word from "components/word";
 import ActivityTitle from "components/activity-title";
 import wordSounds from "util/word-sounds";
-const {Answer} = Response;
+import XOverlay from "components/x-overlay";
+import StarContainer from "components/star-container";
+import DisplayBar from "components/display-bar";
 
 @scene
 export default class LevelResponse extends React.Component {
@@ -18,58 +20,83 @@ export default class LevelResponse extends React.Component {
   }
 
   getSounds() {
-    const {ending} = this.props;
-    const {words, correct} = this.props.answer;
+    const {words, ending, correctSound, incorrectSound} = this.props;
+    const {correct} = this.props.answer;
     const endOrBeg = ending ? "end" : "begin";
-    return {
+
+
+    return  {
       ...wordSounds("girl", words),
-      applause: "applause",
-      correct: "girl/common/correct",
+      "applause": "applause",
+      "correct": "girl/common/correct",
       "and": "girl/common/and",
-      "...with the same sound": correct ?
-        `girl/common/${endOrBeg}-with-the-same-sound` :
-        `girl/common/do-not-${endOrBeg}-with-the-same-sound`
+      "...with the same sound but": `girl/test-audio/${endOrBeg}-with-the-same-sound-but`,
+      "...with a different sound": `girl/test-audio/${endOrBeg}s-with-a-different-sound`,
+      "...with the same sound": `girl/common/${endOrBeg}-with-the-same-sound`
     };
   }
 
   autoplay() {
-    const {ending} = this.props;
-    const {words, correct} = this.props.answer;
+    const {ending, answer, correctWords} = this.props;
+    const {correct} = answer;
     const {girl} = this;
+    const incorrectWord = this.props.words.find((word) => !correctWords.includes(word));
 
     this.startCo(function*() {
       if(correct) {
         yield this.play("applause");
-        yield this.say(girl, "correct"); yield this.wait(200);
-      }
-      yield this.say(girl, words[0]);
-      yield this.say(girl, "and");
-      yield this.say(girl, words[1]);
-      yield this.say(girl, "...with the same sound");
-
-      if(!correct) {
+        yield this.say(girl, "correct");
+        yield this.say(girl, correctWords[0]);
+        yield this.say(girl, "and");
+        yield this.say(girl, correctWords[1]);
+        yield this.say(girl, "...with the same sound");
+      } else {
+        yield this.say(girl, correctWords[0]);
+        yield this.say(girl, "and");
+        yield this.say(girl, correctWords[1]);
+        yield this.say(girl, "...with the same sound but");
+        yield this.say(girl, incorrectWord);
+        yield this.say(girl, "...with a different sound");
         this.setState({arrowHidden: false});
       }
-
       girl.set({speaking: false, animating: false});
     });
   }
 
+  renderAnswerWords() {
+    const {words, correctWords, answer} = this.props;
+    const {correct} = answer;
+    if(correct) {
+      return (
+        <StarContainer>
+          {answer.words.map((word) => <Word key={word} word={word}/>)}
+        </StarContainer>
+      );
+    } else {
+      return (
+        <div>
+          {words.map((word) =>
+            correctWords.includes(word) ?
+              <Word key={word} word={word}/> :
+              <div style={{position: "relative", display: "inline-block"}}><Word key={word} word={word}/><XOverlay/></div>
+          )}
+        </div>
+      );
+    }
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
-    const {levelId, title, activityIndex, activityCount, answer, onNext} = this.props;
+    const {levelId, Title, activityIndex, activityCount, answer, onNext, ending} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
-        <Answer isCorrect={answer.correct}>
-          {answer.words.map((word) =>
-            <Word key={word} word={word}/>
-          )}
-        </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
+        <DisplayBar>
+          {this.renderAnswerWords()}
+        </DisplayBar>
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          <Title ending={ending}/>
         </ActivityTitle>
       </Response>
     );

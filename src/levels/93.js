@@ -7,11 +7,11 @@ export default consonantVowelLevel({
   lessonWords: ["rod", "Rocco", "rotten"],
   activities: [
     {words: ["rack", "wreck", "rock"], correctWord: "rock"},
-    {words: ["rod", "red", "read"], correctWord: "rod", wordsOnly: true},
-    {words: ["rib", "ref", "rob"], correctWord: "rob", wordsOnly: true},
-    {words: ["ribbon", "robin", "rabbit"], correctWord: "robin", wordsOnly: true},
-    {words: ["rocket", "racket", "rung"], correctWord: "rocket", wordsOnly: true},
-    {words: ["robber", "river", "rudder"], correctWord: "robber", wordsOnly: true},
-    {words: ["rescue", "rocking", "raccoon"], correctWord: "rocking", wordsOnly: true}
+    {words: ["rod", "red", "read"], correctWord: "rod", shortInstructions: true},
+    {words: ["rib", "ref", "rob"], correctWord: "rob", shortInstructions: true},
+    {words: ["ribbon", "robin", "rabbit"], correctWord: "robin", shortInstructions: true},
+    {words: ["rocket", "racket", "rung"], correctWord: "rocket", shortInstructions: true},
+    {words: ["robber", "river", "rudder"], correctWord: "robber", shortInstructions: true},
+    {words: ["rescue", "rocking", "raccoon"], correctWord: "rocking", shortInstructions: true}
   ]
 });

@@ -1,4 +1,4 @@
-$button-width: 150px;
+$button-width: 200px;
 
 .Admin-section-7 {
   flex-direction: row;
@@ -24,6 +24,10 @@ $button-width: 150px;
     align-items: stretch;
     .Admin-short-button {
       max-height: 250px;
+    }
+
+    .Admin-button-title {
+      line-height: 45px;
     }
   }
 }

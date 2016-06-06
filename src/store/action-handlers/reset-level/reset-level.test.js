@@ -17,6 +17,6 @@ describe("resetLevel", function() {
 
     const newState = resetLevel(state, {levelId: "1"});
 
-    expect(newState).to.deep.equal(expectedResult);
+    expect(newState).to.deep.equal({...expectedResult, started: true});
   });
 });

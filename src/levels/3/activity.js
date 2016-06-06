@@ -19,7 +19,7 @@ export default class Activity extends React.Component {
     super(props);
     this.state = {
       girl: {
-        size: props.wordsOnly ? "small" : "large",
+        size: props.shortInstructions ? "small" : "large",
         speaking: true,
         animating: true
       },
@@ -70,23 +70,24 @@ export default class Activity extends React.Component {
   }
 
   autoplay() {
-    this.animate(this.props.wordsOnly);
+    this.animate(this.props.shortInstructions);
   }
 
-  animate(wordsOnly) {
+  animate(shortInstructions) {
     const {endingIntro} = this.props;
     const {girl, choices} = this;
     this.startCo(function*() {
       choices.all.set("hidden", true);
-      girl.set("size", wordsOnly ? "small" : "large");
+      girl.set("size", shortInstructions ? "small" : "large");
       if(endingIntro) {
         yield this.say(girl, "now lets listen...");
         yield this.wait(100);
       }
-      if(!wordsOnly) {
+      if(!shortInstructions) {
         yield this.say(girl, "touch the two words...");
         yield this.wait(250);
         girl.set("size", "small");
+        yield this.wait(300);
       }
       for(let choice of choices) {
         choice.set("hidden", false);
@@ -99,12 +100,12 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {title, levelId, activityCount, onAnswer, activityIndex, showLesson} = this.props;
+    const {Title, levelId, activityCount, onAnswer, activityIndex, showLesson, ending} = this.props;
 
     return (
       <Screen>
-        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}/>
-        <Actor type="boy" onClick={showLesson}/>
+        <Actor type="girl" {...girl} onClick={this.animate.bind(this, false)}>Instructions</Actor>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>
@@ -113,15 +114,15 @@ export default class Activity extends React.Component {
                 key={choice.id}
                 sound={this.getSound(choice.word)}
                 selected={this.isSelected(choice)}
+                waveHidden={this.state.coPlaying}
                 onClick={this.selectChoice.bind(this, choice.word)}
               />
             )}
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          <Title ending={ending}/>
         </ActivityTitle>
 
         <AdminButton/>

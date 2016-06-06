@@ -24,16 +24,15 @@ export default class LevelResponse extends React.Component {
       "word": `girl/words/${word}`,
       "letter": `girl/common/${answer.letter}`,
       "correct-phonic": `girl/common/phonics/_${correctLetter}h_`,
-      "makes the": "girl/common/makes-the"
+      "makes the": "girl/common/makes-the_2",
+      "sound in": "girl/common/sound-in_2"
     };
 
     Object.assign(sounds, answer.correct ? {
       "applause": "applause",
-      "correct": "girl/common/correct",
-      "sound in": "girl/common/sound-in"
+      "correct": "girl/common/correct"
     } : {
       "sound not the": "girl/common/sound-not-the",
-      "sound in": "girl/common/sound-in",
       "incorrect-phonic": `girl/common/phonics/_${answer.letter}h_`
     });
 
@@ -73,13 +72,12 @@ export default class LevelResponse extends React.Component {
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
-        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}/>
+        <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
         <Answer isCorrect={answer.correct}>
           <DisplayText>{answer.letter}</DisplayText>
         </Answer>
-        <ActivityTitle>
-          {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+          {title}
         </ActivityTitle>
       </Response>
     );

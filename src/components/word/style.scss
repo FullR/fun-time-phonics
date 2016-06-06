@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Word {
   display: inline-block;
   background-size: contain;
@@ -6,4 +8,9 @@
   width: 300px;
   height: 300px;
   flex-shrink: 1;
+
+  @include breakpoint($tablet) {
+    width: 150px;
+    height: 150px;
+  }
 }

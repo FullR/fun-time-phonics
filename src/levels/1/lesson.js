@@ -72,11 +72,11 @@ export default class Lesson1 extends React.Component {
 
   render() {
     const {activityIndex, onNext, title, levelId} = this.props;
-    const {choices, boy} = this.state;
+    const {choices, boy, coPlaying} = this.state;
 
     return (
       <Screen>
-        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}/>
+        <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
@@ -85,6 +85,7 @@ export default class Lesson1 extends React.Component {
               <WordSoundPlayBox {...choice}
                 key={choice.word}
                 sound={this.getSound(choice.word)}
+                waveHidden={coPlaying}
               />
             )}
           </SceneBar>

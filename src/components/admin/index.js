@@ -1,6 +1,8 @@
 import React from "react";
 import bembam from "bembam";
 import {version} from "../../../package";
+import demoLevels from "demo-levels";
+import Verdana1 from "components/verdana-1";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
 import Arrow from "components/arrow";
@@ -12,10 +14,22 @@ import LicenseScreen from "components/license-screen";
 import OtherProductsScreen from "components/other-products-screen";
 import AboutScreen from "components/about-screen";
 import Authscreen from "components/authscreen";
+import ConfirmModal from "components/confirm-modal";
+import ChangeScoreModal from "components/change-score-modal";
 require("./style.scss");
 
 const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
 const level2SubLessons = ["d", "p", "k", "f", "m", "b"];
+
+// since level 1 needs to be displayed as 1-t and 2 as 2-t
+// admin arrow is the only place this matters
+function getLevelDisplayId(levelId) {
+  switch(levelId) {
+    case "1": return "1-t";
+    case "2": return "2-t";
+    default: return levelId;
+  }
+}
 
 function getSection(levelId) {
   if(levelId.indexOf("-") !== -1) {
@@ -50,10 +64,12 @@ export default class Admin extends React.Component {
 
     this.state = {
       authenticated: false,
-      currentLevel: props.currentLevelId.split("-")[0],
+      currentLevel: props.demo && !demoLevels.includes(props.currentLevelId) ? "26" : props.currentLevelId,
       sectionIndex: getSection(props.currentLevelId),
       authenticated: false,
-      infoScreen: null
+      infoScreen: null,
+      showingClearModal: false,
+      showingChangeScoreModal: false
     };
   }
 
@@ -116,20 +132,43 @@ export default class Admin extends React.Component {
     this.props.onShowLevel(currentLevel);
   }
 
+  openChangeScoreModal() {
+    this.setState({showingChangeScoreModal: true});
+  }
+
+  closeChangeScoreModal() {
+    this.setState({showingChangeScoreModal: false});
+  }
+
+  setRequiredScore(requiredScore) {
+    store.dispatch({type: actions.SET_REQUIRED_SCORE, requiredScore});
+  }
+
+  openClearModal() {
+    this.setState({showingClearModal: true});
+  }
+
+  closeClearModal() {
+    this.setState({showingClearModal: false});
+  }
+
   clearStorage() {
     store.dispatch({type: actions.RESET_PROGRESS});
     this.setState({
       currentLevel: "1",
       sectionIndex: 0
     });
+    this.closeClearModal();
   }
 
   render() {
-    const {authenticated, sectionIndex, infoScreen, currentLevel, arrowPulse} = this.state;
+    const {requiredScore, demo} = this.props;
+    const {authenticated, sectionIndex, infoScreen, currentLevel, arrowPulse, showingClearModal, showingChangeScoreModal} = this.state;
     const Section = sections[sectionIndex];
     const NextSection = sections[sectionIndex + 1];
     const PrevSection = sections[sectionIndex - 1];
     let InfoScreen;
+
 
     if(!authenticated) return (
       <Authscreen
@@ -154,20 +193,32 @@ export default class Admin extends React.Component {
     let arrowStyle;
 
     if(levelData.complete) {
-      arrowText = (<span>Replay Lesson<br/>{currentLevel}</span>);
-      arrowStyle = {fontSize: 24};
+      arrowText = `Replay Lesson ${getLevelDisplayId(currentLevel)}`;
+      arrowStyle = {fontSize: "2.2rem"};
     } else if(levelData.started) {
-      arrowText = `Return to Lesson ${currentLevel}`;
-      arrowStyle = {fontSize: 20};
+      arrowText = `Return to Lesson ${getLevelDisplayId(currentLevel)}`;
+      arrowStyle = {fontSize: "2.0rem"};
     } else {
-      arrowText = `Play Lesson ${currentLevel}`;
-      arrowStyle = {fontSize: 26};
+      arrowText = `Play Lesson ${getLevelDisplayId(currentLevel)}`;
+      arrowStyle = {fontSize: "2.4rem"};
     }
 
-    const level = (levelId) => ({
-      selected: levelId === currentLevel,
-      onClick: this.selectLevel.bind(this, levelId)
-    });
+    const level = (levelId) => {
+      const disabled = demo && !demoLevels.includes(levelId);
+      if(disabled) {
+        return {
+          selected: false,
+          onClick: null,
+          disabled
+        };
+      } else {
+        return {
+          selected: levelId === currentLevel,
+          onClick: this.selectLevel.bind(this, levelId),
+          disabled
+        };
+      }
+    };
 
     const className = bembam("Admin")
       .mod("next-arrow-hidden", !NextSection)
@@ -176,30 +227,37 @@ export default class Admin extends React.Component {
     return (
       <Screen className={className.toString()}>
         <AdminHeader>
-          <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
-          <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
-          <div className="Admin__header-button" onClick={this.showAboutScreen.bind(this)}>About</div>
-          <div className="Admin__header-button" onClick={this.clearStorage.bind(this)}>Clear Data</div>
+          <div className="Admin__header-left">
+            <div className="Admin__header-button" onClick={this.showAboutScreen.bind(this)}>About</div>
+            <div className="Admin__header-button" onClick={this.showOtherProductsScreen.bind(this)}>Other Products</div>
+            <div className="Admin__header-button" onClick={this.showLicenseScreen.bind(this)}>License Agreement</div>
+          </div>
+          <div className="Admin__header-right">
+            <div className="Admin__header-button" onClick={this.openClearModal.bind(this)}>Clear Data</div>
+            <div className="Admin__header-button" onClick={this.openChangeScoreModal.bind(this)}>Change Success Percentage</div>
+          </div>
         </AdminHeader>
         <div className="Admin__content">
           <div className="Admin__section-box">
             <div className="Admin__nav">
+              <div className="Admin__arrows">
+                <Arrow key="prev-arrow" onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped hidden={!PrevSection}>
+                  <span style={{position: "relative", left: 8}}>Previous</span>
+                </Arrow>
+                <div className="Admin__lesson-numbers">Lessons {levelRange[0] === 1 ? <Verdana1 scale="90%"/> : levelRange[0]}-{levelRange[1]}</div>
+                <Arrow key="next-arrow" onClick={this.nextSection.bind(this)} size="very-small" color="blue" hidden={!NextSection}>
+                  Next
+                </Arrow>
+              </div>
               <div className="Admin__section-title">{title}</div>
+            </div>
+            <div className={`Admin__section Admin__section-${sectionIndex + 1}`}>
               <div className="Admin__section-description">
                 {Description ?
                   <Description/> :
                   null
                 }
               </div>
-              <div className="Admin__arrows">
-                <div key="prev-arrow-label" className="Admin__prev-section-arrow-text">Previous</div>
-                <Arrow key="prev-arrow" onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped hidden={!PrevSection}/>
-                <div className="Admin__lesson-numbers">Lessons {levelRange[0]}-{levelRange[1]}</div>
-                <Arrow key="next-arrow" onClick={this.nextSection.bind(this)} size="very-small" color="blue" hidden={!NextSection}/>
-                <div key="next-arrow-label" className="Admin__next-section-arrow-text">Next</div>
-              </div>
-            </div>
-            <div className="Admin__section">
               <Section level={level} currentLevel={currentLevel} onSelectLevel={this.selectLevel.bind(this)}/>
             </div>
           </div>
@@ -209,6 +267,15 @@ export default class Admin extends React.Component {
             </Arrow>
           </div>
         </div>
+        <ConfirmModal open={showingClearModal} onConfirm={this.clearStorage.bind(this)} onCancel={this.closeClearModal.bind(this)}>
+          Are you sure you want to clear all user data and restart the program?&nbsp; This action cannot be undone.
+        </ConfirmModal>
+        <ChangeScoreModal
+          value={requiredScore}
+          open={showingChangeScoreModal}
+          onChange={this.setRequiredScore.bind(this)}
+          onClose={this.closeChangeScoreModal.bind(this)}
+        />
       </Screen>
     );
   }

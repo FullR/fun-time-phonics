@@ -85,7 +85,7 @@ export default class Activity extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
+        <ActivityTitle activityIndex={activityIndex} activityCount={15}>
           {title}
         </ActivityTitle>
         <AdminButton/>

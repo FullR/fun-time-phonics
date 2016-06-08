@@ -3,21 +3,27 @@ import cn from "util/cn";
 import store from "store";
 import getLevelData from "store/helpers/get-level-data";
 import getLevelMax from "store/helpers/get-level-max";
+import getRequiredScore from "store/helpers/get-required-score";
 import toPercent from "util/to-percent";
 
 export default class AdminButtonScore extends React.Component {
   render() {
     const {levelId, className} = this.props;
-    const classNames = cn("Admin-button-score", className);
-
     const state = store.getState();
-    const {score, complete} = getLevelData(state, levelId);
     const max = getLevelMax(levelId);
+    const {started, score, activityIndex} = getLevelData(state, levelId);
+    const complete = max === activityIndex;
+    const percent = toPercent(score, max);
+    const classNames = cn(
+      "Admin-button-score",
+      `Admin-button-score--${started && percent >= getRequiredScore() ? "passed" : "failed"}`,
+      className
+    );
 
-    if(!complete) return null;
+    if(!started) return null;
     return (
       <div {...this.props} className={classNames}>
-        {Math.floor(100 * toPercent(score, max)) / 100}%
+        {complete ? `${Math.floor(100 * percent) / 100}%` : "Incomplete"}
       </div>
     );
   }

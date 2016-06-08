@@ -24,14 +24,13 @@ export default class LevelResponse extends React.Component {
     const {correct} = this.props.answer;
     const endOrBeg = ending ? "end" : "begin";
 
-
     return  {
       ...wordSounds("girl", words),
       "applause": "applause",
       "correct": "girl/common/correct",
       "and": "girl/common/and",
-      "...with the same sound but": `girl/test-audio/${endOrBeg}-with-the-same-sound-but`,
-      "...with a different sound": `girl/test-audio/${endOrBeg}s-with-a-different-sound`,
+      "...with the same sound but": `girl/common/${endOrBeg}-with-the-same-sound-but`,
+      "...with a different sound": `girl/common/${endOrBeg}s-with-a-different-sound`,
       "...with the same sound": `girl/common/${endOrBeg}-with-the-same-sound`
     };
   }

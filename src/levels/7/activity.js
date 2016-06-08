@@ -70,7 +70,7 @@ export default class Activity extends React.Component {
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={{position: "relative", top: 50}}>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}

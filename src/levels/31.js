@@ -2,7 +2,6 @@ import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
   id: "31",
-  
   consonant: "d",
   vowel: "a",
   letterIntroWords: ["dab", "deli", "dig", "dock", "dummy"],

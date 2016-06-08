@@ -45,6 +45,7 @@ export default class Activity extends React.Component {
     const {exampleWords} = this.props;
     const {girl, choices} = this;
     this.startCo(function*() {
+      choices.all.set("hidden", true);
       if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word...");
@@ -66,12 +67,12 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {onAnswer, activityIndex, correct, indexOffset} = this.props;
+    const {onAnswer, activityIndex, correct, indexOffset, showLesson} = this.props;
 
     return (
       <Screen>
         <Actor {...girl} type="girl" onClick={this.animate.bind(this, false)}>Instructions</Actor>
-        <Actor type="boy"/>
+        <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
           <SceneBar>

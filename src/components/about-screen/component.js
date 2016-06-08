@@ -26,6 +26,8 @@ export default class CreditScreen extends React.Component {
             <li>Utilizes co-articulation to introduce consonant sounds, eliminating traditional stumbling blocks and ensuring a successful reading start</li>
           </ul>
 
+          <p><em>Fun-Time Phonics!</em>™ is made up of 126 lessons and reviews.&nbsp; Each lesson and review includes its own set of activities.&nbsp; If a child scores 85% or higher, the child moves on to the next lesson or review.&nbsp; Parents and teachers can raise or lower the success percentage by touching “Change Success Percentage” at the top of the Admin/Score screen.</p>
+
           <h3>Credits</h3>
 
           <div className="Credit-screen__job-desc">Written by</div>

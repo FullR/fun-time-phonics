@@ -27,6 +27,7 @@ export default class ChangeScoreModal extends React.Component {
         <ChangeScoreButton selected={value === 65} onClick={this.change.bind(this, 65)}>65%</ChangeScoreButton>
         <ChangeScoreButton selected={value === 75} onClick={this.change.bind(this, 75)}>75%</ChangeScoreButton>
         <ChangeScoreButton selected={value === 85} onClick={this.change.bind(this, 85)}>85%</ChangeScoreButton>
+        <ChangeScoreButton selected={value === 90} onClick={this.change.bind(this, 90)}>90%</ChangeScoreButton>
         <div className="Change-score-modal__close-button" onClick={onClose}>Close</div>
       </Modal>
     );

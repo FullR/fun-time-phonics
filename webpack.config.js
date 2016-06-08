@@ -1,5 +1,6 @@
-var _ = require("lodash");
-var path = require("path");
+const _ = require("lodash");
+const path = require("path");
+const externalModules = ["electron"];
 
 function ext() {
   return new RegExp("\\.(?:" + _.toArray(arguments).join("|") + ")$");
@@ -30,5 +31,11 @@ module.exports = {
       {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[hash].[ext]"},
       {test: ext("eot", "otf", "svg", "ttf", "woff"), noParse: true, loader: "file?name=fonts/[name].[ext]"}
     ]
-  }
+  },
+  externals: [
+    (context, request, callback) =>
+      externalModules.indexOf(request) !== -1 ?
+        callback(null, `require("${request}")`) :
+        callback()
+  ]
 };

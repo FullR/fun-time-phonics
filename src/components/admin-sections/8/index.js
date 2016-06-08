@@ -11,7 +11,7 @@ export default class AdminSection8 extends React.Component {
   static title = "Reading First Words";
   static levelRange = [123, 126];
   static Description = () => (
-    <div>Lessons 123 and 124 review beginning and ending sounds.&nbsp; In lesson 125 children apply consonant-vowel articulation with an ending sound to read their first words.&nbsp; Lesson 126 has children read two words to identify the picture described by the words.</div>
+    <div>Lesson 123 reviews ending consonant sounds, and lesson 124 reviews middle vowel sounds.&nbsp; In lesson 125 children apply consonant-vowel articulation with an ending sound to read their first words.&nbsp; Lesson 126 has children read two words to identify the picture described by the words.</div>
   );
   render() {
     const {level} = this.props;

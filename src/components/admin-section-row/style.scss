@@ -1,6 +1,7 @@
 .Admin-section-row {
   display: inline-flex;
   flex: 1 1 auto;
+  justify-content: space-around;
 
   & + & {
     margin-top: 20px;

@@ -1,9 +1,6 @@
 import React from "react";
 
-/*
-  Curried function for creating higher components that depend asynchronously on an Rx.Observable
-*/
-
+// Curried function for creating higher components that depend asynchronously on an Rx.Observable
 const reactBindRx = (renderFn) => // Handles JSX, passing props and observable state to wrapped component
   (observable) => // The observable to subscribe to
   (Component) => // The component to wrap

@@ -90,9 +90,10 @@ export default class Lesson extends React.Component {
         <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={{position: "relative", top: 50}}>
             {lessonLetters.map((letters, i) =>
               <PlayableDisplayText
+                key={letters}
                 size="medium"
                 sound={this.getSound(`letter-${i}`)}
                 hidden={!revealedLetters.includes(letters)}
@@ -103,7 +104,7 @@ export default class Lesson extends React.Component {
             )}
           </SceneBar>
 
-          <SceneBar>
+          <SceneBar style={{position: "relative", bottom: 20}}>
             {choices.map((choice, i) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}

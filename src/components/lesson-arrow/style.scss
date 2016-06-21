@@ -1,7 +1,13 @@
+@import "sizes.scss";
+
 .Lesson-arrow {
   position: absolute;
   right: 2rem;
   bottom: 1rem;
   cursor: pointer;
   font-size: 55px;
+
+  @include breakpoint($tablet) {
+    font-size: 45px;
+  }
 }

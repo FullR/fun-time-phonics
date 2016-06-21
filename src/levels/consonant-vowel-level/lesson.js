@@ -164,7 +164,7 @@ export default class Lesson extends React.Component {
   }
 
   render() {
-    const {title, levelId, activityIndex, onNext, consonant, vowel} = this.props;
+    const {title, levelId, activityIndex, onNext, consonant, vowel, letterIntroWords} = this.props;
     const {choices, boy, letters, showingLetterIntro} = this.state;
 
     return (
@@ -184,7 +184,10 @@ export default class Lesson extends React.Component {
           </SceneBar>
 
           <SceneBar>
-            {choices.map((choice, i) =>
+            {(showingLetterIntro ?
+              choices.slice(0, letterIntroWords.length) :
+              choices.slice(letterIntroWords)
+            ).map((choice, i) =>
               <WordSoundPlayBox {...choice}
                 waveHidden={this.state.coPlaying}
                 size={showingLetterIntro ? "medium" : "large"}

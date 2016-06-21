@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 $image: "../../../images/star-border.png";
 $dark-image: "../../../images/star-border-dark.png";
 $width: 25px;
@@ -10,6 +12,7 @@ $large-width: 50px;
   border-width: $width;
   border-style: solid;
   border-image: url($image) 25 25 round;
+  text-align: center;
 
   &--large {
     border-width: $large-width;
@@ -19,5 +22,13 @@ $large-width: 50px;
   &--dark {
     border-width: $width;
     border-image: url($dark-image) 25 25 round;
+  }
+
+  &--padded {
+    padding: 50px 150px 50px 150px;
+
+    @include breakpoint($tablet) {
+      padding: 25px 75px 25px 75px;
+    }
   }
 }

@@ -126,7 +126,7 @@ export default class LevelResponse extends React.Component {
   renderCorrect() {
     const {correctWord} = this.props;
     return (
-      <StarContainer style={{padding: "50px 150px 50px 150px"}}>
+      <StarContainer padded>
         <div><DisplayText>{correctWord}</DisplayText></div>
         <Word word={correctWord}/>
       </StarContainer>

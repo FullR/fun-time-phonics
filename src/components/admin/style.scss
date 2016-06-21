@@ -31,14 +31,24 @@
     &:hover {
       text-decoration: underline;
     }
+    @include breakpoint($tablet) {
+      font-size: 20px;
+      margin: 1.5rem 0 0 5rem;
+    }
   }
 
   &__header-left &__header-button:first-child  {
-    margin-left: 5.0rem;
+    margin-left: 5rem;
+    @include breakpoint($tablet) {
+      margin-left: 2rem;
+    }
   }
 
   &__header-right &__header-button:last-child {
-    margin-right: 5.0rem;
+    margin-right: 5rem;
+    @include breakpoint($tablet) {
+      margin-right: 2rem;
+    }
   }
 
   &__user-name {
@@ -81,6 +91,10 @@
     .Arrow {
       color: #FFF;
       font-size: 22px;
+
+      @include breakpoint($tablet) {
+        font-size: 18px;
+      }
     }
   }
 

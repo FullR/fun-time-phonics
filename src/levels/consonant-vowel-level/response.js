@@ -71,9 +71,11 @@ export default class LevelResponse extends React.Component {
   renderCorrect() {
     const {correctWord, consonant, vowel} = this.props;
     return (
-      <StarContainer style={{padding: "50px 150px 50px 150px"}}>
+      <StarContainer padded>
         <div><DisplayText>{consonant}{vowel}</DisplayText></div>
+        <div style={{width: "100%", textAlign: "center"}}>
         <Word word={correctWord}/>
+        </div>
       </StarContainer>
     );
   }
@@ -83,7 +85,7 @@ export default class LevelResponse extends React.Component {
     return (
       <div>
         <DisplayText>{consonant}{vowel}</DisplayText>
-        <div style={{position: "relative"}}>
+        <div style={{position: "relative", textAlign: "center"}}>
           <Word word={answer.word}/>
           <XOverlay/>
         </div>

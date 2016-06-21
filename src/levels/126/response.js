@@ -73,7 +73,7 @@ export default class LevelResponse extends React.Component {
     const {answer} = this.props;
     const answerText = this.getAnswerText();
     return (
-      <StarContainer style={{padding: "50px 150px 50px 150px", textAlign: "center"}}>
+      <StarContainer padded>
         <div style={textStyle}>{answerText}</div>
         <Word style={{display: "inline-block"}} word={answer.word}/>
       </StarContainer>

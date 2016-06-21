@@ -47,8 +47,8 @@
     height: 175px;
 
     @include breakpoint($tablet) {
-      width: 10px;
-      height: 10px;
+      width: 150px;
+      height: 150px;
     }
 
     // @include breakpoint($large-tablet) {

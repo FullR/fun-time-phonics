@@ -10,6 +10,7 @@
   line-height: 30px;
   color: #00F;
   cursor: default;
+  max-width: 200px;
 
   > div {
     position: absolute;
@@ -24,5 +25,6 @@
     min-width: 40px;
     margin-right: 10px;
     line-height: 20px;
+    max-width: 100px;
   }
 }

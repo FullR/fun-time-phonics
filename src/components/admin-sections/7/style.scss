@@ -1,12 +1,10 @@
+@import "sizes.scss";
+
 $button-width: 200px;
 
 .Admin-section-7 {
   flex-direction: row;
   align-items: stretch;
-
-  .Admin-row-title {
-    max-width: $button-width;
-  }
 
   .Admin-section-column:not(:first-child) {
     max-width: $button-width;
@@ -18,12 +16,18 @@ $button-width: 200px;
   .Admin-section-column:last-child {
     justify-content: center;
     align-items: stretch;
+    max-width: 200px;
+
+    @include breakpoint($tablet) {
+      max-width: 120px;
+    }
+
     .Admin-short-button {
       max-height: 250px;
     }
 
     .Admin-button-title {
-      line-height: 45px;
+      line-height: 4.5rem;
     }
   }
 }

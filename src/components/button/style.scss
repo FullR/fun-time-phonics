@@ -1,0 +1,30 @@
+@mixin button-color($name, $color) {
+  &--color-#{$name} {
+    background: $color;
+  }
+
+  &--color-#{$name}:hover {
+    background: darken($color, 10%);
+  }
+}
+
+.Button {
+  min-width: 120px;
+  padding: 10px 0 10px 0;
+  font-size: 35px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #444;
+  color: #FFF;
+  cursor: pointer;
+
+  @include button-color("red", #900);
+  @include button-color("green", #090);
+  @include button-color("blue", #009);
+
+  &--disabled {
+    background: #888;
+  }
+}

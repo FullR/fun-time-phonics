@@ -13,7 +13,7 @@ export default shortVowelLetterLevel({
     {words: ["cap", "cop", "cup"], correctWord: "cap"},
     {words: ["bit", "beet", "bat"], correctWord: "bat"},
     {words: ["lap", "lip", "loop"], correctWord: "lap"},
-    {words: ["pin", "pen", "pan"], correctWord: "pan"},
+    {words: ["sip", "sap", "soup"], correctWord: "sap"},
     {words: ["dig", "drag", "dog"], correctWord: "drag"},
     {words: ["mop", "map", "men"], correctWord: "map"},
     {words: ["flap", "flip", "flop"], correctWord: "flap"},

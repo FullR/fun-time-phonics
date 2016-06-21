@@ -65,6 +65,10 @@ export default function level({
       store.dispatch({type: actions.COMPLETE_ACTIVITY, levelId: id});
     }
 
+    componentDidMount() {
+      store.dispatch({type: actions.VISIT_LEVEL, levelId: id});
+    }
+
     render() {
       const {complete, activityIndex, showingLesson, currentAnswer, score, onNext, requiredScore} = this.props;
       const {activityInstructionsPlayed} = this.state;

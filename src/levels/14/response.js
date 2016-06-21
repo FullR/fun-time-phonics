@@ -3,9 +3,14 @@ import ActivityTitle from "components/activity-title";
 import Actor from "components/actor";
 import Response from "components/response";
 import Word from "components/word";
+import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
+import DisplayBar from "components/display-bar";
+import StarContainer from "components/star-container";
+import PlayableStarContainer from "components/playable-star-container";
+import XOverlay from "components/x-overlay";
 
-const {Answer} = Response;
+const playBoxStyle = {position: "relative", display: "inline-block", padding: 0, margin: "0 20px 0 20px"};
 
 @scene
 export default class LevelResponse extends React.Component {
@@ -29,13 +34,14 @@ export default class LevelResponse extends React.Component {
       "replace-phonic": `girl/common/phonics/_${replacePhonic}_`,
       "phonic": `girl/common/phonics/_${phonic}_`,
       "replace-word": `girl/words/${replaceWord}`,
-      "correct-word": `girl/words/${correctWord}`,
-      "selected-word": `girl/words/${answer.word}`
+      "correct-word": `girl/words/${correctWord}`
     };
 
     if(answer.correct) {
       sounds["applause"] = "applause";
       sounds["correct"] = "girl/common/correct";
+    } else {
+      sounds["selected-word"] = `girl/words/${answer.word}`;
     }
 
     return sounds;
@@ -72,16 +78,45 @@ export default class LevelResponse extends React.Component {
     });
   }
 
+  renderCorrect() {
+    const {coPlaying} = this.state;
+    const {answer, replaceWord} = this.props;
+    return (
+      <div>
+        <WordSoundPlayBox word={replaceWord} sound={this.getSound("replace-word")} style={playBoxStyle} noWave/>
+        <PlayableStarContainer sound={this.getSound("correct-word")}>
+          <WordSoundPlayBox word={answer.word} style={playBoxStyle} noWave/>
+        </PlayableStarContainer>
+      </div>
+    );
+  }
+
+  renderIncorrect() {
+    const {coPlaying} = this.state;
+    const {answer, correctWord, replaceWord} = this.props;
+    return (
+      <div>
+        <WordSoundPlayBox word={replaceWord} sound={this.getSound("replace-word")} style={playBoxStyle} noWave/>
+        <WordSoundPlayBox word={correctWord} sound={this.getSound("correct-word")} style={playBoxStyle} noWave/>
+        <div style={{position: "relative", display: "inline-block"}}>
+          <WordSoundPlayBox word={answer.word} sound={this.getSound("selected-word")} style={playBoxStyle} noWave>
+            <XOverlay/>
+          </WordSoundPlayBox>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
-    const {title, answer, onNext, activityIndex, levelId, activityCount} = this.props;
+    const {title, answer, onNext, activityIndex, levelId, activityCount, replaceWord} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
-        <Answer isCorrect={answer.correct}>
-          <Word word={answer.word}/>
-        </Answer>
+        <DisplayBar>
+          {answer.correct ? this.renderCorrect() : this.renderIncorrect()}
+        </DisplayBar>
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           {title}
         </ActivityTitle>

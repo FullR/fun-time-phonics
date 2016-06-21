@@ -2,10 +2,12 @@ import React from "react";
 import ActivityTitle from "components/activity-title";
 import Actor from "components/actor";
 import Response from "components/response";
-import Word from "components/word";
 import scene from "decorators/scene";
-
-const {Answer} = Response;
+import Word from "components/word";
+import DisplayText from "components/display-text";
+import DisplayBar from "components/display-bar";
+import XOverlay from "components/x-overlay";
+import StarContainer from "components/star-container";
 
 @scene
 export default class LevelResponse extends React.Component {
@@ -74,6 +76,29 @@ export default class LevelResponse extends React.Component {
     });
   }
 
+  renderCorrect() {
+    const {answer, letter, consonant, vowel} = this.props;
+    return (
+      <StarContainer style={{padding: "50px 150px 50px 150px"}}>
+        <div><DisplayText>{letter}</DisplayText></div>
+        <Word word={answer.word}/>
+      </StarContainer>
+    );
+  }
+
+  renderIncorrect() {
+    const {letter, answer, consonant, vowel} = this.props;
+    return (
+      <div>
+        <DisplayText>{letter}</DisplayText>
+        <div style={{position: "relative"}}>
+          <Word word={answer.word}/>
+          <XOverlay/>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
     const {title, answer, onNext, activityIndex, levelId, activityCount} = this.props;
@@ -81,11 +106,14 @@ export default class LevelResponse extends React.Component {
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
-        <Answer isCorrect={answer.correct}>
-          <Word word={answer.word}/>
-        </Answer>
+        <DisplayBar>
+          {answer.correct ?
+            this.renderCorrect() :
+            this.renderIncorrect()
+          }
+        </DisplayBar>
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
-          {title}
+          Review:&nbsp;&nbsp;{title}
         </ActivityTitle>
       </Response>
     );

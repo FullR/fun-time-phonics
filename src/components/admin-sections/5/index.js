@@ -20,7 +20,7 @@ export default class AdminSection5 extends React.Component {
   static title = "Consonant-Vowel Coarticulation";
   static levelRange = [64, 88];
   static Description = () => (
-    <div>These lessons teach children the influence the consonants l-p have on the short vowel sounds.&nbsp; Children also learn that these consonant-vowel combinations are used to form words.</div>
+    <div>These lessons teach children the influence that the short vowel sound has on the consonants l-p.&nbsp; Children also learn that these consonant-vowel coarticulations are the beginning sounds used to form words.</div>
   );
   render() {
     const {level} = this.props;
@@ -165,6 +165,7 @@ export default class AdminSection5 extends React.Component {
           <ShortButton {...level("88")} assessment>
             <Index>88</Index>
             <Title size="medium">Review<br/><Letter size="large">b<Dash/>p</Letter></Title>
+            <Score levelId="88"/>
           </ShortButton>
         </Column>
       </AdminSection>

@@ -1,4 +1,5 @@
 $image: "../../../images/star-border.png";
+$dark-image: "../../../images/star-border-dark.png";
 $width: 25px;
 
 $large-image: "../../../images/star-border-large.png";
@@ -13,5 +14,10 @@ $large-width: 50px;
   &--large {
     border-width: $large-width;
     border-image: url($large-image) 50 50 round;
+  }
+
+  &--dark {
+    border-width: $width;
+    border-image: url($dark-image) 25 25 round;
   }
 }

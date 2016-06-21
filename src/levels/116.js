@@ -10,7 +10,7 @@ export default consonantVowelLevel({
     {words: ["web", "van", "win"], correctWord: "win", shortInstructions: true},
     {words: ["watch", "witch", "rich"], correctWord: "witch", shortInstructions: true},
     {words: ["walk", "wick", "wok"], correctWord: "wick", shortInstructions: true},
-    {words: ["wind", "want", "wood"], correctWord: "wind", shortInstructions: true},
+    {words: ["wind", "wand", "wood"], correctWord: "wind", shortInstructions: true},
     {words: ["wedding", "wagon", "window"], correctWord: "window", shortInstructions: true},
     {words: ["weapon", "woman", "wishbone"], correctWord: "wishbone", shortInstructions: true}
   ]

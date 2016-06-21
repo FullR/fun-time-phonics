@@ -9,6 +9,13 @@ import storeListener from "decorators/store-listener";
 import levelComponents from "levels";
 import demoLevels from "demo-levels";
 import InvalidWindowSizeScreen from "components/invalid-window-size-screen";
+import Login from "components/login";
+import Screen from "components/screen";
+import LoadingScreen from "components/loading-screen";
+import loadImage from "util/load-image";
+import images from "images-to-preload";
+
+import wait from "util/wait";
 
 import WordResponse from "components/word-response";
 const {Title} = WordResponse;
@@ -19,13 +26,24 @@ export default class Application extends React.Component {
   state = {
     storeState: store.getState(),
     invalidScreenSize: false,
-    ignoreInvalidScreenSize: false
+    ignoreInvalidScreenSize: false,
+    loaded: false,
+    imagesLoaded: 0
   };
 
-  hideSplash() {
+  showLogin(afterLoginRoute) {
     store.dispatch({
       type: actions.CHANGE_ROUTE,
-      route: "current-level"
+      route: "login",
+      routeProps: {afterLoginRoute}
+    });
+  }
+
+  login() {
+    const {routeProps} = this.state.storeState;
+    store.dispatch({
+      type: actions.CHANGE_ROUTE,
+      route: routeProps.afterLoginRoute || "current-level"
     });
   }
 
@@ -34,6 +52,9 @@ export default class Application extends React.Component {
       levelId,
       type: actions.SHOW_LEVEL
     });
+    if(this.state.noAdminAuth) {
+      this.setState({noAdminAuth: false});
+    }
   }
 
   componentDidMount() {
@@ -43,6 +64,17 @@ export default class Application extends React.Component {
 
     window.addEventListener("resize", () => this.checkSize());
     this.checkSize();
+    this.preload();
+  }
+
+  preload() {
+    Promise.all(images.map((path) =>
+      loadImage(path)
+        .then(() => this.setState({imagesLoaded: this.state.imagesLoaded + 1}))
+        .catch((error) => console.error(`Failed to preload image ${path}: ${error}`))
+    ))
+    .then(() => wait(500))
+    .then(() => this.setState({loaded: true}));
   }
 
   componentWillUnmount() {
@@ -57,22 +89,64 @@ export default class Application extends React.Component {
     this.setState({invalidScreenSize: width < minWidth});
   }
 
-  render() {
-    const {demo} = this.props;
-    const {storeState, invalidScreenSize, ignoreInvalidScreenSize} = this.state;
-    const {route, currentLevelId, levels, requiredScore} = storeState;
+  changeUser(userName) {
+    store.dispatch({
+      type: actions.CHANGE_USER,
+      userName
+    });
+  }
 
-    if(invalidScreenSize && !ignoreInvalidScreenSize) {
-      return (
-        <InvalidWindowSizeScreen
-          onClose={() => this.setState({ignoreInvalidScreenSize: true})}
-        />
-      );
+  createUser(userName) {
+    store.dispatch({
+      type: actions.CREATE_USER,
+      userName
+    });
+  }
+
+  deleteUser(userName) {
+    store.dispatch({
+      type: actions.DELETE_USER,
+      userName
+    });
+  }
+
+  renderCurrent() {
+    const {demo} = this.props;
+    const {loaded, imagesLoaded, storeState} = this.state;
+    const {route, routeProps, users, currentUserId} = storeState;
+    const user = users[currentUserId];
+
+    if(!loaded) {
+      return (<LoadingScreen progress={imagesLoaded / images.length}/>);
     }
 
+    const {currentLevelId, levels, requiredScore} = user || {};
     switch(route) {
-      case "splash": return (<Splash onNext={this.hideSplash.bind(this)} demo={demo}/>);
-      case "admin": return (<Admin {...storeState} onShowLevel={this.showLevel.bind(this)} demo={demo}/>);
+      case "splash": return (
+        <Splash
+          onNext={this.showLogin.bind(this, "current-level")}
+          demo={demo}
+        />
+      );
+      case "login": return (
+        <Login {...routeProps}
+          users={Object.values(users).filter((user) => !!user)}
+          currentUser={currentUserId}
+          maxUserCount={demo ? 4 : 30}
+          onSubmit={this.login.bind(this)}
+          onSelectUser={this.changeUser.bind(this)}
+          onCreateUser={this.createUser.bind(this)}
+          onDeleteUser={this.deleteUser.bind(this)}
+        />
+      );
+      case "admin": return (
+        <Admin {...routeProps} {...storeState}
+          user={user}
+          onChangeUser={this.showLogin.bind(this, "admin")}
+          onShowLevel={this.showLevel.bind(this)}
+          demo={demo}
+        />
+      );
       case "current-level": {
         const levelData = levels.find((level) => level.id === currentLevelId);
         const LevelComponent = levelComponents[currentLevelId];
@@ -83,7 +157,7 @@ export default class Application extends React.Component {
 
         if(LevelComponent) {
           return (
-            <LevelComponent {...levelData}
+            <LevelComponent {...routeProps} {...levelData}
               key={currentLevelId}
               requiredScore={requiredScore}
               onNext={() => store.dispatch({
@@ -98,5 +172,22 @@ export default class Application extends React.Component {
 
     console.error(`No route with id ${route}`);
     return null;
+  }
+
+  render() {
+    const {invalidScreenSize, ignoreInvalidScreenSize} = this.state;
+    const current = this.renderCurrent();
+
+    return (
+      <Screen>
+        {invalidScreenSize && !ignoreInvalidScreenSize ?
+          <InvalidWindowSizeScreen
+            onClose={() => this.setState({ignoreInvalidScreenSize: true})}
+          /> :
+          null
+        }
+        {current}
+      </Screen>
+    );
   }
 }

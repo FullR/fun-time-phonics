@@ -24,7 +24,7 @@ export default [
   {words: ["hat", "hut", "hot"], letter: "o", correctWord: "hot", activityType: 2, shortInstructions: true},
   {words: ["bug", "bag", "big"], letter: "u", correctWord: "bug", activityType: 2, shortInstructions: true},
   {words: ["lap", "lip", "leap"], letter: "i", correctWord: "lip", activityType: 2, shortInstructions: true},
-  {words: ["baby", "bed", "bad"], letter: "a", correctWord: "bad", activityType: 2, shortInstructions: true},
+  {words: ["bird", "bed", "bad"], letter: "a", correctWord: "bad", activityType: 2, shortInstructions: true},
   {words: ["pin", "pen", "pan"], letter: "e", correctWord: "pen", activityType: 2, shortInstructions: true},
   {words: ["lock", "lick", "lake"], letter: "i", correctWord: "lick", activityType: 2, shortInstructions: true},
   {words: ["cap", "cup", "cape"], letter: "u", correctWord: "cup", activityType: 2, shortInstructions: true},

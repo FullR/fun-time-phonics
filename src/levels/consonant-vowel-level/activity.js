@@ -48,6 +48,7 @@ export default class Activity extends React.Component {
   animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
+      choices.all.set("hidden", true);
       if(!shortInstructions) {
         yield this.say(girl, "drag the letters");
         yield this.say(girl, "-letters"); // dash to avoid conflicting with the word "letters"

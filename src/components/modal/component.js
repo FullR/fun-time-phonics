@@ -2,6 +2,13 @@ import React from "react";
 import cn from "util/cn";
 
 export default class Modal extends React.Component {
+  componentDidMount() {
+    // if(document.activeElement) {
+    //   document.activeElement.blur();
+    // }
+    window.focus();
+  }
+
   render() {
     const {open, onOverlayClick, children, className} = this.props;
     const classNames = cn("Modal", className);

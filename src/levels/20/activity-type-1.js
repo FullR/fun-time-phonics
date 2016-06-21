@@ -93,7 +93,7 @@ export default class Activity extends React.Component {
         </SceneContent>
 
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
-          {title}
+          Review:&nbsp;&nbsp;{title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

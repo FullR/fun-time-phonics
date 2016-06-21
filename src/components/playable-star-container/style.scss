@@ -1,0 +1,7 @@
+$image: "../../../images/star-border-dark.png";
+
+.Playable-star-container {
+  &--playing .Star-container {
+    border-image: url($image) 25 25 round;
+  }
+}

@@ -50,6 +50,7 @@ export default class Activity extends React.Component {
   animate(shortInstructions) {
     const {girl, choices} = this;
     this.startCo(function*() {
+      choices.all.set("hidden", true);
       if(!shortInstructions) {
         yield this.say(girl, "read the words...");
         yield this.wait(300);

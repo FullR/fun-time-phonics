@@ -80,10 +80,12 @@ export default class LevelResponse extends React.Component {
   renderAnswerWords() {
     const {words, correctWords, answer} = this.props;
     const {correct} = answer;
+    const wordStyle = {marginLeft: 20, marginRight: 20};
+
     if(correct) {
       return (
         <StarContainer>
-          {answer.words.map((word) => <Word key={word} word={word}/>)}
+          {answer.words.map((word) => <Word key={word} word={word} style={wordStyle}/>)}
         </StarContainer>
       );
     } else {
@@ -91,8 +93,8 @@ export default class LevelResponse extends React.Component {
         <div>
           {words.map((word) =>
             correctWords.includes(word) ?
-              <Word key={word} word={word}/> :
-              <div style={{position: "relative", display: "inline-block"}}><Word key={word} word={word}/><XOverlay/></div>
+              <Word key={word} word={word} style={wordStyle}/> :
+              <div style={{...wordStyle, position: "relative", display: "inline-block"}}><Word key={word} word={word}/><XOverlay/></div>
           )}
         </div>
       );

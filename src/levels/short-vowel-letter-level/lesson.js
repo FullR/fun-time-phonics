@@ -114,6 +114,7 @@ export default class Lesson extends React.Component {
                 size="medium"
                 key={choice.word}
                 sound={this.getSound(choice.word)}
+                waveHidden={this.state.coPlaying}
               />
             )}
           </SceneBar>

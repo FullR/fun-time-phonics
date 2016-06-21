@@ -18,7 +18,7 @@ export default class Lesson extends React.Component {
         size: "large",
         speaking: true
       },
-      choices: [{id: "fan", word: "fan", hidden: true}]
+      choices: [{id: "fat", word: "fat", hidden: true}]
     };
   }
 
@@ -29,7 +29,7 @@ export default class Lesson extends React.Component {
       "finally...": "boy/common/finally-add-the-ending-sound",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin",
       "fa": "boy/common/phonics/_f_ah_",
-      "fan": "boy/common/phonics/_f_a_n_"
+      "fat": "boy/common/phonics/_f_a_t_"
     };
   }
 
@@ -44,8 +44,8 @@ export default class Lesson extends React.Component {
       yield this.say(boy, "fa");
       yield this.say(boy, "finally...");
       boy.set("size", "small");
-      choices.fan.set("hidden", false);
-      yield this.say(boy, "fan");
+      choices.fat.set("hidden", false);
+      yield this.say(boy, "fat");
       yield this.wait(300);
       yield this.say(boy, "touch the...");
       boy.set({speaking: false, animating: false});
@@ -55,7 +55,7 @@ export default class Lesson extends React.Component {
   render() {
     const {levelId, title, activityIndex, onNext} = this.props;
     const {choices, boy} = this.state;
-    const fan = choices[0];
+    const fat = choices[0];
 
     return (
       <Screen>
@@ -64,7 +64,7 @@ export default class Lesson extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            <WordSoundPlayBox {...fan} sound={this.getSound("fan")} waveHidden={this.state.coPlaying}/>
+            <WordSoundPlayBox {...fat} sound={this.getSound("fat")} waveHidden={this.state.coPlaying}/>
           </SceneBar>
         </SceneContent>
 

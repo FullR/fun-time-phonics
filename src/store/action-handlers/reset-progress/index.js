@@ -1,5 +1,9 @@
-import initialState from "../../initial-state";
+import getInitialLevels from "store/get-initial-levels";
+import assignCurrentUser from "store/helpers/assign-current-user";
 
 export default function resetProgress(state) {
-  return {...initialState, route: state.route};
+  return assignCurrentUser(state, {
+    currentLevelId: "1",
+    levels: getInitialLevels()
+  });
 }

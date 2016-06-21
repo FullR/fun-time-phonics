@@ -15,20 +15,14 @@ export default class Splash extends React.Component {
 
   getSounds() {
     return {
-      welcome: "intro-teacher",
-      "please-max": "please-maximize-1",
-      "please-max-2": "please-maximize-2"
+      welcome: "splash-message"
     };
   }
 
   onLoad() {
     this.play("welcome")
-      .then(() => this.wait(300))
-      .then(() => this.play("please-max"))
-      .then(() => this.wait(300))
-      .then(() => this.play("please-max-2"))
       .then(() => this.setState({robotSpeaking: false}))
-      .catch((error) => console.log(`Failed to play intro sounds: ${error}`));
+      .catch((error) => console.log(`Failed to play intro sound: ${error}`));
   }
 
   render() {
@@ -43,7 +37,11 @@ export default class Splash extends React.Component {
           null
         }
         <TctcLogo/>
-        <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking}/>
+        <div className="Splash__robot-container">
+          <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>
+            <img className="Splash__speech-bubble" src={require("../../../images/splash/speech-bubble.png")}/>
+          </Robot>
+        </div>
         <Arrow onClick={onNext} size="large">Begin</Arrow>
         <AdminButton/>
       </Screen>

@@ -8,19 +8,8 @@
   &__yes,
   &__no {
     position: absolute;
-    bottom: 0;
-    width: 120px;
-    padding: 10px 0 10px 0;
-    font-size: 25px;
     text-align: center;
-    background: rgb(153, 0, 0);
-    cursor: pointer;
-    border-radius: 4px;
-    color: #FFF;
-
-    &:hover {
-      background: rgb(122, 0, 0);
-    }
+    bottom: 0;
   }
 
   &__yes {

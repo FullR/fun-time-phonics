@@ -1,5 +1,5 @@
 import React from "react";
-import {sampleSize, shuffle} from "lodash";
+import {sample, shuffle} from "lodash";
 import wordSounds from "util/word-sounds";
 import scene from "decorators/scene";
 import Actor from "components/actor";
@@ -22,7 +22,7 @@ const letters = ["a", "e", "i", "o", "u"];
 export default class Activity extends React.Component {
   constructor(props) {
     super(props);
-    const otherLetters = sampleSize(letters.filter((other) => other !== props.letter), 2);
+    const incorrectLetter = sample(letters.filter((other) => other !== props.letter));
 
     this.state = {
       girl: {
@@ -35,7 +35,10 @@ export default class Activity extends React.Component {
         id: word,
         hidden: true
       })),
-      dragLetters: shuffle(otherLetters.concat(props.letter))
+      dragLetters: shuffle([
+        incorrectLetter,
+        props.letter
+      ])
     };
   }
 

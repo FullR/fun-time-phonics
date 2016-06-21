@@ -2,7 +2,7 @@ import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
   id: "64",
-  
+
   consonant: "l",
   vowel: "a",
   letterIntroWords: ["ladder", "lemon", "little", "lobster", "lumber"],
@@ -13,7 +13,7 @@ export default consonantVowelLevel({
     {words: ["lunch", "latch", "ledge"], correctWord: "latch", shortInstructions: true},
     {words: ["lasso", "lizard", "lobster"], correctWord: "lasso", shortInstructions: true},
     {words: ["lemon", "lamb", "lime"], correctWord: "lamb", shortInstructions: true},
-    {words: ["lamp", "lump", "flap"], correctWord: "lamp", shortInstructions: true},
+    {words: ["lab", "lump", "flap"], correctWord: "lamp", shortInstructions: true},
     {words: ["little", "ladder", "locker"], correctWord: "ladder", shortInstructions: true}
   ]
 });

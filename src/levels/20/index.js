@@ -13,6 +13,6 @@ export default level({
   Feedback,
   activities,
   levelProps: {
-    title: "Review: Short Vowel Sounds"
+    title: "Short Vowel Sounds"
   }
 });

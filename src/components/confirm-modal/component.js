@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "util/cn";
 import Modal from "components/modal";
+import Button from "components/button";
 
 export default class ConfirmModal extends React.Component {
   static defaultProps = {
@@ -15,8 +16,8 @@ export default class ConfirmModal extends React.Component {
     return (
       <Modal {...this.props} className={classNames} onOverlayClick={onCancel}>
         <div className="Confirm-modal__text">{children}</div>
-        <div className="Confirm-modal__yes" onClick={onConfirm}>{confirmText}</div>
-        <div className="Confirm-modal__no" onClick={onCancel}>{cancelText}</div>
+        <Button className="Confirm-modal__yes" onClick={onConfirm}>{confirmText}</Button>
+        <Button className="Confirm-modal__no" onClick={onCancel}>{cancelText}</Button>
       </Modal>
     );
   }

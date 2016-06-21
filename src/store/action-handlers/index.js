@@ -11,6 +11,9 @@ import SHOW_LEVEL from "./show-level";
 import CHANGE_ROUTE from "./change-route";
 import BACK_ROUTE from "./back-route";
 import SET_REQUIRED_SCORE from "./set-required-score";
+import CHANGE_USER from "./change-user";
+import CREATE_USER from "./create-user";
+import DELETE_USER from "./delete-user";
 
 export default {
   LOAD_STATE,
@@ -25,5 +28,8 @@ export default {
   SHOW_LEVEL,
   CHANGE_ROUTE,
   BACK_ROUTE,
-  SET_REQUIRED_SCORE
+  SET_REQUIRED_SCORE,
+  CHANGE_USER,
+  CREATE_USER,
+  DELETE_USER
 };

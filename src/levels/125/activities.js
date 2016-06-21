@@ -80,8 +80,8 @@ export default [
     yolk: middle("a"),
     yuck: middle("a")
   }},
-  {words: ["zit", "zoo", "zip"], correctWord: "zip", shortInstructions: true, incorrectTypes: {
-    zit: ending("t"),
+  {words: ["sip", "zoo", "zip"], correctWord: "zip", shortInstructions: true, incorrectTypes: {
+    sip: beginning("s", "z"),
     zoo: middle("i")
   }},
   {words: ["cup", "cap", "cub"], correctWord: "cup", shortInstructions: true, incorrectTypes: {
@@ -112,8 +112,8 @@ export default [
     lick: ending("p"),
     lap: middle("i")
   }},
-  {words: ["nut", "mud", "mad"], correctWord: "mad", shortInstructions: true, incorrectTypes: {
-    nut: middle("a"),
+  {words: ["maid", "mud", "mad"], correctWord: "mad", shortInstructions: true, incorrectTypes: {
+    maid: middle("a"),
     mud: middle("a")
   }},
   {words: ["nun", "nap", "knob"], correctWord: "nun", shortInstructions: true, incorrectTypes: {

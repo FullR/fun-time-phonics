@@ -16,6 +16,6 @@
   font-size: 22px;
 }
 
-.Robot--large .Robot__text {
+.Robot--large:not(.Robot--show-text) .Robot__text {
   display: none;
 }

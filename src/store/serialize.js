@@ -1,3 +1,3 @@
-export default function serialize({levels, currentLevelId, requiredScore}) {
-  return {levels, currentLevelId, requiredScore};
+export default function serialize({users, currentUserId}) {
+  return {users, currentUserId};
 }

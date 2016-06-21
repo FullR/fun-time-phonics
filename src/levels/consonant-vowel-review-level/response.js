@@ -2,9 +2,12 @@ import React from "react";
 import ActivityTitle from "components/activity-title";
 import Actor from "components/actor";
 import Response from "components/response";
-import Word from "components/word";
 import scene from "decorators/scene";
+import Word from "components/word";
 import DisplayText from "components/display-text";
+import DisplayBar from "components/display-bar";
+import XOverlay from "components/x-overlay";
+import StarContainer from "components/star-container";
 
 const {Answer} = Response;
 
@@ -71,6 +74,31 @@ export default class LevelResponse extends React.Component {
     });
   }
 
+  renderCorrect() {
+    const {answer, word, consonant, vowel} = this.props;
+    return (
+      <StarContainer style={{padding: "50px 150px 50px 150px"}}>
+        <div><DisplayText>{answer.letters}</DisplayText></div>
+        <Word word={word}/>
+      </StarContainer>
+    );
+  }
+
+  renderIncorrect() {
+    const {word, answer, consonant, vowel} = this.props;
+    return (
+      <div>
+        <div style={{position: "relative", textAlign: "center"}}>
+          <div><DisplayText>{answer.letters}</DisplayText></div>
+          <div style={{position: "relative"}}>
+            <Word word={word}/>
+            <XOverlay/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const {girl, arrowHidden} = this.state;
     const {title, answer, onNext, activityIndex, levelId, activityCount, consonant, vowel} = this.props;
@@ -78,11 +106,12 @@ export default class LevelResponse extends React.Component {
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
         <Actor {...girl} type="girl" onClick={this.autoplay.bind(this)}>Answer Feedback</Actor>
-        <Answer isCorrect={answer.correct}>
-          <DisplayText>
-            {answer.letters}
-          </DisplayText>
-        </Answer>
+        <DisplayBar>
+          {answer.correct ?
+            this.renderCorrect() :
+            this.renderIncorrect()
+          }
+        </DisplayBar>
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           {title}
         </ActivityTitle>

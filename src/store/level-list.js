@@ -1,4 +1,4 @@
 import {range, invokeMap} from "lodash";
-import initialState from "./initial-state";
+import getInitialLevels from "./get-initial-levels";
 
-export default initialState.levels.map((levelData) => levelData.id);
+export default getInitialLevels().map((levelData) => levelData.id);

@@ -8,22 +8,25 @@ export default class Robot extends React.Component {
     size: React.PropTypes.sting,
     animating: React.PropTypes.bool,
     speaking: React.PropTypes.bool,
-    glowing: React.PropTypes.bool
+    glowing: React.PropTypes.bool,
+    showText: React.PropTypes.bool
   };
 
   static defaultProps = {
     size: "small",
     animating: false,
     speaking: false,
-    glowing: false
+    glowing: false,
+    showText: false
   };
 
   render() {
-    const {type, size, animating, speaking, glowing, noArm, className, children} = this.props;
+    const {type, size, animating, speaking, glowing, noArm, showText, className, children} = this.props;
     const blockName = `Robot-${type}`;
     const classNames = cn(
       "Robot",
       `Robot--${size}`,
+      showText ? `Robot--show-text` : null,
       noArm ? "Robot--no-arm" : null,
       blockName,
       `${blockName}--${size}`,

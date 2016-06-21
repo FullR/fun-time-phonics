@@ -22,7 +22,9 @@ export default function coContainer(Wrapped) {
         this.stopCo();
         this._stopCo = stop;
         return promise.then(() => {
-          this.setState({coPlaying: false});
+          if(!this._unmounted) { // I don't think there's a better way unfortunately
+            this.setState({coPlaying: false});
+          }
           this._stopCo = null;
           this._coPlaying = false;
         });
@@ -46,6 +48,7 @@ export default function coContainer(Wrapped) {
 
     componentWillUnmount() {
       this.stopCo(false);
+      this._unmounted = true;
       if(super.componentWillUnmount) {
         super.componentWillUnmount();
       }

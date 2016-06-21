@@ -1,0 +1,33 @@
+.Loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-family: verdana;
+
+  &__progress-bar-container {
+    border: 2px solid black;
+    width: 50%;
+  }
+
+  &__progress-bar {
+    background: #F00;
+    height: 40px;
+    transition: width 0.1s;
+  }
+
+  &__logo {
+    width: 154px * 4;
+    height: 100px * 4;
+  }
+
+  &__text {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &__sub-text {
+    font-size: 20px;
+  }
+}

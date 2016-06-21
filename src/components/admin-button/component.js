@@ -5,6 +5,22 @@ import actions from "store/actions";
 import cn from "util/cn";
 
 export default class AdminButton extends React.Component {
+  onClick() {
+    const isLoggedIn = store.getState().currentUserId;
+    if(isLoggedIn) {
+      store.dispatch({
+        type: actions.CHANGE_ROUTE,
+        route: "admin"
+      });
+    } else {
+      store.dispatch({
+        type: actions.CHANGE_ROUTE,
+        route: "login",
+        routeProps: {afterLoginRoute: "admin"}
+      });
+    }
+  }
+
   render() {
     const {className} = this.props;
     const classNames = cn("Admin-button", className);
@@ -12,7 +28,7 @@ export default class AdminButton extends React.Component {
     return (
       <LockLink {...this.props}
         className={classNames}
-        onClick={store.dispatch.bind(store, {type: actions.CHANGE_ROUTE, route: "admin"})}
+        onClick={this.onClick.bind(this)}
       >
         Admin/Score
       </LockLink>

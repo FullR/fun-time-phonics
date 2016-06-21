@@ -10,6 +10,7 @@ export default class PlayBox extends React.Component {
     hidden: React.PropTypes.bool,
     detached: React.PropTypes.bool,
     waveHidden: React.PropTypes.bool,
+    noWave: React.PropTypes.bool,
     onClick: React.PropTypes.func,
     onWaveClick: React.PropTypes.func,
     size: React.PropTypes.oneOf(["small", "medium", "large"])
@@ -21,15 +22,17 @@ export default class PlayBox extends React.Component {
     detached: false,
     waveHidden: false,
     disabled: false,
+    noWave: false,
     size: "large"
   };
 
   render() {
-    const {size, active, selected, playing, hidden, detached, waveHidden, onClick, onWaveClick, children, className} = this.props;
+    const {size, active, selected, playing, hidden, detached, waveHidden, noWave, onClick, onWaveClick, children, className} = this.props;
     const classNames = cn("Play-box",
       `Play-box--size-${size}`,
       hidden ? "Play-box--hidden" : null,
       detached ? "Play-box--detached" : null,
+      noWave ? "Play-box--no-wave" : null,
       className
     );
 

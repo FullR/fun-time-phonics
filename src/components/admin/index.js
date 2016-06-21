@@ -2,7 +2,6 @@ import React from "react";
 import bembam from "bembam";
 import {version} from "../../../package";
 import demoLevels from "demo-levels";
-import Verdana1 from "components/verdana-1";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
 import Arrow from "components/arrow";
@@ -64,9 +63,9 @@ export default class Admin extends React.Component {
 
     this.state = {
       authenticated: false,
-      currentLevel: props.demo && !demoLevels.includes(props.currentLevelId) ? "26" : props.currentLevelId,
-      sectionIndex: getSection(props.currentLevelId),
-      authenticated: false,
+      currentLevel: props.demo && !demoLevels.includes(props.user.currentLevelId) ? "26" : props.user.currentLevelId,
+      sectionIndex: getSection(props.user.currentLevelId),
+      authenticated: !!props.noAuth,
       infoScreen: null,
       showingClearModal: false,
       showingChangeScoreModal: false
@@ -162,7 +161,8 @@ export default class Admin extends React.Component {
   }
 
   render() {
-    const {requiredScore, demo} = this.props;
+    const {user, onChangeUser, demo} = this.props;
+    const {requiredScore} = this.props.user;
     const {authenticated, sectionIndex, infoScreen, currentLevel, arrowPulse, showingClearModal, showingChangeScoreModal} = this.state;
     const Section = sections[sectionIndex];
     const NextSection = sections[sectionIndex + 1];
@@ -194,13 +194,13 @@ export default class Admin extends React.Component {
 
     if(levelData.complete) {
       arrowText = `Replay Lesson ${getLevelDisplayId(currentLevel)}`;
-      arrowStyle = {fontSize: "2.2rem"};
+      arrowStyle = {fontSize: "91%"};
     } else if(levelData.started) {
       arrowText = `Return to Lesson ${getLevelDisplayId(currentLevel)}`;
-      arrowStyle = {fontSize: "2.0rem"};
+      arrowStyle = {fontSize: "83%"};
     } else {
       arrowText = `Play Lesson ${getLevelDisplayId(currentLevel)}`;
-      arrowStyle = {fontSize: "2.4rem"};
+      arrowStyle = {fontSize: "100%"};//"2.4rem"};
     }
 
     const level = (levelId) => {
@@ -235,16 +235,18 @@ export default class Admin extends React.Component {
           <div className="Admin__header-right">
             <div className="Admin__header-button" onClick={this.openClearModal.bind(this)}>Clear Data</div>
             <div className="Admin__header-button" onClick={this.openChangeScoreModal.bind(this)}>Change Success Percentage</div>
+            <div className="Admin__header-button" onClick={onChangeUser}>Change User</div>
           </div>
         </AdminHeader>
         <div className="Admin__content">
+          <div className="Admin__user-name">{user.name}</div>
           <div className="Admin__section-box">
             <div className="Admin__nav">
               <div className="Admin__arrows">
                 <Arrow key="prev-arrow" onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped hidden={!PrevSection}>
                   <span style={{position: "relative", left: 8}}>Previous</span>
                 </Arrow>
-                <div className="Admin__lesson-numbers">Lessons {levelRange[0] === 1 ? <Verdana1 scale="90%"/> : levelRange[0]}-{levelRange[1]}</div>
+                <div className="Admin__lesson-numbers">Lessons <span className="Admin__lesson-number-range">{levelRange[0]}-{levelRange[1]}</span></div>
                 <Arrow key="next-arrow" onClick={this.nextSection.bind(this)} size="very-small" color="blue" hidden={!NextSection}>
                   Next
                 </Arrow>

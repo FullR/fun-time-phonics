@@ -17,7 +17,7 @@ export default class AdminSection1 extends React.Component {
   static levelRange = [1, 7];
   static Description = () => (
     <div>
-      Lessons <Verdana1 color="#555"/>-3 teach children that words are made up of different sounds by teaching them to identify beginning and ending sounds in words.&nbsp; Next, lessons 4 and 5 teach children to identify words that rhyme.&nbsp; Lessons 6 and 7 provide children with all the sounds in a word and then ask them to identify the word from its parts.
+      Lessons <Verdana1 color="#555"/>-3 teach children that words are made up of different sounds by teaching them to identify beginning and ending sounds in words.&nbsp;Not all letter sounds will be covered in these lessons, but they will be covered in later lessons.&nbsp; Lessons 4 and 5 teach children to identify words that rhyme.&nbsp; Lessons 6 and 7 provide children with all the sounds in a word and then ask them to identify the word from its parts.
     </div>
   );
 

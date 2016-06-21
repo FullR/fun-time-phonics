@@ -41,6 +41,14 @@
     margin-right: 5.0rem;
   }
 
+  &__user-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: default;
+  }
+
   &__section-title {
     width: 100%;
     font-size: 4.5rem;
@@ -102,7 +110,13 @@
     cursor: default;
   }
 
+  &__lesson-number-range {
+    font-family: verdana;
+    font-size: 80%;
+  }
+
   &__content {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -122,10 +136,12 @@
     flex-direction: column;
     justify-content: flex-end; // place at bottom
     padding-right: 10px;
+    font-size: 24px;
 
     @include breakpoint($tablet) {
       padding-right: 0;
-      max-width: 200px;
+      max-width: 150px;
+      font-size: 12px;
     }
   }
 
@@ -142,8 +158,8 @@
     font-family: verdana;
 
     @include breakpoint($tablet) {
-      width: 200px;
-      height: 125px;
+      width: 150px;
+      height: 100px;
     }
   }
 }

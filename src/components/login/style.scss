@@ -1,0 +1,71 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  background: #CDE39F;
+  &__header {
+    position: relative;
+    flex: 0 1 150px;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+  }
+
+  &__header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__user-list {
+    display: flex;
+    flex-direction: row;
+    height: 0;
+    flex: 1 1 auto;
+    overflow: auto;
+    min-height: 100px;
+
+    .User-list {
+      flex: 0 1 600px;
+      margin: 0 auto;
+      background: #FFF;
+    }
+  }
+
+  &__form-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    .User-list-form {
+      flex: 0 1 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__login-button {
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    font-size: 35px;
+    min-width: 200px;
+    transform: translate(0, -50%);
+  }
+
+  &__footer {
+    position: relative;
+    flex: 0 1 150px;
+    width: 100%;
+    text-align: right;
+  }
+
+  input {
+    border: 2px solid #444;
+    outline: none;
+    padding-left: 10px;
+    font-size: 35px;
+  }
+}

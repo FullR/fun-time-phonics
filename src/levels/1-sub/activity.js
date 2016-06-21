@@ -45,6 +45,7 @@ export default class Activity extends React.Component {
     const {exampleWords} = this.props;
     const {girl, choices} = this;
     this.startCo(function*() {
+      choices.all.set("hidden", true);
       if(!shortInstructions) {
         girl.set("size", "large");
         yield this.say(girl, "touch the word...");

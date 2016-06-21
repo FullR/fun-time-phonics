@@ -7,7 +7,7 @@ export default class Feedback extends React.Component {
     const {title, levelId, score, max} = this.props;
     return (
       <ScoreScreen {...this.props}>
-        <Title>{title} Is Complete!</Title>
+        <Title>Review:&nbsp;&nbsp;{title} Is Complete!</Title>
       </ScoreScreen>
     );
   }

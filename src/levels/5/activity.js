@@ -87,7 +87,7 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={{top: 50}}>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}

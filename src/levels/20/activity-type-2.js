@@ -35,7 +35,7 @@ export default class Activity extends React.Component {
     const {words} = this.props;
     return {
       ...wordSounds("girl", words),
-      "drag the letter...": "girl/common/drag-the-letter-that-makes-this-middle-sound-to-the-picture"
+      "drag the letter...": "girl/common/drag-the-letter-that-makes-this-middle-sound-to-the-correct-picture"
     };
   }
 
@@ -96,7 +96,7 @@ export default class Activity extends React.Component {
         </SceneContent>
 
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
-          {title}
+          Review:&nbsp;&nbsp;{title}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

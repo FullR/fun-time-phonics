@@ -1,0 +1,44 @@
+$base-color: #CDE39F;
+$selected-color: darken($base-color, 15%);
+$hover-color: lighten($base-color, 15%);
+
+.User-list-item {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  font-size: 35px;
+  font-weight: 800;
+  cursor: pointer;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background: $hover-color;
+  }
+
+  &--selected {
+    cursor: default;
+    background: $selected-color;
+    &:hover {
+      background: $selected-color;
+    }
+  }
+
+  &__remove-button {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    height: 40px;
+    margin-top: -20px;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(255, 0, 0);
+    }
+  }
+}

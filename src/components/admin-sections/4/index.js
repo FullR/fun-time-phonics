@@ -19,10 +19,11 @@ export default class AdminSection4 extends React.Component {
   static title = "Consonant-Vowel Coarticulation";
   static levelRange = [44, 63];
   static Description = () => (
-    <div>These lessons teach children the influence the consonants g-k have on the short vowel sounds.&nbsp; Children also learn that these consonant-vowel combinations are used to form words.</div>
+    <div>These lessons teach children the influence that the short vowel sound has on the consonants g-k.&nbsp; Children also learn that these consonant-vowel coarticulations are the beginning sounds used to form words.</div>
   );
   render() {
     const {level} = this.props;
+
     return (
       <AdminSection className="Admin-section-4">
         <AdminSectionColumn>

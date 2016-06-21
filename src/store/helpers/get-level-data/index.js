@@ -1,3 +1,4 @@
 export default function getLevelData(state, levelId) {
-  return state.levels.find((level) => level.id === levelId);
+  const {users, currentUserId} = state;
+  return users[currentUserId].levels.find((level) => level.id === levelId);
 }

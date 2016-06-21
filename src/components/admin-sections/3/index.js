@@ -20,7 +20,7 @@ export default class AdminSection3 extends React.Component {
   static title = "Consonant-Vowel Coarticulation";
   static levelRange = [21, 43];
   static Description = () => (
-    <div>These lessons teach children the influence the consonants b-f have on the short vowel sounds.&nbsp; Children also learn that these consonant-vowel combinations are used to form words.</div>
+    <div>These lessons teach children the influence that the short vowel sound has on the consonants b-f.&nbsp; Children also learn that these consonant-vowel coarticulations are the beginning sounds used to form words.</div>
   );
   render() {
     const {level} = this.props;

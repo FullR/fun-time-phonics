@@ -23,17 +23,19 @@ export default class Lesson extends React.Component {
         speaking: true
       },
       showingLetterIntro: props.letterIntro,
+      showingVowel: false,
       choices: [
         ...(props.letterIntroWords || []).map((word) => ({ // letter into choices
           word,
           id: "intro-" + word,
           hidden: true,
-          detached: true
+          detached: !props.letterIntro
         })),
         ...props.lessonWords.map((word) => ({ // lesson choices
           word,
           id: word,
-          hidden: true
+          hidden: true,
+          detached: props.letterIntro
         }))
       ]
     };
@@ -79,8 +81,12 @@ export default class Lesson extends React.Component {
     const {lessonWords, letterIntro, letterIntroWords, consonant, vowel} = this.props;
     const {boy, sounds, choices} = this;
 
+    if(consonant === "q") {
+      return this.autoplay_q_only();
+    }
+
     this.startCo(function*() {
-      this.setState({showingLetterIntro: letterIntro});
+      this.setState({showingLetterIntro: letterIntro, showingVowel: false});
       choices.all.set("hidden", true);
 
       if(letterIntro) {
@@ -93,29 +99,15 @@ export default class Lesson extends React.Component {
         yield this.say(boy, "consonant");
         yield this.say(boy, "looks like this");
 
-        if(consonant === "q") {
-          yield this.say(boy, "the letter");
-          yield this.say(boy, "consonant");
-          yield this.say(boy, "is always followed by the letter");
-          yield this.say(boy, "vowel");
-          yield this.say(boy, "words such as");
-        } else {
-          yield this.wait(300);
-          yield this.say(boy, "the letter");
-          yield this.say(boy, "consonant");
-          yield this.say(boy, "makes the beginning sound of");
-        }
+        yield this.wait(300);
+        yield this.say(boy, "the letter");
+        yield this.say(boy, "consonant");
+        yield this.say(boy, "makes the beginning sound of");
 
         for(let word of letterIntroWords) {
           choices["intro-" + word].set("hidden", false);
           yield this.say(boy, word);
           yield this.wait(100);
-        }
-
-        if(consonant === "q") {
-          yield this.say(boy, "all begin with the");
-          yield this.say(boy, "phonic");
-          yield this.say(boy, "sound");
         }
 
         yield this.wait(400);
@@ -126,21 +118,19 @@ export default class Lesson extends React.Component {
         this.setState({showingLetterIntro: false});
       }
 
-      if(consonant !== "q") {
-        yield this.say(boy, "words such as");
+      yield this.say(boy, "words such as");
 
-        for(let word of lessonWords) {
-          choices[word].set("hidden", false);
-          yield this.say(boy, word);
-          yield this.wait(100);
-        }
-
-        yield this.say(boy, "all begin with the");
-        yield this.say(boy, "phonic");
-        yield this.say(boy, "sound");
-
-        yield this.wait(300);
+      for(let word of lessonWords) {
+        choices[word].set("hidden", false);
+        yield this.say(boy, word);
+        yield this.wait(100);
       }
+
+      yield this.say(boy, "all begin with the");
+      yield this.say(boy, "phonic");
+      yield this.say(boy, "sound");
+
+      yield this.wait(300);
 
       yield this.say(boy, "we use the letters");
       yield this.say(boy, "letters");
@@ -163,9 +153,52 @@ export default class Lesson extends React.Component {
     });
   }
 
+  autoplay_q_only() {
+    const {lessonWords, letterIntro, letterIntroWords, consonant, vowel} = this.props;
+    const {boy, sounds, choices} = this;
+
+    this.startCo(function*() {
+      choices.all.set({hidden: true, detached: false});
+      this.setState({showingLetterIntro: letterIntro, showingVowel: false});
+      yield this.say(boy, "the letter");
+      yield this.say(boy, "consonant");
+      yield this.say(boy, "looks like this");
+
+      this.setState({showingVowel: true});
+      yield this.say(boy, "the letter");
+      yield this.say(boy, "consonant");
+      yield this.say(boy, "is always followed by the letter");
+      yield this.say(boy, "vowel");
+
+      yield this.say(boy, "words such as");
+
+      for(let choice of choices) {
+        choice.set("hidden", false);
+        yield this.say(boy, choice.get("word"));
+        yield this.wait(150);
+      }
+
+      yield this.say(boy, "all begin with the");
+      yield this.say(boy, "phonic");
+      yield this.say(boy, "sound");
+
+      yield this.say(boy, "we use the letters");
+      yield this.say(boy, "letters");
+      yield this.say(boy, "to write the");
+      yield this.say(boy, "phonic");
+      yield this.say(boy, "sound");
+
+      yield this.say(boy, "when we read the letters");
+      yield this.say(boy, "letters");
+      yield this.say(boy, "they tell us to say");
+      yield this.say(boy, "phonic");
+      boy.set({speaking: false, animating: false});
+    });
+  }
+
   render() {
     const {title, levelId, activityIndex, onNext, consonant, vowel, letterIntroWords} = this.props;
-    const {choices, boy, letters, showingLetterIntro} = this.state;
+    const {choices, boy, letters, showingLetterIntro, showingVowel} = this.state;
 
     return (
       <Screen>
@@ -174,7 +207,7 @@ export default class Lesson extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            {showingLetterIntro ?
+            {showingLetterIntro && !showingVowel ?
               <PlayableDisplayText sound={this.getSound("consonant")} waveHidden={this.state.coPlaying}>
                 <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
                 <span>{consonant}</span>
@@ -198,8 +231,9 @@ export default class Lesson extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

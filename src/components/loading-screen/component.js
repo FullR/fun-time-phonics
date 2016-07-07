@@ -10,7 +10,7 @@ export default class LoadingScreen extends React.Component {
 
     return (
       <Screen {...this.props} className={classNames}>
-        <TctcLogo className="Loading-screen__logo"/>
+        <div className="Loading-screen__logo"/>
         <div className="Loading-screen__progress-bar-container">
           <div className="Loading-screen__progress-bar" style={{width: `${progress * 100}%`}}/>
         </div>

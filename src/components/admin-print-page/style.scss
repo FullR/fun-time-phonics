@@ -1,0 +1,35 @@
+.Admin-print-page {
+  padding: 0 20px 0 20px;
+  font-family: verdana;
+  overflow: visible;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    break-before: always;
+    font-size: 25px;
+  }
+
+  h2 {
+    padding-left: 10px;
+  }
+
+  h1, h2 {
+    display: inline-block;
+  }
+
+  table {
+    vertical-align: top;
+    width: 100%;
+    display: inline-block;
+    font-size: 15px;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td, th {
+    padding: 4px 10px 4px 10px;
+  }
+}

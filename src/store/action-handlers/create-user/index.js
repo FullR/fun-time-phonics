@@ -4,6 +4,7 @@ export default function createUser(state, {userName}) {
   return {
     ...state,
     currentUserId: userName,
+    userNames: [...state.userNames, userName],
     users: {
       ...state.users,
       [userName]: {

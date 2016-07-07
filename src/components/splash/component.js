@@ -1,4 +1,5 @@
 import React from "react";
+import {isWeb} from "util/detect-platform";
 import cn from "util/cn";
 import soundContainer from "decorators/sound-container";
 import timerContainer from "decorators/timer-container";
@@ -7,6 +8,7 @@ import AdminButton from "components/admin-button";
 import TctcLogo from "components/tctc-logo";
 import Screen from "components/screen";
 import Robot from "components/robot";
+import UserNameLabel from "components/user-name-label";
 
 @soundContainer
 @timerContainer
@@ -15,7 +17,7 @@ export default class Splash extends React.Component {
 
   getSounds() {
     return {
-      welcome: "splash-message"
+      welcome: isWeb() ? "splash-message-maximize" : "splash-message"
     };
   }
 
@@ -26,24 +28,32 @@ export default class Splash extends React.Component {
   }
 
   render() {
-    const {onNext, demo, className} = this.props;
+    const {onNext, demo, adminButtonHidden, userName, className} = this.props;
     const {robotSpeaking} = this.state;
     const classNames = cn("Splash", className);
 
     return (
       <Screen {...this.props} className={classNames}>
         {demo ?
-          <div className="Splash__demo-label">DEMO</div> :
+          <div className="Splash__demo-label">DEMO<br/>1.0</div> :
           null
         }
         <TctcLogo/>
-        <div className="Splash__robot-container">
-          <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>
-            <img className="Splash__speech-bubble" src={require("../../../images/splash/speech-bubble.png")}/>
-          </Robot>
+        <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>
+          <img className="Splash__speech-bubble" src={require("../../../images/splash/speech-bubble.png")}/>
+        </Robot>
+        <div className="Splash__arrow-container">
+          <Arrow onClick={onNext} size="large">Begin</Arrow>
+          {userName && userName.length ?
+            <UserNameLabel>{userName}</UserNameLabel> :
+            null
+          }
         </div>
-        <Arrow onClick={onNext} size="large">Begin</Arrow>
-        <AdminButton/>
+
+        {adminButtonHidden ?
+          null :
+          <AdminButton/>
+        }
       </Screen>
     );
   }

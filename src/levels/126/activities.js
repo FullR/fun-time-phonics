@@ -5,8 +5,8 @@ export default [
     "mad-mom": "this-is-a-mad-mom"
   }},
   {words: ["red-cap", "red-cup", "red-cat"], correctWord: "red-cap", shortInstructions: true, responsePhrases: {
-    "red-cup": "this-is-a-red-cup",
-    "red-cat": "this-is-a-red-cat",
+    "red-cup": "this-is-a-red-cup-not-a-red-cap",
+    "red-cat": "this-is-a-red-cat-not-a-red-cap",
     "red-cap": "this-is-a-red-cap"
   }},
   {words: ["cat-naps", "wet-cat", "wet-dog"], correctWord: "wet-cat", shortInstructions: true, responsePhrases: {
@@ -35,7 +35,7 @@ export default [
     "box-top": "this-is-a-box-top"
   }},
   {words: ["peg-leg", "pigs-logs", "pig-leg"], correctWord: "pig-leg", shortInstructions: true, responsePhrases: {
-    "peg-leg": "this-is-a-peg-leg",
+    "peg-leg": "this-is-a-peg-leg-not-a-pig-leg",
     "pigs-logs": "this-is-pigs-logs-not-a-pig-leg",
     "pig-leg": "this-is-a-pig-leg"
   }},
@@ -79,10 +79,10 @@ export default [
     "ten-legs": "this-is-ten-legs-not-ten-eggs",
     "ten-eggs": "this-is-ten-eggs"
   }},
-  {words: ["fun-slide", "fun-park", "sleeping"], correctWord: "sleeping", wordText: "not fun", shortInstructions: true, responsePhrases: {
+  {words: ["fun-slide", "fun-park", "mad"], correctWord: "mad", wordText: "not fun", shortInstructions: true, responsePhrases: {
     "fun-slide": "this-is-fun-on-a-slide",
     "fun-park": "this-is-fun-at-an-amusement-park",
-    "sleeping": "sleeping-is-not-fun"
+    "mad": "this-kid-is-not-having-fun"
   }},
   {words: ["lit-torch", "unlit-candle", "fire"], correctWord: "unlit-candle", wordText: "not lit", shortInstructions: true, responsePhrases: {
     "lit-torch": "this-torch-is-lit",

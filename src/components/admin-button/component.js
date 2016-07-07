@@ -5,18 +5,14 @@ import actions from "store/actions";
 import cn from "util/cn";
 
 export default class AdminButton extends React.Component {
-  onClick() {
-    const isLoggedIn = store.getState().currentUserId;
-    if(isLoggedIn) {
-      store.dispatch({
-        type: actions.CHANGE_ROUTE,
-        route: "admin"
-      });
+  onClick(event) {
+    const {onClick} = this.props;
+    if(onClick) { // allow custom onClick
+      onClick(event);
     } else {
       store.dispatch({
         type: actions.CHANGE_ROUTE,
-        route: "login",
-        routeProps: {afterLoginRoute: "admin"}
+        route: "admin"
       });
     }
   }

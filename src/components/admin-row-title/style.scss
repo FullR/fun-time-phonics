@@ -4,16 +4,24 @@
   position: relative;
   display: flex;
   flex: 1.5 1 auto;
+  min-height: 100px;
+  height: 100%;
   font-size: 30px;
   min-width: 60px;
   margin-right: 20px;
-  line-height: 30px;
+  line-height: 33px;
   color: #00F;
   cursor: default;
   max-width: 200px;
 
   > div {
     position: absolute;
+    height: 100%;
+  }
+
+  &--stretch-content > div {
+    display: flex;
+    align-items: stretch;
   }
 
   &__hidden {

@@ -14,8 +14,10 @@ app.on("ready", () => {
     title: "Fun-Time Phonics",
     width: 1024, height: 768,
     minWidth: 1024, minHeight: 768,
-    center: true
+    center: true,
+    maximized: true
   });
+  app.setAppUserModelId("com.criticalthinking.fun-time-phonics");
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-  mainWindow.openDevTools();
+  mainWindow.maximize();
 });

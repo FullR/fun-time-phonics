@@ -12,7 +12,7 @@ $font-size: 3.4rem;
 
   @if $hover {
     &--color-#{$color}:hover .Arrow__image {
-      background-image: url("../../../images/arrows/#{$color}_glow.png");
+      background-image: url("../../../images/arrows/#{$color}_hover.png");
     }
   }
 }
@@ -26,7 +26,8 @@ $font-size: 3.4rem;
 
 .Arrow {
   @include arrow-color("black", false);
-  @include arrow-color("blue", false);
+  @include arrow-color("gray", false);
+  @include arrow-color("blue");
   @include arrow-color("red");
   @include arrow-color("orange");
   @include arrow-color("green");

@@ -1,6 +1,8 @@
 import React from "react";
+import {findDOMNode} from "react-dom";
 import bembam from "bembam";
 import Screen from "../screen";
+import Arrow from "../arrow";
 import Button from "../button";
 import UserList from "../user-list";
 import UserListItem from "../user-list-item";
@@ -11,6 +13,7 @@ import AlertModal from "../alert-modal";
 export default class Login extends React.Component {
   static propTypes = {
     users: React.PropTypes.array,
+    userNames: React.PropTypes.array,
     onCreateUser: React.PropTypes.func,
     onDeleteUser: React.PropTypes.func,
     onSelectUser: React.PropTypes.func,
@@ -19,15 +22,25 @@ export default class Login extends React.Component {
     maxUserCount: React.PropTypes.number
   };
 
+  static defaultProps = {
+    maxUserCount: Infinity
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       userToDelete: null,
       duplicateUserNameModal: false,
-      maxUsersModal: false,
-      maxUserCount: Infinity
+      maxUsersModal: false
     };
+  }
+
+  componentDidMount() {
+    const {selectedUserListItem} = this.refs;
+    if(selectedUserListItem) {
+      findDOMNode(selectedUserListItem).scrollIntoView();
+    }
   }
 
   hideDuplicateUserNameModal() {
@@ -91,8 +104,15 @@ export default class Login extends React.Component {
     }
   }
 
+  submit() {
+    const {currentUser, onSubmit} = this.props;
+    if(currentUser && onSubmit) {
+      onSubmit();
+    }
+  }
+
   render() {
-    const {users, currentUser, onSubmit, maxUserCount, className} = this.props;
+    const {users, userNames, userIndex, currentUser, onSubmit, maxUserCount, className} = this.props;
     const {selectedUserId, username, userToDelete, duplicateUserNameModal, maxUsersModal} = this.state;
     const cn = bembam("Login", className);
 
@@ -112,20 +132,27 @@ export default class Login extends React.Component {
         </div>
         <div className={cn.el("user-list")}>
           <UserList>
-            {users.map((user) =>
-              <UserListItem
-                key={user.id}
-                selected={user.id === currentUser}
-                onClick={this.selectUser.bind(this, user.id)}
-                onRemoveClick={this.showDeleteModal.bind(this, user)}
-              >
-                {user.name}
-              </UserListItem>
-            )}
+            {userNames.map((userName) => {
+              const user = userIndex[userName];
+              const selected = user.id === currentUser;
+              return (
+                <UserListItem
+                  key={user.id}
+                  selected={selected}
+                  onClick={this.selectUser.bind(this, user.id)}
+                  onRemoveClick={this.showDeleteModal.bind(this, user)}
+                  ref={selected ? "selectedUserListItem" : null}
+                >
+                  {user.name}
+                </UserListItem>
+              );
+            })}
           </UserList>
         </div>
         <div className={cn.el("footer")}>
-          <Button className={cn.el("login-button")} onClick={onSubmit} disabled={!currentUser}>Continue</Button>
+          <Arrow className={cn.el("login-button")} onClick={this.submit.bind(this)} disabled={!currentUser}>
+            Continue
+          </Arrow>
         </div>
 
         <ConfirmModal

@@ -68,7 +68,7 @@ export default class Activity extends React.Component {
 
         <ActivityTitle>
           {levelId}. {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+          Activities of {activityCount}
         </ActivityTitle>
         <AdminButton/>
       </Screen>

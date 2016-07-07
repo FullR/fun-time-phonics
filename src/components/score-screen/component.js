@@ -42,7 +42,7 @@ export default class ScoreScreen extends React.Component {
     return {
       feedback: this.isPassing() ?
         "boy/common/nice-work-touch-the-green-arrow-to-begin-the-next-lesson-touch-the-orange-arrow-to-play-this-lesson-again" :
-        "boy/common/nice-try-lets-practice-this-some-more"
+        "boy/common/good-job-but-we-need-to-practice-this-some-more-touch-the-orange-arrow-to-play-this-lesson-again"
     };
   }
 

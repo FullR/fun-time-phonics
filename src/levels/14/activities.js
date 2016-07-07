@@ -11,7 +11,7 @@ export default [
   {words: ["bud", "bird", "bus"], replaceWord: "bed", replacePhonic: "eh", phonic: "uh", correctWord: "bud"},
   {words: ["pot", "pitch", "pit"], replaceWord: "putt", replacePhonic: "uh", phonic: "ih", correctWord: "pit"},
   {words: ["lip", "flap", "flip"], replaceWord: "flop", replacePhonic: "oh", phonic: "ih", correctWord: "flip"},
-  {words: ["truck", "trick", "trunk"], replaceWord: "track", replacePhonic: "ah", phonic: "uh", correctWord: "truck"},
+  {words: ["truck", "trick", "trap"], replaceWord: "track", replacePhonic: "ah", phonic: "uh", correctWord: "truck"},
   {words: ["fish", "fast", "fat"], replaceWord: "fist", replacePhonic: "ih", phonic: "ah", correctWord: "fast"},
   {words: ["batter", "boater", "battle"], replaceWord: "butter", replacePhonic: "uh", phonic: "ah", correctWord: "batter"}
 ];

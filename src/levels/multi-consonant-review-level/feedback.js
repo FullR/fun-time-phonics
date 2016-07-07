@@ -1,13 +1,15 @@
 import React from "react";
 import ScoreScreen from "components/score-screen";
-const {Score, Title, SubTitle} = ScoreScreen;
+const {Score, SubTitle} = ScoreScreen;
+const ScoreScreenTitle = ScoreScreen.Title;
 
 export default class Feedback extends React.Component {
   render() {
-    const {title, levelId, score, max, letter} = this.props;
+    const {Title, levelId, score, max, letter} = this.props;
     return (
       <ScoreScreen {...this.props}>
-        <Title>{title} Is Complete!</Title>
+        <ScoreScreenTitle><Title/> Is Complete!</ScoreScreenTitle>
+        {this.props.children}
       </ScoreScreen>
     );
   }

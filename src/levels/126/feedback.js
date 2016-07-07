@@ -41,6 +41,7 @@ export default class Feedback extends React.Component {
         <Balloon left="13%" duration={2.75} color="blue"/>
         <Balloon right="8%" duration={3.15} color="green"/>
         <Balloon right="13%" duration={2.8} color="orange"/>
+        {this.props.children}
       </EndScoreScreen>
     );
   }

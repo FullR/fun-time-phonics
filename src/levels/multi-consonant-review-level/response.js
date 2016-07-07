@@ -99,7 +99,7 @@ export default class LevelResponse extends React.Component {
 
   render() {
     const {girl, arrowHidden} = this.state;
-    const {title, answer, onNext, activityIndex, levelId, activityCount, letter} = this.props;
+    const {Title, answer, onNext, activityIndex, levelId, activityCount, letter} = this.props;
 
     return (
       <Response onNext={onNext} arrowHidden={arrowHidden}>
@@ -111,8 +111,9 @@ export default class LevelResponse extends React.Component {
           }
         </DisplayBar>
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
-          {title}
+          <Title/>
         </ActivityTitle>
+        {this.props.children}
       </Response>
     );
   }

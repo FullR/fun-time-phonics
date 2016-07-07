@@ -94,11 +94,11 @@ export default [
   }},
   {words: ["fork", "fox", "box"], correctWord: "fox", shortInstructions: true, incorrectTypes: {
     fork: middle("o"),
-    box: beginning("f")
+    box: beginning("b", "f")
   }},
   {words: ["gun", "gym", "gum"], correctWord: "gum", shortInstructions: true, incorrectTypes: {
-    gun: middle("u"),
-    gym: ending("m")
+    gun: ending("m"),
+    gym: middle("u")
   }},
   {words: ["hit", "hot", "hat"], correctWord: "hat", shortInstructions: true, incorrectTypes: {
     hit: middle("a"),
@@ -112,8 +112,8 @@ export default [
     lick: ending("p"),
     lap: middle("i")
   }},
-  {words: ["maid", "mud", "mad"], correctWord: "mad", shortInstructions: true, incorrectTypes: {
-    maid: middle("a"),
+  {words: ["nut", "mud", "mad"], correctWord: "mad", shortInstructions: true, incorrectTypes: {
+    nut: middle("a"),
     mud: middle("a")
   }},
   {words: ["nun", "nap", "knob"], correctWord: "nun", shortInstructions: true, incorrectTypes: {

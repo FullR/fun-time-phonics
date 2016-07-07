@@ -11,8 +11,8 @@ export default class DemoEndGame extends React.Component {
 
     return (
       <Screen {...this.props} className={classNames}>
-        <h1>You have completed all of the demo levels!</h1>
-        <h2>To play the other 100 levels, purchase the full software at <WebLink href="http://www.criticalthinking.com/fun-time-phonics-series.html">http://www.criticalthinking.com/fun-time-phonics-series.html</WebLink>.</h2>
+        <h1>You have completed all of the demo lessons!</h1>
+        <h2>To play the other 100 lessons, purchase the full software at <WebLink href="http://www.criticalthinking.com/fun-time-phonics-series.html">http://www.criticalthinking.com/fun-time-phonics-series.html</WebLink>.</h2>
         <AdminButton/>
       </Screen>
     );

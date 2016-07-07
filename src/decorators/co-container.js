@@ -18,14 +18,18 @@ export default function coContainer(Wrapped) {
       this.setState({coPlaying: true});
       return wait(0).then(() => {
         const co = stoppableCo(genFn.bind(context));
-        const {promise, stop} = co.apply(null, args);
+        const {promise, stop, pause, resume} = co.apply(null, args);
         this.stopCo();
         this._stopCo = stop;
+        this._pauseCo = pause;
+        this._resumeCo = resume;
         return promise.then(() => {
           if(!this._unmounted) { // I don't think there's a better way unfortunately
             this.setState({coPlaying: false});
           }
           this._stopCo = null;
+          this._pauseCo = null;
+          this._resumeCo = null;
           this._coPlaying = false;
         });
       });
@@ -35,6 +39,8 @@ export default function coContainer(Wrapped) {
       if(this._stopCo) {
         this._stopCo();
         this._stopCo = null;
+        this._pauseCo = null;
+        this._resumeCo = null;
         this._coPlaying = false;
         if(updateState) {
           this.setState({coPlaying: true});

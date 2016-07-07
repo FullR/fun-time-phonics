@@ -50,7 +50,7 @@ export default class LevelResponse extends React.Component {
         </Answer>
         <ActivityTitle>
           {levelId}.&nbsp; {title}<br/>
-          Activity {activityIndex + 1} of {activityCount}
+          Activities of {activityCount}
         </ActivityTitle>
       </Response>
     );

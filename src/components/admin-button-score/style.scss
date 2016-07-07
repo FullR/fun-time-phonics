@@ -2,12 +2,17 @@
   width: 100%;
   text-align: center;
   font-size: 2.5rem;
+  font-weight: bold;
 
   &--passed {
-    color: #0F0;
+    color: #8C9D45;
   }
 
   &--failed {
     color: #F00;
+  }
+
+  &--hidden {
+    visibility: hidden;
   }
 }

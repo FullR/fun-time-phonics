@@ -1,3 +1,3 @@
-export default function getUser(state, userId=state.currentUserId) {
-  return state.users[userId];
+export default function getUser(state, userId) {
+  return state.users[userId || state.currentUserId];
 }

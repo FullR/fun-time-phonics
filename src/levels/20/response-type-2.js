@@ -33,18 +33,19 @@ export default class LevelResponse extends React.Component {
       sounds["correct"] = "girl/common/correct";
       sounds["makes the"] = "girl/common/makes-the";
       sounds["sound so"] = "girl/common/sound-so";
-      sounds["has an"] = "girl/common/has-an";
+      sounds["has an"] = `girl/common/has-${letter === "u" ? "a" : "an"}`;
     } else {
       sounds["there is no"] = "girl/common/there-is-no";
       sounds["sound in"] = "girl/common/sound-in";
       sounds["so"] = "girl/common/so";
-      sounds["does not have an"] = "girl/common/does-not-have-an";
+      sounds["does not have..."] = `girl/common/does-not-have-${letter === "u" ? "a" : "an"}`;
     }
 
     return sounds;
   }
 
   autoplay() {
+    const {letter} = this.props;
     const {correct} = this.props.answer;
     const {girl} = this;
 
@@ -67,7 +68,7 @@ export default class LevelResponse extends React.Component {
         yield this.say(girl, "word");
         yield this.say(girl, "so");
         yield this.say(girl, "word");
-        yield this.say(girl, "does not have an");
+        yield this.say(girl, "does not have...");
         yield this.say(girl, "correct-letter");
         yield this.say(girl, "in it");
         this.setState({arrowHidden: false});
@@ -115,6 +116,7 @@ export default class LevelResponse extends React.Component {
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           Review:&nbsp;&nbsp;{title}
         </ActivityTitle>
+        {this.props.children}
       </Response>
     );
   }

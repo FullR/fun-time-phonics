@@ -49,17 +49,16 @@ export default class LevelResponse extends React.Component {
       switch(type) {
         case "beginning":
           Object.assign(sounds, {
-            "begins with": "girl/common/begins-with",
             "answer-phonic": letterPhonic(incorrectType.correctLetter),
             "answer-letter": `girl/common/${incorrectType.correctLetter}`,
-            "not": "girl/common/not",
-            "so it is not spelled with a": "girl/common/so-it-is-not-spelled-with-a"
+            "does not begin with": "girl/common/does-not-begin-with",
+            "so it is not spelled with...": "girl/common/so-it-is-not-spelled-with-a"
           });
         break;
         case "middle":
           Object.assign(sounds, {
             "does not have the": "girl/common/does-not-have-the",
-            "sound so it is not spelled with an": "girl/common/sound-so-it-is-not-spelled-with-an",
+            "sound so it is not spelled with...": "girl/common/sound-so-it-is-not-spelled-with-a"
           });
         break;
         case "ending":
@@ -91,12 +90,10 @@ export default class LevelResponse extends React.Component {
     } else if(incorrectType.type === "beginning") {
       this.startCo(function*() {
         yield this.say(girl, "answer-word");
-        yield this.say(girl, "begins with");
-        yield this.say(girl, "answer-phonic");
-        yield this.say(girl, "not");
+        yield this.say(girl, "does not begin with");
         yield this.say(girl, "correct-phonic");
-        yield this.say(girl, "so it is not spelled with a");
-        yield this.say(girl, "answer-letter");
+        yield this.say(girl, "so it is not spelled with...");
+        yield this.say(girl, "correct-letter");
         girl.set({speaking: false, animating: false});
         this.setState({arrowHidden: false});
       });
@@ -105,7 +102,7 @@ export default class LevelResponse extends React.Component {
         yield this.say(girl, "answer-word");
         yield this.say(girl, "does not have the");
         yield this.say(girl, "correct-phonic");
-        yield this.say(girl, "sound so it is not spelled with an");
+        yield this.say(girl, "sound so it is not spelled with...");
         yield this.say(girl, "correct-letter");
         girl.set({speaking: false, animating: false});
         this.setState({arrowHidden: false});
@@ -162,6 +159,7 @@ export default class LevelResponse extends React.Component {
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           {title}
         </ActivityTitle>
+        {this.props.children}
       </Response>
     );
   }

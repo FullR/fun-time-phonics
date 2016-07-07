@@ -6,6 +6,14 @@ const requireSound = require.context("../audio", true, /\.(ogg|mp3)$/);
 
 window._requireSound = requireSound;
 
+document.addEventListener("visibilitychange", () => {
+  if(document.hidden) {
+    Howler.mute();
+  } else {
+    Howler.unmute();
+  }
+});
+
 export default class Sound extends EventEmitter {
   constructor({path, debug=false}={}) {
     super();
@@ -46,7 +54,6 @@ export default class Sound extends EventEmitter {
         },
         onend: () => {
           const {_playDeferred} = this;
-          this.log("onend");
           this.playing = false;
           if(_playDeferred) {
             _playDeferred.resolve();
@@ -85,6 +92,17 @@ export default class Sound extends EventEmitter {
       this.emit("end");
     } else {
       this.log("_sound not defined in stop");
+    }
+  }
+
+  pause() {
+    this.log("pause");
+
+    if(this._sound) {
+      const {_sound} = this;
+      _sound.pause();
+    } else {
+      this.log("_sound not defined in pause");
     }
   }
 

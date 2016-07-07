@@ -12,6 +12,7 @@ export default class Feedback extends React.Component {
     return (
       <ScoreScreen {...this.props}>
         <Title>{title} Are Complete!</Title>
+        {this.props.children}
       </ScoreScreen>
     )
   }

@@ -12,7 +12,7 @@ export default consonantVowelLevel({
     {words: ["pedal", "puddle", "paddle"], correctWord: "paddle", shortInstructions: true},
     {words: ["pillow", "palace", "plaza"], correctWord: "palace", shortInstructions: true},
     {words: ["package", "pocket", "picnic"], correctWord: "package", shortInstructions: true},
-    {words: ["poncho", "penny", "patch"], correctWord: "panda", shortInstructions: true},
+    {words: ["poncho", "penny", "patch"], correctWord: "patch", shortInstructions: true},
     {words: ["pottery", "patio", "pentagon"], correctWord: "patio", shortInstructions: true},
     {words: ["passenger", "popsicle", "pedestal"], correctWord: "passenger", shortInstructions: true}
   ]

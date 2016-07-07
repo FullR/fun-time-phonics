@@ -8,7 +8,7 @@ export default consonantVowelLevel({
   activities: [
     {words: ["fin", "phone", "fun"], correctWord: "fun"},
     {words: ["fudge", "fetch", "face"], correctWord: "fudge", shortInstructions: true},
-    {words: ["funny", "fall", "fond"], correctWord: "full", shortInstructions: true},
+    {words: ["funny", "fall", "fond"], correctWord: "funny", shortInstructions: true},
     {words: ["fuzzy", "fossil", "fasten"], correctWord: "fuzzy", shortInstructions: true},
     {words: ["fiddle", "family", "funnel"], correctWord: "funnel", shortInstructions: true},
     {words: ["fall", "fumble", "festival"], correctWord: "fumble", shortInstructions: true},

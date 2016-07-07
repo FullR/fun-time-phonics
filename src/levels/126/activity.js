@@ -96,6 +96,7 @@ export default class Activity extends React.Component {
           {title}
         </ActivityTitle>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

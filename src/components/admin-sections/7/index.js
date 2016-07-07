@@ -18,7 +18,7 @@ export default class AdminSection7 extends React.Component {
   static title = "Consonant-Vowel Coarticulation";
   static levelRange = [109, 122];
   static Description = () => (
-    <div>These lessons teach children the influence that the short vowel sound has on the consonants v-z.&nbsp; Children also learn that these consonant-vowel coarticulations are the beginning sounds used to form words.</div>
+    <div>These lessons teach children the influence that the short vowel sound has on the consonants v<Dash/>z.&nbsp; Children also learn that these consonant<Dash/>vowel coarticulations are the beginning sounds used to form words.</div>
   );
   render() {
     const {level} = this.props;
@@ -26,7 +26,7 @@ export default class AdminSection7 extends React.Component {
       <AdminSection className="Admin-section-7">
         <AdminSectionColumn>
           <AdminSectionRow>
-            <RowTitle>Consonant <Letter>v</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>v</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("109")}>
               <Index>109</Index>
               <Title size="large">va</Title>
@@ -49,12 +49,12 @@ export default class AdminSection7 extends React.Component {
             </ShortButton>
             <ShortButton {...level("113")} review>
               <Index>113</Index>
-              <Title size="medium">Review<br/><Letter size="large">va<Dash/>vo</Letter></Title>
+              <Title size="medium">Review<br/><Letter size="large">v</Letter></Title>
               <Score levelId="113"/>
             </ShortButton>
           </AdminSectionRow>
           <AdminSectionRow>
-            <RowTitle>Consonant <Letter>w</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>w</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("114")}>
               <Index>114</Index>
               <Title size="large">wa</Title>
@@ -73,7 +73,7 @@ export default class AdminSection7 extends React.Component {
             <ShortButton hidden/>
             <ShortButton {...level("117")} review>
               <Index>117</Index>
-              <Title size="medium">Review<br/><Letter size="large">wa<Dash/>wi</Letter></Title>
+              <Title size="medium">Review<br/><Letter size="large">w</Letter></Title>
               <Score levelId="117"/>
             </ShortButton>
           </AdminSectionRow>
@@ -106,7 +106,8 @@ export default class AdminSection7 extends React.Component {
         <AdminSectionColumn>
           <ShortButton {...level("122")} assessment>
             <Index>122</Index>
-            <Title size="medium">Co<Dash/>Articulation Assessment</Title>
+            <Title size="medium">Coarticulation Assessment<br/><Letter size="large">b<Dash/>z</Letter></Title>
+            <Score levelId="122"/>
           </ShortButton>
         </AdminSectionColumn>
       </AdminSection>

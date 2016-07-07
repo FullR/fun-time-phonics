@@ -13,7 +13,7 @@ export default consonantVowelLevel({
     {words: ["lunch", "latch", "ledge"], correctWord: "latch", shortInstructions: true},
     {words: ["lasso", "lizard", "lobster"], correctWord: "lasso", shortInstructions: true},
     {words: ["lemon", "lamb", "lime"], correctWord: "lamb", shortInstructions: true},
-    {words: ["lab", "lump", "flap"], correctWord: "lamp", shortInstructions: true},
+    {words: ["lab", "lump", "flap"], correctWord: "lab", shortInstructions: true},
     {words: ["little", "ladder", "locker"], correctWord: "ladder", shortInstructions: true}
   ]
 });

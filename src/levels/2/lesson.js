@@ -28,7 +28,7 @@ export default class Lesson1 extends React.Component {
 
   getSounds() {
     return {
-      "the last sound...": "boy/common/the-last-sound-you-hear-in-a-word-is-called-the-beginning-sound",
+      "the last sound...": "boy/common/the-last-sound-you-hear-in-a-word-is-called-the-ending-sound",
       "the ending sound in...": "boy/common/the-ending-sound-in-the-words",
       "hot": "boy/words/hot",
       "bat": "boy/words/bat",
@@ -91,8 +91,9 @@ export default class Lesson1 extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

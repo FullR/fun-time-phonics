@@ -20,7 +20,7 @@ export default class AdminSection6 extends React.Component {
   static title = "Consonant-Vowel Coarticulation";
   static levelRange = [89, 108];
   static Description = () => (
-    <div>These lessons teach children the influence that the short vowel sound has on the consonants q-t.&nbsp; Children also learn that these consonant-vowel coarticulations are the beginning sounds used to form words.</div>
+    <div>These lessons teach children the influence that the short vowel sound has on the consonants q<Dash/>t.&nbsp; Children also learn that these consonant<Dash/>vowel coarticulations are the beginning sounds used to form words.</div>
   );
   render() {
     const {level} = this.props;
@@ -28,7 +28,7 @@ export default class AdminSection6 extends React.Component {
       <AdminSection className="Admin-section-6">
         <AdminSectionColumn>
           <Row>
-            <RowTitle>Consonant <Letter>q</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>q</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton hidden/>
             <ShortButton hidden/>
             <ShortButton hidden/>
@@ -41,7 +41,7 @@ export default class AdminSection6 extends React.Component {
             <ShortButton hidden/>
           </Row>
           <Row>
-            <RowTitle>Consonant <Letter>r</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>r</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("90")}>
               <Index>90</Index>
               <Title size="large">ra</Title>
@@ -74,7 +74,7 @@ export default class AdminSection6 extends React.Component {
             </ShortButton>
           </Row>
           <Row>
-            <RowTitle>Consonant <Letter>s</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>s</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("96")}>
               <Index>96</Index>
               <Title size="large">sa</Title>
@@ -107,7 +107,7 @@ export default class AdminSection6 extends React.Component {
             </ShortButton>
           </Row>
           <Row>
-            <RowTitle>Consonant <Letter>t</Letter> With Short Vowels</RowTitle>
+            <RowTitle>Consonant <Letter>t</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("102")}>
               <Index>102</Index>
               <Title size="large">ta</Title>

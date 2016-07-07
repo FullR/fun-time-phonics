@@ -1,12 +1,14 @@
 import {pick} from "lodash";
 
 export default function deleteUser(state, {userName}) {
-  const usersNames = Object.keys(state.users);
+  const usersNames = state.userNames;
+  const remainingUserNames = usersNames.filter((n) => n !== userName);
   return {
     ...state,
-    users: pick(state.users, usersNames.filter((key) => key !== userName)),
+    userNames: state.userNames.filter((name) => name !== userName),
+    users: pick(state.users, remainingUserNames),
     currentUserId: state.currentUserId === userName ?
-      usersNames[0] :
+      remainingUserNames[0] :
       state.currentUserId
   };
 }

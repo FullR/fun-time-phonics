@@ -6,3 +6,9 @@
   height: 100%;
   overflow: hidden;
 }
+
+@media print {
+  .Screen {
+    overflow: visible;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import bembam from "bembam";
 import {version} from "../../../package";
+import {isElectron} from "util/detect-platform";
 import demoLevels from "demo-levels";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
@@ -15,6 +16,7 @@ import AboutScreen from "components/about-screen";
 import Authscreen from "components/authscreen";
 import ConfirmModal from "components/confirm-modal";
 import ChangeScoreModal from "components/change-score-modal";
+import AdminPrintPage from "components/admin-print-page";
 require("./style.scss");
 
 const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
@@ -62,7 +64,7 @@ export default class Admin extends React.Component {
     super(props);
 
     this.state = {
-      authenticated: false,
+      authenticated: props.noAuth,
       currentLevel: props.demo && !demoLevels.includes(props.user.currentLevelId) ? "26" : props.user.currentLevelId,
       sectionIndex: getSection(props.user.currentLevelId),
       authenticated: !!props.noAuth,
@@ -160,6 +162,16 @@ export default class Admin extends React.Component {
     this.closeClearModal();
   }
 
+  print() {
+    window.print();
+  }
+
+  exit() {
+    if(isElectron()) {
+      window.close();
+    }
+  }
+
   render() {
     const {user, onChangeUser, demo} = this.props;
     const {requiredScore} = this.props.user;
@@ -168,7 +180,6 @@ export default class Admin extends React.Component {
     const NextSection = sections[sectionIndex + 1];
     const PrevSection = sections[sectionIndex - 1];
     let InfoScreen;
-
 
     if(!authenticated) return (
       <Authscreen
@@ -226,6 +237,7 @@ export default class Admin extends React.Component {
 
     return (
       <Screen className={className.toString()}>
+        <AdminPrintPage className="Admin__print-page" user={user}/>
         <AdminHeader>
           <div className="Admin__header-left">
             <div className="Admin__header-button" onClick={this.showAboutScreen.bind(this)}>About</div>
@@ -234,17 +246,24 @@ export default class Admin extends React.Component {
           </div>
           <div className="Admin__header-right">
             <div className="Admin__header-button" onClick={this.openClearModal.bind(this)}>Clear Data</div>
-            <div className="Admin__header-button" onClick={this.openChangeScoreModal.bind(this)}>Change Success Percentage</div>
-            <div className="Admin__header-button" onClick={onChangeUser}>Change User</div>
+            <div className="Admin__header-button" onClick={this.openChangeScoreModal.bind(this)}>Success Percentage</div>
+            <div className="Admin__header-button" onClick={onChangeUser}>
+              Manage Users
+              <div className="Admin__user-name">User:&nbsp;&nbsp;{user.name}</div>
+            </div>
+            <div className="Admin__header-button" onClick={this.print.bind(this)}>Print</div>
+            {isElectron() ?
+              <div className="Admin__header-button" onClick={this.exit.bind(this)}>Exit</div> :
+              null
+            }
           </div>
         </AdminHeader>
         <div className="Admin__content">
-          <div className="Admin__user-name">{user.name}</div>
           <div className="Admin__section-box">
             <div className="Admin__nav">
               <div className="Admin__arrows">
                 <Arrow key="prev-arrow" onClick={this.prevSection.bind(this)} size="very-small" color="blue" flipped hidden={!PrevSection}>
-                  <span style={{position: "relative", left: 8}}>Previous</span>
+                  <span style={{position: "relative", left: 3}}>Previous</span>
                 </Arrow>
                 <div className="Admin__lesson-numbers">Lessons <span className="Admin__lesson-number-range">{levelRange[0]}-{levelRange[1]}</span></div>
                 <Arrow key="next-arrow" onClick={this.nextSection.bind(this)} size="very-small" color="blue" hidden={!NextSection}>
@@ -270,7 +289,7 @@ export default class Admin extends React.Component {
           </div>
         </div>
         <ConfirmModal open={showingClearModal} onConfirm={this.clearStorage.bind(this)} onCancel={this.closeClearModal.bind(this)}>
-          Are you sure you want to clear all user data and restart the program?&nbsp; This action cannot be undone.
+          Are you sure you want to clear all data for this user?&nbsp; This action cannot be undone.
         </ConfirmModal>
         <ChangeScoreModal
           value={requiredScore}

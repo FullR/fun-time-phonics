@@ -23,7 +23,7 @@ export default class CreditScreen extends React.Component {
             <li>Builds from students' natural speaking abilities, developing their auditory awareness of vowel sounds</li>
             <li>Incorporates multisensory instruction for introducing the alphabet and short vowels</li>
             <li>Involves multiple regions of the brain–analytical as well as artistic and language–providing various pathways to long-term memory and automatic word recall</li>
-            <li>Utilizes co-articulation to introduce consonant sounds, eliminating traditional stumbling blocks and ensuring a successful reading start</li>
+            <li>Utilizes coarticulation to introduce consonant sounds, eliminating traditional stumbling blocks and ensuring a successful reading start</li>
           </ul>
 
           <p><em>Fun-Time Phonics!</em>™ is made up of 126 lessons and reviews.&nbsp; Each lesson and review includes its own set of activities.&nbsp; If a child scores 85% or higher, the child moves on to the next lesson or review.&nbsp; Parents and teachers can raise or lower the success percentage by touching “Change Success Percentage” at the top of the Admin/Score screen.</p>

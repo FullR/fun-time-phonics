@@ -42,15 +42,16 @@ export default class Lesson extends React.Component {
   }
 
   render() {
-    const {title, levelId, activityIndex, onNext, letter} = this.props;
+    const {Title, levelId, activityIndex, onNext, letter} = this.props;
     const {choices, boy} = this.state;
 
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
-        <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;<Title/></LessonTitle>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

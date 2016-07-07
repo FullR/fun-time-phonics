@@ -7,11 +7,13 @@ export default class UserListForm extends React.Component {
     onSubmit: React.PropTypes.func,
     onChange: React.PropTypes.func,
     value: React.PropTypes.string,
-    autofocus: React.PropTypes.bool
+    autofocus: React.PropTypes.bool,
+    maxLength: React.PropTypes.number
   };
 
   static defaultProps = {
-    value: ""
+    value: "",
+    maxLength: 25
   };
 
   submit(event) {
@@ -37,12 +39,12 @@ export default class UserListForm extends React.Component {
   }
 
   render() {
-    const {value, onChange, className} = this.props;
+    const {value, onChange, maxLength, className} = this.props;
     const cn = bembam("User-list-form", className);
 
     return (
       <form {...this.props} className={cn} onSubmit={this.submit.bind(this)}>
-        <input value={value} onChange={onChange} ref="input"/>
+        <input value={value} onChange={onChange} ref="input" maxLength={maxLength}/>
         <Button disabled={!value || !value.trim().length}>Create</Button>
       </form>
     );

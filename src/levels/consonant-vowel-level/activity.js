@@ -61,6 +61,7 @@ export default class Activity extends React.Component {
         yield this.say(girl, choice.get("word"));
         yield this.wait(100);
       }
+      girl.set({animating: false, speaking: false});
     });
   }
 
@@ -96,6 +97,7 @@ export default class Activity extends React.Component {
           {title}
         </ActivityTitle>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import Dash from "components/dash";
 import AdminSection from "components/admin-section";
 import AdminSectionRow from "components/admin-section-row";
 import AdminShortButton from "components/admin-short-button";
@@ -12,7 +13,7 @@ export default class AdminSection2 extends React.Component {
   static title = "Short Vowel Sounds";
   static levelRange = [8, 20];
   static Description = () => (
-    <div>Lessons 8-14 teach children to identify the 5 short vowel sounds.&nbsp; Lessons 15-20 teach children which letter makes each short vowel sound.</div>
+    <div>Lessons 8<Dash/>14 teach children to identify the short vowel sounds.&nbsp; Lessons 15<Dash/>20 teach children which letter makes each short vowel sound.</div>
   );
   render() {
     const {level} = this.props;

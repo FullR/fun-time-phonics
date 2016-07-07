@@ -1,5 +1,6 @@
 import React from "react";
 import Verdana1 from "components/verdana-1";
+import Dash from "components/dash";
 import AdminSection from "components/admin-section";
 import AdminRowButton from "components/admin-row-button";
 import AdminSectionRow from "components/admin-section-row";
@@ -17,7 +18,7 @@ export default class AdminSection1 extends React.Component {
   static levelRange = [1, 7];
   static Description = () => (
     <div>
-      Lessons <Verdana1 color="#555"/>-3 teach children that words are made up of different sounds by teaching them to identify beginning and ending sounds in words.&nbsp;Not all letter sounds will be covered in these lessons, but they will be covered in later lessons.&nbsp; Lessons 4 and 5 teach children to identify words that rhyme.&nbsp; Lessons 6 and 7 provide children with all the sounds in a word and then ask them to identify the word from its parts.
+      Lessons <Verdana1 color="#555"/><Dash/>3 teach children that words are made up of different sounds by teaching them to identify beginning and ending sounds in words.&nbsp;Not all letter sounds will be covered in these lessons, but they will be covered in later lessons.&nbsp; Lessons 4 and 5 teach children to identify words that rhyme.&nbsp; Lessons 6 and 7 provide children with all the sounds in a word and then ask them to identify the word from its parts.
     </div>
   );
 
@@ -26,7 +27,10 @@ export default class AdminSection1 extends React.Component {
     return (
       <AdminSection className="Admin-section-1">
         <AdminSectionRow>
-          <AdminRowTitle>1.&nbsp; Beginning Sounds</AdminRowTitle>
+          <AdminRowTitle stretchContent>
+            <div>1.&nbsp;&nbsp;</div>
+            <div>Beginning Sounds</div>
+          </AdminRowTitle>
           <AdminShortButton {...level("1")}>
             <Title size="large">t</Title>
             <Score levelId="1"/>
@@ -58,7 +62,10 @@ export default class AdminSection1 extends React.Component {
         </AdminSectionRow>
 
         <AdminSectionRow>
-          <AdminRowTitle>2.&nbsp; Ending Sounds</AdminRowTitle>
+          <AdminRowTitle stretchContent>
+            <div>2.&nbsp;&nbsp;</div>
+            <div>Ending Sounds</div>
+          </AdminRowTitle>
           <AdminShortButton {...level("2")}>
             <Title size="large">t</Title>
             <Score levelId="2"/>

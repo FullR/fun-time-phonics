@@ -4,6 +4,7 @@ import store from "store";
 import actions from "store/actions";
 import toPercent from "util/to-percent";
 import storeListener from "decorators/store-listener";
+import UserNameLabel from "components/user-name-label";
 
 const getLevel = (id) => (state) => state.levels.find((level) => level.id === level);
 
@@ -51,6 +52,7 @@ export default function level({
     }
 
     showLesson() {
+      this.setState({activityInstructionsPlayed: false});
       store.dispatch({type: actions.SHOW_LESSON, levelId: id});
     }
 
@@ -58,10 +60,14 @@ export default function level({
       store.dispatch({type: actions.RESET_LEVEL, levelId: id});
     }
 
-    onCompleteActivity() {
+    onAnswerActivity(answer) {
       if(!this.state.activityInstructionsPlayed) {
         this.setState({activityInstructionsPlayed: true});
       }
+      store.dispatch({answer, type: actions.ANSWER_ACTIVITY, levelId: id});
+    }
+
+    onCompleteActivity() {
       store.dispatch({type: actions.COMPLETE_ACTIVITY, levelId: id});
     }
 
@@ -70,7 +76,7 @@ export default function level({
     }
 
     render() {
-      const {complete, activityIndex, showingLesson, currentAnswer, score, onNext, requiredScore} = this.props;
+      const {complete, activityIndex, showingLesson, currentAnswer, score, onNext, requiredScore, currentUserId} = this.props;
       const {activityInstructionsPlayed} = this.state;
       const maxScore = activities.length;
       const activityData = activities[activityIndex];
@@ -81,7 +87,9 @@ export default function level({
           <Lesson {...levelProps}
             activityIndex={activityIndex}
             onNext={act({type: actions.HIDE_LESSON, levelId: id})}
-          />
+          >
+            <UserNameLabel>{currentUserId}</UserNameLabel>
+          </Lesson>
         );
         case !!currentAnswer: return (
           <Response {...levelProps} {...activityData}
@@ -89,7 +97,10 @@ export default function level({
             answer={currentAnswer}
             activityIndex={activityIndex}
             onNext={this.onCompleteActivity.bind(this)}
-          />
+            currentUserId={currentUserId}
+          >
+            <UserNameLabel>{currentUserId}</UserNameLabel>
+          </Response>
         );
         case Feedback && activityIndex >= activities.length: return (
           <Feedback {...levelProps}
@@ -100,16 +111,22 @@ export default function level({
             score={score}
             requiredScore={requiredScore}
             max={activities.length}
-          />
+            currentUserId={currentUserId}
+          >
+            <UserNameLabel>{currentUserId}</UserNameLabel>
+          </Feedback>
         );
         case activityIndex < activities.length: return (
           <Activity {...levelProps} {...activityData}
             showLesson={showLesson}
             activityIndex={activityIndex}
             onShowLesson={act({type: actions.SHOW_LESSON, levelId: id})}
-            onAnswer={(answer) => store.dispatch({answer, type: actions.ANSWER_ACTIVITY, levelId: id})}
+            onAnswer={this.onAnswerActivity.bind(this)}
             shortInstructions={activityData.shortInstructions && activityInstructionsPlayed}
-          />
+            currentUserId={currentUserId}
+          >
+            <UserNameLabel>{currentUserId}</UserNameLabel>
+          </Activity>
         );
       }
 

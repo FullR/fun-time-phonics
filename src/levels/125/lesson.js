@@ -8,6 +8,12 @@ import scene from "decorators/scene";
 import SceneContent from "components/scene-content";
 import SceneBar from "components/scene-bar";
 import WordSoundPlayBox from "components/word-sound-play-box";
+import DisplayText from "components/display-text";
+
+const flashTextActiveStyle = {
+  color: "green"
+};
+const FlashText = ({children, active}) => (<span style={active ? flashTextActiveStyle : null}>{children}</span>);
 
 @scene
 export default class Lesson extends React.Component {
@@ -15,10 +21,11 @@ export default class Lesson extends React.Component {
     super(props);
     this.state = {
       boy: {
-        size: "large",
+        size: "small",
         speaking: true
       },
-      choices: [{id: "fat", word: "fat", hidden: true}]
+      choices: [{id: "fat", word: "fat", hidden: false}],
+      highlighted: null
     };
   }
 
@@ -29,7 +36,7 @@ export default class Lesson extends React.Component {
       "finally...": "boy/common/finally-add-the-ending-sound",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin",
       "fa": "boy/common/phonics/_f_ah_",
-      "fat": "boy/common/phonics/_f_a_t_"
+      "fat": "boy/common/phonics/_fa_t_"
     };
   }
 
@@ -37,15 +44,22 @@ export default class Lesson extends React.Component {
     const {boy, sounds, choices} = this;
 
     this.startCo(function*() {
-      choices.all.set("hidden", true);
-      boy.set("size", "large");
+      this.setState({highlighted: null});
       yield this.say(boy, "when reading a word...");
+
+      this.setState({highlighted: "a"});
+      yield this.wait(500);
+      this.setState({highlighted: null});
+
       yield this.say(boy, "then say...");
+      this.setState({highlighted: "fa"});
       yield this.say(boy, "fa");
+      this.setState({highlighted: null});
       yield this.say(boy, "finally...");
       boy.set("size", "small");
-      choices.fat.set("hidden", false);
+      this.setState({highlighted: "t"});
       yield this.say(boy, "fat");
+      this.setState({highlighted: null});
       yield this.wait(300);
       yield this.say(boy, "touch the...");
       boy.set({speaking: false, animating: false});
@@ -54,7 +68,7 @@ export default class Lesson extends React.Component {
 
   render() {
     const {levelId, title, activityIndex, onNext} = this.props;
-    const {choices, boy} = this.state;
+    const {choices, boy, highlighted, wordHidden} = this.state;
     const fat = choices[0];
 
     return (
@@ -64,12 +78,19 @@ export default class Lesson extends React.Component {
 
         <SceneContent>
           <SceneBar>
+            <DisplayText hidden={wordHidden}>
+              <FlashText active={highlighted === "fa"}>f<FlashText active={highlighted === "a"}>a</FlashText></FlashText><FlashText active={highlighted === "t"}>t</FlashText>
+            </DisplayText>
+          </SceneBar>
+
+          <SceneBar>
             <WordSoundPlayBox {...fat} sound={this.getSound("fat")} waveHidden={this.state.coPlaying}/>
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

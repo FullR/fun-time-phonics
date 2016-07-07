@@ -1,3 +1,4 @@
+import React from "react";
 import level from "level";
 import LessonComponent from "./lesson";
 import Activity from "./activity";
@@ -19,6 +20,9 @@ export default ({
   activities,
   levelProps: {
     letter,
-    title
+    title,
+    Title() {
+      return (<span>Consonants "b"-"{letter}<span style={{marginLeft: 3}}>"</span> With Short Vowels</span>)
+    }
   }
 });

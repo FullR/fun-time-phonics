@@ -27,7 +27,8 @@ export default class Activity extends React.Component {
         word,
         id: word,
         hidden: false
-      }))
+      })),
+      highlightingLetter: false
     };
   }
 
@@ -35,7 +36,7 @@ export default class Activity extends React.Component {
     const {words} = this.props;
     return {
       ...wordSounds("girl", words),
-      "drag the letter...": "girl/common/drag-the-letter-that-makes-this-middle-sound-to-the-correct-picture"
+      "drag the letter...": "girl/common/drag-this-letter-to-the-word-that-makes-its-sound"
     };
   }
 
@@ -50,6 +51,9 @@ export default class Activity extends React.Component {
         yield this.say(girl, "drag the letter...");
         yield this.wait(300);
       }
+      this.setState({highlightingLetter: true});
+      yield this.wait(500);
+      this.setState({highlightingLetter: false});
       for(let choice of choices) {
         choice.set("hidden", false);
         yield this.say(girl, choice.get("word"));
@@ -67,7 +71,7 @@ export default class Activity extends React.Component {
   }
 
   render() {
-    const {girl, choices, showingWord} = this.state;
+    const {girl, choices, showingWord, highlightingLetter} = this.state;
     const {title, letter, onAnswer, activityIndex, correctWord, showLesson, activityCount, levelId} = this.props;
 
     return (
@@ -78,7 +82,7 @@ export default class Activity extends React.Component {
         <SceneContent>
           <SceneBar>
             <DragContainer value={letter}>
-              <DisplayText>{letter}</DisplayText>
+              <DisplayText active={highlightingLetter}>{letter}</DisplayText>
             </DragContainer>
           </SceneBar>
 
@@ -99,6 +103,7 @@ export default class Activity extends React.Component {
           Review:&nbsp;&nbsp;{title}
         </ActivityTitle>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

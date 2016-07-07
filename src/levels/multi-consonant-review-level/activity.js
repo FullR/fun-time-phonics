@@ -63,7 +63,7 @@ export default class Activity extends React.Component {
 
   render() {
     const {girl, choices} = this.state;
-    const {title, onAnswer, word, activityIndex, correctLetters, showLesson, activityCount, levelId, letter} = this.props;
+    const {Title, onAnswer, word, activityIndex, correctLetters, showLesson, activityCount, levelId, letter} = this.props;
 
     return (
       <Screen>
@@ -90,9 +90,10 @@ export default class Activity extends React.Component {
         </SceneContent>
 
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
-          {title}
+          <Title/>
         </ActivityTitle>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

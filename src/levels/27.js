@@ -13,7 +13,7 @@ export default consonantVowelLevel({
     {words: ["cob", "cab", "crab"], correctWord: "cab", shortInstructions: true},
     {words: ["cotton", "king", "cabin"], correctWord: "cabin", shortInstructions: true},
     {words: ["castle", "collar", "kid"], correctWord: "castle", shortInstructions: true},
-    {words: ["comet", "cabbage", "cupboard"], correctWord: "camera", shortInstructions: true},
+    {words: ["comet", "cabbage", "cupboard"], correctWord: "cabbage", shortInstructions: true},
     {words: ["cactus", "kick", "costume"], correctWord: "cactus", shortInstructions: true}
   ]
 });

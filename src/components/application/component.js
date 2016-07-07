@@ -1,4 +1,6 @@
 import React from "react";
+import {isWeb} from "util/detect-platform";
+import browser from "detect-browser";
 import getViewport from "util/get-viewport";
 import Splash from "components/splash";
 import Admin from "components/admin";
@@ -9,20 +11,24 @@ import storeListener from "decorators/store-listener";
 import levelComponents from "levels";
 import demoLevels from "demo-levels";
 import InvalidWindowSizeScreen from "components/invalid-window-size-screen";
+import InvalidBrowserScreen from "components/invalid-browser-screen";
 import Login from "components/login";
 import Screen from "components/screen";
 import LoadingScreen from "components/loading-screen";
 import loadImage from "util/load-image";
 import images from "images-to-preload";
-
 import wait from "util/wait";
 
 import WordResponse from "components/word-response";
 const {Title} = WordResponse;
-
-const minWidth = 900;
+const preloadDivStyle = {position: "absolute", left: "-99999px"};
+const validBrowser = !isWeb() || ["chrome", "edge"].includes(browser.name);
 
 export default class Application extends React.Component {
+  static defaultProps = {
+    minWindowWidth: 0
+  };
+
   state = {
     storeState: store.getState(),
     invalidScreenSize: false,
@@ -31,30 +37,9 @@ export default class Application extends React.Component {
     imagesLoaded: 0
   };
 
-  showLogin(afterLoginRoute) {
-    store.dispatch({
-      type: actions.CHANGE_ROUTE,
-      route: "login",
-      routeProps: {afterLoginRoute}
-    });
-  }
-
-  login() {
-    const {routeProps} = this.state.storeState;
-    store.dispatch({
-      type: actions.CHANGE_ROUTE,
-      route: routeProps.afterLoginRoute || "current-level"
-    });
-  }
-
-  showLevel(levelId) {
-    store.dispatch({
-      levelId,
-      type: actions.SHOW_LEVEL
-    });
-    if(this.state.noAdminAuth) {
-      this.setState({noAdminAuth: false});
-    }
+  isLoggedIn() {
+    const {users, currentUserId} = this.state.storeState;
+    return users.hasOwnProperty(currentUserId);
   }
 
   componentDidMount() {
@@ -62,8 +47,10 @@ export default class Application extends React.Component {
       this.setState({storeState: store.getState()});
     });
 
-    window.addEventListener("resize", () => this.checkSize());
-    this.checkSize();
+    if(this.props.minWindowWidth) {
+      window.addEventListener("resize", () => this.checkSize());
+      this.checkSize();
+    }
     this.preload();
   }
 
@@ -85,8 +72,9 @@ export default class Application extends React.Component {
   }
 
   checkSize() {
+    const {minWindowWidth} = this.props;
     const {width} = getViewport();
-    this.setState({invalidScreenSize: width < minWidth});
+    this.setState({invalidScreenSize: width < minWindowWidth});
   }
 
   changeUser(userName) {
@@ -110,41 +98,96 @@ export default class Application extends React.Component {
     });
   }
 
+  login(nextRoute) {
+    if(this.isLoggedIn()) {
+      store.dispatch({
+        route: nextRoute,
+        type: actions.CHANGE_ROUTE
+      });
+    }
+  }
+
+  showLevel(levelId) {
+    store.dispatch({
+      levelId,
+      type: actions.SHOW_LEVEL
+    });
+  }
+
+  showLogin(nextRoute) {
+    store.dispatch({
+      route: `login/${nextRoute}`,
+      type: actions.CHANGE_ROUTE
+    });
+  }
+
+  showAdmin() {
+    this.showLogin("admin-no-auth");
+  }
+
+  begin() {
+    if(!this.state.storeState.currentUserId) {
+      this.showLogin("current-level");
+    } else {
+      store.dispatch({
+        route: "current-level",
+        type: actions.CHANGE_ROUTE
+      })
+    }
+  }
+
   renderCurrent() {
     const {demo} = this.props;
     const {loaded, imagesLoaded, storeState} = this.state;
-    const {route, routeProps, users, currentUserId} = storeState;
+    const {users, userNames, currentUserId} = storeState;
     const user = users[currentUserId];
+    const [route, ...params] = storeState.route.split("/");
 
     if(!loaded) {
       return (<LoadingScreen progress={imagesLoaded / images.length}/>);
     }
 
     const {currentLevelId, levels, requiredScore} = user || {};
+
     switch(route) {
       case "splash": return (
         <Splash
-          onNext={this.showLogin.bind(this, "current-level")}
+          onNext={this.begin.bind(this)}
           demo={demo}
-        />
-      );
-      case "login": return (
-        <Login {...routeProps}
-          users={Object.values(users).filter((user) => !!user)}
-          currentUser={currentUserId}
-          maxUserCount={demo ? 4 : 30}
-          onSubmit={this.login.bind(this)}
-          onSelectUser={this.changeUser.bind(this)}
-          onCreateUser={this.createUser.bind(this)}
-          onDeleteUser={this.deleteUser.bind(this)}
+          adminButtonHidden={!user}
+          userName={user ? user.name : ""}
         />
       );
       case "admin": return (
-        <Admin {...routeProps} {...storeState}
+        <Admin {...storeState}
+          params={params}
           user={user}
-          onChangeUser={this.showLogin.bind(this, "admin")}
+          onChangeUser={this.showLogin.bind(this, "admin-no-auth")}
           onShowLevel={this.showLevel.bind(this)}
           demo={demo}
+        />
+      );
+      case "admin-no-auth": return (
+        <Admin {...storeState}
+          params={params}
+          user={user}
+          onChangeUser={this.showLogin.bind(this, "admin-no-auth")}
+          onShowLevel={this.showLevel.bind(this)}
+          demo={demo}
+          noAuth
+        />
+      );
+      case "login": return (
+        <Login
+          users={Object.values(users).filter((user) => !!user)}
+          userIndex={users}
+          userNames={userNames}
+          currentUser={currentUserId}
+          maxUserCount={demo ? 4 : 30}
+          onSubmit={this.login.bind(this, params[0] || "current-level")}
+          onSelectUser={this.changeUser.bind(this)}
+          onCreateUser={this.createUser.bind(this)}
+          onDeleteUser={this.deleteUser.bind(this)}
         />
       );
       case "current-level": {
@@ -157,8 +200,9 @@ export default class Application extends React.Component {
 
         if(LevelComponent) {
           return (
-            <LevelComponent {...routeProps} {...levelData}
+            <LevelComponent {...levelData}
               key={currentLevelId}
+              currentUserId={currentUserId}
               requiredScore={requiredScore}
               onNext={() => store.dispatch({
                 type: actions.COMPLETE_LEVEL,
@@ -175,6 +219,7 @@ export default class Application extends React.Component {
   }
 
   render() {
+    if(!validBrowser) return (<InvalidBrowserScreen/>);
     const {invalidScreenSize, ignoreInvalidScreenSize} = this.state;
     const current = this.renderCurrent();
 
@@ -187,6 +232,12 @@ export default class Application extends React.Component {
           null
         }
         {current}
+
+        <div style={preloadDivStyle}>
+          {images.map((src) =>
+            <div key={src} style={{backgroundImage: `url("${src}")`}}/>
+          )}
+        </div>
       </Screen>
     );
   }

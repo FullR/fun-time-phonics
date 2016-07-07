@@ -1,6 +1,6 @@
 const _ = require("lodash");
 const path = require("path");
-const externalModules = ["electron"];
+const externalModules = ["electron", "app"];
 
 function ext() {
   return new RegExp("\\.(?:" + _.toArray(arguments).join("|") + ")$");
@@ -28,7 +28,7 @@ module.exports = {
       {test: ext("html", "ico"), loader: "file?name=[name].[ext]"},
       {test: ext("scss"), loader: "style!css!autoprefixer!sass"},
       {test: ext("ogg", "mp3"), noParse: true, loader: "file?name=audio/[hash].[ext]"},
-      {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[hash].[ext]"},
+      {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[name].[hash].[ext]"},
       {test: ext("eot", "otf", "svg", "ttf", "woff"), noParse: true, loader: "file?name=fonts/[name].[ext]"}
     ]
   },

@@ -33,7 +33,11 @@ export default function soundContainer(Wrapped) {
     }
 
     play(soundId) {
-      return this.getSound(soundId).play();
+      const sound = this.getSound(soundId);
+      this.currentPlayingSound = sound;
+      return sound.play().then(() => {
+        this.currentPlayingSound = null;
+      });
     }
 
     getSound(soundId) {
@@ -64,6 +68,7 @@ export default function soundContainer(Wrapped) {
         .catch((error) => console.log("Error while loading sounds: ", error))
         .then(this.onLoad.bind(this));
 
+
       if(super.componentDidMount) {
         super.componentDidMount();
       }
@@ -81,14 +86,6 @@ export default function soundContainer(Wrapped) {
       if(super.componentWillUnmount) {
         super.componentWillUnmount();
       }
-    }
-
-    render() {
-      //if(this.state.soundsLoaded) {
-        return super.render();
-      //} else {
-      //  return null;
-      //}
     }
   };
 }

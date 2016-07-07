@@ -8,7 +8,7 @@ export default consonantVowelReview({
   activities: [
     {word: "wig", letters: ["we", "wi", "wa"], correctLetters: "wi"},
     {word: "wet", letters: ["we", "wi", "wa"], correctLetters: "we", shortInstructions: true},
-    {word: "wagon", letters: ["wi", "wa", "wu"], correctLetters: "wa", shortInstructions: true},
+    {word: "wagon", letters: ["wi", "wa", "we"], correctLetters: "wa", shortInstructions: true},
     {word: "wind", letters: ["we", "wa", "wi"], correctLetters: "wi", shortInstructions: true},
     {word: "well", letters: ["we", "wi", "wa"], correctLetters: "we", shortInstructions: true}
   ]

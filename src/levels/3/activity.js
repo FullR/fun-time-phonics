@@ -108,7 +108,7 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={{position: "relative", top: 50}}>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 key={choice.id}
@@ -126,6 +126,7 @@ export default class Activity extends React.Component {
         </ActivityTitle>
 
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

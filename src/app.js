@@ -1,4 +1,5 @@
-const DEMO = false;
+const DEMO = true;
+const minWindowWidth = 1024;
 
 import React from "react";
 import {version} from "../package";
@@ -30,4 +31,4 @@ if(!!loadedState) {
 
 store.subscribe(() => storage.set("state", serialize(store.getState())));
 
-ReactDOM.render(<Application demo={DEMO}/>, document.getElementById("game-container"));
+ReactDOM.render(<Application demo={DEMO} minWindowWidth={minWindowWidth}/>, document.getElementById("game-container"));

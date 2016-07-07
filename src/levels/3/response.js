@@ -97,6 +97,7 @@ export default class LevelResponse extends React.Component {
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           <Title ending={ending}/>
         </ActivityTitle>
+        {this.props.children}
       </Response>
     );
   }

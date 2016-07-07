@@ -1,3 +1,10 @@
+@import "sizes.scss";
+
+$logo-scale: 0.7;
+$logo-tablet-scale: 0.4;
+$logo-width: 1116px;
+$logo-height: 589px;
+
 .Loading-screen {
   display: flex;
   flex-direction: column;
@@ -12,14 +19,21 @@
   }
 
   &__progress-bar {
-    background: #F00;
+    background: #BB0014;
     height: 40px;
     transition: width 0.1s;
   }
 
   &__logo {
-    width: 154px * 4;
-    height: 100px * 4;
+    width: $logo-width * $logo-scale;
+    height: $logo-height * $logo-scale;
+    background: url("../../../images/loader-logo.png") no-repeat;
+    background-size: 100% 100%;
+
+    @include breakpoint($tablet) {
+      width: $logo-width * $logo-tablet-scale;
+      height: $logo-height * $logo-tablet-scale;
+    }
   }
 
   &__text {

@@ -1,12 +1,17 @@
 .Drag-container {
   display: inline-block;
   cursor: grab;
+  opacity: 1;
+  transition: opacity 0.3s;
+  transition-delay: 0.2s;
 
   > * {
     cursor: grab !important;
   }
 
   &--dragging {
-    visibility: hidden;
+    // visibility: hidden;
+    transition: none;
+    opacity: 0;
   }
 }

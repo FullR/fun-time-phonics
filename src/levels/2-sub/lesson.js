@@ -83,8 +83,9 @@ export default class Lesson extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}/>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

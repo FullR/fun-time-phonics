@@ -12,6 +12,6 @@ export default consonantVowelLevel({
     {words: ["cotton", "candle", "cuddle"], correctWord: "cotton", shortInstructions: true},
     {words: ["cupcake", "copper", "cupboard"], correctWord: "copper", shortInstructions: true},
     {words: ["castle", "concert", "customer"], correctWord: "concert", shortInstructions: true},
-    {words: ["camel", "call", "collar"], correctWord: "collar", shortInstructions: true}
+    {words: ["camel", "cut", "collar"], correctWord: "collar", shortInstructions: true}
   ]
 });

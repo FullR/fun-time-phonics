@@ -8,6 +8,7 @@ export default class Arrow extends React.Component {
   static propTypes = {
     color: React.PropTypes.oneOf(colors),
     size: React.PropTypes.oneOf(sizes),
+    disabled: React.PropTypes.bool,
     flipped: React.PropTypes.bool
   };
 
@@ -18,10 +19,10 @@ export default class Arrow extends React.Component {
   };
 
   render() {
-    const {color, size, flipped, hidden, pulsing, className} = this.props;
+    const {color, size, flipped, disabled, hidden, pulsing, className} = this.props;
     const classNames = cn(
       "Arrow",
-      `Arrow--color-${color}`,
+      disabled ? "Arrow--color-gray" : `Arrow--color-${color}`,
       `Arrow--size-${size}`,
       hidden ? "Arrow--hidden" : null,
       flipped ? "Arrow--flipped" : null,

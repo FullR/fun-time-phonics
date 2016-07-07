@@ -59,6 +59,7 @@ export default class Lesson extends React.Component {
       "is": "boy/common/is",
       "so": "boy/common/so",
       "is spelled with an": "boy/common/is-spelled-with-an",
+      "is spelled with a": "boy/common/is-spelled-with-a",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin"
     };
   }
@@ -127,7 +128,7 @@ export default class Lesson extends React.Component {
       yield this.say(boy, "u-phonic");
       yield this.say(boy, "so");
       yield this.say(boy, "bug");
-      yield this.say(boy, "is spelled with an");
+      yield this.say(boy, "is spelled with a");
       this.revealLetter("u");
       yield this.say(boy, "u");
       yield this.wait(100);
@@ -167,8 +168,9 @@ export default class Lesson extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

@@ -33,7 +33,6 @@ export default class Lesson extends React.Component {
       "listen to...": "boy/common/listen-to-the-middle-sound-in-these-words",
       "makes the": "boy/common/makes-the",
       "sound": "boy/common/sound",
-      "and": "boy/common/and",
       "touch the...": "boy/common/touch-the-green-arrow-to-begin",
       "rat": "boy/words/rat",
       "wet": "boy/words/wet",
@@ -86,7 +85,6 @@ export default class Lesson extends React.Component {
       yield this.say(boy, "sound");
       yield this.wait(200);
 
-      yield this.say(boy, "and");
       choices.rug.set("hidden", false);
       yield this.say(boy, "rug");
       yield this.say(boy, "makes the");
@@ -121,8 +119,9 @@ export default class Lesson extends React.Component {
           </SceneBar>
         </SceneContent>
 
-        <LessonArrow onClick={onNext}>Activity {activityIndex + 1}</LessonArrow>
+        <LessonArrow onClick={onNext}>Activities</LessonArrow>
         <AdminButton/>
+        {this.props.children}
       </Screen>
     );
   }

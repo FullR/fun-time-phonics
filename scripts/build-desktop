@@ -6,5 +6,5 @@ rm -rf builds/*
 cp -R dist/* ./.temp-desktop-files
 cp electron-main.js ./.temp-desktop-files/index.js
 cp package.json ./.temp-desktop-files
-electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=all --arch=all --out=builds
+electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=all --arch=all --icon=images/favicon.ico --out=builds
 rm -rf ./.temp-desktop-files

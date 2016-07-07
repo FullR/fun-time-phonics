@@ -3,7 +3,7 @@ import multiConsonantReviewLevel from "levels/multi-consonant-review-level";
 export default multiConsonantReviewLevel({
   id: "122",
   title: "Co-Articulation Assessment",
-  letter: "",
+  letter: "z",
   activities: [
     {word: "wax", letters: ["wa", "ax", "va"], correctLetters: "wa"},
     {word: "yak", letters: ["va", "ax", "ya"], correctLetters: "ya", shortInstructions: true},
@@ -14,7 +14,7 @@ export default multiConsonantReviewLevel({
     {word: "kick", letters: ["ix", "ki", "hi"], correctLetters: "ki", shortInstructions: true},
     {word: "rat", letters: ["ra", "ya", "ta"], correctLetters: "ra", shortInstructions: true},
     {word: "tent", letters: ["fe", "ke", "te"], correctLetters: "te", shortInstructions: true},
-    {word: "panda", letters: ["pa", "da", "qa"], correctLetters: "pa", shortInstructions: true},
+    {word: "panda", letters: ["pa", "da", "qu"], correctLetters: "pa", shortInstructions: true},
     {word: "body", letters: ["po", "do", "bo"], correctLetters: "bo", shortInstructions: true},
 
     {word: "vent", letters: ["fe", "ve", "te"], correctLetters: "ve", shortInstructions: true},
@@ -30,14 +30,14 @@ export default multiConsonantReviewLevel({
     {word: "monster", letters: ["ro", "no", "mo"], correctLetters: "mo", shortInstructions: true},
 
     {word: "costume", letters: ["so", "zo", "co"], correctLetters: "co", shortInstructions: true},
-    {word: "gossip", letters: ["po", "go", "qo"], correctLetters: "go", shortInstructions: true},
+    {word: "gossip", letters: ["po", "go", "qu"], correctLetters: "go", shortInstructions: true},
     {word: "socket", letters: ["so", "zo", "co"], correctLetters: "so", shortInstructions: true},
-    {word: "pocket", letters: ["po", "go", "qo"], correctLetters: "po", shortInstructions: true},
+    {word: "pocket", letters: ["po", "go", "qu"], correctLetters: "po", shortInstructions: true},
     {word: "hockey", letters: ["ro", "ke", "ho"], correctLetters: "ho", shortInstructions: true},
 
     {word: "Zack", letters: ["sa", "za", "ca"], correctLetters: "za", shortInstructions: true},
     {word: "tackle", letters: ["ki", "li", "ta"], correctLetters: "ta", shortInstructions: true},
-    {word: "jaguar", letters: ["ja", "ga", "qa"], correctLetters: "ja", shortInstructions: true},
+    {word: "jaguar", letters: ["ja", "ga", "qu"], correctLetters: "ja", shortInstructions: true},
     {word: "vat", letters: ["fa", "va", "ta"], correctLetters: "va", shortInstructions: true},
     {word: "dagger", letters: ["ba", "ga", "da"], correctLetters: "da", shortInstructions: true},
 

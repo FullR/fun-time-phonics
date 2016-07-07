@@ -26,7 +26,7 @@ export default class LevelResponse extends React.Component {
     const sounds = {
       "letters": `girl/common/${consonant}-${vowel}`,
       "phonic": `girl/common/phonics/_${consonant}${vowel}h_`,
-      "answer-word": `girl/words/${answer.word}`,
+      "answer-word": `girl/words/${answer.word}`
     };
 
     if(answer.correct) {
@@ -109,6 +109,7 @@ export default class LevelResponse extends React.Component {
         <ActivityTitle activityIndex={activityIndex} activityCount={activityCount}>
           {title}
         </ActivityTitle>
+        {this.props.children}
       </Response>
     );
   }

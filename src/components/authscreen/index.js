@@ -4,6 +4,7 @@ import bembam from "bembam";
 import Screen from "components/screen";
 import Countdown from "components/countdown";
 import Arrow from "components/arrow";
+import pureUpdate from "pure-update";
 require("./style.scss");
 
 export default class Authscreen extends React.Component {
@@ -14,6 +15,8 @@ export default class Authscreen extends React.Component {
     onFail: noop,
     onTimeout: null // if not defined, onFail is used
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   constructor(props) {
     super(props);

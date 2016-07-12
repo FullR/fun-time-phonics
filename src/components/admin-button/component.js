@@ -22,7 +22,7 @@ export default class AdminButton extends React.Component {
     const classNames = cn("Admin-button", className);
 
     return (
-      <LockLink {...this.props}
+      <LockLink
         className={classNames}
         onClick={this.onClick.bind(this)}
       >

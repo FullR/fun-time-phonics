@@ -1,9 +1,12 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class AdminButtonLetter extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
-    const {size, className} = this.props;
+    const {children, size, className} = this.props;
     const classNames = cn(
       "Admin-button-letter",
       size ? `Admin-button-letter--size-${size}` : null,
@@ -11,7 +14,7 @@ export default class AdminButtonLetter extends React.Component {
     );
 
     return (
-      <span {...this.props} className={classNames}/>
+      <span className={classNames}>{children}</span>
     );
   }
 }

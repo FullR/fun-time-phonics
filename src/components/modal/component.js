@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class Modal extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   componentDidMount() {
-    // if(document.activeElement) {
-    //   document.activeElement.blur();
-    // }
     window.focus();
   }
 

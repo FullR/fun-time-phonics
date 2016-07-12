@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 const positions = ["high-top", "top", "middle", "bottom", "low-bottom"];
 
@@ -11,6 +12,8 @@ export default class DisplayBar extends React.Component {
   static defaultProps = {
     position: "middle"
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {children, position, className} = this.props;

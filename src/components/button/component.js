@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class Button extends React.Component {
   static defaultProps = {
@@ -7,8 +8,10 @@ export default class Button extends React.Component {
     disabled: false
   };
 
+  shouldComponentUpdate = pureUpdate;
+
   render() {
-    const {color, disabled, className} = this.props;
+    const {onClick, color, disabled, className, style, children} = this.props;
     const classNames = cn(
       "Button",
       !disabled ? `Button--color-${color}` : null,
@@ -17,7 +20,9 @@ export default class Button extends React.Component {
     );
 
     return (
-      <button {...this.props} className={classNames} color={null}/>
+      <button style={style} className={classNames} onClick={onClick}>
+        {children}
+      </button>
     );
   }
 }

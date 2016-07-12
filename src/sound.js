@@ -24,11 +24,9 @@ export default class Sound extends EventEmitter {
     this.path = path;
     try {
       this.mp3Path = requireSound("./" + path + ".mp3");
-      this.oggPath = requireSound("./" + path + ".ogg");
     } catch(error) {
       console.log(`Failed to load sound: ${path}`);
       this.mp3Path = requireSound("./missing-sound.mp3");
-      this.oggPath = requireSound("./missing-sound.ogg");
     }
     this.debug = debug;
   }
@@ -41,9 +39,9 @@ export default class Sound extends EventEmitter {
 
   load() {
     return new Promise((resolve, reject) => {
-      const {mp3Path, oggPath} = this;
+      const {mp3Path} = this;
       this._sound = new Howl({
-        urls: [mp3Path, oggPath],
+        urls: [mp3Path],
         onload: () => {
           this.log("onload");
           resolve();

@@ -1,7 +1,10 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class AdminRowTitle extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
     const {hidden, stretchContent, children, className} = this.props;
     const classNames = cn(
@@ -13,7 +16,7 @@ export default class AdminRowTitle extends React.Component {
     );
 
     return (
-      <div {...this.props} className={classNames} hidden={null}>
+      <div className={classNames} hidden={null}>
         <div>{children}</div>
       </div>
     );

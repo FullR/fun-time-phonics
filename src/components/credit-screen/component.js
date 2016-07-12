@@ -1,16 +1,19 @@
 import React from "react";
 import InfoScreen from "components/info-screen";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 const {Header, Content, Footer} = InfoScreen;
 
 export default class AboutScreen extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
     const {onBack, className} = this.props;
     const classNames = cn("About-screen", className);
 
     return (
-      <InfoScreen {...this.props} className={classNames}>
+      <InfoScreen className={classNames}>
         <Header>About Fun-Time Phonics!™</Header>
         <Content>
           <p>Finally, a fun, systematic phonics program that is comprehension centered! Fun-Time Phonics!™ is a fun, easy-to-use program based on the scientific findings of the National Reading Commission. This program emphasizes sound/spelling patterns, vocabulary, and comprehension, not memorization. The colorful, game-like activities engage students through listening, thinking, speaking, and reading.</p>

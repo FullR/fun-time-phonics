@@ -5,6 +5,7 @@ import AdminButton from "components/admin-button";
 import ResponseAnswer from "components/response-answer";
 import CornerTitle from "components/corner-title";
 import Arrow from "components/arrow";
+import pureUpdate from "pure-update";
 
 export default class Response extends React.Component {
   static Answer = ResponseAnswer;
@@ -14,6 +15,8 @@ export default class Response extends React.Component {
     onNext: React.PropTypes.func,
     arrowHidden: React.PropTypes.bool
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {arrowHidden, onNext, children, className} = this.props;

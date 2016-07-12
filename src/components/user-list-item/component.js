@@ -1,6 +1,7 @@
 import React from "react";
 import {noop} from "lodash";
 import bembam from "bembam";
+import pureUpdate from "pure-update";
 
 export default class UserListItem extends React.Component {
   static propTypes = {
@@ -12,6 +13,8 @@ export default class UserListItem extends React.Component {
     onRemoveClick: noop,
     selected: false
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   onRemoveClick(event) {
     event.stopPropagation();

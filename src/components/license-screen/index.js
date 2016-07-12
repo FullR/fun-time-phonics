@@ -2,10 +2,14 @@ import React from "react";
 import bembam from "bembam";
 import InfoScreen from "components/info-screen";
 import WebLink from "components/web-link";
+import pureUpdate from "pure-update";
 const {Header, Content, Footer} = InfoScreen;
+
 require("./style.scss");
 
 export default class LicenseScreen extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
     const {onBack, className} = this.props;
     const cn = bembam("License-screen", className);

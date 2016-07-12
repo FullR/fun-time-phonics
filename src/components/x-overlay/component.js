@@ -1,13 +1,16 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class XOverlay extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
-    const {className} = this.props;
+    const {style, className} = this.props;
     const classNames = cn("X-overlay", className);
 
     return (
-      <div {...this.props} className={classNames}/>
+      <div style={style} className={classNames}/>
     );
   }
 }

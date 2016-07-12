@@ -2,6 +2,7 @@ import React from "react";
 import DisplayBox from "../display-box";
 import SoundWave from "../sound-wave";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 require("./style.scss");
 
 export default class PlayBox extends React.Component {
@@ -25,6 +26,8 @@ export default class PlayBox extends React.Component {
     noWave: false,
     size: "large"
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {size, active, selected, playing, hidden, detached, waveHidden, noWave, onClick, onWaveClick, children, className} = this.props;

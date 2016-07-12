@@ -1,10 +1,13 @@
 import React from "react";
+import pureUpdate from "pure-update";
 
 export default class Countdown extends React.Component {
   static defaultProps = {
     seconds: 10,
     onComplete() {}
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   constructor(props) {
     super(props);

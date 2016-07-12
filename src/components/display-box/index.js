@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 require("./style.scss");
 
 export default class DisplayBox extends React.Component {
@@ -12,6 +13,8 @@ export default class DisplayBox extends React.Component {
     active: false,
     selected: false
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {active, selected, onClick, className} = this.props;

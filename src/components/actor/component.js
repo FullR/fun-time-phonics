@@ -1,6 +1,7 @@
 import React from "react";
 import Robot from "../robot";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class Actor extends React.Component {
   static propTypes = {
@@ -11,8 +12,10 @@ export default class Actor extends React.Component {
     size: "small"
   };
 
+  shouldComponentUpdate = pureUpdate;
+
   render() {
-    const {size, type, children, className} = this.props;
+    const {size, type, children, onClick, className} = this.props;
     const classNames = cn(
       "Actor",
       `Actor--${type}`,
@@ -21,7 +24,7 @@ export default class Actor extends React.Component {
     );
 
     return (
-      <Robot {...this.props} className={classNames}/>
+      <Robot {...this.props} className={classNames} onClick={onClick}/>
     );
   }
 }

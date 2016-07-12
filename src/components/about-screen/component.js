@@ -3,10 +3,12 @@ import {version} from "../../../package";
 import InfoScreen from "components/info-screen";
 import Punc from "components/punc";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 const {Header, Content, Footer} = InfoScreen;
 
 export default class CreditScreen extends React.Component {
+  shouldComponentUpdate = pureUpdate;
   render() {
     const {onBack, className} = this.props;
     const classNames = cn("Credit-screen", className);

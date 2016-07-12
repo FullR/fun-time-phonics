@@ -20,7 +20,11 @@ const wordStyle = {
   cursor: "default"
 };
 
-@dndContext
+function WordText({children}) {
+  return (<span style={wordStyle}>{children}</span>)
+}
+
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -75,8 +79,10 @@ export default class Activity extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            <DragContainer>
-              <span style={wordStyle}>{wordText || correctWord.replace("-", " ")}</span>
+            <DragContainer DragPreviewComponent={WordText}>
+              <WordText>
+                {wordText || correctWord.replace("-", " ")}
+              </WordText>
             </DragContainer>
           </SceneBar>
 

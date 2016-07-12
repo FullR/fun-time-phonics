@@ -4,11 +4,14 @@ import InfoScreen from "components/info-screen";
 import OtherProduct from "components/other-product";
 import Punc from "components/punc";
 import otherProducts from "./other-products";
+import pureUpdate from "pure-update";
 require("./style.scss");
 
 const {Header, Content, Footer} = InfoScreen;
 
 export default class OtherProductsScreen extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   render() {
     const {onBack, className} = this.props;
     const cn = bembam("Other-products-screen", className);

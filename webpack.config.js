@@ -1,6 +1,9 @@
 const _ = require("lodash");
+const webpack = require("webpack");
 const path = require("path");
 const externalModules = ["electron", "app"];
+
+const DEBUG = process.env.NODE_ENV !== "production";
 
 function ext() {
   return new RegExp("\\.(?:" + _.toArray(arguments).join("|") + ")$");
@@ -37,5 +40,13 @@ module.exports = {
       externalModules.indexOf(request) !== -1 ?
         callback(null, `require("${request}")`) :
         callback()
+  ],
+  plugins: DEBUG ? [] : [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.DedupePlugin()
   ]
 };

@@ -11,10 +11,11 @@ import WordSoundPlayBox from "components/word-sound-play-box";
 import DragContainer from "components/drag-container";
 import DropContainer from "components/drop-container";
 import PlayableDisplayText from "components/playable-display-text";
+import DisplayText from "components/display-text";
 import dndContext from "dnd-context";
 import DropWordBox from "components/drop-word-box";
 
-@dndContext
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -81,7 +82,7 @@ export default class Activity extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            <DragContainer>
+            <DragContainer DragPreviewComponent={DisplayText}>
               <PlayableDisplayText sound={this.getSound("x")} waveHidden={this.state.coPlaying}>X</PlayableDisplayText>
             </DragContainer>
           </SceneBar>

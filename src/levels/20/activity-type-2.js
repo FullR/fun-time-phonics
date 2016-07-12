@@ -12,7 +12,7 @@ import dndContext from "dnd-context";
 import DisplayText from "components/display-text";
 import DragContainer from "components/drag-container";
 
-@dndContext
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -81,7 +81,7 @@ export default class Activity extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            <DragContainer value={letter}>
+            <DragContainer value={letter} DragPreviewComponent={DisplayText}>
               <DisplayText active={highlightingLetter}>{letter}</DisplayText>
             </DragContainer>
           </SceneBar>

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 require("./style.scss");
 
 export default class Robot extends React.Component {
@@ -20,8 +21,10 @@ export default class Robot extends React.Component {
     showText: false
   };
 
+  shouldComponentUpdate = pureUpdate;
+
   render() {
-    const {type, size, animating, speaking, glowing, noArm, showText, className, children} = this.props;
+    const {type, size, animating, speaking, glowing, noArm, showText, onClick, style, className, children} = this.props;
     const blockName = `Robot-${type}`;
     const classNames = cn(
       "Robot",
@@ -37,7 +40,7 @@ export default class Robot extends React.Component {
     );
 
     return (
-      <div {...this.props} className={classNames} type={null}>
+      <div className={classNames} onClick={onClick} style={style}>
         <div className="Robot__content">
           <div className="Robot__text">{children}</div>
         </div>

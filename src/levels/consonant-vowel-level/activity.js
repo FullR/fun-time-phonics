@@ -5,14 +5,13 @@ import Actor from "components/actor";
 import ActivityTitle from "components/activity-title";
 import AdminButton from "components/admin-button";
 import Screen from "components/screen";
-import dndContext from "dnd-context";
 import DropWordBox from "components/drop-word-box";
 import PlayableDisplayText from "components/playable-display-text";
+import DisplayText from "components/display-text";
 import DragContainer from "components/drag-container";
 import SceneContent from "components/scene-content";
 import SceneBar from "components/scene-bar";
 
-@dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -76,7 +75,7 @@ export default class Activity extends React.Component {
 
         <SceneContent>
           <SceneBar>
-            <DragContainer>
+            <DragContainer DragPreviewComponent={DisplayText}>
               <PlayableDisplayText sound={this.getSound("-letters")} waveHidden={this.state.coPlaying}>{consonant + vowel}</PlayableDisplayText>
             </DragContainer>
           </SceneBar>

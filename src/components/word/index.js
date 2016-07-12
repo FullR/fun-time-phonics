@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "util/cn";
 require("./style.scss");
+import pureUpdate from "pure-update";
 
 const requireWordContext = require.context("../../../images/words", false, /\.png$/);
 
@@ -17,6 +18,8 @@ export default class Word extends React.Component {
   static propTypes = {
     word: React.PropTypes.string.isRequired
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {word, className, style} = this.props;

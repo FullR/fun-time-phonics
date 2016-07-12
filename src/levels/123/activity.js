@@ -14,7 +14,7 @@ import DropContainer from "components/drop-container";
 import DisplayText from "components/display-text";
 import DropWordBox from "components/drop-word-box";
 
-@dndContext
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -80,7 +80,7 @@ export default class Activity extends React.Component {
 
           <SceneBar>
             {choices.map((choice) =>
-              <DragContainer key={choice.id} value={choice.letter}>
+              <DragContainer key={choice.id} value={choice.letter} DragPreviewComponent={DisplayText}>
                 <DisplayText {...choice}>{choice.letter}</DisplayText>
               </DragContainer>
             )}

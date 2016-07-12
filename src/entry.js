@@ -7,7 +7,7 @@ function startApp() {
   require("./app");
 }
 
-if(isCordova) {
+if(isCordova()) {
   document.addEventListener("deviceready", startApp, false);
 } else {
   window.onload = startApp;

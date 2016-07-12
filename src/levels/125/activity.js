@@ -16,7 +16,7 @@ import DropContainer from "components/drop-container";
 import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
 
-@dndContext
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {
@@ -83,7 +83,7 @@ export default class Activity extends React.Component {
 
         <SceneContent>
           <SceneBar style={{position: "relative", top: -50}}>
-            <DragContainer>
+            <DragContainer DragPreviewComponent={DisplayText}>
               <DisplayText>{correctWord}</DisplayText>
             </DragContainer>
           </SceneBar>

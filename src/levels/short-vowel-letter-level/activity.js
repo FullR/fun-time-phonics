@@ -17,7 +17,7 @@ import DisplayText from "components/display-text";
 
 const letters = ["a", "e", "i", "o", "u"];
 
-@dndContext
+//REMOVED: @dndContext
 @scene
 export default class Activity extends React.Component {
   constructor(props) {

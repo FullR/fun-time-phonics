@@ -30,13 +30,13 @@ export default class Splash extends React.Component {
   render() {
     const {onNext, demo, adminButtonHidden, userName, className} = this.props;
     const {robotSpeaking} = this.state;
-    const classNames = cn("Splash", className);
+    const classNames = cn("Splash", demo ? "Splash--demo" : null, className);
 
     return (
-      <Screen {...this.props} className={classNames}>
+      <Screen className={classNames}>
         {demo ?
-          <div className="Splash__demo-label">DEMO<br/>1.0</div> :
-          null
+          <div className="Splash__version-label">DEMO<br/>1.1</div> :
+          <div className="Splash__version-label">1.1</div>
         }
         <TctcLogo/>
         <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>

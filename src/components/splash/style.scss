@@ -80,13 +80,16 @@ $tablet-robot-scale: 0.8;
     }
   }
 
-  &__demo-label {
+  &__version-label {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    color: #F00;
     font-size: 20px;
     font-family: verdana;
     text-align: center;
   }
+}
+
+.Splash--demo .Splash__version-label {
+  color: #F00;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 export default class DisplayText extends React.Component {
   static propTypes = {
@@ -13,6 +14,8 @@ export default class DisplayText extends React.Component {
     active: false,
     hidden: false
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   render() {
     const {size, active, hidden, children, className} = this.props;

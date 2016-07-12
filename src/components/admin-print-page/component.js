@@ -52,7 +52,7 @@ export default class AdminPrintPage extends React.Component {
     ];
 
     return (
-      <div {...this.props} className={classNames}>
+      <div className={classNames}>
         <PrintPage>
           <div style={{width: "100%"}}>
             <h1>Fun-Time Phonics User Data</h1>

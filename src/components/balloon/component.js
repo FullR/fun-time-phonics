@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import pureUpdate from "pure-update";
 
 const images = {
   red: require("../../../images/balloons/red.png"),
@@ -13,6 +14,8 @@ export default class Balloon extends React.Component {
     color: React.PropTypes.oneOf(Object.keys(images)),
     duration: React.PropTypes.number
   };
+
+  shouldComponentUpdate = pureUpdate;
 
   state = {destroyed: false};
 
@@ -32,7 +35,7 @@ export default class Balloon extends React.Component {
     };
 
     return (
-      <img {...this.props} src={src} className={classNames} style={style} onClick={this.destroy.bind(this)}/>
+      <img src={src} className={classNames} style={style} onClick={this.destroy.bind(this)}/>
     );
   }
 }

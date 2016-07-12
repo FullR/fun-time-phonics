@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "util/cn";
 import Modal from "components/modal";
+import pureUpdate from "pure-update";
 
 function ChangeScoreButton({children, selected, onClick}) {
   const className = selected ?
@@ -11,6 +12,8 @@ function ChangeScoreButton({children, selected, onClick}) {
 }
 
 export default class ChangeScoreModal extends React.Component {
+  shouldComponentUpdate = pureUpdate;
+
   change(percent) {
     const {onChange} = this.props;
     if(onChange) {
@@ -19,11 +22,11 @@ export default class ChangeScoreModal extends React.Component {
   }
 
   render() {
-    const {value, onChange, onClose, className} = this.props;
+    const {open, value, onChange, onClose, className} = this.props;
     const classNames = cn("Change-score-modal", className);
 
     return (
-      <Modal {...this.props} className={classNames} onOverlayClick={onClose}>
+      <Modal className={classNames} onOverlayClick={onClose} open={open}>
         <ChangeScoreButton selected={value === 65} onClick={this.change.bind(this, 65)}>65%</ChangeScoreButton>
         <ChangeScoreButton selected={value === 75} onClick={this.change.bind(this, 75)}>75%</ChangeScoreButton>
         <ChangeScoreButton selected={value === 85} onClick={this.change.bind(this, 85)}>85%</ChangeScoreButton>

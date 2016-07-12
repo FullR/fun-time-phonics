@@ -18,12 +18,16 @@ import LoadingScreen from "components/loading-screen";
 import loadImage from "util/load-image";
 import images from "images-to-preload";
 import wait from "util/wait";
+import CustomDragLayer from "components/custom-drag-layer";
+import dndContext from "dnd-context";
 
 import WordResponse from "components/word-response";
+
 const {Title} = WordResponse;
 const preloadDivStyle = {position: "absolute", left: "-99999px"};
 const validBrowser = !isWeb() || ["chrome", "edge"].includes(browser.name);
 
+@dndContext
 export default class Application extends React.Component {
   static defaultProps = {
     minWindowWidth: 0
@@ -238,6 +242,8 @@ export default class Application extends React.Component {
             <div key={src} style={{backgroundImage: `url("${src}")`}}/>
           )}
         </div>
+
+        <CustomDragLayer/>
       </Screen>
     );
   }

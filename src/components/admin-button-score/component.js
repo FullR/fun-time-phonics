@@ -23,7 +23,7 @@ export default class AdminButtonScore extends React.Component {
 
     //if(!started) return null;
     return (
-      <div {...this.props} className={classNames}>
+      <div className={classNames}>
         {complete ? `${Math.floor(percent)}%` : "Incomplete"}
       </div>
     );

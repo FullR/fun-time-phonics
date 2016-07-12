@@ -109,7 +109,7 @@ export default class Activity extends React.Component {
         <SceneContent>
           <SceneBar>
             {dragLetters.map((letter) =>
-              <DragContainer key={letter} value={letter}>
+              <DragContainer key={letter} value={letter} DragPreviewComponent={DisplayText}>
                 <DisplayText>{letter}</DisplayText>
               </DragContainer>
             )}

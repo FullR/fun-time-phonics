@@ -22,8 +22,6 @@ cordova platform add ios
 
 # Add Plugins
 echo "Adding plugins..."
-# cordova plugin add cordova-plugin-media
-cordova plugin add cordova-plugin-nativeaudio
 cordova plugin add cordova-plugin-console
 cordova plugin add https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay
 cordova plugin add cordova-plugin-splashscreen
@@ -35,5 +33,5 @@ rm -rf "$CORDOVA_DIR/www" & mkdir -p "$DIST_DIR"
 ln -s "$DIST_DIR" "$CORDOVA_DIR/www"
 
 # Add Merge files
-echo "Adding merge files"
-cp -R $MERGE_DIR/* $CORDOVA_DIR
+# echo "Adding merge files"
+# cp -R $MERGE_DIR/* $CORDOVA_DIR

@@ -35,11 +35,6 @@
       width: 200px;
       height: 200px;
     }
-
-    // @include breakpoint($large-tablet) {
-    //   width: 250px;
-    //   height: 250px;
-    // }
   }
 
   &--size-medium &__display-box {
@@ -50,11 +45,6 @@
       width: 150px;
       height: 150px;
     }
-
-    // @include breakpoint($large-tablet) {
-    //   width: 140px;
-    //   height: 140px;
-    // }
   }
 
   &--size-small &__display-box {
@@ -65,14 +55,12 @@
       width: 80px;
       height: 80px;
     }
-
-    // @include breakpoint($large-tablet) {
-    //   width: 100px;
-    //   height: 100px;
-    // }
   }
 
   &__sound-wave-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     z-index: 10;
     margin-top: 2rem;
     width: 100%;

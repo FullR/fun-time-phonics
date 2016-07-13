@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "util/cn";
+import {isCordova} from "util/detect-platform";
 import {DragSource} from "react-dnd";
 import {getEmptyImage} from "react-dnd-html5-backend";
 
@@ -40,9 +41,11 @@ export default class DragContainer extends React.Component {
   static defaultProps = {style: {}};
 
   componentDidMount() {
-    this.props.connectDragPreview(getEmptyImage(), {
-      captureDraggingState: true
-    });
+    if(!isCordova()) {
+      this.props.connectDragPreview(getEmptyImage(), {
+        captureDraggingState: true
+      });
+    }
   }
 
   render() {

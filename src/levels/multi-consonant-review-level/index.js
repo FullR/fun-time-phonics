@@ -10,7 +10,8 @@ export default ({
   activities,
   letter,
   Lesson=LessonComponent,
-  title=`Consonants "b"-"${letter}" With Short Vowels`
+  title=`Consonants "b"-"${letter}" With Short Vowels`,
+  Title
 }) => level({
   id,
   Lesson,
@@ -21,7 +22,7 @@ export default ({
   levelProps: {
     letter,
     title,
-    Title() {
+    Title: Title || function() {
       return (<span>Consonants "b"-"{letter}<span style={{marginLeft: 3}}>"</span> With Short Vowels</span>)
     }
   }

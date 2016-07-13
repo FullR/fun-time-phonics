@@ -11,7 +11,7 @@ app.on("window-all-closed", () => app.quit());
 
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
-    title: "Fun-Time Phonics",
+    title: "Fun-Time Phonics™",
     width: 1024, height: 768,
     minWidth: 1024, minHeight: 768,
     center: true,

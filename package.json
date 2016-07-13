@@ -58,7 +58,6 @@
     "webpack": "^1.13.1"
   },
   "devDependencies": {
-    "audio-converter": "^1.0.11",
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.5.1",
     "babel-jest": "^6.0.1",
@@ -71,6 +70,7 @@
     "babel-register": "^6.5.1",
     "breakpoint-sass": "^2.7.0",
     "chai": "^3.5.0",
+    "cli-progress-bar": "^1.0.0",
     "css-loader": "^0.19.0",
     "css2json": "0.0.4",
     "easyimage": "^2.1.0",
@@ -91,10 +91,12 @@
     "node-sass": "^3.3.3",
     "pace": "0.0.4",
     "progress": "^1.1.8",
+    "promised-exec": "^1.0.1",
     "react-addons-test-utils": "^0.14.7",
     "rimraf-promise": "^2.0.0",
     "sass-loader": "^2.0.1",
     "sprity": "^1.0.8",
+    "stream-to-promise": "^2.1.1",
     "style-loader": "^0.12.4",
     "susy": "^2.2.6",
     "url-loader": "^0.5.6",

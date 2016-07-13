@@ -101,7 +101,7 @@ export default class Lesson extends React.Component {
   }
 
   render() {
-    const {levelId, title, activityIndex, onNext} = this.props;
+    const {levelId, Title, activityIndex, onNext} = this.props;
     const {choices, boy, letters, visibleLetters, consonantVisible, consonantDetached, group} = this.state;
     let attachedLetters;
     let attachedChoices;
@@ -117,7 +117,7 @@ export default class Lesson extends React.Component {
     return (
       <Screen>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
-        <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
+        <LessonTitle levelId={levelId}><Title/></LessonTitle>
 
         <SceneContent>
           <SceneBar>

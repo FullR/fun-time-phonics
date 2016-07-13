@@ -25,7 +25,7 @@ export default class LevelResponse extends React.Component {
       "letter": `girl/common/${answer.letter}`,
       "correct-phonic": `girl/common/phonics/_${correctLetter}h_`,
       "makes the": "girl/common/makes-the_2",
-      "sound in": "girl/common/sound-in_2"
+      "sound in": "girl/common/sound-in"
     };
 
     Object.assign(sounds, answer.correct ? {

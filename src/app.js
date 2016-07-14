@@ -1,4 +1,4 @@
-const DEMO = true;
+const DEMO = false;
 const minWindowWidth = 1024;
 
 import React from "react";

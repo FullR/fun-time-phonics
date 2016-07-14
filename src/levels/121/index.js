@@ -1,11 +1,12 @@
 import React from "react";
 import multiConsonantReviewLevel from "levels/multi-consonant-review-level";
+import Dash from "components/dash";
 import Lesson from "./lesson";
 
 export default multiConsonantReviewLevel({
   Lesson,
   id: "121",
-  Title: () => (<span>Review:&nbsp;&nbsp;y-z With Short Vowels</span>),
+  Title: () => (<span>Review:&nbsp;&nbsp;y<Dash/>z With Short Vowels</span>),
   letter: "z",
   activities: [
     {word: "yuck", letters: ["yi", "ye", "yu"], correctLetters: "yu"},

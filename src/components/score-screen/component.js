@@ -62,8 +62,8 @@ export default class ScoreScreen extends React.Component {
   render() {
     const {onBack, onNext, score, max, requiredScore, hideNext, children, className} = this.props;
     const {speaking} = this.state;
-    const classNames = cn("Score-screen", className);
     const passing = this.isPassing();
+    const classNames = cn("Score-screen", `Score-screen--${passing ? "passing" : "failing"}`, className);
 
     return (
       <StarScreen {...this.props} className={classNames}>

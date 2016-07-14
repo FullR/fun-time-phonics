@@ -33,7 +33,7 @@ export default class LevelResponse extends React.Component {
       "makes the": "girl/common/makes-the",
       "sound so": "girl/common/sound-so",
       "does not end with": "girl/common/does-not-end-with",
-      "phonic": `girl/common/phonics/_${answer.letter === "c" ? "k" : answer.letter}h_`
+      "phonic": `girl/common/phonics/_${answer.letter === "c" ? "k" : answer.letter}_`
     });
 
     return sounds;

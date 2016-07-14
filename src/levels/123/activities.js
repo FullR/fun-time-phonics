@@ -5,7 +5,7 @@ export default [
   {word: "hog", letters: ["k", "j", "g"], correctLetter: "g", shortInstructions: true},
   {word: "gum", letters: ["n", "w", "m"], correctLetter: "m", shortInstructions: true},
 
-  {word: "pin", letters: ["m", "n", "u"], correctLetter: "n", shortInstructions: true},
+  {word: "pin", letters: ["m", "n", "b"], correctLetter: "n", shortInstructions: true},
   {word: "bus", letters: ["t", "r", "s"], correctLetter: "s", shortInstructions: true},
   {word: "dab", letters: ["p", "d", "b"], correctLetter: "b", shortInstructions: true},
   {word: "axe", letters: ["x", "k", "t"], correctLetter: "x", shortInstructions: true},

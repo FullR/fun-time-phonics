@@ -32,6 +32,7 @@
   }
 
   &__back-arrow {
+    position: relative;
     font-size: 45px;
     margin-right: 150px;
   }
@@ -40,4 +41,8 @@
     font-size: 50px;
     margin-left: 150px;
   }
+}
+
+.Score-screen--passing .Score-screen__back-arrow {
+  left: 50px;
 }

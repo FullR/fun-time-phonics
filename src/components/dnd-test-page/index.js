@@ -3,6 +3,7 @@ import bembam from "bembam";
 import dndContext from "dnd-context";
 import Screen from "components/screen";
 import DraggableBox from "./draggable-box";
+import DroppableBox from "./droppable-box";
 import CustomDragLayer from "./custom-drag-layer";
 
 @dndContext
@@ -14,6 +15,8 @@ export default class DndTestPage extends React.Component {
         <DraggableBox width={50} height={25} color="green" dragColor="red"/>
         <DraggableBox width={90} height={44} color="blue" dragColor="green"/>
         <DraggableBox width={20} height={45} color="red"  dragColor="blue"/>
+
+        <DroppableBox width={300} height={300} color="#555" onDrop={() => console.log("drop")}/>
         <CustomDragLayer/>
       </Screen>
     );

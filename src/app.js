@@ -1,4 +1,4 @@
-const DEMO = true;
+const DEMO = false;
 const minWindowWidth = 1024;
 
 import React from "react";
@@ -13,6 +13,9 @@ import deserialize from "store/deserialize";
 
 require("style/normalize.scss");
 require("style/base.scss");
+
+// keep keyboard from squishing layout
+cordova.plugins.Keyboard.disableScroll(true);
 
 const storage = getStorage({
   version,

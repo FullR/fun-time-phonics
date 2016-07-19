@@ -17,7 +17,8 @@
     "release": "npm run compile && npm run upload",
     "release:demo": "npm run compile && npm run upload:demo",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/src mocha --recursive --require babel-polyfill --compilers scss:./null-compiler.js,js:babel-core/register 'src/**/*.test.js'",
-    "convert-word-images": "scripts/convert-word-images"
+    "convert-word-images": "scripts/convert-word-images",
+    "xcode": "scripts/xcode"
   },
   "dependencies": {
     "babel-core": "^6.9.1",

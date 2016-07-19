@@ -1,0 +1,3 @@
+#!/bin/bash
+
+open -a Xcode "builds/cordova/platforms/ios/Fun-Time Phonics.xcodeproj"

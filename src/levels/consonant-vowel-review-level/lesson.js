@@ -12,6 +12,7 @@ import wordSounds from "util/word-sounds";
 import LetterSoundPlayBox from "components/letter-sound-play-box";
 import toPairs from "util/to-pairs";
 import PlayableDisplayText from "components/playable-display-text";
+require("./lesson.scss");
 
 
 @scene
@@ -85,7 +86,7 @@ export default class Lesson extends React.Component {
     const {choices, boy, revealedLetters} = this.state;
 
     return (
-      <Screen>
+      <Screen className={`Consonant-vowel-review-level-lesson Consonant-vowel-review-level-lesson-${levelId}`}>
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>Review:&nbsp;&nbsp;{title}</LessonTitle>
 

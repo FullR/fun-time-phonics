@@ -5,7 +5,8 @@ require("./style.scss");
 
 export default class AdminButtonTitle extends React.Component {
   static propTypes = {
-    size: React.PropTypes.oneOf(["small", "medium", "large"])
+    size: React.PropTypes.oneOf(["small", "medium", "large"]),
+    brief: React.PropTypes.bool
   };
 
   static defaultProps = {
@@ -15,10 +16,11 @@ export default class AdminButtonTitle extends React.Component {
   shouldComponentUpdate = pureUpdate;
 
   render() {
-    const {children, size, underlined} = this.props;
+    const {children, brief, size, underlined} = this.props;
     const className = bembam("Admin-button-title", this.props.className)
       .mod(`size-${size}`)
-      .mod("underlined", underlined);
+      .mod("underlined", underlined)
+      .mod("brief", brief);
 
     return (
       <div className={className.toString()}>{children}</div>

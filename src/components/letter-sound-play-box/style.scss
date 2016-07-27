@@ -6,7 +6,8 @@
 
 }
 
-.Letter-sound-play-box.Display-box.Display-box--clickable:hover,
+.hover-enabled .Letter-sound-play-box.Display-box.Display-box--clickable:hover,
+.hover-disabled .Letter-sound-play-box.Display-box.Display-box--clickable:active,
 .Letter-sound-play-box.Display-box.Display-box--active {
   border: none;
   box-shadow: none;

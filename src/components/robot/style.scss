@@ -9,7 +9,8 @@
 
 .Robot__text {
   position: absolute;
-  bottom: -26px;
+  bottom: 0;
+  transform: translate(0, 100%);
   left: -5px;
   width: 100%;
   text-align: center;
@@ -18,4 +19,5 @@
 
 .Robot--large:not(.Robot--show-text) .Robot__text {
   display: none;
+  white-space: nowrap;
 }

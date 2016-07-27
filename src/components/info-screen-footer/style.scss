@@ -44,7 +44,8 @@
     font-weight: 700;
     cursor: pointer;
 
-    &:hover {
+    .hover-enabled &:hover,
+    .hover-disabled &:active {
       background: rgb(242, 92, 50);
     }
   }

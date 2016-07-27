@@ -28,3 +28,15 @@
     }
   }
 }
+
+.Admin-button-title--size-large.Admin-button-title--brief {
+  @include breakpoint($tablet) {
+    font-size: 50px;
+  }
+}
+
+.Admin-button-title--size-medium.Admin-button-title--brief {
+  @include breakpoint($tablet) {
+    font-size: 25px;
+  }
+}

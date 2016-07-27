@@ -5,7 +5,7 @@ import TctcLogo from "components/tctc-logo";
 
 export default class LoadingScreen extends React.Component {
   render() {
-    const {progress, className} = this.props;
+    const {progress, className, children} = this.props;
     const classNames = cn("Loading-screen", className);
 
     return (
@@ -18,6 +18,7 @@ export default class LoadingScreen extends React.Component {
           Grades PreK-12+ Books and Software<br/>
           <span className="Loading-screen__sub-text">Reading • Writing • Math • Science • Social Studies</span>
         </div>
+        {children}
       </Screen>
     );
   }

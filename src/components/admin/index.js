@@ -211,19 +211,22 @@ export default class Admin extends React.Component {
       arrowStyle = {fontSize: "83%"};
     } else {
       arrowText = `Play Lesson ${getLevelDisplayId(currentLevel)}`;
-      arrowStyle = {fontSize: "100%"};//"2.4rem"};
+      arrowStyle = {fontSize: "100%"};
     }
 
     const level = (levelId) => {
       const disabled = demo && !demoLevels.includes(levelId);
+      const elementId = `Admin__level-button-${levelId}`; // used for button specific breakpoints
       if(disabled) {
         return {
+          id: elementId,
           selected: false,
           onClick: null,
           disabled
         };
       } else {
         return {
+          id: elementId,
           selected: levelId === currentLevel,
           onClick: this.selectLevel.bind(this, levelId),
           disabled

@@ -46,7 +46,8 @@
     border-radius: 4px;
     color: #FFF;
 
-    &:hover {
+    .hover-enabled &:hover,
+    .hover-disabled &:active {
       background: rgb(122, 0, 0);
     }
   }

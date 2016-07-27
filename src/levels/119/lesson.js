@@ -9,6 +9,7 @@ import Screen from "components/screen";
 import WordSoundPlayBox from "components/word-sound-play-box";
 import scene from "decorators/scene";
 import PlayableDisplayText from "components/playable-display-text";
+require("./lesson.scss");
 
 @scene
 export default class Lesson extends React.Component {
@@ -145,7 +146,7 @@ export default class Lesson extends React.Component {
     const {choices, boy, letters, visibleLetters, consonantVisible, consonantDetached} = this.state;
 
     return (
-      <Screen>
+      <Screen className="Level-119-lesson">
         <Actor {...boy} type="boy" onClick={this.autoplay.bind(this)}>Lesson</Actor>
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 

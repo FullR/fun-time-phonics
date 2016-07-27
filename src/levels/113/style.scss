@@ -1,0 +1,7 @@
+@import "sizes.scss";
+
+.Consonant-vowel-review-level-lesson-113 .Play-box {
+  @include breakpoint($tablet) {
+    margin: 0 4rem;
+  }
+}

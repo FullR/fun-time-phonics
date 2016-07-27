@@ -33,6 +33,7 @@ $hover-color: #223854;
   }
 }
 
-.Lock-link:hover {
+.hover-enabled .Lock-link:hover,
+.hover-disabled .Lock-link:active {
   color: $hover-color;
 }

@@ -3,7 +3,8 @@
     background: $color;
   }
 
-  &--color-#{$name}:hover {
+  .hover-enabled &--color-#{$name}:hover,
+  .hover-disabled &--color-#{$name}:active {
     background: darken($color, 10%);
   }
 }

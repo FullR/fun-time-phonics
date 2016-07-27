@@ -1,4 +1,5 @@
 @import "sizes.scss";
+@import "hover.scss";
 
 .Admin {
   display: flex;
@@ -29,7 +30,7 @@
     font-size: 25px;
     cursor: pointer;
     margin: 1rem 0 0 5rem;
-    &:hover {
+    @include hover {
       text-decoration: underline;
     }
     @include breakpoint($tablet) {
@@ -95,6 +96,8 @@
 
       @include breakpoint($tablet) {
         font-size: 18px;
+        height: 50px;
+        width: 95px;
       }
     }
   }
@@ -155,8 +158,8 @@
 
     @include breakpoint($tablet) {
       padding-right: 0;
-      max-width: 150px;
-      font-size: 12px;
+      max-width: 170px;
+      font-size: 14px;
     }
   }
 
@@ -172,14 +175,23 @@
     font-family: verdana;
 
     @include breakpoint($tablet) {
-      width: 150px;
-      height: 100px;
+      width: 170px;
+      height: 120px;
     }
   }
 
   &__print-page {
     display: none;
   }
+
+  #Admin__level-button-118 .Admin-button-title,
+  #Admin__level-button-119 .Admin-button-title,
+  #Admin__level-button-120 .Admin-button-title {
+    @include breakpoint($tablet) {
+      font-size: 18px;
+    }
+  }
+
 }
 
 @media print {

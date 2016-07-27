@@ -1,0 +1,8 @@
+@mixin hover() {
+  .hover-enabled &:hover {
+    @content;
+  }
+  .hover-disabled &:active {
+    @content;
+  }
+}

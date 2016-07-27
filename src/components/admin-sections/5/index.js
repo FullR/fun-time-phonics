@@ -31,32 +31,32 @@ export default class AdminSection5 extends React.Component {
             <RowTitle>Consonant <Letter>l</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("64")}>
               <Index>64</Index>
-              <Title size="large">la</Title>
+              <Title size="large" brief>la</Title>
               <Score levelId="64"/>
             </ShortButton>
             <ShortButton {...level("65")}>
               <Index>65</Index>
-              <Title size="large">le</Title>
+              <Title size="large" brief>le</Title>
               <Score levelId="65"/>
             </ShortButton>
             <ShortButton {...level("66")}>
               <Index>66</Index>
-              <Title size="large">li</Title>
+              <Title size="large" brief>li</Title>
               <Score levelId="66"/>
             </ShortButton>
             <ShortButton {...level("67")}>
               <Index>67</Index>
-              <Title size="large">lo</Title>
+              <Title size="large" brief>lo</Title>
               <Score levelId="67"/>
             </ShortButton>
             <ShortButton {...level("68")}>
               <Index>68</Index>
-              <Title size="large">lu</Title>
+              <Title size="large" brief>lu</Title>
               <Score levelId="68"/>
             </ShortButton>
             <ShortButton {...level("69")} review>
               <Index>69</Index>
-              <Title size="medium">Review<br/><Letter size="large">l</Letter></Title>
+              <Title size="medium" brief>Review<br/><Letter size="large">l</Letter></Title>
               <Score levelId="69"/>
             </ShortButton>
           </Row>
@@ -64,32 +64,32 @@ export default class AdminSection5 extends React.Component {
             <RowTitle>Consonant <Letter>m</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("70")}>
               <Index>70</Index>
-              <Title size="large">ma</Title>
+              <Title size="large" brief>ma</Title>
               <Score levelId="70"/>
             </ShortButton>
             <ShortButton {...level("71")}>
               <Index>71</Index>
-              <Title size="large">me</Title>
+              <Title size="large" brief>me</Title>
               <Score levelId="71"/>
             </ShortButton>
             <ShortButton {...level("72")}>
               <Index>72</Index>
-              <Title size="large">mi</Title>
+              <Title size="large" brief>mi</Title>
               <Score levelId="72"/>
             </ShortButton>
             <ShortButton {...level("73")}>
               <Index>73</Index>
-              <Title size="large">mo</Title>
+              <Title size="large" brief>mo</Title>
               <Score levelId="73"/>
             </ShortButton>
             <ShortButton {...level("74")}>
               <Index>74</Index>
-              <Title size="large">mu</Title>
+              <Title size="large" brief>mu</Title>
               <Score levelId="74"/>
             </ShortButton>
             <ShortButton {...level("75")} review>
               <Index>75</Index>
-              <Title size="medium">Review<br/><Letter size="large">m</Letter></Title>
+              <Title size="medium" brief>Review<br/><Letter size="large">m</Letter></Title>
               <Score levelId="75"/>
             </ShortButton>
           </Row>
@@ -97,32 +97,32 @@ export default class AdminSection5 extends React.Component {
             <RowTitle>Consonant <Letter>n</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("76")}>
               <Index>76</Index>
-              <Title size="large">na</Title>
+              <Title size="large" brief>na</Title>
               <Score levelId="76"/>
             </ShortButton>
             <ShortButton {...level("77")}>
               <Index>77</Index>
-              <Title size="large">ne</Title>
+              <Title size="large" brief>ne</Title>
               <Score levelId="77"/>
             </ShortButton>
             <ShortButton {...level("78")}>
               <Index>78</Index>
-              <Title size="large">ni</Title>
+              <Title size="large" brief>ni</Title>
               <Score levelId="78"/>
             </ShortButton>
             <ShortButton {...level("79")}>
               <Index>79</Index>
-              <Title size="large">no</Title>
+              <Title size="large" brief>no</Title>
               <Score levelId="79"/>
             </ShortButton>
             <ShortButton {...level("80")}>
               <Index>80</Index>
-              <Title size="large">nu</Title>
+              <Title size="large" brief>nu</Title>
               <Score levelId="80"/>
             </ShortButton>
             <ShortButton {...level("81")} review>
               <Index>81</Index>
-              <Title size="medium">Review<br/><Letter size="large">n</Letter></Title>
+              <Title size="medium" brief>Review<br/><Letter size="large">n</Letter></Title>
               <Score levelId="81"/>
             </ShortButton>
           </Row>
@@ -130,32 +130,32 @@ export default class AdminSection5 extends React.Component {
             <RowTitle>Consonant <Letter>p</Letter><br/>With Short Vowels</RowTitle>
             <ShortButton {...level("82")}>
               <Index>82</Index>
-              <Title size="large">pa</Title>
+              <Title size="large" brief>pa</Title>
               <Score levelId="82"/>
             </ShortButton>
             <ShortButton {...level("83")}>
               <Index>83</Index>
-              <Title size="large">pe</Title>
+              <Title size="large" brief>pe</Title>
               <Score levelId="83"/>
             </ShortButton>
             <ShortButton {...level("84")}>
               <Index>84</Index>
-              <Title size="large">pi</Title>
+              <Title size="large" brief>pi</Title>
               <Score levelId="84"/>
             </ShortButton>
             <ShortButton {...level("85")}>
               <Index>85</Index>
-              <Title size="large">po</Title>
+              <Title size="large" brief>po</Title>
               <Score levelId="85"/>
             </ShortButton>
             <ShortButton {...level("86")}>
               <Index>86</Index>
-              <Title size="large">pu</Title>
+              <Title size="large" brief>pu</Title>
               <Score levelId="86"/>
             </ShortButton>
             <ShortButton {...level("87")} review>
               <Index>87</Index>
-              <Title size="medium">Review<br/><Letter size="large">p</Letter></Title>
+              <Title size="medium" brief>Review<br/><Letter size="large">p</Letter></Title>
               <Score levelId="87"/>
             </ShortButton>
           </Row>
@@ -164,7 +164,7 @@ export default class AdminSection5 extends React.Component {
         <Column>
           <ShortButton {...level("88")} assessment>
             <Index>88</Index>
-            <Title size="medium">Review<br/><Letter size="large">b<Dash/>p</Letter></Title>
+            <Title size="medium" brief>Review<br/><Letter size="large">b<Dash/>p</Letter></Title>
             <Score levelId="88"/>
           </ShortButton>
         </Column>

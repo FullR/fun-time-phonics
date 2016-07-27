@@ -8,7 +8,8 @@
   width: 100%;
   min-height: 152px;
 
-  &:hover {
+  .hover-enabled &:hover,
+  .hover-disabled &:active {
     .Other-product__content {
       background: #f3f3ff;
     }

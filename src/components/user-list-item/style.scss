@@ -16,14 +16,16 @@ $hover-color: lighten($base-color, 15%);
     border-top: none;
   }
 
-  &:hover {
+  .hover-enabled &:hover,
+  .hover-disabled &:active {
     background: $hover-color;
   }
 
   &--selected {
     cursor: default;
     background: $selected-color;
-    &:hover {
+    .hover-enabled &:hover,
+    .hover-disabled &:active {
       background: $selected-color;
     }
   }
@@ -37,7 +39,8 @@ $hover-color: lighten($base-color, 15%);
     color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 
-    &:hover {
+    .hover-enabled &:hover,
+    .hover-disabled &:active {
       color: rgb(255, 0, 0);
     }
   }

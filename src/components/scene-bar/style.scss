@@ -1,20 +1,34 @@
+@import "sizes.scss";
+
 .Scene-bar {
   flex-direction: row;
   justify-content: center;
 
   > * {
     margin: 0 5rem 0 5rem;
+    @include breakpoint($tablet) {
+      margin: 0 2.5rem 0 2.5rem;
+    }
   }
 
   &--count-4 > * {
     margin: 0 3.5rem 0 3.5rem;
+    @include breakpoint($tablet) {
+      margin: 0 1.5rem 0 1.5rem;
+    }
   }
 
   &--count-5 > * {
     margin: 0 2rem 0 2rem;
+    @include breakpoint($tablet) {
+      margin: 0 1rem 0 1rem;
+    }
   }
 
   &--count-6 > * {
     margin: 0 1.5rem 0 1.5rem;
+    @include breakpoint($tablet) {
+      margin: 0 0.5rem 0 0.5rem;
+    }
   }
 }

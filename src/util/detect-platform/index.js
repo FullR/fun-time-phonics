@@ -1,13 +1,17 @@
+let _isElectron = window && window.process && window.process.type;
+let _isCordova = window._isCordova;
+let _isWeb = !(_isElectron || _isCordova);
+
 export function isElectron() {
-  return window && window.process && window.process.type;
+  return _isElectron;
 };
 
 export function isCordova() {
-  return !isElectron() && document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+  return _isCordova;
 };
 
 export function isWeb() {
-  return !(isCordova() || isElectron());
+  return _isWeb;
 };
 
 export default {isElectron, isCordova, isWeb};

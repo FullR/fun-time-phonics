@@ -1,0 +1,15 @@
+@import "sizes.scss";
+
+.Level-20-lesson {
+
+  @include breakpoint($tablet) {
+    .Display-text {
+      min-width: 160px;
+      height: 175px;
+    }
+
+    .Play-box {
+      margin: 0 1rem;
+    }
+  }
+}

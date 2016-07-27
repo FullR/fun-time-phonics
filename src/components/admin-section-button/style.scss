@@ -1,3 +1,5 @@
+@import "hover.scss";
+
 .Admin-section-button {
   display: flex;
   flex-direction: row-reverse;
@@ -18,7 +20,7 @@
     background: #FFE3D5;
   }
 
-  &:hover {
+  @include hover {
     background: #B1FFAD;
   }
 
@@ -37,7 +39,7 @@
     background: #AAA;
     color: #222;
 
-    &:hover {
+    @include hover {
       background: #AAA;
     }
   }

@@ -5,6 +5,7 @@ import Screen from "components/screen";
 import Countdown from "components/countdown";
 import Arrow from "components/arrow";
 import pureUpdate from "pure-update";
+import {isCordova} from "util/detect-platform";
 require("./style.scss");
 
 export default class Authscreen extends React.Component {
@@ -47,7 +48,9 @@ export default class Authscreen extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.passwordInput.focus();
+    if(!isCordova()) { // don't autofocus on mobile
+      this.refs.passwordInput.focus();
+    }
   }
 
   render() {

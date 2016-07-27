@@ -1,0 +1,5 @@
+#!/bin/bash
+
+npm run compile
+cd builds/cordova
+taco run ios --device

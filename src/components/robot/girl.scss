@@ -36,7 +36,8 @@ $large-scale: 0.5;
     background-image: url($glow-image);
   }
 
-  &.Robot-girl--not-speaking:hover {
+  .hover-enabled &.Robot-girl--not-speaking:hover,
+  .hover-disabled &.Robot-girl--not-speaking:active {
     background-image: url($hover-image);
   }
 }

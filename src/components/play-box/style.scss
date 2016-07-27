@@ -1,10 +1,33 @@
 @import "sizes.scss";
 
+@mixin play-box-size($name, $width, $tablet-width) {
+  &--size-#{$name} {
+    min-width: $width;
+    .Play-box__display-box {
+      height: $width;
+    }
+
+    @include breakpoint($tablet) {
+      min-width: $tablet-width;
+      .Play-box__display-box {
+        height: $tablet-width;
+      }
+    }
+  }
+}
+
 .Play-box {
+  display: inline-block;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  font-size: 0;
+  margin-collapse: separate;
+
+  @include play-box-size("large", 300px, 200px);
+  @include play-box-size("medium", 200px, 150px);
+  @include play-box-size("small", 125px, 100px);
+
+  &__display-box {
+    width: 100%;
+  }
 
   &--detached {
     position: absolute;
@@ -25,36 +48,6 @@
 
   &--no-wave &__sound-wave-container {
     display: none;
-  }
-
-  &--size-large &__display-box {
-    width: 300px;
-    height: 300px;
-
-    @include breakpoint($tablet) {
-      width: 200px;
-      height: 200px;
-    }
-  }
-
-  &--size-medium &__display-box {
-    width: 175px;
-    height: 175px;
-
-    @include breakpoint($tablet) {
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-  &--size-small &__display-box {
-    width: 125px;
-    height: 125px;
-
-    @include breakpoint($tablet) {
-      width: 80px;
-      height: 80px;
-    }
   }
 
   &__sound-wave-container {

@@ -14,8 +14,8 @@ $sprite-height: 112px;
   cursor: pointer;
   z-index: 8;
 
-  &:hover,
-  &:active,
+  .hover-enabled &:hover,
+  .hover-disabled &:active,
   &--active {
     background-position: -100% 0;
   }

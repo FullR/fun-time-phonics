@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        },
+        "de.appplant.cordova.plugin.hidden-statusbar-overlay": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.criticalthinking.ftph"
+        }
+    },
+    "dependent_plugins": {}
+}

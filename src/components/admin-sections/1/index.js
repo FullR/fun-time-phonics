@@ -32,31 +32,31 @@ export default class AdminSection1 extends React.Component {
             <div>Beginning Sounds</div>
           </AdminRowTitle>
           <AdminShortButton {...level("1")}>
-            <Title size="large">t</Title>
+            <Title size="large" brief>t</Title>
             <Score levelId="1"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-m")}>
-            <Title size="large">m</Title>
+            <Title size="large" brief>m</Title>
             <Score levelId="1-m"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-l")}>
-            <Title size="large">l</Title>
+            <Title size="large" brief>l</Title>
             <Score levelId="1-l"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-n")}>
-            <Title size="large">n</Title>
+            <Title size="large" brief>n</Title>
             <Score levelId="1-n"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-r")}>
-            <Title size="large">r</Title>
+            <Title size="large" brief>r</Title>
             <Score levelId="1-r"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-g")}>
-            <Title size="large">g</Title>
+            <Title size="large" brief>g</Title>
             <Score levelId="1-g"/>
           </AdminShortButton>
           <AdminShortButton {...level("1-s")}>
-            <Title size="large">s</Title>
+            <Title size="large" brief>s</Title>
             <Score levelId="1-s"/>
           </AdminShortButton>
         </AdminSectionRow>
@@ -67,31 +67,31 @@ export default class AdminSection1 extends React.Component {
             <div>Ending Sounds</div>
           </AdminRowTitle>
           <AdminShortButton {...level("2")}>
-            <Title size="large">t</Title>
+            <Title size="large" brief>t</Title>
             <Score levelId="2"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-d")}>
-            <Title size="large">d</Title>
+            <Title size="large" brief>d</Title>
             <Score levelId="2-d"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-p")}>
-            <Title size="large">p</Title>
+            <Title size="large" brief>p</Title>
             <Score levelId="2-p"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-k")}>
-            <Title size="large">k</Title>
+            <Title size="large" brief>k</Title>
             <Score levelId="2-k"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-f")}>
-            <Title size="large">f</Title>
+            <Title size="large" brief>f</Title>
             <Score levelId="2-f"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-m")}>
-            <Title size="large">m</Title>
+            <Title size="large" brief>m</Title>
             <Score levelId="2-m"/>
           </AdminShortButton>
           <AdminShortButton {...level("2-b")}>
-            <Title size="large">b</Title>
+            <Title size="large" brief>b</Title>
             <Score levelId="2-b"/>
           </AdminShortButton>
         </AdminSectionRow>

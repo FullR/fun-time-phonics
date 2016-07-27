@@ -1,5 +1,5 @@
 import React from "react";
-import {isWeb} from "util/detect-platform";
+import {isCordova, isElectron} from "util/detect-platform";
 import browser from "detect-browser";
 import getViewport from "util/get-viewport";
 import Splash from "components/splash";
@@ -24,8 +24,8 @@ import dndContext from "dnd-context";
 import WordResponse from "components/word-response";
 
 const {Title} = WordResponse;
-const preloadDivStyle = {position: "absolute", left: "-99999px"};
-const validBrowser = !isWeb() || ["chrome", "edge"].includes(browser.name);
+const preloadDivStyle = {position: "absolute", left: "-100%", height: 0, width: 0, overflow: "hidden"};
+const validBrowser = (isCordova() || isElectron()) || ["chrome", "edge"].includes(browser.name);
 
 @dndContext
 export default class Application extends React.Component {
@@ -148,7 +148,15 @@ export default class Application extends React.Component {
     const [route, ...params] = storeState.route.split("/");
 
     if(!loaded) {
-      return (<LoadingScreen progress={imagesLoaded / images.length}/>);
+      return (
+        <LoadingScreen progress={imagesLoaded / images.length}>
+          <div style={preloadDivStyle}>
+            {images.map((src) =>
+              <div key={src} style={{backgroundImage: `url("${src}")`}}/>
+            )}
+          </div>
+        </LoadingScreen>
+      );
     }
 
     const {currentLevelId, levels, requiredScore} = user || {};
@@ -228,7 +236,7 @@ export default class Application extends React.Component {
     const current = this.renderCurrent();
 
     return (
-      <Screen>
+      <Screen className={isCordova() ? "hover-disabled" : "hover-enabled"}>
         {invalidScreenSize && !ignoreInvalidScreenSize ?
           <InvalidWindowSizeScreen
             onClose={() => this.setState({ignoreInvalidScreenSize: true})}
@@ -236,13 +244,6 @@ export default class Application extends React.Component {
           null
         }
         {current}
-
-        <div style={preloadDivStyle}>
-          {images.map((src) =>
-            <div key={src} style={{backgroundImage: `url("${src}")`}}/>
-          )}
-        </div>
-
         <CustomDragLayer/>
       </Screen>
     );

@@ -9,6 +9,7 @@ import UserListItem from "../user-list-item";
 import UserListForm from "../user-list-form";
 import ConfirmModal from "../confirm-modal";
 import AlertModal from "../alert-modal";
+import {isCordova} from "util/detect-platform";
 
 export default class Login extends React.Component {
   static propTypes = {
@@ -86,6 +87,8 @@ export default class Login extends React.Component {
     const {maxUserCount, onCreateUser, users} = this.props;
     const username = this.state.username.trim();
 
+    if(!username.length) return;
+
     if(users.some((user) => user.name === username)) {
       this.setState({
         duplicateUserNameModal: true
@@ -127,7 +130,7 @@ export default class Login extends React.Component {
             value={username}
             onChange={this.updateUsername.bind(this)}
             onSubmit={this.createUser.bind(this)}
-            autofocus
+            autofocus={!isCordova()}
           />
         </div>
         <div className={cn.el("user-list")}>

@@ -1,7 +1,15 @@
+@import "sizes.scss";
+
 .Admin-section-2 {
   align-items: stretch;
   .Admin-section-row {
     justify-content: center;
     max-height: 200px;
+  }
+
+  .Admin-button-title {
+    @include breakpoint($tablet) {
+      font-size: 25px;
+    }
   }
 }

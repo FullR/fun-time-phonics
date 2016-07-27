@@ -1,3 +1,4 @@
+@import "sizes.scss";
 $top-background: #C5AECE;
 $bottom-background: #CDE39F;
 
@@ -42,6 +43,9 @@ $bottom-background: #CDE39F;
     text-align: center;
     top: 35%;
     vertical-align: middle;
+    @include breakpoint($tablet) {
+      top: 45%;
+    }
   }
 
   input {
@@ -52,6 +56,11 @@ $bottom-background: #CDE39F;
     font-size: 45px;
     line-height: 40px;
     vertical-align: middle;
+
+    @include breakpoint($tablet) {
+      font-size: 30px;
+      line-height: 30px;
+    }
   }
 
   .Arrow {
@@ -60,5 +69,10 @@ $bottom-background: #CDE39F;
     left: 20px;
     top: 55px;
     font-size: 40px;
+
+    @include breakpoint($tablet) {
+      top: 47px;
+      height: 95px;
+    }
   }
 }

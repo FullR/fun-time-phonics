@@ -21,7 +21,7 @@
     cursor: pointer;
     color: #00A;
 
-    &:hover {
+    .hover-enabled &:hover {
       color: #00F;
       text-decoration: underline;
     }

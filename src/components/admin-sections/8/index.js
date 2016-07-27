@@ -22,22 +22,22 @@ export default class AdminSection8 extends React.Component {
         <AdminSectionRow>
           <AdminShortButton {...level("123")}>
             <Index>123</Index>
-            <Title size="medium">Identify<br/>Ending Sounds</Title>
+            <Title size="medium" brief>Identify<br/>Ending Sounds</Title>
             <Score levelId="123"/>
           </AdminShortButton>
           <AdminShortButton {...level("124")}>
             <Index>124</Index>
-            <Title size="medium">Identify<br/>Vowel Sounds</Title>
+            <Title size="medium" brief>Identify<br/>Vowel Sounds</Title>
             <Score levelId="124"/>
           </AdminShortButton>
           <AdminShortButton {...level("125")}>
             <Index>125</Index>
-            <Title size="medium">Read<br/>First Words</Title>
+            <Title size="medium" brief>Read<br/>First Words</Title>
             <Score levelId="125"/>
           </AdminShortButton>
           <AdminShortButton {...level("126")}>
             <Index>126</Index>
-            <Title size="medium">Reading<br/>for Meaning</Title>
+            <Title size="medium" brief>Reading<br/>for Meaning</Title>
             <Score levelId="126"/>
           </AdminShortButton>
         </AdminSectionRow>

@@ -1,3 +1,4 @@
+@import "hover.scss";
 $width: 19.2rem;
 $height: 12rem;
 $font-size: 3.4rem;
@@ -11,7 +12,8 @@ $font-size: 3.4rem;
   }
 
   @if $hover {
-    &--color-#{$color}:hover .Arrow__image {
+    .hover-disabled &--color-#{$color}:active .Arrow__image,
+    .hover-enabled &--color-#{$color}:hover .Arrow__image {
       background-image: url("../../../images/arrows/#{$color}_hover.png");
     }
   }

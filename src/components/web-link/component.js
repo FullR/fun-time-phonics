@@ -1,13 +1,16 @@
 import React from "react";
 import cn from "util/cn";
-import {isElectron} from "util/detect-platform";
+import {isElectron, isCordova} from "util/detect-platform";
 
 export default class WebLink extends React.Component {
   onClick(event) {
-    if(isElectron()) {
+    const {href} = this.props;
+    if(isCordova()) {
+      window.open(href, "_system");
+    } else if(isElectron()) {
       const {shell} = require("electron");
       event.preventDefault();
-      shell.openExternal(this.props.href);
+      shell.openExternal(href);
     }
   }
 

@@ -44,7 +44,7 @@ export default class UserListForm extends React.Component {
 
     return (
       <form {...this.props} className={cn} onSubmit={this.submit.bind(this)}>
-        <input value={value} onChange={onChange} ref="input" maxLength={maxLength}/>
+        <input value={value} onChange={onChange} ref="input" maxLength={maxLength} placeholder="Enter a new user name"/>
         <Button disabled={!value || !value.trim().length}>Create</Button>
       </form>
     );

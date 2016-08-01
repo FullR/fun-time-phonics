@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Display-text {
   display: inline-block;
   text-align: center;
@@ -16,6 +18,13 @@
     min-width: 300px;
     height: 300px;
     line-height: 250px;
+
+    @include breakpoint($phone) {
+      font-size: 200px;
+      min-width: 200px;
+      height: 200px;
+      line-height: 200px;
+    }
   }
 
   &--size-medium {
@@ -23,6 +32,13 @@
     min-width: 150px;
     height: 150px;
     line-height: 150px;
+
+    @include breakpoint($phone) {
+      font-size: 100px;
+      min-width: 100px;
+      height: 100px;
+      line-height: 100px;
+    }
   }
 
   &--size-small {
@@ -30,5 +46,12 @@
     min-width: 125px;
     height: 125px;
     line-height: 100px;
+
+    @include breakpoint($phone) {
+      font-size: 50px;
+      min-width: 50px;
+      height: 50px;
+      line-height: 50px;
+    }
   }
 }

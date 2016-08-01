@@ -1,3 +1,4 @@
+@import "sizes.scss";
 $base-color: #CEE7E8;
 $selected-color: darken($base-color, 15%);
 $hover-color: lighten($base-color, 15%);
@@ -11,6 +12,11 @@ $hover-color: lighten($base-color, 15%);
   cursor: pointer;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
+
+  @include breakpoint($phone) {
+    font-size: 25px;
+    padding: 10px;
+  }
 
   &:first-child {
     border-top: none;

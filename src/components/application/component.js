@@ -231,7 +231,7 @@ export default class Application extends React.Component {
   }
 
   render() {
-    if(!validBrowser) return (<InvalidBrowserScreen/>);
+    //if(!validBrowser) return (<InvalidBrowserScreen/>);
     const {invalidScreenSize, ignoreInvalidScreenSize} = this.state;
     const current = this.renderCurrent();
 

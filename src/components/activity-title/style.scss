@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Activity-title {
   position: absolute;
   right: 0;
@@ -6,4 +8,9 @@
   text-align: center;
   font-size: 22px;
   cursor: default;
+
+  @include breakpoint($phone) {
+    font-size: 15px;
+    top: 2px;
+  }
 }

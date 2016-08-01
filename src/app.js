@@ -1,5 +1,5 @@
 const DEMO = false;
-const minWindowWidth = 1024;
+const minWindowWidth = 0;
 
 import React from "react";
 import fastClick from "fastclick";

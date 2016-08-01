@@ -1,7 +1,14 @@
+@import "sizes.scss";
+
 .Lesson-title {
   font-size: 22px;
   width: 100%;
   margin-top: 10px;
   text-align: center;
   cursor: default;
+
+  @include breakpoint($phone) {
+    font-size: 15px;
+    margin-top: 2px;
+  }
 }

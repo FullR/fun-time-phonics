@@ -1,6 +1,13 @@
+@import "sizes.scss";
+
 .Admin-button {
   position: absolute;
   left: 2rem;
   bottom: 2rem;
   cursor: pointer;
+
+  @include breakpoint($phone) {
+    left: 1rem;
+    bottom: 1rem;
+  }
 }

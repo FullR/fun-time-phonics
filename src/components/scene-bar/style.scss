@@ -9,6 +9,9 @@
     @include breakpoint($tablet) {
       margin: 0 2.5rem 0 2.5rem;
     }
+    @include breakpoint($phone) {
+      margin: 0 1rem 0 1rem;
+    }
   }
 
   &--count-4 > * {

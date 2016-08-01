@@ -12,6 +12,9 @@ html {
   @include breakpoint($tablet) {
     font-size: 6.5px;
   }
+  @include breakpoint($phone) {
+    //font-size: 5px;
+  }
 }
 
 html, body {

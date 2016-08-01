@@ -1,7 +1,7 @@
 import React from "react";
 import bembam from "bembam";
 import {version} from "../../../package";
-import {isElectron} from "util/detect-platform";
+import {isElectron, isCordova} from "util/detect-platform";
 import demoLevels from "demo-levels";
 import Screen from "components/screen";
 import AdminHeader from "components/admin-header";
@@ -254,7 +254,9 @@ export default class Admin extends React.Component {
               Manage Users
               <div className="Admin__user-name">User:&nbsp;&nbsp;{user.name}</div>
             </div>
-            <div className="Admin__header-button" onClick={this.print.bind(this)}>Print</div>
+            {isCordova() ? null :
+              <div className="Admin__header-button" onClick={this.print.bind(this)}>Print</div>
+            }
             {isElectron() ?
               <div className="Admin__header-button" onClick={this.exit.bind(this)}>Exit</div> :
               null

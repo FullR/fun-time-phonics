@@ -16,5 +16,9 @@
       width: 200px;
       height: 200px;
     }
+    @include breakpoint($iphone5) {
+      width: 100px;
+      height: 100px;
+    }
   }
 }

@@ -1,3 +1,4 @@
+@import "sizes.scss";
 $icon-image: "../../../images/lock-icon.png";
 $icon-width: 22px;
 $icon-height: 29px;
@@ -5,6 +6,10 @@ $icon-spacing: 4px;
 $font-size: 25px;
 $color: #568ED4;
 $hover-color: #223854;
+
+$phone-font-size: 15px;
+$phone-icon-height: 19px;
+$phone-icon-width: ($icon-width / $icon-height) * $phone-icon-height;
 
 .Lock-link {
   cursor: pointer;
@@ -30,6 +35,18 @@ $hover-color: #223854;
     margin-right: $icon-spacing;
     background: url($icon-image) no-repeat;
     background-size: 100% 100%;
+  }
+
+  @include breakpoint($phone) {
+    font-size: 15px;
+    &__text {
+      height: $phone-icon-height;
+      line-height: $phone-icon-height;
+    }
+    &__icon {
+      height: $phone-icon-height;
+      width: $phone-icon-width;
+    }
   }
 }
 

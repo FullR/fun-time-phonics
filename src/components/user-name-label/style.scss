@@ -1,7 +1,14 @@
+@import "sizes.scss";
+
 .User-name-label {
   font-size: 25px;
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translate(-50%);
+
+  @include breakpoint($phone) {
+    font-size: 15px;
+    bottom: 2px;
+  }
 }

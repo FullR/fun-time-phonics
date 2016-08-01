@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 $image: "../../../images/sound-wave-sprite.png";
 $width: 24px * 1.5;
 $height: 28px * 1.5;
@@ -22,5 +24,10 @@ $sprite-height: 112px;
 
   &--hidden {
     visibility: hidden;
+  }
+
+  @include breakpoint($phone) {
+    width: 24px * 0.75;
+    height: 28px * 0.75;
   }
 }

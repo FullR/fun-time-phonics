@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   background: #CEE7E8;
+
   &__header {
     position: relative;
     flex: 0 1 150px;
@@ -11,6 +12,10 @@
     text-align: center;
     font-size: 35px;
     font-weight: 800;
+
+    @include breakpoint($phone) {
+      display: none;
+    }
   }
 
   &__header-text {
@@ -55,6 +60,9 @@
     font-size: 35px;
     min-width: 200px;
     transform: translate(0, -50%);
+    @include breakpoint($phone) {
+      font-size: 25px;
+    }
   }
 
   &__footer {
@@ -62,6 +70,9 @@
     flex: 0 1 150px;
     width: 100%;
     text-align: right;
+    @include breakpoint($phone) {
+      max-height: 85px;
+    }
   }
 
   input {
@@ -70,11 +81,20 @@
     padding-left: 10px;
     font-size: 35px;
     text-size-adjust: none;
+
+    @include breakpoint($phone) {
+      font-size: 25px;
+    }
   }
 
   .Arrow  {
     @include breakpoint($tablet) {
       height: 120px;
+    }
+
+    @include breakpoint($phone) {
+      height: 75px;
+      width: 120px;
     }
   }
 }

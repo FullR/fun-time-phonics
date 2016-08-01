@@ -20,6 +20,11 @@ $tablet-robot-scale: 1;
       bottom: 50px;
       right: 50px;
     }
+
+    @include breakpoint($phone) {
+      bottom: 10px;
+      right: 10px;
+    }
   }
 
   .Arrow {
@@ -31,6 +36,11 @@ $tablet-robot-scale: 1;
     position: absolute;
     top: 1rem;
     left: 1rem;
+
+    @include breakpoint($phone) {
+      top: 5px;
+      left: 5px;
+    }
   }
 
   &__speech-bubble {
@@ -39,23 +49,44 @@ $tablet-robot-scale: 1;
     top: 15%;
     width: 433px;
     height: 187px;
+
+    @include breakpoint($phone) {
+      width: 216px;
+      height: 94px;
+    }
   }
 
   .Robot {
     position: absolute;
     left: 25%;
     bottom: 3%;
+    transform-origin: 0 0;
     transform: scale($robot-scale);
 
     @include breakpoint($large-tablet) {
-      //transform: scale($large-tablet-robot-scale);
       bottom: 2%;
     }
 
     @include breakpoint($tablet) {
-      //transform: scale($tablet-robot-scale);
       bottom: 5%;
       left: 20%;
+    }
+
+    @include breakpoint($iphone6p) {
+      transform: scale(0.6, 0.6);
+      bottom: -120px;
+    }
+
+    @include breakpoint($iphone6) {
+      transform: scale(0.5, 0.5);
+      left: 130px;
+      bottom: -150px;
+    }
+
+    @include breakpoint($iphone5) {
+      transform: scale(0.4, 0.4);
+      bottom: -180px;
+      left: 100px;
     }
   }
 
@@ -88,6 +119,10 @@ $tablet-robot-scale: 1;
     font-size: 20px;
     font-family: verdana;
     text-align: center;
+
+    @include breakpoint($phone) {
+      font-size: 12px;
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+@import "sizes.scss";
 $image: "../../../images/tctc-logo.png";
 
 .Tctc-logo {
@@ -5,4 +6,9 @@ $image: "../../../images/tctc-logo.png";
   background-size: 100% 100%;
   width: 154px;
   height: 100px;
+
+  @include breakpoint($phone) {
+    width: 77px;
+    height: 50px;
+  }
 }

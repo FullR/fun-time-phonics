@@ -2,6 +2,7 @@
 
 $logo-scale: 0.7;
 $logo-tablet-scale: 0.4;
+$logo-phone-scale: 0.3;
 $logo-width: 1116px;
 $logo-height: 589px;
 
@@ -34,14 +35,25 @@ $logo-height: 589px;
       width: $logo-width * $logo-tablet-scale;
       height: $logo-height * $logo-tablet-scale;
     }
+
+    @include breakpoint($phone) {
+      width: $logo-width * $logo-phone-scale;
+      height: $logo-height * $logo-phone-scale;
+    }
   }
 
   &__text {
     font-size: 25px;
     font-weight: bold;
+    @include breakpoint($phone) {
+      font-size: 20px;
+    }
   }
 
   &__sub-text {
     font-size: 20px;
+    @include breakpoint($phone) {
+      font-size: 15px;
+    }
   }
 }

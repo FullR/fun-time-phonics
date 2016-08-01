@@ -10,4 +10,12 @@
   @include breakpoint($tablet) {
     font-size: 45px;
   }
+
+  @include breakpoint($phone) {
+    width: 100px;
+    height: 80px;
+    font-size: 25px;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
 }

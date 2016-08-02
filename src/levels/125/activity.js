@@ -82,13 +82,13 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
-          <SceneBar style={{position: "relative", top: -50}}>
+          <SceneBar style={{position: "relative"}}>
             <DragContainer DragPreviewComponent={DisplayText}>
               <DisplayText>{correctWord}</DisplayText>
             </DragContainer>
           </SceneBar>
 
-          <SceneBar style={{position: "relative", top: 50}}>
+          <SceneBar style={{position: "relative"}}>
             {choices.map((choice) =>
               <DropWordBox {...choice}
                 key={choice.id}

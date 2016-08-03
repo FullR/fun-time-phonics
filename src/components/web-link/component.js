@@ -6,6 +6,7 @@ export default class WebLink extends React.Component {
   onClick(event) {
     const {href} = this.props;
     if(isCordova()) {
+      event.preventDefault();
       window.open(href, "_system");
     } else if(isElectron()) {
       const {shell} = require("electron");

@@ -28,7 +28,7 @@ export default class AdminSection1 extends React.Component {
       <AdminSection className="Admin-section-1">
         <AdminSectionRow>
           <AdminRowTitle stretchContent>
-            <div>1.&nbsp;&nbsp;</div>
+            <div style={{paddingRight: 20}}>1.</div>
             <div>Beginning Sounds</div>
           </AdminRowTitle>
           <AdminShortButton {...level("1")}>
@@ -63,7 +63,7 @@ export default class AdminSection1 extends React.Component {
 
         <AdminSectionRow>
           <AdminRowTitle stretchContent>
-            <div>2.&nbsp;&nbsp;</div>
+            <div style={{paddingRight: 20}}>2.</div>
             <div>Ending Sounds</div>
           </AdminRowTitle>
           <AdminShortButton {...level("2")}>

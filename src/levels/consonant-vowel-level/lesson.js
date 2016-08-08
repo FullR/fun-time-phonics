@@ -208,11 +208,13 @@ export default class Lesson extends React.Component {
         <SceneContent>
           <SceneBar>
             {showingLetterIntro && !showingVowel ?
-              <PlayableDisplayText sound={this.getSound("consonant")} waveHidden={this.state.coPlaying}>
+              <PlayableDisplayText sound={this.getSound("consonant")} waveHidden={this.state.coPlaying} style={{width: "100%"}}>
                 <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>
-                <span>{consonant}</span>
+                {consonant}
               </PlayableDisplayText> :
-              <PlayableDisplayText sound={this.getSound("letters")} waveHidden={this.state.coPlaying}>{consonant}{vowel}</PlayableDisplayText>
+              <PlayableDisplayText sound={this.getSound("letters")} waveHidden={this.state.coPlaying}>
+                <span style={{paddingRight: 20}}>{consonant}</span><span>{vowel}</span>
+              </PlayableDisplayText>
             }
           </SceneBar>
 

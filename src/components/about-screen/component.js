@@ -22,7 +22,7 @@ export default class CreditScreen extends React.Component {
           <p><em>Fun-Time Phonics!</em>™ is a classroom-proven program that:</p>
 
           <ul>
-            <li>Builds from students' natural speaking abilities, developing their auditory awareness of vowel sounds</li>
+            <li>Builds from students{"'"} natural speaking abilities, developing their auditory awareness of vowel sounds</li>
             <li>Incorporates multisensory instruction for introducing the alphabet and short vowels</li>
             <li>Involves multiple regions of the brain–analytical as well as artistic and language–providing various pathways to long-term memory and automatic word recall</li>
             <li>Utilizes coarticulation to introduce consonant sounds, eliminating traditional stumbling blocks and ensuring a successful reading start</li>
@@ -39,13 +39,13 @@ export default class CreditScreen extends React.Component {
           <div className="Credit-screen__names">James Meyers</div>
 
           <div className="Credit-screen__job-desc">Software Design by</div>
-          <div className="Credit-screen__names">Robert Femiano, Michael Baker, Chip Dombrowski, Patricia Gray, Terry McDonald, Sarah Rigney, James Meyers, Abbey J. Hunt</div>
+          <div className="Credit-screen__names">Robert Femiano, Michael Baker, Chip Dombrowski, Patricia Gray, Terry McDonald, Sarah Rigney, James Meyers,<div>Abbey J. Hunt</div></div>
 
           <div className="Credit-screen__job-desc">Graphic Design by</div>
           <div className="Credit-screen__names">Chip Dombrowski, Terry McDonald, Scott Slyter, Mary O’Dell</div>
 
           <div className="Credit-screen__job-desc">Edited by</div>
-          <div className="Credit-screen__names">Patricia Gray, Michael Baker, Chip Dombrowski, Terry McDonald, Sarah Rigney, James Meyers, Robert Femiano,<br/>Abbey J. Hunt</div>
+          <div className="Credit-screen__names">Patricia Gray, Michael Baker, Chip Dombrowski, Terry McDonald, Sarah Rigney, James Meyers, Robert Femiano,<div>Abbey J. Hunt</div></div>
 
           <div className="Credit-screen__job-desc">Audio by</div>
           <div className="Credit-screen__names">Dave DeAndrea, Jacqueline Examilotis, Terry McDonald</div>

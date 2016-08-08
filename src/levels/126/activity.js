@@ -17,7 +17,10 @@ import dndContext from "dnd-context";
 
 const wordStyle = {
   fontSize: 120,
-  cursor: "default"
+  cursor: "default",
+  width: "100%",
+  textAlign: "center",
+  whiteSpace: "nowrap"
 };
 
 function WordText({children}) {

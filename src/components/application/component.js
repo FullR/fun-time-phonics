@@ -195,7 +195,7 @@ export default class Application extends React.Component {
           userIndex={users}
           userNames={userNames}
           currentUser={currentUserId}
-          maxUserCount={demo ? 4 : 30}
+          maxUserCount={demo ? 4 : (isCordova() ? 5 : 30)}
           onSubmit={this.login.bind(this, params[0] || "current-level")}
           onSelectUser={this.changeUser.bind(this)}
           onCreateUser={this.createUser.bind(this)}

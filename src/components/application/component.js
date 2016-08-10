@@ -20,8 +20,9 @@ import images from "images-to-preload";
 import wait from "util/wait";
 import CustomDragLayer from "components/custom-drag-layer";
 import dndContext from "dnd-context";
-
 import WordResponse from "components/word-response";
+
+import AdminMobile from "components/admin-mobile";
 
 const {Title} = WordResponse;
 const preloadDivStyle = {position: "absolute", left: "-100%", height: 0, width: 0, overflow: "hidden"};
@@ -141,6 +142,7 @@ export default class Application extends React.Component {
   }
 
   renderCurrent() {
+    return (<AdminMobile/>);
     const {demo} = this.props;
     const {loaded, imagesLoaded, storeState} = this.state;
     const {users, userNames, currentUserId} = storeState;
@@ -195,7 +197,7 @@ export default class Application extends React.Component {
           userIndex={users}
           userNames={userNames}
           currentUser={currentUserId}
-          maxUserCount={demo ? 4 : 30}
+          maxUserCount={demo ? 4 : (isCordova() ? 5 : 30)}
           onSubmit={this.login.bind(this, params[0] || "current-level")}
           onSelectUser={this.changeUser.bind(this)}
           onCreateUser={this.createUser.bind(this)}

@@ -1,11 +1,16 @@
+@import "sizes.scss";
+
 .Scene-content {
   position: absolute;
-  //left: 22rem;
   left: 0;
   right: 0;
   top: 6.5rem;
-  //right: 22rem;
   bottom: 10rem;
   flex-direction: column;
   justify-content: space-around;
+
+  @include breakpoint($phone) {
+    top: 30px;
+    bottom: 30px;
+  }
 }

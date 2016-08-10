@@ -11,6 +11,21 @@
     font-size: 48px;
     margin-top: 40px;
   }
+
+  @include breakpoint($iphone5) {
+    font-size: 30px;
+    margin-top: 5px;
+  }
+
+  @include breakpoint($iphone6) {
+    font-size: 35px;
+    margin-top: 10px;
+  }
+
+  @include breakpoint($iphone6p) {
+    font-size: 40px;
+    margin-top: 20px;
+  }
 }
 
 .Score-screen-sub-title {

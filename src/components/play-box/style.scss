@@ -22,16 +22,16 @@
     }
 
     @include breakpoint($iphone6) {
-      min-width: $phone-width * 0.9;
+      min-width: $phone-width * 0.8;
       .Play-box__display-box {
-        height: $phone-width * 0.9;
+        height: $phone-width * 0.8;
       }
     }
 
     @include breakpoint($iphone5) {
-      min-width: $phone-width * 0.8;
+      min-width: $phone-width * 0.7;
       .Play-box__display-box {
-        height: $phone-width * 0.8;
+        height: $phone-width * 0.7;
       }
     }
   }
@@ -81,7 +81,7 @@
     text-align: center;
 
     @include breakpoint($phone) {
-      margin-top: 1rem;
+      margin-top: 10px;
     }
   }
 }

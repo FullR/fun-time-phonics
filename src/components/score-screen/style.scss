@@ -12,10 +12,21 @@
   &__boy {
     margin-left: 140px;
     transform: scale(1.5, 1.5);
+
+    @include breakpoint($phone) {
+      margin-left: 50px;
+    }
+
+    @include breakpoint($iphone5) {
+      margin-left: 25px;
+    }
   }
 
   &__score {
     margin-right: 50px;
+    @include breakpoint($phone) {
+      margin-right: 0;
+    }
   }
 
   &__robot-container {
@@ -26,11 +37,44 @@
     width: 100%;
     text-align: center;
     margin: 75px 0 75px;
+
+    @include breakpoint($iphone5) {
+      margin: 0;
+      height: 100px;
+    }
+
+    @include breakpoint($iphone6) {
+      margin: 0;
+      height: 120px;
+    }
+
+    @include breakpoint($iphone6p) {
+      margin: 20px 0 20px;
+      height: 120px;
+    }
+  }
+
+  .Robot {
+    @include breakpoint($iphone5) {
+      transform: scale(0.7, 0.7);
+    }
+    @include breakpoint($iphone6) {
+      transform: scale(0.8, 0.8);
+    }
+    @include breakpoint($iphone6p) {
+      transform: scale(0.9, 0.9);
+    }
   }
 
   .Arrow {
     position: relative;
     cursor: pointer;
+
+    @include breakpoint($phone) {
+      width: 192px * 0.7;
+      height: 120px * 0.7;
+      font-size: 25px;
+    }
   }
 
   &__back-arrow {
@@ -41,14 +85,34 @@
     @include breakpoint($tablet) {
       font-size: 32px;
     }
+
+    @include breakpoint($phone) {
+      font-size: 22px;
+      margin-right: 50px;
+    }
+
+    @include breakpoint($iphone5) {
+      margin-right: 15px;
+    }
   }
 
   &__next-arrow {
     font-size: 50px;
     margin-left: 150px;
+
+    @include breakpoint($phone) {
+      margin-left: 50px;
+    }
+    @include breakpoint($iphone5) {
+      margin-left: 15px;
+    }
   }
 }
 
 .Score-screen--passing .Score-screen__back-arrow {
   left: 50px;
+
+  @include breakpoint($phone) {
+    left: 0;
+  }
 }

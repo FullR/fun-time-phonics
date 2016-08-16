@@ -22,7 +22,7 @@ import CustomDragLayer from "components/custom-drag-layer";
 import dndContext from "dnd-context";
 import WordResponse from "components/word-response";
 
-import AdminMobile from "components/admin-mobile";
+// import AdminMobile from "components/admin-mobile";
 
 const {Title} = WordResponse;
 const preloadDivStyle = {position: "absolute", left: "-100%", height: 0, width: 0, overflow: "hidden"};
@@ -65,7 +65,7 @@ export default class Application extends React.Component {
         .then(() => this.setState({imagesLoaded: this.state.imagesLoaded + 1}))
         .catch((error) => console.error(`Failed to preload image ${path}: ${error}`))
     ))
-    .then(() => wait(500))
+    .then(() => wait(500)) // "the loading screen is too fast"
     .then(() => this.setState({loaded: true}));
   }
 
@@ -142,7 +142,7 @@ export default class Application extends React.Component {
   }
 
   renderCurrent() {
-    return (<AdminMobile/>);
+    //return (<AdminMobile/>);
     const {demo} = this.props;
     const {loaded, imagesLoaded, storeState} = this.state;
     const {users, userNames, currentUserId} = storeState;

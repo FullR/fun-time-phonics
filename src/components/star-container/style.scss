@@ -50,5 +50,9 @@ $large-width: 50px;
     @include breakpoint($tablet) {
       padding: 25px 75px 25px 75px;
     }
+
+    @include breakpoint($phone) {
+      padding: 10px 50px 10px 50px;
+    }
   }
 }

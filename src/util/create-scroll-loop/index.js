@@ -5,6 +5,13 @@ export default function createScrollLoop(parentEl, targetEl, duration, onComplet
   let lastFrame = startTime;
   let animating = true;
 
+  if(!duration) {
+    parentEl.scrollTop = targetEl.offsetTop;
+    onComplete();
+    animating = false;
+    return () => {};
+  }
+
   function onFrame() {
     if(!animating) return;
     const now = Date.now();

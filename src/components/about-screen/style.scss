@@ -1,8 +1,28 @@
+@import "sizes.scss";
+
 .Credit-screen {
+  font-size: 20px;
+
+  @include breakpoint($phone) {
+    font-size: 15px;
+  }
+
   .Info-screen-content {
-    padding: 3rem;
+    padding: 3em;
     position: relative;
     cursor: default;
+
+    @include breakpoint($tablet) {
+      padding: 2em;
+    }
+
+    @include breakpoint($phone) {
+      padding: 1em;
+    }
+  }
+
+  p:first-of-type {
+    margin-top: 0;
   }
 
   h3,
@@ -13,7 +33,7 @@
   }
 
   h3 {
-    margin-top: 5rem;
+    margin-top: 2em;
   }
 
   &__job-desc {
@@ -21,14 +41,13 @@
   }
 
   &__names {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5em;
   }
 
   &__version {
     position: absolute;
-    font-size: 1rem;
-    top: 0.3rem;
-    right: 0.3rem;
+    top: 0.3em;
+    right: 0.3em;
     color: rgba(0, 0, 0, 0.3);
   }
 

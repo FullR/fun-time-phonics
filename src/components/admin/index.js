@@ -26,7 +26,6 @@ export default class Admin extends React.Component {
     const {props} = this;
     const {viewport, loggedIn} = this.state;
     const AdminComponent = (viewport.width < 1024 ? AdminMobile : AdminDesktop);
-    console.log(loggedIn);
 
     return (<AdminComponent {...props} onLogin={this.handleLogin} noAuth={props.noAuth || loggedIn}/>);
   }

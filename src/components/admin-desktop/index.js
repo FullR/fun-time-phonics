@@ -64,7 +64,6 @@ export default class Admin extends React.Component {
     super(props);
 
     this.state = {
-      authenticated: props.noAuth,
       currentLevel: props.demo && !demoLevels.includes(props.user.currentLevelId) ? "26" : props.user.currentLevelId,
       sectionIndex: getSection(props.user.currentLevelId),
       authenticated: !!props.noAuth,
@@ -90,7 +89,7 @@ export default class Admin extends React.Component {
   }
 
   selectLevel(levelId) {
-    clearInterval(this.pulseTimeout);
+    clearTimeout(this.pulseTimeout);
     this.setState({arrowPulse: true, currentLevel: levelId});
     this.pulseTimeout = setTimeout(() => this.setState({arrowPulse: false}), 3000);
   }

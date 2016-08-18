@@ -19,12 +19,18 @@
     @include breakpoint($tablet) {
       margin: 0 1.5rem 0 1.5rem;
     }
+    @include breakpoint($phone) {
+      margin: 0 0.5rem 0 0.5rem;
+    }
   }
 
   &--count-5 > * {
     margin: 0 2rem 0 2rem;
     @include breakpoint($tablet) {
       margin: 0 1rem 0 1rem;
+    }
+    @include breakpoint($phone) {
+      margin: 0 0.25rem 0 0.25rem;
     }
   }
 

@@ -11,7 +11,6 @@ const {Header, Content, Footer} = InfoScreen;
 
 export default class OtherProductsScreen extends React.Component {
   shouldComponentUpdate = pureUpdate;
-
   render() {
     const {onBack, className} = this.props;
     const cn = bembam("Other-products-screen", className);

@@ -23,13 +23,25 @@ $tablet-robot-scale: 1;
 
     @include breakpoint($phone) {
       bottom: 10px;
-      right: 10px;
+      right: 25px;
     }
   }
 
   .Arrow {
     cursor: pointer;
     font-size: 5rem;
+
+    @include breakpoint($iphone6) {
+      width: 19.2rem * 1.1;
+      height: 12rem * 1.1;
+      font-size: 4rem;
+    }
+
+    @include breakpoint($iphone5) {
+      width: 19.2rem * 0.9;
+      height: 12rem * 0.9;
+      font-size: 3.5rem;
+    }
   }
 
   .Tctc-logo {
@@ -74,18 +86,19 @@ $tablet-robot-scale: 1;
 
     @include breakpoint($iphone6p) {
       transform: scale(0.6, 0.6);
-      bottom: -120px;
+      bottom: -140px;
+      left: 100px;
     }
 
     @include breakpoint($iphone6) {
-      transform: scale(0.5, 0.5);
-      left: 130px;
-      bottom: -150px;
+      transform: scale(0.6, 0.6);
+      left: 120px;
+      bottom: -110px;
     }
 
     @include breakpoint($iphone5) {
-      transform: scale(0.4, 0.4);
-      bottom: -180px;
+      transform: scale(0.6, 0.6);
+      bottom: -100px;
       left: 100px;
     }
   }
@@ -109,6 +122,14 @@ $tablet-robot-scale: 1;
 
     @include breakpoint($tablet) {
       font-size: 40px;
+    }
+
+    @include breakpoint($iphone6) {
+      font-size: 35px;
+    }
+
+    @include breakpoint($iphone5) {
+      font-size: 30px;
     }
   }
 

@@ -74,7 +74,7 @@ export default class Activity extends React.Component {
         <Actor type="boy" onClick={showLesson}>Lesson</Actor>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={consonant === "q" ? {position: "relative", top: -25} : null}>
             <DragContainer DragPreviewComponent={DisplayText}>
               <PlayableDisplayText sound={this.getSound("-letters")} waveHidden={this.state.coPlaying}>{consonant + vowel}</PlayableDisplayText>
             </DragContainer>

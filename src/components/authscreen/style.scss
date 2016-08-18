@@ -22,6 +22,10 @@ $bottom-background: #CDE39F;
     font-size: 140px;
     cursor: default;
     align-self: center;
+
+    @include breakpoint($phone) {
+      font-size: 80px;
+    }
   }
 
   &__instructions {
@@ -31,6 +35,11 @@ $bottom-background: #CDE39F;
     text-align: center;
     font-size: 40px;
     cursor: default;
+
+    @include breakpoint($phone) {
+      top: 10%;
+      font-size: 20px;
+    }
   }
 
   &__password {
@@ -46,9 +55,14 @@ $bottom-background: #CDE39F;
     @include breakpoint($tablet) {
       top: 45%;
     }
+
+    @include breakpoint($phone) {
+      top: 20%;
+    }
   }
 
   input {
+    position: relative;
     display: inline-block;
     text-align: center;
     height: 50px;
@@ -61,6 +75,10 @@ $bottom-background: #CDE39F;
       font-size: 30px;
       line-height: 30px;
     }
+
+    @include breakpoint($phone) {
+      top: 10px;
+    }
   }
 
   .Arrow {
@@ -72,6 +90,10 @@ $bottom-background: #CDE39F;
 
     @include breakpoint($tablet) {
       top: 47px;
+      height: 95px;
+    }
+
+    @include breakpoint($phone) {
       height: 95px;
     }
   }

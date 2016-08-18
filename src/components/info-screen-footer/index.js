@@ -10,10 +10,15 @@ export default class InfoScreenFooter extends React.Component {
 
     return (
       <div {...this.props} className={cn}>
-        <div className={cn.el("tctc-info")}>
-          © 2016 The Critical Thinking Co.™ {"•"} <WebLink href="http://criticalthinking.com/">www.CriticalThinking.com</WebLink> {"•"} 800-458-4849
+        <div className={cn.el("left")}/>
+        <div className={cn.el("middle")}>
+          <div className={cn.el("tctc-info")}>
+            © 2016 The Critical Thinking Co.™ {"•"} <WebLink href="http://criticalthinking.com/">www.CriticalThinking.com</WebLink> {"•"} 800-458-4849
+          </div>
         </div>
-        <div className={cn.el("back-button")} onClick={onBack}>Back</div>
+        <div className={cn.el("right")}>
+          <div className={cn.el("back-button")} onClick={onBack}>Back</div>
+        </div>
       </div>
     );
   }

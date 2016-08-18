@@ -1,10 +1,14 @@
 @import "sizes.scss";
 
-$image: "../../../images/star-border.png";
-$dark-image: "../../../images/star-border-dark.png";
+// desktop
+$image: "../../../images/star-borders/light.png";
+$dark-image: "../../../images/star-borders/dark.png";
+$small-image: "../../../images/star-borders/light-small.png";
+$small-dark-image: "../../../images/star-borders/dark-small.png";
 $width: 25px;
+$small-width: 12px;
 
-$large-image: "../../../images/star-border-large.png";
+$large-image: "../../../images/star-borders/light-large.png";
 $large-width: 50px;
 
 .Star-container {
@@ -14,21 +18,41 @@ $large-width: 50px;
   border-image: url($image) 25 25 round;
   text-align: center;
 
+  @include breakpoint($phone) {
+    border-width: $small-width;
+    border-image: url($small-image) 12 12 round;
+  }
+
   &--large {
     border-width: $large-width;
     border-image: url($large-image) 50 50 round;
+
+    @include breakpoint($phone) {
+      border-width: $width;
+      border-image: url($image) 25 25 round;
+    }
   }
 
   &--dark {
     border-width: $width;
     border-image: url($dark-image) 25 25 round;
+
+    @include breakpoint($phone) {
+      border-width: $small-width;
+      border-image: url($small-dark-image) 12 12 round;
+    }
   }
+
 
   &--padded {
     padding: 50px 150px 50px 150px;
 
     @include breakpoint($tablet) {
       padding: 25px 75px 25px 75px;
+    }
+
+    @include breakpoint($phone) {
+      padding: 10px 50px 10px 50px;
     }
   }
 }

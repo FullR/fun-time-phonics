@@ -1,0 +1,359 @@
+@import "sizes.scss";
+
+$root: ".Mobile-admin";
+$border-color: #888;
+$border-width: 1px;
+$border: $border-width solid $border-color;
+$text-shadow: 1px 1px 2px #444;
+$list-button-bg: #ECF2D3;
+$list-button-active-bg: #B1FFAD;
+$list-button-text-color: #0000FF;
+$passing-color: #8C9D45;
+$failing-color: #FF0000;
+$trim-color: #87BFFF;
+$info-color: #FFF;
+$inset-color: lighten($trim-color, 20%);
+$tray-color: darken($trim-color, 10%);
+$arrow-image: "../../../images/arrows/green.png";
+$arrow-hover-image: "../../../images/arrows/green_hover.png";
+$section-arrow-image: "../../../images/arrows/blue.png";
+$section-arrow-hover-image: "../../../images/arrows/blue_hover.png";
+$gear-image: "../../../images/gear.png";
+$gear-hover-image: "../../../images/gear_hover.png";
+$x-image: "../../../images/x-icon.png";
+$x-hover-image: "../../../images/x-icon_hover.png";
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+.Mobile-admin {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+
+  @include breakpoint($phone) {
+    font-size: 5px;
+  }
+
+  &__tray {
+    display: inline-block;
+    position: relative;
+    flex: 0 0 auto;
+    background: $trim-color;
+    z-index: 3;
+    overflow: visible;
+    box-shadow: 0.8em 0px 0.3em rgba(0, 0, 0, 0.1);
+    padding: 1em;
+
+    &--open .Mobile-admin__tray-drawer {
+      left: 0;
+    }
+  }
+
+  &__tray-overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &__tray-drawer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    width: 30em;
+    height: 100%;
+    padding: 2em 1em 2em 1em;
+    top: 0;
+    left: -31em;
+    background: $trim-color;
+    box-shadow: 0.8em 0px 0.3em rgba(0, 0, 0, 0.1);
+    transition: left 0.5s;
+    overflow: auto;
+
+    button {
+      font-size: 3em;
+      outline: none;
+      border: $border;
+      cursor: pointer;
+      background: $inset-color;
+    }
+
+    button + button {
+      margin-top: 0.5em;
+    }
+  }
+
+  &__gear-icon {
+    width: 4.5em;
+    height: 4.5em;
+    background-image: url($gear-image);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  &__x-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url($x-image);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    align-self: flex-end;
+    margin-bottom: 2em;
+  }
+
+  &__level-list-column {
+    display: flex;
+    flex-direction: column;
+    flex: 2 1 auto;
+    min-width: 45em;
+    background: $trim-color;
+  }
+
+  &__level-list-column-heading {
+    flex: 0 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 5em;
+  }
+
+  &__level-list {
+    overflow: auto;
+  }
+
+  &__level-list-item {
+    box-sizing: border-box;
+    border-top: $border;
+
+    &--no-border {
+      border-top: none;
+    }
+  }
+
+  &__section-heading {
+    text-align: center;
+    padding: 0.2em;
+    font-size: 5em;
+    font-weight: bold;
+    background: $trim-color;
+    color: $info-color;
+    z-index: 3;
+    text-shadow: $text-shadow;
+  }
+
+  &__level-range {
+    font-size: 0.5em;
+    text-align: center;
+    width: 6em;
+  }
+
+  &__level-button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 10em;
+    padding: 1em 2em 1em 2em;
+    cursor: pointer;
+    background: $list-button-bg;
+    color: $list-button-text-color;
+
+    &--selected {
+      background: $list-button-active-bg;
+    }
+  }
+
+  &__level-button-index {
+    position: absolute;
+    left: 0.5em;
+    top: 0.5em;
+    font-size: 2em;
+  }
+
+  &__level-button-title {
+    font-size: 5em;
+    flex: 5 1 auto;
+  }
+
+  &__level-button-score {
+    font-size: 4em;
+    flex: 0 1 auto;
+    text-align: right;
+
+    &--passing {
+      color: $passing-color;
+    }
+
+    &--failing {
+      color: $failing-color;
+    }
+  }
+
+  &__info-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    max-width: 45em;
+    background: $trim-color;
+    z-index: 2;
+    box-shadow: -0.8em 0 0.3em rgba(0, 0, 0, 0.1);
+  }
+
+  &__info-column-heading {
+    padding: 0.2em 0 0.2em;
+    flex: 0 0 auto;
+    font-size: 4.5em;
+    text-align: center;
+    color: $info-color;
+    font-weight: bold;
+    text-shadow: $text-shadow;
+    z-index: 2;
+  }
+
+  &__section-arrow-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__section-arrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 2em;
+    height: 1.5em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &__section-arrow-text {
+    font-size: 0.4em;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
+
+  &__section-arrow-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    outline: 1px solid black;
+    background-image: url($section-arrow-image);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &--flipped {
+      transform: scale(-1, 1);
+    }
+  }
+
+  &__level-description {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 1em;
+    font-size: 3.2em;
+    line-height: 1.5em;
+    background: $inset-color;
+  }
+
+  &__arrow-container {
+    display: flex;
+    min-height: 18em;
+    max-height: 18em;
+    flex-direction: row;
+    padding: 1em 2.5em 1em 2.5em;
+    z-index: 2;
+  }
+
+  &__arrow {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    background-image: url($arrow-image);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: visible;
+    color: #FFF;
+
+    &--pulsing {
+      animation-duration: 0.5s;
+      animation-name: pulse;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+
+  &__arrow-text {
+    font-size: 3em;
+    width: 100%;
+  }
+
+  &__scroll-anchor {
+    width: 0;
+    height: 0;
+  }
+
+  &__info-screen {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    z-index: 3;
+
+    &--open {
+      display: block;
+    }
+  }
+}
+
+.hover-enabled .Mobile-admin__level-button:hover,
+.Mobile-admin__level-button:active {
+  background: $list-button-active-bg;
+}
+
+.hover-enabled .Mobile-admin__arrow:hover,
+.Mobile-admin__arrow:active {
+  background-image: url($arrow-hover-image);
+}
+
+.hover-enabled .Mobile-admin__gear-icon:hover,
+.Mobile-admin__gear-icon:active {
+  background-image: url($gear-hover-image);
+}
+
+.hover-enabled .Mobile-admin__x-icon:hover,
+.Mobile-admin__x-icon:active {
+  background-image: url($x-hover-image);
+}
+
+.hover-enabled .Mobile-admin__section-arrow:hover .Mobile-admin__section-arrow-image,
+.Mobile-admin__section-arrow:active .Mobile-admin__section-arrow-image {
+  background-image: url($section-arrow-hover-image);
+}

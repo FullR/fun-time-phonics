@@ -72,7 +72,7 @@ export default class LevelResponse extends React.Component {
     const {correctWord, consonant, vowel} = this.props;
     return (
       <StarContainer padded>
-        <div><DisplayText>{consonant}{vowel}</DisplayText></div>
+        <div style={consonant === "q" ? {position: "relative", top: -20} : null}><DisplayText>{consonant}{vowel}</DisplayText></div>
         <div style={{width: "100%", textAlign: "center"}}>
         <Word word={correctWord}/>
         </div>

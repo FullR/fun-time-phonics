@@ -65,18 +65,18 @@ $large-scale: 0.5;
   background-size: 100% 100%;
 
   @include breakpoint($iphone6p) {
-    width: $width * $large-scale * 0.7;
-    height: $height * $large-scale * 0.7;
-  }
-
-  @include breakpoint($iphone6) {
     width: $width * $large-scale * 0.6;
     height: $height * $large-scale * 0.6;
   }
 
+  @include breakpoint($iphone6) {
+    width: $width * $large-scale * 0.55;
+    height: $height * $large-scale * 0.55;
+  }
+
   @include breakpoint($iphone5) {
-    width: $width * $large-scale * 0.5;
-    height: $height * $large-scale * 0.5;
+    width: $width * $large-scale * 0.45;
+    height: $height * $large-scale * 0.45;
   }
 
   &.Robot-girl--animating {

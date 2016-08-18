@@ -1,40 +1,25 @@
 @import "sizes.scss";
 
-@mixin play-box-size($name, $width, $tablet-width, $phone-width) {
+@mixin bp-size($bp, $name, $size) {
+  @include breakpoint($bp) {
+    @include size($name, $size);
+  }
+}
+
+@mixin size($name, $size) {
   &--size-#{$name} {
-    min-width: $width;
+    min-width: $size;
+
     .Play-box__display-box {
-      height: $width;
-    }
-
-    @include breakpoint($tablet) {
-      min-width: $tablet-width;
-      .Play-box__display-box {
-        height: $tablet-width;
-      }
-    }
-
-    @include breakpoint($iphone6p) {
-      min-width: $phone-width;
-      .Play-box__display-box {
-        height: $phone-width;
-      }
-    }
-
-    @include breakpoint($iphone6) {
-      min-width: $phone-width * 0.9;
-      .Play-box__display-box {
-        height: $phone-width * 0.9;
-      }
-    }
-
-    @include breakpoint($iphone5) {
-      min-width: $phone-width * 0.8;
-      .Play-box__display-box {
-        height: $phone-width * 0.8;
-      }
+      height: $size;
     }
   }
+}
+
+@mixin bp-sizes($bp, $large, $medium, $small) {
+  @include bp-size($bp, "large", $large);
+  @include bp-size($bp, "medium", $medium);
+  @include bp-size($bp, "small", $small);
 }
 
 .Play-box {
@@ -42,9 +27,16 @@
   position: relative;
   margin-collapse: separate;
 
-  @include play-box-size("large", 300px, 200px, 150px);
-  @include play-box-size("medium", 200px, 150px, 125px);
-  @include play-box-size("small", 125px, 100px, 75px);
+  @include size("large", 300px);
+  @include size("medium", 200px);
+  @include size("small", 125px);
+
+  @include bp-sizes($tablet, 200px, 150px, 100px);
+
+  @include bp-sizes($phone, 150px, 125px, 75px);
+  @include bp-sizes($iphone6p, 140px, 115px, 70px);
+  @include bp-sizes($iphone6, 130px, 105px, 60px);
+  @include bp-sizes($iphone5, 120px, 100px, 50px);
 
   &__display-box {
     width: 100%;
@@ -81,7 +73,7 @@
     text-align: center;
 
     @include breakpoint($phone) {
-      margin-top: 1rem;
+      margin-top: 10px;
     }
   }
 }

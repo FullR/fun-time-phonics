@@ -103,8 +103,9 @@ export default class Lesson extends React.Component {
               sound={this.getSound("letter")}
               hidden={!showingLetter}
               waveHidden={this.state.coPlaying}
+              style={{width: "auto"}}
             >
-              <span style={{marginRight: 50}}>{letter.toUpperCase()}</span><span>{letter}</span>
+              <span style={{marginRight: 25}}>{letter.toUpperCase()}</span><span style={{marginLeft: 25}}>{letter}</span>
             </PlayableDisplayText>
           </SceneBar>
 

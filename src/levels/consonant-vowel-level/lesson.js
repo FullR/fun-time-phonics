@@ -206,7 +206,7 @@ export default class Lesson extends React.Component {
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={consonant === "q" ? {position: "relative", top: -20} : null}>
             {showingLetterIntro && !showingVowel ?
               <PlayableDisplayText sound={this.getSound("consonant")} waveHidden={this.state.coPlaying} style={{width: "100%"}}>
                 <span style={{marginRight: 50}}>{consonant.toUpperCase()}</span>

@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Actor {
   position: absolute;
   z-index: 10;
@@ -5,11 +7,21 @@
   &--size-small.Actor--boy {
     left: 1rem;
     top: 1rem;
+
+    @include breakpoint($phone) {
+      left: 0;
+      top: 5px;
+    }
   }
 
   &--size-small.Actor--girl {
     right: 1rem;
     top: 1rem;
+
+    @include breakpoint($phone) {
+      right: 0;
+      top: 5px;
+    }
   }
 
   &--size-large {

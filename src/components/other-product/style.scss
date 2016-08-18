@@ -1,4 +1,6 @@
 
+@import "sizes.scss";
+
 .Other-product {
   display: flex;
   flex-direction: row;
@@ -7,6 +9,7 @@
   font-size: 22px;
   width: 100%;
   min-height: 152px;
+  flex: 1 1 auto;
 
   .hover-enabled &:hover,
   .hover-disabled &:active {
@@ -31,5 +34,15 @@
     padding: 10px 15px 10px 15px;
     margin-left: 10px;
     border: 1px solid #444;
+    overflow: auto;
+    min-height: 0;
+
+    @include breakpoint($phone) {
+      font-size: 16px;
+    }
+
+    @include breakpoint($iphone5) {
+      font-size: 12px;
+    }
   }
 }

@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Score-screen-score {
   font-size: 65px;
   text-align: center;
@@ -9,5 +11,17 @@
 
   &--failing &__percent {
     color: #B00;
+  }
+
+  @include breakpoint($iphone5) {
+    font-size: 20px;
+  }
+
+  @include breakpoint($iphone6) {
+    font-size: 25px;
+  }
+
+  @include breakpoint($iphone6p) {
+    font-size: 35px;
   }
 }

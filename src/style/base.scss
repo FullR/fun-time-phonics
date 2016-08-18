@@ -1,6 +1,13 @@
 @import "sizes.scss";
 @import "./school-text.scss";
 
+// Debug styles
+// * {
+//   background: #000 !important;
+//   color: #0f0 !important;
+//   outline: solid #f00 1px !important;
+// }
+
 html {
   font-size: 10px;
   cursor: default;
@@ -40,6 +47,10 @@ body {
 
 *, *:before, *:after {
   box-sizing: border-box;
+}
+
+.hover-disabled {
+  pointer-events: none;
 }
 
 #game-container {

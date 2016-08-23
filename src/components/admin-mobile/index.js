@@ -79,6 +79,10 @@ const SectionArrow = ({onClick, flipped, children}) => (
   </div>
 );
 
+
+function formatScore(s) {
+  return Math.floor(s);
+}
 const LevelButtonItem = makeStateful((props) => {
   const {children, index, showingScore, passing, score, indented} = props;
   const Index = index ? (<LevelButtonIndex>{index}.<DSpace/></LevelButtonIndex>) : null;
@@ -320,7 +324,7 @@ export default class MobileAdmin extends React.Component {
           selected: levelId === currentLevel,
           onClick: this.selectLevel.bind(this, levelId),
           showingScore: complete || started,
-          score: complete ? `${percent}%` : "Incomplete",
+          score: complete ? `${formatScore(percent)}%` : "Incomplete",
           passing: started && percent >= getRequiredScore(),
           indented,
           index,

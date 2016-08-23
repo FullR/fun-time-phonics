@@ -42,8 +42,11 @@ const LevelButton = classComponent("div", ({selected}) => [
   "Mobile-admin__level-button",
   {"Mobile-admin__level-button--selected": selected}
 ]);
-const LevelButtonIndex = classComponent("div", "Mobile-admin__level-button-index");
-const LevelButtonTitle = classComponent("div", "Mobile-admin__level-button-title");
+const LevelButtonIndex = classComponent("span", "Mobile-admin__level-button-index");
+const LevelButtonTitle = classComponent("div", ({indented}) => [
+  "Mobile-admin__level-button-title",
+  {"Mobile-admin__level-button-title--indented": indented}
+]);
 const LevelButtonScore = classComponent("div", ({passing, visible}) => [
   "Mobile-admin__level-button-score",
   "Mobile-admin__level-button-score--" + (passing ? "passing" : "failing")
@@ -77,14 +80,14 @@ const SectionArrow = ({onClick, flipped, children}) => (
 );
 
 const LevelButtonItem = makeStateful((props) => {
-  const {children, index, showingScore, passing, score} = props;
-  const Index = index ? (<span>{index}.<DSpace/></span>) : null;
+  const {children, index, showingScore, passing, score, indented} = props;
+  const Index = index ? (<LevelButtonIndex>{index}.<DSpace/></LevelButtonIndex>) : null;
   const Score = showingScore ? (<LevelButtonScore passing={passing}>{score}</LevelButtonScore>) : null;
 
   return (
     <LevelListItem>
       <LevelButton {...props}>
-        <LevelButtonTitle>{Index}{children}</LevelButtonTitle>
+        <LevelButtonTitle indented={indented}>{Index}{children}</LevelButtonTitle>
         {Score}
       </LevelButton>
     </LevelListItem>
@@ -124,7 +127,6 @@ export default class MobileAdmin extends React.Component {
   }
 
   handleSectionScrollChange = (section) => {
-    console.log(`handleSectionScrollChange ${section}`);
     if(!this.cancelScrollLoop) { // ignore if scrolling is done programmatically
       //setTimeout(() => this.setState({section}), 0);
       this.setState({section});
@@ -301,10 +303,14 @@ export default class MobileAdmin extends React.Component {
       const baseLevelId = levelId.split("-")[0];
       const index = baseLevelId === "1" || baseLevelId === "2" ? null : levelId;
       const ref = `level-button-${levelId}`;
+      const isSubLevel = index === null;
+      const indented = isSubLevel;
+
       if(disabled) {
         return {
           selected: false,
           onClick: null,
+          indented,
           index,
           disabled,
           ref
@@ -316,6 +322,7 @@ export default class MobileAdmin extends React.Component {
           showingScore: complete || started,
           score: complete ? `${percent}%` : "Incomplete",
           passing: started && percent >= getRequiredScore(),
+          indented,
           index,
           disabled,
           ref
@@ -357,21 +364,21 @@ export default class MobileAdmin extends React.Component {
             <ScrollAnchor ref="section-1"/>
             <ListSectionHeader noBorder>1.<DSpace/>Beginning Sounds</ListSectionHeader>
             <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 1)}/>
-            <LevelButtonItem {...level("1")}>t</LevelButtonItem>
-            <LevelButtonItem {...level("1-m")}>m</LevelButtonItem>
-            <LevelButtonItem {...level("1-l")}>l</LevelButtonItem>
-            <LevelButtonItem {...level("1-n")}>n</LevelButtonItem>
-            <LevelButtonItem {...level("1-r")}>r</LevelButtonItem>
-            <LevelButtonItem {...level("1-g")}>g</LevelButtonItem>
-            <LevelButtonItem {...level("1-s")}>s</LevelButtonItem>
+            <LevelButtonItem {...level("1")}>Beginning <strong>t</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-m")}>Beginning <strong>m</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-l")}>Beginning <strong>l</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-n")}>Beginning <strong>n</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-r")}>Beginning <strong>r</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-g")}>Beginning <strong>g</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("1-s")}>Beginning <strong>s</strong> Sound</LevelButtonItem>
             <ListSectionHeader>2.<DSpace/>Ending Sounds</ListSectionHeader>
-            <LevelButtonItem {...level("2")}>t</LevelButtonItem>
-            <LevelButtonItem {...level("2-d")}>d</LevelButtonItem>
-            <LevelButtonItem {...level("2-p")}>p</LevelButtonItem>
-            <LevelButtonItem {...level("2-k")}>k</LevelButtonItem>
-            <LevelButtonItem {...level("2-f")}>f</LevelButtonItem>
-            <LevelButtonItem {...level("2-m")}>m</LevelButtonItem>
-            <LevelButtonItem {...level("2-b")}>b</LevelButtonItem>
+            <LevelButtonItem {...level("2")}>Ending <strong>t</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-d")}>Ending <strong>d</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-p")}>Ending <strong>p</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-k")}>Ending <strong>k</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-f")}>Ending <strong>f</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-m")}>Ending <strong>m</strong> Sound</LevelButtonItem>
+            <LevelButtonItem {...level("2-b")}>Ending <strong>b</strong> Sound</LevelButtonItem>
             <LevelButtonItem {...level("3")}>Beginning & Ending Sounds</LevelButtonItem>
             <LevelButtonItem {...level("4")}>Rhyme Match</LevelButtonItem>
             <LevelButtonItem {...level("5")}>Rhyme Time</LevelButtonItem>
@@ -615,6 +622,5 @@ function getSection(levelId) {
   if(levelId.includes("-")) return 1;
   const levelIdNum = parseInt(levelId);
   const sectionId =  Object.values(sections).find(({levelRange: r}) => levelIdNum >= r[0] && levelIdNum <= r[1]).id;
-  console.log(`${levelId} -> ${levelIdNum} -> ${sectionId}`)
   return sectionId;
 }

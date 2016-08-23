@@ -15,7 +15,8 @@ export default function createScrollLoop(parentEl, targetEl, duration, onComplet
   function onFrame() {
     if(!animating) return;
     const now = Date.now();
-    const distance = parentEl.scrollTop - targetEl.offsetTop;
+    const maxScrollTop = parentEl.scrollHeight - parentEl.clientHeight;
+    const distance = parentEl.scrollTop - Math.min(targetEl.offsetTop, maxScrollTop);
     const deltaTime = now - lastFrame;
     const deltaScroll = Math.min(speed * deltaTime, Math.abs(distance));
     lastFrame = now;

@@ -146,8 +146,8 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   }
 
   &__section-heading {
-    text-align: center;
-    padding: 0.2em;
+    //text-align: center;
+    padding: 0.2em 0.4em 0.2em 0.4em;
     font-size: 5em;
     font-weight: bold;
     background: $trim-color;
@@ -159,7 +159,7 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   &__level-range {
     font-size: 0.5em;
     text-align: center;
-    width: 6em;
+    width: 7em;
   }
 
   &__level-button {
@@ -179,15 +179,16 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   }
 
   &__level-button-index {
-    position: absolute;
-    left: 0.5em;
-    top: 0.5em;
-    font-size: 2em;
+    display: inline-block;
+    min-width: 1em;
   }
 
   &__level-button-title {
     font-size: 5em;
     flex: 5 1 auto;
+    &--indented {
+      margin-left: 1.25em;
+    }
   }
 
   &__level-button-score {

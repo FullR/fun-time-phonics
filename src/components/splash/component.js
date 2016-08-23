@@ -34,10 +34,6 @@ export default class Splash extends React.Component {
 
     return (
       <Screen className={classNames}>
-        {demo ?
-          <div className="Splash__version-label">DEMO<br/>1.1</div> :
-          <div className="Splash__version-label">1.1</div>
-        }
         <TctcLogo/>
         <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>
           <img className="Splash__speech-bubble" src={require("../../../images/splash/speech-bubble.png")}/>

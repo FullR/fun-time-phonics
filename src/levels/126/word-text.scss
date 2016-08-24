@@ -1,0 +1,21 @@
+@import "sizes.scss";
+
+.Level-126__word-text {
+  font-size: 120px;
+  cursor: "default";
+  width: "100%";
+  text-align: "center";
+  white-space: "nowrap";
+
+  @include breakpoint($phone) {
+    font-size: 60px;
+  }
+
+  @include breakpoint($iphone6) {
+    font-size: 70px;
+  }
+
+  @include breakpoint($iphone6p) {
+    font-size: 90px;
+  }
+}

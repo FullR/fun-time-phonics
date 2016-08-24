@@ -189,6 +189,10 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     &--indented {
       margin-left: 1.25em;
     }
+
+    @include breakpoint($iphone5) {
+      font-size: 4em;
+    }
   }
 
   &__level-button-score {

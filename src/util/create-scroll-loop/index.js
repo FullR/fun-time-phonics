@@ -1,11 +1,17 @@
+function getScrollDistance(parentEl, targetEl) {
+  const maxScrollTop = parentEl.scrollHeight - parentEl.clientHeight;
+  return parentEl.scrollTop - Math.min(targetEl.offsetTop, maxScrollTop);
+}
+
 export default function createScrollLoop(parentEl, targetEl, duration, onComplete) {
   const startTime = Date.now();
-  const startDistance = parentEl.scrollTop - targetEl.offsetTop;
+  const startDistance = getScrollDistance(parentEl, targetEl);
   const speed = Math.abs(startDistance) / duration;
   let lastFrame = startTime;
   let animating = true;
 
   if(!duration) {
+    console.log(targetEl.offsetTop, startDistance);
     parentEl.scrollTop = targetEl.offsetTop;
     onComplete();
     animating = false;
@@ -15,8 +21,7 @@ export default function createScrollLoop(parentEl, targetEl, duration, onComplet
   function onFrame() {
     if(!animating) return;
     const now = Date.now();
-    const maxScrollTop = parentEl.scrollHeight - parentEl.clientHeight;
-    const distance = parentEl.scrollTop - Math.min(targetEl.offsetTop, maxScrollTop);
+    const distance = getScrollDistance(parentEl, targetEl);
     const deltaTime = now - lastFrame;
     const deltaScroll = Math.min(speed * deltaTime, Math.abs(distance));
     lastFrame = now;

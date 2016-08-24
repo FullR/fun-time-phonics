@@ -175,12 +175,22 @@ export default class MobileAdmin extends React.Component {
   };
 
   componentDidMount() {
-    this.scrollToLevel(this.state.currentLevel);
+    const {authenticated, currentLevel} = this.state;
+    if(authenticated) {
+      this.scrollToLevel(currentLevel);
+    }
   }
 
   componentWillUnmount() {
     clearTimeout(this.pulseTimeout);
     this.stopScrolling();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(!prevState.authenticated && this.state.authenticated) {
+      const {currentLevel} = this.state;
+      this.scrollToLevel(currentLevel);
+    }
   }
 
   scrollToRef(refName, duration) {
@@ -202,8 +212,8 @@ export default class MobileAdmin extends React.Component {
   }
 
   scrollToLevel(levelId, duration=0) {
-    this.scrollToRef(`level-button-${levelId}`, duration);
     this.setState({section: getSection(levelId)});
+    this.scrollToRef(`level-button-${levelId}`, duration);
   }
 
   stopScrolling() {

@@ -15,16 +15,10 @@ import DisplayBox from "components/display-box";
 import DropWordBox from "components/drop-word-box";
 import dndContext from "dnd-context";
 
-const wordStyle = {
-  fontSize: 120,
-  cursor: "default",
-  width: "100%",
-  textAlign: "center",
-  whiteSpace: "nowrap"
-};
+require("./word-text.scss");
 
 function WordText({children}) {
-  return (<span style={wordStyle}>{children}</span>)
+  return (<span className="Level-126__word-text">{children}</span>)
 }
 
 //REMOVED: @dndContext

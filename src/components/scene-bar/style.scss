@@ -1,43 +1,41 @@
 @import "sizes.scss";
 
+@mixin count-margins($desktop, $tablet, $phone, $iphone6: $phone, $iphone5: $iphone6) {
+  margin: 0 $desktop 0 $desktop;
+  @include breakpoint($tablet) {
+    margin: 0 $tablet 0 $tablet;
+  }
+
+  @include breakpoint($phone) {
+    margin: 0 $phone 0 $phone;
+  }
+
+  @include breakpoint($iphone6) {
+    margin: 0 $iphone6 0 $iphone6;
+  }
+
+  @include breakpoint($iphone5) {
+    margin: 0 $iphone5 0 $iphone5;
+  }
+}
+
 .Scene-bar {
   flex-direction: row;
   justify-content: center;
 
   > * {
-    margin: 0 5rem 0 5rem;
-    @include breakpoint($tablet) {
-      margin: 0 2.5rem 0 2.5rem;
-    }
-    @include breakpoint($phone) {
-      margin: 0 1rem 0 1rem;
-    }
+    @include count-margins(5rem, 2.5rem, 1rem, 0.6rem, 0.4rem);
   }
 
   &--count-4 > * {
-    margin: 0 3.5rem 0 3.5rem;
-    @include breakpoint($tablet) {
-      margin: 0 1.5rem 0 1.5rem;
-    }
-    @include breakpoint($phone) {
-      margin: 0 0.5rem 0 0.5rem;
-    }
+    @include count-margins(3.5rem, 1.5rem, 0.5rem, 0.3rem, 0.1rem);
   }
 
   &--count-5 > * {
-    margin: 0 2rem 0 2rem;
-    @include breakpoint($tablet) {
-      margin: 0 1rem 0 1rem;
-    }
-    @include breakpoint($phone) {
-      margin: 0 0.25rem 0 0.25rem;
-    }
+    @include count-margins(2rem, 1rem, 0.25rem);
   }
 
   &--count-6 > * {
-    margin: 0 1.5rem 0 1.5rem;
-    @include breakpoint($tablet) {
-      margin: 0 0.5rem 0 0.5rem;
-    }
+    @include count-margins(1.5rem, 0.5rem, 0.2rem, 0.1rem);
   }
 }

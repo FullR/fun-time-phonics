@@ -55,14 +55,13 @@ export default class Authscreen extends React.Component {
 
   render() {
     const {password} = this.state;
-    const {timeout, onTimeout, onFail, className} = this.props;
+    const {timeout, onTimeout, onFail, isMobile, className} = this.props;
     const cn = bembam("Authscreen", className);
-
+    const DesktopOnlyLineBreak = isMobile ? (() => <span> </span>) : (() => <br/>);
     return (
       <Screen className={cn.toString()}>
         <div className={cn.el("instructions")}>
-          <span>Enter the first three letters of the word</span><br/>
-          <span>"<span className={cn.el("password")}>tea</span>cher"</span><br/>
+          <span>Enter the first three letters of the word</span><DesktopOnlyLineBreak/><span className={cn.el("password-quotes")}>"<span className={cn.el("password")}>tea</span>cher"</span><br/>
           <span>in the box and select Go to enter the Admin/Score screen.</span>
         </div>
 

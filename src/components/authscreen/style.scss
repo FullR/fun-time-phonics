@@ -4,17 +4,22 @@ $bottom-background: #CDE39F;
 
 .Authscreen {
   background: $top-background;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &__bottom {
-    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    left: 0;
-    bottom: 0;
+    flex: 0 1 auto;
     width: 100%;
     height: 30%;
     background: $bottom-background;
+
+    @include breakpoint($phone) {
+      flex: 1 1 auto;
+    }
   }
 
   &__timer {
@@ -29,16 +34,20 @@ $bottom-background: #CDE39F;
   }
 
   &__instructions {
-    position: absolute;
-    top: 20%;
+    flex: 0 1 auto;
     width: 100%;
     text-align: center;
     font-size: 40px;
     cursor: default;
+    margin-top: 50px;
+
+    @include breakpoint($tablet) {
+      margin-top: 25px;
+    }
 
     @include breakpoint($phone) {
-      top: 10%;
       font-size: 20px;
+      margin-top: 10px;
     }
   }
 
@@ -47,26 +56,23 @@ $bottom-background: #CDE39F;
   }
 
   form {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0 1 auto;
     width: 100%;
-    text-align: center;
-    top: 35%;
-    vertical-align: middle;
-    @include breakpoint($tablet) {
-      top: 45%;
-    }
-
-    @include breakpoint($phone) {
-      top: 20%;
-    }
+    margin-top: 35px;
   }
 
   input {
+    flex: 1 1 auto;
     position: relative;
     display: inline-block;
     text-align: center;
+    min-width: 300px;
+    max-width: 600px;
     height: 50px;
-    width: 25%;
     font-size: 45px;
     line-height: 40px;
     vertical-align: middle;
@@ -77,24 +83,26 @@ $bottom-background: #CDE39F;
     }
 
     @include breakpoint($phone) {
-      top: 10px;
+      font-size: 20px;
+      max-width: 300px;
+      min-width: 200px;
     }
   }
 
   .Arrow {
     display: inline-block;
     position: relative;
-    left: 20px;
-    top: 55px;
     font-size: 40px;
+    top: -36px;
 
     @include breakpoint($tablet) {
-      top: 47px;
       height: 95px;
+      top: -22px;
     }
 
     @include breakpoint($phone) {
       height: 95px;
+      top: -22px;
     }
   }
 }

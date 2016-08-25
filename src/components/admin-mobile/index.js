@@ -304,6 +304,7 @@ export default class MobileAdmin extends React.Component {
         <Authscreen
           onSuccess={this.handleLogin.bind(this)}
           onFail={() => store.dispatch({type: actions.BACK_ROUTE})}
+          isMobile={props.isMobile}
         />
       );
     }

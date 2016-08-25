@@ -191,6 +191,7 @@ export default class Admin extends React.Component {
       <Authscreen
         onSuccess={this.handleLogin.bind(this)}
         onFail={() => store.dispatch({type: actions.BACK_ROUTE})}
+        isMobile={this.props.isMobile}
       />
     );
 

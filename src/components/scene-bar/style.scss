@@ -1,21 +1,21 @@
 @import "sizes.scss";
 
-@mixin count-margins($desktop, $tablet, $phone, $iphone6: $phone, $iphone5: $iphone6) {
-  margin: 0 $desktop 0 $desktop;
+@mixin count-margins($desktop-size, $tablet-size, $phone-size, $iphone6-size: $phone-size, $iphone5-size: $iphone6-size) {
+  margin: 0 $desktop-size 0 $desktop-size;
   @include breakpoint($tablet) {
-    margin: 0 $tablet 0 $tablet;
+    margin: 0 $tablet-size 0 $tablet-size;
   }
 
   @include breakpoint($phone) {
-    margin: 0 $phone 0 $phone;
+    margin: 0 $phone-size 0 $phone-size;
   }
 
   @include breakpoint($iphone6) {
-    margin: 0 $iphone6 0 $iphone6;
+    margin: 0 $iphone6-size 0 $iphone6-size;
   }
 
   @include breakpoint($iphone5) {
-    margin: 0 $iphone5 0 $iphone5;
+    margin: 0 $iphone5-size 0 $iphone5-size;
   }
 }
 

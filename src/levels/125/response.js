@@ -58,7 +58,7 @@ export default class LevelResponse extends React.Component {
         case "middle":
           Object.assign(sounds, {
             "does not have the": "girl/common/does-not-have-the",
-            "sound so it is not spelled with...": "girl/common/sound-so-it-is-not-spelled-with-a"
+            "sound so it is not spelled with...": `girl/common/sound-so-it-is-not-spelled-with-${letter === "u" ? "a" : "an"}`
           });
         break;
         case "ending":

@@ -221,11 +221,11 @@ export default class Lesson extends React.Component {
           <SceneBar>
             {(showingLetterIntro ?
               choices.slice(0, letterIntroWords.length) :
-              choices.slice(letterIntroWords)
+              choices.slice(letterIntroWords.length)
             ).map((choice, i) =>
               <WordSoundPlayBox {...choice}
                 waveHidden={this.state.coPlaying}
-                size={showingLetterIntro ? "medium" : "large"}
+                size="medium"
                 key={choice.word + "-" + i}
                 sound={this.getSound(choice.word)}
               />

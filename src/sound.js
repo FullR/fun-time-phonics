@@ -7,15 +7,11 @@ const requireSound = require.context("../audio", true, /\.(ogg|mp3)$/);
 window._requireSound = requireSound;
 
 document.addEventListener("visibilitychange", () => {
-  if(document.hidden) {
-    Howler.mute();
-  } else {
-    Howler.unmute();
-  }
+  Howler.mute(document.hidden);
 });
 
 export default class Sound extends EventEmitter {
-  constructor({path, debug=false}={}) {
+  constructor({path}={}) {
     super();
     if(!path) {
       throw new Error("Sound must have path parameter");
@@ -23,94 +19,72 @@ export default class Sound extends EventEmitter {
     path = path.toLowerCase();
     this.path = path;
     try {
-      this.mp3Path = requireSound("./" + path + ".mp3");
+      this.src = requireSound("./" + path + ".mp3");
     } catch(error) {
-      console.log(`Failed to load sound: ${path}`);
-      this.mp3Path = requireSound("./missing-sound.mp3");
+      console.log(`Failed to load sound ${path}: ${error}`);
+      this.src = requireSound("./missing-sound.mp3");
     }
-    this.debug = debug;
   }
 
-  log(...args) {
-    if(this.debug) {
-      console.log(...args);
-    }
+  get playing() {
+    return this.howl && this.howl.playing();
   }
 
   load() {
     return new Promise((resolve, reject) => {
-      const {mp3Path} = this;
-      this._sound = new Howl({
-        urls: [mp3Path],
-        onload: () => {
-          this.log("onload");
-          resolve();
-        },
-        onloaderror: (error) => {
-          this.log("onloaderror", error);
-          reject(error);
-        },
-        onend: () => {
-          const {_playDeferred} = this;
-          this.playing = false;
-          if(_playDeferred) {
-            _playDeferred.resolve();
-            this._playDeferred = null;
-            this.emit("end");
-          } else {
-            this.log("_playDeferred not defined in onend handler");
-          }
-        }
+      const {src} = this;
+      const howl = this.howl = new Howl({
+        src: [src],
+        autoplay: false,
+        loop: false,
+        onload: resolve,
+        onloaderror: reject
       });
     });
   }
 
   play() {
-    const {_sound} = this;
-    this.log("play");
-    if(this._sound) {
-      const deferred = this._playDeferred = defer();
-      _sound.stop();
-      _sound.play();
-      this.playing = true;
+    const onEnd = () => this.emit("end");
+    return new Promise((resolve, reject) => {
+      const {howl} = this;
+      howl.seek(0);
+      howl.play();
       this.emit("start");
-      return deferred.promise;
-    } else {
-      this.log("_sound not defined in play");
-      return Promise.resolve();
-    }
+
+      function onEnd() {
+        howl.off("stop", onStop);
+        resolve();
+      }
+
+      function onStop() {
+        howl.off("end", onEnd);
+        resolve();
+      }
+
+      howl.once("end", onEnd);
+      howl.once("stop", onStop);
+    }).then(onEnd, onEnd);
   }
 
   stop() {
-    this.log("stop");
-    const {_sound} = this;
-    this.playing = false;
-    if(_sound) {
-      _sound.stop();
-      this.emit("end");
-    } else {
-      this.log("_sound not defined in stop");
+    const {howl} = this;
+    if(howl) {
+      howl.stop();
     }
   }
 
   pause() {
-    this.log("pause");
-
-    if(this._sound) {
-      const {_sound} = this;
-      _sound.pause();
-    } else {
-      this.log("_sound not defined in pause");
+    const {howl} = this;
+    if(howl) {
+      howl.pause();
     }
   }
 
   unload() {
-    const {_sound} = this;
-    if(_sound) {
-      _sound.unload();
-      this._sound = null;
-    } else {
-      this.log("_sound not defined in unload");
+    const {howl} = this;
+    if(howl) {
+      howl.unload();
+      this.howl = null;
     }
   }
 }

@@ -34,8 +34,8 @@
   @include bp-sizes($tablet, 200px, 150px, 100px);
 
   @include bp-sizes($phone, 150px, 125px, 75px);
-  @include bp-sizes($iphone6p, 140px, 115px, 70px);
-  @include bp-sizes($iphone6, 130px, 105px, 60px);
+  @include bp-sizes($iphone6p, 140px, 110px, 70px);
+  @include bp-sizes($iphone6, 130px, 95px, 60px);
   @include bp-sizes($iphone5, 100px, 75px, 50px);
 
   &__display-box {

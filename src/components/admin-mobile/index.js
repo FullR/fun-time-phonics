@@ -335,7 +335,7 @@ export default class MobileAdmin extends React.Component {
           onClick: this.selectLevel.bind(this, levelId),
           showingScore: complete || started,
           score: complete ? `${formatScore(percent)}%` : "Incomplete",
-          passing: started && percent >= getRequiredScore(),
+          passing: complete && started && percent >= getRequiredScore(),
           indented,
           index,
           disabled,

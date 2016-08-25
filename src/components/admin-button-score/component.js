@@ -16,7 +16,7 @@ export default class AdminButtonScore extends React.Component {
     const percent = toPercent(score, max);
     const classNames = cn(
       "Admin-button-score",
-      `Admin-button-score--${started && percent >= getRequiredScore() ? "passed" : "failed"}`,
+      `Admin-button-score--${started && complete && percent >= getRequiredScore() ? "passed" : "failed"}`,
       started ? null : "Admin-button-score--hidden",
       className
     );

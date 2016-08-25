@@ -1,15 +1,15 @@
 @import "sizes.scss";
 
-@mixin size($size, $font-size: $size) {
+@mixin size($size, $font-size: $size, $line-height: $size) {
   width: $size;
   height: $size;
   font-size: $font-size;
-  line-height: $font-size;
+  line-height: $line-height;
 }
 
-@mixin bp-size($bp, $size, $font-size: $size) {
+@mixin bp-size($bp, $size, $font-size: $size, $line-height: $size) {
   @include breakpoint($bp) {
-    @include size($size, $font-size);
+    @include size($size, $font-size, $line-height);
   }
 }
 
@@ -29,17 +29,17 @@
   &--size-large {
     @include size(300px, 250px);
     @include bp-size($phone, 150px);
-    @include bp-size($iphone6p, 140px);
-    @include bp-size($iphone6, 130px);
-    @include bp-size($iphone5, 110px);
+    @include bp-size($iphone6p, 140px, 140px, 110px);
+    @include bp-size($iphone6, 130px, 130px, 95px);
+    @include bp-size($iphone5, 110px, 110px, 75px);
   }
 
   &--size-medium {
     @include size(150px);
-    @include bp-size($phone, 100px);
-    @include bp-size($iphone6p, 90px);
-    @include bp-size($iphone6, 85px);
-    @include bp-size($iphone5, 75px);
+    @include bp-size($phone, 100px, 100px, 80px);
+    @include bp-size($iphone6p, 90px, 90px, 70px);
+    @include bp-size($iphone6, 85px, 85px, 65px);
+    @include bp-size($iphone5, 75px, 75px, 55px);
   }
 
   &--size-small {

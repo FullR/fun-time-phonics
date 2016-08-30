@@ -2,7 +2,7 @@ import {EventEmitter} from "events";
 import {Howler, Howl} from "howler";
 import defer from "util/defer";
 
-const requireSound = require.context("../audio", true, /\.(ogg|mp3)$/);
+const requireSound = require.context("../audio", true, /\.mp3$/);
 
 window._requireSound = requireSound;
 
@@ -21,7 +21,7 @@ export default class Sound extends EventEmitter {
     try {
       this.src = requireSound("./" + path + ".mp3");
     } catch(error) {
-      console.log(`Failed to load sound ${path}: ${error}`);
+      console.log(`Failed to require sound ${path}: ${error}`);
       this.src = requireSound("./missing-sound.mp3");
     }
   }
@@ -33,7 +33,7 @@ export default class Sound extends EventEmitter {
   load() {
     return new Promise((resolve, reject) => {
       const {src} = this;
-      const howl = this.howl = new Howl({
+      this.howl = new Howl({
         src: [src],
         autoplay: false,
         loop: false,
@@ -45,10 +45,12 @@ export default class Sound extends EventEmitter {
 
   play() {
     const onEnd = () => this.emit("end");
+    const onError = (error) => {
+      console.error(`Error while playing sound: ${error}`);
+      this.emit("end");
+    };
     return new Promise((resolve, reject) => {
       const {howl} = this;
-      howl.seek(0);
-      howl.play();
       this.emit("start");
 
       function onEnd() {
@@ -63,7 +65,9 @@ export default class Sound extends EventEmitter {
 
       howl.once("end", onEnd);
       howl.once("stop", onStop);
-    }).then(onEnd, onEnd);
+      howl.seek(0);
+      howl.play();
+    }).then(onEnd, onError);
   }
 
   stop() {

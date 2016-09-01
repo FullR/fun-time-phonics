@@ -1,3 +1,3 @@
-import classNames from "classnames";
-
-export default classNames;
+export default function cn(...classNames) {
+  return classNames.filter((c) => c).join(" ");
+}

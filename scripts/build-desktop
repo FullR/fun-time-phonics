@@ -1,10 +1,17 @@
 #!/bin/bash
 
 mkdir -p .temp-desktop-files
-mkdir -p builds
-rm -rf builds/*
+mkdir -p builds/desktop
+rm -rf builds/desktop/*
 cp -R dist/* ./.temp-desktop-files
 cp electron-main.js ./.temp-desktop-files/index.js
 cp package.json ./.temp-desktop-files
-electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=all --arch=all --icon=images/favicon.ico --out=builds
+electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=all --arch=all --icon=images/osx-icon.icns --out=builds/desktop
 rm -rf ./.temp-desktop-files
+
+cd ./builds/desktop
+for f in ./*
+do
+  echo "File: $f"
+  zip -r "$f.zip" "$f"
+done

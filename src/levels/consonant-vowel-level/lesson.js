@@ -15,6 +15,10 @@ const Letters = ({children}) => (<span style={{display: "inline-block"}}>{childr
 
 @scene
 export default class Lesson extends React.Component {
+  static defaultProps = {
+    letterIntroWords: []
+  };
+
   constructor(props) {
     super(props);
     this.state = {

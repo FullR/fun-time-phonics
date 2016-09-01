@@ -280,6 +280,18 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     background: $inset-color;
   }
 
+  &__level-description-header {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  &__level-description-range {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
   &__arrow-container {
     display: flex;
     min-height: 18em;

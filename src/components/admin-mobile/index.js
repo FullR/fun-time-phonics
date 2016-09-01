@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Waypoint from "react-waypoint";
 import classNames from "classnames";
 import Authscreen from "components/authscreen";
 import Dash from "components/dash";
@@ -54,6 +53,8 @@ const LevelButtonScore = classComponent("div", ({passing, visible}) => [
 const InfoColumn = classComponent("div", "Mobile-admin__info-column");
 const InfoColumnHeading = classComponent("div", "Mobile-admin__info-column-heading");
 const LevelDescription = classComponent("div", "Mobile-admin__level-description");
+const LevelDescriptionHeader = classComponent("div", "Mobile-admin__level-description-header");
+const LevelDescriptionRange = classComponent("div", "Mobile-admin__level-description-range");
 const ArrowContainer = classComponent("div", "Mobile-admin__arrow-container");
 const Arrow = classComponent("div", ({pulsing}) => [
   "Mobile-admin__arrow",
@@ -130,31 +131,10 @@ export default class MobileAdmin extends React.Component {
     };
   }
 
-  handleSectionScrollChange = (section) => {
-    if(!this.cancelScrollLoop) { // ignore if scrolling is done programmatically
-      //setTimeout(() => this.setState({section}), 0);
-      this.setState({section});
-    }
-  };
-
   handleLogin = () => {
     this.setState({authenticated: true});
     if(this.props.onLogin) {
       this.props.onLogin();
-    }
-  };
-
-  showNextSection = () => {
-    const {section} = this.state;
-    if(section < 8) {
-      this.scrollToSection(section + 1);
-    }
-  };
-
-  showPreviousSection = () => {
-    const {section} = this.state;
-    if(section > 0) {
-      this.scrollToSection(section - 1);
     }
   };
 
@@ -206,11 +186,6 @@ export default class MobileAdmin extends React.Component {
     });
   }
 
-  scrollToSection(sectionId, duration=500) {
-    this.setState({section: sectionId});
-    this.scrollToRef(`section-${sectionId}`, duration);
-  }
-
   scrollToLevel(levelId, duration=0) {
     this.setState({section: getSection(levelId)});
     this.scrollToRef(`level-button-${levelId}`, duration);
@@ -225,7 +200,7 @@ export default class MobileAdmin extends React.Component {
 
   selectLevel(levelId) {
     clearTimeout(this.pulseTimeout);
-    this.setState({arrowPulse: true, currentLevel: levelId});
+    this.setState({arrowPulse: true, currentLevel: levelId, section: getSection(levelId)});
     this.pulseTimeout = setTimeout(() => this.setState({arrowPulse: false}), 3000);
   }
 
@@ -376,9 +351,7 @@ export default class MobileAdmin extends React.Component {
         <LevelListColumn>
           <LevelList ref="levelList">
             {/* Section 1 */}
-            <ScrollAnchor ref="section-1"/>
             <ListSectionHeader noBorder>1.<DSpace/>Beginning Sounds</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 1)}/>
             <LevelButtonItem {...level("1")}>Beginning <strong>t</strong> Sound</LevelButtonItem>
             <LevelButtonItem {...level("1-m")}>Beginning <strong>m</strong> Sound</LevelButtonItem>
             <LevelButtonItem {...level("1-l")}>Beginning <strong>l</strong> Sound</LevelButtonItem>
@@ -400,9 +373,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("6")}>Say the Word</LevelButtonItem>
             <LevelButtonItem {...level("7")}>Echo the Word</LevelButtonItem>
             {/* Section 2 */}
-            <ScrollAnchor ref="section-2"/>
             <LevelButtonItem {...level("8")}>Short Vowel <strong>a</strong> Sound</LevelButtonItem>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 2)}/>
             <LevelButtonItem {...level("9")}>Short Vowel <strong>e</strong> Sound</LevelButtonItem>
             <LevelButtonItem {...level("10")}>Short Vowel <strong>i</strong> Sound</LevelButtonItem>
             <LevelButtonItem {...level("11")}>Short Vowel <strong>o</strong> Sound</LevelButtonItem>
@@ -416,9 +387,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("19")}>Short Vowel <strong>u</strong></LevelButtonItem>
             <LevelButtonItem {...level("20")}>Review Short Vowels</LevelButtonItem>
             {/* Section 3 */}
-            <ScrollAnchor ref="section-3"/>
             <ListSectionHeader>Consonant <strong>b</strong> With Short Vowels</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 3)}/>
             <LevelButtonItem {...level("21")}>ba</LevelButtonItem>
             <LevelButtonItem {...level("22")}>be</LevelButtonItem>
             <LevelButtonItem {...level("23")}>bi</LevelButtonItem>
@@ -446,9 +415,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("42")}>Review f</LevelButtonItem>
             <LevelButtonItem {...level("43")}>Review b-f</LevelButtonItem>
             {/* Section 4 */}
-            <ScrollAnchor ref="section-4"/>
             <ListSectionHeader>Consonant <strong>g</strong> With Short Vowels</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 4)}/>
             <LevelButtonItem {...level("44")}>ga</LevelButtonItem>
             <LevelButtonItem {...level("45")}>go</LevelButtonItem>
             <LevelButtonItem {...level("46")}>gu</LevelButtonItem>
@@ -473,9 +440,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("62")}>Review k</LevelButtonItem>
             <LevelButtonItem {...level("63")}>Review b-k</LevelButtonItem>
             {/* Section 5 */}
-            <ScrollAnchor ref="section-5"/>
             <ListSectionHeader>Consonant <strong>l</strong> With Short Vowels</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 5)}/>
             <LevelButtonItem {...level("64")}>la</LevelButtonItem>
             <LevelButtonItem {...level("65")}>le</LevelButtonItem>
             <LevelButtonItem {...level("66")}>li</LevelButtonItem>
@@ -505,9 +470,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("87")}>Review p</LevelButtonItem>
             <LevelButtonItem {...level("88")}>Review b-p</LevelButtonItem>
             {/* Section 6 */}
-            <ScrollAnchor ref="section-6"/>
             <ListSectionHeader>Consonant <strong>q</strong> With Short Vowels</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 6)}/>
             <LevelButtonItem {...level("89")}>qu</LevelButtonItem>
             <ListSectionHeader>Consonant <strong>r</strong> With Short Vowels</ListSectionHeader>
             <LevelButtonItem {...level("90")}>ra</LevelButtonItem>
@@ -532,9 +495,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("107")}>Review t</LevelButtonItem>
             <LevelButtonItem {...level("108")}>Review b-t</LevelButtonItem>
             {/* Section 7 */}
-            <ScrollAnchor ref="section-7"/>
             <ListSectionHeader>Consonant <strong>v</strong> With Short Vowels</ListSectionHeader>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 7)}/>
             <LevelButtonItem {...level("109")}>va</LevelButtonItem>
             <LevelButtonItem {...level("110")}>ve</LevelButtonItem>
             <LevelButtonItem {...level("111")}>vi</LevelButtonItem>
@@ -551,8 +512,6 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("121")}>Review y-z</LevelButtonItem>
             <LevelButtonItem {...level("122")}>Coarticulation Assessment b-z</LevelButtonItem>
             {/* Section 8 */}
-            <ScrollAnchor ref="section-8"/>
-            <Waypoint onEnter={this.handleSectionScrollChange.bind(this, 8)}/>
             <LevelButtonItem {...level("123")}>Identify Ending Sounds</LevelButtonItem>
             <LevelButtonItem {...level("124")}>Identify Vowel Sounds</LevelButtonItem>
             <LevelButtonItem {...level("125")}>Read First Words</LevelButtonItem>
@@ -560,15 +519,11 @@ export default class MobileAdmin extends React.Component {
           </LevelList>
         </LevelListColumn>
         <InfoColumn>
-          <InfoColumnHeading>
-            <SectionTitle/>
-            <SectionArrowContainer>
-              <SectionArrow onClick={this.showPreviousSection} flipped>Previous</SectionArrow>
-              <LevelRange>Lessons {levelRange[0]}-{levelRange[1]}</LevelRange>
-              <SectionArrow onClick={this.showNextSection}>Next</SectionArrow>
-            </SectionArrowContainer>
-          </InfoColumnHeading>
-          <LevelDescription><SectionText/></LevelDescription>
+          <LevelDescription>
+            <LevelDescriptionHeader><SectionTitle/></LevelDescriptionHeader>
+            <LevelDescriptionRange>Lessons {levelRange[0]}-{levelRange[1]}</LevelDescriptionRange>
+            <SectionText/>
+          </LevelDescription>
           <ArrowContainer>
             <Arrow onClick={this.showLevel.bind(this)} style={arrowStyle} pulsing={arrowPulse}>
               <ArrowText>{arrowText}</ArrowText>

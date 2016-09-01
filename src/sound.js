@@ -40,7 +40,8 @@ export default class Sound extends EventEmitter {
         onload: resolve,
         onloaderror: reject
       });
-    });
+    })
+    .catch((error) => console.log(`Failed to load sound ${this.path}: ${error}`));
   }
 
   play() {

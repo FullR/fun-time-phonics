@@ -1,11 +1,5 @@
 const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const crashReporter = electron.crashReporter;
-
-// if(process.env.NODE_ENV === "development") {
-//   require("electron-debug")();
-// }
+const {app, Menu, BrowserWindow, crashReporter} = electron;
 
 app.on("window-all-closed", () => app.quit());
 
@@ -19,5 +13,6 @@ app.on("ready", () => {
   });
   app.setAppUserModelId("com.criticalthinking.fun-time-phonics");
   mainWindow.loadURL(`file://${__dirname}/index.html`);
+  // mainWindow.openDevTools();
   mainWindow.maximize();
 });

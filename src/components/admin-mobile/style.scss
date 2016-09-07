@@ -52,7 +52,7 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     background: $trim-color;
     z-index: 3;
     overflow: visible;
-    box-shadow: 0.8em 0px 0.3em rgba(0, 0, 0, 0.1);
+    box-shadow: 0.8em 0px 0.3em rgba(150, 0, 0, 0.1);
     padding: 1em;
 
     &--open .Mobile-admin__tray-drawer {

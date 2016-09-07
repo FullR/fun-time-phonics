@@ -63,6 +63,10 @@ $bottom-background: #CDE39F;
     flex: 0 1 auto;
     width: 100%;
     margin-top: 35px;
+
+    @include breakpoint($tablet) {
+      margin-top: 0px;
+    }
   }
 
   input {

@@ -361,11 +361,6 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   }
 }
 
-.hover-enabled .Mobile-admin__level-button:hover,
-.Mobile-admin__level-button:active {
-  background: $list-button-active-bg;
-}
-
 .hover-enabled .Mobile-admin__arrow:hover,
 .Mobile-admin__arrow:active {
   background-image: url($arrow-hover-image);

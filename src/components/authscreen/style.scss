@@ -65,7 +65,7 @@ $bottom-background: #CDE39F;
     margin-top: 35px;
 
     @include breakpoint($tablet) {
-      margin-top: 0px;
+      margin-top: -20px;
     }
   }
 

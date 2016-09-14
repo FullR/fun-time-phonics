@@ -72,6 +72,9 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   }
 
   &__tray-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 2;

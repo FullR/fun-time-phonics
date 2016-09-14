@@ -36,6 +36,8 @@
 
   &--size-medium {
     @include size(200px);
+
+    @include bp-size($tablet, 150px, 150px, 100px);
     @include bp-size($phone, 100px, 100px, 80px);
     @include bp-size($iphone6p, 90px, 90px, 70px);
     @include bp-size($iphone6, 85px, 85px, 65px);

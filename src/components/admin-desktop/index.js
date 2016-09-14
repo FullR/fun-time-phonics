@@ -42,10 +42,10 @@ function getSection(levelId) {
 
 function getLevel(levelId) {
   try {
-    return require("components/levels/" + levelId + "/index");
+    return require("levels/" + levelId + "/index");
   } catch(error) {
     try {
-      return require("components/levels/" + levelId);
+      return require("levels/" + levelId);
     } catch(error) {
       return null;
     }

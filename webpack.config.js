@@ -28,7 +28,7 @@ module.exports = {
     loaders: [
       {test: ext("js"), exclude: /node_modules/, loader: "babel"},
       {test: ext("json"), loader: "json"},
-      {test: ext("html", "ico"), loader: "file?name=[name].[ext]"},
+      {test: ext("html", "ico", "icns"), loader: "file?name=[name].[ext]"},
       {test: ext("scss"), loader: "style!css!autoprefixer!sass"},
       {test: ext("ogg", "mp3"), noParse: true, loader: "file?name=audio/[hash].[ext]"},
       {test: ext("png", "jpg", "gif"), noParse: true, loader: "url?limit=10000&name=images/[name].[hash].[ext]"},

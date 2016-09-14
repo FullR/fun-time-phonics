@@ -19,12 +19,11 @@ export default class OtherProductsScreen extends React.Component {
       <InfoScreen {...this.props} className={cn}>
         <Header>Other Products</Header>
         <Content className={cn.el("content")}>
-          <div className={cn.el("banner-box")}>
-            <img className={cn.el("banner")} src={require("../../../images/other-products-banner.png")}/>
-          </div>
-          <p className={cn.el("main-text")}>
+          <div className={cn.el("banner-box")}/>
+
+          <div className={cn.el("main-text")}>
             The Critical Thinking Co.™ is recommended by <em>Learning® Magazine</em>, <em>The Well-Trained Mind</em>, <em>College Prep Genius</em>, <em>Creative Child Magazine</em>, Dr. Toy, and used by Sylvan Learning® Centers, Club Z In-Home Tutoring, leading U.S. public schools, and gifted and talented programs in 57 countries throughout the world.
-          </p>
+          </div>
 
           <OtherProduct {...otherProducts.alphabetSongGame}>
             <strong className={cn.el("op-title")}>Alphabet Song Game™</strong> (Toddler–Grade 1) <strong>FREE!</strong><br/>

@@ -22,15 +22,15 @@ $banner-height: 77px;
   }
 
   &__banner-box {
-    width: 100%;
     text-align: center;
-  }
-
-  &__banner {
+    min-height: 0px;
+    min-width: 0px;
     width: $banner-width * 1.25;
     height: $banner-height * 1.25;
     margin-bottom: 1em;
     display: inline-block;
+    background: url("../../../images/other-products-banner.png") no-repeat;
+    background-size: 100% 100%;
 
     @include breakpoint($phone) {
       width: $banner-width * 0.9;

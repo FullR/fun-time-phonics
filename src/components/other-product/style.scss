@@ -13,13 +13,6 @@ $phone-height: $height * 0.75;
   font-size: 22px;
   width: 100%;
 
-  .hover-enabled &:hover,
-  .hover-disabled &:active {
-    .Other-product__content {
-      background: #f3f3ff;
-    }
-  }
-
   &__thumbnail {
     flex: 0 0 auto;
     border: 1px solid #444;

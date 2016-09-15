@@ -41,6 +41,8 @@ $banner-height: 77px;
     }
 
   &__main-text {
+    flex: 0 0 auto;
+    min-height: 0px;
     margin: 1em 0 1em;
     cursor: default;
 

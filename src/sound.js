@@ -4,6 +4,7 @@ import defer from "util/defer";
 
 const requireSound = require.context("../audio", true, /\.mp3$/);
 
+Howler.autoSuspend = false;
 window._requireSound = requireSound;
 
 document.addEventListener("visibilitychange", () => {

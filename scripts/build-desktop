@@ -1,12 +1,19 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+then
+  PLATFORM="all"
+else
+  PLATFORM="$1"
+fi
+
 mkdir -p .temp-desktop-files
 mkdir -p builds/desktop
 rm -rf builds/desktop/*
 cp -R dist/* ./.temp-desktop-files
 cp electron-main.js ./.temp-desktop-files/index.js
 cp package.json ./.temp-desktop-files
-electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=all --arch=all --icon=images/osx-icon.icns --out=builds/desktop
+electron-packager ./.temp-desktop-files 'Fun-Time Phonics' --platform=$PLATFORM --arch=all --icon=images/osx-icon.icns --out=builds/desktop
 rm -rf ./.temp-desktop-files
 
 cd ./builds/desktop

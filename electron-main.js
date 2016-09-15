@@ -13,6 +13,6 @@ app.on("ready", () => {
   });
   app.setAppUserModelId("com.criticalthinking.fun-time-phonics");
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
   mainWindow.maximize();
 });

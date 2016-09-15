@@ -7,8 +7,6 @@ $banner-height: 77px;
   font-size: 20px;
 
   &__content {
-    display: flex;
-    flex-direction: column;
     padding: 3em;
 
     @include breakpoint($tablet) {
@@ -21,24 +19,23 @@ $banner-height: 77px;
 
   }
 
-    &__banner-box {
-      flex: 0 0 auto;
-      text-align: center;
-      min-height: 0px;
-      min-width: 0px;
-      width: $banner-width * 1.25;
-      height: $banner-height * 1.25;
-      margin-bottom: 1em;
-      display: inline-block;
-      background: url("../../../images/other-products-banner.png") no-repeat;
-      background-size: 100% 100%;
-      align-self: center;
+  &__banner-container {
+    width: 100%;
+    text-align: center;
+  }
 
-      @include breakpoint($phone) {
-        width: $banner-width * 0.9;
-        height: $banner-height * 0.9;
-      }
+  &__banner {
+    display: inline-block;
+    width: $banner-width * 1.25;
+    height: $banner-height * 1.25;
+    background: url("../../../images/other-products-banner.png") no-repeat;
+    background-size: 100% 100%;
+
+    @include breakpoint($phone) {
+      width: $banner-width * 0.9;
+      height: $banner-height * 0.9;
     }
+  }
 
   &__main-text {
     flex: 0 0 auto;
@@ -47,7 +44,8 @@ $banner-height: 77px;
     cursor: default;
 
     @include breakpoint($phone) {
-      margin-top: 1em;
+      margin-top: 0.5em;
+      font-size: 15px;
     }
   }
 

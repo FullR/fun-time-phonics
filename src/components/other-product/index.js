@@ -8,16 +8,18 @@ export default class OtherProduct extends React.Component {
   shouldComponentUpdate = pureUpdate;
 
   render() {
-    const {src, children, className} = this.props;
+    const {src, href, children, className} = this.props;
     const cn = bembam("Other-product", className);
 
     return (
-      <WebLink {...this.props} className={cn} src={null}>
-        <img className={cn.el("thumbnail")} src={src}/>
+      <div {...this.props} className={cn} src={null}>
+        <WebLink className={cn.el("thumbnail")} href={href}>
+          <img src={src}/>
+        </WebLink>
         <div className={cn.el("content")}>
           {children}
         </div>
-      </WebLink>
+      </div>
     );
   }
 }

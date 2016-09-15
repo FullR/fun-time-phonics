@@ -12,7 +12,7 @@
   background: #87BFFF;
 
   @include breakpoint($phone) {
-    height: 70px;
+    height: 50px;
   }
 
   &__left,
@@ -69,6 +69,11 @@
     .hover-enabled &:hover,
     .hover-disabled &:active {
       background: rgb(242, 92, 50);
+    }
+
+    @include breakpoint($phone) {
+      font-size: 20px;
+      padding: 5px 0 5px;
     }
   }
 }

@@ -4,10 +4,14 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 6.5rem;
-  bottom: 10rem;
+  top: 65px;
+  bottom: 100px;
   flex-direction: column;
   justify-content: space-around;
+
+  @include breakpoint($tablet) {
+    top: 100px;
+  }
 
   @include breakpoint($phone) {
     top: 30px;

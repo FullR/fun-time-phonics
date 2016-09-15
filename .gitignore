@@ -6,5 +6,6 @@ audio
 npm-debug.log
 documents
 builds/desktop
+builds/cordova/www
 .~*
 

@@ -85,4 +85,6 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="orienation" value="landscape" />
     <plugin name="cordova-plugin-splashscreen" spec="~3.0.0" />
+    <plugin name="cordova-plugin-media" spec="~1.0.1" />
+    <plugin name="cordova-plugin-device" spec="~1.1.0" />
 </widget>

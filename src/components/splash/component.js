@@ -22,6 +22,11 @@ export default class Splash extends React.Component {
   }
 
   onLoad() {
+    this.playWelcomeAudio();
+  }
+
+  playWelcomeAudio() {
+    if(!this.state.robotSpeaking) this.setState({robotSpeaking: true});
     this.play("welcome")
       .then(() => this.setState({robotSpeaking: false}))
       .catch((error) => console.log(`Failed to play intro sound: ${error}`));
@@ -32,9 +37,14 @@ export default class Splash extends React.Component {
     const {robotSpeaking} = this.state;
     const classNames = cn("Splash", demo ? "Splash--demo" : null, className);
 
+    const buttonStyle = {fontSize: 30, padding: 50, background: "blue", color: "white"};
+
     return (
       <Screen className={classNames}>
         <TctcLogo/>
+
+        <button style={buttonStyle} onClick={this.playWelcomeAudio.bind(this)}>Start</button>
+        <button style={buttonStyle} onClick={() => this.getSound("welcome").stop()}>Stop</button>
         <Robot type="girl" size="large" speaking={robotSpeaking} animating={robotSpeaking} showText>
           <img className="Splash__speech-bubble" src={require("../../../images/splash/speech-bubble.png")}/>
         </Robot>

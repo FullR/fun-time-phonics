@@ -14,4 +14,8 @@ export function isWeb() {
   return _isWeb;
 };
 
-export default {isElectron, isCordova, isWeb};
+export function isAndroid() {
+
+}
+
+export default {isElectron, isCordova, isWeb, isAndroid};

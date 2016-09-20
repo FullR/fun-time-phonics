@@ -20,6 +20,8 @@ require("style/base.scss");
 if(isCordova()) {
   // keep keyboard from squishing layout
   cordova.plugins.Keyboard.disableScroll(true);
+  // get rid of that ugly status bar in android
+  window.StatusBar.hide();
 }
 
 // remove 300ms touch delay

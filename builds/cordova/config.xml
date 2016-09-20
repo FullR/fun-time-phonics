@@ -14,6 +14,7 @@
     <preference name="FadeSplashScreenDuration" value="0" />
     <preference name="windows-target-version" value="8.1" />
     <preference name="windows-phone-target-version" value="8.1" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-console" spec="~1.0.3" />
     <plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" spec="https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay.git" />
@@ -87,4 +88,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~3.0.0" />
     <plugin name="cordova-plugin-media" spec="~1.0.1" />
     <plugin name="cordova-plugin-device" spec="~1.1.0" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.0.0" />
 </widget>

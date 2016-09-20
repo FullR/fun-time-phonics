@@ -1,9 +1,5 @@
 import {EventEmitter} from "events";
-import {noop} from "lodash";
-import defer from "util/defer";
-
-const requireSound = require.context("../audio", true, /\.mp3$/);
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import requireSound from "require-sound";
 
 export default class Sound extends EventEmitter {
   constructor({path}={}) {
@@ -22,63 +18,35 @@ export default class Sound extends EventEmitter {
   }
 
   get playing() {
-    return false;
+    return !!this.media;
   }
 
   load() {
-    const {Media} = window;
-    const {MEDIA_STARTING, MEDIA_RUNNING, MEDIA_STOPPED} = Media;
-    this.media = new Media(this.src,
-      () => {
-        if(this.playDeferred) {
-          this.playDeferred.resolve();
-          this.playDeferred = null;
-        }
-      },
-      (error) => console.log("Media error:", error),
-      (status) => {
-        switch(status) {
-          case MEDIA_STARTING:
-            this.emit("start");
-          break;
-          case MEDIA_STOPPED:
-            this.emit("end");
-          break;
-          case MEDIA_RUNNING:
-            //if(this.media) this.media.seekTo(0);
-          break;
-        }
-      }
-    );
-
     return Promise.resolve();
   }
 
   play() {
-    const {media} = this;
-    if(media) {
-      this.playDeferred = defer();
-      //media.seekTo(0);
-      media.play();
-      media.seekTo(0);
-      return this.playDeferred.promise;
-    }
-    return wait(1);
+    return new Promise((resolve, reject) => {
+      this.stop();
+      this.emit("start");
+      this.media = new Media(this.src, resolve, reject);
+      this.media.play();
+    })
+      .catch((error) => console.log("Failed to play sound:", error))
+      .then(() => this.unload());
   }
 
   stop() {
     const {media} = this;
     if(media) {
       media.stop();
+      media.release();
+      this.media = null;
+      this.emit("end");
     }
   }
 
   unload() {
-    const {media} = this;
-    if(media) {
-      this.stop();
-      media.release();
-      this.media = null;
-    }
+    this.stop();
   }
 }

@@ -1,11 +1,9 @@
 import {EventEmitter} from "events";
 import {Howler, Howl} from "howler";
 import defer from "util/defer";
-
-const requireSound = require.context("../audio", true, /\.mp3$/);
+import requireSound from "require-sound";
 
 Howler.autoSuspend = false;
-window._requireSound = requireSound;
 
 document.addEventListener("visibilitychange", () => {
   Howler.mute(document.hidden);

@@ -1,3 +1,5 @@
+@import "sizes.scss";
+
 .Admin-short-button {
   display: inline-flex;
   //max-width: 250px;
@@ -16,6 +18,10 @@
     left: 0;
     width: 100%;
     text-align: center;
+
+    @include breakpoint($tablet) {
+      top: 22px;
+    }
   }
 
   > .Admin-button-title.Admin-button-title--size-large { // large titles are closer to the top

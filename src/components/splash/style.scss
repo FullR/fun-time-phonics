@@ -29,7 +29,11 @@ $tablet-robot-scale: 1;
 
   .Arrow {
     cursor: pointer;
-    font-size: 5rem;
+    font-size: 50px;
+
+    @include breakpoint($tablet) {
+      font-size: 35px;
+    }
 
     @include breakpoint($iphone6) {
       width: 19.2rem * 1.1;
@@ -46,8 +50,8 @@ $tablet-robot-scale: 1;
 
   .Tctc-logo {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 10px;
+    left: 10px;
 
     @include breakpoint($phone) {
       top: 5px;
@@ -82,6 +86,10 @@ $tablet-robot-scale: 1;
     @include breakpoint($tablet) {
       bottom: 5%;
       left: 20%;
+    }
+
+    @include breakpoint($small-tablet) {
+      transform: scale(0.9, 0.9) translate(0, 20px);
     }
 
     @include breakpoint($iphone6p) {
@@ -145,8 +153,4 @@ $tablet-robot-scale: 1;
       font-size: 12px;
     }
   }
-}
-
-.Splash--demo .Splash__version-label {
-  color: #F00;
 }

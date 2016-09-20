@@ -1,14 +1,21 @@
 @import "sizes.scss";
 $image: "../../../images/tctc-logo.png";
+$width: 154px;
+$height: 100px;
 
 .Tctc-logo {
   background: url($image) no-repeat;
   background-size: 100% 100%;
-  width: 154px;
-  height: 100px;
+  width: $width;
+  height: $height;
+
+  @include breakpoint($small-tablet) {
+    width: $width * 0.75;
+    height: $height * 0.75;
+  }
 
   @include breakpoint($phone) {
-    width: 77px;
-    height: 50px;
+    width: $width / 2;
+    height: $height / 2;
   }
 }

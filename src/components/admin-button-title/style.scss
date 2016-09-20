@@ -9,6 +9,11 @@
       font-size: 1.8rem;
       line-height: 1.8rem;
     }
+
+    @include breakpoint($small-tablet) {
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+    }
   }
 
   &--size-medium {
@@ -19,12 +24,21 @@
       font-size: 2.5rem;
       line-height: 25px;
     }
+
+    @include breakpoint($small-tablet) {
+      font-size: 2.2rem;
+      line-height: 22px;
+    }
   }
 
   &--size-large {
     font-size: 7.0rem;
     @include breakpoint($tablet) {
       font-size: 4.0rem;
+    }
+
+    @include breakpoint($small-tablet) {
+      font-size: 3.5rem;
     }
   }
 }
@@ -33,10 +47,18 @@
   @include breakpoint($tablet) {
     font-size: 50px;
   }
+
+  @include breakpoint($small-tablet) {
+    font-size: 40px;
+  }
 }
 
 .Admin-button-title--size-medium.Admin-button-title--brief {
   @include breakpoint($tablet) {
     font-size: 25px;
+  }
+
+  @include breakpoint($small-tablet) {
+    font-size: 22px;
   }
 }

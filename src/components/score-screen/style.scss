@@ -38,6 +38,10 @@
     text-align: center;
     margin: 75px 0 75px;
 
+    @include breakpoint($small-tablet) {
+      margin: 25px 0 25px;
+    }
+
     @include breakpoint($iphone5) {
       margin: 0;
       height: 100px;
@@ -69,6 +73,12 @@
   .Arrow {
     position: relative;
     cursor: pointer;
+
+    @include breakpoint($small-tablet) {
+      width: 192px * 0.8;
+      height: 120px * 0.8;
+      font-size: 28px;
+    }
 
     @include breakpoint($phone) {
       width: 192px * 0.7;
@@ -108,6 +118,9 @@
     font-size: 50px;
     margin-left: 150px;
 
+    @include breakpoint($small-tablet) {
+      margin-left: 100px;
+    }
     @include breakpoint($phone) {
       margin-left: 50px;
     }

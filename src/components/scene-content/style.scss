@@ -13,6 +13,10 @@
     top: 100px;
   }
 
+  @include breakpoint($small-tablet) {
+    bottom: 120px;
+  }
+
   @include breakpoint($phone) {
     top: 30px;
     bottom: 30px;

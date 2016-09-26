@@ -22,6 +22,13 @@ if(isCordova()) {
   cordova.plugins.Keyboard.disableScroll(true);
   // get rid of that ugly status bar in android
   window.StatusBar.hide();
+
+  if(window.AndroidFullScreen && window.AndroidFullScreen.isSupported()) {
+    AndroidFullScreen.immersiveMode(
+      () => console.log("ImmersiveMode enabled"), 
+      (error) => console.log(error)
+    );
+  }
 }
 
 // remove 300ms touch delay

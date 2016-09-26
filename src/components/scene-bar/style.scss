@@ -6,6 +6,10 @@
     margin: 0 $tablet-size 0 $tablet-size;
   }
 
+  @include breakpoint($small-tablet) {
+    margin: 0 ($tablet-size * 0.8) 0 ($tablet-size * 0.8);
+  }
+
   @include breakpoint($phone) {
     margin: 0 $phone-size 0 $phone-size;
   }

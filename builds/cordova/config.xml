@@ -35,6 +35,7 @@
         <preference name="Orientation" value="landscape" />
     </platform>
     <platform name="android">
+        <preference name="Orientation" value="landscape" />
         <icon density="ldpi" src="res/android/icon-36-ldpi.png" />
         <icon density="mdpi" src="res/android/icon-48-mdpi.png" />
         <icon density="hdpi" src="res/android/icon-72-hdpi.png" />

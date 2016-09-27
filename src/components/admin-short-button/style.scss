@@ -12,6 +12,17 @@
     margin-left: 20px;
   }
 
+  &--review {
+    .Admin-button-title {
+      @include breakpoint($small-tablet) {
+        font-size: 14px;
+        top: 20px;
+        line-height: 15px;
+        vertical-align: middle;
+      }
+    }
+  }
+
   > .Admin-button-title {
     position: absolute;
     top: 28px;

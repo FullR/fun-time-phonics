@@ -43,3 +43,9 @@
     @include count-margins(1.5rem, 0.5rem, 0.2rem, 0.1rem);
   }
 }
+
+.Scene-bar--count-1.Scene-bar:first-child {
+  @include breakpoint($small-tablet) {
+    margin-top: -50px;
+  }
+}

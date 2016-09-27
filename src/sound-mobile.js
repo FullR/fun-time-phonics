@@ -29,20 +29,27 @@ export default class Sound extends EventEmitter {
     return new Promise((resolve, reject) => {
       this.stop();
       this.emit("start");
-      this.media = new Media(this.src, resolve, reject);
-      this.media.play();
+      this.playTimeout = setTimeout(() => {
+        this.playTimeout = null;
+        this.media = new Media(this.src, resolve, reject);
+        this.media.play();
+      }, 10);
     })
       .catch((error) => console.log("Failed to play sound:", error))
       .then(() => this.unload());
   }
 
   stop() {
-    const {media} = this;
+    const {media, playTimeout} = this;
     if(media) {
       media.stop();
       media.release();
       this.media = null;
       this.emit("end");
+    }
+    if(playTimeout) {
+      clearTimeout(playTimeout);
+      this.playTimeout = null;
     }
   }
 

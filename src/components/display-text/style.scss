@@ -28,7 +28,7 @@
 
   &--size-large {
     @include size(300px, 250px);
-    @include bp-size($small-tablet, 180px, 180px, 150px);
+    @include bp-size($small-tablet, 160px, 160px, 150px);
     @include bp-size($phone, 150px);
     @include bp-size($iphone6p, 140px, 140px, 110px);
     @include bp-size($iphone6, 130px, 130px, 95px);

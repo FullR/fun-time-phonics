@@ -22,3 +22,9 @@
     bottom: 30px;
   }
 }
+
+.Level-activity .Scene-content {
+  @include breakpoint($small-tablet) {
+    bottom: 100px;
+  }
+}

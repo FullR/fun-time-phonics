@@ -1,3 +1,4 @@
+@import "sizes.scss";
 @import "hover.scss";
 
 .Admin-section-button {
@@ -48,5 +49,9 @@
     position: absolute;
     bottom: 0.5rem;
     left: 0;
+
+    @include breakpoint($small-tablet) {
+      bottom: 0.1rem;
+    }
   }
 }

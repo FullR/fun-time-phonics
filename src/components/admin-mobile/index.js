@@ -42,9 +42,13 @@ const LevelButton = classComponent("div", ({selected}) => [
   {"Mobile-admin__level-button--selected": selected}
 ]);
 const LevelButtonIndex = classComponent("span", "Mobile-admin__level-button-index");
-const LevelButtonTitle = classComponent("div", ({indented}) => [
+const LevelButtonTitle = classComponent("span", ({small}) => [
   "Mobile-admin__level-button-title",
-  {"Mobile-admin__level-button-title--indented": indented}
+  {"Mobile-admin__level-button-title--small": small}
+]);
+const LevelButtonHeader = classComponent("div", ({indented}) => [
+  "Mobile-admin__level-button-header",
+  {"Mobile-admin__level-button-header--indented": indented}
 ]);
 const LevelButtonScore = classComponent("div", ({passing, visible}) => [
   "Mobile-admin__level-button-score",
@@ -62,37 +66,28 @@ const Arrow = classComponent("div", ({pulsing}) => [
 ]);
 const ArrowText = classComponent("div", "Mobile-admin__arrow-text");
 const ScrollAnchor = classComponent("div", "Mobile-admin__scroll-anchor");
-const SectionArrowContainer = classComponent("div", "Mobile-admin__section-arrow-container");
-const SectionArrowImage = classComponent("div", ({flipped}) => [
-  "Mobile-admin__section-arrow-image",
-  {"Mobile-admin__section-arrow-image--flipped": flipped}
-]);
 const GearIcon = classComponent("div", "Mobile-admin__gear-icon");
 const XIcon = classComponent("div", "Mobile-admin__x-icon");
 const InfoScreenContainer = classComponent("div", ({open}) => [
   "Mobile-admin__info-screen",
   {"Mobile-admin__info-screen--open": open}
 ]);
-const SectionArrow = ({onClick, flipped, children}) => (
-  <div className="Mobile-admin__section-arrow" onClick={onClick}>
-    <SectionArrowImage flipped={flipped}/>
-    <div className="Mobile-admin__section-arrow-text">{children}</div>
-  </div>
-);
-
 
 function formatScore(s) {
   return Math.floor(s);
 }
+
 const LevelButtonItem = makeStateful((props) => {
-  const {children, index, showingScore, passing, score, indented} = props;
+  const {children, index, showingScore, passing, score, indented, smallTitle} = props;
   const Index = index ? (<LevelButtonIndex>{index}.<DSpace/></LevelButtonIndex>) : null;
   const Score = showingScore ? (<LevelButtonScore passing={passing}>{score}</LevelButtonScore>) : null;
 
   return (
     <LevelListItem>
       <LevelButton {...props}>
-        <LevelButtonTitle indented={indented}>{Index}{children}</LevelButtonTitle>
+        <LevelButtonHeader indented={indented}>
+          {Index}<LevelButtonTitle small={smallTitle}>{children}</LevelButtonTitle>
+        </LevelButtonHeader>
         {Score}
       </LevelButton>
     </LevelListItem>
@@ -510,7 +505,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("119")}>Consonant <strong>y</strong> With Short Vowels</LevelButtonItem>
             <LevelButtonItem {...level("120")}>Consonant <strong>z</strong> With Short Vowels</LevelButtonItem>
             <LevelButtonItem {...level("121")}>Review y-z</LevelButtonItem>
-            <LevelButtonItem {...level("122")}>Coarticulation Assessment b-z</LevelButtonItem>
+            <LevelButtonItem {...level("122")} smallTitle>Coarticulation Assessment b-z</LevelButtonItem>
             {/* Section 8 */}
             <LevelButtonItem {...level("123")}>Identify Ending Sounds</LevelButtonItem>
             <LevelButtonItem {...level("124")}>Identify Vowel Sounds</LevelButtonItem>

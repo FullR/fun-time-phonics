@@ -109,7 +109,7 @@ export default class Lesson extends React.Component {
         <LessonTitle levelId={levelId}>{title}</LessonTitle>
 
         <SceneContent>
-          <SceneBar>
+          <SceneBar style={{position: "relative", top: 5}}>
             {choices.map((choice) =>
               <WordSoundPlayBox {...choice}
                 size="medium"

@@ -8,9 +8,10 @@ export default class AdminShortButton extends React.Component {
   shouldComponentUpdate = pureUpdate;
 
   render() {
-    const {hidden, className, onClick} = this.props;
+    const {hidden, review, className, onClick} = this.props;
     const cn = bembam("Admin-short-button", className)
-      .mod("hidden", hidden);
+      .mod("hidden", hidden)
+      .mod("review", review);
 
     return (
       <AdminSectionButton {...this.props} className={cn.toString()} onClick={onClick} hidden={null}>

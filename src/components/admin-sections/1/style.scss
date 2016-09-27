@@ -1,4 +1,12 @@
+@import "sizes.scss";
+
 .Admin-section-1 {
   justify-content: space-between;
   align-items: stretch;
+}
+
+.Admin-section-1 #Admin__level-button-3 .Admin-button-title {
+  @include breakpoint($small-tablet) {
+    top: 15px;
+  }
 }

@@ -8,10 +8,11 @@ import DisplayText from "components/display-text";
 import DisplayBar from "components/display-bar";
 import XOverlay from "components/x-overlay";
 import StarContainer from "components/star-container";
+require("./response.scss");
 
 const {Answer} = Response;
 const textStyle = {
-  fontSize: 150,
+  fontSize: "15rem",
   textAlign: "center"
 };
 
@@ -74,7 +75,7 @@ export default class LevelResponse extends React.Component {
     const answerText = this.getAnswerText();
     return (
       <StarContainer padded>
-        <div style={textStyle}>{answerText}</div>
+        <div className="Level-126-response__answer-correct-text">{answerText}</div>
         <Word style={{display: "inline-block"}} word={answer.word}/>
       </StarContainer>
     );
@@ -85,7 +86,7 @@ export default class LevelResponse extends React.Component {
     const answerText = this.getAnswerText();
     return (
       <div>
-        <div style={textStyle}>{answerText}</div>
+        <div className="Level-126-response__answer-incorrect-text">{answerText}</div>
         <div style={{position: "relative"}}>
           <Word word={answer.word}/>
           <XOverlay/>

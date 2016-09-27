@@ -1,0 +1,23 @@
+@import "sizes.scss";
+
+ .Level-126-response__answer-correct-text {
+   font-size: 150px;
+   text-align: center;
+
+   @include breakpoint($phone) {
+     font-size: 75px;
+   }
+
+   @include breakpoint($iphone5) {
+     font-size: 50px;
+   }
+ }
+
+ .Level-126-response__answer-incorrect-text {
+   font-size: 150px;
+   text-align: center;
+
+   @include breakpoint($phone) {
+     font-size: 75px;
+   }
+ }

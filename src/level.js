@@ -5,6 +5,7 @@ import actions from "store/actions";
 import toPercent from "util/to-percent";
 import storeListener from "decorators/store-listener";
 import UserNameLabel from "components/user-name-label";
+import Screen from "components/screen";
 
 const getLevel = (id) => (state) => state.levels.find((level) => level.id === level);
 
@@ -117,16 +118,18 @@ export default function level({
           </Feedback>
         );
         case activityIndex < activities.length: return (
-          <Activity {...levelProps} {...activityData}
-            showLesson={showLesson}
-            activityIndex={activityIndex}
-            onShowLesson={act({type: actions.SHOW_LESSON, levelId: id})}
-            onAnswer={this.onAnswerActivity.bind(this)}
-            shortInstructions={activityData.shortInstructions && activityInstructionsPlayed}
-            currentUserId={currentUserId}
-          >
-            <UserNameLabel>{currentUserId}</UserNameLabel>
-          </Activity>
+          <Screen className="Level-activity">
+            <Activity {...levelProps} {...activityData}
+              showLesson={showLesson}
+              activityIndex={activityIndex}
+              onShowLesson={act({type: actions.SHOW_LESSON, levelId: id})}
+              onAnswer={this.onAnswerActivity.bind(this)}
+              shortInstructions={activityData.shortInstructions && activityInstructionsPlayed}
+              currentUserId={currentUserId}
+            >
+              <UserNameLabel>{currentUserId}</UserNameLabel>
+            </Activity>
+          </Screen>
         );
       }
 

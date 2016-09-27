@@ -186,15 +186,21 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     min-width: 1em;
   }
 
-  &__level-button-title {
+  &__level-button-header {
     font-size: 5em;
     flex: 5 1 auto;
-    &--indented {
-      margin-left: 1.25em;
-    }
 
+    &--indented {
+      margin-left: 15px;
+    }
+  }
+
+  &__level-button-title--small {
+    @include breakpoint($iphone6) {
+      font-size: 0.8em;
+    }
     @include breakpoint($iphone5) {
-      font-size: 4em;
+      font-size: 0.6em;
     }
   }
 
@@ -231,47 +237,6 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     font-weight: bold;
     text-shadow: $text-shadow;
     z-index: 2;
-  }
-
-  &__section-arrow-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  &__section-arrow {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 2em;
-    height: 1.5em;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  &__section-arrow-text {
-    font-size: 0.4em;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-  }
-
-  &__section-arrow-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    outline: 1px solid black;
-    background-image: url($section-arrow-image);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    &--flipped {
-      transform: scale(-1, 1);
-    }
   }
 
   &__level-description {
@@ -328,7 +293,7 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   }
 
   &__arrow-text {
-    font-size: 3em;
+    font-size: 4.5em;
     width: 100%;
   }
 

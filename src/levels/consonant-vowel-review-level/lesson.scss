@@ -11,4 +11,15 @@
       margin: 0 1rem;
     }
   }
+
+  @include breakpoint($small-tablet) {
+    .Display-text {
+      min-width: 135px;
+      height: 135px;
+    }
+
+    .Scene-bar--count-5 .Play-box {
+      margin: 0 1rem;
+    }
+  }
 }

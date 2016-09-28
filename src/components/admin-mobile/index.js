@@ -505,7 +505,7 @@ export default class MobileAdmin extends React.Component {
             <LevelButtonItem {...level("119")}>Consonant <strong>y</strong> With Short Vowels</LevelButtonItem>
             <LevelButtonItem {...level("120")}>Consonant <strong>z</strong> With Short Vowels</LevelButtonItem>
             <LevelButtonItem {...level("121")}>Review y-z</LevelButtonItem>
-            <LevelButtonItem {...level("122")} smallTitle>Coarticulation Assessment b-z</LevelButtonItem>
+            <LevelButtonItem {...level("122")}>Coarticulation Assessment b-z</LevelButtonItem>
             {/* Section 8 */}
             <LevelButtonItem {...level("123")}>Identify Ending Sounds</LevelButtonItem>
             <LevelButtonItem {...level("124")}>Identify Vowel Sounds</LevelButtonItem>

@@ -1,3 +1,7 @@
 #!/bin/bash
 
-cd builds/cordova && taco build android 
+cd builds/cordova
+taco build android
+
+# I don't like expanding endless folders to find what I need
+cp platforms/android/build/outputs/apk/android-debug.apk ../Fun-Time-Phonics-android.apk

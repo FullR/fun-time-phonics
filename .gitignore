@@ -8,5 +8,6 @@ documents
 builds/desktop
 builds/cordova/www
 builds/cordova/www/*
+builds/*.apk
 .~*
 

@@ -1,25 +1,25 @@
 @import "sizes.scss";
 
 .Consonant-vowel-review-level-lesson {
-  @include breakpoint($tablet) {
-    .Display-text {
-      min-width: 160px;
-      height: 175px;
-    }
+  // @include breakpoint($tablet) {
+  //   .Display-text {
+  //     min-width: 160px;
+  //     height: 175px;
+  //   }
+  //
+  //   .Scene-bar--count-5 .Play-box {
+  //     margin: 0 1rem;
+  //   }
+  // }
 
-    .Scene-bar--count-5 .Play-box {
-      margin: 0 1rem;
-    }
-  }
-
-  @include breakpoint($small-tablet) {
-    .Display-text {
-      min-width: 135px;
-      height: 135px;
-    }
-
-    .Scene-bar--count-5 .Play-box {
-      margin: 0 1rem;
-    }
-  }
+  // @include breakpoint($small-tablet) {
+  //   .Display-text {
+  //     min-width: 135px;
+  //     height: 135px;
+  //   }
+  //
+  //   .Scene-bar--count-5 .Play-box {
+  //     margin: 0 1rem;
+  //   }
+  // }
 }

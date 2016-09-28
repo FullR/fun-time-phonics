@@ -28,22 +28,26 @@
 
   &--size-large {
     @include size(300px, 250px);
-    @include bp-size($small-tablet, 160px, 160px, 150px);
+    @include bp-size($small-tablet, 165px, 165px, 150px);
     @include bp-size($phone, 150px);
     @include bp-size($iphone6p, 140px, 140px, 110px);
     @include bp-size($iphone6, 130px, 130px, 95px);
     @include bp-size($iphone5, 110px, 110px, 75px);
   }
 
-  &--size-medium {
+  &--size-medium,
+  &--size-medium-small {
     @include size(200px);
-
     @include bp-size($tablet, 150px, 150px, 100px);
-    @include bp-size($small-tablet, 135px, 135px, 110px);
+    @include bp-size($small-tablet, 125px, 125px, 110px);
     @include bp-size($phone, 100px, 100px, 80px);
     @include bp-size($iphone6p, 90px, 90px, 70px);
     @include bp-size($iphone6, 85px, 85px, 65px);
     @include bp-size($iphone5, 75px, 75px, 55px);
+  }
+
+  &--size-medium-small {
+    @include bp-size($small-tablet, 100px, 100px, 90px);
   }
 
   &--size-small {

@@ -1,25 +1,12 @@
 @import "sizes.scss";
 
-@mixin count-margins($desktop-size, $tablet-size, $phone-size, $iphone6-size: $phone-size, $iphone5-size: $iphone6-size) {
-  margin: 0 $desktop-size 0 $desktop-size;
-  @include breakpoint($tablet) {
-    margin: 0 $tablet-size 0 $tablet-size;
-  }
+@mixin margin($margin) {
+  margin: 0 $margin 0 $margin;
+}
 
-  @include breakpoint($small-tablet) {
-    margin: 0 ($tablet-size * 0.8) 0 ($tablet-size * 0.8);
-  }
-
-  @include breakpoint($phone) {
-    margin: 0 $phone-size 0 $phone-size;
-  }
-
-  @include breakpoint($iphone6) {
-    margin: 0 $iphone6-size 0 $iphone6-size;
-  }
-
-  @include breakpoint($iphone5) {
-    margin: 0 $iphone5-size 0 $iphone5-size;
+@mixin bp-margin($bp, $margin) {
+  @include breakpoint($bp) {
+    @include margin($margin);
   }
 }
 
@@ -28,19 +15,40 @@
   justify-content: center;
 
   > * {
-    @include count-margins(5rem, 2.5rem, 1.5rem, 1.2rem, 1rem);
+    @include margin(5rem);
+    @include bp-margin($tablet, 2.5rem);
+    @include bp-margin($small-tablet, 1.75rem);
+    @include bp-margin($phone, 1.5rem);
+    @include bp-margin($iphone6, 1.2rem);
+    @include bp-margin($iphone5, 1rem);
   }
 
   &--count-4 > * {
-    @include count-margins(3.5rem, 1.5rem, 0.5rem, 0.3rem, 0.1rem);
+    @include margin(3.5rem);
+    @include bp-margin($tablet, 1.5rem);
+    @include bp-margin($small-tablet, 0.75rem);
+    @include bp-margin($phone, 0.5rem);
+    @include bp-margin($iphone6, 0.3rem);
+    @include bp-margin($iphone5, 0.1rem);
   }
 
   &--count-5 > * {
-    @include count-margins(2rem, 1rem, 0.25rem);
+    @include margin(2rem);
+    @include bp-margin($tablet, 1rem);
+    @include bp-margin($small-tablet, 0.75rem);
+    @include bp-margin($phone, 0.25rem);
+    @include bp-margin($iphone6, 0.25rem);
+    @include bp-margin($iphone5, 0.25rem);
+
   }
 
   &--count-6 > * {
-    @include count-margins(1.5rem, 0.5rem, 0.2rem, 0.1rem);
+    @include margin(1.5rem);
+    @include bp-margin($tablet, 0.5rem);
+    @include bp-margin($small-tablet, 0.3rem);
+    @include bp-margin($phone, 0.2rem);
+    @include bp-margin($iphone6, 0.1rem);
+    @include bp-margin($iphone5, 0.1rem);
   }
 }
 

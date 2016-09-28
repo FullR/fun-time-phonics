@@ -168,8 +168,8 @@ $x-hover-image: "../../../images/x-icon_hover.png";
   &__level-button {
     position: relative;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: space-between;
     min-height: 10em;
     padding: 1em 2em 1em 2em;
     cursor: pointer;
@@ -191,23 +191,24 @@ $x-hover-image: "../../../images/x-icon_hover.png";
     flex: 5 1 auto;
 
     &--indented {
-      margin-left: 15px;
+      //margin-left: 15px;
     }
   }
 
-  &__level-button-title--small {
-    @include breakpoint($iphone6) {
-      font-size: 0.8em;
-    }
+  &__level-button-header--indented,
+  &__level-button-header--indented + &__level-button-score {
+    margin-left: 15px;
+  }
+
+  &__level-button-title {
     @include breakpoint($iphone5) {
-      font-size: 0.6em;
+      font-size: 0.8em;
     }
   }
 
   &__level-button-score {
     font-size: 4em;
     flex: 0 1 auto;
-    text-align: right;
 
     &--passing {
       color: $passing-color;

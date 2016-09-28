@@ -1,25 +1,17 @@
 @import "sizes.scss";
 
-@mixin bp-size($bp, $name, $size) {
+@mixin bp-size($bp, $size) {
   @include breakpoint($bp) {
-    @include size($name, $size);
+    @include size($size);
   }
 }
 
-@mixin size($name, $size) {
-  &--size-#{$name} {
-    min-width: $size;
+@mixin size($size) {
+  min-width: $size;
 
-    .Play-box__display-box {
-      height: $size;
-    }
+  .Play-box__display-box {
+    height: $size;
   }
-}
-
-@mixin bp-sizes($bp, $large, $medium, $small) {
-  @include bp-size($bp, "large", $large);
-  @include bp-size($bp, "medium", $medium);
-  @include bp-size($bp, "small", $small);
 }
 
 .Play-box {
@@ -27,17 +19,40 @@
   position: relative;
   margin-collapse: separate;
 
-  @include size("large", 300px);
-  @include size("medium", 200px);
-  @include size("small", 125px);
+  &--size-large {
+    @include size(300px);
+    @include bp-size($tablet, 200px);
+    @include bp-size($small-tablet, 165px);
+    @include bp-size($phone, 150px);
+    @include bp-size($iphone6p, 140px);
+    @include bp-size($iphone6, 130px);
+    @include bp-size($iphone5, 100px);
+  }
 
-  @include bp-sizes($tablet, 200px, 150px, 100px);
-  @include bp-sizes($small-tablet, 160px, 135px, 90px);
+  &--size-medium,
+  &--size-medium-small {
+    @include size(200px);
+    @include bp-size($tablet, 150px);
+    @include bp-size($small-tablet, 135px);
+    @include bp-size($phone, 125px);
+    @include bp-size($iphone6p, 90px);
+    @include bp-size($iphone6, 85px);
+    @include bp-size($iphone5, 75px);
+  }
 
-  @include bp-sizes($phone, 150px, 125px, 75px);
-  @include bp-sizes($iphone6p, 140px, 110px, 70px);
-  @include bp-sizes($iphone6, 130px, 95px, 60px);
-  @include bp-sizes($iphone5, 100px, 75px, 50px);
+  &--size-medium-small {
+    @include bp-size($small-tablet, 100px);
+  }
+
+  &--size-small {
+    @include size(125px);
+    @include bp-size($tablet, 100px);
+    @include bp-size($small-tablet, 100px);
+    @include bp-size($phone, 90px);
+    @include bp-size($iphone6p, 70px);
+    @include bp-size($iphone6, 60px);
+    @include bp-size($iphone5, 50px);
+  }
 
   &__display-box {
     width: 100%;

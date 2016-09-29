@@ -18,6 +18,16 @@ import getRequiredScore from "store/helpers/get-required-score";
 import toPercent from "util/to-percent";
 require("./style.scss");
 
+const level1SubLessons = ["m", "l", "n", "r", "g", "s"];
+const level2SubLessons = ["d", "p", "k", "f", "m", "b"];
+
+function resetLevel(levelId) {
+  store.dispatch({
+    type: actions.RESET_LEVEL,
+    levelId
+  });
+}
+
 const makeStateful = (componentFn) => class extends React.Component {
   render() {
     return componentFn(this.props);

@@ -339,6 +339,7 @@ export default class MobileAdmin extends React.Component {
             <button onClick={this.handleChangeInfoScreen.bind(null, "about")}>About</button>
             <button onClick={this.handleChangeInfoScreen.bind(null, "other-products")}>Other Products</button>
             <button onClick={this.handleChangeInfoScreen.bind(null, "license")}>License Agreement</button>
+            <button onClick={this.props.onChangeUser}>Manage Users</button>
             <button onClick={this.openClearModal.bind(this)}>Clear Data</button>
             <button onClick={this.openChangeScoreModal.bind(this)}>Success Percentage</button>
           </TrayDrawer>

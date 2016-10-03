@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd builds/cordova
+taco build android --release -- --keystore="../../keystore" --storePassword=ctADl0g1n --alias=com.criticalthinking.funtimephonics
+
+# I don't like expanding endless folders to find what I need
+cp platforms/android/build/outputs/apk/android-release.apk ../Fun-Time-Phonics-android.apk

@@ -5,5 +5,5 @@ do
   word=$(basename $f .tif)
   echo "Converting and resizing $word"
   # converts from tif to png and resizes to 300x300px and 72dpi (while maintaining aspect ratio)
-  convert $f -resize 300x300 images/words/$word.png 2> /dev/null &
+  convert $f -resize 180x180 images/words/$word.png 2> /dev/null &
 done

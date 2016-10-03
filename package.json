@@ -5,7 +5,7 @@
     "clean": "mkdir -p builds && mkdir -p dist && rm -rf builds/* && rm -rf dist/*",
     "setup": "npm run setup:cordova && npm run convert-audio",
     "build:ios": "npm run compile && scripts/build-ios",
-    "build:android": "npm run compile && scripts/build-android",
+    "build:android": "npm run compile && scripts/build-android-release",
     "build:desktop": "npm run compile && npm run package:desktop",
     "build:mac": "npm run build:desktop darwin",
     "build:window": "npm run build:desktop win32",

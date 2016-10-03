@@ -42,7 +42,7 @@ function convertTIFs() {
     .then((tiffs) => asyncChunkSeries(tiffs, 50, (tiff, completeCount, count) => {
       bar.progress = completeCount / count;
       bar.pulse(tiff);
-      return tiffToPng(tiff, 300, 300)
+      return tiffToPng(tiff, 200, 200)
         .catch(noop);
     }))
     .then(all);

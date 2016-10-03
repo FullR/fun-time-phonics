@@ -2,10 +2,10 @@ import consonantVowelLevel from "levels/consonant-vowel-level";
 
 export default consonantVowelLevel({
   id: "44",
-  
+
   consonant: "g",
   vowel: "a",
-  letterIntroWords: ["gasoline", "gecko", "gift", "goggles", "gum"],
+  letterIntroWords: ["gas", "gecko", "gift", "goggles", "gum"],
   lessonWords: ["gag", "gallon", "galaxy"],
   activities: [
     {words: ["gap", "goat", "gift"], correctWord: "gap"},

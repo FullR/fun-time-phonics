@@ -10,4 +10,5 @@ builds/cordova/www
 builds/cordova/www/*
 builds/*.apk
 .~*
+keystore.jks
 

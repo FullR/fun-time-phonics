@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#APP_PATH: "builds/desktop/Fun-Time\ Phonics-darwin-x64/Fun-Time\ Phonics.app";
+
+electron-osx-sign builds/desktop/Fun-Time\ Phonics-darwin-x64/Fun-Time\ Phonics.app \
+ --entitlements ./child.plist \
+ --entitlements-inherit ./parent.plist \
+ --identity ./Mac-App-Certificate.p12 \
+ --platform darwin

@@ -1,9 +1,17 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+then
+  SIZE="300"
+else
+  SIZE="$1"
+fi
+
+
 for f in word-tiffs/*.tif
 do
   word=$(basename $f .tif)
   echo "Converting and resizing $word"
   # converts from tif to png and resizes to 300x300px and 72dpi (while maintaining aspect ratio)
-  convert $f -resize 180x180 images/words/$word.png 2> /dev/null &
+  convert $f -resize $SIZEx$SIZE images/words/$word.png 2> /dev/null &
 done

@@ -86,7 +86,7 @@
     "easyimage": "^2.1.0",
     "electron-debug": "^1.0.1",
     "electron-osx-sign": "^0.3.2",
-    "electron-packager": "^7.0.3",
+    "electron-packager": "^7.7.0",
     "electron-prebuilt": "^1.2.1",
     "enzyme": "^2.2.0",
     "file-loader": "^0.8.4",

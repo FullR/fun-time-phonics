@@ -1,4 +1,5 @@
 node_modules
+signing-files
 word-tiffs
 dist
 .DS_Store
